@@ -178,7 +178,7 @@ html,
   border-bottom: 1px solid var(--zinc-400);
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
-  top: 108%;
+  top: 107.7%;
 }
 .last-section-form::before {
   content: "";
@@ -264,7 +264,7 @@ html,
   content: "";
   position: absolute;
   width: 1000vw;
-  top: -20.5px;
+  top: -20.85px;
   right: 0;
   height: 1px;
   border-top: 1px solid var(--zinc-400);
@@ -590,4 +590,19 @@ div.w-\[204px\][content=""] {
 }
 #tour-list-container .tour-card {
   width: 311.75px !important;
+}
+.service-el svg:last-child {
+  display: none !important;
+}
+.w-\[calc\(100vw-730px\)\] {
+  width: calc(100vw - 730px);
+}
+.h-500 {
+  height: 500px;
+}
+.h-440{
+  height: 440px;
+}
+.w-800{
+  width: 800px;
 }

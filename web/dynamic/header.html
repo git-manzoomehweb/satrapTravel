@@ -1,37 +1,44 @@
-<basis
-  core="dbsource"
-  source="basiscore"
-  name="db"
-  mid="5"
-  lid="1"
-  usedforid="[##cms.cms.ownerid##]"
->
-  <member name="info" type="view"></member>
+<basis core="dbsource" source="basiscore" name="db" mid="5" lid="1" usedforid="[##cms.cms.ownerid##]">
+    <member name="info" type="view"></member>
 </basis>
 <basis core="group" if="'[##cms.cms.page_index##]' = 'desktop'">
-    <header class="w-full mb-[64px]">
+    <header class="w-full mb-[64px] header-landing-items">
         <div
             class="fixed transition-all ease-in-out duration-1000 w-full overflow-x-hidden flex flex-col top-0 left-0 z-40">
 
             <div class="w-full h-[64px] bg-white items-center flex justify-center">
                 <div class="px-4 w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex items-center justify-between">
-                    <div class="h-full flex items-center w-[504px] justify-between">
-                        <a href="/" class="hover:scale-110">
-                            <img src="[##cms.cms.cdn##]/images/logo.png" alt="logo-satrap" class="w-[81px]">
-                        </a>
+                    <nav class="w-[504px]">
+                        <ul class="h-full flex items-center w-full justify-between">
+                            <li>
+                                <a href="/" class="hover:scale-110">
+                                    <img src="[##cms.cms.cdn##]/images/logo.png" alt="logo-satrap" class="w-[81px]">
+                                </a>
+                            </li>
 
-                        <a href="/"
-                            class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">بلیط
-                            هواپیما</a>
-                        <a href="/"
-                            class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">هتل </a>
-                        <a href="/"
-                            class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">ویزا</a>
-                        <a href="/"
-                            class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">مجله
-                            ساتراپ</a>
 
-                    </div>
+                            <li data-id="flight" data-nav="flight"
+                                onclick="check_searchHistory('flight'); check_landing('flight')"
+                                class="h-full cursor-pointer text-center flex items-center text-zinc-900 hover:text-primary-700">
+                                بلیط
+                                هواپیما</li>
+                            <li>
+                                <a href="/"
+                                    class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">هتل
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="/"
+                                    class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">ویزا</a>
+
+                            </li>
+                            <li><a href="/"
+                                    class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">مجله
+                                    ساتراپ</a></li>
+
+                        </ul>
+                    </nav>
                     <div class="flex items-center gap-6">
                         <a href=""
                             class="min-w-[92px] box-hover1 gap-3 group p-2 relative overflow-hidden rounded-[50px] border border-[#22B4FF] h-[37px] flex justify-center items-center bg-transparent">
@@ -50,20 +57,25 @@
 
                         </a>
 
-                        <a href="tel:"
-                            class="min-w-[128px] box-hover1 gap-3 group p-2 relative overflow-hidden rounded-[50px] border border-[#22B4FF] h-[37px] flex justify-center items-center bg-transparent">
-                            <span
-                                class="absolute w-full h-full group-hover:scale-100 rounded-[50px] transition-all duration-150 ease-in-out scale-0 bg-primary"></span>
-                            <span
-                                class="text-sm z-[1] transition-all duration-150 ease-in-out group-hover:text-white">021-66889955</span>
-                            <svg class="z-[1]" width="21" height="23" viewBox="0 0 21 23" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path class="transition-all duration-150 ease-in-out group-hover:fill-white"
-                                    fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M5.47681 4.13511C5.40156 4.13511 5.32543 4.14215 5.24843 4.15447C4.27018 4.32079 3.38906 5.46831 3.20706 5.76663C2.29531 7.05583 3.00756 10.0452 7.64681 14.7118C12.2878 19.3785 15.2602 20.093 16.4948 19.2086C16.8396 18.9939 17.9788 18.1113 18.1442 17.1257C18.216 16.6971 18.0891 16.2905 17.7575 15.884C15.8176 13.515 15.2033 13.8151 14.3572 14.2296C13.0832 14.8544 11.839 15.1826 9.50883 12.8401C7.18219 10.4984 7.50681 9.24703 8.12718 7.96487C8.54018 7.11215 8.83858 6.49615 6.48043 4.54255C6.15056 4.26975 5.81981 4.13511 5.47681 4.13511ZM15.3232 20.8806C13.589 20.8806 10.8432 19.7929 6.71931 15.6446C0.561061 9.45207 1.18581 6.34831 2.10631 5.04855C2.10456 5.04855 3.26306 3.18559 4.98068 2.86263C5.79793 2.70951 6.60206 2.93743 7.31431 3.52263C10.2386 5.94615 9.96733 7.17991 9.30758 8.54215C8.90246 9.37903 8.58219 10.0399 10.4372 11.9064C12.2931 13.7711 12.9511 13.4525 13.7823 13.0425C15.1377 12.3798 16.3636 12.1053 18.7716 15.0453C19.3561 15.7634 19.5836 16.5774 19.4278 17.4002C19.098 19.1532 17.215 20.3113 17.1966 20.3218C16.7897 20.6157 16.179 20.8806 15.3232 20.8806Z"
-                                    fill="#22B4FF" />
-                            </svg>
-                        </a>
+                        <basis core="print" datamembername="db.info">
+                            <face filter="TypeID=240">
+                                <a href="tel:@text"
+                                    class="min-w-[128px] box-hover1 gap-3 group p-2 relative overflow-hidden rounded-[50px] border border-[#22B4FF] h-[37px] flex justify-center items-center bg-transparent">
+                                    <span
+                                        class="absolute w-full h-full group-hover:scale-100 rounded-[50px] transition-all duration-150 ease-in-out scale-0 bg-primary"></span>
+                                    <span
+                                        class="text-sm z-[1] transition-all duration-150 ease-in-out group-hover:text-white">@text</span>
+                                    <svg class="z-[1]" width="21" height="23" viewBox="0 0 21 23" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path class="transition-all duration-150 ease-in-out group-hover:fill-white"
+                                            fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M5.47681 4.13511C5.40156 4.13511 5.32543 4.14215 5.24843 4.15447C4.27018 4.32079 3.38906 5.46831 3.20706 5.76663C2.29531 7.05583 3.00756 10.0452 7.64681 14.7118C12.2878 19.3785 15.2602 20.093 16.4948 19.2086C16.8396 18.9939 17.9788 18.1113 18.1442 17.1257C18.216 16.6971 18.0891 16.2905 17.7575 15.884C15.8176 13.515 15.2033 13.8151 14.3572 14.2296C13.0832 14.8544 11.839 15.1826 9.50883 12.8401C7.18219 10.4984 7.50681 9.24703 8.12718 7.96487C8.54018 7.11215 8.83858 6.49615 6.48043 4.54255C6.15056 4.26975 5.81981 4.13511 5.47681 4.13511ZM15.3232 20.8806C13.589 20.8806 10.8432 19.7929 6.71931 15.6446C0.561061 9.45207 1.18581 6.34831 2.10631 5.04855C2.10456 5.04855 3.26306 3.18559 4.98068 2.86263C5.79793 2.70951 6.60206 2.93743 7.31431 3.52263C10.2386 5.94615 9.96733 7.17991 9.30758 8.54215C8.90246 9.37903 8.58219 10.0399 10.4372 11.9064C12.2931 13.7711 12.9511 13.4525 13.7823 13.0425C15.1377 12.3798 16.3636 12.1053 18.7716 15.0453C19.3561 15.7634 19.5836 16.5774 19.4278 17.4002C19.098 19.1532 17.215 20.3113 17.1966 20.3218C16.7897 20.6157 16.179 20.8806 15.3232 20.8806Z"
+                                            fill="#22B4FF" />
+                                    </svg>
+                                </a>
+                            </face>
+                        </basis>
+
 
 
 

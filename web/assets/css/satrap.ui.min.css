@@ -2442,6 +2442,7 @@ video {
 
 .font-medium {
   font-weight: 500;
+  font-family: DanaFaNum-Medium !important;
 }
 
 .font-semibold {
@@ -2786,7 +2787,7 @@ video {
   border-bottom: 1px solid var(--zinc-400);
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
-  top: 108%;
+  top: 107.7%;
 }
 
 .last-section-form::before {
@@ -2875,16 +2876,6 @@ video {
 .footer-social a:hover::before {
   opacity: 1;
   transform: rotate(-45deg) translateY(100%);
-}
-
-.footer-last-section::before {
-  content: "";
-  position: absolute;
-  width: 1000vw;
-  top: -20.5px;
-  right: 0;
-  height: 1px;
-  border-top: 1px solid var(--zinc-400);
 }
 
 .before-to-top-border::before {
@@ -3537,6 +3528,7 @@ div.w-\[204px\][content=""] {
 
 .group:hover .group-hover\:font-medium {
   font-weight: 500;
+  font-family: DanaFaNum-Medium !important;
 }
 
 .group:hover .group-hover\:\!text-white {
@@ -3661,4 +3653,16 @@ iframe html {
 }
 #tour-list-container .swiper-slide {
   width: 311.75px !important;
+}
+.service-el svg:last-child {
+  display: none !important;
+}
+.w-\[calc\(100vw-730px\)\] {
+    width: calc(100vw - 730px);
+}
+.h-440{
+  height: 440px;
+}
+.w-800{
+  width: 800px;
 }

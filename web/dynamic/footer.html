@@ -1,53 +1,81 @@
+<basis core="dbsource" source="basiscore" name="db" mid="10" lid="1" usedforid="2387763">
+    <member name="office-view1" type="view" />
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="10" lid="1" usedforid="2387762">
+    <member name="office-view2" type="view" />
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="10" lid="1" usedforid="2387761">
+    <member name="office-view3" type="view" />
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="10" lid="1" usedforid="2387760">
+    <member name="office-view4" type="view" />
+</basis>
 <basis core="group" if="'[##cms.cms.page_index##]' = 'desktop'">
-    <footer class=" flex flex-col overflow-hidden justify-center items-center">
+    <footer class=" flex footer-landing-items flex-col overflow-hidden justify-center items-center">
         <div class="flex flex-col gap-3 px-4 w-full lg:px-4 xl:!w-[1280px] xl:!px-0  ">
-
             <div class="w-full flex gap-[26px]">
-
                 <div class="w-1/2 relative mt-[74.82px] flex flex-col gap-4  before-border">
                     <p class="font-bold px-2 text-xl bg-white z-10 relative w-fit">با ما در ارتباط باشید</p>
                     <div class="flex flex-col gap-6 mt-5 px-2">
-                        <p class="text-base font-bold">دفتر ایران(تبریز):</p>
-                        <div class="w-full flex items-center gap-1">
-                            <img loading="lazy"  src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin">
-                            <p class="w-[calc(100%-32px)] text-sm text-zinc-900 h-[40px] line-clamp-2">لورم ایپسوم متن
-                                ساختگی با تولید
-                                سادگی نامفهوم از صنعت
-                                چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه</p>
-                        </div>
+                        <basis core="print" datamembername="db.office-view4">
+                            <face filter="TypeID=150">
+                                <p class="text-base font-bold">@text :</p>
+                            </face>
+                        </basis>
+
+                        <basis core="print" datamembername="db.office-view4">
+                            <face filter="Question in('آدرس')">
+                                <div class="w-full flex items-center gap-1">
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin">
+                                    <div class="w-[calc(100%-32px)] text-sm text-zinc-900 line-clamp-2">
+                                        @largetext
+                                    </div>
+                                </div>
+                            </face>
+                        </basis>
+
                         <div class="flex items-center gap-2">
-                            <a href="tel:"
-                                class="h-12 flex group hover:bg-primary hover:border-primary hover:text-white gap-2 items-center border border-zinc-300 rounded-2xl px-3 text-sm text-zinc-900">
-                                <img loading="lazy"  class="group-hover:brightness-[4000] group-hover:opacity-30 group-hover:invert-0"
-                                    src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
-                                021-22334455</a>
-                            <a href="tel:"
-                                class="h-12 flex group hover:bg-primary hover:border-primary hover:text-white gap-2 items-center border border-zinc-300 rounded-2xl px-3 text-sm text-zinc-900">
-                                <img loading="lazy"  class="group-hover:brightness-[4000] group-hover:opacity-30 group-hover:invert-0"
-                                    src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
-                                021-22334455</a>
+                            <basis core="print" datamembername="db.office-view4">
+                                <face filter="TypeID=240">
+                                    <a href="tel:@text"
+                                        class="h-12 flex group hover:bg-primary hover:border-primary hover:text-white gap-2 items-center border border-zinc-300 rounded-2xl px-3 text-sm text-zinc-900">
+                                        <img loading="lazy"
+                                            class="group-hover:brightness-[4000] group-hover:opacity-30 group-hover:invert-0"
+                                            src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
+                                        @text</a>
+                                </face>
+                            </basis>
+
+
                         </div>
                     </div>
                     <div class="flex flex-col gap-6 mt-5 px-2">
-                        <p class="text-base font-bold">دفتر ترکیه:</p>
-                        <div class="w-full flex items-center gap-1">
-                            <img loading="lazy"  src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin">
-                            <p class="w-[calc(100%-32px)] text-sm text-zinc-900 h-[40px] line-clamp-2">لورم ایپسوم متن
-                                ساختگی با تولید
-                                سادگی نامفهوم از صنعت
-                                چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه</p>
-                        </div>
+                        <basis core="print" datamembername="db.office-view3">
+                            <face filter="TypeID=150">
+                                <p class="text-base font-bold">@text :</p>
+                            </face>
+                        </basis>
+                        <basis core="print" datamembername="db.office-view3">
+                            <face filter="Question in('آدرس')">
+                                <div class="w-full flex items-center gap-1">
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin">
+                                    <div class="w-[calc(100%-32px)] text-sm text-zinc-900 line-clamp-2">
+                                        @largetext
+                                    </div>
+                                </div>
+                            </face>
+                        </basis>
                         <div class="flex items-center gap-2">
-                            <a href="tel:"
-                                class="h-12 flex group hover:bg-primary hover:border-primary hover:text-white gap-2 items-center border border-zinc-300 rounded-2xl px-3 text-sm text-zinc-900">
-                                <img loading="lazy"  class="group-hover:brightness-[4000] group-hover:opacity-30 group-hover:invert-0"
-                                    src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
-                                021-22334455</a>
-                            <a href="tel:"
-                                class="h-12 flex group hover:bg-primary hover:border-primary hover:text-white gap-2 items-center border border-zinc-300 rounded-2xl px-3 text-sm text-zinc-900">
-                                <img loading="lazy"  class="group-hover:brightness-[4000] group-hover:opacity-30 group-hover:invert-0"
-                                    src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
-                                021-22334455</a>
+                            <basis core="print" datamembername="db.office-view3">
+                                <face filter="TypeID=240">
+                                    <a href="tel:@text"
+                                        class="h-12 flex group hover:bg-primary hover:border-primary hover:text-white gap-2 items-center border border-zinc-300 rounded-2xl px-3 text-sm text-zinc-900">
+                                        <img loading="lazy"
+                                            class="group-hover:brightness-[4000] group-hover:opacity-30 group-hover:invert-0"
+                                            src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
+                                        @text</a>
+                                </face>
+                            </basis>
                         </div>
                     </div>
                     <div class="w-full grid mt-7 grid-cols-3 mb-5">
@@ -55,8 +83,11 @@
                             <li class="font-bold text-zinc-900 text-base">
                                 بلیت مارکت
                             </li>
-                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary">پرواز</li>
-                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary">هتل</li>
+                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary" data-id="flight"
+                                data-nav="flight" onclick="check_searchHistory('flight'); check_landing('flight')">پرواز
+                            </li>
+                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary" data-id="hotel"
+                                data-nav="hotel" onclick="check_searchHistory('hotel'); check_landing('hotel')">هتل</li>
                             <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary">تورها</li>
                             <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary">بیمه مسافرتی</li>
                             <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary">پیشنهادات و تخفیفات</li>
@@ -88,102 +119,140 @@
                 </div>
                 <div class="w-1/2 flex flex-col gap-4">
                     <div class="flex gap-[18px] mt-3 items-center">
-                        <a href="/"> <img loading="lazy"  src="[##cms.cms.cdn##]/images/logo2.png" alt="logo" class="w-[154px]">
+                        <a href="/"> <img loading="lazy" src="[##cms.cms.cdn##]/images/logo2.png" alt="logo"
+                                class="w-[154px]">
                         </a>
                         <p class="text-zinc-900 font-bold text-2xl">گروه شرکت مسافربری ساتراپ تراول</p>
                     </div>
                     <div class="flex relative flex-col w-full py-6 mt-5 gap-4  pr-6 border-r border-zinc-300">
-                        <img loading="lazy"  src="[##cms.cms.cdn##]/images/logo3.png" alt="logo"
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo3.png" alt="logo"
                             class="absolute left-[-64px] grayscale top-[-70px] w-[576px] z-0">
                         <div class="flex relative z-[1] flex-col gap-6  px-2">
-                            <p class="text-base font-bold">دفتر ایران(تبریز):</p>
-                            <div class="w-full flex items-center gap-1">
-                                <img loading="lazy"  src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin">
-                                <p class="w-[calc(100%-32px)] text-sm text-zinc-900 h-[40px] line-clamp-2">لورم ایپسوم
-                                    متن
-                                    ساختگی با
-                                    تولید سادگی نامفهوم از
-                                    صنعت
-                                    چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه</p>
-                            </div>
+                            <basis core="print" datamembername="db.office-view2">
+                                <face filter="TypeID=150">
+                                    <p class="text-base font-bold">@text :</p>
+                                </face>
+                            </basis>
+                            <basis core="print" datamembername="db.office-view2">
+                                <face filter="Question in('آدرس')">
+                                    <div class="w-full flex items-center gap-1">
+                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin">
+                                        <div class="w-[calc(100%-32px)] text-sm text-zinc-900 line-clamp-2">
+                                            @largetext
+                                        </div>
+                                    </div>
+                                </face>
+                            </basis>
                             <div class="flex items-center gap-2">
-                                <a href="tel:"
-                                    class="h-12 flex group hover:bg-primary hover:border-primary hover:text-white gap-2 items-center border border-zinc-300 rounded-2xl px-3 text-sm text-zinc-900">
-                                    <img loading="lazy"  class="group-hover:brightness-[4000] group-hover:opacity-30 group-hover:invert-0"
-                                        src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
-                                    021-22334455</a>
-                                <a href="tel:"
-                                    class="h-12 flex group hover:bg-primary hover:border-primary hover:text-white gap-2 items-center border border-zinc-300 rounded-2xl px-3 text-sm text-zinc-900">
-                                    <img loading="lazy"  class="group-hover:brightness-[4000] group-hover:opacity-30 group-hover:invert-0"
-                                        src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
-                                    021-22334455</a>
+                                <basis core="print" datamembername="db.office-view2">
+                                    <face filter="TypeID=240">
+                                        <a href="tel:@text"
+                                            class="h-12 flex group hover:bg-primary hover:border-primary hover:text-white gap-2 items-center border border-zinc-300 rounded-2xl px-3 text-sm text-zinc-900">
+                                            <img loading="lazy"
+                                                class="group-hover:brightness-[4000] group-hover:opacity-30 group-hover:invert-0"
+                                                src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
+                                            @text</a>
+                                    </face>
+                                </basis>
                             </div>
                         </div>
-                        <div class="flex relative z-[1] flex-col gap-6 mt-5 px-2">
-                            <p class="text-base font-bold">دفتر ایران(تبریز):</p>
-                            <div class="w-full flex items-center gap-1">
-                                <img loading="lazy"  src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin">
-                                <p class="w-[calc(100%-32px)] text-sm text-zinc-900 h-[40px] line-clamp-2">لورم ایپسوم
-                                    متن
-                                    ساختگی با
-                                    تولید سادگی نامفهوم از
-                                    صنعت
-                                    چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه</p>
-                            </div>
+                        <div class="flex relative z-[1] min-h-155 flex-col gap-6 mt-5 px-2">
+                            <basis core="print" datamembername="db.office-view1">
+                                <face filter="TypeID=150">
+                                    <p class="text-base font-bold">@text :</p>
+                                </face>
+                            </basis>
+                            <basis core="print" datamembername="db.office-view1">
+                                <face filter="Question in('آدرس')">
+                                    <div class="w-full flex items-center gap-1">
+                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin">
+                                        <div class="w-[calc(100%-32px)] text-sm text-zinc-900 line-clamp-2">
+                                            @largetext
+                                        </div>
+                                    </div>
+                                </face>
+                            </basis>
                             <div class="flex items-center gap-2">
-                                <a href="tel:"
-                                    class="h-12 flex group hover:bg-primary hover:border-primary hover:text-white gap-2 items-center border border-zinc-300 rounded-2xl px-3 text-sm text-zinc-900">
-                                    <img loading="lazy"  class="group-hover:brightness-[4000] group-hover:opacity-30 group-hover:invert-0"
-                                        src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
-                                    021-22334455</a>
-                                <a href="tel:"
-                                    class="h-12 flex group hover:bg-primary hover:border-primary hover:text-white gap-2 items-center border border-zinc-300 rounded-2xl px-3 text-sm text-zinc-900">
-                                    <img loading="lazy"  class="group-hover:brightness-[4000] group-hover:opacity-30 group-hover:invert-0"
-                                        src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
-                                    021-22334455</a>
+                                <basis core="print" datamembername="db.office-view1">
+                                    <face filter="TypeID=240">
+                                        <a href="tel:@text"
+                                            class="h-12 flex group hover:bg-primary hover:border-primary hover:text-white gap-2 items-center border border-zinc-300 rounded-2xl px-3 text-sm text-zinc-900">
+                                            <img loading="lazy"
+                                                class="group-hover:brightness-[4000] group-hover:opacity-30 group-hover:invert-0"
+                                                src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
+                                            @text</a>
+                                    </face>
+                                </basis>
                             </div>
                         </div>
                     </div>
                     <div class="w-full flex flex-col gap-3">
                         <div class="w-full flex items-center gap-4 mt-2 pr-6">
-                            <img loading="lazy"  width="92" height="92" src="[##cms.cms.cdn##]/images/qrCode.png" alt="qrCode">
+                            <img loading="lazy" width="92" height="92" src="[##cms.cms.cdn##]/images/qrCode.png"
+                                alt="qrCode">
                             <div class="flex flex-col py-1 bg-white relative z-[2] h-full justify-between">
                                 <p class="font-bold text-base">دانلود وب اپلیکیشن بلیت مارکت</p>
-                                <p class="line-clamp-2 text-xs text-zinc-700">لورم ایپسوم متن ساختگی با تولید سادگی
-                                    نامفهوم
-                                    از صنعت چاپ،
-                                    و
-                                    با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون </p>
+                                <p class="line-clamp-2 text-xs text-zinc-700">
+                                    سفر را از همین‌جا آغاز کنید؛ تنها چند لمس تا رزرو پرواز، هتل و تور مورد علاقه‌تان
+                                    فاصله دارید.
+                                </p>
                             </div>
                         </div>
                         <div class="w-full flex gap-2 mt-4 pr-6 items-center">
                             <div class="flex items-center gap-1">
-                                <a href=""
-                                    class="w-[56px] bg-white h-[56px] flex justify-center items-center border-[0.25px] rounded border-[#6D6A68]"></a>
-                                <a href=""
-                                    class="w-[56px] bg-white h-[56px] flex justify-center items-center border-[0.25px] rounded border-[#6D6A68]"></a>
-                                <a href=""
-                                    class="w-[56px] bg-white h-[56px] flex justify-center items-center border-[0.25px] rounded border-[#6D6A68]"></a>
-                                <a href=""
-                                    class="w-[56px] bg-white h-[56px] flex justify-center items-center border-[0.25px] rounded border-[#6D6A68]"></a>
-                                <a href=""
-                                    class="w-[56px] bg-white h-[56px] flex justify-center items-center border-[0.25px] rounded border-[#6D6A68]"></a>
+                                <a href="https://www.caa.gov.ir/" target="_blank"
+                                    class="w-[56px] bg-white h-[56px] flex justify-center items-center border-[0.25px] rounded border-[#6D6A68]">
+                                    <img src="[##cms.cms.cdn##]/images/ep.png" alt="ep" width="42"></a>
+                                <a href="https://www.caa.gov.ir/" target="_blank"
+                                    class="w-[56px] bg-white h-[56px] flex justify-center items-center border-[0.25px] rounded border-[#6D6A68]">
+                                    <img src="[##cms.cms.cdn##]/_images/pax.png" alt="pax" width="42">
+                                </a>
+
+                                <a href="https://www.iata.org/" target="_blank"
+                                    class="w-[56px] bg-white h-[56px] flex justify-center items-center border-[0.25px] rounded border-[#6D6A68]">
+                                    <img src="[##cms.cms.cdn##]/_images/iata.png" alt="iata" width="42">
+                                </a>
+                                <a href="" target="_blank"
+                                    class="w-[56px] bg-white h-[56px] flex justify-center items-center border-[0.25px] rounded border-[#6D6A68]">
+                                    <img src="[##cms.cms.cdn##]/images/badge.png" alt="badge" width="42">
+                                </a>
+                                <a href="" target="_blank"
+                                    class="w-[56px] bg-white h-[56px] flex justify-center items-center border-[0.25px] rounded border-[#6D6A68]">
+
+                                </a>
                             </div>
                             <div class="flex flex-col h-full py-1 justify-between">
                                 <p class="text-base font-bold">ما رو دنبال کنید</p>
                                 <div class="flex footer-social  items-center">
-                                    <a href="" class="insta  text-xs px-2 text-zinc-600 flex items-center">
-                                        <span>instagram</span>
-                                        <img loading="lazy"  src="[##cms.cms.cdn##]/images/insta.svg" alt="instagram">
-                                    </a>
-                                    <a href="" class="insta  text-xs px-2 text-zinc-600 flex items-center">
-                                        <span>Facebook</span>
-                                        <img loading="lazy"  src="[##cms.cms.cdn##]/images/face.svg" alt="Facebook">
-                                    </a>
-                                    <a href="" class="insta  text-xs px-2 text-zinc-600 flex items-center">
-                                        <span>Twitter(x)</span>
-                                        <img loading="lazy"  src="[##cms.cms.cdn##]/images/x.svg" alt="x">
-                                    </a>
+                                    <basis core="print" datamembername="db.info">
+                                        <face filter="text in('اینستاگرام')">
+                                            <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
+                                                class="insta  text-xs px-2 text-zinc-600 flex items-center">
+                                                <span>instagram</span>
+                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/insta.svg"
+                                                    alt="instagram">
+                                            </a>
+                                        </face>
+                                    </basis>
+                                    <basis core="print" datamembername="db.info">
+                                        <face filter="text in('فیس بوک')">
+                                            <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
+                                                class="  text-xs px-2 text-zinc-600 flex items-center">
+                                                <span>Facebook</span>
+                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/face.svg"
+                                                    alt="Facebook">
+                                            </a>
+                                        </face>
+                                    </basis>
+                                    <basis core="print" datamembername="db.info">
+                                        <face filter="text in('توییتر')">
+                                            <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
+                                                class="  text-xs px-2 text-zinc-600 flex items-center">
+                                                <span>Twitter(x)</span>
+                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/x.svg" alt="x">
+                                            </a>
+                                        </face>
+                                    </basis>
 
                                 </div>
                             </div>
@@ -195,9 +264,11 @@
                 <a href="https://www.basisfly.com/"
                     class="flex items-center text-xs text-zinc-500 hover:text-primary gap-2">
                     طراحی سایت آژانس مسافرتی و رزرواسیون آنلاین توسط بیسیس فلای
-                    <img loading="lazy"  width="66" height="17" src="[##cms.cms.cdn##]/images/basisfly-logo.png" alt="basisfly">
+                    <img loading="lazy" width="66" height="17" src="[##cms.cms.cdn##]/images/basisfly-logo.png"
+                        alt="basisfly">
                 </a>
-                <img loading="lazy"  width="90" height="15" src="[##cms.cms.cdn##]/images/Trust_logo.png" alt="Trust_logo">
+                <img loading="lazy" width="90" height="15" src="[##cms.cms.cdn##]/images/Trust_logo.png"
+                    alt="Trust_logo">
             </div>
         </div>
     </footer>

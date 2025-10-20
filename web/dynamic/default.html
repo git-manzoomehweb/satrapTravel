@@ -7,10 +7,15 @@
 </basis>
 
 <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="2387766">
-  <member typeid="159" propertyid="7249" name="satrap-services-22222" type="view"
-    postsql="SELECT * FROM [db.satrap-services-22222] where TypeID not in(150)  LIMIT 2" />
+  <member typeid="159" propertyid="7249" name="satrap-services-2" type="view"
+    postsql="SELECT * FROM [db.satrap-services-2] where TypeID not in(150) LIMIT 4" />
 </basis>
 
+
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="2387766">
+  <member typeid="159" propertyid="7249" name="satrap-services-3" type="view"
+    postsql="SELECT * FROM [db.satrap-services-3] WHERE TypeID NOT IN (150) LIMIT 6 OFFSET 4" />
+</basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="218168">
   <member name="antaliyaSatrap" type="list" link="article.bc" propertyid="3088109,3088107,3088110 ,3088108 , 3088111"
     typeid="159" size="633x329" order="ord" />
@@ -56,6 +61,33 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="inner-tour">
   <member name="cat" type="tree" request="cat" parentid="217935" order="ord"
     postsql="select * from [inner-tour.cat] order by countid desc"></member>
+</basis>
+
+
+
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
+  <member name="tour-list" type="list" link="tour.bc" propertyid="8077,8181,10000504,8076" typeid="159" size="296x206"
+    order="ord" />
+</basis>
+
+<basis core="inlinesource" name="joining-diversTours">
+  <member name="list" lefttblcol="db.tour-list.prp_10000504" righttblcol="list.airline.name" format="join"
+    jointype="leftjoin" />
+</basis>
+
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="tour-type">
+  <member name="cat" type="tree" request="cat" parentid="217946" order="ord"
+    postsql="select * from [tour-type.cat] order by countid desc"></member>
+</basis>
+
+
+<basis core="dbsource" source="media" lid="1" name="db" usedforid="2388709" sourcemid="article">
+  <member type="list" name="gallery-tour-type" format="4" order="ord"></member>
+</basis>
+
+
+<basis core="dbsource" source="media" lid="1" name="db" usedforid="2387764" sourcemid="article">
+  <member type="list" name="gallery-airlines" format="4" order="ord"></member>
 </basis>
 
 <!DOCTYPE html>
@@ -190,110 +222,77 @@
     <!-- ---------------services------------------------------- -->
     <section class="w-full flex justify-center z-20 relative mb-16">
       <div class="px-4 w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col gap-7">
-        <h2 class="font-bold text-2xl">خدمات ساتراپ تراول</h2>
+        <basis core="print" datamembername="db.satrap-services">
+          <face>
+            <h2 class="font-bold text-2xl">@text</h2>
+          </face>
+        </basis>
         <div class="w-full flex flex-col gap-3">
           <div class="w-full flex items-center gap-3">
-            <a href="tel"
-              class="w-[332px] animated-icon group relative h-[87px] bg-zinc-100 rounded-2xl overflow-hidden flex items-center justify-between">
-              <div
-                class="flex  transition-all duration-700 ease-in-out  items-center gap-2 px-4 text-xl text-zinc-900 ">
-                <img loading="lazy" class="icon" src="[##cms.cms.cdn##]/images/headphone.svg" alt="headphone">
-                پشتیبانی24/7
-              </div>
-              <div
-                class="w-[117px] group-hover:bg-primary relative h-full flex justify-center  transition-all duration-700 ease-in-out  items-center bg-secondary-700 text-xl font-medium">
-                <span
-                  class=" transition-all w-full h-full flex justify-center items-center duration-700 ease-in-out  group-hover:opacity-0">تماس</span>
-                <span
-                  class="opacity-0 group-hover:animate-ping absolute w-full h-full flex justify-center items-center group-hover:opacity-100 transition-all duration-700 ease-in-out ">
-                  <svg width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M9.82951 3.07885C11.3286 3.09898 12.397 4.22232 13.7485 5.64361C14.0826 5.9939 14.4437 6.3764 14.8476 6.77903C16.8058 8.73851 16.2488 10.337 15.7992 11.62C15.3107 13.0198 14.8879 14.2277 17.4191 16.7589C19.9503 19.2901 21.1569 18.8674 22.5554 18.3748C23.8397 17.9266 25.4342 17.3656 27.3963 19.325C27.7949 19.7236 28.1707 20.0806 28.5197 20.4121C29.9463 21.7703 31.0737 22.8427 31.0927 24.3458C31.1072 25.6262 30.3288 26.9334 28.4069 28.8553L27.556 28.2782L28.2767 28.9801C27.8513 29.4163 26.7199 30.5786 24.5041 30.592H24.4638C21.1193 30.592 16.7588 27.9293 11.5031 22.6749C6.22596 17.3991 3.55919 13.0252 3.57921 9.67396C3.59141 7.45948 4.75233 6.3254 5.18851 5.89996L5.22574 5.85929L5.31601 5.76843C7.24193 3.84251 8.56525 3.05067 9.82951 3.07885ZM9.80401 5.09201H9.79327C9.19058 5.09201 8.27531 5.69596 6.99878 6.93592L6.74244 7.18765L6.74535 7.18703C6.74535 7.18703 6.72345 7.21216 6.68612 7.25023L6.59638 7.34003C6.27159 7.65543 5.59919 8.31172 5.59242 9.68469C5.58175 11.6052 6.84467 15.1712 12.9257 21.251C18.9773 27.3012 22.5379 28.5788 24.4638 28.5788H24.492C25.865 28.5708 26.5199 27.8984 26.8353 27.575C26.9306 27.477 27.0085 27.4032 27.0635 27.3589C28.4016 26.0127 29.086 25.0129 29.0794 24.37C29.0713 23.7151 28.2566 22.942 27.1306 21.8697C26.7722 21.5301 26.383 21.1583 25.9724 20.7477C24.9067 19.6861 24.382 19.8672 23.221 20.2752C21.6172 20.8376 19.4202 21.608 15.9965 18.1816C12.5714 14.7578 13.3391 12.5608 13.8988 10.9557C14.3041 9.79609 14.4893 9.26864 13.425 8.20301C13.009 7.78696 12.6345 7.39238 12.2896 7.03001C11.224 5.91069 10.4549 5.1014 9.80401 5.09201ZM21.357 7.85339C24.1499 8.3956 26.3067 10.551 26.8502 13.3453C26.9562 13.8929 26.6006 14.4203 26.0557 14.5263C25.9899 14.5384 25.9255 14.5451 25.8611 14.5451C25.3887 14.5451 24.9686 14.2123 24.8746 13.7318C24.4881 11.7455 22.9568 10.2142 20.9731 9.82897C20.4269 9.72294 20.0713 9.19549 20.1773 8.64926C20.2833 8.10302 20.8201 7.74602 21.357 7.85339ZM21.2766 3.0865C26.7497 3.69447 31.0001 7.93955 31.6135 13.4113C31.6752 13.9643 31.278 14.4622 30.7264 14.5239C30.6888 14.5279 30.6499 14.5306 30.6123 14.5306C30.1063 14.5306 29.6715 14.1508 29.6138 13.6368C29.1051 9.10584 25.5861 5.58953 21.0538 5.08624C20.5022 5.0245 20.1036 4.52792 20.1653 3.97497C20.2257 3.42337 20.7183 3.01671 21.2766 3.0865Z"
-                      fill="#fff" />
+            <basis core="print" datamembername="db.info">
+              <face filter="TypeID=240">
+                <a href="tel:@text"
+                  class="w-[332px] animated-icon group relative h-[87px] bg-zinc-100 rounded-2xl overflow-hidden flex items-center justify-between">
+                  <div
+                    class="flex  transition-all duration-700 ease-in-out  items-center gap-2 px-4 text-xl text-zinc-900 ">
+                    <img loading="lazy" class="icon" src="[##cms.cms.cdn##]/images/headphone.svg" alt="headphone">
+                    پشتیبانی24/7
+                  </div>
+                  <div
+                    class="w-[117px] group-hover:bg-primary relative h-full flex justify-center  transition-all duration-700 ease-in-out  items-center bg-secondary-700 text-xl font-medium">
+                    <span
+                      class=" transition-all w-full h-full flex justify-center items-center duration-700 ease-in-out  group-hover:opacity-0">تماس</span>
+                    <span
+                      class="opacity-0 group-hover:animate-ping absolute w-full h-full flex justify-center items-center group-hover:opacity-100 transition-all duration-700 ease-in-out ">
+                      <svg width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M9.82951 3.07885C11.3286 3.09898 12.397 4.22232 13.7485 5.64361C14.0826 5.9939 14.4437 6.3764 14.8476 6.77903C16.8058 8.73851 16.2488 10.337 15.7992 11.62C15.3107 13.0198 14.8879 14.2277 17.4191 16.7589C19.9503 19.2901 21.1569 18.8674 22.5554 18.3748C23.8397 17.9266 25.4342 17.3656 27.3963 19.325C27.7949 19.7236 28.1707 20.0806 28.5197 20.4121C29.9463 21.7703 31.0737 22.8427 31.0927 24.3458C31.1072 25.6262 30.3288 26.9334 28.4069 28.8553L27.556 28.2782L28.2767 28.9801C27.8513 29.4163 26.7199 30.5786 24.5041 30.592H24.4638C21.1193 30.592 16.7588 27.9293 11.5031 22.6749C6.22596 17.3991 3.55919 13.0252 3.57921 9.67396C3.59141 7.45948 4.75233 6.3254 5.18851 5.89996L5.22574 5.85929L5.31601 5.76843C7.24193 3.84251 8.56525 3.05067 9.82951 3.07885ZM9.80401 5.09201H9.79327C9.19058 5.09201 8.27531 5.69596 6.99878 6.93592L6.74244 7.18765L6.74535 7.18703C6.74535 7.18703 6.72345 7.21216 6.68612 7.25023L6.59638 7.34003C6.27159 7.65543 5.59919 8.31172 5.59242 9.68469C5.58175 11.6052 6.84467 15.1712 12.9257 21.251C18.9773 27.3012 22.5379 28.5788 24.4638 28.5788H24.492C25.865 28.5708 26.5199 27.8984 26.8353 27.575C26.9306 27.477 27.0085 27.4032 27.0635 27.3589C28.4016 26.0127 29.086 25.0129 29.0794 24.37C29.0713 23.7151 28.2566 22.942 27.1306 21.8697C26.7722 21.5301 26.383 21.1583 25.9724 20.7477C24.9067 19.6861 24.382 19.8672 23.221 20.2752C21.6172 20.8376 19.4202 21.608 15.9965 18.1816C12.5714 14.7578 13.3391 12.5608 13.8988 10.9557C14.3041 9.79609 14.4893 9.26864 13.425 8.20301C13.009 7.78696 12.6345 7.39238 12.2896 7.03001C11.224 5.91069 10.4549 5.1014 9.80401 5.09201ZM21.357 7.85339C24.1499 8.3956 26.3067 10.551 26.8502 13.3453C26.9562 13.8929 26.6006 14.4203 26.0557 14.5263C25.9899 14.5384 25.9255 14.5451 25.8611 14.5451C25.3887 14.5451 24.9686 14.2123 24.8746 13.7318C24.4881 11.7455 22.9568 10.2142 20.9731 9.82897C20.4269 9.72294 20.0713 9.19549 20.1773 8.64926C20.2833 8.10302 20.8201 7.74602 21.357 7.85339ZM21.2766 3.0865C26.7497 3.69447 31.0001 7.93955 31.6135 13.4113C31.6752 13.9643 31.278 14.4622 30.7264 14.5239C30.6888 14.5279 30.6499 14.5306 30.6123 14.5306C30.1063 14.5306 29.6715 14.1508 29.6138 13.6368C29.1051 9.10584 25.5861 5.58953 21.0538 5.08624C20.5022 5.0245 20.1036 4.52792 20.1653 3.97497C20.2257 3.42337 20.7183 3.01671 21.2766 3.0865Z"
+                          fill="#fff" />
+                      </svg>
+                    </span>
+                  </div>
+                </a>
+              </face>
+            </basis>
+
+            <div
+              class="w-[calc(100%-332px)] service-el bg-zinc-100 rounded-2xl h-[87px] flex justify-between items-center px-4">
+              <basis core="print" datamembername="db.satrap-services-2">
+                <face filter="RowNumber>1">
+                  <a href="" class="flex w-[217px] items-center gap-3">
+                    <img loading="lazy" src="[##cms.cms.cdn##]/images/icon-1.svg" alt="@text">
+                    <div class="flex flex-col gap-3">
+                      <p class="font-bold text-zinc-900">@text</p>
+                      <div class="line-clamp-1 text-xs text-zinc-600">@largetext </div>
+                    </div>
+                  </a>
+                  <svg width="2" height="49" viewBox="0 0 2 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="1.25" y1="48.5" x2="1.25" y2="0.5" stroke="#A1A1AA" />
                   </svg>
-                </span>
-              </div>
-            </a>
-            <div class="w-[calc(100%-332px)] bg-zinc-100 rounded-2xl h-[87px] flex justify-between items-center px-4">
-              <a href="" class="flex items-center gap-3">
-                <img loading="lazy" src="[##cms.cms.cdn##]/images/user-1.svg" alt="user">
-                <div class="flex flex-col gap-3">
-                  <p class="font-bold text-zinc-900">خدمات ویزا</p>
-                  <p class="line-clamp-1 text-xs text-zinc-600">لورم ایپسوم متن ساختگی با تولید</p>
-                </div>
-              </a>
-              <svg width="2" height="49" viewBox="0 0 2 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <line x1="1.25" y1="48.5" x2="1.25" y2="0.5" stroke="#A1A1AA" />
-              </svg>
-
-
-              <a href="" class="flex items-center gap-3">
-                <img loading="lazy" src="[##cms.cms.cdn##]/images/icon-1.svg" alt="cip">
-                <div class="flex flex-col gap-3">
-                  <p class="font-bold text-zinc-900">خدمات cip</p>
-                  <p class="line-clamp-1 text-xs text-zinc-600">لورم ایپسوم متن ساختگی با تولید</p>
-                </div>
-              </a>
-
-              <svg width="2" height="49" viewBox="0 0 2 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <line x1="1.25" y1="48.5" x2="1.25" y2="0.5" stroke="#A1A1AA" />
-              </svg>
+                </face>
+              </basis>
 
 
 
-              <a href="" class="flex items-center gap-3">
-                <img loading="lazy" src="[##cms.cms.cdn##]/images/coin.svg" alt="coin">
-                <div class="flex flex-col gap-3">
-                  <p class="font-bold text-zinc-900"> تور اقساطی</p>
-                  <p class="line-clamp-1 text-xs text-zinc-600">لورم ایپسوم متن ساختگی با تولید</p>
-                </div>
-              </a>
             </div>
           </div>
-          <div class="w-full bg-zinc-100 rounded-2xl h-[87px] flex justify-between items-center px-4">
-            <a href="" class="flex items-center gap-3">
-              <img loading="lazy" src="[##cms.cms.cdn##]/images/user-1.svg" alt="user">
-              <div class="flex flex-col gap-3">
-                <p class="font-bold text-zinc-900">خدمات ویزا</p>
-                <p class="line-clamp-1 text-xs text-zinc-600">لورم ایپسوم متن ساختگی با تولید</p>
-              </div>
-            </a>
-            <svg width="2" height="49" viewBox="0 0 2 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="1.25" y1="48.5" x2="1.25" y2="0.5" stroke="#A1A1AA" />
-            </svg>
-            <a href="" class="flex items-center gap-3">
-              <img loading="lazy" src="[##cms.cms.cdn##]/images/user-1.svg" alt="user">
-              <div class="flex flex-col gap-3">
-                <p class="font-bold text-zinc-900">خدمات ویزا</p>
-                <p class="line-clamp-1 text-xs text-zinc-600">لورم ایپسوم متن ساختگی با تولید</p>
-              </div>
-            </a>
-            <svg width="2" height="49" viewBox="0 0 2 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="1.25" y1="48.5" x2="1.25" y2="0.5" stroke="#A1A1AA" />
-            </svg>
+          <div class="w-full bg-zinc-100 service-el rounded-2xl h-[87px] flex justify-between items-center px-4">
+            <basis core="print" datamembername="db.satrap-services-3">
+              <face>
+                <a href="" class="flex w-[217px] items-center gap-3">
+                  <img loading="lazy" src="[##cms.cms.cdn##]/images/user-1.svg" alt="@text">
+                  <div class="flex flex-col gap-3">
+                    <p class="font-bold text-zinc-900">@text </p>
+                    <div class="line-clamp-1 text-xs text-zinc-600">@largetext </div>
+                  </div>
+                </a>
+                <svg width="2" height="49" viewBox="0 0 2 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="1.25" y1="48.5" x2="1.25" y2="0.5" stroke="#A1A1AA" />
+                </svg>
+              </face>
+            </basis>
 
 
-            <a href="" class="flex items-center gap-3">
-              <img loading="lazy" src="[##cms.cms.cdn##]/images/icon-1.svg" alt="cip">
-              <div class="flex flex-col gap-3">
-                <p class="font-bold text-zinc-900">خدمات cip</p>
-                <p class="line-clamp-1 text-xs text-zinc-600">لورم ایپسوم متن ساختگی با تولید</p>
-              </div>
-            </a>
-
-            <svg width="2" height="49" viewBox="0 0 2 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="1.25" y1="48.5" x2="1.25" y2="0.5" stroke="#A1A1AA" />
-            </svg>
-
-
-
-            <a href="" class="flex items-center gap-3">
-              <img loading="lazy" src="[##cms.cms.cdn##]/images/coin.svg" alt="coin">
-              <div class="flex flex-col gap-3">
-                <p class="font-bold text-zinc-900"> تور اقساطی</p>
-                <p class="line-clamp-1 text-xs text-zinc-600">لورم ایپسوم متن ساختگی با تولید</p>
-              </div>
-            </a>
           </div>
         </div>
       </div>
@@ -401,107 +400,69 @@
             <span class="bullet-1 "></span>
           </div>
         </div>
-        <div class="h-[491px] w-full flex items-center">
+        <div class="h-[491px] z-10 w-full flex items-center">
           <div class="h-[356px] w-full flex gap-6">
-            <div class="w-[337px] grid grid-cols-1 gap-3">
-              <a href=""
-                class="h-[80px] relative w-full group flex justify-center items-center p-3 bg-zinc-100 rounded-xl">
-                <span
-                  class=" rotate-180 absolute right-[-50px] group-hover:opacity-90 transition-all duration-500 ease-in-out opacity-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none">
-                    <path d="M5.5 5L11.7929 11.2929C12.1834 11.6834 12.1834 12.3166 11.7929 12.7071L5.5 19"
-                      stroke="#049AEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19"
-                      stroke="#049AEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </span>
-                <div
-                  class="flex items-center group-hover:shadow-xl p-3 bg-white border border-zinc-300 rounded-xl group-hover:border-primary-300 group-hover:bg-primary-50 h-[56px] w-full gap-1">
-                  <img loading="lazy" width="48" height="48" src="[##cms.cms.cdn##]/images/tour-type (1).svg"
-                    alt="tour-type">
-                  <p class="text-xl text-zinc-900 group-hover:font-medium">شرایط اقساطی</p>
+            <basis core="tree" datamembername="tour-type.cat" idcol="catid" parentidcol="parentid" nullvalue="217946">
+              <layout>
+                <div class="w-[337px] grid grid-cols-1 gap-3">@child</div>
+              </layout>
+              <face filter="link is null">
+                <a href="/tour-list.bc?catid=@catid"
+                  class="h-[80px] relative w-full group flex justify-center items-center p-3 bg-zinc-100 rounded-xl">
+                  <span
+                    class=" rotate-180 absolute right-[-50px] group-hover:opacity-90 transition-all duration-500 ease-in-out opacity-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none">
+                      <path d="M5.5 5L11.7929 11.2929C12.1834 11.6834 12.1834 12.3166 11.7929 12.7071L5.5 19"
+                        stroke="#049AEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19"
+                        stroke="#049AEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                  <div
+                    class="flex items-center group-hover:shadow-xl p-3 bg-white border border-zinc-300 rounded-xl group-hover:border-primary-300 group-hover:bg-primary-50 h-[56px] w-full gap-1">
+                    <img loading="lazy" width="48" height="48" src="[##cms.cms.cdn##]/images/tour-type (@RowNumber).svg"
+                      alt="tour-type">
+                    <p class="text-xl text-zinc-900 group-hover:font-medium">@title</p>
+                  </div>
+                </a>
+              </face>
+              <face>
+                <a href="@link"
+                  class="h-[80px] relative w-full group flex justify-center items-center p-3 bg-zinc-100 rounded-xl">
+                  <span
+                    class=" rotate-180 absolute right-[-50px] group-hover:opacity-90 transition-all duration-500 ease-in-out opacity-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none">
+                      <path d="M5.5 5L11.7929 11.2929C12.1834 11.6834 12.1834 12.3166 11.7929 12.7071L5.5 19"
+                        stroke="#049AEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19"
+                        stroke="#049AEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                  <div
+                    class="flex items-center group-hover:shadow-xl p-3 bg-white border border-zinc-300 rounded-xl group-hover:border-primary-300 group-hover:bg-primary-50 h-[56px] w-full gap-1">
+                    <img loading="lazy" width="48" height="48" src="[##cms.cms.cdn##]/images/tour-type (@RowNumber).svg"
+                      alt="tour-type">
+                    <p class="text-xl text-zinc-900 group-hover:font-medium">@title</p>
+                  </div>
+                </a>
+              </face>
+            </basis>
+
+            <basis core="print" datamembername="db.gallery-tour-type">
+              <layout>
+                <div class="!w-[calc(100%-337px)] swiper swiper-tourtype">
+                  <div class="swiper-wrapper">@child</div>
+                  <div class="swiper-pagination"></div>
                 </div>
-              </a>
-              <a href=""
-                class="h-[80px] relative w-full group flex justify-center items-center p-3 bg-zinc-100 rounded-xl">
-                <span
-                  class=" rotate-180 absolute right-[-50px] group-hover:opacity-90 transition-all duration-500 ease-in-out opacity-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none">
-                    <path d="M5.5 5L11.7929 11.2929C12.1834 11.6834 12.1834 12.3166 11.7929 12.7071L5.5 19"
-                      stroke="#049AEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19"
-                      stroke="#049AEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </span>
-                <div
-                  class="flex items-center group-hover:shadow-xl p-3 bg-white border border-zinc-300 rounded-xl group-hover:border-primary-300 group-hover:bg-primary-50 h-[56px] w-full gap-1">
-                  <img loading="lazy" width="48" height="48" src="[##cms.cms.cdn##]/images/tour-type (1).svg"
-                    alt="tour-type">
-                  <p class="text-xl text-zinc-900 group-hover:font-medium">شرایط اقساطی</p>
-                </div>
-              </a>
-              <a href=""
-                class="h-[80px] relative w-full group flex justify-center items-center p-3 bg-zinc-100 rounded-xl">
-                <span
-                  class=" rotate-180 absolute right-[-50px] group-hover:opacity-90 transition-all duration-500 ease-in-out opacity-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none">
-                    <path d="M5.5 5L11.7929 11.2929C12.1834 11.6834 12.1834 12.3166 11.7929 12.7071L5.5 19"
-                      stroke="#049AEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19"
-                      stroke="#049AEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </span>
-                <div
-                  class="flex items-center group-hover:shadow-xl p-3 bg-white border border-zinc-300 rounded-xl group-hover:border-primary-300 group-hover:bg-primary-50 h-[56px] w-full gap-1">
-                  <img loading="lazy" width="48" height="48" src="[##cms.cms.cdn##]/images/tour-type (1).svg"
-                    alt="tour-type">
-                  <p class="text-xl text-zinc-900 group-hover:font-medium">شرایط اقساطی</p>
-                </div>
-              </a>
-              <a href=""
-                class="h-[80px] relative w-full group flex justify-center items-center p-3 bg-zinc-100 rounded-xl">
-                <span
-                  class=" rotate-180 absolute right-[-50px] group-hover:opacity-90 transition-all duration-500 ease-in-out opacity-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none">
-                    <path d="M5.5 5L11.7929 11.2929C12.1834 11.6834 12.1834 12.3166 11.7929 12.7071L5.5 19"
-                      stroke="#049AEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19"
-                      stroke="#049AEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </span>
-                <div
-                  class="flex items-center group-hover:shadow-xl p-3 bg-white border border-zinc-300 rounded-xl group-hover:border-primary-300 group-hover:bg-primary-50 h-[56px] w-full gap-1">
-                  <img loading="lazy" width="48" height="48" src="[##cms.cms.cdn##]/images/tour-type (1).svg"
-                    alt="tour-type">
-                  <p class="text-xl text-zinc-900 group-hover:font-medium">شرایط اقساطی</p>
-                </div>
-              </a>
-            </div>
-            <div class="!w-[calc(100%-337px)] swiper swiper-tourtype">
-              <div class="swiper-wrapper">
+              </layout>
+              <face>
                 <div class="swiper-slide relative !h-[356px] rounded-2xl">
-                  <img loading="lazy" src="[##cms.cms.cdn##]/images/slider-tour.png" alt="slider-tour "
-                    class="rounded-2xl w-full h-full object-cover">
+                  <img loading="lazy" src="@largeIMG" alt="@name" class="rounded-2xl w-full h-full object-cover">
                   <span class="absolute top-0 left-0 h-full w-full rounded-2xl bg-[#00000033]"></span>
                 </div>
-                <div class="swiper-slide relative !h-[356px] rounded-2xl">
-                  <img loading="lazy" src="[##cms.cms.cdn##]/images/slider-tour.png" alt="slider-tour "
-                    class="rounded-2xl w-full h-full object-cover">
-                  <span class="absolute top-0 left-0 h-full w-full rounded-2xl bg-[#00000033]"></span>
-                </div>
-                <div class="swiper-slide relative !h-[356px] rounded-2xl">
-                  <img loading="lazy" src="[##cms.cms.cdn##]/images/slider-tour.png" alt="slider-tour "
-                    class="rounded-2xl w-full h-full object-cover">
-                  <span class="absolute top-0 left-0 h-full w-full rounded-2xl bg-[#00000033]"></span>
-                </div>
-                <div class="swiper-slide relative !h-[356px] rounded-2xl">
-                  <img loading="lazy" src="[##cms.cms.cdn##]/images/slider-tour.png" alt="slider-tour "
-                    class="rounded-2xl w-full h-full object-cover">
-                  <span class="absolute top-0 left-0 h-full w-full rounded-2xl bg-[#00000033]"></span>
-                </div>
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
+              </face>
+            </basis>
+
           </div>
         </div>
       </div>
@@ -565,338 +526,123 @@
 
 
 
-            <a href="insta"
-              class="!w-full group h-[138px] rounded-[24px] p-[37px] flex items-center overflow-hidden justify-between relative">
-              <img loading="lazy" src="[##cms.cms.cdn##]/images/insta-banner.png" alt="instagram-banner"
-                class="absolute w-full h-full group-hover:scale-125 transition-all duration-500 ease-in-out object-cover top-0 z-0 left-0">
-              <span class="absolute top-0 right-0 w-full h-full banner-gr z-[1]"></span>
-              <div class="relative z-[2] flex flex-col h-full justify-between">
-                <p class="text-white text-xl font-medium">به دنبال بهترین پیشنهاد های لحظه اخری هستید؟</p>
-                <p class="text-white text-sm">ما را در ایسنتاگرام دنبال کنید</p>
-              </div>
-              <div
-                class="z-[2] w-[219px] gap-2 transition-all ease-in-out duration-300 group-hover:shadow-xl group-hover:bg-primary group-hover:!text-white h-[51px] flex justify-center items-center bg-secondary-700 rounded-[50px] text-sm text-zinc-900">
+            <basis core="print" datamembername="db.info">
+              <face filter="text in('اینستاگرام')">
+                <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
+                  class="!w-full group h-[138px] rounded-[24px] p-[37px] flex items-center overflow-hidden justify-between relative">
+                  <img loading="lazy" src="[##cms.cms.cdn##]/images/insta-banner.png" alt="instagram-banner"
+                    class="absolute w-full h-full group-hover:scale-125 transition-all duration-500 ease-in-out object-cover top-0 z-0 left-0">
+                  <span class="absolute top-0 right-0 w-full h-full banner-gr z-[1]"></span>
+                  <div class="relative z-[2] flex flex-col h-full justify-between">
+                    <p class="text-white text-xl font-medium">به دنبال بهترین پیشنهاد های لحظه اخری هستید؟</p>
+                    <p class="text-white text-sm">ما را در ایسنتاگرام دنبال کنید</p>
+                  </div>
+                  <div
+                    class="z-[2] w-[219px] gap-2 transition-all ease-in-out duration-300 group-hover:shadow-xl group-hover:bg-primary group-hover:!text-white h-[51px] flex justify-center items-center bg-secondary-700 rounded-[50px] text-sm text-zinc-900">
 
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M3.7402 3.89737C4.72468 2.84117 6.12669 2.25 7.78216 2.25H16.2169C17.8762 2.25 19.2788 2.84084 20.2629 3.89765C21.2413 4.94841 21.75 6.39889 21.75 8.02638V15.9736C21.75 17.6011 21.2413 19.0516 20.2627 20.1024C19.2785 21.1592 17.8756 21.75 16.2159 21.75H7.78216C6.1228 21.75 4.72038 21.1591 3.73657 20.1023C2.75842 19.0515 2.25 17.601 2.25 15.9736V8.02638C2.25 6.39806 2.76117 4.94771 3.7402 3.89737ZM4.83745 4.92012C4.16024 5.64666 3.75 6.70951 3.75 8.02638V15.9736C3.75 17.2914 4.15861 18.3541 4.83451 19.0802C5.50475 19.8003 6.49341 20.25 7.78216 20.25H16.2159C17.5052 20.25 18.4944 19.8002 19.165 19.0801C19.8412 18.354 20.25 17.2913 20.25 15.9736V8.02638C20.25 6.70868 19.8412 5.64597 19.1651 4.91984C18.4946 4.19975 17.5056 3.75 16.2169 3.75H7.78216C6.49828 3.75 5.50921 4.19943 4.83745 4.92012Z"
-                    fill="#18181B" class="group-hover:fill-white" />
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M11.8445 9.57812C10.3244 9.57812 9.0918 10.8108 9.0918 12.3308C9.0918 13.8509 10.3244 15.0835 11.8445 15.0835C13.3646 15.0835 14.5972 13.8509 14.5972 12.3308C14.5972 10.8108 13.3646 9.57812 11.8445 9.57812ZM7.5918 12.3308C7.5918 9.98234 9.49602 8.07812 11.8445 8.07812C14.193 8.07812 16.0972 9.98234 16.0972 12.3308C16.0972 14.6793 14.193 16.5835 11.8445 16.5835C9.49602 16.5835 7.5918 14.6793 7.5918 12.3308Z"
-                    fill="#18181B" class="group-hover:fill-white" />
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M15.8291 7.37875C15.8291 6.80764 16.2928 6.34375 16.8641 6.34375C17.4387 6.34375 17.8981 6.811 17.8981 7.37875C17.8981 7.94997 17.4353 8.41275 16.8641 8.41275C16.2962 8.41275 15.8291 7.95332 15.8291 7.37875Z"
-                    fill="#18181B" class="group-hover:fill-white" />
-                </svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M3.7402 3.89737C4.72468 2.84117 6.12669 2.25 7.78216 2.25H16.2169C17.8762 2.25 19.2788 2.84084 20.2629 3.89765C21.2413 4.94841 21.75 6.39889 21.75 8.02638V15.9736C21.75 17.6011 21.2413 19.0516 20.2627 20.1024C19.2785 21.1592 17.8756 21.75 16.2159 21.75H7.78216C6.1228 21.75 4.72038 21.1591 3.73657 20.1023C2.75842 19.0515 2.25 17.601 2.25 15.9736V8.02638C2.25 6.39806 2.76117 4.94771 3.7402 3.89737ZM4.83745 4.92012C4.16024 5.64666 3.75 6.70951 3.75 8.02638V15.9736C3.75 17.2914 4.15861 18.3541 4.83451 19.0802C5.50475 19.8003 6.49341 20.25 7.78216 20.25H16.2159C17.5052 20.25 18.4944 19.8002 19.165 19.0801C19.8412 18.354 20.25 17.2913 20.25 15.9736V8.02638C20.25 6.70868 19.8412 5.64597 19.1651 4.91984C18.4946 4.19975 17.5056 3.75 16.2169 3.75H7.78216C6.49828 3.75 5.50921 4.19943 4.83745 4.92012Z"
+                        fill="#18181B" class="group-hover:fill-white" />
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M11.8445 9.57812C10.3244 9.57812 9.0918 10.8108 9.0918 12.3308C9.0918 13.8509 10.3244 15.0835 11.8445 15.0835C13.3646 15.0835 14.5972 13.8509 14.5972 12.3308C14.5972 10.8108 13.3646 9.57812 11.8445 9.57812ZM7.5918 12.3308C7.5918 9.98234 9.49602 8.07812 11.8445 8.07812C14.193 8.07812 16.0972 9.98234 16.0972 12.3308C16.0972 14.6793 14.193 16.5835 11.8445 16.5835C9.49602 16.5835 7.5918 14.6793 7.5918 12.3308Z"
+                        fill="#18181B" class="group-hover:fill-white" />
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M15.8291 7.37875C15.8291 6.80764 16.2928 6.34375 16.8641 6.34375C17.4387 6.34375 17.8981 6.811 17.8981 7.37875C17.8981 7.94997 17.4353 8.41275 16.8641 8.41275C16.2962 8.41275 15.8291 7.95332 15.8291 7.37875Z"
+                        fill="#18181B" class="group-hover:fill-white" />
+                    </svg>
 
-                اینستاگرام ساتراپ
+                    اینستاگرام ساتراپ
 
-                <span class="rotate-90 hidden group-hover:!flex">
-                  <svg width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M0.46967 0.46967C0.735936 0.203403 1.1526 0.179197 1.44621 0.397052L1.53033 0.46967L8 6.939L14.4697 0.469669C14.7359 0.203403 15.1526 0.179197 15.4462 0.397051L15.5303 0.469669C15.7966 0.735936 15.8208 1.1526 15.6029 1.44621L15.5303 1.53033L8.53033 8.53033C8.26406 8.7966 7.8474 8.8208 7.55379 8.60295L7.46967 8.53033L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967Z"
-                      fill="#fff" />
-                  </svg>
+                    <span class="rotate-90 hidden group-hover:!flex">
+                      <svg width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M0.46967 0.46967C0.735936 0.203403 1.1526 0.179197 1.44621 0.397052L1.53033 0.46967L8 6.939L14.4697 0.469669C14.7359 0.203403 15.1526 0.179197 15.4462 0.397051L15.5303 0.469669C15.7966 0.735936 15.8208 1.1526 15.6029 1.44621L15.5303 1.53033L8.53033 8.53033C8.26406 8.7966 7.8474 8.8208 7.55379 8.60295L7.46967 8.53033L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967Z"
+                          fill="#fff" />
+                      </svg>
 
-                </span>
-              </div>
-            </a>
+                    </span>
+                  </div>
+                </a>
+              </face>
+            </basis>
           </div>
         </div>
       </div>
     </section>
     <!-- _____________________________________ -->
-    <section class="w-full flex justify-center relative">
-      <div class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-        <div class="flex relative items-center gap-3">
-          <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8   h-8">
-            <p class="font-bold text-2xl text-zinc-900"> تور های متنوع ساتراپ </p>
-            <span class="bullet-1 "></span>
-          </div>
-        </div>
-        <div class="h-[677px] w-full flex items-center">
-          <div class="w-full flex gap-3">
-            <div class="!w-[836px] swiper-ver !h-[579px] overflow-hidden">
-              <div class="swiper-wrapper">
-                <a href="" class="swiper-slide group relative  !h-[109px] !w-full ">
-                  <div
-                    class="w-full h-[95px] group-hover:bg-primary bg-secondary-700 rounded-2xl p-2 !flex justify-between items-center">
-                    <span
-                      class="text-white text-xs group-hover:bg-[#ffbd22ea] bg-[#ff4949c5] absolute -top-4 right-4 z-[2] px-4 line-clamp-1 h-8 flex justify-center items-center rounded-[40px]">اقساطی</span>
-                    <div
-                      class="w-[767px] h-[79px] bg-white rounded-xl !flex justify-between items-center py-4 px-[9px]">
-                      <p class="font-bold max-w-[217px] text-zinc-900 line-clamp-1">تور یک هفته ای استانبول</p>
-                      <div class="flex h-full justify-between flex-col gap-2 ">
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/Time Circle.svg" alt="time circle">
-                          <span class="w-[120px] line-clamp-1">10شب و 11 روز</span>
-                        </div>
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg" alt="Calendar">
-                          <span class="line-clamp-1 w-[120px]">۲۳ فروردین ۱۴۰۴</span>
-                        </div>
-                      </div>
-                      <div class="flex h-full justify-between  flex-col gap-2 ">
-                        <div class="flex items-center gap-2">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/plane up.svg" alt="planeup">
-                          <span class="text-xs text-zinc-900">ایرلاین </span>
-                        </div>
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (2).png" alt=""
-                          class="w-[77px] h-[30px]">
-                      </div>
-                      <div class="flex h-full justify-between  flex-col gap-2 ">
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-
-                          <span class="w-[120px] line-clamp-1">شروع قیمت:</span>
-                        </div>
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-
-                          <span class="line-clamp-1 font-medium text-sm w-[150px]">160/000/000 تومان </span>
-                        </div>
-                      </div>
-                    </div>
-                    <svg width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M9 24.5C9 16.229 15.729 9.5 24 9.5C32.271 9.5 39 16.229 39 24.5C39 32.771 32.271 39.5 24 39.5C15.729 39.5 9 32.771 9 24.5ZM11.25 24.5C11.25 31.5305 16.9695 37.25 24 37.25C31.0305 37.25 36.75 31.5305 36.75 24.5C36.75 17.4695 31.0305 11.75 24 11.75C16.9695 11.75 11.25 17.4695 11.25 24.5ZM20.1396 23.7024L25.3701 18.4959C25.8111 18.058 26.5221 18.0594 26.9601 18.499C27.1791 18.718 27.2886 19.006 27.2886 19.2924C27.2886 19.5804 27.1791 19.87 26.9571 20.089L22.5276 24.5004L26.9571 28.9089C27.3981 29.3469 27.3981 30.0594 26.9601 30.5004C26.5221 30.9399 25.8111 30.9429 25.3701 30.5034L20.1396 25.2969C19.7151 24.8754 19.7151 24.1254 20.1396 23.7024Z"
-                        fill="white" />
-                    </svg>
-                  </div>
-
-                </a>
-                <a href="" class="swiper-slide group relative  !h-[109px] !w-full ">
-                  <div
-                    class="w-full h-[95px] group-hover:bg-primary bg-secondary-700 rounded-2xl p-2 !flex justify-between items-center">
-                    <span
-                      class="text-white text-xs group-hover:bg-[#ffbd22ea] bg-[#ff4949c5] absolute -top-4 right-4 z-[2] px-4 line-clamp-1 h-8 flex justify-center items-center rounded-[40px]">اقساطی</span>
-                    <div
-                      class="w-[767px] h-[79px] bg-white rounded-xl !flex justify-between items-center py-4 px-[9px]">
-                      <p class="font-bold max-w-[217px] text-zinc-900 line-clamp-1">تور یک هفته ای استانبول</p>
-                      <div class="flex h-full justify-between flex-col gap-2 ">
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/Time Circle.svg" alt="time circle">
-                          <span class="w-[120px] line-clamp-1">10شب و 11 روز</span>
-                        </div>
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg" alt="Calendar">
-                          <span class="line-clamp-1 w-[120px]">۲۳ فروردین ۱۴۰۴</span>
-                        </div>
-                      </div>
-                      <div class="flex h-full justify-between  flex-col gap-2 ">
-                        <div class="flex items-center gap-2">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/plane up.svg" alt="planeup">
-                          <span class="text-xs text-zinc-900">ایرلاین </span>
-                        </div>
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (2).png" alt=""
-                          class="w-[77px] h-[30px]">
-                      </div>
-                      <div class="flex h-full justify-between  flex-col gap-2 ">
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-
-                          <span class="w-[120px] line-clamp-1">شروع قیمت:</span>
-                        </div>
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-
-                          <span class="line-clamp-1 font-medium text-sm w-[150px]">160/000/000 تومان </span>
-                        </div>
-                      </div>
-                    </div>
-                    <svg width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M9 24.5C9 16.229 15.729 9.5 24 9.5C32.271 9.5 39 16.229 39 24.5C39 32.771 32.271 39.5 24 39.5C15.729 39.5 9 32.771 9 24.5ZM11.25 24.5C11.25 31.5305 16.9695 37.25 24 37.25C31.0305 37.25 36.75 31.5305 36.75 24.5C36.75 17.4695 31.0305 11.75 24 11.75C16.9695 11.75 11.25 17.4695 11.25 24.5ZM20.1396 23.7024L25.3701 18.4959C25.8111 18.058 26.5221 18.0594 26.9601 18.499C27.1791 18.718 27.2886 19.006 27.2886 19.2924C27.2886 19.5804 27.1791 19.87 26.9571 20.089L22.5276 24.5004L26.9571 28.9089C27.3981 29.3469 27.3981 30.0594 26.9601 30.5004C26.5221 30.9399 25.8111 30.9429 25.3701 30.5034L20.1396 25.2969C19.7151 24.8754 19.7151 24.1254 20.1396 23.7024Z"
-                        fill="white" />
-                    </svg>
-                  </div>
-
-                </a>
-                <a href="" class="swiper-slide group relative  !h-[109px] !w-full ">
-                  <div
-                    class="w-full h-[95px] group-hover:bg-primary bg-secondary-700 rounded-2xl p-2 !flex justify-between items-center">
-                    <span
-                      class="text-white text-xs group-hover:bg-[#ffbd22ea] bg-[#ff4949c5] absolute -top-4 right-4 z-[2] px-4 line-clamp-1 h-8 flex justify-center items-center rounded-[40px]">اقساطی</span>
-                    <div
-                      class="w-[767px] h-[79px] bg-white rounded-xl !flex justify-between items-center py-4 px-[9px]">
-                      <p class="font-bold max-w-[217px] text-zinc-900 line-clamp-1">تور یک هفته ای استانبول</p>
-                      <div class="flex h-full justify-between flex-col gap-2 ">
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/Time Circle.svg" alt="time circle">
-                          <span class="w-[120px] line-clamp-1">10شب و 11 روز</span>
-                        </div>
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg" alt="Calendar">
-                          <span class="line-clamp-1 w-[120px]">۲۳ فروردین ۱۴۰۴</span>
-                        </div>
-                      </div>
-                      <div class="flex h-full justify-between  flex-col gap-2 ">
-                        <div class="flex items-center gap-2">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/plane up.svg" alt="planeup">
-                          <span class="text-xs text-zinc-900">ایرلاین </span>
-                        </div>
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (2).png" alt=""
-                          class="w-[77px] h-[30px]">
-                      </div>
-                      <div class="flex h-full justify-between  flex-col gap-2 ">
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-
-                          <span class="w-[120px] line-clamp-1">شروع قیمت:</span>
-                        </div>
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-
-                          <span class="line-clamp-1 font-medium text-sm w-[150px]">160/000/000 تومان </span>
-                        </div>
-                      </div>
-                    </div>
-                    <svg width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M9 24.5C9 16.229 15.729 9.5 24 9.5C32.271 9.5 39 16.229 39 24.5C39 32.771 32.271 39.5 24 39.5C15.729 39.5 9 32.771 9 24.5ZM11.25 24.5C11.25 31.5305 16.9695 37.25 24 37.25C31.0305 37.25 36.75 31.5305 36.75 24.5C36.75 17.4695 31.0305 11.75 24 11.75C16.9695 11.75 11.25 17.4695 11.25 24.5ZM20.1396 23.7024L25.3701 18.4959C25.8111 18.058 26.5221 18.0594 26.9601 18.499C27.1791 18.718 27.2886 19.006 27.2886 19.2924C27.2886 19.5804 27.1791 19.87 26.9571 20.089L22.5276 24.5004L26.9571 28.9089C27.3981 29.3469 27.3981 30.0594 26.9601 30.5004C26.5221 30.9399 25.8111 30.9429 25.3701 30.5034L20.1396 25.2969C19.7151 24.8754 19.7151 24.1254 20.1396 23.7024Z"
-                        fill="white" />
-                    </svg>
-                  </div>
-
-                </a>
-                <a href="" class="swiper-slide group relative  !h-[109px] !w-full ">
-                  <div
-                    class="w-full h-[95px] group-hover:bg-primary bg-secondary-700 rounded-2xl p-2 !flex justify-between items-center">
-                    <span
-                      class="text-white text-xs group-hover:bg-[#ffbd22ea] bg-[#ff4949c5] absolute -top-4 right-4 z-[2] px-4 line-clamp-1 h-8 flex justify-center items-center rounded-[40px]">اقساطی</span>
-                    <div
-                      class="w-[767px] h-[79px] bg-white rounded-xl !flex justify-between items-center py-4 px-[9px]">
-                      <p class="font-bold max-w-[217px] text-zinc-900 line-clamp-1">تور یک هفته ای استانبول</p>
-                      <div class="flex h-full justify-between flex-col gap-2 ">
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/Time Circle.svg" alt="time circle">
-                          <span class="w-[120px] line-clamp-1">10شب و 11 روز</span>
-                        </div>
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg" alt="Calendar">
-                          <span class="line-clamp-1 w-[120px]">۲۳ فروردین ۱۴۰۴</span>
-                        </div>
-                      </div>
-                      <div class="flex h-full justify-between  flex-col gap-2 ">
-                        <div class="flex items-center gap-2">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/plane up.svg" alt="planeup">
-                          <span class="text-xs text-zinc-900">ایرلاین </span>
-                        </div>
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (2).png" alt=""
-                          class="w-[77px] h-[30px]">
-                      </div>
-                      <div class="flex h-full justify-between  flex-col gap-2 ">
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-
-                          <span class="w-[120px] line-clamp-1">شروع قیمت:</span>
-                        </div>
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-
-                          <span class="line-clamp-1 font-medium text-sm w-[150px]">160/000/000 تومان </span>
-                        </div>
-                      </div>
-                    </div>
-                    <svg width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M9 24.5C9 16.229 15.729 9.5 24 9.5C32.271 9.5 39 16.229 39 24.5C39 32.771 32.271 39.5 24 39.5C15.729 39.5 9 32.771 9 24.5ZM11.25 24.5C11.25 31.5305 16.9695 37.25 24 37.25C31.0305 37.25 36.75 31.5305 36.75 24.5C36.75 17.4695 31.0305 11.75 24 11.75C16.9695 11.75 11.25 17.4695 11.25 24.5ZM20.1396 23.7024L25.3701 18.4959C25.8111 18.058 26.5221 18.0594 26.9601 18.499C27.1791 18.718 27.2886 19.006 27.2886 19.2924C27.2886 19.5804 27.1791 19.87 26.9571 20.089L22.5276 24.5004L26.9571 28.9089C27.3981 29.3469 27.3981 30.0594 26.9601 30.5004C26.5221 30.9399 25.8111 30.9429 25.3701 30.5034L20.1396 25.2969C19.7151 24.8754 19.7151 24.1254 20.1396 23.7024Z"
-                        fill="white" />
-                    </svg>
-                  </div>
-
-                </a>
-                <a href="" class="swiper-slide group relative  !h-[109px] !w-full ">
-                  <div
-                    class="w-full h-[95px] group-hover:bg-primary bg-secondary-700 rounded-2xl p-2 !flex justify-between items-center">
-                    <span
-                      class="text-white text-xs group-hover:bg-[#ffbd22ea] bg-[#ff4949c5] absolute -top-4 right-4 z-[2] px-4 line-clamp-1 h-8 flex justify-center items-center rounded-[40px]">اقساطی</span>
-                    <div
-                      class="w-[767px] h-[79px] bg-white rounded-xl !flex justify-between items-center py-4 px-[9px]">
-                      <p class="font-bold max-w-[217px] text-zinc-900 line-clamp-1">تور یک هفته ای استانبول</p>
-                      <div class="flex h-full justify-between flex-col gap-2 ">
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/Time Circle.svg" alt="time circle">
-                          <span class="w-[120px] line-clamp-1">10شب و 11 روز</span>
-                        </div>
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg" alt="Calendar">
-                          <span class="line-clamp-1 w-[120px]">۲۳ فروردین ۱۴۰۴</span>
-                        </div>
-                      </div>
-                      <div class="flex h-full justify-between  flex-col gap-2 ">
-                        <div class="flex items-center gap-2">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/plane up.svg" alt="planeup">
-                          <span class="text-xs text-zinc-900">ایرلاین </span>
-                        </div>
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (2).png" alt=""
-                          class="w-[77px] h-[30px]">
-                      </div>
-                      <div class="flex h-full justify-between  flex-col gap-2 ">
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-
-                          <span class="w-[120px] line-clamp-1">شروع قیمت:</span>
-                        </div>
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-
-                          <span class="line-clamp-1 font-medium text-sm w-[150px]">160/000/000 تومان </span>
-                        </div>
-                      </div>
-                    </div>
-                    <svg width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M9 24.5C9 16.229 15.729 9.5 24 9.5C32.271 9.5 39 16.229 39 24.5C39 32.771 32.271 39.5 24 39.5C15.729 39.5 9 32.771 9 24.5ZM11.25 24.5C11.25 31.5305 16.9695 37.25 24 37.25C31.0305 37.25 36.75 31.5305 36.75 24.5C36.75 17.4695 31.0305 11.75 24 11.75C16.9695 11.75 11.25 17.4695 11.25 24.5ZM20.1396 23.7024L25.3701 18.4959C25.8111 18.058 26.5221 18.0594 26.9601 18.499C27.1791 18.718 27.2886 19.006 27.2886 19.2924C27.2886 19.5804 27.1791 19.87 26.9571 20.089L22.5276 24.5004L26.9571 28.9089C27.3981 29.3469 27.3981 30.0594 26.9601 30.5004C26.5221 30.9399 25.8111 30.9429 25.3701 30.5034L20.1396 25.2969C19.7151 24.8754 19.7151 24.1254 20.1396 23.7024Z"
-                        fill="white" />
-                    </svg>
-                  </div>
-
-                </a>
-                <a href="" class="swiper-slide group relative  !h-[109px] !w-full ">
-                  <div
-                    class="w-full h-[95px] group-hover:bg-primary bg-secondary-700 rounded-2xl p-2 !flex justify-between items-center">
-                    <span
-                      class="text-white text-xs group-hover:bg-[#ffbd22ea] bg-[#ff4949c5] absolute -top-4 right-4 z-[2] px-4 line-clamp-1 h-8 flex justify-center items-center rounded-[40px]">اقساطی</span>
-                    <div
-                      class="w-[767px] h-[79px] bg-white rounded-xl !flex justify-between items-center py-4 px-[9px]">
-                      <p class="font-bold max-w-[217px] text-zinc-900 line-clamp-1">تور یک هفته ای استانبول</p>
-                      <div class="flex h-full justify-between flex-col gap-2 ">
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/Time Circle.svg" alt="time circle">
-                          <span class="w-[120px] line-clamp-1">10شب و 11 روز</span>
-                        </div>
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg" alt="Calendar">
-                          <span class="line-clamp-1 w-[120px]">۲۳ فروردین ۱۴۰۴</span>
-                        </div>
-                      </div>
-                      <div class="flex h-full justify-between  flex-col gap-2 ">
-                        <div class="flex items-center gap-2">
-                          <img loading="lazy" src="[##cms.cms.cdn##]/images/plane up.svg" alt="planeup">
-                          <span class="text-xs text-zinc-900">ایرلاین </span>
-                        </div>
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (2).png" alt=""
-                          class="w-[77px] h-[30px]">
-                      </div>
-                      <div class="flex h-full justify-between  flex-col gap-2 ">
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-
-                          <span class="w-[120px] line-clamp-1">شروع قیمت:</span>
-                        </div>
-                        <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-
-                          <span class="line-clamp-1 font-medium text-sm w-[150px]">160/000/000 تومان </span>
-                        </div>
-                      </div>
-                    </div>
-                    <svg width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M9 24.5C9 16.229 15.729 9.5 24 9.5C32.271 9.5 39 16.229 39 24.5C39 32.771 32.271 39.5 24 39.5C15.729 39.5 9 32.771 9 24.5ZM11.25 24.5C11.25 31.5305 16.9695 37.25 24 37.25C31.0305 37.25 36.75 31.5305 36.75 24.5C36.75 17.4695 31.0305 11.75 24 11.75C16.9695 11.75 11.25 17.4695 11.25 24.5ZM20.1396 23.7024L25.3701 18.4959C25.8111 18.058 26.5221 18.0594 26.9601 18.499C27.1791 18.718 27.2886 19.006 27.2886 19.2924C27.2886 19.5804 27.1791 19.87 26.9571 20.089L22.5276 24.5004L26.9571 28.9089C27.3981 29.3469 27.3981 30.0594 26.9601 30.5004C26.5221 30.9399 25.8111 30.9429 25.3701 30.5034L20.1396 25.2969C19.7151 24.8754 19.7151 24.1254 20.1396 23.7024Z"
-                        fill="white" />
-                    </svg>
-                  </div>
-
-                </a>
+    <basis core="list" datamembername="joining-diversTours.list">
+      <layout>
+        <section class="w-full flex justify-center relative">
+          <div class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+            <div class="flex relative items-center gap-3">
+              <div class="flex z-10 relative bg-white px-2 items-center gap-3">
+                <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8   h-8">
+                <p class="font-bold text-2xl text-zinc-900"> تور های متنوع ساتراپ </p>
+                <span class="bullet-1 "></span>
               </div>
             </div>
-            <img loading="lazy" src="[##cms.cms.cdn##]/images/young-woman.jpg" alt="تورهای متنوع ساتراپ"
-              class="w-[432px] h-[577px] object-cover rounded-2xl">
+            <div class="h-[677px] w-full flex items-center">
+              <div class="w-full flex gap-3">
+                <div class="!w-[836px] swiper-ver !h-[579px] overflow-hidden">
+                  <div class="swiper-wrapper">
+                    @child
+                  </div>
+                </div>
+                <img loading="lazy" src="[##cms.cms.cdn##]/images/young-woman.jpg" alt="تورهای متنوع ساتراپ"
+                  class="w-[432px] h-[577px] object-cover rounded-2xl">
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
+      </layout>
+      <face>
+        <a href="@db.tour-list.link	" class="swiper-slide group relative  !h-[109px] !w-full ">
+          <div
+            class="w-full h-[95px] group-hover:bg-primary bg-secondary-700 rounded-2xl p-2 !flex justify-between items-center">
+            <span
+              class="text-white text-xs group-hover:bg-[#ffbd22ea] bg-[#ff4949c5] absolute -top-3 right-4 z-[2] px-4 line-clamp-1 h-8 flex justify-center items-center rounded-[40px]">اقساطی</span>
+            <div class="w-[767px] h-[79px] bg-white rounded-xl !flex justify-between items-center py-4 px-[9px]">
+              <p class="font-bold w-[217px] text-zinc-900 line-clamp-1"> @db.tour-list.title </p>
+              <div class="flex h-full justify-between flex-col gap-2 ">
+                <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
+                  <img loading="lazy" src="[##cms.cms.cdn##]/images/Time Circle.svg" alt="time circle">
+                  <span class="w-[120px] line-clamp-1">@db.tour-list.prp_8076 </span>
+                </div>
+                <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
+                  <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg" alt="Calendar">
+                  <span class="line-clamp-1 w-[120px]">@db.tour-list.prp_8077 </span>
+                </div>
+              </div>
+              <div class="flex h-full justify-between  flex-col gap-2 ">
+                <div class="flex items-center gap-2">
+                  <img loading="lazy" src="[##cms.cms.cdn##]/images/plane up.svg" alt="planeup">
+                  <span class="text-xs text-zinc-900">ایرلاین </span>
+                </div>
+                <img loading="lazy" src="@list.airline.pic" alt="@list.airline.name	" class="w-[77px]">
+              </div>
+              <div class="flex h-full justify-between  flex-col gap-2 ">
+                <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
+
+                  <span class="w-[120px] line-clamp-1">شروع قیمت:</span>
+                </div>
+                <div class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
+
+                  <span class="line-clamp-1 font-medium text-sm w-[150px]">@db.tour-list.prp_8181 </span>
+                </div>
+              </div>
+            </div>
+            <svg width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M9 24.5C9 16.229 15.729 9.5 24 9.5C32.271 9.5 39 16.229 39 24.5C39 32.771 32.271 39.5 24 39.5C15.729 39.5 9 32.771 9 24.5ZM11.25 24.5C11.25 31.5305 16.9695 37.25 24 37.25C31.0305 37.25 36.75 31.5305 36.75 24.5C36.75 17.4695 31.0305 11.75 24 11.75C16.9695 11.75 11.25 17.4695 11.25 24.5ZM20.1396 23.7024L25.3701 18.4959C25.8111 18.058 26.5221 18.0594 26.9601 18.499C27.1791 18.718 27.2886 19.006 27.2886 19.2924C27.2886 19.5804 27.1791 19.87 26.9571 20.089L22.5276 24.5004L26.9571 28.9089C27.3981 29.3469 27.3981 30.0594 26.9601 30.5004C26.5221 30.9399 25.8111 30.9429 25.3701 30.5034L20.1396 25.2969C19.7151 24.8754 19.7151 24.1254 20.1396 23.7024Z"
+                fill="white" />
+            </svg>
+          </div>
+
+        </a>
+      </face>
+    </basis>
+
     <!-- _____________________________________ -->
     <section class="w-full flex justify-center relative">
       <div class="px-4 before-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
@@ -969,43 +715,35 @@
     </section>
 
 
+
+
     <section class="w-full flex justify-center relative">
       <div class="px-4 relative w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
         <div class="before-border last-section-brd relative w-full flex flex-col">
           <div class="flex  items-center gap-3 ">
             <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
               <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8 h-8">
-              <p class="font-bold text-2xl text-zinc-900">ساتراپ نماینده انحصاری ایرلانی های</p>
+              <p class="font-bold text-2xl text-zinc-900">
+                ساتراپ نماینده انحصاری ایرلاین ها
+
+              </p>
               <span class="bullet-1"></span>
             </div>
           </div>
           <div class="h-[161px] items-center w-full flex">
-            <div class="!w-full swiper swiper-4">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide !h-[88px] bg-zinc-100 rounded-xl !flex justify-center items-center">
-                  <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (1).png" alt="" class="w-[126px]">
+            <basis core="print" datamembername="db.gallery-airlines">
+              <layout>
+                <div class="!w-full swiper swiper-4">
+                  <div class="swiper-wrapper"> @child </div>
                 </div>
+              </layout>
+              <face>
                 <div class="swiper-slide !h-[88px] bg-zinc-100 rounded-xl !flex justify-center items-center">
-                  <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (2).png" alt="" class="w-[126px]">
+                  <img loading="lazy" src="@largeIMG" alt="@name" class="w-[126px]">
                 </div>
-                <div class="swiper-slide !h-[88px] bg-zinc-100 rounded-xl !flex justify-center items-center">
-                  <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (3).png" alt="" class="w-[126px]">
-                </div>
-                <div class="swiper-slide !h-[88px] bg-zinc-100 rounded-xl !flex justify-center items-center">
-                  <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (4).png" alt="" class="w-[126px]">
-                </div>
-                <div class="swiper-slide !h-[88px] bg-zinc-100 rounded-xl !flex justify-center items-center">
-                  <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (1).png" alt="" class="w-[126px]">
-                </div>
-                <div class="swiper-slide !h-[88px] bg-zinc-100 rounded-xl !flex justify-center items-center">
-                  <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (1).png" alt="" class="w-[126px]">
-                </div>
-                <div class="swiper-slide !h-[88px] bg-zinc-100 rounded-xl !flex justify-center items-center">
-                  <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (1).png" alt="" class="w-[126px]">
-                </div>
-              </div>
+              </face>
+            </basis>
 
-            </div>
           </div>
         </div>
       </div>

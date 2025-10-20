@@ -461,43 +461,168 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTimer();
   const interval = setInterval(updateTimer, 1000);
 });
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
 
-const playVideo = document.querySelector(".video-player");
-const videoPopupList = document.querySelector(".list-video-popup");
-const closePopupBtn = document.querySelector(".close-popup");
-const videoElement = videoPopupList?.querySelector("video");
+const PLAY_SELECTORS = document.querySelectorAll(".video-player");
+const POPUP = document.querySelector(".list-video-popup");
+const CLOSE_BTN = document.querySelector(".close-popup");
+const MUSIC_POPUP = document.querySelector(".list-music-popup");
+const SET_FETCH_CLASS = "set-fetch";
 
-const musicPopup = document.querySelector(".list-music-popup");
-if (playVideo && videoPopupList && closePopupBtn && videoElement) {
-  playVideo.addEventListener("click", (e) => {
-    e.stopPropagation();
-    videoPopupList.classList.remove("hidden");
-    videoPopupList.classList.add("flex");
-    musicPopup.classList.remove("active");
-    musicPopup.style.height = "0";
-    videoElement.currentTime = 0;
-    videoElement.play();
-  });
+function ensureSetFetchContainer(parent) {
+  let el = parent.querySelector("." + SET_FETCH_CLASS);
+  if (!el) {
+    el = document.createElement("div");
+    el.className = SET_FETCH_CLASS;
+    parent.appendChild(el);
+  }
+  return el;
+}
 
-  closePopupBtn.addEventListener("click", () => {
-    videoPopupList.classList.remove("flex");
-    videoPopupList.classList.add("hidden");
-    videoElement.pause();
-    videoElement.currentTime = 0;
-  });
-
-  document.addEventListener("click", (e) => {
-    const isClickInsidePopup = videoPopupList.contains(e.target);
-    const isClickOnButton = playVideo.contains(e.target);
-    if (!isClickInsidePopup && !isClickOnButton) {
-      videoPopupList.classList.remove("flex");
-      videoPopupList.classList.add("hidden");
-      videoElement.pause();
-      videoElement.currentTime = 0;
+function extractAparatHash(url) {
+  try {
+    const u = new URL(url, window.location.href);
+    if (u.hostname.includes("aparat.com")) {
+      const parts = u.pathname.split("/").filter(Boolean);
+      return parts[parts.length - 1];
     }
+  } catch (e) {
+    console.error("extractAparatHash error", e);
+  }
+  return null;
+}
+
+function createAparatIframe(hash) {
+  const iframe = document.createElement("iframe");
+  iframe.src = `https://www.aparat.com/video/video/embed/videohash/${hash}/vt/frame`;
+  iframe.width = "100%";
+  iframe.height = "100%";
+  iframe.frameBorder = "0";
+  iframe.allowFullscreen = true;
+  iframe.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture");
+  return iframe;
+}
+
+async function fetchAndInsert(id) {
+  if (!POPUP) return;
+  const setFetch = ensureSetFetchContainer(POPUP);
+  setFetch.innerHTML =
+    '<div dir="ltr" class="w-full flex h-full justify-center items-center"><span class="loader"></span><div>';
+
+  try {
+    const url = id
+      ? `/video-items-load.bc?id=${encodeURIComponent(id)}`
+      : `/video-items-load.bc`;
+    const res = await fetch(url, { method: "GET", credentials: "same-origin" });
+    const text = await res.text();
+
+    if (!res.ok) {
+      setFetch.innerHTML = `<div class="error">خطا در بارگذاری (server ${res.status})</div>`;
+      return;
+    }
+
+    setFetch.innerHTML = text;
+    const videoCode = setFetch.querySelector(".video-code");
+    if (!videoCode) {
+      setFetch.innerHTML = '<div class="error">کد امبد پیدا نشد</div>';
+      return;
+    }
+
+    const dataVideo = videoCode.dataset.video?.trim();
+    if (!dataVideo) {
+      setFetch.innerHTML = '<div class="error">data-video خالی است</div>';
+      return;
+    }
+
+    const hash = extractAparatHash(dataVideo);
+    if (!hash) {
+      setFetch.innerHTML = '<div class="error">hash ویدیو معتبر یافت نشد</div>';
+      return;
+    }
+
+    videoCode.innerHTML = "";
+    const iframe = createAparatIframe(hash);
+    videoCode.appendChild(iframe);
+  } catch (err) {
+    console.error("fetchAndInsert error", err);
+    setFetch.innerHTML = '<div class="error">خطا در بارگذاری ویدیو</div>';
+  }
+}
+
+function openPopup() {
+  if (!POPUP) return;
+
+  const musicPopup = document.querySelector(".list-music-popup");
+  const audioEl = musicPopup?.querySelector("audio");
+  POPUP.classList.remove("hidden");
+  POPUP.classList.add("flex");
+  if (MUSIC_POPUP) {
+    audioEl.pause();
+    audioEl.currentTime = 0;
+    MUSIC_POPUP.classList.remove("active");
+    MUSIC_POPUP.style.height = "0";
+  }
+}
+
+function closePopup() {
+  if (!POPUP) return;
+  POPUP.classList.remove("flex");
+  POPUP.classList.add("hidden");
+  const setFetch = POPUP.querySelector("." + SET_FETCH_CLASS);
+  if (setFetch) setFetch.innerHTML = "";
+  const existingIframe = POPUP.querySelector("iframe");
+  if (existingIframe) existingIframe.src = "about:blank";
+}
+
+PLAY_SELECTORS.forEach((el) => {
+  el.addEventListener("click", async function (e) {
+    e.stopPropagation();
+    const id = this.dataset.id || null;
+    openPopup();
+    await fetchAndInsert(id);
+  });
+});
+
+if (CLOSE_BTN) {
+  CLOSE_BTN.addEventListener("click", function (e) {
+    e.stopPropagation();
+    closePopup();
   });
 }
 
+document.addEventListener("click", function (e) {
+  if (!POPUP) return;
+  const inside = POPUP.contains(e.target);
+  const onButton = Array.from(PLAY_SELECTORS).some((x) => x.contains(e.target));
+  if (!inside && !onButton) closePopup();
+});
+
+window.addEventListener("beforeunload", function () {
+  closePopup();
+});
+
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
 // ____________________________
 // ____________________________
 
@@ -1330,7 +1455,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const fetchWrapper = section.querySelector(".fetch-content-tour");
       const listItems = Array.from(section.querySelectorAll(".tour-li"));
 
-      if (!fetchWrapper || listItems.length === 0) return; 
+      if (!fetchWrapper || listItems.length === 0) return;
 
       section._tourState = section._tourState || {
         swiper: null,
