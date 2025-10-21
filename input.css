@@ -612,3 +612,6 @@ div.w-\[204px\][content=""] {
 .-top-3 {
   top: -0.75rem;
 }
+.w-\[calc\(100\%-48px\)\] {
+    width: calc(100% - 48px);
+}

@@ -3671,3 +3671,6 @@ iframe html {
 .w-\[217px\] {
   width: 217px;
 }
+.w-\[calc\(100\%-48px\)\] {
+    width: calc(100% - 48px);
+}

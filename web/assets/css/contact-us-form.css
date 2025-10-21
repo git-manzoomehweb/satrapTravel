@@ -5,7 +5,10 @@
 #contact-form-resize [data-bc-schema-column] {
   display: flex !important;
   align-items: center;
-  gap: 8px !important;
+  gap: 12px !important;
+}
+#contact-form-resize [data-bc-answer] {
+  max-height: 60px;
 }
 #contact-form-resize [data-bc-question] {
   width: 50% !important;
@@ -60,4 +63,9 @@
 }
 #contact-form-resize input::placeholder {
   color: #71717a !important;
+}
+#contact-form-resize
+  [data-bc-schema-direction="rtl"]
+  [data-bc-part-related-cell] {
+  margin: 0 !important;
 }
