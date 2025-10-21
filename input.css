@@ -600,9 +600,15 @@ div.w-\[204px\][content=""] {
 .h-500 {
   height: 500px;
 }
-.h-440{
+.h-440 {
   height: 440px;
 }
-.w-800{
+.w-800 {
   width: 800px;
+}
+.w-\[217px\] {
+  width: 217px;
+}
+.-top-3 {
+  top: -0.75rem;
 }

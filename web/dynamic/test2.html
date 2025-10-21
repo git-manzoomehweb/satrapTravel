@@ -1,0 +1,404 @@
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="[##cms.query.catid##]">
+    <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid##]" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="2" mid="18" name="db" usedforid="[##cms.query.catid##]">
+    <member name="scalar" type="scalar" typeid="150" />
+</basis>
+
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="215692">
+    <member name="our-featured-hotels" type="list" link="hotel.bc" propertyid="7244,3087993,3087994,3087995,3088007" perpage="6"
+        order="ord" size="418x176" />
+</basis>
+
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="exclusive-travel-deals">
+    <member name="cat" type="tree" request="cat" parentid="215731" order="ord"></member>
+</basis>
+
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="articles">
+    <member name="cat" type="tree" request="cat" parentid="215683" order="ord"></member>
+</basis>
+
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="215728">
+    <member name="perfect-come-True" type="list" link="article.bc" propertyid="7244" perpage="6" order="ord"
+        size="48x48" />
+</basis>
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <!-- Title & Description -->
+    <title>[##cms.seo.title|(Tbibooking - Book Flights & Hotels Online - International Travel Deals)##]
+    </title>
+    <meta name="description"
+        content="[##cms.seo.description|(Tbibooking is your trusted travel partner for booking international flights, hotels, and holiday packages. Explore top destinations like Istanbul, Antalya, Dubai, Paris, and more with unbeatable deals.)##]">
+    <!-- Title & Description -->
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <!-- pwa metatags -->
+    <basis core="call" file="pwa.inc" lid="2" />
+    <!-- common styles for all page -->
+    <basis core="call" file="style.inc" lid="2" />
+</head>
+
+<body>
+    <basis core="call" file="header.inc" lid="2" />
+    <main>
+        <section class="bg-primary-50 py-8">
+            <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
+                <basis core="print" datamembername="db.scalar">
+                    <face>
+                        <h1 class="font-bold text-[36px] text-primary-800">@column1</h1>
+                    </face>
+                </basis>
+
+                <ul itemscope itemtype="https://schema.org/BreadcrumbList" class="flex items-center text-sm gap-1 mt-2">
+                    <li class="inline-block font-normal" itemprop="itemListElement" itemscope
+                        itemtype="https://schema.org/ListItem">
+                        <a class="text-primary-700 text-sm transition-all duration-300 hover:text-secondary-900"
+                            itemprop="item" href="/" aria-label="home"><span itemprop="name">Home</span>
+                            <meta itemprop="position" content="1" />
+                        </a>
+                    </li>
+                    <span class="text-primary-700"> > </span>
+                    <basis core="print" datamembername="db.navigation">
+                        <face filter="RowNumber=max(RowNumber) and parentcatid<>215101">
+                            <li class="inline-block font-normal" itemprop="itemListElement" itemscope
+                                itemtype="https://schema.org/ListItem">
+                                <span itemprop="name" class="text-secondary-800">@title</span>
+                                <meta itemprop="position" content="@rownumber" />
+                            </li>
+                        </face>
+                        <face filter="link is null and parentcatid<>215101">
+                            <li class="flex gap-1 font-normal " itemprop="itemListElement" itemscope
+                                itemtype="https://schema.org/ListItem">
+                                <a class="text-primary-700 text-sm transition-all duration-300 hover:text-secondary-900"
+                                    itemprop="item" href="/hotel-list.bc?catid=@parentcatid" aria-label="@title"><span
+                                        itemprop="name">@title</span>
+                                    <meta itemprop="position" content="@rownumber" />
+                                </a>
+                                <span class="text-primary-700"> > </span>
+                            </li>
+                        </face>
+                        <face filter="parentcatid<>215101">
+                            <li class="flex gap-1 font-normal " itemprop="itemListElement" itemscope
+                                itemtype="https://schema.org/ListItem">
+                                <a class="text-primary-700 text-sm transition-all duration-300 hover:text-secondary-900"
+                                    itemprop="item" href="@link" aria-label="@title"><span
+                                        class="text-primary-700 text-sm transition-all duration-300 hover:text-secondary-900"
+                                        itemprop="name text-primary-700">@title</span>
+                                    <meta itemprop="position" content="@rownumber" />
+                                </a>
+                                <span class="text-primary-700"> > </span>
+                            </li>
+                        </face>
+                    </basis>
+                </ul>
+
+                <div class="flex items-center gap-2 mt-9">
+                    <input type="text"
+                        class="search-blog w-[684px] py-4 px-5 border border-solid border-zinc-400 rounded-xl text-zinc-900 placeholder-zinc-900 outline-none"
+                        aria-label="Search-blog" placeholder="Search blog" />
+                    <button
+                        class="article-search-button flex items-center justify-center w-24 h-12 text-sm text-white bg-primary-900 rounded-full transition-all duration-300 hover:bg-secondary-900">Search</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-5">
+            <div class="flex items-center justify-between">
+                <h2 class="text-2xl font-medium text-primary-800">News</h2>
+            </div>
+
+            <div class="flex gap-3 mt-6">
+                <div class="fetch-content-article flex-1">
+
+                </div>
+                <aside class="sticky h-fit w-[328px] bg-primary-50 px-3 py-5 overflow-y-auto rounded-2xl">
+                    <h2 class="font-bold text-zinc-900 mb-3">Required filters</h2>
+                    <div class="bg-white rounded-xl px-3 pt-3 pb-6 mt-3">
+                        <div class="accordion-toggle flex items-center justify-between pr-5 cursor-pointer">
+                            <h3 class="text-zinc-900 font-medium">category</h3>
+                            <svg width="11" height="10"
+                                class="chevron-icon transition-transform duration-300 flex-shrink-0">
+                                <use xlink:href="/images/sprite-icons.svg#icon-chevron-down"></use>
+                            </svg>
+                        </div>
+                        <basis core="tree" datamembername="articles.cat" idcol="catid"
+                            parentidcol="parentid" nullvalue="215683">
+                            <layout>
+                                <ul
+                                    class="accordion-content flex flex-col gap-9 pl-5 mt-5 overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                                @child
+                                </ul>
+                            </layout>
+                            <face>
+                                <li class="article-li flex items-center gap-5">
+                                    <input type="radio" name="article-category" id="catid" value="@catid"
+                                        class="w-5 h-5 article-radio cursor-pointer" />
+                                    <label for="catid" class="text-zinc-900 text-xs cursor-pointer">@title</label>
+                                </li>
+                            </face>
+                        </basis>
+
+                    </div>
+                </aside>
+            </div>
+
+
+        </section>
+
+        <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-28">
+            <div class="flex items-center justify-between mb-12">
+                <h2 class="text-zinc-900 text-[36px] font-bold">Our Featured Hotel</h2>
+                <ul class="flex items-center gap-2">
+                    <li id="cityFilter"
+                        class="filter-option relative flex items-center justify-center gap-5 text-xs text-zinc-900 rounded-[50px] px-6 py-4 bg-zinc-200 cursor-pointer">
+                        City
+                        <svg width="11" height="10" class="flex-shrink-0">
+                            <use xlink:href="/images/sprite-icons.svg#icon-chevron-down"></use>
+                        </svg>
+                        <div id="cityDropdownMenu"
+                            class="flex-col gap-3 absolute z-30 top-full right-0 left-0 mx-auto mt-2 w-64 py-4 px-3 rounded-md shadow-lg bg-white border hidden">
+                        </div>
+                    </li>
+                    <li id="ratingFilter"
+                        class="filter-option relative flex items-center justify-center gap-5 text-xs text-zinc-900 rounded-[50px] px-6 py-4 bg-zinc-200 cursor-pointer">
+                        Review / Rating
+                        <svg width="11" height="10" class="flex-shrink-0">
+                            <use xlink:href="/images/sprite-icons.svg#icon-chevron-down"></use>
+                        </svg>
+
+                        <div id="ratingDropdownMenu"
+                            class="flex-col gap-3 absolute z-30 top-full right-0 left-0 mx-auto mt-2 w-64 py-4 px-3 rounded-md shadow-lg bg-white border hidden">
+                            <!-- star -->
+                        </div>
+                    </li>
+                    <li id="priceFilter"
+                        class="filter-option relative flex items-center justify-center gap-5 text-xs text-zinc-900 rounded-[50px] px-6 py-4 bg-zinc-200 cursor-pointer">
+                        Price range
+                        <svg width="11" height="10" class="flex-shrink-0">
+                            <use xlink:href="/images/sprite-icons.svg#icon-chevron-down"></use>
+                        </svg>
+                        <div id="priceDropdownMenu"
+                            class="flex-col gap-3 absolute z-30 top-full right-0 mt-2 w-64 py-4 px-3 rounded-md shadow-lg bg-white border hidden">
+                            <div class="group price-option cursor-pointer p-1 border-b border-gray-100"
+                                data-price="high-to-low">
+                                <span
+                                    class="flex items-center gap-3 text-sm font-bold transition-all duration-300 group-hover:text-primary-500">
+                                    <span
+                                        class="price-check-icon flex items-center justify-center w-4 h-4 border border-primary-100 rounded-full">
+                                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M3.48177 9.33333L5.38153 10.7582C5.81022 11.0797 6.41615 11.0061 6.75548 10.5914L12.1484 4"
+                                                stroke="white" stroke-width="2" stroke-linecap="round"></path>
+                                        </svg>
+                                    </span>
+                                    Price: High to Low
+                                </span>
+                            </div>
+
+                            <div class="group price-option cursor-pointer p-1 border-b border-gray-100"
+                                data-price="low-to-high">
+                                <span
+                                    class="flex items-center gap-3 text-sm font-bold transition-all duration-300 group-hover:text-primary-500">
+                                    <span
+                                        class="price-check-icon flex items-center justify-center w-4 h-4 border border-primary-100 rounded-full">
+                                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M3.48177 9.33333L5.38153 10.7582C5.81022 11.0797 6.41615 11.0061 6.75548 10.5914L12.1484 4"
+                                                stroke="white" stroke-width="2" stroke-linecap="round"></path>
+                                        </svg>
+                                    </span>
+                                    Price: Low to High
+                                </span>
+                            </div>
+
+                            <div class="group price-option cursor-pointer p-1 border-b border-gray-100"
+                                data-price="best-price">
+                                <span
+                                    class="flex items-center gap-3 text-sm font-bold transition-all duration-300 group-hover:text-primary-500">
+                                    <span
+                                        class="price-check-icon flex items-center justify-center w-4 h-4 border border-primary-100 rounded-full">
+                                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M3.48177 9.33333L5.38153 10.7582C5.81022 11.0797 6.41615 11.0061 6.75548 10.5914L12.1484 4"
+                                                stroke="white" stroke-width="2" stroke-linecap="round"></path>
+                                        </svg>
+                                    </span>
+                                    Best Deals
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <basis core="list" datamembername="db.our-featured-hotels">
+                <layout>
+                    <div class="hotel-card-wrapper grid grid-cols-3 gap-3">
+                        <!-- Slides -->
+                        @child
+                    </div>
+                    <a href="/our-featured-Hotel"
+                        class="group relative z-10 overflow-hidden flex justify-center items-center gap-2 mx-auto w-48 h-12 bg-primary-900 rounded-xl text-white font-bold mt-24">
+                        <svg width="24" height="24" class="flex-shrink-0">
+                            <use xlink:href="/images/sprite-icons.svg#icon-category"></use>
+                        </svg>
+                        Load More Hotels
+                        <span
+                            class="absolute bottom-0 left-0 w-48 transition-all duration-300 ease-out translate-x-full translate-y-full rounded h-14 -z-10 bg-secondary-900 group-hover:translate-x-0 group-hover:translate-y-0"></span>
+                    </a>
+                </layout>
+                <face>
+                    <a href="/@link"
+                        class="hotel-card group flex flex-col rounded-xl border border-solid border-zinc-400 overflow-hidden"
+                        data-hotel="@prp_3087994" data-price="@prp_3087995" data-rating="@prp_3087993" data-bestprice="@prp_3088007">
+                        <img src="@00418X00176prp"
+                            class="block w-full h-44 object-cover transition-all duration-300 group-hover:sepia"
+                            alt="@title" width="418" height="176" loading="lazy" />
+                        <div
+                            class="flex flex-col justify-between flex-grow gap-2 bg-white rounded-b-xl p-4 divide-y divide-zinc-400 transition-all duration-300 group-hover:border-secondary-600 group-hover:divide-secondary-600">
+                            <div>
+                                <div
+                                    class="flex items-center gap-1 text-sm font-medium text-zinc-600 p-2 bg-white shadow-boxStar rounded mb-2">
+                                    <svg width="24" height="24" class="flex-shrink-0">
+                                        <use xlink:href="/images/sprite-icons.svg#icon-golden-star"></use>
+                                    </svg>
+                                    @prp_3087993 star
+                                </div>
+                                <h2 class="text-zinc-900 font-bold text-xl mb-1">@title</h2>
+                                <div class="flex items-center text-zinc-500 text-sm">
+                                    <svg width="24" height="24" class="flex-shrink-0">
+                                        <use xlink:href="/images/sprite-icons.svg#icon-blue-location"></use>
+                                    </svg>
+                                    @prp_3087994
+                                </div>
+                            </div>
+                            <div class="text-zinc-500 text-sm pt-2 line-clamp-3">@prp_7244</div>
+                            <div class="flex items-center justify-between pt-2">
+                                <button
+                                    class="bg-primary-50 text-primary-900 border border-solid border-primary-900 rounded-[40px] px-6 py-4 transition-all duration-300 group-hover:bg-secondary-50 group-hover:border-secondary-900 group-hover:text-secondary-900">
+                                    Details
+                                </button>
+                                <div class="text-zinc-900 font-bold text-2xl">@prp_3087995 $</div>
+                            </div>
+                        </div>
+                    </a>
+                </face>
+            </basis>
+        </section>
+
+        <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-24">
+            <p class="text-secondary-800 font-medium font-reeniebeanie text-3xl">Let us help you plan your next
+                adventure</p>
+            <h2 class="text-zinc-900 text-[36px] font-bold leading-10 mt-6">
+                Perfect
+                <span class="text-secondary-800">Vacation</span>
+                <br />
+                come True
+            </h2>
+            <basis core="list" datamembername="db.perfect-come-True">
+                <layout>
+                    <div class="grid grid-cols-3 mt-9 gap-14">@child</div>
+                </layout>
+                <face filter="link is null">
+                    <a href="/article.bc?id=@id" class="group flex flex-col gap-2 rounded-xl">
+                        <img src="@00048X00048prp" class="w-12 h-12 object-cover" alt="@title" width="48" height="48"
+                            loading="lazy" />
+                        <h2 class="text-zinc-900 font-bold text-xl">@title</h2>
+                        <div
+                            class="text-zinc-600 text-sm leading-5 line-clamp-2 transition-all duration-300 group-hover:text-secondary-900">
+                            @prp_7244
+                        </div>
+                    </a>
+                </face>
+                <face>
+                    <a href="/@link" class="group flex flex-col gap-2 rounded-xl">
+                        <img src="@00048X00048prp" class="w-12 h-12 object-cover" alt="@title" width="48" height="48"
+                            loading="lazy" />
+                        <h2 class="text-zinc-900 font-bold text-xl">@title</h2>
+                        <div
+                            class="text-zinc-600 text-sm leading-5 line-clamp-2 transition-all duration-300 group-hover:text-secondary-900">
+                            @prp_7244
+                        </div>
+                    </a>
+                </face>
+            </basis>
+        </section>
+
+        <section class="flex items-center mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-20 mb-20">
+            <basis core="list" datamembername="exclusive-travel-deals.cat">
+                <face filter="link is null">
+                    <a href="/article-list.bc?catid=@catid"
+                        class="group flex items-center w-full transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                        <img src="@image" class="w-1/5 h-60 object-cover object-left" alt="@title" width="256"
+                            height="240" loading="lazy" />
+                        <div class="flex items-center justify-center w-4/5 relative">
+                            <div class="absolute bg-specialcolor-6 inset-0 w-full h-full opacity-50"></div>
+                            <img src="[##cms.cms.cdn##]/images/offer.jpg" class="w-full h-60 object-cover object-bottom"
+                                alt="offer" width="1023" height="240" loading="lazy" />
+                            <div class="w-[85%] flex items-end justify-between gap-52 absolute z-10">
+                                <div>
+                                    <h2 class="text-white mb-5">@title</h2>
+                                    <div class="text-[36px] font-bold text-white">@urldescription</div>
+                                </div>
+                                <button
+                                    class="inline-flex items-center gap-5 flex-shrink-0 self-end bg-secondary-600 px-6 py-3 rounded-[50px] transition-all duration-300 group-hover:bg-primary-100">
+                                    View More
+                                    <svg width="11" height="11" class="flex-shrink-0">
+                                        <use xlink:href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+                </face>
+                <face>
+                    <a href="/@link"
+                        class="group flex items-center w-full transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                        <img src="@image" class="w-1/5 h-60 object-cover object-left" alt="@title" width="256"
+                            height="240" loading="lazy" />
+                        <div class="flex items-center justify-center w-4/5 relative">
+                            <div class="absolute bg-specialcolor-6 inset-0 w-full h-full opacity-50"></div>
+                            <img src="[##cms.cms.cdn##]/images/offer.jpg" class="w-full h-60 object-cover object-bottom"
+                                alt="offer" width="1023" height="240" loading="lazy" />
+                            <div class="w-[85%] flex items-end justify-between gap-52 absolute z-10">
+                                <div>
+                                    <h2 class="text-white mb-5">@title</h2>
+                                    <div class="text-[36px] font-bold text-white">@urldescription</div>
+                                </div>
+                                <button
+                                    class="inline-flex items-center gap-5 flex-shrink-0 self-end bg-secondary-600 px-6 py-3 rounded-[50px] transition-all duration-300 group-hover:bg-primary-100">
+                                    View More
+                                    <svg width="11" height="11" class="flex-shrink-0">
+                                        <use xlink:href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+                </face>
+            </basis>
+        </section>
+    </main>
+
+    <basis core="call" file="footer.inc" lid="2" />
+
+</body>
+
+</html>

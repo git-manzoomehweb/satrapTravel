@@ -410,6 +410,58 @@ document.addEventListener("DOMContentLoaded", function () {
 // ____________________________
 // ____________________________
 
+// document.addEventListener("DOMContentLoaded", () => {
+//   const timerSection = document.querySelector(".timer-section");
+//   const deadlineElement = document.querySelector(".deadline");
+
+//   if (!deadlineElement || !deadlineElement.textContent.trim()) {
+//     timerSection?.style.setProperty("display", "none", "important");
+//     return;
+//   }
+
+//   const daysValue = parseInt(deadlineElement.textContent.trim());
+//   if (isNaN(daysValue) || daysValue <= 0) {
+//     timerSection.style.setProperty("display", "none", "important");
+//     return;
+//   }
+
+//   const endTime = new Date().getTime() + daysValue * 24 * 60 * 60 * 1000;
+
+//   const dayEl = timerSection.querySelector(".day p");
+//   const hourEl = timerSection.querySelector(".hour p");
+//   const minEl = timerSection.querySelector(".minut p");
+//   const secEl = timerSection.querySelector(".seconds p");
+
+//   const updateTimer = () => {
+//     const now = new Date().getTime();
+//     const distance = endTime - now;
+
+//     if (distance <= 0) {
+//       clearInterval(interval);
+//       dayEl.textContent = "0";
+//       hourEl.textContent = "0";
+//       minEl.textContent = "0";
+//       secEl.textContent = "0";
+//       return;
+//     }
+
+//     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+//     const hours = Math.floor(
+//       (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+//     );
+//     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+//     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+//     dayEl.textContent = days;
+//     hourEl.textContent = hours < 10 ? "0" + hours : hours;
+//     minEl.textContent = minutes < 10 ? "0" + minutes : minutes;
+//     secEl.textContent = seconds < 10 ? "0" + seconds : seconds;
+//   };
+
+//   updateTimer();
+//   const interval = setInterval(updateTimer, 1000);
+// });
+
 document.addEventListener("DOMContentLoaded", () => {
   const timerSection = document.querySelector(".timer-section");
   const deadlineElement = document.querySelector(".deadline");
@@ -419,13 +471,79 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const daysValue = parseInt(deadlineElement.textContent.trim());
-  if (isNaN(daysValue) || daysValue <= 0) {
+  // تابع تبدیل تاریخ شمسی به میلادی
+  function jalaliToGregorian(jy, jm, jd) {
+    let gy;
+    if (jy > 979) {
+      gy = 1600;
+      jy -= 979;
+    } else {
+      gy = 621;
+    }
+    let days =
+      365 * jy +
+      Math.floor(jy / 33) * 8 +
+      Math.floor(((jy % 33) + 3) / 4) +
+      0; // 0 because we will add months and days later
+
+    const monthDays = [31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29];
+    for (let i = 0; i < jm - 1; i++) {
+      days += monthDays[i];
+    }
+    days += jd - 1;
+
+    let gDayNo = days + 79;
+
+    let gy2 = gy + 400 * Math.floor(gDayNo / 146097);
+    gDayNo = gDayNo % 146097;
+
+    let leap = true;
+    if (gDayNo >= 36525) {
+      gDayNo--;
+      gy2 += 100 * Math.floor(gDayNo / 36524);
+      gDayNo = gDayNo % 36524;
+
+      if (gDayNo >= 365) gDayNo++;
+      else leap = false;
+    }
+
+    gy2 += 4 * Math.floor(gDayNo / 1461);
+    gDayNo %= 1461;
+
+    if (gDayNo >= 366) {
+      leap = false;
+      gDayNo--;
+      gy2 += Math.floor(gDayNo / 365);
+      gDayNo = gDayNo % 365;
+    }
+
+    const gdMonth = [0, 31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    let gm = 0;
+    for (let i = 1; i <= 12; i++) {
+      if (gDayNo < gdMonth[i]) {
+        gm = i;
+        break;
+      }
+      gDayNo -= gdMonth[i];
+    }
+
+    const gd = gDayNo + 1;
+
+    return [gy2, gm, gd];
+  }
+
+  const [jy, jm, jd] = deadlineElement.textContent
+    .trim()
+    .split("/")
+    .map((v) => parseInt(v, 10));
+
+  if (isNaN(jy) || isNaN(jm) || isNaN(jd)) {
     timerSection.style.setProperty("display", "none", "important");
     return;
   }
 
-  const endTime = new Date().getTime() + daysValue * 24 * 60 * 60 * 1000;
+  const [gy, gm, gd] = jalaliToGregorian(jy, jm, jd);
+  const endTime = new Date(gy, gm - 1, gd, 0, 0, 0).getTime(); // ساعت رو صفر می‌گیریم
 
   const dayEl = timerSection.querySelector(".day p");
   const hourEl = timerSection.querySelector(".hour p");
@@ -461,8 +579,72 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTimer();
   const interval = setInterval(updateTimer, 1000);
 });
+
+
 // ____________________________
 // ____________________________
+function uploadDocumentFooter(e) {
+  document.querySelector("#contact-form-resize .Loading_Form").style.display =
+    "block";
+  let t = document
+      .querySelector("#contact-form-resize")
+      .querySelector("#captchaContainer input[name='captcha']").value,
+    n = document
+      .querySelector("#contact-form-resize")
+      .querySelector("#captchaContainer input[name='captchaid']").value,
+    o = JSON.stringify(e.source?.rows[0]);
+  $bc.setSource("cms.uploadFooter", {
+    value: o,
+    captcha: t,
+    captchaid: n,
+    run: !0,
+  });
+}
+function refreshCaptchaFooter(e) {
+  $bc.setSource("captcha.refreshFooter", !0);
+}
+function captchaRenderedFooter() {
+  document.querySelector("#contact-form-resize .contactUsInput").placeholder =
+    "کد امنیتی";
+}
+async function OnProcessedEditObjectFooter(e) {
+  const nameInput = document
+    .querySelector("#contact-form-resize .name-ans input")
+    .value.trim();
+  const phoneInput = document
+    .querySelector("#contact-form-resize .phone-ans input")
+    .value.trim();
+
+  const currentTime = new Date().getTime();
+  const currentData = JSON.stringify({
+    name: nameInput,
+    phone: phoneInput,
+  });
+
+  "6" == (await e.response.json()).errorid
+    ? ((document.querySelector(
+        "#contact-form-resize .Loading_Form"
+      ).style.display = "none"),
+      (document.querySelector("#contact-form-resize .message-api").innerHTML =
+        "درخواست شما با موفقیت ثبت شد."))
+    : (refreshCaptchaFooter(),
+      setTimeout(() => {
+        (document.querySelector(
+          "#contact-form-resize .Loading_Form"
+        ).style.display = "none"),
+          (document.querySelector(
+            "#contact-form-resize .message-api"
+          ).innerHTML = "خطایی رخ داده, لطفا مجدد اقدام کنید.");
+      }, 2e3));
+}
+async function RenderFormFooter() {
+  document
+    .querySelector("#contact-form-resize .phone-ans input[data-bc-text-input]")
+    .setAttribute("placeholder", "شماره تماس"),
+    document
+      .querySelector("#contact-form-resize .name-ans input[data-bc-text-input]")
+      .setAttribute("placeholder", "نام و نام خانوادگی");
+}
 // ____________________________
 // ____________________________
 // ____________________________
@@ -1578,6 +1760,150 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ____________________________
 // ____________________________
+const target = document.querySelector("main");
+document.addEventListener("DOMContentLoaded", function () {
+  if (document.querySelector(".footer-landing-items")) {
+    const homePaths = [
+      "/",
+      "/flight",
+      "/hotel",
+      "/flighthotel",
+      "/tour",
+      "/insurance",
+    ];
+
+    const currentPath = window.location.pathname;
+    const isHomePage = homePaths.includes(currentPath);
+    const isNotHome = !isHomePage;
+
+    const flightItem = document.querySelectorAll('li[data-id="flight"]');
+    const hotelItem = document.querySelectorAll('li[data-id="hotel"]');
+    const flightHotelItem = document.querySelectorAll(
+      'li[data-id="flighthotel"]'
+    );
+    const tourItem = document.querySelectorAll('li[data-id="tour"]');
+    const trainItem = document.querySelectorAll('li[data-id="train"]');
+    const insuranceItem = document.querySelectorAll('li[data-id="insurance"]');
+    if (isNotHome) {
+      if (flightItem) {
+        flightItem.forEach((item) => {
+          item.addEventListener("click", function (e) {
+            e.preventDefault();
+            window.location.href = "/flight";
+          });
+        });
+      }
+      if (tourItem) {
+        tourItem.forEach((item) => {
+          item.addEventListener("click", function (e) {
+            e.preventDefault();
+            window.location.href = "/tour";
+          });
+        });
+      }
+      if (trainItem) {
+        trainItem.forEach((item) => {
+          item.addEventListener("click", function (e) {
+            e.preventDefault();
+            window.location.href = "/train";
+          });
+        });
+      }
+      if (insuranceItem) {
+        insuranceItem.forEach((item) => {
+          item.addEventListener("click", function (e) {
+            e.preventDefault();
+            window.location.href = "/insurance";
+          });
+        });
+      }
+      if (flightHotelItem) {
+        flightHotelItem.forEach((item) => {
+          item.addEventListener("click", function (e) {
+            e.preventDefault();
+            window.location.href = "/flighthotel";
+          });
+        });
+      }
+
+      if (hotelItem) {
+        hotelItem.forEach((item) => {
+          item.addEventListener("click", function (e) {
+            e.preventDefault();
+            window.location.href = "/hotel";
+          });
+        });
+      }
+    } else {
+      if (flightItem) {
+        flightItem.forEach((item) => {
+          item.addEventListener("click", function () {
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+            check_searchHistory("flight");
+            check_landing("flight");
+          });
+        });
+      }
+      if (tourItem) {
+        tourItem.forEach((item) => {
+          item.addEventListener("click", function () {
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+            check_searchHistory("tour");
+            check_landing("tour");
+          });
+        });
+      }
+      if (trainItem) {
+        trainItem.forEach((item) => {
+          item.addEventListener("click", function () {
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+            check_searchHistory("train");
+            check_landing("train");
+          });
+        });
+      }
+      if (insuranceItem) {
+        insuranceItem.forEach((item) => {
+          item.addEventListener("click", function () {
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+            check_searchHistory("insurance");
+            check_landing("insurance");
+          });
+        });
+      }
+      if (flightHotelItem) {
+        flightHotelItem.forEach((item) => {
+          item.addEventListener("click", function () {
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+            check_searchHistory("flighthotel");
+            check_landing("flighthotel");
+          });
+        });
+      }
+      if (hotelItem) {
+        hotelItem.forEach((item) => {
+          item.addEventListener("click", function () {
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+            check_searchHistory("hotel");
+            check_landing("hotel");
+          });
+        });
+      }
+    }
+  }
+});
 // ____________________________
 // ____________________________
 // ____________________________

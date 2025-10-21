@@ -596,7 +596,9 @@ video {
 .-top-4 {
   top: -1rem;
 }
-
+.-top-3 {
+  top: -0.75rem;
+}
 .bottom-0 {
   bottom: 0px;
 }
@@ -3658,11 +3660,14 @@ iframe html {
   display: none !important;
 }
 .w-\[calc\(100vw-730px\)\] {
-    width: calc(100vw - 730px);
+  width: calc(100vw - 730px);
 }
-.h-440{
+.h-440 {
   height: 440px;
 }
-.w-800{
+.w-800 {
   width: 800px;
+}
+.w-\[217px\] {
+  width: 217px;
 }
