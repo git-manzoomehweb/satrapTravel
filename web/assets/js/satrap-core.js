@@ -481,10 +481,7 @@ document.addEventListener("DOMContentLoaded", () => {
       gy = 621;
     }
     let days =
-      365 * jy +
-      Math.floor(jy / 33) * 8 +
-      Math.floor(((jy % 33) + 3) / 4) +
-      0; // 0 because we will add months and days later
+      365 * jy + Math.floor(jy / 33) * 8 + Math.floor(((jy % 33) + 3) / 4) + 0; // 0 because we will add months and days later
 
     const monthDays = [31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29];
     for (let i = 0; i < jm - 1; i++) {
@@ -517,7 +514,21 @@ document.addEventListener("DOMContentLoaded", () => {
       gDayNo = gDayNo % 365;
     }
 
-    const gdMonth = [0, 31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const gdMonth = [
+      0,
+      31,
+      leap ? 29 : 28,
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31,
+    ];
     let gm = 0;
     for (let i = 1; i <= 12; i++) {
       if (gDayNo < gdMonth[i]) {
@@ -579,7 +590,6 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTimer();
   const interval = setInterval(updateTimer, 1000);
 });
-
 
 // ____________________________
 // ____________________________
@@ -1580,11 +1590,48 @@ tCard.forEach((card) => {
       rtCity = card.querySelector(".des-name").innerText,
       rtId = card.querySelector(".des-id").innerText;
     const liBtns = document.querySelectorAll(".reservation-item li");
+    const banner = document.querySelector(".module-banner-background");
     liBtns.forEach((li) => {
       if (!li.classList.contains("flight-btn")) {
         li.classList.remove("active-module");
+        li.classList.remove("active-landing");
+        document.querySelector("#r-hotel").classList.add("hidden");
+        document.querySelector("#r-flight").classList.remove("hidden");
+        document.querySelector("#r-flighthotel").classList.add("hidden");
+        document.querySelector("#r-tour").classList.add("hidden");
+        document.querySelector("#r-insurance").classList.add("hidden");
+        if (banner.classList.contains("insurance-banner-background")) {
+          banner.classList.remove("insurance-banner-background");
+        }
+        if (banner.classList.contains("hotel-banner-background")) {
+          banner.classList.remove("hotel-banner-background");
+        }
+        if (banner.classList.contains("flighthotel-banner-background")) {
+          banner.classList.remove("flighthotel-banner-background");
+        }
+        if (banner.classList.contains("tour-banner-background")) {
+          banner.classList.remove("tour-banner-background");
+        }
       } else {
         li.classList.add("active-module");
+        li.classList.add("active-landing");
+        document.querySelector("#r-flight").classList.remove("hidden");
+        document.querySelector("#r-hotel").classList.add("hidden");
+        document.querySelector("#r-flighthotel").classList.add("hidden");
+        document.querySelector("#r-tour").classList.add("hidden");
+        document.querySelector("#r-insurance").classList.add("hidden");
+        if (banner.classList.contains("insurance-banner-background")) {
+          banner.classList.remove("insurance-banner-background");
+        }
+        if (banner.classList.contains("hotel-banner-background")) {
+          banner.classList.remove("hotel-banner-background");
+        }
+        if (banner.classList.contains("flighthotel-banner-background")) {
+          banner.classList.remove("flighthotel-banner-background");
+        }
+        if (banner.classList.contains("tour-banner-background")) {
+          banner.classList.remove("tour-banner-background");
+        }
       }
     });
     document.querySelector("#r-hotel").classList.add("hidden");
@@ -1923,7 +1970,8 @@ if (document.getElementById("search-content-article")) {
     let noResultMsg = dropdown.querySelector(".no-result-msg");
     if (!noResultMsg) {
       noResultMsg = document.createElement("p");
-      noResultMsg.className = "no-result-msg text-center text-zinc-500 w-full py-2 hidden";
+      noResultMsg.className =
+        "no-result-msg text-center text-zinc-500 w-full py-2 hidden";
       noResultMsg.textContent = "هیچ موردی یافت نشد";
       dropdown.appendChild(noResultMsg);
     }
@@ -2024,7 +2072,6 @@ if (document.getElementById("search-content-article")) {
     });
   }
 }
-
 
 // ____________________________
 // ____________________________
