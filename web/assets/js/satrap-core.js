@@ -1906,6 +1906,126 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // ____________________________
 // ____________________________
+if (document.getElementById("search-content-article")) {
+  var input = document.getElementById("search-content-name"),
+    isItemSelected = !1;
+  if (input) {
+    function contentSearched(e, t) {
+      (input.value = e),
+        (document.getElementById("catidsearched").value = t),
+        document.querySelector(".search-content ul").classList.add("hidden"),
+        document.querySelector(".search-content ul").classList.remove("flex"),
+        (isItemSelected = !0);
+    }
+
+    // ایجاد یا گرفتن پاراگراف "هیچ موردی یافت نشد"
+    const dropdown = document.querySelector(".search-content ul");
+    let noResultMsg = dropdown.querySelector(".no-result-msg");
+    if (!noResultMsg) {
+      noResultMsg = document.createElement("p");
+      noResultMsg.className = "no-result-msg text-center text-zinc-500 w-full py-2 hidden";
+      noResultMsg.textContent = "هیچ موردی یافت نشد";
+      dropdown.appendChild(noResultMsg);
+    }
+
+    input.onkeyup = function () {
+      const items = document
+        .querySelector(".search-content")
+        .getElementsByTagName("li");
+
+      const filter = this.value.trim().toUpperCase();
+      isItemSelected = !1;
+
+      let visibleCount = 0; // شمارش آیتم‌های قابل‌نمایش
+
+      if (filter.length > 0) {
+        dropdown.classList.remove("hidden");
+        dropdown.classList.add("flex");
+
+        for (let i = 0; i < items.length; i++) {
+          if (items[i].innerHTML.toUpperCase().includes(filter)) {
+            items[i].style.display = "list-item";
+            visibleCount++;
+          } else {
+            items[i].style.display = "none";
+          }
+        }
+
+        // نمایش یا پنهان کردن پیام "هیچ موردی یافت نشد"
+        if (visibleCount === 0) {
+          noResultMsg.classList.remove("hidden");
+        } else {
+          noResultMsg.classList.add("hidden");
+        }
+      } else {
+        dropdown.classList.add("hidden");
+        dropdown.classList.remove("flex");
+
+        for (let i = 0; i < items.length; i++) {
+          items[i].style.display = "list-item";
+        }
+
+        noResultMsg.classList.add("hidden"); // پنهان‌کردن پیام هنگام خالی بودن فیلتر
+      }
+    };
+
+    document
+      .getElementById("search-content-article")
+      .addEventListener("submit", function (e) {
+        if (!isItemSelected) {
+          e.preventDefault(),
+            (document.getElementById("catidsearched").value = 0);
+          for (
+            var t = document
+                .querySelector(".search-content")
+                .getElementsByTagName("li"),
+              n = 0;
+            n < t.length;
+            n++
+          )
+            t[n].style.display = "list-item";
+          document
+            .querySelector(".search-content ul")
+            .classList.remove("hidden"),
+            document.querySelector(".search-content ul").classList.add("flex");
+        }
+      });
+
+    document.querySelectorAll(".search-drop-down li").forEach((e) => {
+      const t = e.querySelector("span").innerText;
+      e.addEventListener("click", () => {
+        document.querySelector("#search-content-article").action = t;
+      });
+    });
+
+    // همگام‌سازی href تگ a داخل فرم با مقدار action
+    const form = document.getElementById("search-content-article");
+    const linkInForm = form.querySelector("a");
+
+    function updateLinkHref() {
+      if (form && linkInForm) {
+        const action = form.getAttribute("action");
+        if (action && action.trim() !== "") {
+          linkInForm.setAttribute("href", action);
+        } else {
+          linkInForm.removeAttribute("href");
+        }
+      }
+    }
+
+    updateLinkHref();
+
+    document.querySelectorAll(".search-drop-down li").forEach((e) => {
+      const t = e.querySelector("span").innerText;
+      e.addEventListener("click", () => {
+        document.querySelector("#search-content-article").action = t;
+        updateLinkHref();
+      });
+    });
+  }
+}
+
+
 // ____________________________
 // ____________________________
 // ____________________________

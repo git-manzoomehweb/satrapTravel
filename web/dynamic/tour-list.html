@@ -106,11 +106,12 @@
         <section class="flex banner-list justify-center items-center h-[408px] relative w-full">
             <basis core="print" datamembername="db.banner-info">
                 <face filter="image is null">
-                    <img src="[##cms.cms.cdn##]/images/tour-list.jpg" alt="@urltitle"
+                    <img   src="[##cms.cms.cdn##]/images/tour-list.jpg" alt="@urltitle"
                         class="z-0 absolute top-0 left-0 w-full h-full object-cover">
                 </face>
                 <face>
-                    <img src="@image" alt="@urltitle" class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+                    <img   src="@image" alt="@urltitle"
+                        class="z-0 absolute top-0 left-0 w-full h-full object-cover">
                 </face>
             </basis>
 
@@ -147,8 +148,8 @@
                                     <li class="flex items-center gap-2" itemprop="itemListElement" itemscope
                                         itemtype="https://schema.org/ListItem">
                                         <a class="hover:text-secondary-700" itemprop="item" href="@link"
-                                            aria-label="@title"><span class="text-zinc-900"
-                                                itemprop="name">@title</span>
+                                            aria-label="@title">
+                                            <span itemprop="name">@title</span>
                                             <meta itemprop="position" content="@rownumber" />
                                         </a>
                                         <span class="text-white text-xs"> &gt; </span>
@@ -163,12 +164,12 @@
                             </face>
                         </basis>
                         <div class="flex items-center gap-2">
-                            <img src="[##cms.cms.cdn##]/images/tour_icon (1).svg" alt="tour-icon" width="40"
-                                height="40">
-                            <img src="[##cms.cms.cdn##]/images/tour_icon (2).svg" alt="tour-icon" width="40"
-                                height="40">
-                            <img src="[##cms.cms.cdn##]/images/tour_icon (3).svg" alt="tour-icon" width="40"
-                                height="40">
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/tour_icon (1).svg" alt="tour-icon"
+                                width="40" height="40">
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/tour_icon (2).svg" alt="tour-icon"
+                                width="40" height="40">
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/tour_icon (3).svg" alt="tour-icon"
+                                width="40" height="40">
                         </div>
                         <basis core="print" datamembername="db.banner-info">
                             <face>
@@ -207,7 +208,8 @@
                             <face>
                                 <div data-id="@Table2ID"
                                     class="flex z-[4] relative items-center gap-[13px] border border-transparent cursor-pointer transition-all duration-200 ease-in-out group video-player rounded-lg pl-2 py-1">
-                                    <img src="[##cms.cms.cdn##]/images/Play.svg" alt="play" width="57" height="61">
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Play.svg" alt="play" width="57"
+                                        height="61">
                                     <div class="flex flex-col h-[59px] justify-between">
                                         <p class="text-white font-bold group-hover:text-[#fff]"> @name </p>
                                         <p class="text-white text-xs group-hover:text-[#fff]">@description</p>
@@ -254,7 +256,8 @@
 
                             <div
                                 class="flex z-[4] relative items-center gap-[13px] border border-transparent cursor-pointer transition-all duration-200 ease-in-out group music-player rounded-lg py-1 pl-2">
-                                <img src="[##cms.cms.cdn##]/images/Play.svg" alt="play" width="57" height="61">
+                                <img loading="lazy" src="[##cms.cms.cdn##]/images/Play.svg" alt="play" width="57"
+                                    height="61">
                                 <div class="flex flex-col h-[59px] justify-between">
                                     <p class="text-white font-bold group-hover:text-[#fff]"> @db.audio.name
                                     </p>
@@ -269,7 +272,8 @@
                                     class=" shadow-2xl absolute bottom-0 rounded-t-3xl w-full  lg:px-4 xl:!w-[1280px]   bg-white h-[148px] flex flex-col py-4 justify-between">
                                     <div class="w-full items-center flex justify-between">
                                         <div class="flex items-center gap-3">
-                                            <img src="[##cms.cms.cdn##]/images/logo.png" alt="logo" class="w-">
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo.png" alt="logo"
+                                                class="w-">
                                             <p class="text-[#282828] font-medium"> @db.audio.name </p>
 
                                         </div>
@@ -286,7 +290,8 @@
                                         </button>
                                     </div>
                                     <audio controls class="w-full">
-                                        <source src="[##cms.cms.cdn##]/@db.audio.largeIMG" type="audio/mpeg">
+                                        <source src="[##cms.cms.cdn##]/@db.audio.largeimg loading=" lazy""
+                                            type="audio/mpeg">
                                     </audio>
                                 </div>
                             </div>
@@ -427,7 +432,8 @@
                 class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
                 <div class="flex bg-white relative items-center gap-3">
                     <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8   h-8">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
                         <h2 class="font-bold text-2xl text-zinc-900"> بهترین ها </h2>
                         <span class="bullet-1 "></span>
                     </div>
@@ -471,7 +477,8 @@
                                             <div class="w-full h-full   relative">
                                                 <div
                                                     class="w-full h-full  absolute top-0 left-0 z-0 overflow-hidden rounded-full">
-                                                    <img loading="lazy" src="@largeIMG" alt="@name"
+                                                    <img loading="lazy" loading="lazy" src="@largeimg loading=" lazy""
+                                                        alt="@name"
                                                         class=" w-full h-full group-hover:scale-125 transition-all ease-in-out duration-500  object-cover rounded-full">
                                                 </div>
                                                 <span
@@ -502,7 +509,8 @@
                 class="px-4 before-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
                 <div class="flex relative items-center gap-3">
                     <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8   h-8">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
                         <h3 class="font-bold text-2xl text-zinc-900"> پیشنهاد های ویژه </h3>
                         <span class="bullet-1 "></span>
                     </div>
@@ -523,7 +531,7 @@
                                         <span content="تخفیف ویژه"
                                             class="absolute right-4 top-4 bg-[#FF4949] flex w-[80px] h-[32px] justify-center items-center rounded-[40px] text-white text-xs">تخفیف
                                             ویژه</span>
-                                        <img src="[##cms.cms.cdn##]/@db.tour-list.00296X00206prp"
+                                        <img loading="lazy" src="[##cms.cms.cdn##]/@db.tour-list.00296X00206prp"
                                             alt="@db.tour-list.title" class="w-[296px] h-[206px] rounded-2xl"
                                             width="296" height="206">
                                         <div
@@ -533,13 +541,13 @@
                                                     @db.tour-list.title
                                                 </p>
                                                 <div class="flex items-center gap-2">
-                                                    <img src="[##cms.cms.cdn##]/images/Time Circle.svg" alt="time"
-                                                        width="24" height="24">
+                                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Time Circle.svg"
+                                                        alt="time" width="24" height="24">
                                                     <p class="text-sm text-[#1A1A1A]"> @db.tour-list.prp_8076 </p>
                                                 </div>
                                                 <div class="flex items-center gap-2">
-                                                    <img src="[##cms.cms.cdn##]/images/Calendar.svg" alt="Calendar"
-                                                        width="24" height="24">
+                                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg"
+                                                        alt="Calendar" width="24" height="24">
                                                     <p class="text-sm text-[#1A1A1A]"> @db.tour-list.prp_8077 </p>
                                                 </div>
                                             </div>
@@ -548,18 +556,19 @@
                                             class="flex flex-col px-5 justify-center h-[186px] border-l border-dashed border-[#B1D1E8]">
                                             <div class="h-[109px] flex flex-col gap-[33px]">
                                                 <div class="flex items-center gap-3">
-                                                    <img src="[##cms.cms.cdn##]/images/plane up.svg" alt="planeup"
-                                                        width="23" height="24">
+                                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/plane up.svg"
+                                                        alt="planeup" width="23" height="24">
                                                     <p class="text-sm text-[#1A1A1A]">ایرلاین </p>
                                                 </div>
-                                                <img src="@list.airline.pic" alt="@list.airline.name" class="w-[107px]">
+                                                <img loading="lazy" src="@list.airline.pic" alt="@list.airline.name"
+                                                    class="w-[107px]">
                                             </div>
                                         </div>
                                         <div class="px-5 flex flex-col justify-between h-[186px]">
                                             <div content="لوکس"
                                                 class="w-[204px] flex justify-center items-center h-[53px] relative">
-                                                <img src="[##cms.cms.cdn##]/images/Subtract.png" alt="Subtract"
-                                                    class="absolute z-0 w-full">
+                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/Subtract.png"
+                                                    alt="Subtract" class="absolute z-0 w-full">
                                                 <span
                                                     class="relative z-[1] px-2 line-clamp-1 text-center font-bold text-[#3F3F3F]">تور
                                                     لوکس</span>
@@ -649,7 +658,8 @@
                                         <div class="w-full absolute flex top-[140px] justify-center">
                                             <span
                                                 class="h-12 flex bg-white  w-[182px] justify-center gap-2 items-center   rounded-2xl px-3 text-sm text-zinc-900">
-                                                <img class="" src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
+                                                <img loading="lazy" class="" src="[##cms.cms.cdn##]/images/Calling.svg"
+                                                    alt="Calling">
                                                 تماس با ما</span>
                                         </div>
                                         <span
@@ -657,7 +667,7 @@
                                             تماس ما با کارشناسان ساتراپ</span>
                                         <span
                                             class="absolute flex justify-center w-full bg-[#ffbd21] font-bold top-[99px] z-[2]">@text</span>
-                                        <img class="w-full rounded-3xl h-full object-cover"
+                                        <img loading="lazy" class="w-full rounded-3xl h-full object-cover"
                                             src="[##cms.cms.cdn##]/images/tour-list-adv (1).jpg" alt="advertisment-1">
                                     </a>
                                 </face>
@@ -702,7 +712,8 @@
                                             </span>
                                         </div>
 
-                                        <img src="[##cms.cms.cdn##]/images/insta-banner.png" alt="insta-banner"
+                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/insta-banner.png"
+                                            alt="insta-banner"
                                             class="w-full rounded-3xl absolute z-0 left-0 top-0 h-full object-cover">
                                         <span
                                             class="absolute w-full h-full top-0 left-0 right-0 bg-gradient-to-r from-[#E0356B] rounded-3xl opacity-70 to-[#1D0202] z-[2]"></span>
@@ -712,7 +723,7 @@
 
                             <a href="[##cms.host.tour-list-advertisement##]"
                                 class="w-full advertisment flex hover:shadow-xl h-[468px] relative  rounded-3xl">
-                                <img class="w-full rounded-3xl h-full object-cover"
+                                <img loading="lazy" class="w-full rounded-3xl h-full object-cover"
                                     src="[##cms.cms.cdn##]/images/tour-list-advertisement.jpg" alt="advertisment-2">
                             </a>
                         </aside>
@@ -749,7 +760,8 @@
                 class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
                 <div class="flex relative items-center gap-3">
                     <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8   h-8">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
                         <p class="font-bold text-2xl text-zinc-900"> تور های لحظه اخری </p>
                         <span class="bullet-1 "></span>
                     </div>
@@ -777,7 +789,7 @@
                                                 <div class="flex h-full justify-between flex-col gap-2 ">
                                                     <div
                                                         class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-                                                        <img loading="lazy"
+                                                        <img loading="lazy" loading="lazy"
                                                             src="[##cms.cms.cdn##]/images/Time Circle.svg"
                                                             alt="time circle">
                                                         <span
@@ -786,8 +798,8 @@
                                                     </div>
                                                     <div
                                                         class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-                                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg"
-                                                            alt="Calendar">
+                                                        <img loading="lazy" loading="lazy"
+                                                            src="[##cms.cms.cdn##]/images/Calendar.svg" alt="Calendar">
                                                         <span
                                                             class="line-clamp-1 w-[120px]">@db.last-minute-offer.prp_8077
                                                         </span>
@@ -795,11 +807,11 @@
                                                 </div>
                                                 <div class="flex h-full justify-between  flex-col gap-2 ">
                                                     <div class="flex items-center gap-2">
-                                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/plane up.svg"
-                                                            alt="planeup">
+                                                        <img loading="lazy" loading="lazy"
+                                                            src="[##cms.cms.cdn##]/images/plane up.svg" alt="planeup">
                                                         <span class="text-xs text-zinc-900">ایرلاین </span>
                                                     </div>
-                                                    <img loading="lazy" src="@list.airline.pic"
+                                                    <img loading="lazy" loading="lazy" src="@list.airline.pic"
                                                         alt="@list.airline.name	" class="w-[77px]">
                                                 </div>
                                                 <div class="flex h-full justify-between  flex-col gap-2 ">
@@ -830,7 +842,7 @@
                             </basis>
 
                         </div>
-                        <img src="[##cms.cms.cdn##]/images/young-woman.jpg" alt="تورهای متنوع ساتراپ"
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/young-woman.jpg" alt="تورهای متنوع ساتراپ"
                             class="w-[432px] h-[577px] object-cover rounded-2xl">
                     </div>
                 </div>
@@ -844,7 +856,8 @@
                 class="px-4 before-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
                 <div class="flex relative items-center gap-3">
                     <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8   h-8">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
                         <basis core="print" datamembername="db.aid-text">
                             <face filter="TypeID=150">
                                 <h5 class="font-bold text-2xl text-zinc-900"> @text </h5>
@@ -903,7 +916,8 @@
                 class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
                 <div class="flex relative items-center gap-3">
                     <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8   h-8">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
                         <p class="font-bold text-2xl text-zinc-900"> راهنمای رزررو تور </p>
                         <span class="bullet-1 "></span>
                     </div>
@@ -948,7 +962,7 @@
                                 </div>
                                 <span
                                     class="z-[1] w-12 h-12 flex justify-center items-center group-hover:bg-primary rounded-full">
-                                    <img class=" group-hover:invert-0 group-hover:brightness-[10000]"
+                                    <img loading="lazy" class=" group-hover:invert-0 group-hover:brightness-[10000]"
                                         src="[##cms.cms.cdn##]/images/left-secondary-arrow.svg" alt="arrow">
                                 </span>
                             </a>
@@ -963,7 +977,8 @@
                 class="px-4 before-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
                 <div class="flex relative items-center gap-3">
                     <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8   h-8">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
                         <p class="font-bold text-2xl text-zinc-900"> سوالات متداول </p>
                         <span class="bullet-1 "></span>
                     </div>
@@ -973,7 +988,7 @@
                         <face>
                             <div class="questions-box w-full cursor-pointer group flex gap-[31px]">
                                 <div class="flex items-center gap-2 w-[109px]">
-                                    <img src="[##cms.cms.cdn##]/images/user-qs.svg" alt="user-icon">
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/user-qs.svg" alt="user-icon">
                                     <div class="flex flex-col gap-1  ">
                                         <p class="font-bold text-zinc-900 whitespace-nowrap">سوال ۱</p>
                                         <span class="text-zinc-400 text-xs">تور</span>
@@ -1017,7 +1032,8 @@
                 <div class=" last-section-form relative w-full flex flex-col">
                     <div class="flex  items-center gap-3 ">
                         <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
-                            <img src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8 h-8">
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                                class="w-8 h-8">
                             <p class="font-bold text-2xl text-zinc-900"> ارتباط با کارشناسان</p>
                             <span class="bullet-1"></span>
                         </div>
@@ -1025,7 +1041,7 @@
                     <div class="my-[50px] z-[4] items-center w-full flex">
                         <div
                             class="w-full rounded-2xl overflow-hidden relative flex items-center justify-center h-[143px] px-[35px] py-5">
-                            <img src="[##cms.cms.cdn##]/images/contact-form-image.jpg" alt="contact-us"
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/contact-form-image.jpg" alt="contact-us"
                                 class="w-[42%] h-full z-0    absolute left-0 top-0">
                             <span
                                 class="w-[80px] absolute left-[calc(42%-3px)] z-[3] bg-gradient-to-r from-[#d6d9d8] h-full"></span>
@@ -1073,7 +1089,7 @@
                             <input type="hidden" name="captchaid" value="@captcha@" />
                         </div>
                       <div class="float-right w-1/2 justify-between lg:mt-0 bvgvkek h-fit leading-[65px] px-4 flex items-center gap-2">
-                       <img loading="lazy" src="/@captcha@" width="86" height="59" alt="captcha" />
+                       <img loading="lazy" loading="lazy" src="/@captcha@" width="86" height="59" alt="captcha" />
                         <span  onclick="refreshCaptchaFooter()">
                             <svg class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">

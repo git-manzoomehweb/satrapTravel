@@ -613,5 +613,27 @@ div.w-\[204px\][content=""] {
   top: -0.75rem;
 }
 .w-\[calc\(100\%-48px\)\] {
-    width: calc(100% - 48px);
+  width: calc(100% - 48px);
+}
+.w-\[calc\(100\%-96px\)\] {
+  width: calc(100% - 96px);
+}
+.search-drop-down {
+  top: 106% !important;
+  width: 100% !important;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+}
+.overflow-auto {
+  overflow: auto;
+}
+.search-drop-down li {
+  padding: 12px 8px !important;
+  cursor: pointer;
+}
+.search-drop-down li:hover {
+  background-color: var(--primary-100) !important;
+}
+.search-drop-down p.no-result-msg {
+  position: absolute;
+  top: 40%;
 }
