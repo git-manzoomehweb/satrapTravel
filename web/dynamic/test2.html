@@ -1,404 +1,348 @@
-<basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="[##cms.query.catid##]">
-    <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid##]" />
+<basis
+  core="dbsource"
+  source="media"
+  lid="1"
+  name="db"
+  usedforid="[##cms.query.id##]"
+  sourcemid="article"
+>
+  <member type="list" name="gallery" format="4" order="ord"></member>
 </basis>
-<basis core="dbsource" source="basiscore" lid="2" mid="18" name="db" usedforid="[##cms.query.catid##]">
-    <member name="scalar" type="scalar" typeid="150" />
+<basis core='dbsource' name='captcha' source='trust_login'>
+    <member name='code' type='scalar' request='captcha'></member>
 </basis>
-
-<basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="215692">
-    <member name="our-featured-hotels" type="list" link="hotel.bc" propertyid="7244,3087993,3087994,3087995,3088007" perpage="6"
-        order="ord" size="418x176" />
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.nid|(0)##]">
+    <member name="news" type="list" link="article.bc" propertyid="7244,7248,7249" perpage="3" size="420x248"
+        typeid="159" order="ord" />
 </basis>
-
-<basis core="dbsource" source="basiscore" lid="2" mid="1" name="exclusive-travel-deals">
-    <member name="cat" type="tree" request="cat" parentid="215731" order="ord"></member>
+<basis core="dbsource" source="userbehavior" name="db" usedforid="[##cms.query.id##]">
+    <member name="comment" type="list" order="ord" request="listcomment" />
 </basis>
-
-<basis core="dbsource" source="basiscore" lid="2" mid="1" name="articles">
-    <member name="cat" type="tree" request="cat" parentid="215683" order="ord"></member>
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.id##]">
+    <member request="json-ld" type="scalar" name="json" />
+    <member name="view" type="view" />
+    <member name="related-article" type="list" blgid="222" size="136x136" link="article.bc" propertyid="7244,7248,7249"
+        perpage="20" typeid="159" order="ord" />
+    <member name="data" type="view" request="rdfa" />
 </basis>
-
-<basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="215728">
-    <member name="perfect-come-True" type="list" link="article.bc" propertyid="7244" perpage="6" order="ord"
-        size="48x48" />
-</basis>
-
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="fa">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
-    <!-- Title & Description -->
-    <title>[##cms.seo.title|(Tbibooking - Book Flights & Hotels Online - International Travel Deals)##]
-    </title>
-    <meta name="description"
-        content="[##cms.seo.description|(Tbibooking is your trusted travel partner for booking international flights, hotels, and holiday packages. Explore top destinations like Istanbul, Antalya, Dubai, Paris, and more with unbeatable deals.)##]">
-    <!-- Title & Description -->
+    <title>[##cms.seo.title|(نوآوران پرواز کویر - بابانوروز)##]</title>
+    <meta name="description" content="[##cms.seo.description|(نوآوران پرواز کویر - بابانوروز)##]">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
         <member type="list" name="list" request="taglist" preview=""></member>
     </basis>
     <basis core="print" datamembername="tag.list">
-        <face filter="key = 'canonical'">
+        <face filter="key='canonical'">
             <link rel="canonical" href="@value" />
         </face>
         <face>
             <meta property="@key" content="@value" />
         </face>
     </basis>
-    <!-- pwa metatags -->
-    <basis core="call" file="pwa.inc" lid="2" />
-    <!-- common styles for all page -->
-    <basis core="call" file="style.inc" lid="2" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="[##cms.cms.cdn##]/images/custom_icon.png" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="theme-color" content="#FCA30E" />
+    <link rel="manifest" href="homescreen-manifest.inc">
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/css/babanowrouz.ui.min.css">
+    <basis core="call" file="analytics-head.inc" />
+    <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]" />
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "tuj0n4fhq3");
+</script>
 </head>
 
-<body>
-    <basis core="call" file="header.inc" lid="2" />
-    <main>
-        <section class="bg-primary-50 py-8">
-            <div class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl">
-                <basis core="print" datamembername="db.scalar">
-                    <face>
-                        <h1 class="font-bold text-[36px] text-primary-800">@column1</h1>
+<body class="relative" onload="loadContentArticlePage()">
+    <basis core="call" file="header.inc" pageindex="[##cms.cms.pageindex##]" />
+    <main class="dir-rtl">
+        <div class="h-12 w-full bg-primary-600"> </div>
+        <section class="max-w-7xl mx-auto mt-5 w-95per">
+            <figure class="relative overflow-hidden h-538px rounded-xl ">
+                <basis core="print" datamembername="db.gallery">
+                    <face filter="ord in(1)">
+                        <img loading="lazy" class="w-full h-538px rounded-xl object-cover " loading="lazy"
+                            src="@largeIMG" width="1280" height="538" alt="@name">
+
                     </face>
                 </basis>
 
-                <ul itemscope itemtype="https://schema.org/BreadcrumbList" class="flex items-center text-sm gap-1 mt-2">
-                    <li class="inline-block font-normal" itemprop="itemListElement" itemscope
-                        itemtype="https://schema.org/ListItem">
-                        <a class="text-primary-700 text-sm transition-all duration-300 hover:text-secondary-900"
-                            itemprop="item" href="/" aria-label="home"><span itemprop="name">Home</span>
-                            <meta itemprop="position" content="1" />
-                        </a>
-                    </li>
-                    <span class="text-primary-700"> > </span>
-                    <basis core="print" datamembername="db.navigation">
-                        <face filter="RowNumber=max(RowNumber) and parentcatid<>215101">
-                            <li class="inline-block font-normal" itemprop="itemListElement" itemscope
-                                itemtype="https://schema.org/ListItem">
-                                <span itemprop="name" class="text-secondary-800">@title</span>
-                                <meta itemprop="position" content="@rownumber" />
-                            </li>
-                        </face>
-                        <face filter="link is null and parentcatid<>215101">
-                            <li class="flex gap-1 font-normal " itemprop="itemListElement" itemscope
-                                itemtype="https://schema.org/ListItem">
-                                <a class="text-primary-700 text-sm transition-all duration-300 hover:text-secondary-900"
-                                    itemprop="item" href="/hotel-list.bc?catid=@parentcatid" aria-label="@title"><span
-                                        itemprop="name">@title</span>
-                                    <meta itemprop="position" content="@rownumber" />
-                                </a>
-                                <span class="text-primary-700"> > </span>
-                            </li>
-                        </face>
-                        <face filter="parentcatid<>215101">
-                            <li class="flex gap-1 font-normal " itemprop="itemListElement" itemscope
-                                itemtype="https://schema.org/ListItem">
-                                <a class="text-primary-700 text-sm transition-all duration-300 hover:text-secondary-900"
-                                    itemprop="item" href="@link" aria-label="@title"><span
-                                        class="text-primary-700 text-sm transition-all duration-300 hover:text-secondary-900"
-                                        itemprop="name text-primary-700">@title</span>
-                                    <meta itemprop="position" content="@rownumber" />
-                                </a>
-                                <span class="text-primary-700"> > </span>
-                            </li>
-                        </face>
-                    </basis>
-                </ul>
 
-                <div class="flex items-center gap-2 mt-9">
-                    <input type="text"
-                        class="search-blog w-[684px] py-4 px-5 border border-solid border-zinc-400 rounded-xl text-zinc-900 placeholder-zinc-900 outline-none"
-                        aria-label="Search-blog" placeholder="Search blog" />
-                    <button
-                        class="article-search-button flex items-center justify-center w-24 h-12 text-sm text-white bg-primary-900 rounded-full transition-all duration-300 hover:bg-secondary-900">Search</button>
-                </div>
-            </div>
+                <basis core="print" datamembername="db.view">
+
+                    <face filter="TypeID in(150)">
+                        <figcaption
+                            class="bg-gradient-to-t from-black to-transparent h-28 absolute bottom-0 left-0 right-0 px-12 pt-5">
+                            <h1 class="text-white text-4xl font-bold">@text </h1>
+
+                        </figcaption>
+                    </face>
+                </basis>
+
+            </figure>
         </section>
-
-        <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-5">
-            <div class="flex items-center justify-between">
-                <h2 class="text-2xl font-medium text-primary-800">News</h2>
-            </div>
-
-            <div class="flex gap-3 mt-6">
-                <div class="fetch-content-article flex-1">
-
-                </div>
-                <aside class="sticky h-fit w-[328px] bg-primary-50 px-3 py-5 overflow-y-auto rounded-2xl">
-                    <h2 class="font-bold text-zinc-900 mb-3">Required filters</h2>
-                    <div class="bg-white rounded-xl px-3 pt-3 pb-6 mt-3">
-                        <div class="accordion-toggle flex items-center justify-between pr-5 cursor-pointer">
-                            <h3 class="text-zinc-900 font-medium">category</h3>
-                            <svg width="11" height="10"
-                                class="chevron-icon transition-transform duration-300 flex-shrink-0">
-                                <use xlink:href="/images/sprite-icons.svg#icon-chevron-down"></use>
-                            </svg>
-                        </div>
-                        <basis core="tree" datamembername="articles.cat" idcol="catid"
-                            parentidcol="parentid" nullvalue="215683">
-                            <layout>
-                                <ul
-                                    class="accordion-content flex flex-col gap-9 pl-5 mt-5 overflow-hidden transition-all duration-300 ease-in-out max-h-0">
-                                @child
-                                </ul>
-                            </layout>
-                            <face>
-                                <li class="article-li flex items-center gap-5">
-                                    <input type="radio" name="article-category" id="catid" value="@catid"
-                                        class="w-5 h-5 article-radio cursor-pointer" />
-                                    <label for="catid" class="text-zinc-900 text-xs cursor-pointer">@title</label>
-                                </li>
-                            </face>
-                        </basis>
-
+        <div class="max-w-7xl mx-auto flex mt-5 dir-rtl w-95per">
+            <div class="w-8/12">
+                <basis core="print" datamembername="db.view">
+                    <layout>
+                        <section class="text-contents text-justify w-95per ml-auto ">@child </section>
+                    </layout>
+                    <face filter="TypeID in(150)">
+                        <h2 id="@valueID" class="text-3xl font-danabold mt-5 mb-2">@text</h2>
+                    </face>
+                    <face filter="TypeID in(129)">
+                        <div class="font-danaregular text-xl">@largetext</div>
+                    </face>
+                    <face filter="TypeID in(250)">
+                        <h2 id="@valueID" class="text-3xl font-danabold mt-5 mb-2">@text</h2>
+                        <div class="font-danaregular text-xl">@largetext</div>
+                    </face>
+                </basis>
+                <section class="comment-tour-details article-comment-main wide w-full mt-9">
+                    <div class="comment-tour-container flex gap-x-3">
+                        <h3 onclick="activeTebComment(this , 'info_submit_comment')"
+                            class="comment-tour-icon comment-tab-title inline-block text-neutralcolor-500 rounded-32px font-danaregular text-base border border-neutralcolor-500 h-12 leading-48px px-4 hover:border-primary-400 hover:bg-primary-100 hover:text-neutralcolor-700 cursor-pointer">
+                            ثبت دیدگاه </h3>
+                        <h3 onclick="activeTebComment(this , 'opinion-info-box')"
+                            class="comment-tour-icon comment-tab-title inline-block text-neutralcolor-500 rounded-32px font-danaregular text-base border border-neutralcolor-500 h-12 leading-48px px-4 hover:border-primary-400 hover:bg-primary-100 hover:text-neutralcolor-700 cursor-pointer">
+                            نظرات کاربران </h3>
                     </div>
-                </aside>
-            </div>
-
-
-        </section>
-
-        <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-28">
-            <div class="flex items-center justify-between mb-12">
-                <h2 class="text-zinc-900 text-[36px] font-bold">Our Featured Hotel</h2>
-                <ul class="flex items-center gap-2">
-                    <li id="cityFilter"
-                        class="filter-option relative flex items-center justify-center gap-5 text-xs text-zinc-900 rounded-[50px] px-6 py-4 bg-zinc-200 cursor-pointer">
-                        City
-                        <svg width="11" height="10" class="flex-shrink-0">
-                            <use xlink:href="/images/sprite-icons.svg#icon-chevron-down"></use>
-                        </svg>
-                        <div id="cityDropdownMenu"
-                            class="flex-col gap-3 absolute z-30 top-full right-0 left-0 mx-auto mt-2 w-64 py-4 px-3 rounded-md shadow-lg bg-white border hidden">
-                        </div>
-                    </li>
-                    <li id="ratingFilter"
-                        class="filter-option relative flex items-center justify-center gap-5 text-xs text-zinc-900 rounded-[50px] px-6 py-4 bg-zinc-200 cursor-pointer">
-                        Review / Rating
-                        <svg width="11" height="10" class="flex-shrink-0">
-                            <use xlink:href="/images/sprite-icons.svg#icon-chevron-down"></use>
-                        </svg>
-
-                        <div id="ratingDropdownMenu"
-                            class="flex-col gap-3 absolute z-30 top-full right-0 left-0 mx-auto mt-2 w-64 py-4 px-3 rounded-md shadow-lg bg-white border hidden">
-                            <!-- star -->
-                        </div>
-                    </li>
-                    <li id="priceFilter"
-                        class="filter-option relative flex items-center justify-center gap-5 text-xs text-zinc-900 rounded-[50px] px-6 py-4 bg-zinc-200 cursor-pointer">
-                        Price range
-                        <svg width="11" height="10" class="flex-shrink-0">
-                            <use xlink:href="/images/sprite-icons.svg#icon-chevron-down"></use>
-                        </svg>
-                        <div id="priceDropdownMenu"
-                            class="flex-col gap-3 absolute z-30 top-full right-0 mt-2 w-64 py-4 px-3 rounded-md shadow-lg bg-white border hidden">
-                            <div class="group price-option cursor-pointer p-1 border-b border-gray-100"
-                                data-price="high-to-low">
-                                <span
-                                    class="flex items-center gap-3 text-sm font-bold transition-all duration-300 group-hover:text-primary-500">
-                                    <span
-                                        class="price-check-icon flex items-center justify-center w-4 h-4 border border-primary-100 rounded-full">
-                                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M3.48177 9.33333L5.38153 10.7582C5.81022 11.0797 6.41615 11.0061 6.75548 10.5914L12.1484 4"
-                                                stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                                        </svg>
-                                    </span>
-                                    Price: High to Low
-                                </span>
-                            </div>
-
-                            <div class="group price-option cursor-pointer p-1 border-b border-gray-100"
-                                data-price="low-to-high">
-                                <span
-                                    class="flex items-center gap-3 text-sm font-bold transition-all duration-300 group-hover:text-primary-500">
-                                    <span
-                                        class="price-check-icon flex items-center justify-center w-4 h-4 border border-primary-100 rounded-full">
-                                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M3.48177 9.33333L5.38153 10.7582C5.81022 11.0797 6.41615 11.0061 6.75548 10.5914L12.1484 4"
-                                                stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                                        </svg>
-                                    </span>
-                                    Price: Low to High
-                                </span>
-                            </div>
-
-                            <div class="group price-option cursor-pointer p-1 border-b border-gray-100"
-                                data-price="best-price">
-                                <span
-                                    class="flex items-center gap-3 text-sm font-bold transition-all duration-300 group-hover:text-primary-500">
-                                    <span
-                                        class="price-check-icon flex items-center justify-center w-4 h-4 border border-primary-100 rounded-full">
-                                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M3.48177 9.33333L5.38153 10.7582C5.81022 11.0797 6.41615 11.0061 6.75548 10.5914L12.1484 4"
-                                                stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                                        </svg>
-                                    </span>
-                                    Best Deals
-                                </span>
+                    <div class="comment-box">
+                        <div id="info_submit_comment" class="info_submit_comment comment-boxes">
+                            <div id="OpinioUser-box">
+                                <form id="opinionForm" method="post" action="/OpinionAction.bc"
+                                    onsubmit="SubmitOpinionForm(this , event)">
+                                    <div class="user-info-comment">
+                                        <div class="flname"><input
+                                                class="bg-neutralcolor-100 rounded-xl w-full block leading-60px px-3 text-sm font-danaregular my-3 focus:border-primary-400 focus:outline-primary-400"
+                                                name="Username" placeholder="نام و نام خانوادگی" type="text" required>
+                                        </div>
+                                        <div class="phone"><input
+                                                class="bg-neutralcolor-100 rounded-xl w-full block leading-60px px-3 text-sm font-danaregular my-3 focus:border-primary-400 focus:outline-primary-400"
+                                                name="_root.Phone" placeholder="شماره تماس" type="text"></div>
+                                    </div>
+                                    <div class="comment">
+                                        <_textarea
+                                            class="bg-neutralcolor-100 rounded-xl w-full block leading-60px px-3 text-sm font-danaregular my-3 focus:border-primary-400 focus:outline-primary-400"
+                                            name="OpinionMessage" placeholder="متن دیدگاه خود را وارد کنید" required>
+                                        </_textarea>
+                                    </div>
+                                    <div class="captcha-container flex justify-between items-center">
+                                        <div class="SecurityCodeRight w-1/3"><input
+                                                class="bg-neutralcolor-100 rounded-xl w-full leading-60px px-3 text-sm font-danaregular focus:border-primary-400 focus:outline-primary-400"
+                                                name="Captcha" placeholder="کد امنیتی" type="text" required></div>
+                                        <div class="SecurityCodeLeft flex gap-x-3 items-center w-1/3"><span
+                                                class="load-captcha"><img class="captchaa"
+                                                    src="/[##captcha.code.captcha##]" alt="captcha code" width="80"
+                                                    height="40" /><input id="Captchaid" name="Captchaid"
+                                                    value="[##captcha.code.captcha##]" type="hidden" /></span><svg
+                                                onclick="refresh_captcha(this,event)" class="cursor-pointer" width="24"
+                                                height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M13.7857 6L14.5807 8.00215C13.8273 7.57761 12.9442 7.33333 12 7.33333C9.23858 7.33333 7 9.42267 7 12C7 12.4149 7.058 12.8171 7.16686 13.2M10.2143 18L9.41931 15.9978C10.1727 16.4224 11.0558 16.6667 12 16.6667C14.7614 16.6667 17 14.5773 17 12C17 11.5851 16.942 11.1829 16.8331 10.8"
+                                                    stroke="#e7b542" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <circle cx="12" cy="12" r="10" stroke="#e7b542" stroke-width="1.5" />
+                                            </svg></div>
+                                        <div class="submit-comment "><input
+                                                class="bg-primary-600 hover:bg-primary-700 rounded-3xl w-full block leading-48px min-w-32 px-3 text-sm font-danaregular my-3"
+                                                name="OpinionSubmit" id="OpinionSubmit" value="ثبت دیدگاه"
+                                                type="submit"></div>
+                                        <div><input name="productid" value="[##cms.query.id##]" type="hidden"><input
+                                                name="mid" value="1" type="hidden"></div>
+                                    </div>
+                                    <div id="ResultOpinion"></div>
+                                </form>
                             </div>
                         </div>
-                    </li>
-                </ul>
-            </div>
-
-            <basis core="list" datamembername="db.our-featured-hotels">
-                <layout>
-                    <div class="hotel-card-wrapper grid grid-cols-3 gap-3">
-                        <!-- Slides -->
-                        @child
+                        <div id="opinion-info-box" class="opinion-info-box comment-boxes">
+                            <div id="info_comment" class="info_comment">
+                                <basis core="tree" datamembername="db.comment" idcol="id" parentidcol="parentid"
+                                    nullvalue="0">
+                                    <layout>
+                                        <div class="user-opinion-txt-box">@Child</div>
+                                    </layout>
+                                    <face level="1">
+                                        <div class="opinionRow my-3 ">
+                                            <div
+                                                class="user-opinion-txt bg-primary-50 text-sm rounded-xl px-3 py-6 my-3">
+                                                <div class="opinion-info flex justify-between"><span
+                                                        class="username-opinion font-danabold">@username</span>
+                                                    <div class="flex "><span
+                                                            class="createdate-opinion text-neutralcolor-800 text-sm mx-2 font-danaregular">@createdate</span><button
+                                                            class="font-danaregular"
+                                                            onclick="reactionSubmit('@id' , 'like')">👍
+                                                            @like</button><button class="font-danaregular"
+                                                            onclick="reactionSubmit('@id' , 'dislike')">👎
+                                                            @dislike</button></div>
+                                                </div>
+                                                <p class="mt-4 font-danaregular text-sm">@comment</p>
+                                            </div>
+                                            <div class="replyCommentTxt">@Child</div>
+                                            <div class="replyComment Login-options my-3 text-left"
+                                                onclick="Reply_Comment(this)"><span
+                                                    class="text-primary-800 cursor-pointer hover:text-primary-500 text-base font-danabold px-3 border border-primary-300 rounded-lg mt-3">پاسخ
+                                                    به نظر</span></div>
+                                            <div class="replyCommentForm hidden">
+                                                <form action="ReplyComment.bc" method="post"
+                                                    onsubmit="send_Reply(this , event)"><input
+                                                        class="reply-title bg-neutralcolor-100 rounded-xl w-full block leading-60px px-3 text-sm font-danaregular my-3 focus:border-primary-400 focus:outline-primary-400"
+                                                        type="hidden" name="username" value="">
+                                                    <_textarea
+                                                        class="bg-neutralcolor-100 rounded-xl w-full block leading-60px px-3 text-sm font-danaregular my-3 focus:border-primary-400 focus:outline-primary-400"
+                                                        placeholder="پاسخ خود را تایپ کنید..." name="ReplyComment"
+                                                        required></_textarea><input type="hidden" name="parentid"
+                                                        value="@id"><input type="hidden" name="replyProductid"
+                                                        value="[##cms.query.id##]"><input name="mid" value="1"
+                                                        type="hidden"><input
+                                                        class="bg-primary-600 hover:bg-primary-700 rounded-3xl w-full block leading-48px min-w-32 px-3 text-sm font-danaregular my-3"
+                                                        type="submit" value="ثبت">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </face>
+                                    <face level="2">
+                                        <div
+                                            class="opinionRowReply bg-primary-50 text-sm rounded-xl px-3 py-6 my-3 w-95per mr-auto">
+                                            <div class="user-opinion-txt">
+                                                <div class="opinion-info-reply flex justify-between"><span
+                                                        class="support-icon text-neutralcolor-800 text-sm mx-2 font-danabold">@username</span>
+                                                    <div class="flex "><span
+                                                            class="createdate-opinion text-neutralcolor-800 text-sm mx-2 font-danaregular">@createdate</span><button
+                                                            class="font-danaregular"
+                                                            onclick="reactionSubmit('@id' , 'like')">👍
+                                                            @like</button><button class="font-danaregular"
+                                                            onclick="reactionSubmit('@id' , 'dislike')">👎
+                                                            @dislike</button></div>
+                                                </div>
+                                                <p class="mt-4 font-danaregular text-sm">@comment</p>
+                                            </div>
+                                            <div class="replyCommentTxt my-4">@Child</div>
+                                        </div>
+                                    </face>
+                                </basis>
+                            </div>
+                        </div>
                     </div>
-                    <a href="/our-featured-Hotel"
-                        class="group relative z-10 overflow-hidden flex justify-center items-center gap-2 mx-auto w-48 h-12 bg-primary-900 rounded-xl text-white font-bold mt-24">
-                        <svg width="24" height="24" class="flex-shrink-0">
-                            <use xlink:href="/images/sprite-icons.svg#icon-category"></use>
-                        </svg>
-                        Load More Hotels
-                        <span
-                            class="absolute bottom-0 left-0 w-48 transition-all duration-300 ease-out translate-x-full translate-y-full rounded h-14 -z-10 bg-secondary-900 group-hover:translate-x-0 group-hover:translate-y-0"></span>
-                    </a>
-                </layout>
-                <face>
-                    <a href="/@link"
-                        class="hotel-card group flex flex-col rounded-xl border border-solid border-zinc-400 overflow-hidden"
-                        data-hotel="@prp_3087994" data-price="@prp_3087995" data-rating="@prp_3087993" data-bestprice="@prp_3088007">
-                        <img src="@00418X00176prp"
-                            class="block w-full h-44 object-cover transition-all duration-300 group-hover:sepia"
-                            alt="@title" width="418" height="176" loading="lazy" />
+                    <div id="popuparticle" class="popup hidden">
                         <div
-                            class="flex flex-col justify-between flex-grow gap-2 bg-white rounded-b-xl p-4 divide-y divide-zinc-400 transition-all duration-300 group-hover:border-secondary-600 group-hover:divide-secondary-600">
-                            <div>
-                                <div
-                                    class="flex items-center gap-1 text-sm font-medium text-zinc-600 p-2 bg-white shadow-boxStar rounded mb-2">
-                                    <svg width="24" height="24" class="flex-shrink-0">
-                                        <use xlink:href="/images/sprite-icons.svg#icon-golden-star"></use>
-                                    </svg>
-                                    @prp_3087993 star
-                                </div>
-                                <h2 class="text-zinc-900 font-bold text-xl mb-1">@title</h2>
-                                <div class="flex items-center text-zinc-500 text-sm">
-                                    <svg width="24" height="24" class="flex-shrink-0">
-                                        <use xlink:href="/images/sprite-icons.svg#icon-blue-location"></use>
-                                    </svg>
-                                    @prp_3087994
-                                </div>
-                            </div>
-                            <div class="text-zinc-500 text-sm pt-2 line-clamp-3">@prp_7244</div>
-                            <div class="flex items-center justify-between pt-2">
-                                <button
-                                    class="bg-primary-50 text-primary-900 border border-solid border-primary-900 rounded-[40px] px-6 py-4 transition-all duration-300 group-hover:bg-secondary-50 group-hover:border-secondary-900 group-hover:text-secondary-900">
-                                    Details
-                                </button>
-                                <div class="text-zinc-900 font-bold text-2xl">@prp_3087995 $</div>
+                            class="fixed z-50 left-0 right-0 bottom-0 top-0 w-screen h-screen overflow-auto bg-black/40 flex justify-center items-center">
+                            <div
+                                class="popup-content bg-white rounded-xl p-5 border border-solid border-primary-600 w-2/3 m-auto">
+                                <span id="closePopuparticle" class="close">×</span>
+                                <div id="popupMessage" class="font-danaregular"></div>
                             </div>
                         </div>
-                    </a>
-                </face>
-            </basis>
-        </section>
-
-        <section class="mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-24">
-            <p class="text-secondary-800 font-medium font-reeniebeanie text-3xl">Let us help you plan your next
-                adventure</p>
-            <h2 class="text-zinc-900 text-[36px] font-bold leading-10 mt-6">
-                Perfect
-                <span class="text-secondary-800">Vacation</span>
-                <br />
-                come True
-            </h2>
-            <basis core="list" datamembername="db.perfect-come-True">
-                <layout>
-                    <div class="grid grid-cols-3 mt-9 gap-14">@child</div>
-                </layout>
-                <face filter="link is null">
-                    <a href="/article.bc?id=@id" class="group flex flex-col gap-2 rounded-xl">
-                        <img src="@00048X00048prp" class="w-12 h-12 object-cover" alt="@title" width="48" height="48"
-                            loading="lazy" />
-                        <h2 class="text-zinc-900 font-bold text-xl">@title</h2>
-                        <div
-                            class="text-zinc-600 text-sm leading-5 line-clamp-2 transition-all duration-300 group-hover:text-secondary-900">
-                            @prp_7244
-                        </div>
-                    </a>
-                </face>
-                <face>
-                    <a href="/@link" class="group flex flex-col gap-2 rounded-xl">
-                        <img src="@00048X00048prp" class="w-12 h-12 object-cover" alt="@title" width="48" height="48"
-                            loading="lazy" />
-                        <h2 class="text-zinc-900 font-bold text-xl">@title</h2>
-                        <div
-                            class="text-zinc-600 text-sm leading-5 line-clamp-2 transition-all duration-300 group-hover:text-secondary-900">
-                            @prp_7244
-                        </div>
-                    </a>
-                </face>
-            </basis>
-        </section>
-
-        <section class="flex items-center mx-auto max-lg:w-[90%] max-xl:w-[97%] xl:max-w-7xl mt-20 mb-20">
-            <basis core="list" datamembername="exclusive-travel-deals.cat">
-                <face filter="link is null">
-                    <a href="/article-list.bc?catid=@catid"
-                        class="group flex items-center w-full transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                        <img src="@image" class="w-1/5 h-60 object-cover object-left" alt="@title" width="256"
-                            height="240" loading="lazy" />
-                        <div class="flex items-center justify-center w-4/5 relative">
-                            <div class="absolute bg-specialcolor-6 inset-0 w-full h-full opacity-50"></div>
-                            <img src="[##cms.cms.cdn##]/images/offer.jpg" class="w-full h-60 object-cover object-bottom"
-                                alt="offer" width="1023" height="240" loading="lazy" />
-                            <div class="w-[85%] flex items-end justify-between gap-52 absolute z-10">
-                                <div>
-                                    <h2 class="text-white mb-5">@title</h2>
-                                    <div class="text-[36px] font-bold text-white">@urldescription</div>
-                                </div>
-                                <button
-                                    class="inline-flex items-center gap-5 flex-shrink-0 self-end bg-secondary-600 px-6 py-3 rounded-[50px] transition-all duration-300 group-hover:bg-primary-100">
-                                    View More
-                                    <svg width="11" height="11" class="flex-shrink-0">
-                                        <use xlink:href="/images/sprite-icons.svg#icon-chevron-right"></use>
-                                    </svg>
-                                </button>
+                    </div>
+                </section>
+            </div>
+            <aside class="w-4/12">
+                <basis core="print" datamembername="db.view">
+                    <layout>
+                        <div class="w-95per mr-auto sticky top-0">
+                            <div class="border-b-2 border-primary-600 w-full mb-3">
+                                <h2 class="h-12 w-fit px-4 leading-48px bg-primary-600 text-sm font-danaregular">دسترسی
+                                    های سریع </h2>
+                            </div>
+                            <div
+                                class="flex flex-col gap-y-5 text-sm font-danaregular bg-neutralcolor-100 rounded-14px p-4">
+                                <ul>@child </ul>
                             </div>
                         </div>
-                    </a>
-                </face>
-                <face>
-                    <a href="/@link"
-                        class="group flex items-center w-full transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                        <img src="@image" class="w-1/5 h-60 object-cover object-left" alt="@title" width="256"
-                            height="240" loading="lazy" />
-                        <div class="flex items-center justify-center w-4/5 relative">
-                            <div class="absolute bg-specialcolor-6 inset-0 w-full h-full opacity-50"></div>
-                            <img src="[##cms.cms.cdn##]/images/offer.jpg" class="w-full h-60 object-cover object-bottom"
-                                alt="offer" width="1023" height="240" loading="lazy" />
-                            <div class="w-[85%] flex items-end justify-between gap-52 absolute z-10">
-                                <div>
-                                    <h2 class="text-white mb-5">@title</h2>
-                                    <div class="text-[36px] font-bold text-white">@urldescription</div>
-                                </div>
-                                <button
-                                    class="inline-flex items-center gap-5 flex-shrink-0 self-end bg-secondary-600 px-6 py-3 rounded-[50px] transition-all duration-300 group-hover:bg-primary-100">
-                                    View More
-                                    <svg width="11" height="11" class="flex-shrink-0">
-                                        <use xlink:href="/images/sprite-icons.svg#icon-chevron-right"></use>
-                                    </svg>
-                                </button>
+                    </layout>
+                    <face filter="TypeID in(150 , 250)">
+                        <li><a href="#@valueID" class="leading-8"><svg class="inline-block ml-2" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M17.5999 14.79C17.5409 14.434 17.6599 14.071 17.9189 13.82L21.6589 10.28C21.9669 9.991 22.0799 9.551 21.9489 9.15C21.8099 8.75 21.4589 8.46 21.0389 8.4L16.0689 7.679C15.7099 7.624 15.3989 7.397 15.2389 7.07L13.0199 2.6C12.8469 2.264 12.5159 2.039 12.1399 2H11.7189L11.5489 2.07L11.4399 2.11C11.3799 2.145 11.3259 2.188 11.2789 2.24L11.1889 2.31C11.1079 2.388 11.0409 2.48 10.9889 2.58L8.79888 7.07C8.62888 7.41 8.29688 7.64 7.91888 7.679L2.94888 8.4C2.53588 8.465 2.19388 8.754 2.05988 9.15C1.92188 9.547 2.02688 9.987 2.32888 10.28L5.93988 13.78C6.19888 14.035 6.31788 14.4 6.25888 14.759L5.36888 19.679C5.27188 20.274 5.66688 20.838 6.25888 20.95C6.50188 20.989 6.74988 20.95 6.96888 20.84L11.3989 18.519C11.4829 18.473 11.5749 18.443 11.6689 18.429H11.9399C12.1149 18.434 12.2859 18.478 12.4399 18.56L16.8689 20.87C17.2419 21.07 17.6969 21.04 18.0389 20.79C18.3879 20.549 18.5639 20.127 18.4889 19.71L17.5999 14.79Z"
+                                        fill="#FDB713" />
+                                </svg>@text</a></li>
+                    </face>
+                </basis>
+                <basis core="list" datamembername="db.related-article">
+                    <layout>
+                        <div class="w-95per mr-auto mt-5">
+                            <div class="border-b-2 border-primary-600 w-full mb-3">
+                                <h2 class="h-12 w-fit px-4 leading-48px bg-primary-600 text-sm font-danaregular">خواندنی
+                                    ها</h2>
                             </div>
+                            <div class="flex flex-col gap-y-3">@child </div>
                         </div>
-                    </a>
-                </face>
-            </basis>
-        </section>
+                    </layout>
+                    <face filter="link is null">
+                        <article class="w-403px max-xl:w-full h-136px rounded-xl hover:shadow-lg"><a
+                                href="/article.bc?lid=1&id=@id" class="w-full h-full flex justify-between ">
+                                <figure class="w-136px h-136px rounded-xl"><img loading="lazy"
+                                        class="w-136px h-136px rounded-xl object-cover"
+                                        src="[##cms.cms.cdn##]/@00136X00136prp" width="136" height="136" alt="@title">
+                                </figure>
+                                <div class="w-article-side px-4">
+                                    <h2 class="text-base font-danaregular my-2 line-clamp-1">@title</h2>
+                                    <div class="text-sm font-danaregular text-justify line-clamp-3">@prp_7244 </div>
+                                </div>
+                            </a></article>
+                    </face>
+                    <face>
+                        <article class="w-403px max-xl:w-full h-136px rounded-xl hover:shadow-lg"><a href="/@link"
+                                class="w-full h-full flex justify-between ">
+                                <figure class="w-136px h-136px rounded-xl"><img loading="lazy"
+                                        class="w-136px h-136px rounded-xl object-cover"
+                                        src="[##cms.cms.cdn##]/@00136X00136prp" width="136" height="136" alt="@title">
+                                </figure>
+                                <div class="w-article-side px-4">
+                                    <h2 class="text-base font-danaregular my-2 line-clamp-1">@title</h2>
+                                    <div class="text-sm font-danaregular text-justify line-clamp-3">@prp_7244 </div>
+                                </div>
+                            </a></article>
+                    </face>
+                </basis>
+            </aside>
+        </div>
+        <basis core="list" datamembername="db.news">
+            <layout>
+                <section class="max-w-7xl mx-auto mt-12 w-95per mb-36">
+                    <h2 class="text-3xl font-danabold text-neutralcolor-950 text-right">مجله و اخبار</h2>
+                    <div class="flex justify-between gap-2 mt-7 font-danaregular">@child </div>
+                </section>
+            </layout>
+            <face filter="link is null">
+                <article class="w-420px h-422px rounded-xl overflow-hidden hover:shadow-md"><a
+                        href="/article.bc?id=@id">
+                        <figure class="rounded-xl overflow-hidden"><img loading="lazy"
+                                class="w-420px h-248px object-cover" src="[##cms.cms.cdn##]/@00420X00248prp" width="420"
+                                height="248" alt="@title"></figure>
+                        <div class="w-95per mx-auto">
+                            <h2 class="line-clamp-1 w-full my-5 text-xl">@title</h2>
+                            <div class="text-sm mt-4 text-justify line-clamp-4 ">@prp_7244</div>
+                        </div>
+                    </a></article>
+            </face>
+            <face>
+                <article class="w-420px h-422px rounded-xl overflow-hidden hover:shadow-md"><a href="/@link">
+                        <figure class="rounded-xl overflow-hidden"><img loading="lazy"
+                                class="w-420px h-248px object-cover" src="[##cms.cms.cdn##]/@00420X00248prp" width="420"
+                                height="248" alt="@title"></figure>
+                        <div class="w-95per mx-auto">
+                            <h2 class="line-clamp-1 w-full my-5 text-xl">@title</h2>
+                            <div class="text-sm mt-4 text-justify line-clamp-4 ">@prp_7244</div>
+                        </div>
+                    </a></article>
+            </face>
+        </basis>
     </main>
-
-    <basis core="call" file="footer.inc" lid="2" />
-
+    <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
+    <script type="application/ld+json">[##db.json.Column1##]</script>
 </body>
 
 </html>

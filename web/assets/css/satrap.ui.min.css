@@ -1049,6 +1049,9 @@ video {
 .h-\[1px\] {
   height: 1px;
 }
+.h-\[90px\] {
+  height: 90px;
+}
 
 .h-\[206px\] {
   height: 206px;
@@ -3695,4 +3698,32 @@ iframe html {
 .search-drop-down p.no-result-msg {
   position: absolute;
   top: 40%;
+}
+
+.m-auto {
+  margin: auto;
+}
+.w-2\/3 {
+  width: 66.666667%;
+}
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+.border-solid {
+  border-style: solid;
+}
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+.p-5 {
+  padding: 1.25rem;
+}
+.resize-none {
+  resize: none;
+}
+.popup-content {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 600px !important;
+  margin-right: 50px;
 }

@@ -1,0 +1,21 @@
+<basis core="dbsource" source="trust_login" name="db" captcha="[##cms.form.Captcha##]"
+captchaid="[##cms.form.Captchaid##]">
+<member name="captcha" type="scalar" request="checkcaptcha" />
+</basis>
+<basis core="group" if="'[##db.captcha.Column1##]'='true'">
+<basis core="dbsource" source="userbehavior" name="db" parentid="0" usedforid="[##cms.form.productid##]"
+    userid="[##cms.form.userid|(123456)##]" title="[##cms.form.Username##]" username="[##cms.form.Username##]" comment="_comment" mid="[##cms.form.mid|(1)##]">
+
+    <member name="Opinion" type="scalar" request="comment" />
+    <params>
+        <add name="comment" value="[##cms.form.OpinionMessage##]" />
+        <add name="jsoninfo" value="[##cms.json.header##]" />
+    </params>
+</basis>
+
+<basis core="print" datamembername="db.Opinion">
+    <face filter="Column1='ok'">نظر شما با موفقیت ثبت شد پس از بررسی توسط مدیر سایت نمایش داده خواهد شد</face>
+    <face filter="Column1<>'ok'">نظر شما ثبت نشد لطفا مجددا سعی کنید</face>
+</basis>
+</basis>
+<basis core="group" if="'[##db.captcha.Column1##]'<>'true'">کد امنیتی وارد شده صحیح نمی باشد</basis>
