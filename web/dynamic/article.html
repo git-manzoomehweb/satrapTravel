@@ -138,20 +138,25 @@
                         </div>
 
                         <aside class="w-[calc(100%-973px)] flex flex-col gap-4">
-                            <div class="w-full py-[17px] bg-[#F5F9FB] border border-[#EBEBEB] rounded-2xl">
-                                <p class="px-6 font-bold text-xl pb-4 border-b border-[#D7DDE0]">موضوع ها</p>
-                                <div class="w-full flex flex-col gap-4 mt-4 px-6">
-                                    <basis core="print" datamembername="db.view">
-                                        <face filter="TypeID=250">
-                                            <div data-id="@valueID" onclick="Set_Offset_Item(this)"
-                                                class="flex cursor-pointer hover:text-secondary-700 items-center gap-2 text-sm">
-                                                <span class="w-[10px] h-[10px] rounded-full bg-[#FFBD22]"></span>
-                                                <p class="w-[calc(100%-48px)]">@text</p>
-                                            </div>
-                                        </face>
-                                    </basis>
-                                </div>
-                            </div>
+
+                            <basis core="print" datamembername="db.view">
+                                <layout>
+                                    <div class="w-full py-[17px] bg-[#F5F9FB] border border-[#EBEBEB] rounded-2xl">
+                                        <p class="px-6 font-bold text-xl pb-4 border-b border-[#D7DDE0]">موضوع ها</p>
+                                        <div class="w-full flex flex-col gap-4 mt-4 px-6">
+                                            @child
+                                        </div>
+                                    </div>
+                                </layout>
+                                <face filter="TypeID=250">
+                                    <div data-id="@valueID" onclick="Set_Offset_Item(this)"
+                                        class="flex cursor-pointer hover:text-secondary-700 items-center gap-2 text-sm">
+                                        <span class="w-[10px] h-[10px] rounded-full bg-[#FFBD22]"></span>
+                                        <p class="w-[calc(100%-48px)]">@text</p>
+                                    </div>
+                                </face>
+                            </basis>
+
 
                             <basis core="print" datamembername="db.news-list">
                                 <layout>

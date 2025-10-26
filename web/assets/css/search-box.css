@@ -498,3 +498,16 @@ form.multicity-flight-form:has(.flight-routes) .Flightclass-Passenger {
 .passenger-birthday-dropdown li {
   font-size: 14px !important;
 }
+.plus-count div.h-full,
+.minus-count div.h-full {
+  width: 100% !important;
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
+}
+#picker:has(.book-hidden) {
+  animation: none !important;
+}
+#picker {
+  animation: fadeIn-2 0.7s ease-in-out forwards;
+}

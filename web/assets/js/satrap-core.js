@@ -410,57 +410,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // ____________________________
 // ____________________________
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   const timerSection = document.querySelector(".timer-section");
-//   const deadlineElement = document.querySelector(".deadline");
 
-//   if (!deadlineElement || !deadlineElement.textContent.trim()) {
-//     timerSection?.style.setProperty("display", "none", "important");
-//     return;
-//   }
-
-//   const daysValue = parseInt(deadlineElement.textContent.trim());
-//   if (isNaN(daysValue) || daysValue <= 0) {
-//     timerSection.style.setProperty("display", "none", "important");
-//     return;
-//   }
-
-//   const endTime = new Date().getTime() + daysValue * 24 * 60 * 60 * 1000;
-
-//   const dayEl = timerSection.querySelector(".day p");
-//   const hourEl = timerSection.querySelector(".hour p");
-//   const minEl = timerSection.querySelector(".minut p");
-//   const secEl = timerSection.querySelector(".seconds p");
-
-//   const updateTimer = () => {
-//     const now = new Date().getTime();
-//     const distance = endTime - now;
-
-//     if (distance <= 0) {
-//       clearInterval(interval);
-//       dayEl.textContent = "0";
-//       hourEl.textContent = "0";
-//       minEl.textContent = "0";
-//       secEl.textContent = "0";
-//       return;
-//     }
-
-//     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-//     const hours = Math.floor(
-//       (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-//     );
-//     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-//     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-//     dayEl.textContent = days;
-//     hourEl.textContent = hours < 10 ? "0" + hours : hours;
-//     minEl.textContent = minutes < 10 ? "0" + minutes : minutes;
-//     secEl.textContent = seconds < 10 ? "0" + seconds : seconds;
-//   };
-
-//   updateTimer();
-//   const interval = setInterval(updateTimer, 1000);
-// });
 
 document.addEventListener("DOMContentLoaded", () => {
   const timerSection = document.querySelector(".timer-section");
@@ -481,7 +431,7 @@ document.addEventListener("DOMContentLoaded", () => {
       gy = 621;
     }
     let days =
-      365 * jy + Math.floor(jy / 33) * 8 + Math.floor(((jy % 33) + 3) / 4) + 0; // 0 because we will add months and days later
+      365 * jy + Math.floor(jy / 33) * 8 + Math.floor(((jy % 33) + 3) / 4);
 
     const monthDays = [31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29];
     for (let i = 0; i < jm - 1; i++) {
@@ -555,6 +505,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const [gy, gm, gd] = jalaliToGregorian(jy, jm, jd);
   const endTime = new Date(gy, gm - 1, gd, 0, 0, 0).getTime(); // ساعت رو صفر می‌گیریم
+  const now = new Date().getTime();
+
+  // اگر تاریخ ارسال شده قبل از حال حاضر بود، کل سکشن حذف شود
+  if (endTime < now) {
+    timerSection.remove();
+    return;
+  }
 
   const dayEl = timerSection.querySelector(".day p");
   const hourEl = timerSection.querySelector(".hour p");
@@ -590,6 +547,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTimer();
   const interval = setInterval(updateTimer, 1000);
 });
+
 
 // ____________________________
 // ____________________________
