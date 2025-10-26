@@ -1087,12 +1087,17 @@ document.addEventListener("DOMContentLoaded", () => {
       if (priceElement && priceSeprator) {
         const text = priceSeprator.textContent.trim();
 
-        const match = text.match(/([\d۰-۹,]+)/);
+        // پشتیبانی از عدد اعشاری (فارسی و انگلیسی)
+        const match = text.match(/([\d۰-۹.,٫]+)/);
+
         if (match) {
           const priceNumber = match[0].trim();
           const unit = text.replace(priceNumber, "").trim();
 
-          priceElement.textContent = priceNumber;
+          // اگر کاربر از ممیز فارسی استفاده کرده باشد، آن را به "." تبدیل کن
+          const normalizedPrice = priceNumber.replace("٫", ".");
+
+          priceElement.textContent = normalizedPrice;
           priceSeprator.textContent = unit;
         }
       }
@@ -1101,6 +1106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 // ____________________________
 // ____________________________

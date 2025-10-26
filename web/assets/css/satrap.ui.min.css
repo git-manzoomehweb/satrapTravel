@@ -3075,7 +3075,21 @@ body:has(.list-video-popup.flex) {
     transform: scale(1);
   }
 }
+#picker:has(.book-hidden) {
+  animation: none !important;
+}
+#picker {
+  animation: fadeIn-2 0.5s ease forwards;
+}
+@keyframes fadeIn-2 {
+  0% {
+    opacity: 0;
+  }
 
+  100% {
+    opacity: 1;
+  }
+}
 .transition-width {
   transition: width 0.4s ease, background-color 0.4s ease;
 }
