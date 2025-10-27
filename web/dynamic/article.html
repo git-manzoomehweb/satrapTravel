@@ -9,6 +9,10 @@
 
     <member name="data" type="view" request="rdfa" />
 </basis>
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.id##]">
+    <member propertyid="7249" name="view-article" type="view" 
+     postsql="SELECT * FROM [db.view-article] where TypeID in(250) and text not in('')"/>
+</basis>
 
 <basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.id##]" sourcemid="article">
     <member type="list" name="gallery" format="4" order="ord"></member>
@@ -139,7 +143,7 @@
 
                         <aside class="w-[calc(100%-973px)] flex flex-col gap-4">
 
-                            <basis core="print" datamembername="db.view">
+                            <basis core="print" datamembername="db.view-article">
                                 <layout>
                                     <div class="w-full py-[17px] bg-[#F5F9FB] border border-[#EBEBEB] rounded-2xl">
                                         <p class="px-6 font-bold text-xl pb-4 border-b border-[#D7DDE0]">موضوع ها</p>
@@ -148,7 +152,7 @@
                                         </div>
                                     </div>
                                 </layout>
-                                <face filter="TypeID=250">
+                                <face filter="TypeID=250 and text not in('')">
                                     <div data-id="@valueID" onclick="Set_Offset_Item(this)"
                                         class="flex cursor-pointer hover:text-secondary-700 items-center gap-2 text-sm">
                                         <span class="w-[10px] h-[10px] rounded-full bg-[#FFBD22]"></span>
