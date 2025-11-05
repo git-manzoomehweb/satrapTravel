@@ -410,8 +410,6 @@ document.addEventListener("DOMContentLoaded", function () {
 // ____________________________
 // ____________________________
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const timerSection = document.querySelector(".timer-section");
   const deadlineElement = document.querySelector(".deadline");
@@ -547,7 +545,6 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTimer();
   const interval = setInterval(updateTimer, 1000);
 });
-
 
 // ____________________________
 // ____________________________
@@ -1064,7 +1061,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
 
 // ____________________________
 // ____________________________
@@ -2154,7 +2150,46 @@ document.querySelector("#closePopuparticle")?.addEventListener("click", () => {
 });
 // ____________________________
 // ____________________________
+const shareBox = document.querySelector(".share-box");
+if (shareBox) {
+  const shareIconContainer = document.querySelector(".shareIcon-container");
+  const shareIcon = document.querySelectorAll(".shareIcon");
+
+  shareBox.addEventListener("click", () => {
+    const isHidden = shareIconContainer.classList.contains("hidden");
+
+    shareIconContainer.classList.toggle("flex");
+    shareIconContainer.classList.toggle("hidden");
+
+    if (isHidden) {
+      shareIcon.forEach((icon, index) => {
+        setTimeout(() => {
+          icon.classList.add("active");
+          icon.classList.remove("opacity-0");
+        }, index * 260);
+      });
+    } else {
+      shareIcon.forEach((icon) => {
+        icon.classList.remove("active");
+        icon.classList.add("opacity-0");
+      });
+    }
+  });
+}
+
 // ____________________________
+function setElementHeight() {
+  const calcEl = document.querySelector(".calculate-h");
+  const setEl = document.querySelector(".set-h");
+
+  if (calcEl && setEl) {
+    const height = calcEl.offsetHeight;
+    setEl.style.height = height + "px";
+  }
+}
+
+window.addEventListener("load", setElementHeight);
+
 // ____________________________
 // ____________________________
 // ____________________________

@@ -682,3 +682,35 @@ div.w-\[204px\][content=""] {
     opacity: 1;
   }
 }
+.shadow-flag {
+  box-shadow: 0px 4px 4px 0px #00000014;
+}
+.sidebar-box {
+  background: linear-gradient(89.64deg, #002dd0 -17.52%, #22b4ff 117.52%);
+  box-shadow: 0px 0px 13.8px 0px #0080ff87;
+}
+div.sidebar-box:hover {
+  background: linear-gradient(
+    89.64deg,
+    #001a7a -17.52%,
+    #52c5ff 117.52%
+  ) !important;
+  box-shadow: 0px 0px 17.8px 0px #00366bd3 !important;
+}
+.shadow-txt {
+  text-shadow: 0px 0px 9.8px #ffffff7d;
+}
+.sidebar-box:hover .shadow-txt {
+  text-shadow: 0px 0px 9.8px #ffffffe2 !important;
+}
+.shareIcon {
+  transform: translateY(-20px);
+}
+.shareIcon.active {
+  transform: translateY(0px) !important;
+}
+.shareIcon.active:hover {
+  transform: scale(1.25) translateY(0px) !important;
+  box-shadow: 0px 0px 19.8px 0px #0080ffca !important;
+  background: linear-gradient(89.64deg, #22b4ff -17.52%, #002dd0 117.52%);
+}
