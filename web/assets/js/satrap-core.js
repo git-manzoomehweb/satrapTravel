@@ -841,7 +841,7 @@ document.addEventListener("DOMContentLoaded", () => {
       seeMoreBtn.querySelector("span").textContent = "مشاهده کمتر";
       expanded = true;
     } else {
-      aidContent.style.maxHeight = "900px";
+      aidContent.style.maxHeight = "500px";
       seeMoreBtn.querySelector("span").textContent = "مشاهده بیشتر";
       expanded = false;
     }
@@ -2165,13 +2165,18 @@ if (shareBox) {
       shareIcon.forEach((icon, index) => {
         setTimeout(() => {
           icon.classList.add("active");
+
           icon.classList.remove("opacity-0");
         }, index * 260);
+        setTimeout(() => {
+          shareIconContainer.classList.add("active");
+        }, 1300);
       });
     } else {
       shareIcon.forEach((icon) => {
         icon.classList.remove("active");
         icon.classList.add("opacity-0");
+        shareIconContainer.classList.remove("active");
       });
     }
   });

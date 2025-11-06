@@ -9,8 +9,17 @@
 #search-box:has(.loader) {
   min-height: 392px !important;
 }
+#search-box.mt-\[-130px\] {
+  margin-top: -180px !important;
+}
 #search-box {
   min-height: unset !important;
+}
+#search-box #r-hotel form,
+#search-box #r-tour form,
+#search-box #r-insurance form {
+  margin-top: 45px !important;
+  margin-bottom: 45px !important;
 }
 .Basis_Calendar_Box svg {
   width: unset !important;
@@ -43,14 +52,14 @@
   padding: 0 !important;
   margin: 0 !important;
   display: flex !important;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
   gap: 4px !important;
 }
 .reservation-item {
   width: 100%;
-  padding: 49px 24px;
+  padding: 23px 4px;
   display: flex;
   align-items: center;
   position: relative;
@@ -69,9 +78,14 @@
   height: 4px;
   border-radius: 8px;
   background-color: var(--primary-500);
-  bottom: -51px;
-  right: -73px;
+  bottom: -26px;
+  right: -53px;
 }
+.flighthotel-btn.active-module::after,
+.reservation-item li.flighthotel-btn:hover::after {
+  right: -33px !important;
+}
+
 .flighttype-items {
   display: flex !important;
   align-items: center;
