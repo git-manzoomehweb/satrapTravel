@@ -2197,8 +2197,105 @@ window.addEventListener("load", setElementHeight);
 
 // ____________________________
 // ____________________________
+// gallery swiper
+var swiper_thumbs = new Swiper(".nav-for-slider", {
+  loop: true,
+  spaceBetween: 4,
+  slidesPerView: 2,
+  navigation: {
+    nextEl: ".swiper-button-next-thumbs",
+    prevEl: ".swiper-button-prev-thumbs",
+  },
+});
+var swiper = new Swiper(".main-slide-carousel", {
+  slidesPerView: 1,
+  loop: true,
+  navigation: {
+    nextEl: ".swiper-button-next-gallery",
+    prevEl: ".swiper-button-prev-gallery",
+  },
+  effect: "fade",
+  thumbs: {
+    swiper: swiper_thumbs,
+  },
+});
 // ____________________________
+document.addEventListener("DOMContentLoaded", () => {
+  const travelItems = document.querySelectorAll(".travelouge-item");
+  if (!travelItems.length) return;
+
+  travelItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const content = item.querySelector(".show-content");
+
+      travelItems.forEach((el) => {
+        if (el !== item) {
+          el.classList.remove("active");
+          const otherContent = el.querySelector(".show-content");
+          if (otherContent) {
+            otherContent.style.height = "0";
+            otherContent.style.opacity = "0";
+          }
+          const plus = el.querySelector("svg");
+          if (plus) plus.style.transform = "rotate(0deg)";
+        }
+      });
+
+      if (item.classList.contains("active")) {
+        item.classList.remove("active");
+        content.style.height = "0";
+        content.style.opacity = "0";
+        const plus = item.querySelector("svg");
+        if (plus) plus.style.transform = "rotate(0deg)";
+      } else {
+        item.classList.add("active");
+        const contentHeight = content.scrollHeight + "px";
+        content.style.height = contentHeight;
+        content.style.opacity = "1";
+        const plus = item.querySelector("svg");
+        if (plus) plus.style.transform = "rotate(45deg)";
+      }
+    });
+  });
+});
+
 // ____________________________
+
+document.addEventListener("DOMContentLoaded", () => {
+  const navbarItems = document.querySelectorAll(".navbar-el");
+  const sections = document.querySelectorAll("h2[data-id]");
+
+  // ✅ کلیک روی navbar → اسکرول نرم به سکشن مربوطه
+  navbarItems?.forEach((item) => {
+    item.addEventListener("click", () => {
+      const section = document.querySelector(`h2[data-id="${item.id}"]`);
+      if (section) {
+        const offset = 80; // ارتفاع navbar
+        const top =
+          section.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    });
+  });
+
+  // ✅ فعال‌سازی آیتم navbar بر اساس موقعیت اسکرول
+  const activateOnScroll = () => {
+    let currentId = null;
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop - 230;
+      if (window.scrollY >= sectionTop) {
+        currentId = section.dataset.id;
+      }
+    });
+
+    navbarItems?.forEach((item) => {
+      item.classList.toggle("active", item.id === currentId);
+    });
+  };
+
+  window.addEventListener("scroll", activateOnScroll);
+  activateOnScroll();
+});
 // ____________________________
 // ____________________________
 // ____________________________
