@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth !important;
+}
 a,
 button,
 li,
@@ -770,4 +773,49 @@ a.tel.sidebar-box:hover {
 }
 .travelouge-item.active svg line {
   stroke: var(--primary-700);
+}
+.soft-animation {
+  animation: softAnime 3s ease-in-out infinite alternate;
+  display: inline-block;
+  will-change: transform;
+}
+
+@keyframes softAnime {
+  0% {
+    transform: translateX(-8px) translateY(6px) rotate(-1deg) scale(1);
+    filter: brightness(0.97);
+  }
+  50% {
+    transform: translateX(0px) translateY(-4px) rotate(1deg) scale(1.02);
+    filter: brightness(1.03);
+  }
+  100% {
+    transform: translateX(8px) translateY(6px) rotate(-1deg) scale(1);
+    filter: brightness(0.97);
+  }
+}
+.typing-demo {
+  width: 11ch;
+  animation: typing 1.5s steps(11), blink 0.5s step-end infinite alternate,
+    remove-border 0s 2.5s forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  border-left: 3px solid;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+@keyframes remove-border {
+  to {
+    border-left: none;
+  }
 }
