@@ -819,3 +819,55 @@ a.tel.sidebar-box:hover {
     border-left: none;
   }
 }
+.visa-aid img{
+  width: 100% !important;
+  border-radius: 10px !important;
+}
+.visa-aid h5[content='']{
+  display: none !important;
+}
+/* .before-elm p{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.before-elm p::before{
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background-color: #2E2E2E;
+} */
+ .swiper-scrollbar.swiper-scrollbar-vertical, .swiper-vertical>.swiper-scrollbar {
+    position: absolute;
+    left: var(--swiper-scrollbar-left,auto);
+    right: -24px !important;
+    top: 19% !important;
+    z-index: 30 !important;
+    width: 4px !important;
+    opacity: 1 !important;
+    height: 70% !important;
+    border-radius: 40px !important;
+    background-color: var(--secondary-600) !important;
+}
+ .swiper-ver  .swiper-scrollbar.swiper-scrollbar-vertical, .swiper-vertical>.swiper-scrollbar{
+  background-color: var(--secondary-600) !important;
+   
+    position: absolute;
+    left: var(--swiper-scrollbar-left,auto);
+    right: -24px !important;
+    top: 18% !important;
+    z-index: 30 !important;
+    width: 4px !important;
+    opacity: 1 !important;
+    height: 70% !important;
+    border-radius: 40px !important;
+    background-color: var(--secondary-600) !important;
+}
+.swiper-ver  .swiper-scrollbar-drag{
+  background-color: var(--secondary-600) !important;
+  width: 9px !important;
+  left: 2.5px !important;
+}

@@ -261,11 +261,15 @@ if (document.querySelectorAll(".swiper-5").length > 0)
 if (document.querySelectorAll(".swiper-ver").length > 0) {
   const swiper = new Swiper(".swiper-ver", {
     direction: "vertical",
+    scrollbar: {
+        el: ".swiper-scrollbar",
+        hide: true,
+      },
     slidesPerView: 5,
-    speed: 800,
+    speed: 750,
     centeredSlides: !1,
     loop: 1,
-    autoplay: { delay: 7000, disableOnInteraction: !1 },
+    autoplay: { delay: 4000, disableOnInteraction: !1 },
     spaceBetween: 8,
     grabCursor: !0,
     touchReleaseOnEdges: true,
@@ -2375,7 +2379,100 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ____________________________
+document.addEventListener("DOMContentLoaded", () => {
+  const currentURL = encodeURIComponent(window.location.href);
+  const pageTitle = encodeURIComponent(document.title);
+
+  const shareLinks = {
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${currentURL}`,
+    twitt: `https://twitter.com/intent/tweet?url=${currentURL}&text=${pageTitle}`,
+    whatapp: `https://api.whatsapp.com/send?text=${pageTitle}%20${currentURL}`,
+    telegram: `https://t.me/share/url?url=${currentURL}&text=${pageTitle}`,
+    mail: `mailto:?subject=${pageTitle}&body=${currentURL}`
+  };
+
+  document.querySelectorAll(".shareIcon").forEach(icon => {
+    icon.addEventListener("click", e => {
+      e.preventDefault();
+      const classes = icon.classList;
+      let network = null;
+
+      // تشخیص نوع شبکه
+      for (let key in shareLinks) {
+        if (classes.contains(key)) {
+          network = key;
+          break;
+        }
+      }
+
+      // اگر شبکه معتبر بود، باز کن
+      if (network && shareLinks[network]) {
+        window.open(
+          shareLinks[network],
+          "_blank",
+          "noopener,noreferrer,width=600,height=500"
+        );
+      }
+    });
+  });
+});
+
 // ____________________________
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('.visa-form-cn');
+  const grid = document.querySelector('.grid.grid-cols-4');
+  const input = form ? form.querySelector('input[type="text"]') : null;
+  const NOT_FOUND_ID = 'visa-not-found-message';
+
+  if (!form || !grid || !input) return; // جلوگیری از ارور در صفحات دیگر
+
+  const removeNotFound = () => {
+    const msg = document.getElementById(NOT_FOUND_ID);
+    if (msg) msg.remove();
+  };
+
+  const showNotFoundMessage = () => {
+    removeNotFound();
+    const msg = document.createElement('div');
+    msg.id = NOT_FOUND_ID;
+    msg.className = 'col-span-4 text-center py-5 font-semibold text-[#444] bg-[#FFF8E1] rounded-xl';
+    msg.textContent = 'هیچ موردی یافت نشد.';
+    grid.insertAdjacentElement('afterend', msg);
+  };
+
+  const getCardTitle = (card) => {
+    const title = card.querySelector('.title-el')?.textContent?.trim();
+    const country = card.querySelector('.county-name')?.textContent?.trim();
+    return (title || country || '').toLowerCase();
+  };
+
+  const filterCards = (query) => {
+    const cards = grid.querySelectorAll('.visa_card');
+    const q = query.trim().toLowerCase();
+    let visibleCount = 0;
+    removeNotFound();
+
+    cards.forEach((card) => {
+      const title = getCardTitle(card);
+      if (!q || title.includes(q)) {
+        card.style.display = '';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    if (visibleCount === 0) showNotFoundMessage();
+  };
+
+  // اجرای فیلتر در لحظه تایپ (real-time)
+  input.addEventListener('input', (e) => filterCards(e.target.value));
+
+  // حذف رفتار پیش‌فرض سابمیت فرم
+  form.addEventListener('submit', (e) => e.preventDefault());
+});
+
+
 // ____________________________
 // ____________________________
 // ____________________________

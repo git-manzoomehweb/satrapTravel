@@ -82,7 +82,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover" />
     <title>[##cms.seo.title|(لیست تور های ساتراپ تراول)##]</title>
-    <meta name="description" content="[##cms.seo.description|(شرکت خدمات مسافرت هوایی و گردشگری  مبین مسافر ملل)##]" />
+    <meta name="description" content="[##cms.seo.description|(شرکت خدمات مسافرت هوایی و گردشگری  ساتراپ تراول)##]" />
     <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
         <member type="list" name="list" request="taglist" preview=""></member>
     </basis>
@@ -771,6 +771,7 @@
                                     <div class="swiper-wrapper">
                                         @child
                                     </div>
+                                    <div class="swiper-scrollbar"></div>
                                 </layout>
                                 <face>
                                     <a href="@db.last-minute-offer.link	"
@@ -865,7 +866,7 @@
                     </div>
                 </div>
                 <div class="flex  flex-col justify-center items-center my-[50px] gap-8">
-                    <div class="aid-content flex flex-col gap-3  خرید بلیط هواپیما overflow-hidden w-full ">
+                    <div class="max-h-[500px] aid-content  flex flex-col gap-3  خرید بلیط هواپیما overflow-hidden w-full ">
                         <basis core="print" datamembername="db.aid-text">
                             <face filter="TypeID=129">
                                 <div class="text-sm text-zinc-900 text-justify">@largetext</div>
