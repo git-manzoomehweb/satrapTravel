@@ -1,348 +1,330 @@
-<basis
-  core="dbsource"
-  source="media"
-  lid="1"
-  name="db"
-  usedforid="[##cms.query.id##]"
-  sourcemid="article"
->
-  <member type="list" name="gallery" format="4" order="ord"></member>
-</basis>
-<basis core='dbsource' name='captcha' source='trust_login'>
-    <member name='code' type='scalar' request='captcha'></member>
-</basis>
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.nid|(0)##]">
-    <member name="news" type="list" link="article.bc" propertyid="7244,7248,7249" perpage="3" size="420x248"
-        typeid="159" order="ord" />
-</basis>
-<basis core="dbsource" source="userbehavior" name="db" usedforid="[##cms.query.id##]">
-    <member name="comment" type="list" order="ord" request="listcomment" />
-</basis>
-<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.id##]">
-    <member request="json-ld" type="scalar" name="json" />
-    <member name="view" type="view" />
-    <member name="related-article" type="list" blgid="222" size="136x136" link="article.bc" propertyid="7244,7248,7249"
-        perpage="20" typeid="159" order="ord" />
-    <member name="data" type="view" request="rdfa" />
-</basis>
 <!DOCTYPE html>
-<html lang="fa">
+<html>
 
 <head>
+    <title> فرم مشخصات فردی چین </title>
+    <meta name="description" content="آیسا سفر قرن" />
+    <meta name=”enamad” content=”499917” />
+    <meta name="samandehi" content="961964004" />
     <meta charset="UTF-8">
-    <title>[##cms.seo.title|(نوآوران پرواز کویر - بابانوروز)##]</title>
-    <meta name="description" content="[##cms.seo.description|(نوآوران پرواز کویر - بابانوروز)##]">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
-        <member type="list" name="list" request="taglist" preview=""></member>
-    </basis>
-    <basis core="print" datamembername="tag.list">
-        <face filter="key='canonical'">
-            <link rel="canonical" href="@value" />
-        </face>
-        <face>
-            <meta property="@key" content="@value" />
-        </face>
-    </basis>
+    <meta name="author" content="BasisCore">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="apple-touch-icon" href="[##cms.cms.cdn##]/images/mob-icon.png" />
+    <link rel="shortcut icon" sizes="80x80" href="[##cms.cms.cdn##]/images/mob-icon.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="apple-touch-icon" href="[##cms.cms.cdn##]/images/custom_icon.png" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="theme-color" content="#FCA30E" />
-    <link rel="manifest" href="homescreen-manifest.inc">
-    <link rel="stylesheet" href="[##cms.cms.cdn##]/css/babanowrouz.ui.min.css">
-    <basis core="call" file="analytics-head.inc" />
-    <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]" />
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "tuj0n4fhq3");
-</script>
+    <meta name="mobile-web-app-capable" content="yes" />
+    <!----CSS LIBRARY---->
+    <link href="https://cdn.basiscore.net/basisfly.com/css/reservation_font_awesome.css" type="text/css"
+        rel="stylesheet" />
+    <link href="[##cms.cms.cdn##]/css/style_tem.css" type="text/css" rel="stylesheet" />
+    <script src="https://cdn.basiscore.net/basisfly.com/js/reservation_js_library.js" type="text/javascript"></script>
+
+    <!----JS LIBRARY---->
+
+    <style>
+        /* free form */
+        .free-form-container {
+            direction: rtl;
+            font-size: 13px
+        }
+
+        .free-form-container input[type="checkbox"] {
+            margin-left: 0.5em;
+            width: 15px;
+            height: 15px;
+            border: initial;
+            appearance: auto
+        }
+
+        .free-form-container ul li p {
+            display: inline-block
+        }
+
+        .free-form-container ul li span {
+            margin-left: 0.5em
+        }
+
+        .data-body-btn {
+            font-family: 'IRANSansWeb';
+            border: none;
+            background-color: #058cbd !important;
+            color: #fff !important;
+            font-size: 14px;
+            border-radius: 5px;
+            padding: 0.2em 0.5em;
+            cursor: pointer
+        }
+
+        .data-body-btn:hover {
+            background-color: #00aeef !important
+        }
+
+        .free-form-content {
+            margin: 2em 0;
+            font-size: 14px;
+            line-height: 3em;
+        }
+
+        .validate-alert {
+            color: #f42e36 !important;
+            font-size: 13px
+        }
+
+        #china-form {
+            margin-bottom: 2em;
+        }
+
+        #accept-rules {
+            appearance: auto !important;
+            -webkit-appearance: checkbox !important;
+            width: 16px !important;
+            height: 16px !important;
+            margin: 0 4px 0 0;
+            position: relative;
+            opacity: 1 !important;
+            display: inline-block !important;
+            accent-color: #00aeef !important;
+        }
+
+        _textarea {
+            resize: none !important;
+        }
+
+        .china-form-1 [data-bc-section-title] {
+            display: none !important;
+        }
+
+        .china-form-1 [data-bc-section] {
+            margin-bottom: 0px !important;
+            padding: 0px !important;
+            border: none !important;
+        }
+
+        .china-form-1 {
+            position: relative;
+        }
+
+        .confirm-form {
+            appearance: auto !important;
+            -webkit-appearance: checkbox !important;
+            width: 16px !important;
+            height: 16px !important;
+            margin: 0 4px 0 0;
+            position: relative;
+            opacity: 1 !important;
+            display: inline-block !important;
+        }
+
+        .data-body-btn {
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        @media (min-width: 1024px) {
+            .data-body-btn {
+                position: absolute;
+                margin-bottom: 0 !important;
+                width: fit-content !important;
+                /* left: 0; */
+                bottom: 23px;
+                right: 310px;
+            }
+
+            .message-api {
+                position: absolute;
+                bottom: 0;
+
+            }
+        }
+
+        /* free form */
+    </style>
 </head>
 
-<body class="relative" onload="loadContentArticlePage()">
-    <basis core="call" file="header.inc" pageindex="[##cms.cms.pageindex##]" />
-    <main class="dir-rtl">
-        <div class="h-12 w-full bg-primary-600"> </div>
-        <section class="max-w-7xl mx-auto mt-5 w-95per">
-            <figure class="relative overflow-hidden h-538px rounded-xl ">
-                <basis core="print" datamembername="db.gallery">
-                    <face filter="ord in(1)">
-                        <img loading="lazy" class="w-full h-538px rounded-xl object-cover " loading="lazy"
-                            src="@largeIMG" width="1280" height="538" alt="@name">
-
-                    </face>
-                </basis>
+<body>
+    <main>
+        <basis core="call" file="header.inc" />
+        <section class="content">
+            <div class="items-container">
+                <div class="bc-main china-form-1">
+                    <h1 class="text-center">چین</h1>
 
 
-                <basis core="print" datamembername="db.view">
+                    <basis core="schema" run="atclient"
+                        schemaurl="/schema/domainform/595B6248-ADBC-411A-8C13-5FAC984785F5/F816A7C1-D5B1-44CD-BDB7-E775F8DC20E5/fa/فرم-مشخصات-فردی-چین"
+                        displaymode="new" button="[data-btn-upload]" resultsourceid="upload.data">
+                    </basis>
+                    <basis core="api" if="{##cms.upload.run|(false)##}" run="atclient"
+                        url="/schema/domainform/595B6248-ADBC-411A-8C13-5FAC984785F5/fa/editobject" method="post"
+                        body="object_edit={##cms.upload.value##}&captcha={##cms.upload.captcha##}&captchaid={##cms.upload.captchaid##}"
+                        content-type="application/x-www-form-urlencoded" triggers='cms.upload'
+                        OnProcessed="OnProcessedEditObject">
+                    </basis>
 
-                    <face filter="TypeID in(150)">
-                        <figcaption
-                            class="bg-gradient-to-t from-black to-transparent h-28 absolute bottom-0 left-0 right-0 px-12 pt-5">
-                            <h1 class="text-white text-4xl font-bold">@text </h1>
+                    <div dir="rtl" class="free-form-content">
 
-                        </figcaption>
-                    </face>
-                </basis>
-
-            </figure>
-        </section>
-        <div class="max-w-7xl mx-auto flex mt-5 dir-rtl w-95per">
-            <div class="w-8/12">
-                <basis core="print" datamembername="db.view">
-                    <layout>
-                        <section class="text-contents text-justify w-95per ml-auto ">@child </section>
-                    </layout>
-                    <face filter="TypeID in(150)">
-                        <h2 id="@valueID" class="text-3xl font-danabold mt-5 mb-2">@text</h2>
-                    </face>
-                    <face filter="TypeID in(129)">
-                        <div class="font-danaregular text-xl">@largetext</div>
-                    </face>
-                    <face filter="TypeID in(250)">
-                        <h2 id="@valueID" class="text-3xl font-danabold mt-5 mb-2">@text</h2>
-                        <div class="font-danaregular text-xl">@largetext</div>
-                    </face>
-                </basis>
-                <section class="comment-tour-details article-comment-main wide w-full mt-9">
-                    <div class="comment-tour-container flex gap-x-3">
-                        <h3 onclick="activeTebComment(this , 'info_submit_comment')"
-                            class="comment-tour-icon comment-tab-title inline-block text-neutralcolor-500 rounded-32px font-danaregular text-base border border-neutralcolor-500 h-12 leading-48px px-4 hover:border-primary-400 hover:bg-primary-100 hover:text-neutralcolor-700 cursor-pointer">
-                            ثبت دیدگاه </h3>
-                        <h3 onclick="activeTebComment(this , 'opinion-info-box')"
-                            class="comment-tour-icon comment-tab-title inline-block text-neutralcolor-500 rounded-32px font-danaregular text-base border border-neutralcolor-500 h-12 leading-48px px-4 hover:border-primary-400 hover:bg-primary-100 hover:text-neutralcolor-700 cursor-pointer">
-                            نظرات کاربران </h3>
-                    </div>
-                    <div class="comment-box">
-                        <div id="info_submit_comment" class="info_submit_comment comment-boxes">
-                            <div id="OpinioUser-box">
-                                <form id="opinionForm" method="post" action="/OpinionAction.bc"
-                                    onsubmit="SubmitOpinionForm(this , event)">
-                                    <div class="user-info-comment">
-                                        <div class="flname"><input
-                                                class="bg-neutralcolor-100 rounded-xl w-full block leading-60px px-3 text-sm font-danaregular my-3 focus:border-primary-400 focus:outline-primary-400"
-                                                name="Username" placeholder="نام و نام خانوادگی" type="text" required>
-                                        </div>
-                                        <div class="phone"><input
-                                                class="bg-neutralcolor-100 rounded-xl w-full block leading-60px px-3 text-sm font-danaregular my-3 focus:border-primary-400 focus:outline-primary-400"
-                                                name="_root.Phone" placeholder="شماره تماس" type="text"></div>
-                                    </div>
-                                    <div class="comment">
-                                        <_textarea
-                                            class="bg-neutralcolor-100 rounded-xl w-full block leading-60px px-3 text-sm font-danaregular my-3 focus:border-primary-400 focus:outline-primary-400"
-                                            name="OpinionMessage" placeholder="متن دیدگاه خود را وارد کنید" required>
-                                        </_textarea>
-                                    </div>
-                                    <div class="captcha-container flex justify-between items-center">
-                                        <div class="SecurityCodeRight w-1/3"><input
-                                                class="bg-neutralcolor-100 rounded-xl w-full leading-60px px-3 text-sm font-danaregular focus:border-primary-400 focus:outline-primary-400"
-                                                name="Captcha" placeholder="کد امنیتی" type="text" required></div>
-                                        <div class="SecurityCodeLeft flex gap-x-3 items-center w-1/3"><span
-                                                class="load-captcha"><img class="captchaa"
-                                                    src="/[##captcha.code.captcha##]" alt="captcha code" width="80"
-                                                    height="40" /><input id="Captchaid" name="Captchaid"
-                                                    value="[##captcha.code.captcha##]" type="hidden" /></span><svg
-                                                onclick="refresh_captcha(this,event)" class="cursor-pointer" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M13.7857 6L14.5807 8.00215C13.8273 7.57761 12.9442 7.33333 12 7.33333C9.23858 7.33333 7 9.42267 7 12C7 12.4149 7.058 12.8171 7.16686 13.2M10.2143 18L9.41931 15.9978C10.1727 16.4224 11.0558 16.6667 12 16.6667C14.7614 16.6667 17 14.5773 17 12C17 11.5851 16.942 11.1829 16.8331 10.8"
-                                                    stroke="#e7b542" stroke-width="1.5" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <circle cx="12" cy="12" r="10" stroke="#e7b542" stroke-width="1.5" />
-                                            </svg></div>
-                                        <div class="submit-comment "><input
-                                                class="bg-primary-600 hover:bg-primary-700 rounded-3xl w-full block leading-48px min-w-32 px-3 text-sm font-danaregular my-3"
-                                                name="OpinionSubmit" id="OpinionSubmit" value="ثبت دیدگاه"
-                                                type="submit"></div>
-                                        <div><input name="productid" value="[##cms.query.id##]" type="hidden"><input
-                                                name="mid" value="1" type="hidden"></div>
-                                    </div>
-                                    <div id="ResultOpinion"></div>
-                                </form>
-                            </div>
+                        <div class="my-5">
+                            <input type="checkbox" class="confirm-form" />
+                            در صورتی که دعوت نامه از سوی مسافر باشد تمام مسئولیت دعوت نامه بر عھده مسافر میباشد و درصورت
+                            ایجاد ھرگونه ایراد فقط ھزینه صندوق سفارت عودت داده میشود
                         </div>
-                        <div id="opinion-info-box" class="opinion-info-box comment-boxes">
-                            <div id="info_comment" class="info_comment">
-                                <basis core="tree" datamembername="db.comment" idcol="id" parentidcol="parentid"
-                                    nullvalue="0">
-                                    <layout>
-                                        <div class="user-opinion-txt-box">@Child</div>
-                                    </layout>
-                                    <face level="1">
-                                        <div class="opinionRow my-3 ">
-                                            <div
-                                                class="user-opinion-txt bg-primary-50 text-sm rounded-xl px-3 py-6 my-3">
-                                                <div class="opinion-info flex justify-between"><span
-                                                        class="username-opinion font-danabold">@username</span>
-                                                    <div class="flex "><span
-                                                            class="createdate-opinion text-neutralcolor-800 text-sm mx-2 font-danaregular">@createdate</span><button
-                                                            class="font-danaregular"
-                                                            onclick="reactionSubmit('@id' , 'like')">👍
-                                                            @like</button><button class="font-danaregular"
-                                                            onclick="reactionSubmit('@id' , 'dislike')">👎
-                                                            @dislike</button></div>
+
+
+                        <div class="validate-alert unvisible">لطفا
+                            قوانین و مقررات را تایید فرمایید</div>
+                        <div id="captchaContainer" class="captchaContainerclass captcha-sefaresh"
+                            data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
+                            data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
+                            <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                                triggers="captcha.refresh">
+                                <member name="code1" type="scalar" request="captcha"></member>
+                            </basis>
+                            <div><span>لطفا قبل از ارسال کد امنیتی را
+                                    وارد نمایید</span></div>
+                            <basis datamembername="captcha.code1" core="print" run="atclient"
+                                OnRendered="captchaRendered">
+                                <face>
+                                    <script type="text/template">
+                                            <div style="display:flex">
+                                                <div class="">
+                                                    <input type="text" class="contactUsInput codeinputm" name="captcha" maxlength="4" />
+                                                    <input type="hidden" name="captchaid" value="@captcha@" />
                                                 </div>
-                                                <p class="mt-4 font-danaregular text-sm">@comment</p>
-                                            </div>
-                                            <div class="replyCommentTxt">@Child</div>
-                                            <div class="replyComment Login-options my-3 text-left"
-                                                onclick="Reply_Comment(this)"><span
-                                                    class="text-primary-800 cursor-pointer hover:text-primary-500 text-base font-danabold px-3 border border-primary-300 rounded-lg mt-3">پاسخ
-                                                    به نظر</span></div>
-                                            <div class="replyCommentForm hidden">
-                                                <form action="ReplyComment.bc" method="post"
-                                                    onsubmit="send_Reply(this , event)"><input
-                                                        class="reply-title bg-neutralcolor-100 rounded-xl w-full block leading-60px px-3 text-sm font-danaregular my-3 focus:border-primary-400 focus:outline-primary-400"
-                                                        type="hidden" name="username" value="">
-                                                    <_textarea
-                                                        class="bg-neutralcolor-100 rounded-xl w-full block leading-60px px-3 text-sm font-danaregular my-3 focus:border-primary-400 focus:outline-primary-400"
-                                                        placeholder="پاسخ خود را تایپ کنید..." name="ReplyComment"
-                                                        required></_textarea><input type="hidden" name="parentid"
-                                                        value="@id"><input type="hidden" name="replyProductid"
-                                                        value="[##cms.query.id##]"><input name="mid" value="1"
-                                                        type="hidden"><input
-                                                        class="bg-primary-600 hover:bg-primary-700 rounded-3xl w-full block leading-48px min-w-32 px-3 text-sm font-danaregular my-3"
-                                                        type="submit" value="ثبت">
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </face>
-                                    <face level="2">
-                                        <div
-                                            class="opinionRowReply bg-primary-50 text-sm rounded-xl px-3 py-6 my-3 w-95per mr-auto">
-                                            <div class="user-opinion-txt">
-                                                <div class="opinion-info-reply flex justify-between"><span
-                                                        class="support-icon text-neutralcolor-800 text-sm mx-2 font-danabold">@username</span>
-                                                    <div class="flex "><span
-                                                            class="createdate-opinion text-neutralcolor-800 text-sm mx-2 font-danaregular">@createdate</span><button
-                                                            class="font-danaregular"
-                                                            onclick="reactionSubmit('@id' , 'like')">👍
-                                                            @like</button><button class="font-danaregular"
-                                                            onclick="reactionSubmit('@id' , 'dislike')">👎
-                                                            @dislike</button></div>
+                                                <div>
+                                                    <svg class="cursor-pointer" width="35" height="25" onclick="refreshCaptcha()" viewBox="0 0 16 17" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M13.6498 3.34999C12.0198 1.71999 9.70978 0.779992 7.16978 1.03999C3.49978 1.40999 0.479777 4.38999 0.0697772 8.05999C-0.480223 12.91 3.26978 17 7.99978 17C11.1898 17 13.9298 15.13 15.2098 12.44C15.5298 11.77 15.0498 11 14.3098 11C13.9398 11 13.5898 11.2 13.4298 11.53C12.2998 13.96 9.58978 15.5 6.62978 14.84C4.40978 14.35 2.61978 12.54 2.14978 10.32C1.30978 6.43999 4.25978 2.99999 7.99978 2.99999C9.65978 2.99999 11.1398 3.68999 12.2198 4.77999L10.7098 6.28999C10.0798 6.91999 10.5198 7.99999 11.4098 7.99999H14.9998C15.5498 7.99999 15.9998 7.54999 15.9998 6.99999V3.40999C15.9998 2.51999 14.9198 2.06999 14.2898 2.69999L13.6498 3.34999Z"
+                                                        fill="#000000" />
+                                                </svg>
+                                                <img src="/@captcha@" width="88" height="35" />
                                                 </div>
-                                                <p class="mt-4 font-danaregular text-sm">@comment</p>
+                                                
                                             </div>
-                                            <div class="replyCommentTxt my-4">@Child</div>
-                                        </div>
-                                    </face>
-                                </basis>
-                            </div>
+                                           
+                                       
+                                        </script>
+                                </face>
+                            </basis>
                         </div>
                     </div>
-                    <div id="popuparticle" class="popup hidden">
-                        <div
-                            class="fixed z-50 left-0 right-0 bottom-0 top-0 w-screen h-screen overflow-auto bg-black/40 flex justify-center items-center">
-                            <div
-                                class="popup-content bg-white rounded-xl p-5 border border-solid border-primary-600 w-2/3 m-auto">
-                                <span id="closePopuparticle" class="close">×</span>
-                                <div id="popupMessage" class="font-danaregular"></div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                    <basis core="callback" run="atclient" method="uploadDocument" if="{##cms.run.value|(false)##}"
+                        triggers="upload.data"></basis>
+                    <div class="text-right"> <button class="data-body-btn" onclick="checkConfirme()" type="button"
+                            data-btn-upload>
+                            <span>تایید و ارسال </span>
+                        </button></div>
+                    <div class="message-api text-center font_20 font-weight"></div>
+                    <div class="clr"></div>
+                </div>
+
             </div>
-            <aside class="w-4/12">
-                <basis core="print" datamembername="db.view">
-                    <layout>
-                        <div class="w-95per mr-auto sticky top-0">
-                            <div class="border-b-2 border-primary-600 w-full mb-3">
-                                <h2 class="h-12 w-fit px-4 leading-48px bg-primary-600 text-sm font-danaregular">دسترسی
-                                    های سریع </h2>
-                            </div>
-                            <div
-                                class="flex flex-col gap-y-5 text-sm font-danaregular bg-neutralcolor-100 rounded-14px p-4">
-                                <ul>@child </ul>
-                            </div>
-                        </div>
-                    </layout>
-                    <face filter="TypeID in(150 , 250)">
-                        <li><a href="#@valueID" class="leading-8"><svg class="inline-block ml-2" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M17.5999 14.79C17.5409 14.434 17.6599 14.071 17.9189 13.82L21.6589 10.28C21.9669 9.991 22.0799 9.551 21.9489 9.15C21.8099 8.75 21.4589 8.46 21.0389 8.4L16.0689 7.679C15.7099 7.624 15.3989 7.397 15.2389 7.07L13.0199 2.6C12.8469 2.264 12.5159 2.039 12.1399 2H11.7189L11.5489 2.07L11.4399 2.11C11.3799 2.145 11.3259 2.188 11.2789 2.24L11.1889 2.31C11.1079 2.388 11.0409 2.48 10.9889 2.58L8.79888 7.07C8.62888 7.41 8.29688 7.64 7.91888 7.679L2.94888 8.4C2.53588 8.465 2.19388 8.754 2.05988 9.15C1.92188 9.547 2.02688 9.987 2.32888 10.28L5.93988 13.78C6.19888 14.035 6.31788 14.4 6.25888 14.759L5.36888 19.679C5.27188 20.274 5.66688 20.838 6.25888 20.95C6.50188 20.989 6.74988 20.95 6.96888 20.84L11.3989 18.519C11.4829 18.473 11.5749 18.443 11.6689 18.429H11.9399C12.1149 18.434 12.2859 18.478 12.4399 18.56L16.8689 20.87C17.2419 21.07 17.6969 21.04 18.0389 20.79C18.3879 20.549 18.5639 20.127 18.4889 19.71L17.5999 14.79Z"
-                                        fill="#FDB713" />
-                                </svg>@text</a></li>
-                    </face>
-                </basis>
-                <basis core="list" datamembername="db.related-article">
-                    <layout>
-                        <div class="w-95per mr-auto mt-5">
-                            <div class="border-b-2 border-primary-600 w-full mb-3">
-                                <h2 class="h-12 w-fit px-4 leading-48px bg-primary-600 text-sm font-danaregular">خواندنی
-                                    ها</h2>
-                            </div>
-                            <div class="flex flex-col gap-y-3">@child </div>
-                        </div>
-                    </layout>
-                    <face filter="link is null">
-                        <article class="w-403px max-xl:w-full h-136px rounded-xl hover:shadow-lg"><a
-                                href="/article.bc?lid=1&id=@id" class="w-full h-full flex justify-between ">
-                                <figure class="w-136px h-136px rounded-xl"><img loading="lazy"
-                                        class="w-136px h-136px rounded-xl object-cover"
-                                        src="[##cms.cms.cdn##]/@00136X00136prp" width="136" height="136" alt="@title">
-                                </figure>
-                                <div class="w-article-side px-4">
-                                    <h2 class="text-base font-danaregular my-2 line-clamp-1">@title</h2>
-                                    <div class="text-sm font-danaregular text-justify line-clamp-3">@prp_7244 </div>
-                                </div>
-                            </a></article>
-                    </face>
-                    <face>
-                        <article class="w-403px max-xl:w-full h-136px rounded-xl hover:shadow-lg"><a href="/@link"
-                                class="w-full h-full flex justify-between ">
-                                <figure class="w-136px h-136px rounded-xl"><img loading="lazy"
-                                        class="w-136px h-136px rounded-xl object-cover"
-                                        src="[##cms.cms.cdn##]/@00136X00136prp" width="136" height="136" alt="@title">
-                                </figure>
-                                <div class="w-article-side px-4">
-                                    <h2 class="text-base font-danaregular my-2 line-clamp-1">@title</h2>
-                                    <div class="text-sm font-danaregular text-justify line-clamp-3">@prp_7244 </div>
-                                </div>
-                            </a></article>
-                    </face>
-                </basis>
-            </aside>
-        </div>
-        <basis core="list" datamembername="db.news">
-            <layout>
-                <section class="max-w-7xl mx-auto mt-12 w-95per mb-36">
-                    <h2 class="text-3xl font-danabold text-neutralcolor-950 text-right">مجله و اخبار</h2>
-                    <div class="flex justify-between gap-2 mt-7 font-danaregular">@child </div>
-                </section>
-            </layout>
-            <face filter="link is null">
-                <article class="w-420px h-422px rounded-xl overflow-hidden hover:shadow-md"><a
-                        href="/article.bc?id=@id">
-                        <figure class="rounded-xl overflow-hidden"><img loading="lazy"
-                                class="w-420px h-248px object-cover" src="[##cms.cms.cdn##]/@00420X00248prp" width="420"
-                                height="248" alt="@title"></figure>
-                        <div class="w-95per mx-auto">
-                            <h2 class="line-clamp-1 w-full my-5 text-xl">@title</h2>
-                            <div class="text-sm mt-4 text-justify line-clamp-4 ">@prp_7244</div>
-                        </div>
-                    </a></article>
-            </face>
-            <face>
-                <article class="w-420px h-422px rounded-xl overflow-hidden hover:shadow-md"><a href="/@link">
-                        <figure class="rounded-xl overflow-hidden"><img loading="lazy"
-                                class="w-420px h-248px object-cover" src="[##cms.cms.cdn##]/@00420X00248prp" width="420"
-                                height="248" alt="@title"></figure>
-                        <div class="w-95per mx-auto">
-                            <h2 class="line-clamp-1 w-full my-5 text-xl">@title</h2>
-                            <div class="text-sm mt-4 text-justify line-clamp-4 ">@prp_7244</div>
-                        </div>
-                    </a></article>
-            </face>
-        </basis>
+            </div>
+
+        </section>
+
+        <div class="clr"></div>
+        <basis core="call" file="footer.inc" />
     </main>
-    <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
-    <script type="application/ld+json">[##db.json.Column1##]</script>
+    <script type="text/javascript">
+
+        // document.getElementById("count-of-passengers").onchange = function (element) {
+        //     console.log(element);
+        //     console.log(this.value);
+        //     var countpass = this.value;
+        //     document.querySelector(".count-pass-haj input").value = countpass;
+        // }
+
+        function checkConfirme() {
+            if (document.querySelector(".confirm-form").checked) {
+                document.querySelector(".validate-alert").classList.add("unvisible")
+                $bc.setSource("cms.run", true);
+            } else {
+                document.querySelector(".validate-alert").classList.remove("unvisible")
+            }
+        }
+
+        // function OnRenderForm() {
+
+
+        //     document.querySelector(".departure-text input").value = "تهران";
+        //     document.querySelector(".departure-text input").disabled = true;
+
+        //     document.querySelectorAll('.radio-formatter input[name="radio1"]').forEach(element => {
+        //         if (element.value == "0") {
+        //             element.closest("div").classList.add("unvisible");
+        //         } else {
+        //             element.checked = true;
+
+        //         }
+        //     });
+
+        //     document.querySelectorAll('.hamrah-status input[name="radio2"]').forEach(element => {
+        //         if (element.value == "0") {
+        //             element.closest("div").classList.add("unvisible");
+        //         }
+        //     });
+
+        //     document.querySelector(".hamrah-pass-name").closest("fieldset").classList.add("unvisible");
+        //     document.querySelectorAll('.hamrah-status input[name="radio2"]').forEach(element => {
+        //         element.addEventListener("click", function () {
+
+        //             const selectedRadio = document.querySelector('.hamrah-status input[name="radio2"]:checked');
+
+        //             if (selectedRadio) {
+        //                 if (selectedRadio.value == '1333') {
+        //                     document.querySelector(".hamrah-pass-name").closest("fieldset").classList.remove("unvisible");
+        //                 } else {
+        //                     document.querySelector(".hamrah-pass-name").closest("fieldset").classList.add("unvisible");
+
+        //                 }
+        //             } else {
+        //                 document.querySelector(".hamrah-pass-name").closest("fieldset").classList.add("unvisible");
+
+        //             }
+        //         });
+        //     });
+
+        // }
+
+        function uploadDocument(args) {
+            const captcha = document.querySelector("#captchaContainer input[name='captcha']").value;
+            const captchaid = document.querySelector("#captchaContainer input[name='captchaid']").value;
+            const stringJson = JSON.stringify(args.source?.rows[0]);
+            $bc.setSource("cms.upload", {
+                value: stringJson,
+                captcha: captcha,
+                captchaid: captchaid,
+                run: true
+            });
+        };
+        function refreshCaptcha(e) {
+            $bc.setSource("captcha.refresh", true);
+        };
+        function captchaRendered() {
+            document.querySelector(".contactUsInput").placeholder = "کد امنیتی";
+        }
+        async function OnProcessedEditObject(args) {
+            var response = args.response;
+            var json = await response.json();
+            var errorid = json.errorid;
+            if (errorid == "6") {
+                document.querySelector(".message-api").innerHTML = "درخواست شما با موفقیت ثبت شد";
+                document.querySelector(".message-api").style.color = "#34b343";
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            } else {
+                refreshCaptcha()
+                setTimeout(() => {
+                    document.querySelector(".message-api").innerHTML = "خطایی رخ داده, لطفا مجدد اقدام کنید";
+                    document.querySelector(".message-api").style.color = "#ee2948";
+                }, 2000);
+            }
+
+        }
+    </script>
 </body>
 
 </html>

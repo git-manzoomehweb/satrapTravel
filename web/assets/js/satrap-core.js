@@ -262,9 +262,9 @@ if (document.querySelectorAll(".swiper-ver").length > 0) {
   const swiper = new Swiper(".swiper-ver", {
     direction: "vertical",
     scrollbar: {
-        el: ".swiper-scrollbar",
-        hide: true,
-      },
+      el: ".swiper-scrollbar",
+      hide: true,
+    },
     slidesPerView: 5,
     speed: 750,
     centeredSlides: !1,
@@ -615,6 +615,14 @@ async function RenderFormFooter() {
       .setAttribute("placeholder", "نام و نام خانوادگی");
 }
 // ____________________________
+const titleWrapper = document.querySelectorAll(".title-wrapper");
+if (titleWrapper.length) {
+  titleWrapper.forEach((title) => {
+    if (title.innerText.trim() === "") {
+      title.style.display = "none";
+    }
+  });
+}
 // ____________________________
 // ____________________________
 // ____________________________
@@ -836,8 +844,15 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!seeMoreBtn || !aidContent) return;
 
   let expanded = false;
-
   aidContent.style.transition = "max-height 0.4s ease";
+
+  if (aidContent.scrollHeight <= 500) {
+    seeMoreBtn.style.setProperty("display", "none", "important");
+    aidContent.style.maxHeight = "none";
+    return;
+  } else {
+    aidContent.style.maxHeight = "500px";
+  }
 
   seeMoreBtn.addEventListener("click", () => {
     if (!expanded) {
@@ -851,6 +866,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 // ____________________________
 // ____________________________
 // ____________________________
@@ -2388,11 +2404,11 @@ document.addEventListener("DOMContentLoaded", () => {
     twitt: `https://twitter.com/intent/tweet?url=${currentURL}&text=${pageTitle}`,
     whatapp: `https://api.whatsapp.com/send?text=${pageTitle}%20${currentURL}`,
     telegram: `https://t.me/share/url?url=${currentURL}&text=${pageTitle}`,
-    mail: `mailto:?subject=${pageTitle}&body=${currentURL}`
+    mail: `mailto:?subject=${pageTitle}&body=${currentURL}`,
   };
 
-  document.querySelectorAll(".shareIcon").forEach(icon => {
-    icon.addEventListener("click", e => {
+  document.querySelectorAll(".shareIcon").forEach((icon) => {
+    icon.addEventListener("click", (e) => {
       e.preventDefault();
       const classes = icon.classList;
       let network = null;
@@ -2418,11 +2434,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ____________________________
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('.visa-form-cn');
-  const grid = document.querySelector('.grid.grid-cols-4');
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector(".visa-form-cn");
+  const grid = document.querySelector(".grid.grid-cols-4");
   const input = form ? form.querySelector('input[type="text"]') : null;
-  const NOT_FOUND_ID = 'visa-not-found-message';
+  const NOT_FOUND_ID = "visa-not-found-message";
 
   if (!form || !grid || !input) return; // جلوگیری از ارور در صفحات دیگر
 
@@ -2433,21 +2449,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const showNotFoundMessage = () => {
     removeNotFound();
-    const msg = document.createElement('div');
+    const msg = document.createElement("div");
     msg.id = NOT_FOUND_ID;
-    msg.className = 'col-span-4 text-center py-5 font-semibold text-[#444] bg-[#FFF8E1] rounded-xl';
-    msg.textContent = 'هیچ موردی یافت نشد.';
-    grid.insertAdjacentElement('afterend', msg);
+    msg.className =
+      "col-span-4 text-center py-5 font-semibold text-[#444] bg-[#FFF8E1] rounded-xl";
+    msg.textContent = "هیچ موردی یافت نشد.";
+    grid.insertAdjacentElement("afterend", msg);
   };
 
   const getCardTitle = (card) => {
-    const title = card.querySelector('.title-el')?.textContent?.trim();
-    const country = card.querySelector('.county-name')?.textContent?.trim();
-    return (title || country || '').toLowerCase();
+    const title = card.querySelector(".title-el")?.textContent?.trim();
+    const country = card.querySelector(".county-name")?.textContent?.trim();
+    return (title || country || "").toLowerCase();
   };
 
   const filterCards = (query) => {
-    const cards = grid.querySelectorAll('.visa_card');
+    const cards = grid.querySelectorAll(".visa_card");
     const q = query.trim().toLowerCase();
     let visibleCount = 0;
     removeNotFound();
@@ -2455,10 +2472,10 @@ document.addEventListener('DOMContentLoaded', () => {
     cards.forEach((card) => {
       const title = getCardTitle(card);
       if (!q || title.includes(q)) {
-        card.style.display = '';
+        card.style.display = "";
         visibleCount++;
       } else {
-        card.style.display = 'none';
+        card.style.display = "none";
       }
     });
 
@@ -2466,13 +2483,124 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // اجرای فیلتر در لحظه تایپ (real-time)
-  input.addEventListener('input', (e) => filterCards(e.target.value));
+  input.addEventListener("input", (e) => filterCards(e.target.value));
 
   // حذف رفتار پیش‌فرض سابمیت فرم
-  form.addEventListener('submit', (e) => e.preventDefault());
+  form.addEventListener("submit", (e) => e.preventDefault());
 });
 
+// ____________________________
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector(".modals-container");
+  if (!container) return;
 
+  const style = document.createElement("style");
+  style.textContent = `
+    .image-modal-overlay {
+      position: fixed;
+      inset: 0;
+      backdrop-filter: blur(5px);
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 0;
+      opacity: 0;
+      display:none;
+      transition: opacity 0.3s ease, z-index 0s linear 0.3s;
+    }
+    .image-modal-overlay.show {
+      opacity: 1;
+      z-index: 9999;
+      display:flex;
+      transition: opacity 0.3s ease;
+    }
+    .image-modal {
+      max-width: 85%;
+      max-height: 85%;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+    }
+    .image-modal.show {
+      transform: scale(1);
+    }
+    .image-modal img {
+      width: 500px;
+      object-fit: contain;
+      background: #fff;
+      display: block;
+    }
+  `;
+  document.head.appendChild(style);
+
+  const overlay = document.createElement("div");
+  overlay.className = "image-modal-overlay";
+  overlay.innerHTML = `<div class="image-modal"><img src="" alt=""></div>`;
+  document.body.appendChild(overlay);
+
+  const modal = overlay.querySelector(".image-modal");
+  const modalImg = modal.querySelector("img");
+
+  const openModal = (src, alt) => {
+    modalImg.setAttribute("src", src);
+    modalImg.setAttribute("alt", alt || "");
+    overlay.classList.add("show");
+    modal.classList.add("show");
+  };
+
+  const closeModal = () => {
+    modal.classList.remove("show");
+    overlay.classList.remove("show");
+    setTimeout(() => {
+      modalImg.removeAttribute("src");
+    }, 300);
+  };
+
+  const slides = container.querySelectorAll(".swiper-slide img");
+  slides.forEach((img) => {
+    img.style.cursor = "pointer";
+    img.addEventListener("click", () => {
+      const src = img.getAttribute("src");
+      const alt = img.getAttribute("alt") || "";
+      openModal(src, alt);
+    });
+  });
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overlay.classList.contains("show")) closeModal();
+  });
+});
+
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
 // ____________________________
 // ____________________________
 // ____________________________

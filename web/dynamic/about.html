@@ -1,0 +1,442 @@
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.countid|(2389790)##]">
+    <member name="satrap-information" type="view" propertyid="7246"
+        postsql="SELECT * FROM [db.satrap-information] where TypeID not in(150)" />
+</basis>
+<basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.countid|(2389790)##]"
+    sourcemid="article">
+    <member type="list" name="banner-gallery" format="4" order="ord"></member>
+</basis>
+
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.aid|(2389789)##]">
+    <member name="aid-text" type="view" propertyid="7246" />
+</basis>
+
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.serviceid|(2389791)##]">
+    <member name="satrap-services" type="view" propertyid="7246" />
+</basis>
+
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.tserviceid|(2389793)##]">
+    <member name="article-services" type="view" propertyid="7246"
+        postsql="SELECT * FROM [db.article-services] where TypeID not in(150)" />
+</basis>
+
+<basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.airlineid|(2387764)##]"
+    sourcemid="article">
+    <member type="list" name="gallery-airlines" format="4" order="ord"></member>
+</basis>
+
+<basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.certificateid|(2389804)##]"
+    sourcemid="article">
+    <member type="list" name="gallery-certificates" format="4" order="ord"></member>
+</basis>
+
+
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover" />
+    <title>[##cms.seo.title|( درباره ی ساتراپ تراول)##]</title>
+    <meta name="description" content="[##cms.seo.description|(شرکت خدمات مسافرت هوایی و گردشگری  ساتراپ تراول)##]" />
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <basis core="call" file="pwa.inc" />
+    <basis core="call" file="style.inc" />
+    <link href="[##cms.cms.cdn##]/css/contact-us-form.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
+</head>
+
+<body class="overflow-x-hidden relative">
+    <basis core="call" file="header.inc" />
+
+    <main>
+        <section class="flex banner-list justify-center items-center h-[451px] relative w-full">
+
+            <basis core="list" datamembername="db.banner-gallery">
+                <face filter="ord=1000">
+                    <img src="/@largeIMG" alt="@name" class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+
+                </face>
+            </basis>
+
+            <span class="absolute w-full h-full  bg-[#000000AB] top-0 left-0 z-[1]"></span>
+
+            <div
+                class="px-4  w-full z-[4] lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col gap-[10px] items-center justify-center">
+                <h1 class="typing-demo text-white text-[64px] font-bold">ساتراپ تراول</h1>
+                <basis core="list" datamembername="db.satrap-information">
+                    <layout>
+                        <div class="w-full flex items-center justify-between">
+                            @child
+                        </div>
+                    </layout>
+                    <face>
+                        <div class="h-[156px] flex flex-col justify-center items-center gap-2 !text-white">
+                            <div dir="ltr" class="font-extrabold flex items-center gap-[2px] text-[40px]">
+                                @largetext
+                            </div>
+                            <h2 class="text-xl font-medium">@text</h2>
+                        </div>
+                    </face>
+                </basis>
+
+            </div>
+        </section>
+
+        <section class="w-full flex justify-center relative mt-24">
+            <div
+                class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class="flex bg-white relative items-center gap-3">
+                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
+                        <basis core="list" datamembername="db.aid-text">
+                            <face filter="TypeID=150">
+                                <h2 class="font-bold text-2xl text-zinc-900"> @text </h2>
+
+                            </face>
+                        </basis>
+                        <span class="bullet-1 "></span>
+                    </div>
+                </div>
+                <div class="my-[50px] flex items-center w-full">
+                    <div class="text-zinc-900 text-base text-justify">
+                        <basis core="list" datamembername="db.aid-text">
+                            <face filter="TypeID<>150">@largetext</face>
+                        </basis>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="w-full flex justify-center relative">
+            <div
+                class="px-4 before-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class="flex relative items-center gap-3">
+                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
+                        <h3 class="font-bold text-2xl text-zinc-900"> خدمات ساتراپ </h3>
+                        <span class="bullet-1 "></span>
+                    </div>
+                </div>
+                <div class="w-full my-[50px]">
+                    <div class="w-full border border-[#CDCDCD] flex gap-[34px] rounded-3xl p-[55px]">
+                        <div class="w-1/2 min-h-[634px] flex flex-col justify-between gap-10">
+                            <div class="w-full flex flex-col gap-12">
+                                <p class="font-bold text-2xl text-zinc-900">انواع خدمات ساتراپ</p>
+                                <basis core="list" datamembername="db.satrap-services">
+                                    <face filter="TypeID<>150">
+                                        <div class="text-zinc-900 text-justify">
+                                            @largetext
+                                        </div>
+                                    </face>
+                                </basis>
+
+                            </div>
+                            <div class="w-full  ">
+                                <ul class="w-full h-full grid grid-cols-3 gap-[14px]  ">
+
+                                    <li data-nav="flight" data-id="flight"
+                                        onclick="check_searchHistory('flight'); check_landing('flight')"
+                                        class="box-hover1 h-10 bg-[#F5F9FB] cursor-pointer flex justify-center items-center rounded-xl text-zinc-900 text-center">
+                                        پرواز
+                                    </li>
+                                    <li data-nav="hotel" data-id="hotel"
+                                        onclick="check_searchHistory('hotel'); check_landing('hotel')"
+                                        class="box-hover1 h-10 bg-[#F5F9FB] cursor-pointer flex justify-center items-center rounded-xl text-zinc-900 text-center">
+                                        هتل
+                                    </li>
+                                    <li data-nav="flighthotel" data-id="flighthotel"
+                                        onclick="check_searchHistory('flighthotel'); check_landing('flighthotel')"
+                                        class="box-hover1 h-10 bg-[#F5F9FB] cursor-pointer flex justify-center items-center rounded-xl text-zinc-900 text-center">
+                                        پرواز + هتل
+                                    </li>
+                                    <li data-nav="tour" data-id="tour"
+                                        onclick="check_searchHistory('tour'); check_landing('tour')"
+                                        class="box-hover1 h-10 bg-[#F5F9FB] cursor-pointer flex justify-center items-center rounded-xl text-zinc-900 text-center">
+                                        تور
+                                    </li>
+                                    <li data-nav="insurance" data-id="insurance"
+                                        onclick="check_searchHistory('insurance'); check_landing('insurance')"
+                                        class="box-hover1 h-10 bg-[#F5F9FB] cursor-pointer flex justify-center items-center rounded-xl text-zinc-900 text-center">
+                                        بیمه
+                                    </li>
+
+                                    <li>
+                                        <a href="/visa"
+                                            class="box-hover1 h-10 bg-[#F5F9FB] flex justify-center items-center rounded-xl text-zinc-900 text-center">
+                                            ویزا</a>
+                                    </li>
+                                    <li>
+                                        <a href="/blog"
+                                            class="box-hover1 h-10 bg-[#F5F9FB] flex justify-center items-center rounded-xl text-zinc-900 text-center">مجله
+                                            گردشگری</a>
+                                    </li>
+                                    <li>
+                                        <a href="/tours"
+                                            class="box-hover1 h-10 bg-[#F5F9FB] flex justify-center items-center rounded-xl text-zinc-900 text-center">
+                                            تور ها</a>
+                                    </li>
+                                    <li>
+                                        <a href="/contact-us"
+                                            class="box-hover1 h-10 bg-[#F5F9FB] flex justify-center items-center rounded-xl text-zinc-900 text-center">
+                                            تماس با ما</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <basis core="list" datamembername="db.article-services">
+                            <layout>
+                                <div class="w-1/2 grid  grid-cols-2 gap-4">
+                                    @child
+
+                                </div>
+                            </layout>
+                            <face>
+                                <article
+                                    class="bg-[#F5F9FB] h-[309px] rounded-xl p-6 flex flex-col justify-center items-center gap-3">
+                                    <span
+                                        class="bg-white rounded-full h-[133px] w-[133px] flex justify-center items-center">
+                                        <img loading="lazy" class="soft-animation"
+                                            src="[##cms.cms.cdn##]/images/tserviceid-@RowNumber.png" alt="@text">
+                                    </span>
+                                    <h4 class="text-2xl font-bold text-zinc-900"> @text</h4>
+                                    <div class="text-zinc-900 text-sm text-center">@largetext
+                                    </div>
+                                </article>
+                            </face>
+                        </basis>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="w-full flex justify-center relative">
+            <div
+                class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class="flex relative items-center gap-3">
+                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
+                        <h4 class="font-bold text-2xl text-zinc-900"> نمایندگی های انحصاری ایرلاین (GSA)</h4>
+                        <span class="bullet-1 "></span>
+                    </div>
+                </div>
+                <basis core="print" datamembername="db.gallery-airlines">
+                    <layout>
+                        <div class="my-[70px] w-full">
+                            <div class="!w-full swiper swiper-4">
+                                <div class="swiper-wrapper">@child</div>
+                            </div>
+                        </div>
+                    </layout>
+                    <face>
+                        <div class="swiper-slide !h-[88px] bg-zinc-100 rounded-xl !flex justify-center items-center">
+                            <img loading="lazy" src="/@largeIMG" alt="@name" class="w-[126px]">
+                        </div>
+                    </face>
+                </basis>
+
+            </div>
+        </section>
+        <section class="w-full flex justify-center relative">
+            <div
+                class="px-4 before-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class="flex relative items-center gap-3">
+                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
+                        <h5 class="font-bold text-2xl text-zinc-900"> برند هاي ساتراپ </h5>
+                        <span class="bullet-1 "></span>
+                    </div>
+                </div>
+                <basis core="print" datamembername="db.gallery-certificates">
+                    <layout>
+                        <div class="my-[70px] z-10 w-full">
+                            <div class="!w-full swiper swiper-4 modals-container">
+                                <div class="swiper-wrapper">@child
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                    </layout>
+                    <face filter="ord<5">
+                        <div class="swiper-slide !h-[198px]  rounded-xl !flex justify-center items-center">
+                            <img loading="lazy" src="/@largeIMG" alt="@name"
+                                class="w-full h-full object-cover  rounded-xl">
+                        </div>
+                    </face>
+                </basis>
+
+            </div>
+        </section>
+        <section class="w-full flex justify-center relative">
+            <div
+                class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class="flex relative items-center gap-3">
+                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
+                        <p class="font-bold text-2xl text-zinc-900"> افتخارات ساتراپ </p>
+                        <span class="bullet-1 "></span>
+                    </div>
+                </div>
+                <div class="my-[90px] z-10 flex w-full justify-between items-center">
+                    <article class="h-[287px] w-[213px] flex flex-col justify-between">
+                        <img loading="lazy" class="w-full h-[235px]" src="[##cms.cms.cdn##]/images/tandis.png"
+                            alt="tandis">
+                        <p class="text-sm text-zinc-900">تندیس بهترین آژانس مسافرتی کشور</p>
+                    </article>
+                    <article class="h-[287px] w-[213px] flex flex-col justify-between">
+                        <img loading="lazy" class="w-full h-[235px]" src="[##cms.cms.cdn##]/images/tandis.png"
+                            alt="tandis">
+                        <p class="text-sm text-zinc-900">تندیس بهترین آژانس مسافرتی کشور</p>
+                    </article>
+                    <article class="h-[287px] w-[213px] flex flex-col justify-between">
+                        <img loading="lazy" class="w-full h-[235px]" src="[##cms.cms.cdn##]/images/tandis.png"
+                            alt="tandis">
+                        <p class="text-sm text-zinc-900">تندیس بهترین آژانس مسافرتی کشور</p>
+                    </article>
+                    <article class="h-[287px] w-[213px] flex flex-col justify-between">
+                        <img loading="lazy" class="w-full h-[235px]" src="[##cms.cms.cdn##]/images/tandis.png"
+                            alt="tandis">
+                        <p class="text-sm text-zinc-900">تندیس بهترین آژانس مسافرتی کشور</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="w-full flex justify-center relative">
+            <div
+                class="px-4 before-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class="flex relative items-center gap-3">
+                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
+                        <p class="font-bold text-2xl text-zinc-900"> سیاسیت و کیفیت </p> <span class="bullet-1 "></span>
+                    </div>
+                </div>
+                <div class="w-full my-[60px]">
+                    <div class="text-justify text-zinc-900">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
+                        با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
+                        است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می
+                        باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد،
+                        تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو
+                        در زبان فارسی ایجاد کرد، در این صورت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+                        و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                        لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
+                        می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
+                        طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ
+                        پیشرو در زبان فارسی ایجاد کرد، در اینلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                        چاپ،لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
+                        است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                        تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در
+                        شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها
+                        شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد
+                        کرد، در این صورت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
+                        طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای
+                        شرایط فعلی تکنولوژی مورد نیاز</div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full flex justify-center relative">
+            <div
+                class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class="flex relative items-center gap-3">
+                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
+                        <p class="font-bold text-2xl text-zinc-900"> چشم انداز و ماموریت ها </p>
+                        <span class="bullet-1 "></span>
+                    </div>
+                </div>
+                <div class="my-[60px] z-10 w-full">
+                    <div class="text-justify text-zinc-900">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
+                        با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
+                        است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می
+                        باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد،
+                        تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو
+                        در زبان فارسی ایجاد کرد، در این صورت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+                        و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                        لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
+                        می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
+                        طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ
+                        پیشرو در زبان فارسی ایجاد کرد، در اینلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                        چاپ،لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
+                        است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                        تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در
+                        شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها
+                        شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد
+                        کرد، در این صورت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
+                        طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای
+                        شرایط فعلی تکنولوژی مورد نیاز</div>
+
+                </div>
+            </div>
+        </section>
+        <section class="w-full flex justify-center relative  ">
+            <div class="px-4 relative w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class="before-border last-section-brd-article relative w-full flex flex-col">
+                    <div class="flex  items-center gap-3 ">
+                        <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                                class="w-8 h-8">
+                            <p class="font-bold text-2xl text-zinc-900">ارتباط با کارشناسان </p>
+                            <span class="bullet-1"></span>
+                        </div>
+                    </div>
+                    <div class="my-[50px] z-[4] items-center w-full flex">
+                        <div
+                            class="w-full rounded-2xl overflow-hidden relative flex items-center justify-center h-[143px] px-[35px] py-5">
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/contact-form-image.jpg" alt="contact-us"
+                                class="w-[42%] h-full z-0    absolute left-0 top-0">
+                            <span
+                                class="w-[80px] absolute left-[calc(42%-3px)] z-[3] bg-gradient-to-r from-[#d6d9d8] h-full"></span>
+                            <span
+                                class="w-full h-full rounded-2xl bg-gradient-to-r z-[1] from-[#fff0] to-[#F2F2F2] absolute top-0 left-0 "></span>
+                            <div class="flex z-[5] w-full flex-col h-full justify-between">
+                                <p class="">جهت مشاوره خرید تور با کارشناسان ما در ارتباط باشید</p>
+                                <form class="flex" action="">
+                                    <span>
+                                        <svg class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="group-hover:stroke-primary"
+                                                d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3"
+                                                stroke="#020121" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <circle
+                                                class="group-hover:stroke-primary transition-all duration-300 ease-in-out"
+                                                cx="24" cy="24.5" r="10" stroke="#020121" stroke-width="1.5" />
+                                        </svg>
+                                    </span>
+                                    <button
+                                        class="w-[108px] h-[59px] flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">ارسال</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
+    <basis core="call" file="footer.inc" />
+</body>
+
+
+</html>

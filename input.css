@@ -582,12 +582,12 @@ div.w-\[204px\][content=""] {
 }
 .justify-end .popup-nav:nth-child(2) {
   position: absolute !important;
-  right: -50px !important;
+  right: -70px !important;
   top: 360px !important;
 }
 .justify-end .popup-nav:nth-child(3) {
   position: absolute !important;
-  left: -50px !important;
+  left: -70px !important;
   top: 360px !important;
 }
 .clicker-list .active {
@@ -864,10 +864,10 @@ a.tel.sidebar-box:hover {
     opacity: 1 !important;
     height: 70% !important;
     border-radius: 40px !important;
-    background-color: var(--secondary-600) !important;
+    background-color: var(--secondary-400) !important;
 }
 .swiper-ver  .swiper-scrollbar-drag{
-  background-color: var(--secondary-600) !important;
+  background-color: var(--secondary-400) !important;
   width: 9px !important;
-  left: 2.5px !important;
+  left: 3px !important;
 }

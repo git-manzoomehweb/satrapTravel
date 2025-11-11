@@ -47,49 +47,49 @@
 </head>
 
 <body class="overflow-x-hidden relative">
-     <basis core="call" file="header.inc" />
+    <basis core="call" file="header.inc" />
     <main>
         <section class="flex justify-center items-center h-[348px] relative w-full">
             <basis core="print" datamembername="db.gallery">
                 <face filter="ord=1">
-                <img   src="/@largeIMG" alt="@name"
-                class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+                    <img src="/@largeIMG" alt="@name" class="z-0 absolute top-0 left-0 w-full h-full object-cover">
                 </face>
                 <face filter="ord=1 and largeIMG is null">
-                <img   src="[##cms.cms.cdn##]/images/visa-bg.jpg" alt="@name"
-                class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+                    <img src="[##cms.cms.cdn##]/images/visa-bg.jpg" alt="@name"
+                        class="z-0 absolute top-0 left-0 w-full h-full object-cover">
                 </face>
             </basis>
-          
+
 
             <div
                 class="px-4 w-full h-[186px] border border-[#CDCDCD] lg:px-4 xl:!w-[1280px] xl:!px-0 flex items-center gap-4 p-[34px] bg-white rounded-xl absolute top-[calc(100%-93px)] justify-center">
-                 <basis core="print" datamembername="db.gallery">
+                <basis core="print" datamembername="db.gallery">
                     <face filter="ord=2">
-                    <img  loading="lazy"   src="/@largeIMG" alt="@name" class="w-[118px] h-[118px] rounded-full shadow-flag">
+                        <img loading="lazy" src="/@largeIMG" alt="@name"
+                            class="w-[118px] h-[118px] rounded-full shadow-flag">
 
                     </face>
-                 </basis>
+                </basis>
                 <div class="flex flex-col gap-4">
-                     <basis core="print" datamembername="db.view">
+                    <basis core="print" datamembername="db.view">
                         <face filter="prpID=8470">
-                             <h1 class="font-semibold text-[32px] text-[#191919]"> @text</h1>
+                            <h1 class="font-semibold text-[32px] text-[#191919]"> @text</h1>
                         </face>
-                     </basis>
-                   <basis core="print" datamembername="db.view">
-                    <face filter="prpID=3088128">
-                        <p class="text-[#848484] text-xl">زمان پردازش:
-                         @text
-                        
-                        </p>
-                    </face>
-                   </basis>
-                    
+                    </basis>
+                    <basis core="print" datamembername="db.view">
+                        <face filter="prpID=3088128">
+                            <p class="text-[#848484] text-xl">زمان پردازش:
+                                @text
+
+                            </p>
+                        </face>
+                    </basis>
+
                 </div>
             </div>
 
         </section>
-        
+
 
 
         <section
@@ -97,53 +97,56 @@
             <div class="w-[981px] calculate-h flex flex-col gap-5">
                 <div class="w-full flex flex-col gap-3 bg-[#F5F9FB] p-6 rounded-xl">
                     <h2 class="text-[#3A6871] font-bold text-2xl">کشور اخذ ویزا</h2>
-                      <basis core="print" datamembername="db.view">
+                    <basis core="print" datamembername="db.view">
                         <face filter="prpID=8471">
                             <div class="text-base text-[#3A6871]">@largetext</div>
                         </face>
-                      </basis>
-                    
+                    </basis>
+
                 </div>
                 <div class="w-full grid grid-cols-2 gap-[23px]">
-                     <basis core="print" datamembername="db.view">
+                    <basis core="print" datamembername="db.view">
                         <face filter="prpID=3088128">
-                        <div
-                        class="w-full h-[215px] rounded-[18px] bg-[#F5F9FB] flex flex-col gap-[10px] items-center justify-center">
-                        <img  loading="lazy"   src="[##cms.cms.cdn##]/images/Calendar-v.svg" alt="Calendar" width="55" height="55">
-                        <p class="font-bold text-xl text-[#202020]">زمان پردازش ویزا</p>
-                        <span class="text-[#8F8F8F]">@text    </span>
-                    </div>
+                            <div
+                                class="w-full h-[215px] rounded-[18px] bg-[#F5F9FB] flex flex-col gap-[10px] items-center justify-center">
+                                <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar-v.svg" alt="Calendar"
+                                    width="55" height="55">
+                                <p class="font-bold text-xl text-[#202020]">زمان پردازش ویزا</p>
+                                <span class="text-[#8F8F8F]">@text </span>
+                            </div>
                         </face>
-                     </basis>
-                   
-                      <basis core="print" datamembername="db.view">
+                    </basis>
+
+                    <basis core="print" datamembername="db.view">
                         <face filter="prpID=3088131">
                             <div
-                        class="w-full h-[215px] rounded-[18px] bg-[#F5F9FB] flex flex-col gap-[10px] items-center justify-center">
-                        <img  loading="lazy"   src="[##cms.cms.cdn##]/images/TimeCircle-v.svg" alt="TimeCircle" width="55" height="55">
-                        <p class="font-bold text-xl text-[#202020]">اعتبار ویزا از زمان صدور</p>
-                        <span class="text-[#8F8F8F]">  @text </span>
-                    </div>
+                                class="w-full h-[215px] rounded-[18px] bg-[#F5F9FB] flex flex-col gap-[10px] items-center justify-center">
+                                <img loading="lazy" src="[##cms.cms.cdn##]/images/TimeCircle-v.svg" alt="TimeCircle"
+                                    width="55" height="55">
+                                <p class="font-bold text-xl text-[#202020]">اعتبار ویزا از زمان صدور</p>
+                                <span class="text-[#8F8F8F]"> @text </span>
+                            </div>
                         </face>
-                      </basis>
-                    
+                    </basis>
+
                 </div>
                 <div class="w-full flex flex-col mt-5 gap-[38px]">
                     <div class="flex items-center gap-[18px]">
-                        <img  loading="lazy"   src="[##cms.cms.cdn##]/images/logo-small.png" alt="logo" width="32" height="32" class="w-8 h-8">
-                          <basis core="print" datamembername="db.view">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="logo" width="32"
+                            height="32" class="w-8 h-8">
+                        <basis core="print" datamembername="db.view">
                             <face filter="prpID=8470">
                                 <h2 class="font-bold tetx-[#252525] text-[32px]">
-                                   
+
                                     قیمت ویزای
-                                    
+
                                     @Answer
 
-                                    
-                                    </h2>
+
+                                </h2>
                             </face>
-                          </basis>
-                        
+                        </basis>
+
                     </div>
                     <div class="w-full p-[55px] border-[#CDCDCD] border rounded-xl flex flex-col gap-[47px]">
                         <h3 class="text-[#252525] text-2xl font-semibold">هزینه خدمات ویزا ( بزرگسال)</h3>
@@ -157,23 +160,23 @@
                                 <div class="flex items-center py-6 w-[653px] justify-between mx-auto">
                                     <div class="w-1/2 text-2xl font-semibold tetx-[#252525]">
                                         <basis core="print" datamembername="db.view">
-                            
+
                                             <face filter="prpID=8470">
                                                 @Answer
-                            
+
                                             </face>
                                         </basis>
                                     </div>
                                     <div class="w-1/2 flex justify-end text-2xl font-semibold tetx-[#252525]">
                                         <basis core="print" datamembername="db.view">
-                             
+
                                             <face filter="prpID=3087433">
-                                
+
                                                 @Answer
-                            
+
                                             </face>
                                         </basis>
-                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -186,41 +189,49 @@
 
                 <div class="w-full flex flex-col mt-5 gap-[38px]">
                     <div class="flex items-center gap-[18px]">
-                        <img  loading="lazy"   src="[##cms.cms.cdn##]/images/logo-small.png" alt="logo" width="32" height="32" class="w-8 h-8">
-                        <h2 class="font-bold tetx-[#252525] text-[32px]"> مدارک مورد نیاز برای 
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="logo" width="32"
+                            height="32" class="w-8 h-8">
+                        <h2 class="font-bold tetx-[#252525] text-[32px]"> مدارک مورد نیاز برای
                             <basis core="print" datamembername="db.view">
-                             
-                                            <face filter="prpID=8470">
-                                                @text
-                                            </face>
+
+                                <face filter="prpID=8470">
+                                    @text
+                                </face>
                             </basis>
                         </h2>
                     </div>
                     <div class="w-full p-6 border-[#CDCDCD] border rounded-xl flex flex-col gap-6">
-                       <basis core="print" datamembername="db.document-text">
-                                    <face filter="TypeID=250">
+                        <basis core="print" datamembername="db.document-text">
+                            <else-layout>
+                                <p class="text-xs text-zinc-900">
+                                    مدرکی لحاظ نشده است . برای اطلاعات بیشتر با ما تماس بگیرید
+                                </p>
+                            </else-layout>
+                            <layout>@child</layout>
+                            <face filter="TypeID=250">
 
-                                        <div class="w-full flex gap-6">
-                            <img  loading="lazy"   src="[##cms.cms.cdn##]/images/@text.svg" class="h-16" alt="" width="64" height="64">
-                            <div class="flex flex-col gap-4">
-                                <p class="text-xl font-bold">@text</p>
-                                 
-                                <div class="pr-5 flex flex-col gap-3 before-elm">
-                                    <div class="text-xl text-[#000000]">@largetext</div>
-                                     
+                                <div class="w-full flex gap-6">
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/@text.svg" class="h-16" alt=""
+                                        width="64" height="64">
+                                    <div class="flex flex-col gap-4">
+                                        <p class="text-xl font-bold">@text</p>
+
+                                        <div class="pr-5 flex flex-col gap-3 before-elm">
+                                            <div class="text-xl text-[#000000]">@largetext</div>
+
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                                    </face>
-                                 </basis>
-                        
+                            </face>
+                        </basis>
+
                     </div>
                 </div>
 
                 <div class="flex flex-col w-full gap-6 mt-11 visa-aid">
                     <basis core="print" datamembername="db.aid-text">
                         <face filter="prpID=7243">
-                    
+
                             <h4 class="bg-[#EEF6FF] text-xl font-bold rounded-xl w-full px-4 py-[11px]">@text</h4>
 
                         </face>
@@ -228,76 +239,77 @@
                     <basis core="print" datamembername="db.aid-text">
 
                         <face filter="prpID<>7243">
-                 
-                            <h5 content="@text" class="bg-[#EEF6FF] text-xl font-bold rounded-xl w-full px-4 py-[11px]">@text</h5>
 
-                     
+                            <h5 content="@text" class="bg-[#EEF6FF] text-xl font-bold rounded-xl w-full px-4 py-[11px]">
+                                @text</h5>
+
+
                             <div class="w-full flex flex-col gap-3 text-justify">
-                      
+
                                 @largetext
-                    
+
                             </div>
                         </face>
                     </basis>
-                    
+
                 </div>
 
 
 
-                 <basis core="print" datamembername="db.faq">
+                <basis core="print" datamembername="db.faq">
                     <layout>
                         <div class="w-full flex flex-col gap-4 mt-10 border border-[#CDCDCD] rounded-3xl p-5">
-                    <h5 class="font-bold text-xl">سوالات متداول</h5>
-                    <div class="flex common-questions  flex-col justify-center items-center gap-8">
-                        @child
+                            <h5 class="font-bold text-xl">سوالات متداول</h5>
+                            <div class="flex common-questions  flex-col justify-center items-center gap-8">
+                                @child
 
-                    </div>
-                </div>
+                            </div>
+                        </div>
                     </layout>
-                        <face>
-                            <div class="questions-box w-full cursor-pointer group flex gap-[31px]">
-                                <div class="flex items-center gap-2 w-[109px]">
-                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/user-qs.svg" alt="user-icon">
-                                    <div class="flex flex-col gap-1  ">
-                                        <p class="font-bold text-zinc-900 whitespace-nowrap">سوال ۱</p>
-                                        <span class="text-zinc-400 text-xs">ویزا</span>
-                                    </div>
-
+                    <face>
+                        <div class="questions-box w-full cursor-pointer group flex gap-[31px]">
+                            <div class="flex items-center gap-2 w-[109px]">
+                                <img loading="lazy" src="[##cms.cms.cdn##]/images/user-qs.svg" alt="user-icon">
+                                <div class="flex flex-col gap-1  ">
+                                    <p class="font-bold text-zinc-900 whitespace-nowrap">سوال ۱</p>
+                                    <span class="text-zinc-400 text-xs">ویزا</span>
                                 </div>
-                                <div
-                                    class="w-[calc(100%-160px)] flex flex-col pr-[20px] items-center   border-r border-zinc-200 group-hover:border-secondary-700">
-                                    <div class="w-full flex items-center justify-between">
-                                        <p class="question text-xl font-medium">
 
-                                            @text
-                                        </p>
-                                        <span class="arrow">
-                                            <svg width="33" height="32" viewBox="0 0 33 32" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path class="group-hover:stroke-secondary-700"
-                                                    d="M8.25 12.0001C8.25 12.0001 14.326 20 16.5 20C18.6742 20 24.75 12 24.75 12"
-                                                    stroke="#52525B" stroke-width="1.5" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
+                            </div>
+                            <div
+                                class="w-[calc(100%-160px)] flex flex-col pr-[20px] items-center   border-r border-zinc-200 group-hover:border-secondary-700">
+                                <div class="w-full flex items-center justify-between">
+                                    <p class="question text-xl font-medium">
 
-                                        </span>
-                                    </div>
-                                    <div class="answer text-sm text-zinc-600 h-0 overflow-hidden ">
-                                        <div class="pt-6">
-                                            @largetext
-                                        </div>
+                                        @text
+                                    </p>
+                                    <span class="arrow">
+                                        <svg width="33" height="32" viewBox="0 0 33 32" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path class="group-hover:stroke-secondary-700"
+                                                d="M8.25 12.0001C8.25 12.0001 14.326 20 16.5 20C18.6742 20 24.75 12 24.75 12"
+                                                stroke="#52525B" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+
+                                    </span>
+                                </div>
+                                <div class="answer text-sm text-zinc-600 h-0 overflow-hidden ">
+                                    <div class="pt-6">
+                                        @largetext
                                     </div>
                                 </div>
                             </div>
-                        </face>
-                    </basis>
-                
+                        </div>
+                    </face>
+                </basis>
+
             </div>
             <aside class="w-[274px] set-h h-full relative">
                 <div class="flex flex-col gap-[21px] w-full sticky top-[73px]">
                     <div
                         class="w-full h-[177px] group px-[12px] py-[11px] flex flex-col justify-between items-center border border-[#D7D6D6] rounded-xl">
-                        <img  loading="lazy"   class="transition-all duration-500 ease-in-out group-hover:scale-125"
+                        <img loading="lazy" class="transition-all duration-500 ease-in-out group-hover:scale-125"
                             src="[##cms.cms.cdn##]/images/boarding-pass 1.svg" alt="boarding" width="71" height="71">
                         <a href="/visa-form.bc?id=[##cms.query.id##]"
                             class="w-full transition-all duration-500 ease-in-out group-hover:shadow-xl group-hover:bg-white relative overflow-hidden bg-[#22B4FF] text-white flex justify-center items-center h-[56px] rounded-xl text-lg">
@@ -310,7 +322,8 @@
                     <div
                         class="sidebar-box share-box relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5">
                         <div>
-                            <img  loading="lazy"   src="[##cms.cms.cdn##]/images/Share.svg" alt="share" width="48" height="48">
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/Share.svg" alt="share" width="48"
+                                height="48">
 
                         </div>
                         <span class="shadow-txt text-white font-semibold text-xl">اشتراک گذاری</span>
@@ -400,19 +413,19 @@
                         <span class="shadow-txt text-white font-semibold text-xl">دانلود پکیج</span>
                     </div> -->
 
-                       <basis core="print" datamembername="db.info">
+                    <basis core="print" datamembername="db.info">
                         <face filter="TypeID=240">
                             <a href="tel:@text"
-                        class="sidebar-box tel relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 ">
-                        <div>
-                            <img  loading="lazy"   src="[##cms.cms.cdn##]/images/shadow-tel.svg" alt="phone">
+                                class="sidebar-box tel relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 ">
+                                <div>
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/shadow-tel.svg" alt="phone">
 
-                        </div>
-                        <span class="shadow-txt text-white font-semibold text-xl"> @text</span>
-                    </a>
+                                </div>
+                                <span class="shadow-txt text-white font-semibold text-xl"> @text</span>
+                            </a>
                         </face>
-                       </basis>
-                    
+                    </basis>
+
                 </div>
             </aside>
         </section>
@@ -423,7 +436,8 @@
                 <div class=" last-section-form relative w-full flex flex-col">
                     <div class="flex  items-center gap-3 ">
                         <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
-                            <img  loading="lazy"   src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8 h-8">
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                                class="w-8 h-8">
                             <p class="font-bold text-2xl text-zinc-900"> ارتباط با کارشناسان</p>
                             <span class="bullet-1"></span>
                         </div>
@@ -431,7 +445,7 @@
                     <div class="my-[50px] z-[4] items-center w-full flex">
                         <div
                             class="w-full rounded-2xl overflow-hidden relative flex items-center justify-center h-[143px] px-[35px] py-5">
-                            <img  loading="lazy"   src="[##cms.cms.cdn##]/images/contact-form-image.jpg" alt="contact-us"
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/contact-form-image.jpg" alt="contact-us"
                                 class="w-[42%] h-full z-0    absolute left-0 top-0">
                             <span
                                 class="w-[80px] absolute left-[calc(42%-3px)] z-[3] bg-gradient-to-r from-[#d6d9d8] h-full"></span>
@@ -439,7 +453,7 @@
                                 class="w-full h-full rounded-2xl bg-gradient-to-r z-[1] from-[#fff0] to-[#F2F2F2] absolute top-0 left-0 "></span>
                             <div class="flex z-[5] w-full flex-col h-full justify-between">
                                 <p class="">جهت مشاوره خرید ویزا با کارشناسان ما در ارتباط باشید</p>
-                                 <div class="flex items-center">
+                                <div class="flex items-center">
                                     <div id="contact-form-resize" class="w-full flex flex-col gap-3">
                                         <basis core="schema" run="atclient"
                                             schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
@@ -532,9 +546,9 @@
             </div>
         </section>
     </main>
-      <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
+    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
     <basis core="call" file="footer.inc" />
 </body>
- 
+
 
 </html>
