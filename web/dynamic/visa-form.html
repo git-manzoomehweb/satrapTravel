@@ -451,7 +451,7 @@
             const visaName = document.querySelector('h1').innerText
             document.querySelector('.visa_name textarea').value = visaName
 
-            document.querySelectorAll('[data-bc-question]:not(.Exp_QS):not(.Upload_QS)').forEach(container => {
+            document.querySelectorAll('[data-bc-question]:not(.Upload_QS)').forEach(container => {
                 const titleSpan = container.querySelector('span[data-bc-question-title]');
                 const input = container.querySelector('[data-bc-answer] input[data-bc-text-input]');
 

@@ -30,6 +30,17 @@
     <member type="list" name="gallery-certificates" format="4" order="ord"></member>
 </basis>
 
+<basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.honorsid|(2389803)##]"
+    sourcemid="article">
+    <member type="list" name="gallery-statue" format="4" order="ord"></member>
+</basis>
+
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.policyid|(2389801)##]">
+    <member name="Quality-Policy" type="view" propertyid="7246" />
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.viewid|(2389802 )##]">
+    <member name="viewid" type="view" propertyid="7246" />
+</basis>
 
 <!DOCTYPE html>
 <html dir="rtl" lang="fa">
@@ -267,7 +278,7 @@
                         <div class="my-[70px] z-10 w-full">
                             <div class="!w-full swiper swiper-4 modals-container">
                                 <div class="swiper-wrapper">@child
-                                    
+
                                 </div>
 
                             </div>
@@ -294,28 +305,18 @@
                         <span class="bullet-1 "></span>
                     </div>
                 </div>
-                <div class="my-[90px] z-10 flex w-full justify-between items-center">
-                    <article class="h-[287px] w-[213px] flex flex-col justify-between">
-                        <img loading="lazy" class="w-full h-[235px]" src="[##cms.cms.cdn##]/images/tandis.png"
-                            alt="tandis">
-                        <p class="text-sm text-zinc-900">تندیس بهترین آژانس مسافرتی کشور</p>
-                    </article>
-                    <article class="h-[287px] w-[213px] flex flex-col justify-between">
-                        <img loading="lazy" class="w-full h-[235px]" src="[##cms.cms.cdn##]/images/tandis.png"
-                            alt="tandis">
-                        <p class="text-sm text-zinc-900">تندیس بهترین آژانس مسافرتی کشور</p>
-                    </article>
-                    <article class="h-[287px] w-[213px] flex flex-col justify-between">
-                        <img loading="lazy" class="w-full h-[235px]" src="[##cms.cms.cdn##]/images/tandis.png"
-                            alt="tandis">
-                        <p class="text-sm text-zinc-900">تندیس بهترین آژانس مسافرتی کشور</p>
-                    </article>
-                    <article class="h-[287px] w-[213px] flex flex-col justify-between">
-                        <img loading="lazy" class="w-full h-[235px]" src="[##cms.cms.cdn##]/images/tandis.png"
-                            alt="tandis">
-                        <p class="text-sm text-zinc-900">تندیس بهترین آژانس مسافرتی کشور</p>
-                    </article>
-                </div>
+                <basis core="print" datamembername="db.gallery-statue">
+                    <layout>
+                        <div class="my-[90px] z-10 flex w-full justify-between items-center">@child</div>
+                    </layout>
+                    <face>
+                        <article class="h-[287px] w-[213px] flex flex-col justify-between items-center">
+                            <img loading="lazy" class="w-full h-[235px]" src="/@largeIMG" alt="@name">
+                            <p class="text-sm text-zinc-900"> @name</p>
+                        </article>
+                    </face>
+                </basis>
+
             </div>
         </section>
         <section class="w-full flex justify-center relative">
@@ -328,28 +329,18 @@
                         <p class="font-bold text-2xl text-zinc-900"> سیاسیت و کیفیت </p> <span class="bullet-1 "></span>
                     </div>
                 </div>
-                <div class="w-full my-[60px]">
-                    <div class="text-justify text-zinc-900">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
-                        با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
-                        است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می
-                        باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد،
-                        تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو
-                        در زبان فارسی ایجاد کرد، در این صورت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
-                        و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                        لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
-                        می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
-                        طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ
-                        پیشرو در زبان فارسی ایجاد کرد، در اینلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                        چاپ،لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-                        است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
-                        تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در
-                        شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها
-                        شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد
-                        کرد، در این صورت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
-                        طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای
-                        شرایط فعلی تکنولوژی مورد نیاز</div>
+                <basis core="print" datamembername="db.Quality-Policy">
+                    <layout>
+                        <div class="w-full my-[60px]">
+                            <div class="text-justify text-zinc-900">
+                                @child
+                            </div>
 
-                </div>
+                        </div>
+                    </layout>
+                    <face filter="TypeID<>150">@largetext</face>
+                </basis>
+
             </div>
         </section>
 
@@ -364,28 +355,17 @@
                         <span class="bullet-1 "></span>
                     </div>
                 </div>
-                <div class="my-[60px] z-10 w-full">
-                    <div class="text-justify text-zinc-900">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
-                        با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
-                        است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می
-                        باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد،
-                        تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو
-                        در زبان فارسی ایجاد کرد، در این صورت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
-                        و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                        لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
-                        می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
-                        طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ
-                        پیشرو در زبان فارسی ایجاد کرد، در اینلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                        چاپ،لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-                        است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
-                        تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در
-                        شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها
-                        شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد
-                        کرد، در این صورت لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
-                        طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای
-                        شرایط فعلی تکنولوژی مورد نیاز</div>
+                <basis core="print" datamembername="db.viewid">
+                    <layout>
+                        <div class="w-full my-[60px]">
+                            <div class="text-justify text-zinc-900">
+                                @child
+                            </div>
 
-                </div>
+                        </div>
+                    </layout>
+                    <face filter="TypeID<>150">@largetext</face>
+                </basis>
             </div>
         </section>
         <section class="w-full flex justify-center relative  ">
@@ -410,9 +390,49 @@
                                 class="w-full h-full rounded-2xl bg-gradient-to-r z-[1] from-[#fff0] to-[#F2F2F2] absolute top-0 left-0 "></span>
                             <div class="flex z-[5] w-full flex-col h-full justify-between">
                                 <p class="">جهت مشاوره خرید تور با کارشناسان ما در ارتباط باشید</p>
-                                <form class="flex" action="">
-                                    <span>
-                                        <svg class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49"
+                                <div class="flex items-center">
+                                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
+                                        <basis core="schema" run="atclient"
+                                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
+                                            displaymode="new" button="[data-btn-uploadfooter]"
+                                            resultsourceid="upload.datafooter" OnRendered="RenderFormFooter">
+                                        </basis>
+                                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
+                                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject"
+                                            method="post"
+                                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
+                                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
+                                            OnProcessed="OnProcessedEditObjectFooter">
+                                        </basis>
+                                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
+                                            triggers="upload.datafooter"></basis>
+                                        <div class="captcha-button">
+                                            <div id="captchaContainer"
+                                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
+                                                data-bc-answer-container data-bc-schema-info-multi="0"
+                                                data-bc-schema-info-word="58" data-bc-schema-info-part="1"
+                                                data-bc-schema-info-part-0-type="text">
+                                                <basis core="dbsource" source="trust_login" name="captcha"
+                                                    run="atclient" triggers="captcha.refreshFooter">
+                                                    <member name="code" type="scalar" request="captcha"></member>
+                                                </basis>
+                                                <basis datamembername="captcha.code" core="print" run="atclient"
+                                                    OnRendered="captchaRenderedFooter">
+                                                    <face>
+                                                        <script type="text/template">
+                                    <div class="flex  justify-between ">
+                                        
+                                        <div class="flex sfvgwdcsdhc w-full items-center">
+
+                         <div class="float-right captcha-ctz w-1/2 relative">
+                           
+                            <input id="captcha-ct" type="text" class="contactUsInput codeinputm bg-white rounded-2xl p-3" name="captcha" maxlength="4" placeholder="کد امنیتی "/>
+                            <input type="hidden" name="captchaid" value="@captcha@" />
+                        </div>
+                      <div class="float-right w-1/2 justify-between lg:mt-0 bvgvkek h-fit leading-[65px] px-4 flex items-center gap-2">
+                       <img loading="lazy" src="/@captcha@" width="86" height="59" alt="captcha" />
+                        <span  onclick="refreshCaptchaFooter()">
+                            <svg class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path class="group-hover:stroke-primary"
                                                 d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3"
@@ -422,10 +442,39 @@
                                                 class="group-hover:stroke-primary transition-all duration-300 ease-in-out"
                                                 cx="24" cy="24.5" r="10" stroke="#020121" stroke-width="1.5" />
                                         </svg>
-                                    </span>
-                                    <button
-                                        class="w-[108px] h-[59px] flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">ارسال</button>
-                                </form>
+                        </span>
+                       
+                    </div>
+
+                                                        </div></div>
+                    </script>
+                                                    </face>
+                                                </basis>
+                                                <button type="button" data-btn-uploadfooter
+                                                    class="  data-body-btn w-[108px] h-[59px] flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
+                                                    ارسال
+                                                </button>
+
+                                            </div>
+
+                                            <div
+                                                class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex">
+                                                <div id="ballsWaveG"
+                                                    class="ext-zinc-50 text-base font-normal leading-normal">
+                                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                                                </div>
+                                            </div>
+                                            <div class="message-api absolute text-center text-primary text-xs"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

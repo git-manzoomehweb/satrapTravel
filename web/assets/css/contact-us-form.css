@@ -100,9 +100,14 @@
   color: var(--zinc-900);
   font-size: 20px;
 }
-#visa-form [data-bc-question]:not(.Exp_QS) * {
+#visa-form
+  [data-bc-question]
+  *:not([data-bc-upload-file-list]):not([data-bc-upload-file-item]) {
   width: 100% !important;
   margin: 0 !important;
+}
+#visa-form [data-bc-upload-file-list] [data-bc-upload-file-item] {
+  width: 60px !important;
 }
 #visa-form [data-bc-question]:first-child,
 #visa-form [data-bc-question]:nth-child(2),
@@ -111,6 +116,8 @@
   margin: 0 !important;
 }
 #visa-form [data-bc-question]:nth-child(4),
-#visa-form [data-bc-question]:nth-child(5) {
+#visa-form [data-bc-question]:nth-child(5),
+#visa-form [data-bc-question]:nth-child(6),
+#visa-form [data-bc-question]:nth-child(7) {
   width: 49.5% !important;
 }
