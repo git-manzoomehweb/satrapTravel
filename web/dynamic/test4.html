@@ -1,0 +1,19 @@
+<basis core="print" datamembername="db.dates" run="atclient" onrendered="onrenderedDates">
+    <layout>
+        <script type="text/template">
+            <div class="mb-10"><span class="text-xl">تاریخ تور ها</span>
+            </div>
+        <ul>@child</ul>
+    </script>
+    </layout>
+    <face>
+        <script type="text/template">
+        <li onclick="renderInventoryView(this,@day@,@start.dateid@,@end.dateid@)"
+        class="bg-lightgray text-module-gray-4 text-base rounded-xl flex justify-between p-4 text-center mb-2 cursor-pointer border-2 border-white hover:bg-white hover:border-primary">
+        <span class="start__date" data-date="@start.date@">{{ return await renderWeekDate($data,'start')}}{{ return await renderDayDate($data,'start')}} {{ return await renderMonthDate($data,'start')}}</span>
+        <svg class="mt-4" width="121" height="1" fill="none" viewBox="0 0 121 1" xmlns="http://www.w3.org/2000/svg"><line x1="-4.3711e-8" x2="121" y1=".5" y2=".49999" stroke="#C5C5C5" stroke-dasharray="5 5"/></svg>
+        <span class="end__date" data-date="@end.date@">{{ return await renderWeekDate($data,'end')}}{{ return await renderDayDate($data,'end')}} {{ return await renderMonthDate($data,'end')}}</span>
+    </li>
+    </script>
+    </face>
+</basis>
