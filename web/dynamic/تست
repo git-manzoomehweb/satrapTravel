@@ -1,0 +1,83 @@
+  <basis core="print" datamembername="refresh.executionPlanTypesOrigins"
+                            if="{##refresh.executionPlanTypesOrigins##}" run="atclient"
+                            onrendered="onrenderedExecutionOrigins">
+                            <layout>
+                                <script type="text/template">
+
+                                <div
+                                    class="tourExecution__container__origins w-full flex flex-col gap-[22px] border border-zinc-300 p-[22px] rounded-3xl">
+                                      <div class="mb-10 relative hidden">
+                        <div class="mb-2 text-base">
+                            <p class="ml-1 inline-block origins__city"></p>
+                        </div>
+                        <div class="text-sm">
+                            <span class="origins__start__day"></span><span class="origins__start__weekday mr-2"></span>
+                        </div>
+                </div>
+                                    <h3 class="font-medium text-xl w-full pb-[20px] border-b border-[#D1D1D1]">سفر رفت
+                                    </h3>
+                                    <div class="execution__details w-full">
+                        <div class="execution__details__path execution__details__path__origins w-full">
+                            @child
+                        </div>
+                    </div>
+                                </div>
+                                </script>
+                            </layout>
+                            <face>
+                                <script type="text/template">
+                                    <div class=" w-full flex gap-6">
+                                        <div class="flex flex-col gap-[25px] w-[110px]">
+                                            <div class="flex flex-col gap-1 w-full">
+                                                <p class="font-bold text-[#323232] line-clamp-1 details__city ">@info.origin.city.name@</p>
+                                                <p class="font-bold text-[#323232] __times__start ">@info.departure.time@</p>
+                                                <p class="text-xs text-[#222222]">سه شنبه 19 فروردین</p>
+                                            </div>
+                                            <div class="text-xs text-[#747474]">
+                                                <span class="__times__duration">@info.time@</span> مدت پرواز</div>
+                                            <div class="flex flex-col gap-1 w-full">
+                                                <p class="font-bold text-[#323232] line-clamp-1 details__city">@info.destination.city.name@</p>
+                                                <p class="font-bold text-[#323232] __times__start">@info.arrival.time@</p>
+                                                <p class="text-xs text-[#222222]">سه شنبه 19 فروردین</p>
+                                            </div>
+                                        </div>
+                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/tour-routes.svg"
+                                            class="h-full" alt="tour-routes" width="26" height="195" />
+                                            <div class="flex flex-col gap-6">
+                                                <div class="details__airport flex gap-1 flex-col">
+                                                    <span class="font-medium text-[#323232] text-sm">
+                                                     {{ return await renderRouteType($data,'origin')}}
+                                                    </span>
+                                                    <p class="text-xs text-[#7A7A7A]"> 
+                                                        @info.origin.name@
+                                                    </p>
+                                                </div>
+                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (1).png" alt=""
+                                                    class="h-[26px] w-[90px]" height="26" />
+                                                    <div class="flex items-center gap-6">
+                                                        <div class="flex items-center gap-[6px]">
+                                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/wheel bag.svg"
+                                                                width="16" height="16" alt="wheel-bag" />
+                                                                <span class="text-xs text-[#ADADAD]">بار مجاز:</span>
+                                                                <p class="font-medium text-[#3C3C3C]">@info.luggage@ کیلوگرم</p>
+                                                        </div>
+
+                                                        <div class="flex items-center gap-[6px]">
+                                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/Flight ticket.svg"
+                                                                width="16" height="16" alt="flight-class" />
+                                                                <span class="text-xs text-[#ADADAD]">کلاس نرخی:</span>
+                                                                <div class="font-medium text-[#3C3C3C]">{{ return await renderRouteClass($data)}}</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details__airport  flex gap-1 flex-col">
+                                                        <span class="font-medium text-[#323232] text-sm">
+                                                         {{ return await renderRouteType($data,'destination')}} 
+                                                        </span>
+                                                        <p class="text-xs text-[#7A7A7A]">@info.destination.name@
+                                                        </p>
+                                                    </div>
+                                            </div>
+                                    </div>
+                                </script>
+                            </face>
+                        </basis>

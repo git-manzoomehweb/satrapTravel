@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="[##cms.seo.description##]">
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key='canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <title>[##cms.seo.title##]</title>
+    <basis core="group" if="'[##cms.Host.istemplate|(false)##]' = 'true'">
+        <script src="[##cms.cms.cdn##]/_js/jquery/jquery-3.6.3.min.js" type="text/javascript"></script>
+    </basis>
+    <basis core="call" name="tour-styles.ver.1" file="tour/view/ver.1/tour-styles.ver.1/Fa" pageindexid="1"></basis>
+</head>
+
+<body class="tour-offline-module tour-module-v-1">
+    <!-- header -->
+    <basis core="call" file="header.inc"></basis>
+    <div class="loginRegister"></div>
+    <main class="py-10 bg-lightgray layout__body__container" data-primaryColor="[##cms.host.primaryColor##]"
+        data-noImgSign="[##cms.host.noImgSign##]"
+        data-pageNameInventory="[##cms.host.pageNameInventory|(Tem1_Hotel.bc)##]" data-lang="fa">
+        <!-- commands / requests -->
+        <basis core="api" name="api.executionPlanViewDates"
+            url="https://basisfly.com/api/inventory/packages/execution-plan-view/" method="post"
+            content-type="application/json" run="atclient" body='{
+                "pid": "[##cms.query.id##]",
+                "title": "dates",
+                "dmnid": "[##cms.cms.domainid##]",
+                "ownerid": "[##cms.cms.ownerid##]"
+            }'>
+        </basis>
+        <basis core="api" name="api.executionPlanTypesView"
+            url="https://basisfly.com/api/inventory/packages/execution-plan-view/" method="post"
+            content-type="application/json" run="atclient" body='{
+                "pid": "[##cms.query.id##]",
+                "title": "execution",
+                "dmnid": "[##cms.cms.domainid##]",
+                "ownerid": "[##cms.cms.ownerid##]"
+            }'>
+        </basis>
+        <basis core="callback" run="atclient" triggers="db.execution" method="callbackSourceExecutionPlanTypesView">
+        </basis>
+        <basis core="api" name="api.inventoryView" url="https://basisfly.com/api/inventory/packages/inventory-view/"
+            method="post" content-type="application/json" run="atclient" triggers="db.inventoryViewSpecificDate" body='{
+                "pid": "[##cms.query.id##]",
+                "from": "{##db.inventoryViewSpecificDate.from|()##}",
+                "to": "{##db.inventoryViewSpecificDate.to|()##}",
+                "day": "{##db.inventoryViewSpecificDate.day|()##}",
+                "pagename": "[##cms.host.pageNameInventory|(Tem1_Hotel.bc)##]",
+                "dmnid": "[##cms.cms.domainid##]",
+                "ownerid": "[##cms.cms.ownerid##]"
+            }'>
+        </basis>
+        <basis core="callback" run="atclient" triggers="api.inventoryView" method="callbackSourceInventoryView">
+        </basis>
+        <basis core="api" name="api.airlinesOriginsGallery"
+            url="https://data.basiscore.net/en/bc/airlines/id/gallery/json" method="post" body='{
+                "token": "1E45BBAE-3BE7-4B08-8A8E-8DF7B2E0C7D7",
+                "wordid": 94122,
+                "usedforid": [{##db.airlinesOriginsGallery.ids##}]
+            } ' content-type="application/json" run="atclient" triggers="db.airlinesOriginsGallery"
+            if="{##db.airlinesOriginsGallery.run|(false)##}" onprocessed="onProcessedAirlinesOriginsImg">
+        </basis>
+        <basis core="api" name="api.airlinesDestinationsGallery"
+            url="https://data.basiscore.net/en/bc/airlines/id/gallery/json" method="post" body='{
+                "token": "1E45BBAE-3BE7-4B08-8A8E-8DF7B2E0C7D7",
+                "wordid": 94122,
+                "usedforid": [{##db.airlinesDestinationsGallery.ids##}]
+            
+            } ' content-type="application/json" run="atclient" triggers="db.airlinesDestinationsGallery"
+            if="{##db.airlinesDestinationsGallery.run|(false)##}" onprocessed="onProcessedAirlinesDestinationsImg">
+        </basis>
+        <basis core="api" name="api.hotelGallery" url="https://data.basiscore.net/en/bc/hotel/id/gallery/json"
+            method="post" body='{
+                "token": "1E45BBAE-3BE7-4B08-8A8E-8DF7B2E0C7D7",
+                "wordid": 94122,
+                "usedforid": [{##db.hotelGallery.ids##}]
+        
+            } ' content-type="application/json" run="atclient" triggers="db.hotelGallery"
+            if="{##db.hotelGallery.run|(false)##}" onprocessed="onProcessedHotelsImg">
+        </basis>
+        <basis core="dbsource" source="basiscore" name="db" mid="5" lid="1" usedforid="[##cms.cms.ownerid##]">
+            <member name="companyInfo" type="view" />
+        </basis>
+        <basis core="dbsource" source="basiscore" name="db" mid="20" lid="1" usedforid="[##cms.query.id##]">
+            <member name="tour-view" type="view" />
+            <member name="tour-related" type="list" blgid="18"
+                propertyid="10000504,8077,8181,8076[##cms.host.tourPrp|()##]" size="210x210" typeid="159"
+                link="tour.bc" />
+            <member name="article-related" type="list" blgid="218" propertyid="7249,7244,7248" size="410x350"
+                typeid="159" link="article.bc" />
+        </basis>
+        <basis core="dbsource" source="basiscore" mid="1" name="db" lid="1" schemaid="987" term="[##cms.query.term##]">
+            <member name="airline" type="list" request="spelist" />
+        </basis>
+        <basis core="inlinesource" name="db">
+            <member name="tour-joining" lefttblcol="db.tour-related.prp_10000504" righttblcol="db.airline.name"
+                format="join" jointype="leftjoin" />
+        </basis>
+        <basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.id##]" sourcemid="product">
+            <member type="list" name="tour-gallery" format="4" order="ord" />
+            <member type="list" name="hero" format="4" order="ord" postsql="SELECT * FROM [db.hero] LIMIT 1" />
+            <member type="list" name="pdf" format="pdf" />
+        </basis>
+        <basis core="dbsource" source="basiscore" name="db" lid="1" mid="20" usedforid="[##cms.query.id##]">
+            <member request="json-ld" type="scalar" name="json" />
+        </basis>
+        <basis core="dbsource" source="basiscore" name="db" lid="1" mid="20" usedforid="[##cms.query.id##]">
+            <member name="navigationcat" type="tree" request="navigationcat" />
+        </basis>
+        <basis core="dbsource" source="userbehavior" name="db" usedforid="[##cms.query.id##]">
+            <member name="listcomment" type="list" order="ord" request="listcomment" />
+        </basis>
+        <basis core="dbsource" source="trust_login" name="db">
+            <member name="commentCaptcha" type="scalar" request="captcha" />
+        </basis>
+        <!-- hero section -->
+        <basis core="call" name="banner.ver.1" file="tour/view/ver.1/banner.ver.1/Fa" pageindexid="1"></basis>
+        <!-- navBar section -->
+        <basis core="call" name="navbar.ver.1" file="tour/view/ver.1/navbar.ver.1/Fa" pageindexid="1"></basis>
+        <!-- tour section -->
+        <div class="tour__container max-w-7xl mx-auto max-xl:mx-5">
+            <div class="flex">
+                <div class="tour__container__info w-8/12">
+                    <!-- tour landing reserve -->
+                    <basis core="group" name="tour-landing-reserve" if="'[##cms.Host.tour-landing-reserve##]'='true'">
+                        <basis core="call" name="tour-landing-reserve.ver.1"
+                            file="tour/view/ver.1/tour-landing-reserve.ver.1/Fa" pageindexid="1"></basis>
+                    </basis>
+                    <!-- tour execution section -->
+                    <basis core="call" name="execution.ver.1" file="tour/view/ver.1/execution.ver.1/Fa" pageindexid="1">
+                    </basis>
+                    <!-- tour inventory section -->
+                    <basis core="call" name="inventory.ver.1" file="tour/view/ver.1/inventory.ver.1/Fa" pageindexid="1">
+                    </basis>
+                    <!-- tour service section -->
+                    <basis core="call" name="tourservice.ver.1" file="tour/view/ver.1/tourservice.ver.1/Fa"
+                        pageindexid="1"></basis>
+                    <!-- tour itinerary section -->
+                    <basis core="call" name="itinerary.ver.1" file="tour/view/ver.1/itinerary.ver.1/Fa" pageindexid="1">
+                    </basis>
+                    <!-- tour description section -->
+                    <basis core="call" name="description.ver.1" file="tour/view/ver.1/description.ver.1/Fa"
+                        pageindexid="1"></basis>
+                    <!-- tour equipment section -->
+                    <basis core="call" name="equipment.ver.1" file="tour/view/ver.1/equipment.ver.1/Fa" pageindexid="1">
+                    </basis>
+                    <!-- tour facility section -->
+                    <basis core="call" name="facility.ver.1" file="tour/view/ver.1/facility.ver.1/Fa" pageindexid="1">
+                    </basis>
+                    <!-- tour gallery section -->
+                    <basis core="call" name="gallery.ver.1" file="tour/view/ver.1/gallery.ver.1/Fa" pageindexid="1">
+                    </basis>
+                    <!-- tour point section -->
+                    <basis core="call" name="point.ver.1" file="tour/view/ver.1/point.ver.1/Fa" pageindexid="1"></basis>
+                    <!-- tour comment section -->
+                    <basis core="call" name="comment.ver.1" file="tour/view/ver.1/comment.ver.1/Fa" pageindexid="1">
+                    </basis>
+                </div>
+                <div class="tour__container__info xl:w-4/12">
+                    <div onclick="closeModalContainer(this,event,'tour__date__modal__container','max-xl:hidden','parent')"
+                        class="tour__date__modal__container z-10 sticky top-24 max-xl:fixed max-xl:hidden max-xl:top-0 max-xl:left-0 max-xl:w-screen max-xl:h-screen max-xl:overflow-hidden max-xl:z-20">
+                        <div
+                            class="modal__content max-xl:fixed max-xl:inset-x-0 max-xl:bottom-0 max-xl:z-50 max-xl:w-full">
+                            <!-- tour date section -->
+                            <div class="tourDate__container rounded-t-xl xl:rounded-b-xl bg-white px-4 py-7 shadow-pr">
+                                <div class="date__details">
+                                    <basis core="call" name="date.ver.1" file="tour/view/ver.1/tourdate.ver.1/Fa"
+                                        pageindexid="1"></basis>
+                                    <basis core="call" name="tourprice.ver.1" file="tour/view/ver.1/tourprice.ver.1/Fa"
+                                        pageindexid="1"></basis>
+                                    <basis core="call" name="pdf.ver.1" file="tour/view/ver.1/tourpdf.ver.1/Fa"
+                                        pageindexid="1"></basis>
+                                </div>
+                            </div>
+                            <basis core="call" name="contact.ver.1" file="tour/view/ver.1/tourcontact.ver.1/Fa"
+                                pageindexid="1"></basis>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- related tour section -->
+        <basis core="call" name="related-tour.ver.1" file="tour/view/ver.1/related-tour.ver.1/Fa" pageindexid="1">
+        </basis>
+        <!-- related article section -->
+        <basis core="call" name="related-article.ver.1" file="tour/view/ver.1/related-article.ver.1/Fa" pageindexid="1">
+        </basis>
+        </div>
+        <!-- tour form section -->
+        <div>
+            <basis core="call" name="tour-form.ver.1" file="tour/view/ver.1/tour-form.ver.1/Fa" pageindexid="1"></basis>
+        </div>
+    </main>
+    <!-- footer -->
+    <basis core="call" file="footer.inc"></basis>
+    <basis core="call" name="tour-scripts.ver.1" file="tour/view/ver.1/tour-scripts.ver.1/Fa" pageindexid="1"></basis>
+    <basis core="group" if="'[##cms.Host.offline|(false)##]' = 'true'" name="checkCompanyType">
+        <basis core="call" file="Client_BasisCore_Script.inc"></basis>
+    </basis>
+    <script type="application/ld+json">[##db.json.Column1##]</script>
+</body>
+
+</html>

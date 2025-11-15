@@ -6,6 +6,26 @@
     "dmnid": "[##cms.cms.domainid##]",
     "ownerid": "[##cms.cms.ownerid##]"
 }'></basis>
+<basis core="api" name="api.executionPlanViewDates"
+    url="https://basisfly.com/api/inventory/packages/execution-plan-view/" method="post" content-type="application/json"
+    run="atclient" body='{
+                "pid": "[##cms.query.id##]",
+                "title": "dates",
+                "dmnid": "[##cms.cms.domainid##]",
+                "ownerid": "[##cms.cms.ownerid##]"
+            }'>
+</basis>
+<basis core="api" name="api.executionPlanTypesView"
+    url="https://basisfly.com/api/inventory/packages/execution-plan-view/" method="post" content-type="application/json"
+    run="atclient" body='{
+                "pid": "[##cms.query.id##]",
+                "title": "execution",
+                "dmnid": "[##cms.cms.domainid##]",
+                "ownerid": "[##cms.cms.ownerid##]"
+            }'>
+</basis>
+<basis core="callback" run="atclient" triggers="db.execution" method="callbackSourceExecutionPlanTypesView">
+</basis>
 <basis core="dbsource" source="basiscore" name="db" lid="1" mid="20" usedforid="[##cms.query.id##]">
     <member request="json-ld" type="scalar" name="json" />
 </basis>
@@ -274,8 +294,8 @@
                                     <div
                                     class="tourDate__container w-full flex flex-col gap-[32px] border border-zinc-300 p-[22px] rounded-3xl">
                                     <h2 class="font-bold text-2xl">تاریخ های اجرای تور </h2>
-                                    <div class="w-full date__details h-[229px] overflow-hidden">
-                                        <ul class="w-full h-[229px] grid grid-cols-3 gap-[14px] overflow-y-auto">@child
+                                    <div class="w-full date__details   overflow-hidden">
+                                        <ul class="w-full   grid grid-cols-3 gap-[14px] overflow-y-auto">@child
                                         </ul>
                                     </div>
                                 </div>
@@ -286,29 +306,19 @@
                             <script type="text/template">
                                     <li onclick="renderInventoryView(this,@day@,@start.dateid@,@end.dateid@)"
                                     class="flex h-[67px] cursor-pointer group hover:bg-gradient-to-l hover:from-primary hover:border-white gap-[10px] items-center border-[#424242] border rounded-xl p-3">
-                                    <input class="w-3 h-3 rounded-[4px] accent-primary" 
-                                    type="radio" id="@start.dateid@" name="tour-date" />
-                                    <label for="@start.dateid@"  class='w-full flex h-full gap-[10px] items-center'>
                                     <span class="bg-primary-50 w-10 h-10 flex justify-center items-center rounded-full">
                                         <img loading="lazy" src="[##cms.cms.cdn##]/images/CalendarTour.svg"
-                                            alt="calendar">
+                                            alt="calendar" />
                                     </span>
                                     <div class="flex flex-col gap-[3px]">
                                         <p class="textx-sm text-[#717171] group-hover:text-white">تاریخ تور:
                                         </p>
                                         <div class="font-semibold flex w-full justify-between">
-                                            <div class="flex flex-col items-center gap-3">
-                                                 <span class="start__date inline-block" data-date="@start.date@">{{ return await renderDayDate($data,'start')}} {{ return await renderMonthDate($data,'start')}} </span>
-                                                 <span class="weekday__detail__dates text-xs mr-1">{{ return await renderWeekDayDate($data,'start')}}</span>
-                                            </div>
-                                            <span>تا</span>
-                                            <div class="flex flex-col items-center gap-3">
-                                                 <span class="end__date " data-date="@end.date@">{{ return await renderDayDate($data,'end')}} {{ return await renderMonthDate($data,'end')}} </span>
-                                                 <span class="weekday__detail__dates text-xs mr-1">{{ return await renderWeekDayDate($data,'end')}}</span>
-                                            </div>
-                                         </div>
+                                            <span class="start__date" data-date="@start.date@">{{ return await renderWeekDate($data,'start')}}{{ return await renderDayDate($data,'start')}} {{ return await renderMonthDate($data,'start')}}</span>
+                                            <span class='px-2'>تا</span>
+                                            <span class="end__date" data-date="@end.date@">{{ return await renderWeekDate($data,'end')}}{{ return await renderDayDate($data,'end')}} {{ return await renderMonthDate($data,'end')}}</span>
+                                        </div>
                                     </div>
-                                    </label>
                                 </li>
                                 </script>
 
@@ -316,111 +326,93 @@
                     </basis>
 
 
-                    <div class="w-full flex flex-col gap-[30px]">
+                    <div class="tourExecution__container hidden w-full flex flex-col gap-[30px]">
                         <h2 class="text-2xl font-bold" data-id="start-travel">برنامه پرواز</h2>
-                        <div class="w-full flex flex-col gap-[22px] border border-zinc-300 p-[22px] rounded-3xl">
-                            <h3 class="font-medium text-xl w-full pb-[20px] border-b border-[#D1D1D1]">سفر رفت</h3>
-                            <div class=" w-full flex gap-6">
-                                <div class="flex flex-col gap-[25px] w-[110px]">
-                                    <div class="flex flex-col gap-1 w-full">
-                                        <p class="font-bold text-[#323232] line-clamp-1">تهران</p>
-                                        <p class="font-bold text-[#323232]">23:45</p>
-                                        <p class="text-xs text-[#222222]">سه شنبه 19 فروردین</p>
-                                    </div>
-                                    <div class="text-xs text-[#747474]">05:20 مدت پرواز</div>
-                                    <div class="flex flex-col gap-1 w-full">
-                                        <p class="font-bold text-[#323232] line-clamp-1">استانبول</p>
-                                        <p class="font-bold text-[#323232]">23:45</p>
-                                        <p class="text-xs text-[#222222]">سه شنبه 19 فروردین</p>
-                                    </div>
-                                </div>
-                                <img loading="lazy" src="[##cms.cms.cdn##]/images/tour-routes.svg" class="h-full"
-                                    alt="tour-routes" width="26" height="195">
-                                <div class="flex flex-col gap-6">
-                                    <div class="flex gap-1 flex-col">
-                                        <p class="font-medium text-[#323232] text-sm">
-                                            (IKA) فرودگاه بین المللی امام خمینی
-                                        </p>
-                                        <p class="text-xs text-[#7A7A7A]">Imam Khomeini International Airport</p>
-                                    </div>
-                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (1).png" alt=""
-                                        class="h-[26px] w-[90px]" height="26">
-                                    <div class="flex items-center gap-6">
-                                        <div class="flex items-center gap-[6px]">
-                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/wheel bag.svg" width="16"
-                                                height="16" alt="wheel-bag">
-                                            <span class="text-xs text-[#ADADAD]">بار مجاز:</span>
-                                            <p class="font-medium text-[#3C3C3C]">20 کیلوگرم</p>
-                                        </div>
+                        <basis core="print" datamembername="refresh.executionPlanTypesOrigins"
+                            if="{##refresh.executionPlanTypesOrigins##}" run="atclient"
+                            onrendered="onrenderedExecutionOrigins">
+                            <layout>
+                                <script type="text/template">
 
-                                        <div class="flex items-center gap-[6px]">
-                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/Flight ticket.svg"
-                                                width="16" height="16" alt="flight-class">
-                                            <span class="text-xs text-[#ADADAD]">کلاس نرخی:</span>
-                                            <p class="font-medium text-[#3C3C3C]">S</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex gap-1 flex-col">
-                                        <p class="font-medium text-[#323232] text-sm">
-                                            (IKA) فرودگاه بین المللی امام خمینی
-                                        </p>
-                                        <p class="text-xs text-[#7A7A7A]">Imam Khomeini International Airport</p>
-                                    </div>
-                                </div>
-                            </div>
+                                <div
+                                    class="tourExecution__container__origins w-full flex flex-col gap-[22px] border border-zinc-300 p-[22px] rounded-3xl">
+                                      <div class="mb-10 relative hidden">
+                        <div class="mb-2 text-base">
+                            <p class="ml-1 inline-block origins__city"></p>
                         </div>
-                        <div class="w-full flex flex-col gap-[22px] border border-zinc-300 p-[22px] rounded-3xl">
-                            <h4 class="font-medium text-xl w-full pb-[20px] border-b border-[#D1D1D1]">سفر برگشت
-                            </h4>
-                            <div class=" w-full flex gap-6">
-                                <div class="flex flex-col gap-[25px] w-[110px]">
-                                    <div class="flex flex-col gap-1 w-full">
-                                        <p class="font-bold text-[#323232] line-clamp-1">تهران</p>
-                                        <p class="font-bold text-[#323232]">23:45</p>
-                                        <p class="text-xs text-[#222222]">سه شنبه 19 فروردین</p>
-                                    </div>
-                                    <div class="text-xs text-[#747474]">05:20 مدت پرواز</div>
-                                    <div class="flex flex-col gap-1 w-full">
-                                        <p class="font-bold text-[#323232] line-clamp-1">استانبول</p>
-                                        <p class="font-bold text-[#323232]">23:45</p>
-                                        <p class="text-xs text-[#222222]">سه شنبه 19 فروردین</p>
-                                    </div>
+                        <div class="text-sm">
+                            <span class="origins__start__day"></span><span class="origins__start__weekday mr-2"></span>
+                        </div>
+                </div>
+                                    <h3 class="font-medium text-xl w-full pb-[20px] border-b border-[#D1D1D1]">سفر رفت
+                                    </h3>
+                                    <div class="execution__details w-full">
+                        <div class="execution__details__path execution__details__path__origins w-full">
+                            @child
+                        </div>
+                    </div>
                                 </div>
-                                <img loading="lazy" src="[##cms.cms.cdn##]/images/tour-routes.svg" class="h-full"
-                                    alt="tour-routes" width="26" height="195">
-                                <div class="flex flex-col gap-6">
-                                    <div class="flex gap-1 flex-col">
-                                        <p class="font-medium text-[#323232] text-sm">
-                                            (IKA) فرودگاه بین المللی امام خمینی
-                                        </p>
-                                        <p class="text-xs text-[#7A7A7A]">Imam Khomeini International Airport</p>
-                                    </div>
-                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (1).png" alt=""
-                                        class="h-[26px] w-[90px]" height="26">
-                                    <div class="flex items-center gap-6">
-                                        <div class="flex items-center gap-[6px]">
-                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/wheel bag.svg" width="16"
-                                                height="16" alt="wheel-bag">
-                                            <span class="text-xs text-[#ADADAD]">بار مجاز:</span>
-                                            <p class="font-medium text-[#3C3C3C]">20 کیلوگرم</p>
+                                </script>
+                            </layout>
+                            <face>
+                                <script type="text/template">
+                                    <div class=" w-full flex gap-6">
+                                        <div class="flex flex-col gap-[25px] w-[110px]">
+                                            <div class="flex flex-col gap-1 w-full">
+                                                <p class="font-bold text-[#323232] line-clamp-1 details__city ">@info.origin.city.name@</p>
+                                                <p class="font-bold text-[#323232] __times__start ">@info.departure.time@</p>
+                                                <p class="text-xs text-[#222222]">سه شنبه 19 فروردین</p>
+                                            </div>
+                                            <div class="text-xs text-[#747474]">
+                                                <span class="__times__duration">@info.time@</span> مدت پرواز</div>
+                                            <div class="flex flex-col gap-1 w-full">
+                                                <p class="font-bold text-[#323232] line-clamp-1 details__city">@info.destination.city.name@</p>
+                                                <p class="font-bold text-[#323232] __times__start">@info.arrival.time@</p>
+                                                <p class="text-xs text-[#222222]">سه شنبه 19 فروردین</p>
+                                            </div>
                                         </div>
+                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/tour-routes.svg"
+                                            class="h-full" alt="tour-routes" width="26" height="195" />
+                                            <div class="flex flex-col gap-6">
+                                                <div class="details__airport flex gap-1 flex-col">
+                                                    <span class="font-medium text-[#323232] text-sm">
+                                                     {{ return await renderRouteType($data,'origin')}}
+                                                    </span>
+                                                    <p class="text-xs text-[#7A7A7A]"> 
+                                                        @info.origin.name@
+                                                    </p>
+                                                </div>
+                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/airlines (1).png" alt=""
+                                                    class="h-[26px] w-[90px]" height="26" />
+                                                    <div class="flex items-center gap-6">
+                                                        <div class="flex items-center gap-[6px]">
+                                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/wheel bag.svg"
+                                                                width="16" height="16" alt="wheel-bag" />
+                                                                <span class="text-xs text-[#ADADAD]">بار مجاز:</span>
+                                                                <p class="font-medium text-[#3C3C3C]">@info.luggage@ کیلوگرم</p>
+                                                        </div>
 
-                                        <div class="flex items-center gap-[6px]">
-                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/Flight ticket.svg"
-                                                width="16" height="16" alt="flight-class">
-                                            <span class="text-xs text-[#ADADAD]">کلاس نرخی:</span>
-                                            <p class="font-medium text-[#3C3C3C]">S</p>
-                                        </div>
+                                                        <div class="flex items-center gap-[6px]">
+                                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/Flight ticket.svg"
+                                                                width="16" height="16" alt="flight-class" />
+                                                                <span class="text-xs text-[#ADADAD]">کلاس نرخی:</span>
+                                                                <div class="font-medium text-[#3C3C3C]">{{ return await renderRouteClass($data)}}</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details__airport  flex gap-1 flex-col">
+                                                        <span class="font-medium text-[#323232] text-sm">
+                                                         {{ return await renderRouteType($data,'destination')}} 
+                                                        </span>
+                                                        <p class="text-xs text-[#7A7A7A]">@info.destination.name@
+                                                        </p>
+                                                    </div>
+                                            </div>
                                     </div>
-                                    <div class="flex gap-1 flex-col">
-                                        <p class="font-medium text-[#323232] text-sm">
-                                            (IKA) فرودگاه بین المللی امام خمینی
-                                        </p>
-                                        <p class="text-xs text-[#7A7A7A]">Imam Khomeini International Airport</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                </script>
+                            </face>
+                        </basis>
+
+                        
                     </div>
                     <div class="w-full flex flex-col gap-[30px]">
                         <h2 class="text-2xl font-bold" data-id="hotels">انتخاب هتل</h2>

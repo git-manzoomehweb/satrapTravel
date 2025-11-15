@@ -1,4 +1,71 @@
 const page_lang = "fa";
+// conver solar to gregorian date
+JalaliDate = {
+  g_days_in_month: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+  j_days_in_month: [31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29],
+};
+
+JalaliDate.jalaliToGregorian = function (j_y, j_m, j_d) {
+  j_y = parseInt(j_y);
+  j_m = parseInt(j_m);
+  j_d = parseInt(j_d);
+  var jy = j_y - 979;
+  var jm = j_m - 1;
+  var jd = j_d - 1;
+
+  var j_day_no =
+    365 * jy + parseInt(jy / 33) * 8 + parseInt(((jy % 33) + 3) / 4);
+  for (var i = 0; i < jm; ++i) j_day_no += JalaliDate.j_days_in_month[i];
+
+  j_day_no += jd;
+
+  var g_day_no = j_day_no + 79;
+
+  var gy =
+    1600 +
+    400 *
+      parseInt(
+        g_day_no / 146097
+      ); /* 146097 = 365*400 + 400/4 - 400/100 + 400/400 */
+  g_day_no = g_day_no % 146097;
+
+  var leap = true;
+  if (g_day_no >= 36525) {
+    /* 36525 = 365*100 + 100/4 */ g_day_no--;
+    gy +=
+      100 * parseInt(g_day_no / 36524); /* 36524 = 365*100 + 100/4 - 100/100 */
+    g_day_no = g_day_no % 36524;
+
+    if (g_day_no >= 365) g_day_no++;
+    else leap = false;
+  }
+
+  gy += 4 * parseInt(g_day_no / 1461); /* 1461 = 365*4 + 4/4 */
+  g_day_no %= 1461;
+
+  if (g_day_no >= 366) {
+    leap = false;
+
+    g_day_no--;
+    gy += parseInt(g_day_no / 365);
+    g_day_no = g_day_no % 365;
+  }
+
+  for (
+    var i = 0;
+    g_day_no >= JalaliDate.g_days_in_month[i] + (i == 1 && leap);
+    i++
+  )
+    g_day_no -= JalaliDate.g_days_in_month[i] + (i == 1 && leap);
+  var gm = i + 1;
+  var gd = g_day_no + 1;
+
+  gm = gm < 10 ? "0" + gm : gm;
+  gd = gd < 10 ? "0" + gd : gd;
+
+  return [gy, gm, gd];
+};
+
 const renderedSelectedDate = async (startText, startDate, endText, endDate) => {
   try {
     if (document.querySelector(".origins__start__day")) {
@@ -249,6 +316,46 @@ const renderDayDate = async (element, type) => {
     console.error("renderDayDate=" + err.lineNumber + "," + err.message);
   }
 };
+const onrenderedExecutionOrigins = async () => {
+  try {
+    const container = document.querySelector(
+      ".tourExecution__container__origins"
+    );
+    if (!container) return; // if container not found, just exit safely
+
+    const firstPathItem = container.querySelectorAll(
+      ".execution__details__path__item"
+    )[0];
+    if (firstPathItem) {
+      const cityEl = container.querySelector(".origins__city");
+      const detailsCityEl = firstPathItem.querySelector(".details__city");
+      if (cityEl && detailsCityEl) {
+        cityEl.textContent = detailsCityEl.textContent;
+      }
+
+      let ids = [];
+      container.querySelectorAll(".transportation__img").forEach((e) => {
+        if (e.dataset.id !== "") {
+          ids.push(e.dataset.id);
+        }
+      });
+
+      if (ids.length > 0) {
+        $bc.setSource("db.airlinesOriginsGallery", {
+          ids: ids,
+          run: true,
+        });
+      }
+    }
+  } catch (err) {
+    console.error(
+      "onrenderedExecutionOrigins=" +
+      (err.lineNumber || "?") +
+      "," +
+      err.message
+    );
+  }
+};
 const renderInventoryView = async (element, day, from, to) => {
   try {
     const origins = element.closest("li").querySelector(".start__date")
@@ -330,5 +437,128 @@ const renderInventoryView = async (element, day, from, to) => {
     );
   } catch (err) {
     console.error("renderInventoryView=" + err.lineNumber + "," + err.message);
+  }
+};
+const callbackSourceExecutionPlanTypesView = async (args) => {
+  try {
+    const resultJson = args.source?.rows;
+    let originsSourceArray = [];
+    let destinationsSourceArray = [];
+    let originsRownumber = 1;
+    let destinationsRownumber = 1;
+
+    if (resultJson[0]) {
+      document
+        .querySelector(".tourExecution__container")
+        .classList.remove("hidden");
+
+      const origins = resultJson[0].execution.origins || [];
+      const destinations = resultJson[0].execution.destinations || [];
+
+      // --- origins ---
+      if (
+        origins.length === 1 &&
+        !origins[0].origin?.type &&
+        !origins[0].origin?.name &&
+        !origins[0].origin?.id &&
+        !origins[0].destination?.type &&
+        !origins[0].destination?.name &&
+        !origins[0].destination?.id &&
+        !origins[0].transportation?.type &&
+        !origins[0].transportation?.name
+      ) {
+        originsSourceArray = []; // خالی
+      } else {
+        for (const element of origins) {
+          const sourceObj = {};
+          sourceObj["rownumber"] = originsRownumber;
+          sourceObj["info"] = element;
+          sourceObj["len"] = origins.length;
+          originsSourceArray.push(sourceObj);
+          originsRownumber++;
+        }
+      }
+
+      // --- destinations ---
+      if (
+        destinations.length === 1 &&
+        !destinations[0].origin?.type &&
+        !destinations[0].origin?.name &&
+        !destinations[0].origin?.id &&
+        !destinations[0].destination?.type &&
+        !destinations[0].destination?.name &&
+        !destinations[0].destination?.id &&
+        !destinations[0].transportation?.type &&
+        !destinations[0].transportation?.name
+      ) {
+        destinationsSourceArray = []; // خالی
+      } else {
+        for (const element of destinations) {
+          const sourceObj = {};
+          sourceObj["rownumber"] = destinationsRownumber;
+          sourceObj["info"] = element;
+          sourceObj["len"] = destinations.length;
+          destinationsSourceArray.push(sourceObj);
+          destinationsRownumber++;
+        }
+      }
+    }
+
+    setTimeout(() => {
+      $bc.setSource("refresh.executionPlanTypesOrigins", originsSourceArray);
+      $bc.setSource(
+        "refresh.executionPlanTypesDestinations",
+        destinationsSourceArray
+      );
+    }, 10);
+  } catch (err) {
+    console.error(
+      "callbackSourceExecutionPlanTypesView=" +
+        err.lineNumber +
+        "," +
+        err.message
+    );
+  }
+};
+const renderRouteType = async (element, type) => {
+  try {
+    if (element) {
+      let dateType =
+        type == "origin" ? element.info.origin : element.info.destination;
+      if (dateType.id) {
+        if (page_lang === "fa") {
+          return type == "origin" ? `فرودگاه مبدا` : `فرودگاه مقصد`;
+        }
+      } else {
+        if (page_lang === "fa") {
+          return type == "origin" ? `ترمینال مبدا` : `ترمینال مقصد`;
+        }
+      }
+    }
+  } catch (err) {
+    console.error("renderRouteType=" + err.lineNumber + "," + err.message);
+  }
+};
+const renderRouteClass = async (element) => {
+  try {
+    if (element && element.info.classes && element.info.classes.length > 0) {
+      const validClasses = element.info.classes.filter(
+        (item) => item.class && item.class.trim() !== ""
+      );
+
+      if (validClasses.length > 0) {
+        return `
+            <span class="flex gap-1 items-center">
+                ${validClasses
+                  .map((item) => `<span>${item.class}</span>`)
+                  .join(", ")}
+            </span>
+        `;
+      }
+    }
+    return "";
+  } catch (err) {
+    console.error("renderRouteClass=" + err.lineNumber + "," + err.message);
+    return "";
   }
 };

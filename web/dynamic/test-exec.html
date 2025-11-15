@@ -1,0 +1,251 @@
+<div class="tourExecution__container mb-10 clear-both">
+    <!-- origins tour execution section -->
+
+    <basis core="print" datamembername="refresh.executionPlanTypesOrigins" if="{##refresh.executionPlanTypesOrigins##}"
+        run="atclient" onrendered="onrenderedExecutionOrigins">
+        <layout>
+            <script type="text/template">
+                <div class="tourExecution__container__origins rounded-xl bg-white px-4 py-7 shadow-pr">
+                    <div class="mb-10 relative">
+                        <div class="mb-2 text-base">
+                            <h2 class="ml-1 inline-block origins__city"></h2><span>(شروع تور / مسیر رفت)</span>
+                        </div>
+                        <div class="text-sm"><span class="origins__start__day"></span><span class="origins__start__weekday mr-2"></span>
+                        </div>
+                
+                        <svg class="absolute left-0 top-0 cursor-pointer" width="24" height="25" fill="none"
+                            onclick="toggleContent(this,'.tourExecution__container__origins','execution__details','toggleDrop')"
+                            viewBox="0 0 24 25" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="m11.192 16.738c0.2229 0.2228 0.5154 0.3348 0.808 0.3348s0.5851-0.112 0.808-0.3348l6.8569-6.8569c0.4468-0.44684 0.4468-1.1691 0-1.6159-0.4469-0.44684-1.1691-0.44684-1.616 0l-6.0489 6.0489-6.0489-6.0489c-0.44684-0.44684-1.1691-0.44684-1.6159 0s-0.44684 1.1691 0 1.6159l6.8569 6.8569z"
+                                fill="#7A7A7A" />
+                        </svg>
+                
+                    </div>
+                    <div class="execution__details toggle__content hidden">
+                        <div class="execution__details__path execution__details__path__origins flex flex-col">
+                            @child
+                        </div>
+                    </div>
+                </div>
+            </script>
+
+        </layout>
+        <face>
+            <script type="text/template">
+                <div class="execution__details__path__item flex gap-2">
+                    <div class="execution__details__path__item__times flex flex-col items-center justify-between
+                     min-w-24">
+                        <div>
+                            <h3 class="details__city text-xl mb-2">@info.origin.city.name@</h3>
+                            <div class="__times__start text-nowrap text-sm text-module-gray-0">@info.departure.time@</div>
+                        </div>
+                        <div class="text-xs text-module-gray-1 my-8">
+                            <div class="mb-2">مدت زمان پرواز</div>
+                            <div class="__times__duration flex items-center gap-1">@info.time@<span>دقیقه</span>
+                                <svg width="12" height="12" fill="none" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#a)" fill="#BEBBCE">
+                                        <path
+                                            d="m4.5 0.375c-0.81585 0-1.6134 0.24193-2.2917 0.69519-0.67835 0.45326-1.2071 1.0975-1.5193 1.8512-0.31221 0.75375-0.3939 1.5832-0.23474 2.3833s0.55203 1.5352 1.1289 2.1121c0.57689 0.57689 1.3119 0.96976 2.1121 1.1289 0.80018 0.15916 1.6296 0.07747 2.3833-0.23474 0.75375-0.31221 1.398-0.84092 1.8512-1.5193s0.69519-1.4759 0.69519-2.2917c-0.00129-1.0936-0.4363-2.1421-1.2096-2.9154-0.77331-0.77331-1.8218-1.2083-2.9154-1.2096zm0 7.5c-0.66751 0-1.32-0.19794-1.875-0.56879-0.55501-0.37085-0.9876-0.89795-1.243-1.5146-0.25545-0.6167-0.32228-1.2953-0.19206-1.95 0.13023-0.65469 0.45166-1.256 0.92367-1.7281 0.472-0.472 1.0734-0.79344 1.728-0.92366 0.65469-0.13023 1.3333-0.06339 1.95 0.19206 0.6167 0.25544 1.1438 0.68802 1.5146 1.243s0.56879 1.2075 0.56879 1.875c-0.00109 0.89477-0.35702 1.7526-0.98972 2.3853s-1.4905 0.98863-2.3853 0.98972z" />
+                                        <path
+                                            d="m4.875 4.3448v-2.0948c0-0.09946-0.03951-0.19484-0.10984-0.26516-0.07032-0.07033-0.1657-0.10984-0.26516-0.10984s-0.19484 0.03951-0.26516 0.10984c-0.07033 0.07032-0.10984 0.1657-0.10984 0.26516v2.25c2e-5 0.09945 0.03954 0.19482 0.10988 0.26512l1.125 1.125c0.07072 0.06831 0.16545 0.10611 0.26377 0.10526 0.09832-8.6e-4 0.19238-0.0403 0.26191-0.10982 0.06953-0.06953 0.10896-0.16359 0.10982-0.26191 8.5e-4 -0.09832-0.03695-0.19305-0.10526-0.26377l-1.0151-1.0151z" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="a">
+                                            <rect width="9" height="9" fill="#fff" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="details__city text-xl mb-2">@info.destination.city.name@</h3>
+                            <div class="__times__start text-nowrap text-sm text-module-gray-0">@info.arrival.time@</div>
+                        </div>
+                    </div>
+                    <div class="execution__details__path__item__path flex flex-col items-center basis-7">
+                        {{ return await renderPathSvg($data)}}
+                        <svg class="w-2 h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 6.4286 65.036"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="m3.5 1c0-0.27614-0.22386-0.5-0.5-0.5s-0.5 0.22386-0.5 0.5h1zm-0.5 64.333c-1.4728 0-2.6667 1.1939-2.6667 2.6667s1.1939 2.6667 2.6667 2.6667 2.6667-1.1939 2.6667-2.6667-1.1939-2.6667-2.6667-2.6667zm-0.5-64.333v0.98529h1v-0.98529h-1zm0 2.9559v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9411v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9411v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9412v1.9705h1v-1.9705h-1zm0 3.9411v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9411v1.9706h1v-1.9706h-1zm0 3.9412v0.9853h1v-0.9853h-1z"
+                                fill="#BEBBCE" />
+                        </svg>
+                        {{ return await renderEndPathSvg($data)}}
+                    </div>
+                    <div class="flex flex-col items-center justify-between">
+                        <div class="execution__details__path__item__details flex">
+                            <div>
+                
+                                <div class="details__airport text-xs ml-1 inline-block">
+                                    {{ return await renderRouteType($data,'origin')}}
+                                    <div class="mt-1 text-module-gray-1 ">@info.origin.name@</div>
+                                </div>
+                                <svg class="inline-block" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="{1.5}"
+                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="m15.75 19.5-7.5-7.5 7.5-7.5" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                                <div class="details__airport text-xs mr-1 inline-block">
+                                    {{ return await renderRouteType($data,'destination')}}
+                                    <div class="mt-1 text-module-gray-1 ">@info.destination.name@</div>
+                                </div>
+                
+                            </div>
+                        </div>
+                        <div class="details__airline text-xs">
+                            {{ return await renderTransportationName($data)}}
+                            <div class="text-module-gray-3">
+                                <span class="inline-block ml-3">
+                                    <span class="flex gap-1 items-center">
+                                        <span>
+                                            <svg fill="none" width="17" height="17" viewBox="0 0 17 17"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="m11.327 11.642c0 0.2815-0.2285 0.51-0.51 0.51-0.2816 0-0.51-0.2285-0.51-0.51v-3.5224c0-0.28152 0.2284-0.51 0.51-0.51 0.2815 0 0.51 0.22848 0.51 0.51v3.5224zm-1.2737-6.2696h-3.1062v-1.632c0-0.3298 0.26793-0.5984 0.59773-0.5984h1.9101c0.3298 0 0.59838 0.2686 0.59838 0.5984v1.632zm-1.0424 6.2696c0 0.2815-0.22848 0.51-0.51 0.51s-0.51-0.2285-0.51-0.51v-3.5224c0-0.28152 0.22848-0.51 0.51-0.51s0.51 0.22848 0.51 0.51v3.5224zm-2.312 0c0 0.2815-0.22848 0.51-0.51 0.51s-0.51-0.2285-0.51-0.51v-3.5224c0-0.28152 0.22848-0.51 0.51-0.51s0.51 0.22848 0.51 0.51v3.5224zm4.3744-6.2485v-1.6531c0-0.89284-0.7262-1.6184-1.6184-1.6184h-1.9101c-0.89217 0-1.6177 0.72556-1.6177 1.6184v1.6531c-1.5613 0.10948-2.5269 1.1723-2.5269 2.8485v3.1824c0 1.5899 0.86224 2.633 2.2773 2.8336v0.614c0 0.2815 0.22848 0.51 0.51 0.51s0.51-0.2285 0.51-0.51v-0.5712h3.6081v0.5712c0 0.2815 0.2285 0.51 0.51 0.51s0.51-0.2285 0.51-0.51v-0.614c1.413-0.2006 2.2732-1.2417 2.2732-2.8275v-3.1885c0-1.6769-0.9649-2.7397-2.5255-2.8485z"
+                                                    clip-rule="evenodd" fill="[##cms.host.primaryColor##]" fill-rule="evenodd" />
+                                            </svg>
+                                        </span>
+                                        <span class="ml-1">بار مجاز:</span><span>@info.luggage@ کیلو</span>
+                                    </span>
+                                </span>
+                                {{ return await renderRouteClass($data)}}
+                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{ return await renderRouteStop($data)}}
+            </script>
+        </face>
+    </basis>
+
+    <!-- destinations tour execution section -->
+
+    <basis core="print" datamembername="refresh.executionPlanTypesDestinations"
+        if="{##refresh.executionPlanTypesDestinations##}" run="atclient" onrendered="onrenderedExecutionDestinations">
+        <layout>
+            <script type="text/template">
+                <div class="tourExecution__container__destinations rounded-xl bg-white px-4 py-7 shadow-pr mt-3">
+                    <div class="mb-10 relative">
+                        <div class="mb-2 text-base">
+                            <h2 class="ml-1 inline-block destinations__city"></h2><span>(پایان تور / مسیر
+                                برگشت)</span>
+                        </div>
+                        <div class="text-sm"><span class="destinations__start__day"></span><span
+                                class="destinations__start__weekday mr-2"></span></div>
+                
+                        <svg class="absolute left-0 top-0 cursor-pointer" fill="none" width="24" height="25"
+                            onclick="toggleContent(this,'.tourExecution__container__destinations','execution__details','toggleDrop')"
+                            viewBox="0 0 24 25" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="m11.192 16.738c0.2229 0.2228 0.5154 0.3348 0.808 0.3348s0.5851-0.112 0.808-0.3348l6.8569-6.8569c0.4468-0.44684 0.4468-1.1691 0-1.6159-0.4469-0.44684-1.1691-0.44684-1.616 0l-6.0489 6.0489-6.0489-6.0489c-0.44684-0.44684-1.1691-0.44684-1.6159 0s-0.44684 1.1691 0 1.6159l6.8569 6.8569z"
+                                fill="#7A7A7A" />
+                        </svg>
+                
+                    </div>
+                    <div class="execution__details toggle__content hidden">
+                        <div class="execution__details__path execution__details__path__destinations flex flex-col">
+                            @child
+                        </div>
+                    </div>
+                </div>
+        
+            </script>
+        </layout>
+        <face>
+            <script type="text/template">
+                <div class="execution__details__path__item flex gap-2">
+                    <div class="execution__details__path__item__times flex flex-col items-center justify-between
+                         min-w-24">
+                        <div>
+                            <h3 class="details__city text-xl mb-2">@info.origin.city.name@</h3>
+                            <div class="__times__start text-nowrap text-sm text-module-gray-0">@info.departure.time@</div>
+                        </div>
+                        <div class="text-xs text-module-gray-1 my-8">
+                            <div class="mb-2">مدت زمان پرواز</div>
+                            <div class="__times__duration flex items-center gap-1">@info.time@<span>دقیقه</span>
+                                <svg width="12" height="12" fill="none" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#a)" fill="#BEBBCE">
+                                        <path
+                                            d="m4.5 0.375c-0.81585 0-1.6134 0.24193-2.2917 0.69519-0.67835 0.45326-1.2071 1.0975-1.5193 1.8512-0.31221 0.75375-0.3939 1.5832-0.23474 2.3833s0.55203 1.5352 1.1289 2.1121c0.57689 0.57689 1.3119 0.96976 2.1121 1.1289 0.80018 0.15916 1.6296 0.07747 2.3833-0.23474 0.75375-0.31221 1.398-0.84092 1.8512-1.5193s0.69519-1.4759 0.69519-2.2917c-0.00129-1.0936-0.4363-2.1421-1.2096-2.9154-0.77331-0.77331-1.8218-1.2083-2.9154-1.2096zm0 7.5c-0.66751 0-1.32-0.19794-1.875-0.56879-0.55501-0.37085-0.9876-0.89795-1.243-1.5146-0.25545-0.6167-0.32228-1.2953-0.19206-1.95 0.13023-0.65469 0.45166-1.256 0.92367-1.7281 0.472-0.472 1.0734-0.79344 1.728-0.92366 0.65469-0.13023 1.3333-0.06339 1.95 0.19206 0.6167 0.25544 1.1438 0.68802 1.5146 1.243s0.56879 1.2075 0.56879 1.875c-0.00109 0.89477-0.35702 1.7526-0.98972 2.3853s-1.4905 0.98863-2.3853 0.98972z" />
+                                        <path
+                                            d="m4.875 4.3448v-2.0948c0-0.09946-0.03951-0.19484-0.10984-0.26516-0.07032-0.07033-0.1657-0.10984-0.26516-0.10984s-0.19484 0.03951-0.26516 0.10984c-0.07033 0.07032-0.10984 0.1657-0.10984 0.26516v2.25c2e-5 0.09945 0.03954 0.19482 0.10988 0.26512l1.125 1.125c0.07072 0.06831 0.16545 0.10611 0.26377 0.10526 0.09832-8.6e-4 0.19238-0.0403 0.26191-0.10982 0.06953-0.06953 0.10896-0.16359 0.10982-0.26191 8.5e-4 -0.09832-0.03695-0.19305-0.10526-0.26377l-1.0151-1.0151z" />
+                                    </g>
+                                    <defs>
+                                        <clippath id="a">
+                                            <rect width="9" height="9" fill="#fff" />
+                                        </clippath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="details__city text-xl mb-2">@info.destination.city.name@</h3>
+                            <div class="__times__start text-nowrap text-sm text-module-gray-0">@info.arrival.time@</div>
+                        </div>
+                    </div>
+                    <div class="execution__details__path__item__path flex flex-col items-center basis-7">
+                        {{ return await renderPathSvg($data)}}
+                        <svg class="w-2 h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 6.4286 65.036"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="m3.5 1c0-0.27614-0.22386-0.5-0.5-0.5s-0.5 0.22386-0.5 0.5h1zm-0.5 64.333c-1.4728 0-2.6667 1.1939-2.6667 2.6667s1.1939 2.6667 2.6667 2.6667 2.6667-1.1939 2.6667-2.6667-1.1939-2.6667-2.6667-2.6667zm-0.5-64.333v0.98529h1v-0.98529h-1zm0 2.9559v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9411v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9411v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9412v1.9705h1v-1.9705h-1zm0 3.9411v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9412v1.9706h1v-1.9706h-1zm0 3.9411v1.9706h1v-1.9706h-1zm0 3.9412v0.9853h1v-0.9853h-1z"
+                                fill="#BEBBCE" />
+                        </svg>
+                        {{ return await renderEndPathSvg($data)}}
+                    </div>
+                    <div class="flex flex-col items-center justify-between">
+                        <div class="execution__details__path__item__details flex">
+                            <div>
+                                <div class="details__airport text-xs ml-1 inline-block">
+                                    {{ return await renderRouteType($data,'origin')}}
+                                    <div class="mt-1 text-module-gray-1 ">@info.origin.name@</div>
+                                </div>
+                                <svg class="inline-block" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="{1.5}"
+                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="m15.75 19.5-7.5-7.5 7.5-7.5" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                                <div class="details__airport text-xs mr-1 inline-block">
+                                    {{ return await renderRouteType($data,'destination')}}
+                                    <div class="mt-1 text-module-gray-1 ">@info.destination.name@</div>
+                                </div>
+                            </div>
+                
+                        </div>
+                        <div class="details__airline text-xs">
+                            {{ return await renderTransportationName($data)}}
+                            <div class="text-module-gray-3">
+                                <span class="inline-block ml-3">
+                                    <span class="flex gap-1 items-center">
+                                        <span>
+                                            <svg fill="none" width="17" height="17" viewBox="0 0 17 17"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="m11.327 11.642c0 0.2815-0.2285 0.51-0.51 0.51-0.2816 0-0.51-0.2285-0.51-0.51v-3.5224c0-0.28152 0.2284-0.51 0.51-0.51 0.2815 0 0.51 0.22848 0.51 0.51v3.5224zm-1.2737-6.2696h-3.1062v-1.632c0-0.3298 0.26793-0.5984 0.59773-0.5984h1.9101c0.3298 0 0.59838 0.2686 0.59838 0.5984v1.632zm-1.0424 6.2696c0 0.2815-0.22848 0.51-0.51 0.51s-0.51-0.2285-0.51-0.51v-3.5224c0-0.28152 0.22848-0.51 0.51-0.51s0.51 0.22848 0.51 0.51v3.5224zm-2.312 0c0 0.2815-0.22848 0.51-0.51 0.51s-0.51-0.2285-0.51-0.51v-3.5224c0-0.28152 0.22848-0.51 0.51-0.51s0.51 0.22848 0.51 0.51v3.5224zm4.3744-6.2485v-1.6531c0-0.89284-0.7262-1.6184-1.6184-1.6184h-1.9101c-0.89217 0-1.6177 0.72556-1.6177 1.6184v1.6531c-1.5613 0.10948-2.5269 1.1723-2.5269 2.8485v3.1824c0 1.5899 0.86224 2.633 2.2773 2.8336v0.614c0 0.2815 0.22848 0.51 0.51 0.51s0.51-0.2285 0.51-0.51v-0.5712h3.6081v0.5712c0 0.2815 0.2285 0.51 0.51 0.51s0.51-0.2285 0.51-0.51v-0.614c1.413-0.2006 2.2732-1.2417 2.2732-2.8275v-3.1885c0-1.6769-0.9649-2.7397-2.5255-2.8485z"
+                                                    clip-rule="evenodd" fill="[##cms.host.primaryColor##]" fill-rule="evenodd" />
+                                            </svg>
+                                        </span>
+                                        <span class="ml-1">بار مجاز:</span><span>@info.luggage@
+                                            کیلو</span>
+                                    </span>
+                                </span>
+                                {{ return await renderRouteClass($data)}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{ return await renderRouteStop($data)}}
+            </script>
+        </face>
+    </basis>
+
+    <!-- tour date(sm) section -->
+    <div class="tourdate__container mt-10">
+        <div class="text-center my-3"><span onclick="renderTourDateModal(this,'hidden')" class="text-base border border-solid border-primary rounded-md text-primary p-4 cursor-pointer bg-white hover:bg-primary 
+                hover:text-white w-full block ">مشاهده
+                تاریخ های برگزاری</span></div>
+    </div>
+    <basis core="call" name="pdf.ver.1" file="tour/view/ver.1/tourpdf.ver.1/Fa" pageindexid="2"></basis>
+
+
+</div>
