@@ -425,7 +425,7 @@ const renderInventoryView = async (element, day, from, to) => {
     }
     element.classList.add("active");
     window.scroll({
-      top: document.querySelector(".tourInventory__container").offsetTop,
+      top: document.querySelector(".tourInventory__container")?.offsetTop,
       behavior: "smooth",
     });
 

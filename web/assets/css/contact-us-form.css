@@ -121,3 +121,6 @@
 #visa-form [data-bc-question]:nth-child(7) {
   width: 49.5% !important;
 }
+.tour-detail #contact-form-resize{
+  transform: none !important;
+}

@@ -4646,6 +4646,8 @@ div.w-\[204px\][content=""] {
 }
 
 div.sidebar-box:hover,
+button.sidebar-box:hover,
+a.dwn.sidebar-box:hover,
 a.tel.sidebar-box:hover {
   background: linear-gradient(
     89.64deg,
@@ -5368,4 +5370,14 @@ a.tel.sidebar-box:hover {
    width: 9px !important;
   left: 3px !important;
 }
- 
+  .date__details li.active{
+    background: linear-gradient(to left, var(--primary), var(--primary-50));
+    border-color: white !important;
+
+ }
+  .date__details li.active div.flex.flex-col p.text-\[\#717171\]{
+color: white;
+  }
+  .px-0-5{
+    padding: 0 0.5px !important;
+  }

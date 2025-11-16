@@ -569,8 +569,8 @@ function uploadDocumentFooter(e) {
     run: !0,
   });
 }
-function refreshCaptchaFooter(e) {
-  $bc.setSource("captcha.refreshFooter", !0);
+function refreshCaptchaFooter() {
+  $bc.setSource("captcha.refreshFooter", Date.now());
 }
 function captchaRenderedFooter() {
   document.querySelector("#contact-form-resize .contactUsInput").placeholder =
