@@ -868,6 +868,12 @@ a.tel.sidebar-box:hover {
     border-radius: 40px !important;
     background-color: var(--secondary-400) !important;
 }
+.top-50{
+  top: 50%;
+}
+.right-set-cstm{
+  right: 113px;
+}
 .swiper-ver  .swiper-scrollbar-drag{
   background-color: var(--secondary-400) !important;
   width: 9px !important;

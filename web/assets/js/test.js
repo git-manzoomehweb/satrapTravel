@@ -153,8 +153,8 @@ const renderTransportationName = async (element) => {
     if (element) {
       if (element.info.transportation.id) {
         return ` <img src="" data-id="${element.info.transportation.id}"
-                  class="transportation__img h-10 object-cover" alt="${element.info.transportation.name}" width="135"
-                    height="40" loading="lazy" />`;
+                  class="transportation__img h-[26px] w-[90px]" alt="${element.info.transportation.name}" width="90"
+                    height="26" loading="lazy" />`;
       }
     }
   } catch (err) {
