@@ -13,10 +13,11 @@
     <member name="tour-view" type="view" />
     <member name="tour-view-travelplan" type="view"
         postsql="select * from [db.tour-view-travelplan] where Question in('برنامه سفر')" />
-      <member name="tour-related" type="list" blgid="18" propertyid="10000504,8077,8181,8076" typeid="159"
+    <member name="tour-related" type="list" blgid="18" propertyid="10000504,8077,8181,8076" typeid="159"
         link="tour.bc" />
 
-    <member name="tour_viewAirline" type="view" postsql="select * from [db.tour_viewAirline] where prpID in(10000504)" />
+    <member name="tour_viewAirline" type="view"
+        postsql="select * from [db.tour_viewAirline] where prpID in(10000504)" />
 </basis>
 
 
@@ -33,7 +34,7 @@
 <html lang="fa" dir="rtl">
 
 <head>
-   <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover" />
     <title>[##cms.seo.title|(تور ساتراپ تراول)##]</title>
     <meta name="description" content="[##cms.seo.description|(شرکت خدمات مسافرت هوایی و گردشگری  ساتراپ تراول)##]" />
@@ -122,12 +123,13 @@
         </basis>
 
 
-        
+
 
 
         <!-- tour section -->
-        <div class="tour__container px-4 mb-16  relative  w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col mx-auto gap-[18px]">
-                <ul class="flex gap-1 mt-4 items-center">
+        <div
+            class="tour__container px-4 mb-16  relative  w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col mx-auto gap-[18px]">
+            <ul class="flex gap-1 mt-4 items-center">
                 <li class="text-xs text-[#121212]">
                     <a href="/" class="">صفحه اصلی </a>
                 </li>
@@ -200,32 +202,33 @@
                                 <div class="swiper-wrapper">@child</div>
                             </div>
                             <div class="gallery__head__controls__btns absolute z-10 top-[220.5px] w-[850px] px-3">
-                    <div class="transform transition-all duration-300 swiper-button-prev-gallery inline-block">
-                        <span
-                            class="bg-[#2D2D2D54] flex group hover:bg-[#ddddddbf] w-[45px] h-[45px] rounded-full justify-center items-center">
-                            <svg width="9" height="16" viewBox="0 0 9 16" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M0.21967 15.2803C-0.0465966 15.0141 -0.0708027 14.5974 0.147052 14.3038L0.21967 14.2197L6.689 7.75L0.219671 1.28033C-0.046596 1.01406 -0.0708021 0.5974 0.147052 0.303788L0.219671 0.21967C0.485937 -0.0465965 0.902601 -0.0708026 1.19621 0.147052L1.28033 0.21967L8.28033 7.21967C8.5466 7.48594 8.5708 7.9026 8.35295 8.19621L8.28033 8.28033L1.28033 15.2803C0.987437 15.5732 0.512563 15.5732 0.21967 15.2803Z"
-                                    fill="white" class="group-hover:fill-primary-800" />
-                            </svg>
+                                <div
+                                    class="transform transition-all duration-300 swiper-button-prev-gallery inline-block">
+                                    <span
+                                        class="bg-[#2D2D2D54] flex group hover:bg-[#ddddddbf] w-[45px] h-[45px] rounded-full justify-center items-center">
+                                        <svg width="9" height="16" viewBox="0 0 9 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0.21967 15.2803C-0.0465966 15.0141 -0.0708027 14.5974 0.147052 14.3038L0.21967 14.2197L6.689 7.75L0.219671 1.28033C-0.046596 1.01406 -0.0708021 0.5974 0.147052 0.303788L0.219671 0.21967C0.485937 -0.0465965 0.902601 -0.0708026 1.19621 0.147052L1.28033 0.21967L8.28033 7.21967C8.5466 7.48594 8.5708 7.9026 8.35295 8.19621L8.28033 8.28033L1.28033 15.2803C0.987437 15.5732 0.512563 15.5732 0.21967 15.2803Z"
+                                                fill="white" class="group-hover:fill-primary-800" />
+                                        </svg>
 
-                        </span>
-                    </div>
-                    <div
-                        class="transform transition-all duration-300 swiper-button-next-gallery inline-block float-left">
-                        <span
-                            class="bg-[#2D2D2D54] rotate-180 flex group hover:bg-[#ddddddbf] w-[45px] h-[45px] rounded-full justify-center items-center">
-                            <svg width="9" height="16" viewBox="0 0 9 16" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M0.21967 15.2803C-0.0465966 15.0141 -0.0708027 14.5974 0.147052 14.3038L0.21967 14.2197L6.689 7.75L0.219671 1.28033C-0.046596 1.01406 -0.0708021 0.5974 0.147052 0.303788L0.219671 0.21967C0.485937 -0.0465965 0.902601 -0.0708026 1.19621 0.147052L1.28033 0.21967L8.28033 7.21967C8.5466 7.48594 8.5708 7.9026 8.35295 8.19621L8.28033 8.28033L1.28033 15.2803C0.987437 15.5732 0.512563 15.5732 0.21967 15.2803Z"
-                                    fill="white" class="group-hover:fill-primary-800" />
-                            </svg>
+                                    </span>
+                                </div>
+                                <div
+                                    class="transform transition-all duration-300 swiper-button-next-gallery inline-block float-left">
+                                    <span
+                                        class="bg-[#2D2D2D54] rotate-180 flex group hover:bg-[#ddddddbf] w-[45px] h-[45px] rounded-full justify-center items-center">
+                                        <svg width="9" height="16" viewBox="0 0 9 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0.21967 15.2803C-0.0465966 15.0141 -0.0708027 14.5974 0.147052 14.3038L0.21967 14.2197L6.689 7.75L0.219671 1.28033C-0.046596 1.01406 -0.0708021 0.5974 0.147052 0.303788L0.219671 0.21967C0.485937 -0.0465965 0.902601 -0.0708026 1.19621 0.147052L1.28033 0.21967L8.28033 7.21967C8.5466 7.48594 8.5708 7.9026 8.35295 8.19621L8.28033 8.28033L1.28033 15.2803C0.987437 15.5732 0.512563 15.5732 0.21967 15.2803Z"
+                                                fill="white" class="group-hover:fill-primary-800" />
+                                        </svg>
 
-                        </span>
-                    </div>
-                </div>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </layout>
                     <face>
@@ -238,7 +241,7 @@
                     </face>
                 </basis>
 
-                
+
 
                 <basis core="print" datamembername="db.tour-gallery">
                     <layout>
@@ -316,10 +319,10 @@
                     <div class="text-base text-zinc-900">@largetext</div>
                 </face>
             </basis>
-            
+
             <div class="w-full flex gap-4 relative">
-            <div class="w-[908px] calculate-h flex flex-col gap-[30px]">
-                <basis core="print" datamembername="db.tour-view">
+                <div class="w-[908px] calculate-h flex flex-col gap-[30px]">
+                    <basis core="print" datamembername="db.tour-view">
                         <layout>
                             <div class="w-full flex flex-col gap-[32px] border border-zinc-300 p-[22px] rounded-3xl">
                                 <h2 class="font-bold text-2xl" data-id="services">خدمات تور </h2>
@@ -330,7 +333,8 @@
                                 </div>
                             </div>
                         </layout>
-                        <face filter="prpID in ('3088146','3088147','3088148','3088149','3088150','3088151','3088152','3088153','3088154','3088155')">
+                        <face
+                            filter="prpID in ('3088146','3088147','3088148','3088149','3088150','3088151','3088152','3088153','3088154','3088155')">
 
                             <div class="flex items-center gap-3">
                                 <span class="bg-primary-50 rounded-full w-10 h-10 flex justify-center items-center">
@@ -341,30 +345,23 @@
 
                             </div>
                         </face>
-                </basis>
+                    </basis>
 
 
 
 
 
-                 <div class="date__details">
-                  <basis core="print" datamembername="db.dates" run="atclient"
-                    onrendered="onrenderedDates">
-                     <layout>
-                      <script
-                       type="text/template">
+                    <div class="date__details">
+                        <basis core="print" datamembername="db.dates" run="atclient" onrendered="onrenderedDates">
+                            <layout>
+                                <script type="text/template">
                        <div class="w-full flex flex-col gap-[32px] border border-zinc-300 p-[22px] rounded-3xl">
-                        <h2 class="font-bold text-2xl">تاریخ تور ها
-
-
-                        </h2>
-                        <ul class="w-full grid grid-cols-3 gap-[14px]">@child</ul>
-                                                </div>
-                                            </script>
-                                        </layout>
-                                        <face>
-                                            <script
-                                                type="text/template">
+                        <h2 class="font-bold text-2xl">تاریخ تور ها</h2>
+                        <ul class="w-full grid grid-cols-3 gap-[14px]">@child</ul></div>
+                         </script>
+                            </layout>
+                            <face>
+                                <script type="text/template">
                                                 <li onclick="renderInventoryView(this,@day@,@start.dateid@,@end.dateid@)" 
                                                 class="flex h-[67px] cursor-pointer group hover:bg-gradient-to-l hover:from-primary hover:to-primary-50 hover:border-white gap-[10px] items-center border-[#424242] border rounded-xl p-3">
                                                 <span class="bg-primary-50 w-10 h-10 flex justify-center items-center rounded-full">
@@ -384,38 +381,39 @@
                                                 </div>
                                                 </li>
                                             </script>
-                                        </face>
-                                    </basis>
-                                  
-                                  
+                            </face>
+                        </basis>
 
-                                    
-                                </div>
 
-                <div class="w-full tour__container__info">
-                    <!-- tour execution section -->
-                    <div class="hidden mb-10 tourExecution__container w-full">
-                        <h2 class="text-2xl font-bold mb-10" data-id="start-travel">برنامه پرواز</h2>
-                        <!-- origins tour execution section -->
-                        <div class=" bg-white mb-16 tourExecution__container__origins w-full flex flex-col gap-[22px] border border-zinc-300 p-[22px] rounded-3xl">
-                            <div class="relative font-medium text-xl w-full pb-[20px] border-b border-[#D1D1D1]">
-                                <div class="flex gap-1 items-center">
-                                   <span class="font-medium text-xl">سفر رفت</span>
-                                   <span>(</span>
-                                   <h3 class="font-medium text-xl origins__city"></h3>
-                                   <span>)</span>
+
+
+                    </div>
+
+                    <div class="w-full tour__container__info">
+                        <!-- tour execution section -->
+                        <div class="hidden mb-10 tourExecution__container w-full">
+                            <h2 class="text-2xl font-bold mb-10" data-id="start-travel">برنامه پرواز</h2>
+                            <!-- origins tour execution section -->
+                            <div
+                                class=" bg-white mb-16 tourExecution__container__origins w-full flex flex-col gap-[22px] border border-zinc-300 p-[22px] rounded-3xl">
+                                <div class="relative font-medium text-xl w-full pb-[20px] border-b border-[#D1D1D1]">
+                                    <div class="flex gap-1 items-center">
+                                        <span class="font-medium text-xl">سفر رفت</span>
+                                        <span>(</span>
+                                        <h3 class="font-medium text-xl origins__city"></h3>
+                                        <span>)</span>
+                                    </div>
+
                                 </div>
-                         
-                            </div>
-                            <basis core="print" datamembername="refresh.executionPlanTypesOrigins"
-                                if="{##refresh.executionPlanTypesOrigins##}" run="atclient"
-                                onrendered="onrenderedExecutionOrigins">
-                                <layout>
-                                    <script
-                                        type="text/template"><div class="execution__details"><div class="flex flex-col p-4 execution__details__path execution__details__path__origins">@child </div></div></script>
-                                </layout>
-                                <face>
-                                    <script type="text/template"><div class="flex gap-2 execution__details__path__item">
+                                <basis core="print" datamembername="refresh.executionPlanTypesOrigins"
+                                    if="{##refresh.executionPlanTypesOrigins##}" run="atclient"
+                                    onrendered="onrenderedExecutionOrigins">
+                                    <layout>
+                                        <script
+                                            type="text/template"><div class="execution__details"><div class="flex flex-col p-4 execution__details__path execution__details__path__origins">@child </div></div></script>
+                                    </layout>
+                                    <face>
+                                        <script type="text/template"><div class="flex gap-2 execution__details__path__item">
                                         <div class="execution__details__path__item__times flex w-full gap-6 relative">
                                             <div class="flex flex-col gap-[25px] w-[110px] h-full justify-between">
                                                 <div class="w-full flex flex-col gap-1">
@@ -506,31 +504,31 @@
                                     {{ return await renderRouteStop($data)}}
 
                                     </script>
-                                </face>
-                            </basis>
-                        </div>
-                        <!-- destinations tour execution section -->
-                        <div
-                            class=" bg-white  w-full flex flex-col gap-[22px] border border-zinc-300 p-[22px] rounded-3xl tourExecution__container__destinations ">
-                            <div class="relative font-medium text-xl w-full pb-[20px] border-b border-[#D1D1D1]">
-                                <div class="flex gap-1 items-center">
-                                    <span class="font-medium text-xl">سفر برگشت</span>
-                                      <span>(</span>
-                                    <h3 class="font-medium text-xl destinations__city"></h3>
-                                      <span>)</span>
-                                   
-                                    
+                                    </face>
+                                </basis>
+                            </div>
+                            <!-- destinations tour execution section -->
+                            <div
+                                class=" bg-white  w-full flex flex-col gap-[22px] border border-zinc-300 p-[22px] rounded-3xl tourExecution__container__destinations ">
+                                <div class="relative font-medium text-xl w-full pb-[20px] border-b border-[#D1D1D1]">
+                                    <div class="flex gap-1 items-center">
+                                        <span class="font-medium text-xl">سفر برگشت</span>
+                                        <span>(</span>
+                                        <h3 class="font-medium text-xl destinations__city"></h3>
+                                        <span>)</span>
+
+
+                                    </div>
                                 </div>
-                               </div>
-                            <basis core="print" datamembername="refresh.executionPlanTypesDestinations"
-                                if="{##refresh.executionPlanTypesDestinations##}" run="atclient"
-                                onrendered="onrenderedExecutionDestinations">
-                                <layout>
-                                    <script
-                                        type="text/template"><div class="execution__details"><div class="flex flex-col p-4 execution__details__path execution__details__path__destinations">@child </div></div></script>
-                                </layout>
-                                <face>
-                                    <script type="text/template">
+                                <basis core="print" datamembername="refresh.executionPlanTypesDestinations"
+                                    if="{##refresh.executionPlanTypesDestinations##}" run="atclient"
+                                    onrendered="onrenderedExecutionDestinations">
+                                    <layout>
+                                        <script
+                                            type="text/template"><div class="execution__details"><div class="flex flex-col p-4 execution__details__path execution__details__path__destinations">@child </div></div></script>
+                                    </layout>
+                                    <face>
+                                        <script type="text/template">
                                         <div class="flex gap-2 execution__details__path__item">
                                         <div class="execution__details__path__item__times flex w-full gap-6 relative">
                                             <div class="flex flex-col gap-[25px] w-[110px] h-full justify-between">
@@ -618,93 +616,161 @@
                                     </div>
                                     {{ return await renderRouteStop($data)}}
                                     </script>
-                                </face>
-                            </basis>
+                                    </face>
+                                </basis>
+                            </div>
+
                         </div>
 
                     </div>
 
+
+
+
+
+
+                    <!-- tour inventory section -->
+                    <basis core="print" datamembername="api.inventoryView" run="atclient"
+                        onrendered="onrenderedInventoryView">
+                        <layout>
+                            <script type="text/template">
+                                <div class="tourInventory__container w-full flex flex-col gap-[30px]">
+                                    <h2 class="text-2xl font-bold" data-id="hotels">انتخاب هتل</h2>
+                                    <div class="flex flex-col gap-6">@child</div>
+                                </div>
+                            </script>
+                        </layout>
+                        <face>
+                            <script type="text/template">
+                                <div class="tourInventory__details hotelCard w-full flex border p-3 rounded-2xl gap-6 items-center justify-between border-zinc-300">
+                                    <div class="tourInventory__details__item w-full flex justify-between gap-6 relative">
+                                        <div class="flex flex-col gap-5 divide-y w-full">
+                                            {{return await renderHotels($data)}}
+                                        </div> 
+                                        <div class="tourInventory__details__item__info w-[564px] absolute bottom-0 left-0 flex justify-between items-center">
+                                            <div class="w-full flex justify-between items-center">
+                                            <div class="w-[50%] flex flex-col gap-[11px]">
+                                                <div class="flex items-center gap-2">
+                                                <div class="w-full font-bold text-sm text-[#171717] flex items-center gap-2 ">
+                                                    <div class="font-bold text-sm text-[#171717]">دو تخته</div>
+                                                    {{ return await renderPriceInfo($data,'doublecost')}} 
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-full font-bold text-sm text-[#171717] flex items-center gap-2 ">
+                                                    <div class="font-bold text-sm text-[#171717]">تک تخته</div>
+                                                    {{ return await renderPriceInfo($data,'singlecost')}} 
+                                                </div>
+                                            </div>
+                                            </div>
+                                           <div class="w-[50%] flex flex-col gap-[11px] border-r border-dashed border-[#DFDFDF] items-end">
+                                             <div class="flex flex-col gap-[11px]">
+                                                <div class="flex items-center gap-2">
+                                                <div class="w-full font-bold text-sm text-[#171717] flex items-center gap-2 ">
+                                                    <div class="font-bold text-sm text-[#171717]">کودک با تخت</div>
+                                                    {{ return await renderPriceInfo($data,'childwithbed')}} 
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-full font-bold text-sm text-[#171717] flex items-center gap-2 ">
+                                                    <div class="font-bold text-sm text-[#171717]">کودک بدون تخت</div>
+                                                {{ return await renderPriceInfo($data,'childwithoutbed')}} 
+                                            </div>
+                                        </div>
+                                             </div>
+                                           </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            </script>
+                        </face>
+                    </basis>
+
+
+
+
+
                 </div>
-
-
-            </div>
-            <aside class=" w-[355px]">
-                    <div class="flex flex-col gap-[21px] w-full">
+                <aside class=" w-[355px]">
+                    <div class="flex flex-col gap-[21px] w-full h-full relative">
                         <div
                             class="w-full h-[412px] px-[12px] py-[11px] flex flex-col justify-between items-center border border-[#D7D6D6] rounded-xl">
                             <div class="w-full grid gap-3 grid-cols-2">
-                                   <basis core="print" datamembername="db.tour-view">
+                                <basis core="print" datamembername="db.tour-view">
                                     <face filter="prpID=8076">
-                                    <div
-                                    class="w-full h-[144px] bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
-                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Time Circle.svg" alt="time"
-                                        width="32" height="32">
-                                    <p class="text-sm text-[#777777]">@Question</p>
-                                    <p class="font-bold text-[#044773]">@text</p>
-                                </div>
+                                        <div
+                                            class="w-full h-[144px] bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/Time Circle.svg"
+                                                alt="time" width="32" height="32">
+                                            <p class="text-sm text-[#777777]">@Question</p>
+                                            <p class="font-bold text-[#044773]">@text</p>
+                                        </div>
                                     </face>
-                                   </basis>
-                                
-                                    <basis core="print" datamembername="db.tour-view">
-                                        <face filter="prpID=8077">
-                                            <div
-                                    class="w-full h-[144px] bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
-                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg" alt="time"
-                                        width="32" height="32">
-                                    <p class="text-sm text-[#777777]">@Question  </p>
-                                    <p class="font-bold text-[#044773]"> @text  </p>
-                                </div>
-                                        </face>
-                                    </basis>
-                                
-                                    
-        <basis core="list" datamembername="db.tour-joining">
-            <face>
-                <div
-                  class="w-full h-[144px] bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
-                <img loading="lazy" src="[##cms.cms.cdn##]/images/plane up.svg" alt="ایرلاین"
-                width="32" height="32">
-                <p class="text-sm text-[#777777]">ایرلاین:</p>
-                <img loading="lazy" src="@db.airline.pic" alt="@db.airline.name	"
-                class="w-[90px]">
-                </div>
-            </face>
-        </basis>
-                                
+                                </basis>
 
-        <basis core="print" datamembername="db.tour-view">
-                                        <layout>
-                                               <div
-                                    class="w-full h-[144px] py-2 bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
-                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/wheel bag2.svg" alt="bag"
-                                        width="32" height="32">
-                                    <p class="text-sm text-[#777777]">نوع تور:</p>
-                                    @child
-                                       </div> 
-                                     </layout>
-                                        <face filter="prpID=3088134">
+                                <basis core="print" datamembername="db.tour-view">
+                                    <face filter="prpID=8077">
+                                        <div
+                                            class="w-full h-[144px] bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg" alt="time"
+                                                width="32" height="32">
+                                            <p class="text-sm text-[#777777]">@Question </p>
+                                            <p class="font-bold text-[#044773]"> @text </p>
+                                        </div>
+                                    </face>
+                                </basis>
+
+
+                                <basis core="list" datamembername="db.tour-joining">
+                                    <face>
+                                        <div
+                                            class="w-full h-[144px] bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/plane up.svg"
+                                                alt="ایرلاین" width="32" height="32">
+                                            <p class="text-sm text-[#777777]">ایرلاین:</p>
+                                            <img loading="lazy" src="@db.airline.pic" alt="@db.airline.name	"
+                                                class="w-[90px]">
+                                        </div>
+                                    </face>
+                                </basis>
+
+
+                                <basis core="print" datamembername="db.tour-view">
+                                    <layout>
+                                        <div
+                                            class="w-full h-[144px] py-2 bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/wheel bag2.svg" alt="bag"
+                                                width="32" height="32">
+                                            <p class="text-sm text-[#777777]">نوع تور:</p>
+                                            @child
+                                        </div>
+                                    </layout>
+                                    <face filter="prpID=3088134">
                                         <span class="font-bold text-[#044773]  ">@text </span>
 
-                                        </face>
-     </basis>
-                                    
-                                
-                             
-                             
-                                
+                                    </face>
+                                </basis>
+
+
+
+
+
                             </div>
-                             <basis core="print" datamembername="db.tour-view">
+                            <basis core="print" datamembername="db.tour-view">
                                 <face filter="prpID=8181">
-                                    <div class="w-full flex justify-between items-center h-[51px] px-3 rounded-xl bg-[#FFBD22]">
-                                <div class="flex items-center gap-2">
-                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Wallet doublle.svg" alt="Wallet">
-                                   @Question :
-                                </div>
-                                <b>@Answer	  </b>
-                            </div>
+                                    <div
+                                        class="w-full flex justify-between items-center h-[51px] px-3 rounded-xl bg-[#FFBD22]">
+                                        <div class="flex items-center gap-2">
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/Wallet doublle.svg"
+                                                alt="Wallet">
+                                            @Question :
+                                        </div>
+                                        <b>@Answer </b>
+                                    </div>
                                 </face>
-                             </basis>
-                            
+                            </basis>
+
                         </div>
                         <div class="w-full flex flex-col gap-[21px]  sticky top-[153px]">
                             <div
@@ -794,72 +860,77 @@
 
 
 
-                             <basis core="print" datamembername="db.pdf">
-                        <else-layout>
-                            <form class="w-full tour-pdf-form" action="/tours/package/pdf?id=[##cms.query.id##]" method="POST"
-                                target="_blank">
-                                <input type="hidden" class="hidden" name="id" value="[##cms.query.id##]">
-                                <input type="hidden" class="hidden" name="from" id="form-from">
-                                <input type="hidden" class="hidden" name="to" id="form-to">
-                                <input type="hidden" class="hidden" name="day" id="form-day">
-                                <input type="hidden" class="hidden" name="fdate" id="fdate">
-                                <input type="hidden" class="hidden" name="rdate" id="rdate">
-                                <button type="submit" target="_blank"
-                                    class="sidebar-box relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 !pr-0">
-                                <div>
-                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/dwn-package.svg" alt="download">
-                                </div>
-                                <span class="shadow-txt text-white font-semibold text-xl">دانلود پکیج</span>
-                                </button>
-                            </form>
-                        </else-layout>
-                        <layout>@child </layout>
-                        <face>
-                            <a href="/@largeIMG" target="_blank"
-                                class="sidebar-box dwn relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 !pr-0">
-                                <div>
-                                    
-                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/dwn-package.svg" alt="download">
+                            <basis core="print" datamembername="db.pdf">
+                                <else-layout>
+                                    <form class="w-full tour-pdf-form" action="/tours/package/pdf?id=[##cms.query.id##]"
+                                        method="POST" target="_blank">
+                                        <input type="hidden" class="hidden" name="id" value="[##cms.query.id##]">
+                                        <input type="hidden" class="hidden" name="from" id="form-from">
+                                        <input type="hidden" class="hidden" name="to" id="form-to">
+                                        <input type="hidden" class="hidden" name="day" id="form-day">
+                                        <input type="hidden" class="hidden" name="fdate" id="fdate">
+                                        <input type="hidden" class="hidden" name="rdate" id="rdate">
+                                        <button type="submit" target="_blank"
+                                            class="sidebar-box relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 !pr-0">
+                                            <div>
+                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/dwn-package.svg"
+                                                    alt="download">
+                                            </div>
+                                            <span class="shadow-txt text-white font-semibold text-xl">دانلود پکیج</span>
+                                        </button>
+                                    </form>
+                                </else-layout>
+                                <layout>@child </layout>
+                                <face>
+                                    <a href="/@largeIMG" target="_blank"
+                                        class="sidebar-box dwn relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 !pr-0">
+                                        <div>
 
-                                </div>
-                                <span class="shadow-txt text-white font-semibold text-xl">دانلود پکیج</span>
-                            </a>
-                        </face>
-                    </basis>
-                             
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/dwn-package.svg"
+                                                alt="download">
 
-                              <basis core="print" datamembername="db.info">
-                        <face filter="TypeID=240">
-                            <a href="tel:@text"
-                                class="sidebar-box tel relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 ">
-                                <div>
-                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/shadow-tel.svg" alt="phone">
+                                        </div>
+                                        <span class="shadow-txt text-white font-semibold text-xl">دانلود پکیج</span>
+                                    </a>
+                                </face>
+                            </basis>
 
-                                </div>
-                                <span class="shadow-txt text-white font-semibold text-xl"> @text</span>
-                            </a>
-                        </face>
-                    </basis>
+
+                            <basis core="print" datamembername="db.info">
+                                <face filter="TypeID=240">
+                                    <a href="tel:@text"
+                                        class="sidebar-box tel relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 ">
+                                        <div>
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/shadow-tel.svg"
+                                                alt="phone">
+
+                                        </div>
+                                        <span class="shadow-txt text-white font-semibold text-xl"> @text</span>
+                                    </a>
+                                </face>
+                            </basis>
                         </div>
                     </div>
                 </aside>
             </div>
-              <basis core="print" datamembername="db.tour-view-travelplan">
+            <basis core="print" datamembername="db.tour-view-travelplan">
                 <layout>
-                    <div class="w-full border mt-9 border-[#DFDFDF] rounded-3xl flex flex-col py-[31px] px-[52px] gap-[31px]">
-                <h2 class="font-bold text-zinc-900" data-id="travelouge">برنامه سفر</h2>
-                <div class="travelouge-lis w-full flex flex-col gap-3">
-                   @child
-                   
-                </div>
-            </div>
+                    <div
+                        class="w-full border mt-9 border-[#DFDFDF] rounded-3xl flex flex-col py-[31px] px-[52px] gap-[31px]">
+                        <h2 class="font-bold text-zinc-900" data-id="travelouge">برنامه سفر</h2>
+                        <div class="travelouge-lis w-full flex flex-col gap-3">
+                            @child
+
+                        </div>
+                    </div>
                 </layout>
-                <face> <div
+                <face>
+                    <div
                         class="w-full cursor-pointer travelouge-item hover:border-primary-300 border border-zinc-300 py-3 px-4 rounded-xl flex flex-col">
                         <div class="flex items-center w-full justify-between">
                             <div class="flex items-center days-el gap-3">
                                 <span class="font-bold">@text </span>
-                                
+
                             </div>
                             <span class="">
                                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
@@ -874,35 +945,36 @@
                         </div>
                         <div class="overflow-hidden flex show-content h-0 opacity-0">
                             <div class="pt-3 gap-3">
-                                 @largetext
+                                @largetext
                             </div>
                         </div>
-                    </div></face>
+                    </div>
+                </face>
             </basis>
-            
+
             <basis core="print" datamembername="db.tour-view">
                 <layout>
                     <div class="w-full flex flex-col gap-[32px] border border-zinc-300 p-[22px] rounded-3xl my-3">
-                <h2 class="font-bold text-2xl" data-id="description">توضیحات</h2>
-                <div class="text-base">@child</div>
-            </div>
+                        <h2 class="font-bold text-2xl" data-id="description">توضیحات</h2>
+                        <div class="text-base">@child</div>
+                    </div>
                 </layout>
                 <face filter="prpID=3088136">@largetext</face>
             </basis>
-            
-             <basis core="print" datamembername="db.tour-view">
+
+            <basis core="print" datamembername="db.tour-view">
                 <layout>
                     <div class="w-full flex flex-col gap-[32px] border border-zinc-300 p-[22px] rounded-3xl my-3">
-                <h2 class="font-bold text-2xl" data-id="Additional-information">اطلاعات تکمیلی    </h2>
-               <div class="text-base">@child</div>
-            </div>
+                        <h2 class="font-bold text-2xl" data-id="Additional-information">اطلاعات تکمیلی  </h2>
+                        <div class="text-base">@child</div>
+                    </div>
                 </layout>
-                 <face filter="prpID=3088137">@largetext</face>
-             </basis>
-           
+                <face filter="prpID=3088137">@largetext</face>
+            </basis>
+
         </div>
 
- <section class="w-full flex justify-center relative  ">
+        <section class="w-full flex justify-center relative  ">
             <div class="px-4 relative w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
                 <div class="before-border last-section-brd-article relative w-full flex flex-col">
                     <div class="flex  items-center gap-3 ">
@@ -913,7 +985,7 @@
                             <span class="bullet-1"></span>
                         </div>
                     </div>
-                     <div class="my-[50px] z-[4] items-center w-full flex">
+                    <div class="my-[50px] z-[4] items-center w-full flex">
                         <div
                             class="w-full rounded-2xl overflow-hidden relative flex items-center justify-center h-[143px] px-[35px] py-5">
                             <img src="[##cms.cms.cdn##]/images/contact-form-image.jpg" alt="contact-us"
@@ -1017,13 +1089,64 @@
             </div>
         </section>
         </div>
+
+
+        <!-- tour form section -->
+        <div>
+            <basis core="call" if="{##db.tourForm.run|(false)##}" triggers="db.tourForm" run="atclient"
+                file="/tour-book.bc" hotelName="{##db.tourForm.hotelName##}" method="post"
+                hotelRate="{##db.tourForm.hotelRate##}" hotelService="{##db.tourForm.hotelService##}"
+                tourName="{##db.tourForm.tourName##}" doubleP="{##db.tourForm.doubleP##}"
+                singleP="{##db.tourForm.singleP##}" wBedP="{##db.tourForm.wBedP##}" woBedP="{##db.tourForm.woBedP##}"
+                doubleU="{##db.tourForm.doubleU##}" singleU="{##db.tourForm.singleU##}" wBedU="{##db.tourForm.wBedU##}"
+                woBedU="{##db.tourForm.woBedU|()##}" startDate="{##db.tourForm.startDate##}"
+                endDate="{##db.tourForm.endDate##}" weekdayStartDate="{##db.tourForm.weekdayStartDate##}"
+                weekdayEndDate="{##db.tourForm.weekdayEndDate##}" departureName="{##db.tourForm.departureName##}"
+                destinationName="{##db.tourForm.destinationName##}" startTime="{##db.tourForm.startTime##}"
+                endTime="{##db.tourForm.endTime##}"></basis>
+        </div>
+        <!-- tour-installment form section -->
+        <div>
+            <basis core="call" if="{##db.tourFormInstallment.run|(false)##}" triggers="db.tourFormInstallment"
+                run="atclient" file="/tour-bookInstallment.bc" hotelName="{##db.tourFormInstallment.hotelName##}"
+                method="post" hotelRate="{##db.tourFormInstallment.hotelRate##}"
+                hotelService="{##db.tourFormInstallment.hotelService##}"
+                tourName="{##db.tourFormInstallment.tourName##}" doubleP="{##db.tourFormInstallment.doubleP##}"
+                singleP="{##db.tourFormInstallment.singleP##}" wBedP="{##db.tourFormInstallment.wBedP##}"
+                woBedP="{##db.tourFormInstallment.woBedP##}" doubleU="{##db.tourFormInstallment.doubleU##}"
+                singleU="{##db.tourFormInstallment.singleU##}" wBedU="{##db.tourFormInstallment.wBedU##}"
+                woBedU="{##db.tourFormInstallment.woBedU|()##}" adultCount="{##db.tourFormInstallment.adultCount|(2)##}"
+                childCount="{##db.tourFormInstallment.childCount|(0)##}"
+                infantCount="{##db.tourFormInstallment.infantCount|(0)##}"
+                startDate="{##db.tourFormInstallment.startDate##}" endDate="{##db.tourFormInstallment.endDate##}"
+                weekdayStartDate="{##db.tourFormInstallment.weekdayStartDate##}"
+                weekdayEndDate="{##db.tourFormInstallment.weekdayEndDate##}"
+                departureName="{##db.tourFormInstallment.departureName##}"
+                destinationName="{##db.tourFormInstallment.destinationName##}"
+                startTime="{##db.tourFormInstallment.startTime##}" endTime="{##db.tourFormInstallment.endTime##}"
+                totalAmountINS="{##db.tourFormInstallment.totalAmountINS##}"
+                totalAmountFacilityINS="{##db.tourFormInstallment.totalAmountFacilityINS##}"
+                totalAdvancePaymentINS="{##db.tourFormInstallment.totalAdvancePaymentINS##}"
+                amountEachInstallmentINS="{##db.tourFormInstallment.amountEachInstallmentINS##}"></basis>
+        </div>
+        <div id="load-form-lachin">
+            <basis core="call" if="{##db.tourFormInstallmentplan.run|(false)##}" triggers="db.tourFormInstallmentplan"
+                run="atclient" file="/installmentbook-plan.bc" hotelName="{##db.tourFormInstallmentplan.hotelName##}"
+                method="post" hotelRate="{##db.tourFormInstallmentplan.hotelRate##}"
+                hotelService="{##db.tourFormInstallmentplan.hotelService##}"
+                tourName="{##db.tourFormInstallmentplan.tourName##}" doubleP="{##db.tourFormInstallmentplan.doubleP##}"
+                singleP="{##db.tourFormInstallmentplan.singleP##}" wBedP="{##db.tourFormInstallmentplan.wBedP##}"
+                woBedP="{##db.tourFormInstallmentplan.woBedP##}" doubleU="{##db.tourFormInstallmentplan.doubleU##}"
+                singleU="{##db.tourFormInstallmentplan.singleU##}" wBedU="{##db.tourFormInstallmentplan.wBedU##}"
+                woBedU="{##db.tourFormInstallmentplan.woBedU|()##}"></basis>
+        </div>
     </main>
     <!-- footer -->
-     <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
+    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
     <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]"></basis>
     <!----------------js file---------------->
     <script src="[##cms.cms.cdn##]/js/satrap-tour.function.js" type="text/javascript"></script>
-    
+
 
 </body>
 

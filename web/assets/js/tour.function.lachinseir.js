@@ -2194,7 +2194,9 @@ const OnProcessedTourBookingFormIns = async (args) => {
     }
 }
 
-
+function closeModalForm(element , container ){
+document.getElementById(container).classList.add("hidden");
+}
 
 // window.onload = function() {
 //     const listItems = document.querySelectorAll('.tourItinerary__item');
@@ -2205,7 +2207,5 @@ const OnProcessedTourBookingFormIns = async (args) => {
 // };
 
 
-function closeModalForm(element , container ){
-document.getElementById(container).classList.add("hidden");
-}
+
 

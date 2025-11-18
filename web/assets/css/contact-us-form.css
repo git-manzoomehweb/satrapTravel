@@ -121,6 +121,49 @@
 #visa-form [data-bc-question]:nth-child(7) {
   width: 49.5% !important;
 }
-.tour-detail #contact-form-resize{
+.tour-detail #contact-form-resize {
   transform: none !important;
+}
+.modal__content [data-bc-title-container] {
+  display: none !important;
+}
+.modal__content [data-bc-answer-container] {
+  width: 100% !important;
+}
+.modal__content [data-bc-part-container],
+.modal__content [data-bc-part] {
+  width: 100% !important;
+}
+.modal__content [data-bc-part] input,
+.captcha__container__info input {
+  width: 100% !important;
+  border: 1px solid var(--primary) !important;
+  background-color: white !important;
+  height: 54px !important;
+  color: var(--primary-800) !important;
+  border-radius: 12px !important;
+}
+.modal__content [data-bc-part] input::placeholder,
+.captcha__container__info input::placeholder {
+  color: var(--primary-500) !important;
+}
+.modal__content [data-bc-section]{
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.count-btnnn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--primary-600);
+  color: var(--primary-600);
+  background-color: var(--primary-50);
+  border-radius: 4px;
+}
+.count-btnnn:hover {
+  border: 1px solid var(--secondary-600) !important;
+  color: var(--secondary-600) !important;
+  background-color: var(--secondary-50) !important;
 }

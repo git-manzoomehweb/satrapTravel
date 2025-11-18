@@ -321,11 +321,51 @@
                         onrendered="onrenderedInventoryView">
                         <layout>
                             <script
-                                type="text/template"><div class="tourInventory__container"><div class="mb-16"><span class="text-xl font-danabold">لیست قیمت ها</span></div><div>@child</div></div></script>
+                                type="text/template">
+                                <div class="tourInventory__container">
+                                    <div class="mb-16">
+                                        <span class="text-xl font-danabold">لیست قیمت ها</span>
+                                    </div>
+                                    <div>@child</div>
+                                </div>
+                            </script>
                         </layout>
                         <face>
                             <script type="text/template">
-                                <div class="px-4 mb-16 bg-white tourInventory__details rounded-xl py-7 shadow-pr w-12/12"><div class="tourInventory__details__item"><div class="flex flex-col gap-5 divide-y">{{return await renderHotels($data)}}</div> <div class="tourInventory__details__item__info"><ul class="grid grid-cols-4 gap-2 px-5 py-6 text-center rounded-xl bg-module-gray-7"><li class="flex border-l-2 border-dashed border-module-gray-5 border-module-gray-14"><div class="w-full"><div class="mb-2 text-base">دو تخته</div>{{ return await renderPriceInfo($data,'doublecost')}} </div></li><li class="flex border-l-2 border-dashed border-module-gray-5 border-module-gray-14"><div class="w-full"><div class="mb-2 text-base">تک تخته</div>{{ return await renderPriceInfo($data,'singlecost')}} </div></li><li class="flex border-l-2 border-dashed border-module-gray-5 border-module-gray-14"><div class="w-full"><div class="mb-2 text-base">کودک با تخت</div>{{ return await renderPriceInfo($data,'childwithbed')}} </div></li><li class="flex border-module-gray-5"><div class="w-full"><div class="mb-2 text-base">کودک بدون تخت</div>{{ return await renderPriceInfo($data,'childwithoutbed')}} </div></li></ul></div></div></div>
+                                <div class="px-4 mb-16 bg-white tourInventory__details rounded-xl py-7 shadow-pr w-12/12">
+                                    <div class="tourInventory__details__item">
+                                        <div class="flex flex-col gap-5 divide-y">
+                                            {{return await renderHotels($data)}}
+                                        </div> 
+                                        <div class="tourInventory__details__item__info">
+                                            <ul class="grid grid-cols-4 gap-2 px-5 py-6 text-center rounded-xl bg-module-gray-7">
+                                                <li class="flex border-l-2 border-dashed border-module-gray-5 border-module-gray-14">
+                                                <div class="w-full">
+                                                    <div class="mb-2 text-base">دو تخته</div>
+                                                    {{ return await renderPriceInfo($data,'doublecost')}} 
+                                                </div>
+                                            </li>
+                                            <li class="flex border-l-2 border-dashed border-module-gray-5 border-module-gray-14">
+                                                <div class="w-full">
+                                                    <div class="mb-2 text-base">تک تخته</div>
+                                                    {{ return await renderPriceInfo($data,'singlecost')}} 
+                                                </div>
+                                            </li>
+                                            <li class="flex border-l-2 border-dashed border-module-gray-5 border-module-gray-14">
+                                                <div class="w-full">
+                                                    <div class="mb-2 text-base">کودک با تخت</div>
+                                                    {{ return await renderPriceInfo($data,'childwithbed')}} 
+                                                </div>
+                                            </li>
+                                            <li class="flex border-module-gray-5">
+                                                <div class="w-full"><div class="mb-2 text-base">کودک بدون تخت</div>
+                                                {{ return await renderPriceInfo($data,'childwithoutbed')}} 
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                             </script>
                         </face>
                     </basis>

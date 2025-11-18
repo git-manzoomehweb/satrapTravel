@@ -33,7 +33,7 @@
 
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
-    <member name="tour-list" type="list" link="tour.bc" propertyid="8077,8181,10000504,8076" perpage="20" typeid="159"
+    <member name="tour-list" type="list" link="tour.bc" propertyid="8077,8181,10000504,8076,3088134" perpage="20" typeid="159"
         size="296x206" order="ord" />
     <member name="paging" type="list" request="paging" count="5" parentname="tour-list" />
 </basis>
@@ -562,13 +562,14 @@
                                             </div>
                                         </div>
                                         <div class="px-5 flex flex-col justify-between h-[186px]">
-                                            <div content="لوکس"
+                                            <div content="@db.tour-list.prp_3088134"
                                                 class="w-[204px] flex justify-center items-center h-[53px] relative">
                                                 <img loading="lazy" src="[##cms.cms.cdn##]/images/Subtract.png"
                                                     alt="Subtract" class="absolute z-0 w-full">
                                                 <span
-                                                    class="relative z-[1] px-2 line-clamp-1 text-center font-bold text-[#3F3F3F]">تور
-                                                    لوکس</span>
+                                                    class="relative z-[1] px-2 line-clamp-1 text-center font-bold text-[#3F3F3F]">
+                                                @db.tour-list.prp_3088134
+                                            </span>
                                             </div>
                                             <div class="flex flex-col gap-4">
                                                 <div class="flex w-[204px] items-center justify-between">
