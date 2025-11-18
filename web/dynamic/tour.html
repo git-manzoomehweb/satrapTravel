@@ -268,32 +268,32 @@
             </div>
 
             <nav
-                class="tour-navbar z-30 sticky blur3  top-[68px] w-full flex items-center justify-between border-zinc-300 border rounded-3xl py-1 px-[11px]">
-                <div id="start-travel"
-                    class="h-[67px] active relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold cursor-pointer hover:text-primary">
+                class="navBar__container z-30 sticky blur3  top-[68px] w-full flex items-center justify-between border-zinc-300 border rounded-3xl py-1 px-[11px]">
+                <div onclick="scrollToTourSection(this,'tourExecution__container')"
+                    class="h-[67px] relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold cursor-pointer hover:text-primary">
                     شروع سفر
                 </div>
-                <div id="hotels"
+                <div onclick="scrollToTourSection(this,'tourInventory__container')"
                     class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
                     جدول قیمتی
                 </div>
-                <div id="travelouge"
+                <div onclick="scrollToTourSection(this,'travelouge-lis')"
                     class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
                     برنامه سفر
                 </div>
-                <div id="description"
+                <div onclick="scrollToTourSection(this,'description__container')"
                     class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
                     توضیحات
                 </div>
-                <div id="services"
+                <div onclick="scrollToTourSection(this,'services__container')"
                     class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
                     خدمات تور
                 </div>
-                <div id="requirements"
+                <div onclick="scrollToTourSection(this,'tourEquipment__container')"
                     class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
                     ملزومات مورد نیاز
                 </div>
-                <div id="Additional-information"
+                <div onclick="scrollToTourSection(this,'Additional-information')"
                     class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
                     اطلاعات تکمیلی
                 </div>
@@ -324,8 +324,9 @@
                 <div class="w-[908px] calculate-h flex flex-col gap-[30px]">
                     <basis core="print" datamembername="db.tour-view">
                         <layout>
-                            <div class="w-full flex flex-col gap-[32px] border border-zinc-300 p-[22px] rounded-3xl">
-                                <h2 class="font-bold text-2xl" data-id="services">خدمات تور </h2>
+                            <div
+                                class="services__container w-full flex flex-col gap-[32px] border border-zinc-300 p-[22px] rounded-3xl">
+                                <h2 class="font-bold text-2xl">خدمات تور </h2>
                                 <div class="w-full grid grid-cols-2 gap-x-9 gap-y-3">
 
                                     @child
@@ -954,7 +955,8 @@
 
             <basis core="print" datamembername="db.tour-view">
                 <layout>
-                    <div class="w-full flex flex-col gap-[32px] border border-zinc-300 p-[22px] rounded-3xl my-3">
+                    <div
+                        class="description__container w-full flex flex-col gap-[32px] border border-zinc-300 p-[22px] rounded-3xl my-3">
                         <h2 class="font-bold text-2xl" data-id="description">توضیحات</h2>
                         <div class="text-base">@child</div>
                     </div>
@@ -964,8 +966,9 @@
 
             <basis core="print" datamembername="db.tour-view">
                 <layout>
-                    <div class="w-full flex flex-col gap-[32px] border border-zinc-300 p-[22px] rounded-3xl my-3">
-                        <h2 class="font-bold text-2xl" data-id="Additional-information">اطلاعات تکمیلی  </h2>
+                    <div
+                        class="w-full flex flex-col Additional-information gap-[32px] border border-zinc-300 p-[22px] rounded-3xl my-3">
+                        <h2 class="font-bold text-2xl">اطلاعات تکمیلی  </h2>
                         <div class="text-base">@child</div>
                     </div>
                 </layout>

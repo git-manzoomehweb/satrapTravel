@@ -1920,7 +1920,78 @@ const callbackSourceTourBookingFormIns = async (args) => {
       "callbackSourcetourBookingFormIns=" + err.lineNumber + "," + err.message
     );
   }
-};
+};const renderReserveTourInstallmentForm = async (element) => {
+    document.getElementById("white-modal").classList.add("hidden");
+
+    $bc.setSource("db.tourBookingFormIns", {
+        run: false,
+    });
+
+    let   ed2 ;
+    let   sd2 ;
+    if(document.querySelector(".date__details .active .start__date")){
+        //origins__start__day
+        sd2 = document.querySelector(".date__details .active .start__date").textContent;
+    }else{
+        sd2 = '';
+    }
+
+    if(document.querySelector(".date__details .active .end__date")){
+        // destinations__start__day
+     ed2= document.querySelector(".date__details .active .end__date").textContent;
+    }else{
+        ed2= '';
+    }
+
+    $bc.setSource("db.tourFormInstallment", {
+        hotelName:FormhotelName,
+        hotelRate:FormhotelRate,
+        hotelService:FormhotelService,
+        tourName:FormtourName,
+        doubleP:FormdoubleP,
+        singleP:FormsingleP,
+        wBedP:FormwBedP,
+        woBedP:FormwoBedP,
+        doubleU:FormdoubleU,
+        singleU:FormsingleU,
+        wBedU:FormwBedU,
+        woBedU:FormwoBedU,
+
+        adultCount:parseInt(document.getElementById("adult-installment").value),
+        childCount:parseInt(document.getElementById("child-bed-installment").value),
+        infantCount: parseInt(document.getElementById("child-installment").value) + parseInt(document.getElementById("infant-installment").value),
+    
+
+        //origins__start__day
+        startDate: sd2,
+        // destinations__start__day
+        endDate: ed2,
+        
+        // origins__start__weekday
+        weekdayStartDate:document.querySelector(".tourExecution__container__origins").querySelector(".origins__start__weekday").textContent,
+        // destinations__start__weekday
+        weekdayEndDate:document.querySelector(".tourExecution__container__destinations").querySelector(".destinations__start__weekday").textContent,
+        
+        departureName:document.querySelector(".tourExecution__container__origins").querySelector(".origins__city").textContent,
+        destinationName:document.querySelector(".tourExecution__container__destinations").querySelector(".destinations__city").textContent,
+       
+        // __times__start
+        startTime:document.querySelector(".execution__details__path__origins").querySelectorAll(".execution__details__path__item")[0].querySelector(".__times__start").textContent,
+        // __times__start
+        endTime:document.querySelector(".execution__details__path__destinations").querySelectorAll(".execution__details__path__item")[0].querySelector(".__times__start").textContent,
+
+
+        totalAmountINS:document.getElementById("white-modal").querySelector(".total-amount").innerText,
+        totalAmountFacilityINS:document.getElementById("white-modal").querySelector(".Total-amount-facilities").innerText,
+        totalAdvancePaymentINS:document.getElementById("white-modal").querySelector(".Total-advance-payment").innerText,
+        amountEachInstallmentINS:document.getElementById("white-modal").querySelector(".amount-each-installment").innerText,
+       
+       
+        run: true,
+    });
+
+
+} 
 const OnProcessedTourBookingFormIns = async (args) => {
   try {
     var response = args.response;
