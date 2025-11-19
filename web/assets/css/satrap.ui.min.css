@@ -615,7 +615,8 @@ video {
 .bottom-0 {
   bottom: 0px;
 }
-.tour__booking__form__modal__container {
+.tour__booking__form__modal__container,
+.tour__booking__form__modal__container_Ins {
   width: 100vw;
   height: 100vh;
   z-index: 70 !important;
@@ -4381,8 +4382,19 @@ body:has(.list-video-popup.flex) {
   transition: height 0.7s ease-in-out, background-color 0.7s ease-in-out;
 }
 
-span[content=""] {
+span[content=""],
+span[content="null"]
+ {
   display: none !important;
+}
+.tourInventory__details__item__unit{
+  font-weight: normal;
+}
+.child-bed{
+  width: 106px;
+}
+.w-58-54{
+  width: 58.54px;
 }
 
 .aid-content img,

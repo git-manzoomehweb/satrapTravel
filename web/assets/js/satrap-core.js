@@ -2413,7 +2413,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const classes = icon.classList;
       let network = null;
 
-      // تشخیص نوع شبکه
+     
       for (let key in shareLinks) {
         if (classes.contains(key)) {
           network = key;
@@ -2421,12 +2421,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // اگر شبکه معتبر بود، باز کن
+   
       if (network && shareLinks[network]) {
         window.open(
           shareLinks[network],
-          "_blank",
-          "noopener,noreferrer,width=600,height=500"
+          "_blank"
         );
       }
     });

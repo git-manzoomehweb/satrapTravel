@@ -797,13 +797,11 @@ const renderRouteStop = async (element) => {
 // updatetd
 const renderTransportationName = async (element) => {
   try {
-    console.log("111111111111111111111");
-
+ 
     if (element) {
-      console.log("22222222222");
-
+ 
       if (element.info.transportation.id) {
-        console.log("3333333333");
+    
 
         return `<div class="flex gap-1 items-center mb-2 min-h-4 transportation__img__details">
                 <img src="" width="90"  data-id="${element.info.transportation.id}" 
@@ -1059,7 +1057,7 @@ const renderPriceInfo = async (element, type) => {
       } else if (type == "singlecost") {
         let output = "";
         for (const item of element.priceinfo.singlecost) {
-          console.log(item.singlecost.singleunit);
+          // console.log(item.singlecost.singleunit);
           output += `<div class="tourInventory__details__item__single">
                                 <span class="tourInventory__details__item__price sm:text-xl font-bold">${new Intl.NumberFormat().format(
                                   item.singlecost.singlecostf
@@ -1915,83 +1913,110 @@ const callbackSourceTourBookingFormIns = async (args) => {
         .querySelector("input[name='captchaid']").value,
       run: true,
     });
+  
   } catch (err) {
     console.error(
       "callbackSourcetourBookingFormIns=" + err.lineNumber + "," + err.message
     );
   }
-};const renderReserveTourInstallmentForm = async (element) => {
-    document.getElementById("white-modal").classList.add("hidden");
+};
+const renderReserveTourInstallmentForm = async (element) => {
+  document.getElementById("white-modal").classList.add("hidden");
 
-    $bc.setSource("db.tourBookingFormIns", {
-        run: false,
-    });
+  $bc.setSource("db.tourBookingFormIns", {
+    run: false,
+  });
 
-    let   ed2 ;
-    let   sd2 ;
-    if(document.querySelector(".date__details .active .start__date")){
-        //origins__start__day
-        sd2 = document.querySelector(".date__details .active .start__date").textContent;
-    }else{
-        sd2 = '';
-    }
+  let ed2;
+  let sd2;
+  if (document.querySelector(".date__details .active .start__date")) {
+    //origins__start__day
+    sd2 = document.querySelector(
+      ".date__details .active .start__date"
+    ).textContent;
+  } else {
+    sd2 = "";
+  }
 
-    if(document.querySelector(".date__details .active .end__date")){
-        // destinations__start__day
-     ed2= document.querySelector(".date__details .active .end__date").textContent;
-    }else{
-        ed2= '';
-    }
+  if (document.querySelector(".date__details .active .end__date")) {
+    // destinations__start__day
+    ed2 = document.querySelector(
+      ".date__details .active .end__date"
+    ).textContent;
+  } else {
+    ed2 = "";
+  }
 
-    $bc.setSource("db.tourFormInstallment", {
-        hotelName:FormhotelName,
-        hotelRate:FormhotelRate,
-        hotelService:FormhotelService,
-        tourName:FormtourName,
-        doubleP:FormdoubleP,
-        singleP:FormsingleP,
-        wBedP:FormwBedP,
-        woBedP:FormwoBedP,
-        doubleU:FormdoubleU,
-        singleU:FormsingleU,
-        wBedU:FormwBedU,
-        woBedU:FormwoBedU,
+  $bc.setSource("db.tourFormInstallment", {
+    hotelName: FormhotelName,
+    hotelRate: FormhotelRate,
+    hotelService: FormhotelService,
+    tourName: FormtourName,
+    doubleP: FormdoubleP,
+    singleP: FormsingleP,
+    wBedP: FormwBedP,
+    woBedP: FormwoBedP,
+    doubleU: FormdoubleU,
+    singleU: FormsingleU,
+    wBedU: FormwBedU,
+    woBedU: FormwoBedU,
 
-        adultCount:parseInt(document.getElementById("adult-installment").value),
-        childCount:parseInt(document.getElementById("child-bed-installment").value),
-        infantCount: parseInt(document.getElementById("child-installment").value) + parseInt(document.getElementById("infant-installment").value),
-    
+    adultCount: parseInt(document.getElementById("adult-installment").value),
+    childCount: parseInt(
+      document.getElementById("child-bed-installment").value
+    ),
+    infantCount:
+      parseInt(document.getElementById("child-installment").value) +
+      parseInt(document.getElementById("infant-installment").value),
 
-        //origins__start__day
-        startDate: sd2,
-        // destinations__start__day
-        endDate: ed2,
-        
-        // origins__start__weekday
-        weekdayStartDate:document.querySelector(".tourExecution__container__origins").querySelector(".origins__start__weekday").textContent,
-        // destinations__start__weekday
-        weekdayEndDate:document.querySelector(".tourExecution__container__destinations").querySelector(".destinations__start__weekday").textContent,
-        
-        departureName:document.querySelector(".tourExecution__container__origins").querySelector(".origins__city").textContent,
-        destinationName:document.querySelector(".tourExecution__container__destinations").querySelector(".destinations__city").textContent,
-       
-        // __times__start
-        startTime:document.querySelector(".execution__details__path__origins").querySelectorAll(".execution__details__path__item")[0].querySelector(".__times__start").textContent,
-        // __times__start
-        endTime:document.querySelector(".execution__details__path__destinations").querySelectorAll(".execution__details__path__item")[0].querySelector(".__times__start").textContent,
+    //origins__start__day
+    startDate: sd2,
+    // destinations__start__day
+    endDate: ed2,
 
+    // origins__start__weekday
+    weekdayStartDate: document
+      .querySelector(".tourExecution__container__origins")
+      .querySelector(".origins__start__weekday").textContent,
+    // destinations__start__weekday
+    weekdayEndDate: document
+      .querySelector(".tourExecution__container__destinations")
+      .querySelector(".destinations__start__weekday").textContent,
 
-        totalAmountINS:document.getElementById("white-modal").querySelector(".total-amount").innerText,
-        totalAmountFacilityINS:document.getElementById("white-modal").querySelector(".Total-amount-facilities").innerText,
-        totalAdvancePaymentINS:document.getElementById("white-modal").querySelector(".Total-advance-payment").innerText,
-        amountEachInstallmentINS:document.getElementById("white-modal").querySelector(".amount-each-installment").innerText,
-       
-       
-        run: true,
-    });
+    departureName: document
+      .querySelector(".tourExecution__container__origins")
+      .querySelector(".origins__city").textContent,
+    destinationName: document
+      .querySelector(".tourExecution__container__destinations")
+      .querySelector(".destinations__city").textContent,
 
+    // __times__start
+    startTime: document
+      .querySelector(".execution__details__path__origins")
+      .querySelectorAll(".execution__details__path__item")[0]
+      .querySelector(".__times__start").textContent,
+    // __times__start
+    endTime: document
+      .querySelector(".execution__details__path__destinations")
+      .querySelectorAll(".execution__details__path__item")[0]
+      .querySelector(".__times__start").textContent,
 
-} 
+    totalAmountINS: document
+      .getElementById("white-modal")
+      .querySelector(".total-amount").innerText,
+    totalAmountFacilityINS: document
+      .getElementById("white-modal")
+      .querySelector(".Total-amount-facilities").innerText,
+    totalAdvancePaymentINS: document
+      .getElementById("white-modal")
+      .querySelector(".Total-advance-payment").innerText,
+    amountEachInstallmentINS: document
+      .getElementById("white-modal")
+      .querySelector(".amount-each-installment").innerText,
+
+    run: true,
+  });
+};
 const OnProcessedTourBookingFormIns = async (args) => {
   try {
     var response = args.response;
@@ -2078,17 +2103,19 @@ const onrenderedFormSchema = async () => {
   }
 };
 const scrollToTourSection = async (element, type) => {
-    try {
-        window.scroll({
-            top: document.querySelector(`.${type}`).offsetTop,
-            behavior: 'smooth'
-        });
-        document.querySelector(".navBar__container").querySelectorAll(".navbar-el").forEach(e => {
-            e.classList.remove("active");
-        })
-        element.classList.add("active");
-    } catch (err) {
-        console.error('scrollToTourSection=' + err.lineNumber + ',' + err.message);
-    }
-
-}
+  try {
+    window.scroll({
+      top: document.querySelector(`.${type}`).offsetTop,
+      behavior: "smooth",
+    });
+    document
+      .querySelector(".navBar__container")
+      .querySelectorAll(".navbar-el")
+      .forEach((e) => {
+        e.classList.remove("active");
+      });
+    element.classList.add("active");
+  } catch (err) {
+    console.error("scrollToTourSection=" + err.lineNumber + "," + err.message);
+  }
+};
