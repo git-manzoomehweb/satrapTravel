@@ -137,8 +137,8 @@ video {
 .radioButton:checked + label span::after {
   color: var(--primary);
   border: 2px solid var(--primary);
-  color: #177cb4;
-  border: 2px solid #177cb4;
+  color: var(--secondary-700);
+  border: 2px solid var(--secondary-700);
 }
 .airport_filter,
 .airport_filter_des,
@@ -221,8 +221,8 @@ video {
   border-top: 3px solid var(--primary);
 }
 .buyer-type ul li {
-  border: 1px solid #177cb4;
-  color: var(--primary-800);
+  border: 1px solid var(--secondary-700);
+  color: var(--primary-600);
 }
 .inside-title {
   border-right: 3px solid var(--primary);
@@ -364,7 +364,11 @@ video {
   content: "\f099";
   font-family: fontawesome !important;
 }
-
+#OpinioUser-box input,
+#OpinioUser-box textarea,
+.input-form select {
+  font-family: Dana;
+}
 .invoice-condition-closed i,
 .visible {
   display: block;
@@ -552,7 +556,7 @@ main {
 }
 html,
 html * {
-  font-family: DiodrumArabic-regular;
+  font-family: DanaFaNum !important;
 }
 .airbaggage {
   display: flex !important;
@@ -642,7 +646,10 @@ html * {
 }
 .fa,
 .fas {
-  font-weight: 900;
+  font-weight: 100;
+}
+.sort-items li.after-notactive::after{
+  font-weight: 100 !important;
 }
 @font-face {
   font-family: FG_icon;
@@ -700,16 +707,10 @@ i[class^="flaticon-"]:before {
 .row-fourth-footer a:hover,
 .section-container .dash,
 .tour-completion-info i {
-  color: var(--primary-800);
+  color: var(--primary-600);
 }
 .color_font {
   color: #5c5c5c;
-}
-.fa-calendar-check:before {
-  font-weight: 900;
-}
-.next-prev-container {
-  display: flex !important;
 }
 .background-color_1,
 .inactive-r-btn,
@@ -717,7 +718,7 @@ i[class^="flaticon-"]:before {
 .section-submit-btn button,
 .tour_title::after,
 .tour_title::before {
-  background: var(--primary-800) !important;
+  background: var(--primary-600) !important;
 }
 .Basis_Calendar .month_change i:hover,
 .col-contact input[type="submit"]:hover,
@@ -738,14 +739,14 @@ i[class^="flaticon-"]:before {
 .ui-datepicker .ui-datepicker-next span,
 .ui-datepicker .ui-datepicker-prev span,
 .ui-datepicker th {
-  color: #177cb4;
+  color: var(--secondary-700);
 }
 #reserve .ShowRow .passenger-button input,
 #reserve .ShowRow .second-part-CountPassenger .passenger-button:first-child,
 #reserve .ShowRow .second-part-CountPassenger .passenger-button:nth-child(3),
 .background-color_2,
 .owl-dot.active {
-  background: #177cb4 !important;
+  background: var(--secondary-700) !important;
 }
 .font-color_3 {
   color: #30d5a0;
@@ -754,7 +755,7 @@ i[class^="flaticon-"]:before {
   background: #30d5a0;
 }
 .item_hotel {
-  border-left: 2px solid #177cb4;
+  border-left: 2px solid var(--secondary-700);
 }
 #ConfirmRegister input[type="submit"],
 #sendSms input[type="submit"],
@@ -771,11 +772,11 @@ i[class^="flaticon-"]:before {
 .ui-datepicker .ui-datepicker-buttonpane button,
 .ui-datepicker table thead th,
 .ui-datepicker-today .ui-state-highlight {
-  background: #177cb4;
+  background: var(--secondary-700);
   color: #fff;
 }
 .brd-pdf {
-  border-color: var(--primary-800) !important;
+  border-color: var(--primary-600) !important;
 }
 * {
   text-decoration: none;
@@ -791,7 +792,7 @@ html {
   height: 100%;
 }
 body {
-  background: #f7f7f7;
+  background: #ffffff;
 }
 input:focus,
 select:focus,
@@ -973,7 +974,7 @@ span {
 }
 .btn_1,
 .exchange-icon:hover {
-  background-color: var(--primary-800);
+  background-color: var(--primary-600);
   color: #fff;
 }
 .btn_1:hover {
@@ -987,34 +988,34 @@ span {
 .airport_filter_des,
 .filter-container:not(:last-child),
 .searched-flight {
-  border-bottom: 1px dashed #177cb4;
+  border-bottom: 1px dashed var(--secondary-700);
 }
 .brief-container .head-items .title,
 .buyer-type ul li.active,
 .buyer-type ul li:hover,
 .details-btn:hover,
 .item-tour:hover {
-  background-color: #177cb4;
+  background-color: var(--secondary-700);
   color: #fff;
 }
 .btn-item button:hover,
 .close-content .fa-times::before,
 .login_info i {
-  color: var(--primary-800) !important;
+  color: var(--primary-600) !important;
 }
 .btn-item button,
 .flight-duration-stop::before,
 .flight-duration-stop:before {
-  background-color: #177cb4;
-  border: 1px solid #177cb4;
+  background-color: var(--secondary-700);
+  border: 1px solid var(--secondary-700);
 }
 .col-contact input[type="submit"],
 .confirm,
 .details-btn {
-  border: 1px solid #177cb4;
+  border: 1px solid var(--secondary-700);
 }
 .details-row-middle_1 {
-  border-left: 2px dashed #177cb4;
+  border-left: 2px dashed var(--secondary-700);
 }
 .details-circle::after,
 .details-circle::before {
@@ -1025,7 +1026,7 @@ span {
   + label
   span.checkbox::before,
 .section-input_list input[type="radio"]:checked + label span.checkbox::before {
-  border-color: #177cb4;
+  border-color: var(--secondary-700);
 }
 #Login_box .shine-hover:hover,
 #temp1-pdf-package .hotel-2,
@@ -1045,11 +1046,11 @@ span {
 .tlt-table,
 .tour-info-tlt,
 fieldset hr {
-  background-color: var(--primary-800);
+  background-color: var(--primary-600);
 }
 .confirm:hover {
   background-color: #fff;
-  color: #177cb4;
+  color: var(--secondary-700);
 }
 .minus-btn {
   background-color: #900;
@@ -1061,33 +1062,33 @@ fieldset hr {
 }
 .after-btn:hover,
 .before-btn:hover {
-  background-color: #177cb4;
+  background-color: var(--secondary-700);
   color: #fff;
-  border: 1px solid #177cb4;
+  border: 1px solid var(--secondary-700);
 }
 .close-research {
-  border: 1px solid #177cb4;
-  color: #177cb4;
+  border: 1px solid var(--secondary-700);
+  color: var(--secondary-700);
 }
 .btn-item button:hover {
   background-color: #fff !important;
 }
 .searched-item button:hover {
-  background-color: var(--primary-800);
+  background-color: var(--primary-600);
 }
 .exchange-icon {
-  border: 1px solid var(--primary-800);
-  color: var(--primary-800);
+  border: 1px solid var(--primary-600);
+  color: var(--primary-600);
 }
 .Basis_Calendar .current_day,
 .progress-bar {
-  background-color: #177cb4 !important;
+  background-color: var(--secondary-700) !important;
 }
 .loading-container:hover .loading {
-  border-color: transparent var(--primary-800);
+  border-color: transparent var(--primary-600);
 }
 .loading {
-  border-color: transparent #177cb4;
+  border-color: transparent var(--secondary-700);
 }
 .Basis_Calendar .selected_day,
 .bottom-content .action-loading,
@@ -1097,7 +1098,7 @@ fieldset hr {
 .ui-datepicker table thead th,
 .ui-datepicker-buttonpane .ui-datepicker-current:focus,
 .ui-datepicker-today .ui-state-highlight {
-  background-color: #177cb4;
+  background-color: var(--secondary-700);
 }
 .ui-datepicker-buttonpane .ui-datepicker-current:hover,
 .ui-datepicker-buttonpane .ui-state-default:focus,
@@ -1106,41 +1107,41 @@ fieldset hr {
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
   border: 1px;
-  background-color: var(--primary-800) !important;
+  background-color: var(--primary-600) !important;
 }
 .side-tour i {
   color: #faa944;
 }
 .row-other-inf {
-  border-right: 3px solid var(--primary-800);
+  border-right: 3px solid var(--primary-600);
 }
 .loading-img img {
-  width: 80px;
-  margin-top: 26px;
+  width: 50px;
+  margin-top: 14px;
 }
 .next-btn:hover {
   background-color: #387066;
 }
 .prev-passengers {
-  border-bottom: 2px solid #177cb4;
-  color: #177cb4;
+  border-bottom: 2px solid var(--secondary-700);
+  color: var(--secondary-700);
 }
 .passengers-prev-title svg,
 .prev-passengers svg {
-  fill: #177cb4;
+  fill: var(--secondary-700);
 }
 .prev-passengers:hover {
   border-color: #387066 !important;
   color: #387066 !important;
 }
 .nav-details li::before {
-  border-top: 3px solid #177cb4;
+  border-top: 3px solid var(--secondary-700);
 }
 .inside-title {
-  border-right: 3px solid #177cb4;
+  border-right: 3px solid var(--secondary-700);
 }
 .duration-details {
-  border-bottom: 2px dashed var(--primary-800);
+  border-bottom: 2px dashed var(--primary-600);
 }
 #banner {
   background-image: url(../images/bg-searchBox.jpg);
@@ -1167,11 +1168,11 @@ fieldset hr {
 .desc-tourlist h3::before,
 .drop-share .inner-drop-share,
 .share-box button {
-  background: var(--primary-800);
+  background: var(--primary-600);
 }
 .top-menu {
   background: unset;
-  border-bottom: 1px solid var(--primary-800);
+  border-bottom: 1px solid var(--primary-600);
 }
 .style-hr-footer,
 .tlt-main::after,
@@ -1179,7 +1180,7 @@ fieldset hr {
   background-image: -moz-linear-gradient(
     left,
     rgba(0, 0, 0, 0),
-    #177cb4,
+    var(--secondary-700),
     rgba(0, 0, 0, 0)
   );
 }
@@ -1192,48 +1193,48 @@ fieldset hr {
 .section-submit-btn:hover button,
 .title-text::after,
 .title-text::before {
-  background: #177cb4;
+  background: var(--secondary-700);
 }
 .desc-list {
   background: rgba(24, 151, 57, 0.5);
 }
 .tour_title {
-  border-bottom: 2px solid var(--primary-800);
+  border-bottom: 2px solid var(--primary-600);
 }
 .confirm_search:hover {
-  color: var(--primary-800);
-  border: 2px solid var(--primary-800);
+  color: var(--primary-600);
+  border: 2px solid var(--primary-600);
 }
 .lds-ripple div {
-  border: 4px solid var(--primary-800);
+  border: 4px solid var(--primary-600);
 }
 .CountPassenger .section-select-age select,
 .datepicker.BithdatePassenger {
-  border: 2px solid var(--primary-800) !important;
-  color: var(--primary-800) !important;
+  border: 2px solid var(--primary-600) !important;
+  color: var(--primary-600) !important;
 }
 .mobile-hotel {
-  border-bottom: 1px solid var(--primary-800);
+  border-bottom: 1px solid var(--primary-600);
 }
 #temp1-pdf-package .print1,
 .login-link,
 .mobile-hotel-info {
-  border: 1px solid var(--primary-800);
+  border: 1px solid var(--primary-600);
 }
 .mobile-hotel-info .hotel-ans {
-  border-right: 1px var(--primary-800);
+  border-right: 1px var(--primary-600);
 }
 .confirm_search {
-  border: 2px solid #177cb4;
-  color: #177cb4;
+  border: 2px solid var(--secondary-700);
+  color: var(--secondary-700);
 }
 .FlightClass {
-  border: 2px solid #177cb4 !important;
-  color: #177cb4 !important;
+  border: 2px solid var(--secondary-700) !important;
+  color: var(--secondary-700) !important;
 }
 .row1-footer i {
   background: #fff;
-  color: #177cb4;
+  color: var(--secondary-700);
 }
 #header.small .header-default .navbar-nav > li a,
 .col-second-footer_1_item a,
@@ -1249,7 +1250,7 @@ hr.style-hr {
   background-image: -moz-linear-gradient(
     left,
     rgba(0, 0, 0, 0),
-    #177cb4,
+    var(--secondary-700),
     rgba(0, 0, 0, 0)
   );
   color: #333;
@@ -1289,9 +1290,9 @@ hr.style-hr:after {
   border: 1px;
 }
 .news-form input.submit:hover {
-  border: 1px solid var(--primary-800);
+  border: 1px solid var(--primary-600);
   background: #fff;
-  color: var(--primary-800);
+  color: var(--primary-600);
 }
 .Panel-Dashboard_link,
 .fa.fa-user.is-login,
@@ -1315,10 +1316,10 @@ hr.style-hr:after {
 }
 #temp1-pdf-package .hotel-info tr:first-child td,
 #temp1-pdf-package .hotel-info tr:first-child tr:first-child td {
-  border-left: 1px dashed var(--primary-800) !important;
+  border-left: 1px dashed var(--primary-600) !important;
 }
 #temp1-pdf-package .hotel-tooltip:after {
-  border-top: 5px solid var(--primary-800);
+  border-top: 5px solid var(--primary-600);
 }
 #temp1-pdf-package .circle-1 {
   background: #8a1e5941;
@@ -1750,11 +1751,11 @@ hr.style-hr:after {
 }
 #Login_box .shine-hover {
   color: #fff;
-  background-color: var(--primary-800);
-  border: 1px solid var(--primary-800);
+  background-color: var(--primary-600);
+  border: 1px solid var(--primary-600);
 }
 .login-link:hover {
-  background-color: var(--primary-800);
+  background-color: var(--primary-600);
   color: #fff !important;
 }
 .login-btn:hover {
@@ -2200,8 +2201,8 @@ hr.style-hr:after {
   }
 }
 :root {
-  --primary-calendar: #177cb4;
-  --secondary-calendar: var(--primary-800);
+  --primary-calendar: var(--secondary-700);
+  --secondary-calendar: var(--primary-600);
 }
 .calendar-apply-date,
 .calendar-switch,
@@ -2210,24 +2211,8 @@ hr.style-hr:after {
 .date-info-destination,
 .en-calendar,
 .fa-calendar,
-.btn-item *,
-.searched-item button,
 input {
-  font-family: DiodrumArabic-regular !important;
-}
-.details-btn {
-  padding-bottom: 7px;
-}
-.flight-summary-info .item span {
-  display: inline-flex !important
-;
-  align-items: center;
-}
-.seatcount.font_10 {
-  white-space: nowrap !important;
-}
-.btn-item button {
-  padding-bottom: 17px;
+  font-family: IRANSansWeb !important;
 }
 .Basis_Calendar .selected_date {
   background: var(--secondary-calendar) !important;
@@ -2335,23 +2320,10 @@ header.w-full {
 .article-description-main h3,
 .article-description-main h4,
 .article-description-main h5,
-.article-description-main h6 {
+.article-description-main h6{
   font-size: revert;
   font-weight: revert;
 }
-.passenger-data.font_13 span.color_font,
-.passenger-data.font_13 li {
-  display: inline-flex;
-  align-items: center;
-}
-
-.section-input_list span.checkbox::after {
-  right: 0.45em !important;
-  top: 12px !important;
-}
-/* .text-checkbox {
-  margin: -19px 2.9em 0 0 !important;
-} */
-.section-input_list span.checkbox::before {
-  top: 12px !important;
+footer .w-1\/2.mt-\[74\.82px\].relative{
+margin-top: 0 !important;
 }
