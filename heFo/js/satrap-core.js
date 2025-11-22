@@ -92,3 +92,91 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const officeItems = document.querySelectorAll(".office-item");
+
+  if (officeItems.length) {
+    officeItems.forEach((item) => {
+      const cardHeader = item.querySelector(
+        ".flex.items-center.cursor-pointer"
+      );
+      const showInfo = item.querySelector(".show-info");
+      const icon = item.querySelector("svg");
+
+      if (cardHeader && showInfo) {
+        showInfo.style.transition = "height 0.6s ease, opacity 0.2s ease";
+        showInfo.style.height = "0";
+        showInfo.style.opacity = "0";
+
+        cardHeader.addEventListener("click", () => {
+          const isOpen = showInfo.classList.contains("open");
+
+          officeItems.forEach((other) => {
+            const otherInfo = other.querySelector(".show-info");
+            const otherIcon = other.querySelector("svg");
+            if (otherInfo && otherInfo !== showInfo) {
+              otherInfo.classList.remove("open");
+              otherInfo.style.height = "0";
+              otherInfo.style.opacity = "0";
+              otherIcon.style.transform = "rotate(0deg)";
+            }
+          });
+
+          if (!isOpen) {
+            showInfo.classList.add("open");
+            const fullHeight = showInfo.scrollHeight + "px";
+            showInfo.style.height = fullHeight;
+            showInfo.style.opacity = "1";
+            icon.style.transition = "transform 0.3s ease";
+            icon.style.transform = "rotate(45deg)";
+          } else {
+            showInfo.classList.remove("open");
+            showInfo.style.height = "0";
+            showInfo.style.opacity = "0";
+            icon.style.transform = "rotate(0deg)";
+          }
+        });
+      }
+    });
+  }
+});
+
+window.addEventListener("scroll", () => {
+  if (window.innerWidth <= 968) {
+    const header = document.querySelector("header");
+    if (header) {
+      if (window.scrollY > 250) {
+        header.style.backdropFilter = "blur(5px)";
+        header.style.backgroundColor = "#8e8e8e59";
+      } else {
+        header.style.backdropFilter = "none";
+        header.style.backgroundColor = "transparent";
+      }
+    }
+  } else {
+    const header = document.querySelector("header");
+    if (header) {
+      header.style.backdropFilter = "none";
+      header.style.backgroundColor = "transparent";
+    }
+  }
+});
+
+window.addEventListener("resize", () => {
+  const header = document.querySelector("header");
+  if (!header) return;
+
+  if (window.innerWidth > 968) {
+    header.style.backdropFilter = "none";
+    header.style.backgroundColor = "transparent";
+  } else {
+    if (window.scrollY > 250) {
+      header.style.backdropFilter = "blur(5px)";
+      header.style.backgroundColor = "#8e8e8e59";
+    } else {
+      header.style.backdropFilter = "none";
+      header.style.backgroundColor = "transparent";
+    }
+  }
+});

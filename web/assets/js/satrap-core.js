@@ -2413,7 +2413,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const classes = icon.classList;
       let network = null;
 
-     
       for (let key in shareLinks) {
         if (classes.contains(key)) {
           network = key;
@@ -2421,12 +2420,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-   
       if (network && shareLinks[network]) {
-        window.open(
-          shareLinks[network],
-          "_blank"
-        );
+        window.open(shareLinks[network], "_blank");
       }
     });
   });
@@ -2579,6 +2574,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ____________________________
 // ____________________________
+window.addEventListener("scroll", () => {
+  if (window.innerWidth <= 968) {
+    const header = document.querySelector("header");
+    if (header) {
+      if (window.scrollY > 350) {
+        header.style.backdropFilter = "blur(5px)";
+        header.style.backgroundColor = "#8e8e8e59";
+      } else {
+        header.style.backdropFilter = "none";
+        header.style.backgroundColor = "transparent";
+      }
+    }
+  } else {
+     const header = document.querySelector("header");
+    if (header) {
+      header.style.backdropFilter = "none";
+      header.style.backgroundColor = "transparent";
+    }
+  }
+});
+
+window.addEventListener("resize", () => {
+  const header = document.querySelector("header");
+  if (!header) return;
+
+  if (window.innerWidth > 968) {
+    header.style.backdropFilter = "none";
+    header.style.backgroundColor = "transparent";
+  } else {
+    if (window.scrollY > 150) {
+      header.style.backdropFilter = "blur(5px)";
+      header.style.backgroundColor = "#8e8e8e59";
+    } else {
+      header.style.backdropFilter = "none";
+      header.style.backgroundColor = "transparent";
+    }
+  }
+});
+
+
+
 // ____________________________
 // ____________________________
 // ____________________________
@@ -2621,3 +2657,5 @@ document.addEventListener("DOMContentLoaded", () => {
 // ____________________________
 // ____________________________
 // ____________________________
+
+ 

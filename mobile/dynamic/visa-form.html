@@ -1,0 +1,470 @@
+<basis core="dbsource" source="basiscore" name="db" lid="1" mid="20" usedforid="[##cms.query.id##]">
+    <member request="json-ld" type="scalar" name="json" />
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="20" lid="1" usedforid="[##cms.query.id##]">
+    <member propertyid="7249" name="view" type="view" />
+    <member name="data" type="view" request="rdfa" />
+</basis>
+
+<basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.id##]" sourcemid="tour">
+    <member type="list" name="gallery" format="4" order="ord"></member>
+</basis>
+
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.docid|(0)##]">
+    <member name="document-text" type="view" />
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.aid|(0)##]">
+    <member name="aid-text" type="view" />
+</basis>
+
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.qid|(0)##]">
+    <member name="faq" type="view" propertyid="7246" postsql="SELECT * FROM [db.faq] where TypeID not in(150)" />
+</basis>
+
+
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="2389808 ">
+    <member name="condition-rules" type="view" propertyid="7246" />
+</basis>
+
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover" />
+    <title>[##cms.seo.title|(فرم ویزای ساتراپ تراول)##]</title>
+    <meta name="description" content="[##cms.seo.description|(شرکت خدمات مسافرت هوایی و گردشگری  ساتراپ تراول)##]" />
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <basis core="call" file="pwa.inc" />
+    <basis core="call" file="style.inc" />
+    <link href="[##cms.cms.cdn##]/css/contact-us-form.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
+</head>
+
+<body class="overflow-x-hidden relative">
+    <basis core="call" file="header.inc" />
+    <main>
+        <section class="flex justify-center items-center h-[348px] relative w-full">
+            <basis core="print" datamembername="db.gallery">
+                <face filter="ord=1">
+                    <img src="/@largeIMG" alt="@name" class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+                </face>
+                <face filter="ord=1 and largeIMG is null">
+                    <img src="[##cms.cms.cdn##]/images/visa-bg.jpg" alt="@name"
+                        class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+                </face>
+            </basis>
+
+            <div
+                class="px-[63px] py-[37px] w-full h-[255px] border border-[#CDCDCD]  xl:!w-[1280px]  divide-y divide-[#CDCDCD] flex flex-col items-center gap-6  bg-white rounded-xl absolute top-[calc(100%-127.5px)] justify-center">
+                <div class="w-full flex gap-6 items-center">
+                    <basis core="print" datamembername="db.gallery">
+                        <face filter="ord=2">
+                            <img loading="lazy" src="/@largeIMG" alt="@name"
+                                class="w-[73px] h-[73px] rounded-full shadow-flag">
+                        </face>
+                    </basis>
+                    <div class="flex flex-col gap-3">
+                        <basis core="print" datamembername="db.view">
+                            <face filter="prpID=8470">
+                                <h1 class="font-bold text-xl text-[#191919]"> @text</h1>
+                            </face>
+                        </basis>
+                        <basis core="print" datamembername="db.view">
+                            <face filter="prpID=3088128">
+                                <p class="text-[#848484] text-base">
+                                    زمان پردازش:
+                                    @text
+                                </p>
+                            </face>
+                        </basis>
+
+                    </div>
+                </div>
+                <div class="w-full flex pt-7 items-center justify-between">
+                    <basis core="print" datamembername="db.view">
+                        <face filter="prpID=3088129">
+                            <div class="flex flex-col gap-3">
+                                <p class="text-[#767575] text-base"> @Question </p>
+                                <p class="font-bold text-[#1E1E1E] text-xl">@text </p>
+
+                            </div>
+                        </face>
+                    </basis>
+
+
+                    <basis core="print" datamembername="db.view">
+                        <face filter="prpID=3088130">
+                            <div class="flex flex-col gap-3">
+                                <p class="text-[#767575] text-base"> @Question </p>
+                                <p class="font-bold text-[#1E1E1E] text-xl">@text </p>
+
+                            </div>
+                        </face>
+                    </basis>
+
+                    <basis core="print" datamembername="db.view">
+                        <face filter="prpID=3088131">
+                            <div class="flex flex-col gap-3">
+                                <p class="text-[#767575] text-base"> @Question </p>
+                                <p class="font-bold text-[#1E1E1E] text-xl">@text </p>
+
+                            </div>
+                        </face>
+                    </basis>
+                    <basis core="print" datamembername="db.view">
+                        <face filter="prpID=3088132">
+                            <div class="flex flex-col gap-3">
+                                <p class="text-[#767575] text-base"> @Question </p>
+                                <p class="font-bold text-[#1E1E1E] text-xl">@text </p>
+
+                            </div>
+                        </face>
+                    </basis>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section
+            class="px-4 w-full mb-20 mx-auto relative mt-[185px] lg:px-4 xl:!w-[1280px] xl:!px-0 flex gap-4 flex-col">
+            <div class="flex items-center mb-10 gap-2">
+                <img loading="lazy" src="[##cms.cms.cdn##]/images/baseInfoUser.svg" alt="user" width="24" height="24">
+                <h2 class="text-2xl font-bold">اطلاعات پایه</h2>
+            </div>
+            <div id="visa-form"
+                class="w-full border flex flex-col gap-7 border-[#CDCDCD] py-[38px] px-[26px] rounded-3xl">
+
+                <basis core="schema" run="atclient"
+                    schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/46959BEB-E695-4A37-BE09-E075E2360956/fa/فرم-ویزا"
+                    displaymode="new" button="[data-btn-upload]" OnRendered="RenderVisaForm"
+                    resultsourceid="upload.data">
+                </basis>
+                <basis core="api" if="{##cms.upload.run|(false)##}" run="atclient"
+                    url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject" method="post"
+                    body="object_edit={##cms.upload.value##}&captcha={##cms.upload.captcha##}&captchaid={##cms.upload.captchaid##}"
+                    content-type="application/x-www-form-urlencoded" triggers='cms.upload'
+                    OnProcessed="OnProcessedEditObject">
+                </basis>
+
+                <div class="free-form-content">
+                    <div class="bg-[#F9F9F9]  mt-4 p-[10px] rounded text-sm flex flex-col gap-2 w-full">
+                        <basis core="print" datamembername="db.condition-rules">
+                            <face filter="TypeID=150">
+                                <p class="font-semibold">@text</p>
+
+                            </face>
+                            <face filter="TypeID<>150">
+                                <div class="w-full flex flex-col gap-2">
+                                    <p class="font-semibold">@text</p>
+                                    <div class="text-sm">@largetext</div>
+                                </div>
+
+                            </face>
+                        </basis>
+                    </div>
+
+                    <div class="flex items-center gap-2 mt-4">
+                        <input type="checkbox" id="accept-rules" class="confirm-form scale-125 accent-primary" />
+                        <label for="accept-rules" class="text-xs cursor-pointer">قوانین و مقررات را تایید میکنم</label>
+                    </div>
+
+
+                    <div class="validate-alert hidden mt-4">لطفا
+                        قوانین و مقررات را تایید فرمایید</div>
+                    <div id="captchaContainer" class="captchaContainerclass captcha-sefaresh" data-bc-answer-container
+                        data-bc-schema-info-multi="0" data-bc-schema-info-word="58" data-bc-schema-info-part="1"
+                        data-bc-schema-info-part-0-type="text">
+                        <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                            triggers="captcha.refresh">
+                            <member name="code1" type="scalar" request="captcha"></member>
+                        </basis>
+
+                        <basis datamembername="captcha.code1" core="print" run="atclient" OnRendered="captchaRendered">
+                            <face>
+                                <script type="text/template">
+                                            <div class='flex items-center w-full gap-2 mt-4'>
+                                                <div class="flex items-center">
+                                                    <input type="text" class="contactUsInput codeinputm" name="captcha" maxlength="4" />
+                                                    <input type="hidden" name="captchaid" value="@captcha@" />
+                                                </div>
+                                                <div class='flex items-center gap-2'> 
+                                                    <span  onclick="refreshCaptcha()">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49" fill="none"><path class="group-hover:stroke-primary" d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3" stroke="#020121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><circle class="group-hover:stroke-primary transition-all duration-300 ease-in-out" cx="24" cy="24.5" r="10" stroke="#020121" stroke-width="1.5"></circle></svg>
+                                                </span>
+                                                     
+                                                <img src="/@captcha@" width="88" height="35" />
+                                                </div>
+                                                
+                                            </div>
+                                           
+                                       
+                                        </script>
+                            </face>
+                        </basis>
+                    </div>
+                </div>
+                <basis core="callback" run="atclient" method="uploadDocument" if="{##cms.run.value|(false)##}"
+                    triggers="upload.data"></basis>
+                <div class="text-right">
+                    <button
+                        class="data-body-btn w-[238px] mt-6 h-[56px] flex justify-center items-center bg-[#FFBD22] rounded-xl hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50"
+                        onclick="checkConfirme()" type="button" data-btn-upload>
+                        ثبت
+                        درخواست ویزا
+                    </button>
+                </div>
+                <div class="message-api text-center text-sm text-primary font-weight"></div>
+                <div class="clr"></div>
+            </div>
+        </section>
+
+        <section class="w-full flex justify-center relative">
+            <div
+                class="px-4 relative after-to-bottom-border mb-16 w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class=" last-section-form relative w-full flex flex-col">
+                    <div class="flex  items-center gap-3 ">
+                        <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                                class="w-8 h-8">
+                            <p class="font-bold text-2xl text-zinc-900"> ارتباط با کارشناسان</p>
+                            <span class="bullet-1"></span>
+                        </div>
+                    </div>
+                    <div class="my-[50px] z-[4] items-center w-full flex">
+                        <div
+                            class="w-full rounded-2xl overflow-hidden relative flex items-center justify-center h-[143px] px-[35px] py-5">
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/contact-form-image.jpg" alt="contact-us"
+                                class="w-[42%] h-full z-0    absolute left-0 top-0">
+                            <span
+                                class="w-[80px] absolute left-[calc(42%-3px)] z-[3] bg-gradient-to-r from-[#d6d9d8] h-full"></span>
+                            <span
+                                class="w-full h-full rounded-2xl bg-gradient-to-r z-[1] from-[#fff0] to-[#F2F2F2] absolute top-0 left-0 "></span>
+                            <div class="flex z-[5] w-full flex-col h-full justify-between">
+                                <p class="">جهت مشاوره خرید ویزا با کارشناسان ما در ارتباط باشید</p>
+                                <div class="flex items-center">
+                                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
+                                        <basis core="schema" run="atclient"
+                                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
+                                            displaymode="new" button="[data-btn-uploadfooter]"
+                                            resultsourceid="upload.datafooter" OnRendered="RenderFormFooter">
+                                        </basis>
+                                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
+                                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject"
+                                            method="post"
+                                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
+                                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
+                                            OnProcessed="OnProcessedEditObjectFooter">
+                                        </basis>
+                                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
+                                            triggers="upload.datafooter"></basis>
+                                        <div class="captcha-button">
+                                            <div id="captchaContainer"
+                                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
+                                                data-bc-answer-container data-bc-schema-info-multi="0"
+                                                data-bc-schema-info-word="58" data-bc-schema-info-part="1"
+                                                data-bc-schema-info-part-0-type="text">
+                                                <basis core="dbsource" source="trust_login" name="captcha"
+                                                    run="atclient" triggers="captcha.refreshFooter">
+                                                    <member name="code" type="scalar" request="captcha"></member>
+                                                </basis>
+                                                <basis datamembername="captcha.code" core="print" run="atclient"
+                                                    OnRendered="captchaRenderedFooter">
+                                                    <face>
+                                                        <script type="text/template">
+                                    <div class="flex  justify-between ">
+                                        
+                                        <div class="flex sfvgwdcsdhc w-full items-center">
+
+                         <div class="float-right captcha-ctz w-1/2 relative">
+                           
+                            <input id="captcha-ct" type="text" class="contactUsInput codeinputm bg-white rounded-2xl p-3" name="captcha" maxlength="4" placeholder="کد امنیتی "/>
+                            <input type="hidden" name="captchaid" value="@captcha@" />
+                        </div>
+                      <div class="float-right w-1/2 justify-between lg:mt-0 bvgvkek h-fit leading-[65px] px-4 flex items-center gap-2">
+                       <img loading="lazy" src="/@captcha@" width="86" height="59" alt="captcha" />
+                        <span  onclick="refreshCaptchaFooter()">
+                            <svg class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="group-hover:stroke-primary"
+                                                d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3"
+                                                stroke="#020121" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <circle
+                                                class="group-hover:stroke-primary transition-all duration-300 ease-in-out"
+                                                cx="24" cy="24.5" r="10" stroke="#020121" stroke-width="1.5" />
+                                        </svg>
+                        </span>
+                       
+                    </div>
+
+                                                        </div></div>
+                    </script>
+                                                    </face>
+                                                </basis>
+                                                <button type="button" data-btn-uploadfooter
+                                                    class="  data-body-btn w-[108px] h-[59px] flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
+                                                    ارسال
+                                                </button>
+
+                                            </div>
+
+                                            <div
+                                                class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex">
+                                                <div id="ballsWaveG"
+                                                    class="ext-zinc-50 text-base font-normal leading-normal">
+                                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                                                </div>
+                                            </div>
+                                            <div class="message-api absolute text-center text-primary text-xs"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
+    <basis core="call" file="footer.inc" />
+    <script type="text/javascript">
+
+        // document.getElementById("count-of-passengers").onchange = function (element) {
+        //     console.log(element);
+        //     console.log(this.value);
+        //     var countpass = this.value;
+        //     document.querySelector(".count-pass-haj input").value = countpass;
+        // }
+
+        function checkConfirme() {
+            if (document.querySelector(".confirm-form").checked) {
+                document.querySelector(".validate-alert").classList.add("hidden")
+                $bc.setSource("cms.run", true);
+            } else {
+                document.querySelector(".validate-alert").classList.remove("hidden")
+            }
+        }
+
+        // function OnRenderForm() {
+
+
+        //     document.querySelector(".departure-text input").value = "تهران";
+        //     document.querySelector(".departure-text input").disabled = true;
+
+        //     document.querySelectorAll('.radio-formatter input[name="radio1"]').forEach(element => {
+        //         if (element.value == "0") {
+        //             element.closest("div").classList.add("hidden");
+        //         } else {
+        //             element.checked = true;
+
+        //         }
+        //     });
+
+        //     document.querySelectorAll('.hamrah-status input[name="radio2"]').forEach(element => {
+        //         if (element.value == "0") {
+        //             element.closest("div").classList.add("hidden");
+        //         }
+        //     });
+
+        //     document.querySelector(".hamrah-pass-name").closest("fieldset").classList.add("hidden");
+        //     document.querySelectorAll('.hamrah-status input[name="radio2"]').forEach(element => {
+        //         element.addEventListener("click", function () {
+
+        //             const selectedRadio = document.querySelector('.hamrah-status input[name="radio2"]:checked');
+
+        //             if (selectedRadio) {
+        //                 if (selectedRadio.value == '1333') {
+        //                     document.querySelector(".hamrah-pass-name").closest("fieldset").classList.remove("hidden");
+        //                 } else {
+        //                     document.querySelector(".hamrah-pass-name").closest("fieldset").classList.add("hidden");
+
+        //                 }
+        //             } else {
+        //                 document.querySelector(".hamrah-pass-name").closest("fieldset").classList.add("hidden");
+
+        //             }
+        //         });
+        //     });
+
+        // }
+
+        function uploadDocument(args) {
+            const captcha = document.querySelector("#captchaContainer input[name='captcha']").value;
+            const captchaid = document.querySelector("#captchaContainer input[name='captchaid']").value;
+            const stringJson = JSON.stringify(args.source?.rows[0]);
+            $bc.setSource("cms.upload", {
+                value: stringJson,
+                captcha: captcha,
+                captchaid: captchaid,
+                run: true
+            });
+        };
+        function refreshCaptcha(e) {
+            $bc.setSource("captcha.refresh", true);
+        };
+        function captchaRendered() {
+            document.querySelector(".contactUsInput").placeholder = "کد امنیتی";
+        }
+        async function OnProcessedEditObject(args) {
+            var response = args.response;
+            var json = await response.json();
+            var errorid = json.errorid;
+            if (errorid == "6") {
+                document.querySelector(".message-api").innerHTML = "درخواست شما با موفقیت ثبت شد";
+                document.querySelector(".message-api").style.color = "#34b343";
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            } else {
+                refreshCaptcha()
+                setTimeout(() => {
+                    document.querySelector(".message-api").innerHTML = "خطایی رخ داده, لطفا مجدد اقدام کنید";
+                    document.querySelector(".message-api").style.color = "#ee2948";
+                }, 2000);
+            }
+
+        }
+        async function RenderVisaForm() {
+            const visaName = document.querySelector('h1').innerText
+            document.querySelector('.visa_name textarea').value = visaName
+
+            document.querySelectorAll('[data-bc-question]:not(.Upload_QS)').forEach(container => {
+                const titleSpan = container.querySelector('span[data-bc-question-title]');
+                const input = container.querySelector('[data-bc-answer] input[data-bc-text-input]');
+
+                if (titleSpan && input) {
+                    const placeholderText = titleSpan.textContent.trim();
+                    input.setAttribute('placeholder', placeholderText);
+                }
+            });
+
+        }
+    </script>
+</body>
+
+
+
+</html>

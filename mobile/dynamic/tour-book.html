@@ -1,0 +1,220 @@
+<div class="tour__booking__form__modal__container modal__container fixed top-0 left-0 w-screen h-screen overflow-hidden z-50"
+    onclick="closeModalContainer(this,event,'modal__container','hidden','parent')">
+    <div
+        class="modal__content bg-white max-h-[90vh]  max-md:bottom-0  rounded-xl w-3/5 max-xl:w-12/12 mx-auto mt-10 p-4  ">
+       <div class="w-full flex justify-end"> 
+        <span class="group cursor-pointer" onclick="closeModalContainer(this,event,'modal__container','hidden')">
+            <svg width="33" height="34" viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd"
+                    d="M16.8438 4.46729C9.45175 4.46729 3.4375 10.4159 3.4375 17.7273C3.4375 25.0387 9.45175 30.9873 16.8438 30.9873C24.2358 30.9873 30.25 25.0387 30.25 17.7273C30.25 10.4159 24.2358 4.46729 16.8438 4.46729Z"
+                    fill="#7E7E7E" class="group-hover:fill-primary-950"></path>
+                <path
+                    d="M20.1429 22.4192L21.6018 20.9763L18.3018 17.715L21.6018 14.4578L20.1443 13.0135L16.8429 16.2734L13.5429 13.0107L12.084 14.4537L15.3827 17.715L12.084 20.9722L13.5415 22.4152L16.8415 19.1566L20.1429 22.4192Z"
+                    fill="#7E7E7E" class="group-hover:fill-white"></path>
+            </svg>
+        </span></div>
+         
+
+        <div class="max-h-[90vh] overflow-auto p-4">
+            <h3 class="tour__name__container 
+            w-0 h-0 hidden">[##cms.form.tourName##]</h3>
+            <div class="flex justify-between gap-6">
+                <div class="px-4 text-sm  w-[50%]  max-lg:w-full ">
+                    <div class="flex flex-col mb-10 gap-y-3">
+                        <div class="border rounded-20px border-zinc-300 rounded-xl  p-4 mb-3">
+                            <h3 class="font-danabold text-xl">برنامه رفت</h3>
+                            <div>
+                                <span class="font-danademibold text-base">[##cms.form.weekdayStartDate##]</span>
+                                <span class="font-danademibold text-base" content="[##cms.form.startDate##]">[##cms.form.startDate##]</span>
+                                <span class="font-danaregular text-base">ساعت [##cms.form.startTime##]</span>
+                                <span class="font-danaregular text-base">(به وقت [##cms.form.departureName##])</span>
+                            </div>
+                        </div>
+                        <div class="border rounded-20px border-zinc-300 rounded-xl  p-4 mb-3">
+                            <h3 class="font-danabold text-xl">برنامه بازگشت</h3>
+                            <div>
+                                <span class="font-danademibold text-base">[##cms.form.weekdayEndDate##]</span>
+                                <span class="font-danademibold text-base" content="[##cms.form.endDate##]">[##cms.form.endDate##]</span>
+                                <span class="font-danaregular text-base">ساعت [##cms.form.endTime##]</span>
+                                <span class="font-danaregular text-base">(به وقت [##cms.form.destinationName##])</span>
+                            </div>
+                        </div>
+
+                        <div class="border rounded-20px border-zinc-300 rounded-xl  p-4 mb-3">
+                            <h3 class="hotel__name__container mb-6 font-danabold text-xl">[##cms.form.hotelName##]</h3>
+                            <div><span class="ml-2"><svg class="inline-block ml-1" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M17.5999 14.79C17.5409 14.434 17.6599 14.071 17.9189 13.82L21.6589 10.28C21.9669 9.991 22.0799 9.551 21.9489 9.15C21.8099 8.75 21.4589 8.46 21.0389 8.4L16.0689 7.679C15.7099 7.624 15.3989 7.397 15.2389 7.07L13.0199 2.6C12.8469 2.264 12.5159 2.039 12.1399 2H11.7189L11.5489 2.07L11.4399 2.11C11.3799 2.145 11.3259 2.188 11.2789 2.24L11.1889 2.31C11.1079 2.388 11.0409 2.48 10.9889 2.58L8.79888 7.07C8.62888 7.41 8.29688 7.64 7.91888 7.679L2.94888 8.4C2.53588 8.465 2.19388 8.754 2.05988 9.15C1.92188 9.547 2.02688 9.987 2.32888 10.28L5.93988 13.78C6.19888 14.035 6.31788 14.4 6.25888 14.759L5.36888 19.679C5.27188 20.274 5.66688 20.838 6.25888 20.95C6.50188 20.989 6.74988 20.95 6.96888 20.84L11.3989 18.519C11.4829 18.473 11.5749 18.443 11.6689 18.429H11.9399C12.1149 18.434 12.2859 18.478 12.4399 18.56L16.8689 20.87C17.2419 21.07 17.6969 21.04 18.0389 20.79C18.3879 20.549 18.5639 20.127 18.4889 19.71L17.5999 14.79Z"
+                                            fill="#FFBF1C"></path>
+                                    </svg><span
+                                        class="ml-1 hotel__rate__container">[##cms.form.hotelRate##]</span>ستاره</span>(<span
+                                    class="hotel__service__container">[##cms.form.hotelService##]</span>)
+                            </div>
+                            <ul>
+                                <li class="flex justify-between mb-3 border-b border-dashed border-module-gray-2 py-2 ">
+                                    <div class="sm:min-w-44">(هر نفر) قیمت 2 تخته</div>
+                                    <div><span
+                                            class="ml-1 text-base">[##cms.form.doubleP##]</span><span>[##cms.form.doubleU##]</span>
+                                    </div>
+                                </li>
+                                <li class="flex justify-between mb-3 border-b border-dashed border-module-gray-2 py-2 ">
+                                    <div class="sm:min-w-44">(هر نفر) قیمت 1 تخته</div>
+                                    <div><span
+                                            class="ml-1 text-base">[##cms.form.singleP##]</span><span>[##cms.form.singleU##]</span>
+                                    </div>
+                                </li>
+
+                                <li class="flex justify-between mb-3 border-b border-dashed border-module-gray-2 py-2 ">
+                                    <div class="sm:min-w-44">(هر نفر) قیمت کودک با تخت</div>
+                                    <div><span
+                                            class="ml-1 text-base">[##cms.form.wBedP##]</span><span>[##cms.form.wBedU##]</span>
+                                    </div>
+                                </li>
+
+                                <li class="flex justify-between">
+                                    <div class="sm:min-w-44">(هر نفر) قیمت کودک بدون تخت </div>
+                                    <div><span
+                                            class="ml-1 text-base">[##cms.form.woBedP##]</span><span>[##cms.form.woBedU##]</span>
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class=" w-[50%]  max-lg:w-full tour__booking__form__container text-sm md:w-2/4 max-md:mt-3">
+                    <form>
+                        <basis core="schema" run="atclient"
+                            schemaurl="/schema/domainform/[##cms.host.bookingTourId1##]/[##cms.host.bookingTourId2##]/fa/رزرو-تور"
+                            displaymode="new" button="[data-btn-tourBookingForm]" resultsourceid="tourBookingForm.data"
+                            onrendered="onrenderedSchmaTourBookingForm">
+                        </basis>
+                        <basis core="api" if="{##db.tourBookingForm.run|(false)##}" run="atclient"
+                            url="/schema/domainform/[##cms.host.bookingTourId1##]/fa/editobject" method="post"
+                            body="object_edit={##db.tourBookingForm.value##}&captcha={##db.tourBookingForm.captcha##}&captchaid={##db.tourBookingForm.captchaid##}"
+                            content-type="application/x-www-form-urlencoded" triggers='db.tourBookingForm'
+                            OnProcessed="OnProcessedTourBookingForm">
+                        </basis>
+                        <basis core="callback" run="atclient" method="callbackSourceTourBookingForm"
+                            triggers="tourBookingForm.data">
+                        </basis>
+                        <basis core="dbsource" source="trust_login" name="db">
+                            <member name="tourBookingForm" type="scalar" request="captcha" />
+                        </basis>
+                        <fieldset data-bc-section="">
+                            <legend data-bc-section-title="" data-sys-text="" class="hidden">کد امنیتی</legend>
+                            <div data-bc-schema-column="">
+                                <div data-bc-question="">
+                                    <div data-bc-title-container=""><span data-bc-question-title=""
+                                            data-bc-schema-info-prpid="" data-sys-text="">Question Title</span></div>
+                                    <div data-bc-answer-container="" data-bc-schema-info-multi="0"
+                                        data-bc-schema-info-word="" data-bc-schema-info-part=""
+                                        data-bc-schema-info-part-0-type="">
+
+                                        <div data-bc-answer-collection="">
+                                            <div data-bc-answer="">
+                                                <div data-bc-part-container="">
+                                                    <div class="captcha__container__info flex"
+                                                        data-bc-part-related-cell="">
+                                                        <input type="text" name="captcha" data-bc-text-input=""
+                                                            data-sys-input-text="" placeholder="کد امنیتی">
+                                                        <div class="captcha__container flex">
+                                                            <span onclick="renderCaptchaCode(this)">
+                                                                <svg class="group cursor-pointer" width="48" height="49"
+                                                                    viewBox="0 0 48 49" fill="none"
+                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                    <path class="group-hover:stroke-primary"
+                                                                        d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3"
+                                                                        stroke="#020121" stroke-width="1.5"
+                                                                        stroke-linecap="round" stroke-linejoin="round">
+                                                                    </path>
+                                                                    <circle
+                                                                        class="group-hover:stroke-primary transition-all duration-300 ease-in-out"
+                                                                        cx="24" cy="24.5" r="10" stroke="#020121"
+                                                                        stroke-width="1.5"></circle>
+                                                                </svg>
+                                                            </span>
+
+                                                            <span class="captcha__content"><img
+                                                                    src="/[##db.tourBookingForm.captcha##]" width="80"
+                                                                    height="40" class="rounded-md h-10" />
+                                                                <input name="captchaid"
+                                                                    value="[##db.tourBookingForm.captcha##]"
+                                                                    type="hidden" /></span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div data-part-btn-container="">
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <ul class="my-4">
+                            <li class="flex justify-between items-center mb-2">
+                                <div>
+                                    <span class="font-bold mb-1 ml-1">بزرگسال</span>
+                                    <span class="text-module-gray-0">(12 سال به بالا)</span>
+                                </div>
+                                <div class="flex gap-3 text-lg mt-2">
+                                    <span class="w-7 h-7 text-center cursor-pointer count-btnnn hover:text-primary"
+                                        onclick="toggleCount(this,'plus','1','adult')">+</span>
+                                    <span class="count__container adult__count__container w-7 h-7 text-center">1</span>
+                                    <span class="w-7 h-7 text-center cursor-pointer count-btnnn hover:text-primary"
+                                        onclick="toggleCount(this,'minus','1','adult')">-</span>
+                                </div>
+                            </li>
+                            <li class="flex justify-between mb-2">
+                                <div>
+                                    <span class="font-bold mb-1 ml-1">کودک</span>
+                                    <span class="text-module-gray-0">(2 تا 12 سال)</span>
+                                </div>
+                                <div class="flex gap-3 text-lg mt-2">
+                                    <span class="w-7 h-7 text-center cursor-pointer count-btnnn hover:text-primary"
+                                        onclick="toggleCount(this,'plus','0','child')">+</span>
+                                    <span class="count__container child__count__container w-7 h-7 text-center">0</span>
+                                    <span class="w-7 h-7 text-center cursor-pointer count-btnnn hover:text-primary"
+                                        onclick="toggleCount(this,'minus','0','child')">-</span>
+                                </div>
+                            </li>
+                            <li class="flex justify-between">
+                                <div>
+                                    <span class="font-bold mb-1 ml-1">نوزاد</span>
+                                    <span class="text-module-gray-0">(کمتر از 2 سال)</span>
+                                </div>
+                                <div class="flex gap-3 text-lg mt-2">
+                                    <span class="w-7 h-7 text-center cursor-pointer count-btnnn hover:text-primary"
+                                        onclick="toggleCount(this,'plus','0','infant')">+</span>
+                                    <span class="count__container infant__count__container w-7 h-7 text-center">0</span>
+                                    <span class="w-7 h-7 text-center cursor-pointer count-btnnn hover:text-primary"
+                                        onclick="toggleCount(this,'minus','0','infant')">-</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="relative">
+                            <button
+                                class="bg-primary rounded-xl text-white text-base text-center flex justify-center items-center hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50  w-full h-12   "
+                                type="button" data-btn-tourBookingForm="">
+                                <span>رزرو تور </span>
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+            <div class="message__action__container text-center text-module-gray-10 mt-4"></div>
+        </div>
+    </div>
+
+</div>

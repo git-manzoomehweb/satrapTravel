@@ -930,6 +930,27 @@ a.tel.sidebar-box:hover {
 .child-bed {
   width: 106px;
 }
-.w-58-54{
+.w-58-54 {
   width: 58.54px;
+}
+.white-header .logo-header {
+  filter: brightness(0) invert(1);
+}
+.filter34 {
+  filter: brightness(0) invert(1);
+}
+
+.white-header .bars3 path {
+  fill: white !important;
+}
+
+header.fixed.px-4 {
+  transition: backdrop-filter 0.4s ease, background-color 0.4s ease;
+}
+.swiper-one-el .swiper-pagination-bullet.swiper-pagination-bullet-active{
+background-color: #FFBD22;
+}
+.swiper-one-el .swiper-pagination-bullet{
+  opacity: 1 !important;
+  background-color: #fff ;
 }

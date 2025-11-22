@@ -1,0 +1,1185 @@
+<basis core="dbsource" source="basiscore" name="db" lid="1" mid="20" usedforid="[##cms.query.id##]">
+    <member request="json-ld" type="scalar" name="json" />
+</basis>
+<basis core="dbsource" source="basiscore" name="db" lid="1" mid="20" usedforid="[##cms.query.id##]">
+    <member name="navigation" type="tree" request="navigationcat" />
+</basis>
+<basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.id##]" sourcemid="product">
+    <member type="list" name="tour-gallery" format="4" order="ord"
+        postsql="SELECT * FROM [db.tour-gallery] where ord in(1,2,3,4,5,6)" />
+    <member type="list" name="pdf" format="pdf" />
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="20" lid="1" usedforid="[##cms.query.id##]">
+    <member name="tour-view" type="view" />
+    <member name="tour-view-travelplan" type="view"
+        postsql="select * from [db.tour-view-travelplan] where Question in('برنامه سفر')" />
+    <member name="tour-related" type="list" blgid="18" propertyid="10000504,8077,8181,8076" typeid="159"
+        link="tour.bc" />
+
+    <member name="tour_viewAirline" type="view"
+        postsql="select * from [db.tour_viewAirline] where prpID in(10000504)" />
+</basis>
+
+
+<basis core="dbsource" source="basiscore" mid="1" name="db" lid="1" schemaid="987" term="[##cms.query.term##]">
+    <member name="airline" type="list" request="spelist" />
+</basis>
+
+
+<basis core="inlinesource" name="db">
+    <member name="tour-joining" lefttblcol="db.tour_viewAirline.Answer" righttblcol="db.airline.name" format="join"
+        jointype="leftjoin" />
+</basis>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover" />
+    <title>[##cms.seo.title|(تور ساتراپ تراول)##]</title>
+    <meta name="description" content="[##cms.seo.description|(شرکت خدمات مسافرت هوایی و گردشگری  ساتراپ تراول)##]" />
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <basis core="call" file="pwa.inc" />
+    <basis core="call" file="style.inc" />
+    <link href="[##cms.cms.cdn##]/css/contact-us-form.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <!-- header -->
+    <basis core="call" file="header.inc" pageindex="[##cms.cms.pageindex##]"></basis>
+
+
+    <main class="py-10 bg-lightgray layout__body__container mt-90px" data-primaryColor="[##cms.host.primaryColor##]"
+        data-noImgSign="[##cms.host.noImgSign##]"
+        data-pageNameInventory="[##cms.host.pageNameInventory|(Tem1_Hotel.bc)##]" data-lang="fa">
+        <!-- commands / requests -->
+        <basis core="api" name="api.executionPlanViewDates"
+            url="https://basisfly.com/api/inventory/packages/execution-plan-view/" method="post"
+            content-type="application/json" run="atclient" body='{
+                "pid": "[##cms.query.id##]",
+                "title": "dates",
+                "dmnid": "[##cms.cms.domainid##]",
+                "ownerid": "[##cms.cms.ownerid##]"
+            }'>
+        </basis>
+        <basis core="api" name="api.executionPlanTypesView"
+            url="https://basisfly.com/api/inventory/packages/execution-plan-view/" method="post"
+            content-type="application/json" run="atclient" body='{
+                "pid": "[##cms.query.id##]",
+                "title": "execution",
+                "dmnid": "[##cms.cms.domainid##]",
+                "ownerid": "[##cms.cms.ownerid##]"
+            }'>
+        </basis>
+        <basis core="callback" run="atclient" triggers="db.execution" method="callbackSourceExecutionPlanTypesView">
+        </basis>
+        <basis core="api" name="api.inventoryView" url="https://basisfly.com/api/inventory/packages/inventory-view/"
+            method="post" content-type="application/json" run="atclient" triggers="db.inventoryViewSpecificDate" body='{
+                "pid": "[##cms.query.id##]",
+                "from": "{##db.inventoryViewSpecificDate.from|()##}",
+                "to": "{##db.inventoryViewSpecificDate.to|()##}",
+                "day": "{##db.inventoryViewSpecificDate.day|()##}",
+                "pagename": "[##cms.host.pageNameInventory|(Tem1_Hotel.bc)##]",
+                "dmnid": "[##cms.cms.domainid##]",
+                "ownerid": "[##cms.cms.ownerid##]"
+            }'>
+        </basis>
+        <basis core="api" name="api.airlinesOriginsGallery"
+            url="https://data.basiscore.net/en/bc/airlines/id/gallery/json" method="post" body='{
+                "token": "1E45BBAE-3BE7-4B08-8A8E-8DF7B2E0C7D7",
+                "wordid": 94122,
+                "usedforid": [{##db.airlinesOriginsGallery.ids##}]
+            } ' content-type="application/json" run="atclient" triggers="db.airlinesOriginsGallery"
+            if="{##db.airlinesOriginsGallery.run|(false)##}" onprocessed="onProcessedAirlinesOriginsImg">
+        </basis>
+        <basis core="api" name="api.airlinesDestinationsGallery"
+            url="https://data.basiscore.net/en/bc/airlines/id/gallery/json" method="post" body='{
+                "token": "1E45BBAE-3BE7-4B08-8A8E-8DF7B2E0C7D7",
+                "wordid": 94122,
+                "usedforid": [{##db.airlinesDestinationsGallery.ids##}]
+            
+            } ' content-type="application/json" run="atclient" triggers="db.airlinesDestinationsGallery"
+            if="{##db.airlinesDestinationsGallery.run|(false)##}" onprocessed="onProcessedAirlinesDestinationsImg">
+        </basis>
+        <basis core="api" name="api.hotelGallery" url="https://data.basiscore.net/en/bc/hotel/id/gallery/json"
+            method="post" body='{
+                "token": "1E45BBAE-3BE7-4B08-8A8E-8DF7B2E0C7D7",
+                "wordid": 94122,
+                "usedforid": [{##db.hotelGallery.ids##}]
+        
+            } ' content-type="application/json" run="atclient" triggers="db.hotelGallery"
+            if="{##db.hotelGallery.run|(false)##}" onprocessed="onProcessedHotelsImg">
+        </basis>
+
+
+
+
+
+        <!-- tour section -->
+        <div
+            class="tour__container px-4 mb-16  relative  w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col mx-auto gap-[18px]">
+            <ul class="flex gap-1 mt-4 items-center">
+                <li class="text-xs text-[#121212]">
+                    <a href="/" class="">صفحه اصلی </a>
+                </li>
+                <li class="text-xs text-[#121212]">/</li>
+
+                <basis core="print" datamembername="db.navigation">
+                    <face filter="RowNumber=max(RowNumber) and parentcatid<>217900">
+                        <li class="text-xs text-[#121212]" itemprop="itemListElement" itemscope=""
+                            itemtype="https://schema.org/ListItem">
+                            <span itemprop="name">@title</span>
+                            <meta itemprop="position" content="@rownumber" />
+
+                        </li>
+                    </face>
+                    <face filter="link is null and parentcatid<>217900">
+                        <li class="flex items-center gap-1" itemprop="itemListElement" itemscope=""
+                            itemtype="https://schema.org/ListItem">
+                            <a class="text-xs text-[#121212] hover:text-primary-700" itemprop="item"
+                                href="/tour-list.bc?catid=@parentcatid" aria-label="@title">
+
+                                <span itemprop="name ">@title</span>
+                                <meta itemprop="position" content="@rownumber" />
+
+                            </a>
+                            <span class="text-xs text-[#121212]">/</span>
+                        </li>
+                    </face>
+                    <face filter="parentcatid<>217900">
+                        <li class="flex items-center gap-1" itemprop="itemListElement" itemscope=""
+                            itemtype="https://schema.org/ListItem">
+                            <a class="text-xs text-[#121212] hover:text-primary-700" itemprop="item" href="@link"
+                                aria-label="@title">
+
+
+                                <span itemprop="name">@title</span>
+                                <meta itemprop="position" content="@rownumber" />
+                            </a>
+                            <span class="text-xs text-[#121212]">/</span>
+                        </li>
+                    </face>
+                </basis>
+            </ul>
+            <div class="flex flex-col gap-2">
+                <basis core="print" datamembername="db.tour-view">
+                    <face filter="TypeID in(150)">
+                        <h1 class="tour__name__container font-bold text-2xl text-[#1B1B1B] line-clamp-1">
+                            @text </h1>
+                    </face>
+                </basis>
+                <basis core="print" datamembername="db.tour-view">
+                    <layout>
+                        <div class="text-[#737373] flex items-center gap-1">
+                            @child
+                        </div>
+                    </layout>
+                    <face filter="TypeID in(128) and vocabulary in('مدت-اقامت','تاریخ-اعتبار')">
+                        <span>@text</span>
+                    </face>
+                </basis>
+
+            </div>
+
+
+            <div class="slider-box relative w-full flex flex-row-reverse  overflow-hidden gap-[12px]">
+                <basis core="print" datamembername="db.tour-gallery">
+                    <layout>
+                        <div class="box !w-[850px] h-[441px] gallery mb-3">
+                            <div
+                                class="swiper !h-[441px] main-slide-carousel swiper-container relative  swiper-rtl w-full">
+                                <div class="swiper-wrapper">@child</div>
+                            </div>
+                            <div class="gallery__head__controls__btns absolute z-10 top-[220.5px] w-[850px] px-3">
+                                <div
+                                    class="transform transition-all duration-300 swiper-button-prev-gallery inline-block">
+                                    <span
+                                        class="bg-[#2D2D2D54] flex group hover:bg-[#ddddddbf] w-[45px] h-[45px] rounded-full justify-center items-center">
+                                        <svg width="9" height="16" viewBox="0 0 9 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0.21967 15.2803C-0.0465966 15.0141 -0.0708027 14.5974 0.147052 14.3038L0.21967 14.2197L6.689 7.75L0.219671 1.28033C-0.046596 1.01406 -0.0708021 0.5974 0.147052 0.303788L0.219671 0.21967C0.485937 -0.0465965 0.902601 -0.0708026 1.19621 0.147052L1.28033 0.21967L8.28033 7.21967C8.5466 7.48594 8.5708 7.9026 8.35295 8.19621L8.28033 8.28033L1.28033 15.2803C0.987437 15.5732 0.512563 15.5732 0.21967 15.2803Z"
+                                                fill="white" class="group-hover:fill-primary-800" />
+                                        </svg>
+
+                                    </span>
+                                </div>
+                                <div
+                                    class="transform transition-all duration-300 swiper-button-next-gallery inline-block float-left">
+                                    <span
+                                        class="bg-[#2D2D2D54] rotate-180 flex group hover:bg-[#ddddddbf] w-[45px] h-[45px] rounded-full justify-center items-center">
+                                        <svg width="9" height="16" viewBox="0 0 9 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0.21967 15.2803C-0.0465966 15.0141 -0.0708027 14.5974 0.147052 14.3038L0.21967 14.2197L6.689 7.75L0.219671 1.28033C-0.046596 1.01406 -0.0708021 0.5974 0.147052 0.303788L0.219671 0.21967C0.485937 -0.0465965 0.902601 -0.0708026 1.19621 0.147052L1.28033 0.21967L8.28033 7.21967C8.5466 7.48594 8.5708 7.9026 8.35295 8.19621L8.28033 8.28033L1.28033 15.2803C0.987437 15.5732 0.512563 15.5732 0.21967 15.2803Z"
+                                                fill="white" class="group-hover:fill-primary-800" />
+                                        </svg>
+
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </layout>
+                    <face>
+                        <div class="swiper-slide">
+                            <div class="block w-full mx-auto h-[441px] rounded-lg">
+                                <img loading="lazy" src="/@largeIMG" alt="@name"
+                                    class="gallery-image w-full m-auto block cursor-pointer  h-full mx-auto rounded-2xl">
+                            </div>
+                        </div>
+                    </face>
+                </basis>
+
+
+
+                <basis core="print" datamembername="db.tour-gallery">
+                    <layout>
+                        <div class="w-[418px] !h-[441px] ">
+                            <div class="!w-full !h-full nav-for-slider gap-3 ">
+                                <div class="swiper-wrapper !grid grid-cols-2 gap-[10px]">
+                                    @child
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </layout>
+                    <face>
+                        <div
+                            class="relative swiper-slide thumbs-slide rounded-xl overflow-hidden h-[139px] cursor-pointer">
+                            <img loading="lazy" src="/@largeIMG" alt="@name" class="w-full h-full object-cover">
+                            <span class="w-full h-full absolute top-0 left-0 bg-[#0000004D]"></span>
+                        </div>
+                    </face>
+                </basis>
+
+
+            </div>
+
+            <nav
+                class="navBar__container z-30 sticky blur3  top-[68px] w-full flex items-center justify-between border-zinc-300 border rounded-3xl py-1 px-[11px]">
+                <div onclick="scrollToTourSection(this,'tourExecution__container')"
+                    class="h-[67px] relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold cursor-pointer hover:text-primary">
+                    شروع سفر
+                </div>
+                <div onclick="scrollToTourSection(this,'tourInventory__container')"
+                    class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
+                    جدول قیمتی
+                </div>
+                <div onclick="scrollToTourSection(this,'travelouge-lis')"
+                    class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
+                    برنامه سفر
+                </div>
+                <div onclick="scrollToTourSection(this,'description__container')"
+                    class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
+                    توضیحات
+                </div>
+                <div onclick="scrollToTourSection(this,'services__container')"
+                    class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
+                    خدمات تور
+                </div>
+                <div onclick="scrollToTourSection(this,'tourEquipment__container')"
+                    class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
+                    ملزومات مورد نیاز
+                </div>
+                <div onclick="scrollToTourSection(this,'Additional-information')"
+                    class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
+                    اطلاعات تکمیلی
+                </div>
+                <div id="comments"
+                    class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
+                    نظرات
+                </div>
+                <div id="links"
+                    class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
+                    پیوند ها
+                </div>
+
+            </nav>
+
+            <basis core="print" datamembername="db.tour-view">
+                <layout>
+                    <div class="w-full flex flex-col gap-[32px] border border-zinc-300 p-[22px] rounded-3xl my-3">
+                        @child
+                    </div>
+                </layout>
+                <face filter="prpID=3088136">
+                    <h2 class="font-bold text-2xl">@text </h2>
+                    <div class="text-base text-zinc-900">@largetext</div>
+                </face>
+            </basis>
+
+            <div class="w-full flex gap-4 relative">
+                <div class="w-[908px] calculate-h flex flex-col gap-[30px]">
+                    <basis core="print" datamembername="db.tour-view">
+                        <layout>
+                            <div
+                                class="services__container w-full flex flex-col gap-[32px] border border-zinc-300 p-[22px] rounded-3xl">
+                                <h2 class="font-bold text-2xl">خدمات تور </h2>
+                                <div class="w-full grid grid-cols-2 gap-x-9 gap-y-3">
+
+                                    @child
+
+                                </div>
+                            </div>
+                        </layout>
+                        <face
+                            filter="prpID in ('3088146','3088147','3088148','3088149','3088150','3088151','3088152','3088153','3088154','3088155')">
+
+                            <div class="flex items-center gap-3">
+                                <span class="bg-primary-50 rounded-full w-10 h-10 flex justify-center items-center">
+                                    <img width="40" height="40" loading="lazy" src="[##cms.cms.cdn##]/images/tike.svg"
+                                        alt="tour-services">
+                                </span>
+                                <p class="text-base">@text</p>
+
+                            </div>
+                        </face>
+                    </basis>
+
+
+
+
+
+                    <div class="date__details">
+                        <basis core="print" datamembername="db.dates" run="atclient" onrendered="onrenderedDates">
+                            <layout>
+                                <script type="text/template">
+                       <div class="w-full flex flex-col gap-[32px] border border-zinc-300 p-[22px] rounded-3xl">
+                        <h2 class="font-bold text-2xl">تاریخ تور ها</h2>
+                        <ul class="w-full grid grid-cols-3 gap-[14px]">@child</ul></div>
+                         </script>
+                            </layout>
+                            <face>
+                                <script type="text/template">
+                                                <li onclick="renderInventoryView(this,@day@,@start.dateid@,@end.dateid@)" 
+                                                class="flex h-[67px] cursor-pointer group hover:bg-gradient-to-l hover:from-primary hover:to-primary-50 hover:border-white gap-[10px] items-center border-[#424242] border rounded-xl p-3">
+                                                <span class="bg-primary-50 w-10 h-10 flex justify-center items-center rounded-full">
+                                                    <img src="[##cms.cms.cdn##]/images/CalendarTour.svg" alt="calendar" />
+                                                </span>
+                                                <div class="flex-col flex gap-[3px]">
+                                                    <p class="textx-sm text-[#717171] group-hover:text-white">تاریخ تور:</p>
+                                                   <div class="w-full flex gap-1">
+                                                     <span class="start__date font-semibold text-sm" data-date="@start.date@">
+                                                    {{ return await renderDayDate($data,'start')}} {{ return await renderMonthDate($data,'start')}}
+                                                </span>
+                                                    <span class="font-semibold text-sm">تا</span>
+                                                    <span class="end__date font-semibold text-sm" data-date="@end.date@">{{ return await renderDayDate($data,'end')}} {{ return await renderMonthDate($data,'end')}}
+
+                                                    </span>
+                                                   </div>
+                                                </div>
+                                                </li>
+                                            </script>
+                            </face>
+                        </basis>
+
+
+
+
+                    </div>
+
+                    <div class="w-full tour__container__info">
+                        <!-- tour execution section -->
+                        <div class="hidden mb-10 tourExecution__container w-full">
+                            <h2 class="text-2xl font-bold mb-10" data-id="start-travel">برنامه پرواز</h2>
+                            <!-- origins tour execution section -->
+                            <div
+                                class=" bg-white mb-16 tourExecution__container__origins w-full flex flex-col gap-[22px] border border-zinc-300 p-[22px] rounded-3xl">
+                                <div class="relative font-medium text-xl w-full pb-[20px] border-b border-[#D1D1D1]">
+                                    <div class="flex gap-1 items-center">
+                                        <span class="font-medium text-xl">سفر رفت</span>
+                                        <span>(</span>
+                                        <h3 class="font-medium text-xl origins__city"></h3>
+                                        <span>)</span>
+                                    </div>
+
+                                </div>
+                                <basis core="print" datamembername="refresh.executionPlanTypesOrigins"
+                                    if="{##refresh.executionPlanTypesOrigins##}" run="atclient"
+                                    onrendered="onrenderedExecutionOrigins">
+                                    <layout>
+                                        <script
+                                            type="text/template"><div class="execution__details"><div class="flex flex-col p-4 execution__details__path execution__details__path__origins">@child </div></div></script>
+                                    </layout>
+                                    <face>
+                                        <script type="text/template"><div class="flex gap-2 execution__details__path__item">
+                                        <div class="execution__details__path__item__times flex w-full gap-6 relative">
+                                            <div class="flex flex-col gap-[25px] w-[110px] h-full justify-between">
+                                                <div class="w-full flex flex-col gap-1">
+                                                     <h3 class="font-bold text-[#323232] line-clamp-1 details__city">@info.origin.city.name@</h3>
+                                                  <span class=" __times__start font-bold text-[#323232] text-module-gray-0">@info.departure.time@ </span>
+                                                       <span class="text-sm">
+                                    <span class="origins__start__day text-xs text-[#222222]">
+
+                                </span>
+                                <span
+                                        class="mr-2 origins__start__weekday text-xs text-[#222222]"></span>
+                                </span>
+                                                </div>
+                                                 <div class="flex">
+                                                    <div class="flex execution__details__path__item__details"><div class="min-w-96">
+                                       
+                                    </div>
+
+                                            </div>
+                                           
+                                            <span class=" flex items-center gap-1 text-xs __times__duration   text-[#747474] flex-col gap-1 "><span>مدت پرواز</span><span> @info.time@  <span>دقیقه</span></span>
+                                            <svg class="hidden" width="12" height="12" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1_755)"><path d="M4.5 0.375C3.68415 0.375 2.88663 0.616927 2.20827 1.07019C1.52992 1.52345 1.00121 2.16769 0.688999 2.92143C0.376787 3.67518 0.295099 4.50458 0.454263 5.30475C0.613427 6.10492 1.00629 6.83992 1.58319 7.41682C2.16008 7.99371 2.89508 8.38658 3.69525 8.54574C4.49543 8.7049 5.32483 8.62321 6.07857 8.311C6.83232 7.99879 7.47655 7.47008 7.92981 6.79173C8.38307 6.11338 8.625 5.31585 8.625 4.5C8.62371 3.40638 8.1887 2.35792 7.41539 1.58461C6.64208 0.811302 5.59362 0.37629 4.5 0.375ZM4.5 7.875C3.83249 7.875 3.17997 7.67706 2.62495 7.30621C2.06994 6.93536 1.63735 6.40826 1.38191 5.79156C1.12646 5.17486 1.05963 4.49626 1.18985 3.84157C1.32008 3.18688 1.64151 2.58552 2.11352 2.11351C2.58552 1.64151 3.18689 1.32007 3.84157 1.18985C4.49626 1.05962 5.17486 1.12646 5.79156 1.38191C6.40826 1.63735 6.93536 2.06993 7.30621 2.62495C7.67706 3.17997 7.875 3.83249 7.875 4.5C7.87391 5.39477 7.51798 6.25258 6.88528 6.88528C6.25258 7.51798 5.39477 7.87391 4.5 7.875Z" fill="#BEBBCE" />
+                                                <path d="M4.875 4.34475V2.25C4.875 2.15054 4.83549 2.05516 4.76516 1.98484C4.69484 1.91451 4.59946 1.875 4.5 1.875C4.40054 1.875 4.30516 1.91451 4.23484 1.98484C4.16451 2.05516 4.125 2.15054 4.125 2.25V4.5C4.12502 4.59945 4.16454 4.69482 4.23488 4.76512L5.35988 5.89012C5.4306 5.95843 5.52533 5.99623 5.62365 5.99538C5.72197 5.99452 5.81603 5.95508 5.88556 5.88556C5.95509 5.81603 5.99452 5.72197 5.99538 5.62365C5.99623 5.52533 5.95843 5.4306 5.89012 5.35988L4.875 4.34475Z" fill="#BEBBCE" /></g><defs><clipPath id="clip0_1_755"><rect width="9" height="9" fill="white" /></clipPath></defs></svg></span>
+                                            </div>
+                                                <div class="w-full flex flex-col gap-1 ">
+                                                     <h3 class="font-bold text-[#323232] line-clamp-1 details__city">@info.destination.city.name@</h3>
+                                                  <span class=" __times__start font-bold text-[#323232] text-module-gray-0">@info.arrival.time@ </span>
+                                                  
+                                                </div>
+                                              
+                                            </div>
+                                                <div class="flex flex-col items-center h-full execution__details__path__item__path basis-7">
+                                                    {{ return await renderPathSvg($data)}} 
+                                            <svg width="8" class='h-full' height="174" viewBox="0 0 8 174" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 172.5L4.00001 1.5" stroke="url(#paint0_linear_1193_11162)" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 6"/>
+<defs>
+<linearGradient id="paint0_linear_1193_11162" x1="4.5" y1="172.5" x2="4.50001" y2="1.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F9F9F9"/>
+<stop offset="1" stop-color="#BFBFBF"/>
+</linearGradient>
+</defs>
+</svg>
+
+                                                    {{ return await renderEndPathSvg($data)}} </div>
+
+                                            <div class="h-full flex flex-col justify-between gap-6">
+                                                
+                                                <div class="flex h-full justify-between  flex-col gap-[25px]">
+                                                 <div class="font-medium text-[#323232] text-sm  details__airport ">{{ return await renderRouteType($data,'origin')}} 
+                                                    <div class="mt-1 text-module-gray-1 text-xs text-[#7A7A7A] ">@info.origin.name@</div>
+                                            </div>
+
+                                            <div class="details__airline text-xs pr-2.5 ">
+                                        <div class="flex items-center gap-2 mb-2 min-h-4 transportation__img__details">
+                                            {{ return await renderTransportationName($data)}}
+                                        </div>
+                                            <div class="text-module-gray-3 flex items-center gap-6">
+                                                <span class="inline-block ml-3"><span class="flex items-center gap-1"><span>
+                                                    <svg class="hidden" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.3272 11.6423C11.3272 11.9238 11.0987 12.1523 10.8172 12.1523C10.5356 12.1523 10.3072 11.9238 10.3072 11.6423V8.11992C10.3072 7.8384 10.5356 7.60992 10.8172 7.60992C11.0987 7.60992 11.3272 7.8384 11.3272 8.11992V11.6423ZM10.0535 5.37271H6.94727V3.74071C6.94727 3.41091 7.2152 3.14231 7.545 3.14231H9.45512C9.78492 3.14231 10.0535 3.41091 10.0535 3.74071V5.37271ZM9.01108 11.6423C9.01108 11.9238 8.7826 12.1523 8.50108 12.1523C8.21956 12.1523 7.99108 11.9238 7.99108 11.6423V8.11992C7.99108 7.8384 8.21956 7.60992 8.50108 7.60992C8.7826 7.60992 9.01108 7.8384 9.01108 8.11992V11.6423ZM6.69907 11.6423C6.69907 11.9238 6.47059 12.1523 6.18907 12.1523C5.90755 12.1523 5.67907 11.9238 5.67907 11.6423V8.11992C5.67907 7.8384 5.90755 7.60992 6.18907 7.60992C6.47059 7.60992 6.69907 7.8384 6.69907 8.11992V11.6423ZM11.0735 5.39379V3.74071C11.0735 2.84787 10.3473 2.12231 9.45512 2.12231H7.545C6.65283 2.12231 5.92727 2.84787 5.92727 3.74071V5.39379C4.36599 5.50327 3.40039 6.56611 3.40039 8.24232V11.4247C3.40039 13.0146 4.26263 14.0577 5.67771 14.2583V14.8723C5.67771 15.1538 5.90619 15.3823 6.18771 15.3823C6.46923 15.3823 6.69771 15.1538 6.69771 14.8723V14.3011H10.3058V14.8723C10.3058 15.1538 10.5343 15.3823 10.8158 15.3823C11.0973 15.3823 11.3258 15.1538 11.3258 14.8723V14.2583C12.7388 14.0577 13.599 13.0166 13.599 11.4308V8.24232C13.599 6.56543 12.6341 5.50259 11.0735 5.39379Z" fill="[##cms.host.primaryColor##]" /></svg></span>
+                                            <span class="text-xs text-[#ADADAD] flex gap-1">
+                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/wheel bag.svg" width="16" height="16" alt="wheel-bag" />
+                                                بار مجاز:</span>
+                                            <span class="font-medium text-[#3C3C3C]">@info.luggage@ کیلوگرم</span>
+                                        </span>
+                                    </span>
+                                    <span class="inline-block">
+                                        <span class="flex items-center gap-1">
+                                            <span>
+                                                <svg class="hidden" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.20877 11.6924C5.3816 12.6133 6.18627 13.2812 7.1234 13.2812H12.3233C13.0075 13.2812 13.5629 12.7259 13.5629 12.0416C13.5629 11.6358 13.5629 11.1116 13.5629 10.625C13.5629 10.1086 13.3574 9.61275 12.9919 9.24725C12.6264 8.88246 12.1313 8.67704 11.6149 8.67704H8.66402C8.57831 8.67704 8.50535 8.61613 8.48977 8.53183L7.39044 2.48479C7.22185 1.55829 6.41506 0.885376 5.47369 0.885376C5.20665 0.885376 4.92756 0.885376 4.6761 0.885376C4.30777 0.885376 3.95785 1.04971 3.72269 1.33304C3.48681 1.61708 3.38977 1.99108 3.45777 2.35375L5.20877 11.6924Z" fill="[##cms.host.primaryColor##]" /><path fill-rule="evenodd" clip-rule="evenodd" d="M7.97739 12.4687C7.97739 12.4687 7.3831 13.4179 6.88372 14.2176C6.64501 14.6001 6.63226 15.0818 6.85043 15.4756C7.0693 15.8701 7.48439 16.1145 7.93489 16.1145H12.6779C12.9704 16.1145 13.2091 15.8765 13.2091 15.5833C13.2091 15.29 12.9704 15.052 12.6779 15.052H7.93489C7.87043 15.052 7.81093 15.0173 7.77976 14.9606C7.7486 14.9047 7.75072 14.836 7.78472 14.7807L8.87839 13.0311C9.03351 12.7825 8.95772 12.4546 8.7091 12.2994C8.46047 12.1443 8.13251 12.2194 7.97739 12.4687Z" fill="[##cms.host.primaryColor##]" /><path fill-rule="evenodd" clip-rule="evenodd" d="M7.71875 6.90625H11.9688C12.2613 6.90625 12.5 6.66825 12.5 6.375C12.5 6.08175 12.2613 5.84375 11.9688 5.84375H7.71875C7.4255 5.84375 7.1875 6.08175 7.1875 6.375C7.1875 6.66825 7.4255 6.90625 7.71875 6.90625Z" fill="[##cms.host.primaryColor##]" /></svg>
+                                             </span>
+                                            <span class="text-xs text-[#ADADAD] flex gap-1">
+                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/Flight ticket.svg" width="16" height="16" alt="Flight ticket" />
+                                                کلاس :</span>
+                                            <span class="font-medium text-[#3C3C3C]">@info.classes[0].class@</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                                           
+                                               
+                                                
+                                    <svg width="22" height="22" class="hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="{1.5}" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
+                                    <div class="font-medium details__airport  text-[#323232] text-sm">{{ return await renderRouteType($data,'destination')}} <div class="mt-1 text-module-gray-1 text-xs text-[#7A7A7A] ">@info.destination.name@</div></div></div><div class=" hidden pl-8 mt-10 border-l border-solid border-module-gray-2 h-11"></div></div>
+                                    
+                        </div>
+                                    </div>
+                                    {{ return await renderRouteStop($data)}}
+
+                                    </script>
+                                    </face>
+                                </basis>
+                            </div>
+                            <!-- destinations tour execution section -->
+                            <div
+                                class=" bg-white  w-full flex flex-col gap-[22px] border border-zinc-300 p-[22px] rounded-3xl tourExecution__container__destinations ">
+                                <div class="relative font-medium text-xl w-full pb-[20px] border-b border-[#D1D1D1]">
+                                    <div class="flex gap-1 items-center">
+                                        <span class="font-medium text-xl">سفر برگشت</span>
+                                        <span>(</span>
+                                        <h3 class="font-medium text-xl destinations__city"></h3>
+                                        <span>)</span>
+
+
+                                    </div>
+                                </div>
+                                <basis core="print" datamembername="refresh.executionPlanTypesDestinations"
+                                    if="{##refresh.executionPlanTypesDestinations##}" run="atclient"
+                                    onrendered="onrenderedExecutionDestinations">
+                                    <layout>
+                                        <script
+                                            type="text/template"><div class="execution__details"><div class="flex flex-col p-4 execution__details__path execution__details__path__destinations">@child </div></div></script>
+                                    </layout>
+                                    <face>
+                                        <script type="text/template">
+                                        <div class="flex gap-2 execution__details__path__item">
+                                        <div class="execution__details__path__item__times flex w-full gap-6 relative">
+                                            <div class="flex flex-col gap-[25px] w-[110px] h-full justify-between">
+                                                <div class="w-full flex flex-col gap-1">
+                                                     <h3 class="font-bold text-[#323232] line-clamp-1 details__city">@info.origin.city.name@</h3>
+                                                  <span class=" __times__start font-bold text-[#323232] text-module-gray-0">@info.departure.time@ </span>
+                                                 <span class="text-sm">
+                                    <span class="destinations__start__day text-xs text-[#222222]"></span><span
+                                        class="mr-2 destinations__start__weekday text-xs text-[#222222]"></span></span>
+                                                </div>
+                                                 <div class="flex">
+                                                    <div class="flex execution__details__path__item__details"><div class="min-w-96">
+                                       
+                                    </div>
+
+                                            </div>
+                                           
+                                            <span class=" flex items-center text-xs __times__duration   text-[#747474] flex-col gap-1 "><span>مدت پرواز</span><span> @info.time@  <span>دقیقه</span></span>
+                                            <svg class="hidden" width="12" height="12" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1_755)"><path d="M4.5 0.375C3.68415 0.375 2.88663 0.616927 2.20827 1.07019C1.52992 1.52345 1.00121 2.16769 0.688999 2.92143C0.376787 3.67518 0.295099 4.50458 0.454263 5.30475C0.613427 6.10492 1.00629 6.83992 1.58319 7.41682C2.16008 7.99371 2.89508 8.38658 3.69525 8.54574C4.49543 8.7049 5.32483 8.62321 6.07857 8.311C6.83232 7.99879 7.47655 7.47008 7.92981 6.79173C8.38307 6.11338 8.625 5.31585 8.625 4.5C8.62371 3.40638 8.1887 2.35792 7.41539 1.58461C6.64208 0.811302 5.59362 0.37629 4.5 0.375ZM4.5 7.875C3.83249 7.875 3.17997 7.67706 2.62495 7.30621C2.06994 6.93536 1.63735 6.40826 1.38191 5.79156C1.12646 5.17486 1.05963 4.49626 1.18985 3.84157C1.32008 3.18688 1.64151 2.58552 2.11352 2.11351C2.58552 1.64151 3.18689 1.32007 3.84157 1.18985C4.49626 1.05962 5.17486 1.12646 5.79156 1.38191C6.40826 1.63735 6.93536 2.06993 7.30621 2.62495C7.67706 3.17997 7.875 3.83249 7.875 4.5C7.87391 5.39477 7.51798 6.25258 6.88528 6.88528C6.25258 7.51798 5.39477 7.87391 4.5 7.875Z" fill="#BEBBCE" />
+                                                <path d="M4.875 4.34475V2.25C4.875 2.15054 4.83549 2.05516 4.76516 1.98484C4.69484 1.91451 4.59946 1.875 4.5 1.875C4.40054 1.875 4.30516 1.91451 4.23484 1.98484C4.16451 2.05516 4.125 2.15054 4.125 2.25V4.5C4.12502 4.59945 4.16454 4.69482 4.23488 4.76512L5.35988 5.89012C5.4306 5.95843 5.52533 5.99623 5.62365 5.99538C5.72197 5.99452 5.81603 5.95508 5.88556 5.88556C5.95509 5.81603 5.99452 5.72197 5.99538 5.62365C5.99623 5.52533 5.95843 5.4306 5.89012 5.35988L4.875 4.34475Z" fill="#BEBBCE" /></g><defs><clipPath id="clip0_1_755"><rect width="9" height="9" fill="white" /></clipPath></defs></svg></span>
+                                            </div>
+                                                <div class="w-full flex flex-col gap-1 ">
+                                                     <h3 class="font-bold text-[#323232] line-clamp-1 details__city">@info.destination.city.name@</h3>
+                                                  <span class=" __times__start font-bold text-[#323232] text-module-gray-0">@info.arrival.time@ </span>
+
+                                                 
+                                                </div>
+                                              
+                                            </div>
+                                                <div class="flex flex-col items-center h-full execution__details__path__item__path basis-7">
+                                                    {{ return await renderPathSvg($data)}} 
+                                            <svg width="8" class='h-full' height="174" viewBox="0 0 8 174" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 172.5L4.00001 1.5" stroke="url(#paint0_linear_1193_11162)" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 6"/>
+<defs>
+<linearGradient id="paint0_linear_1193_11162" x1="4.5" y1="172.5" x2="4.50001" y2="1.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F9F9F9"/>
+<stop offset="1" stop-color="#BFBFBF"/>
+</linearGradient>
+</defs>
+</svg>
+
+                                                    {{ return await renderEndPathSvg($data)}} </div>
+
+                                            <div class="h-full flex flex-col justify-between gap-6">
+                                                
+                                                <div class="flex h-full justify-between  flex-col gap-[25px]">
+                                                 <div class="font-medium text-[#323232] text-sm  details__airport ">{{ return await renderRouteType($data,'origin')}} 
+                                                    <div class="mt-1 text-module-gray-1 text-xs text-[#7A7A7A] ">@info.origin.name@</div>
+                                            </div>
+
+                                            <div class="details__airline text-xs pr-2.5 ">
+                                        <div class="flex items-center gap-2 mb-2 min-h-4 transportation__img__details">
+                                            {{ return await renderTransportationName($data)}}
+                                        </div>
+                                            <div class="text-module-gray-3 flex items-center gap-6">
+                                                <span class="inline-block ml-3"><span class="flex items-center gap-1"><span>
+                                                    <svg class="hidden" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.3272 11.6423C11.3272 11.9238 11.0987 12.1523 10.8172 12.1523C10.5356 12.1523 10.3072 11.9238 10.3072 11.6423V8.11992C10.3072 7.8384 10.5356 7.60992 10.8172 7.60992C11.0987 7.60992 11.3272 7.8384 11.3272 8.11992V11.6423ZM10.0535 5.37271H6.94727V3.74071C6.94727 3.41091 7.2152 3.14231 7.545 3.14231H9.45512C9.78492 3.14231 10.0535 3.41091 10.0535 3.74071V5.37271ZM9.01108 11.6423C9.01108 11.9238 8.7826 12.1523 8.50108 12.1523C8.21956 12.1523 7.99108 11.9238 7.99108 11.6423V8.11992C7.99108 7.8384 8.21956 7.60992 8.50108 7.60992C8.7826 7.60992 9.01108 7.8384 9.01108 8.11992V11.6423ZM6.69907 11.6423C6.69907 11.9238 6.47059 12.1523 6.18907 12.1523C5.90755 12.1523 5.67907 11.9238 5.67907 11.6423V8.11992C5.67907 7.8384 5.90755 7.60992 6.18907 7.60992C6.47059 7.60992 6.69907 7.8384 6.69907 8.11992V11.6423ZM11.0735 5.39379V3.74071C11.0735 2.84787 10.3473 2.12231 9.45512 2.12231H7.545C6.65283 2.12231 5.92727 2.84787 5.92727 3.74071V5.39379C4.36599 5.50327 3.40039 6.56611 3.40039 8.24232V11.4247C3.40039 13.0146 4.26263 14.0577 5.67771 14.2583V14.8723C5.67771 15.1538 5.90619 15.3823 6.18771 15.3823C6.46923 15.3823 6.69771 15.1538 6.69771 14.8723V14.3011H10.3058V14.8723C10.3058 15.1538 10.5343 15.3823 10.8158 15.3823C11.0973 15.3823 11.3258 15.1538 11.3258 14.8723V14.2583C12.7388 14.0577 13.599 13.0166 13.599 11.4308V8.24232C13.599 6.56543 12.6341 5.50259 11.0735 5.39379Z" fill="[##cms.host.primaryColor##]" /></svg></span>
+                                            <span class="text-xs text-[#ADADAD] flex gap-1">
+                                                <img  loading="lazy" src="[##cms.cms.cdn##]/images/wheel bag.svg" width="16" height="16" alt="wheel-bag" />
+                                                بار مجاز:</span>
+                                            <span class="font-medium text-[#3C3C3C]">@info.luggage@ کیلوگرم</span>
+                                        </span>
+                                    </span>
+                                    <span class="inline-block">
+                                        <span class="flex items-center gap-1">
+                                            <span>
+                                                <svg class="hidden" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.20877 11.6924C5.3816 12.6133 6.18627 13.2812 7.1234 13.2812H12.3233C13.0075 13.2812 13.5629 12.7259 13.5629 12.0416C13.5629 11.6358 13.5629 11.1116 13.5629 10.625C13.5629 10.1086 13.3574 9.61275 12.9919 9.24725C12.6264 8.88246 12.1313 8.67704 11.6149 8.67704H8.66402C8.57831 8.67704 8.50535 8.61613 8.48977 8.53183L7.39044 2.48479C7.22185 1.55829 6.41506 0.885376 5.47369 0.885376C5.20665 0.885376 4.92756 0.885376 4.6761 0.885376C4.30777 0.885376 3.95785 1.04971 3.72269 1.33304C3.48681 1.61708 3.38977 1.99108 3.45777 2.35375L5.20877 11.6924Z" fill="[##cms.host.primaryColor##]" /><path fill-rule="evenodd" clip-rule="evenodd" d="M7.97739 12.4687C7.97739 12.4687 7.3831 13.4179 6.88372 14.2176C6.64501 14.6001 6.63226 15.0818 6.85043 15.4756C7.0693 15.8701 7.48439 16.1145 7.93489 16.1145H12.6779C12.9704 16.1145 13.2091 15.8765 13.2091 15.5833C13.2091 15.29 12.9704 15.052 12.6779 15.052H7.93489C7.87043 15.052 7.81093 15.0173 7.77976 14.9606C7.7486 14.9047 7.75072 14.836 7.78472 14.7807L8.87839 13.0311C9.03351 12.7825 8.95772 12.4546 8.7091 12.2994C8.46047 12.1443 8.13251 12.2194 7.97739 12.4687Z" fill="[##cms.host.primaryColor##]" /><path fill-rule="evenodd" clip-rule="evenodd" d="M7.71875 6.90625H11.9688C12.2613 6.90625 12.5 6.66825 12.5 6.375C12.5 6.08175 12.2613 5.84375 11.9688 5.84375H7.71875C7.4255 5.84375 7.1875 6.08175 7.1875 6.375C7.1875 6.66825 7.4255 6.90625 7.71875 6.90625Z" fill="[##cms.host.primaryColor##]" /></svg>
+                                             </span>
+                                            <span class="text-xs text-[#ADADAD] flex gap-1">
+                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/Flight ticket.svg" width="16" height="16" alt="Flight ticket" />
+                                                کلاس :</span>
+                                            <span class="font-medium text-[#3C3C3C]">@info.classes[0].class@</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                                           
+                                               
+                                                
+                                    <svg width="22" height="22" class="hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="{1.5}" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
+                                    <div class="font-medium details__airport  text-[#323232] text-sm">{{ return await renderRouteType($data,'destination')}} <div class="mt-1 text-module-gray-1 text-xs text-[#7A7A7A] ">@info.destination.name@</div></div></div><div class=" hidden pl-8 mt-10 border-l border-solid border-module-gray-2 h-11"></div></div>
+                                    
+                        </div>
+                                    </div>
+                                    {{ return await renderRouteStop($data)}}
+                                    </script>
+                                    </face>
+                                </basis>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                    <!-- tour inventory section -->
+                    <basis core="print" datamembername="api.inventoryView" run="atclient"
+                        onrendered="onrenderedInventoryView">
+                        <layout>
+                            <script type="text/template">
+                                <div class="tourInventory__container w-full flex flex-col gap-[30px]">
+                                    <h2 class="text-2xl font-bold" data-id="hotels">انتخاب هتل</h2>
+                                    <div class="flex flex-col gap-6">@child</div>
+                                </div>
+                            </script>
+                        </layout>
+                        <face>
+                            <script type="text/template">
+                                <div class="tourInventory__details hotelCard w-full flex border p-3 rounded-2xl gap-6 items-center justify-between border-zinc-300">
+                                    <div class="tourInventory__details__item w-full flex justify-between gap-6 relative">
+                                        <div class="flex flex-col gap-5 divide-y w-full">
+                                            {{return await renderHotels($data)}}
+                                        </div> 
+                                        <div class="tourInventory__details__item__info w-[564px] absolute bottom-0 left-0 flex justify-between items-center">
+                                            <div class="w-full flex justify-between items-center">
+                                            <div class="w-[50%] flex flex-col gap-[11px]">
+                                                <div class="flex items-center gap-2">
+                                                <div class="w-full font-bold text-sm text-[#171717] flex items-center gap-2 ">
+                                                    <div class="font-medium text-sm text-[#171717]">تک تخته : </div>
+                                                    {{ return await renderPriceInfo($data,'singlecost')}} 
+                                                </div>
+                                            </div>
+                                                <div class="flex items-center gap-2">
+                                                <div class="w-full font-bold text-sm text-[#171717] flex items-center gap-2 ">
+                                                    <div class="font-medium text-sm text-[#171717] w-58-54">دو تخته :</div>
+                                                    {{ return await renderPriceInfo($data,'doublecost')}} 
+                                                </div>
+                                            </div>
+                                            
+                                            </div>
+                                           <div class="w-[50%] flex flex-col gap-[11px] border-r border-dashed border-[#DFDFDF] items-end">
+                                             <div class="flex flex-col gap-[11px]">
+                                               
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-full font-bold text-sm text-[#171717] flex items-center gap-2 ">
+                                                    <div class="font-medium text-sm text-[#171717]">کودک بدون تخت : </div>
+                                                {{ return await renderPriceInfo($data,'childwithoutbed')}} 
+                                            </div>
+                                        </div>
+                                         <div class="flex items-center gap-2">
+                                                <div class="w-full font-bold text-sm text-[#171717] flex items-center gap-2 ">
+                                                    <div class="font-medium child-bed text-sm text-[#171717]">
+                                                        کودک با تخت : </div>
+                                                    {{ return await renderPriceInfo($data,'childwithbed')}} 
+                                                </div>
+                                            </div>
+                                             </div>
+                                           </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            </script>
+                        </face>
+                    </basis>
+
+
+
+
+
+                </div>
+                <aside class=" w-[355px]">
+                    <div class="flex flex-col gap-[21px] w-full h-full relative">
+                        <div
+                            class="w-full h-[412px] px-[12px] py-[11px] flex flex-col justify-between items-center border border-[#D7D6D6] rounded-xl">
+                            <div class="w-full grid gap-3 grid-cols-2">
+                                <basis core="print" datamembername="db.tour-view">
+                                    <face filter="prpID=8076">
+                                        <div
+                                            class="w-full h-[144px] bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/Time Circle.svg"
+                                                alt="time" width="32" height="32">
+                                            <p class="text-sm text-[#777777]">@Question</p>
+                                            <p class="font-bold text-[#044773]">@text</p>
+                                        </div>
+                                    </face>
+                                </basis>
+
+                                <basis core="print" datamembername="db.tour-view">
+                                    <face filter="prpID=8077">
+                                        <div
+                                            class="w-full h-[144px] bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg" alt="time"
+                                                width="32" height="32">
+                                            <p class="text-sm text-[#777777]">@Question </p>
+                                            <p class="font-bold text-[#044773]"> @text </p>
+                                        </div>
+                                    </face>
+                                </basis>
+
+
+                                <basis core="list" datamembername="db.tour-joining">
+                                    <face>
+                                        <div
+                                            class="w-full h-[144px] bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/plane up.svg"
+                                                alt="ایرلاین" width="32" height="32">
+                                            <p class="text-sm text-[#777777]">ایرلاین:</p>
+                                            <img loading="lazy" src="@db.airline.pic" alt="@db.airline.name	"
+                                                class="w-[90px]">
+                                        </div>
+                                    </face>
+                                </basis>
+
+
+                                <basis core="print" datamembername="db.tour-view">
+                                    <layout>
+                                        <div
+                                            class="w-full h-[144px] py-2 bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/wheel bag2.svg" alt="bag"
+                                                width="32" height="32">
+                                            <p class="text-sm text-[#777777]">نوع تور:</p>
+                                            @child
+                                        </div>
+                                    </layout>
+                                    <face filter="prpID=3088134">
+                                        <span class="font-bold text-[#044773]  ">@text </span>
+
+                                    </face>
+                                </basis>
+
+
+
+
+
+                            </div>
+                            <basis core="print" datamembername="db.tour-view">
+                                <face filter="prpID=8181">
+                                    <div
+                                        class="w-full flex justify-between items-center h-[51px] px-3 rounded-xl bg-[#FFBD22]">
+                                        <div class="flex items-center gap-2">
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/Wallet doublle.svg"
+                                                alt="Wallet">
+                                            @Question :
+                                        </div>
+                                        <b>@Answer </b>
+                                    </div>
+                                </face>
+                            </basis>
+
+                        </div>
+                        <div class="w-full flex flex-col gap-[21px]  sticky top-[153px]">
+                            <div
+                                class="sidebar-box share-box relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5">
+                                <div>
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Share.svg" alt="share" width="48"
+                                        height="48">
+
+                                </div>
+                                <span class="shadow-txt text-white font-semibold text-xl">اشتراک گذاری</span>
+                            </div>
+                            <div class="w-full hidden items-center gap-2 shareIcon-container justify-between ">
+
+                                <a href="/"
+                                    class="shareIcon facebook  w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="24" height="24" rx="8" />
+                                        <path d="M24 0V24H0V0H24Z" fill="white" fill-opacity="0.01" />
+                                        <path
+                                            d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21ZM12 21V13M14.5 8H14C12.8954 8 12 8.89543 12 10V13M12 13H10M12 13H14"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+                                    </svg>
+                                </a>
+                                <a href="/"
+                                    class="shareIcon mail  w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="24" height="24" rx="8" />
+                                        <path
+                                            d="M17 21.25H7C3.35 21.25 1.25 19.15 1.25 15.5V8.5C1.25 4.85 3.35 2.75 7 2.75H17C20.65 2.75 22.75 4.85 22.75 8.5V15.5C22.75 19.15 20.65 21.25 17 21.25ZM7 4.25C4.14 4.25 2.75 5.64 2.75 8.5V15.5C2.75 18.36 4.14 19.75 7 19.75H17C19.86 19.75 21.25 18.36 21.25 15.5V8.5C21.25 5.64 19.86 4.25 17 4.25H7Z"
+                                            fill="#fff" />
+                                        <path
+                                            d="M11.9988 12.87C11.1588 12.87 10.3088 12.61 9.6588 12.08L6.5288 9.57997C6.2088 9.31997 6.14881 8.84997 6.4088 8.52997C6.66881 8.20997 7.13881 8.14997 7.45881 8.40997L10.5888 10.91C11.3488 11.52 12.6388 11.52 13.3988 10.91L16.5288 8.40997C16.8488 8.14997 17.3288 8.19997 17.5788 8.52997C17.8388 8.84997 17.7888 9.32997 17.4588 9.57997L14.3288 12.08C13.6888 12.61 12.8388 12.87 11.9988 12.87Z"
+                                            fill="#fff" />
+                                    </svg>
+
+                                </a>
+
+                                <a href="/"
+                                    class="shareIcon twitt   w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="24" height="24" rx="8" />
+                                        <path d="M24 0V24H0V0H24Z" fill="white" fill-opacity="0.01" />
+                                        <path
+                                            d="M19.1382 9.24906L21 5.97711L18.6384 6.41858C18.0824 5.618 16.7543 4.7005 14.7941 5.09421C12.4483 5.56538 11.6912 7.55915 11.6912 9.72118C9.05368 9.72118 6.62303 8.77695 4.70955 5.97711C4.70955 5.97711 1.45143 14.4424 8.89849 16.803C7.50216 18.2193 6.10589 18.6914 4.24411 19.2208C8.89852 20.5799 13.5529 20.1078 15.8801 18.2193C18.2073 16.3308 19.3501 13.5474 19.1382 9.24906Z"
+                                            stroke="#fff" stroke-width="1.5" stroke-linejoin="round" />
+                                    </svg>
+
+                                </a>
+
+                                <a href="/"
+                                    class="shareIcon whatapp   w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="24" height="24" rx="8" />
+                                        <path d="M24 0V24H0V0H24Z" fill="white" fill-opacity="0.01" />
+                                        <path
+                                            d="M3.5 20.5L2.78048 20.2884C2.70303 20.5517 2.7756 20.8363 2.96967 21.0303C3.16374 21.2244 3.44832 21.297 3.71162 21.2195L3.5 20.5ZM6.76044 19.541L6.97206 20.2606L6.76044 19.541ZM7.18212 19.6032L7.58416 18.9701L7.18212 19.6032ZM20.25 12C20.25 16.5563 16.5563 20.25 12 20.25V21.75C17.3848 21.75 21.75 17.3848 21.75 12H20.25ZM12 3.75C16.5563 3.75 20.25 7.44365 20.25 12H21.75C21.75 6.61522 17.3848 2.25 12 2.25V3.75ZM3.75 12C3.75 7.44365 7.44365 3.75 12 3.75V2.25C6.61522 2.25 2.25 6.61522 2.25 12H3.75ZM5.02994 16.4158C4.21947 15.1395 3.75 13.6257 3.75 12H2.25C2.25 13.9188 2.80506 15.7103 3.76366 17.2199L5.02994 16.4158ZM4.21952 20.7116L5.17848 17.4512L3.73943 17.0279L2.78048 20.2884L4.21952 20.7116ZM6.54881 18.8215L3.28838 19.7805L3.71162 21.2195L6.97206 20.2606L6.54881 18.8215ZM12 20.25C10.3743 20.25 8.86051 19.7805 7.58416 18.9701L6.78008 20.2363C8.28971 21.1949 10.0812 21.75 12 21.75V20.25ZM6.97206 20.2606C6.89736 20.2825 6.82817 20.2669 6.78008 20.2363L7.58416 18.9701C7.285 18.7801 6.90884 18.7156 6.54881 18.8215L6.97206 20.2606ZM3.76366 17.2199C3.73312 17.1718 3.71746 17.1026 3.73943 17.0279L5.17848 17.4512C5.28437 17.0912 5.2199 16.715 5.02994 16.4158L3.76366 17.2199Z"
+                                            fill="#fff" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M14.3745 16.5764C13.6925 16.5513 11.7612 16.2847 9.73876 14.2622C7.71627 12.2397 7.44963 10.3084 7.42453 9.62646C7.41735 9.43131 7.4497 9.25213 7.48762 9.10044L7.49508 9.07058C7.70647 8.22503 8.301 7.52692 9.1021 7.18359C9.31795 7.09109 9.57938 7.10802 9.78605 7.25877C10.4683 7.7564 10.9604 8.48371 11.3795 9.10323C11.4253 9.17085 11.4702 9.23718 11.5143 9.30179C11.7171 9.59838 11.6686 10.0033 11.3932 10.2417L10.4698 10.9275C10.3783 10.9955 10.3478 11.119 10.4027 11.219C10.6117 11.5993 10.9839 12.1652 11.4098 12.5912C11.8362 13.0175 12.4289 13.4138 12.8353 13.6462C12.9407 13.7065 13.0733 13.6716 13.1399 13.5701L13.7407 12.655C13.971 12.3485 14.4012 12.2815 14.7139 12.4979C14.7559 12.527 14.7984 12.5563 14.8412 12.5858C15.4772 13.0246 16.1929 13.5183 16.726 14.2009C16.8877 14.408 16.9117 14.6787 16.8153 14.9037C16.4733 15.7017 15.7778 16.294 14.9355 16.5046L14.9005 16.5133C14.7488 16.5513 14.5696 16.5836 14.3745 16.5764Z"
+                                            fill="#fff" />
+                                    </svg>
+
+
+                                </a>
+
+
+                                <a href="/"
+                                    class="shareIcon telegram   w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="24" height="24" rx="8" />
+                                        <path d="M24 0V24H0V0H24Z" fill="white" fill-opacity="0.01" />
+                                        <path
+                                            d="M14.999 11.5L10.499 16M10.6246 16.9322L12.9051 18.5079C15.2297 20.114 16.392 20.9171 17.4032 20.4906C18.4144 20.064 18.6505 18.6712 19.1227 15.8855L19.9126 11.2247C20.4481 8.0653 20.7159 6.4856 19.7917 5.75046C18.8675 5.01533 17.3885 5.63152 14.4305 6.86391L8.87953 9.17661C5.04044 10.7761 3.12089 11.5758 3.0201 12.7884C3.00486 12.9717 3.01498 13.1562 3.05016 13.3367C3.28294 14.5309 5.27843 15.116 9.26939 16.2861C9.6118 16.3865 9.78301 16.4367 9.94466 16.5102C9.97177 16.5226 9.99866 16.5354 10.0253 16.5487C10.1842 16.628 10.331 16.7294 10.6246 16.9322Z"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+
+
+
+                                </a>
+                            </div>
+
+
+
+                            <basis core="print" datamembername="db.pdf">
+                                <else-layout>
+                                    <form class="w-full tour-pdf-form" action="/tours/package/pdf?id=[##cms.query.id##]"
+                                        method="POST" target="_blank">
+                                        <input type="hidden" class="hidden" name="id" value="[##cms.query.id##]">
+                                        <input type="hidden" class="hidden" name="from" id="form-from">
+                                        <input type="hidden" class="hidden" name="to" id="form-to">
+                                        <input type="hidden" class="hidden" name="day" id="form-day">
+                                        <input type="hidden" class="hidden" name="fdate" id="fdate">
+                                        <input type="hidden" class="hidden" name="rdate" id="rdate">
+                                        <button type="submit" target="_blank"
+                                            class="sidebar-box relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 !pr-0">
+                                            <div>
+                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/dwn-package.svg"
+                                                    alt="download">
+                                            </div>
+                                            <span class="shadow-txt text-white font-semibold text-xl">دانلود پکیج</span>
+                                        </button>
+                                    </form>
+                                </else-layout>
+                                <layout>@child </layout>
+                                <face>
+                                    <a href="/@largeIMG" target="_blank"
+                                        class="sidebar-box dwn relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 !pr-0">
+                                        <div>
+
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/dwn-package.svg"
+                                                alt="download">
+
+                                        </div>
+                                        <span class="shadow-txt text-white font-semibold text-xl">دانلود پکیج</span>
+                                    </a>
+                                </face>
+                            </basis>
+
+
+                            <basis core="print" datamembername="db.info">
+                                <face filter="TypeID=240">
+                                    <a href="tel:@text"
+                                        class="sidebar-box tel relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 ">
+                                        <div>
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/shadow-tel.svg"
+                                                alt="phone">
+
+                                        </div>
+                                        <span class="shadow-txt text-white font-semibold text-xl"> @text</span>
+                                    </a>
+                                </face>
+                            </basis>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            <basis core="print" datamembername="db.tour-view-travelplan">
+                <layout>
+                    <div
+                        class="w-full border mt-9 border-[#DFDFDF] rounded-3xl flex flex-col py-[31px] px-[52px] gap-[31px]">
+                        <h2 class="font-bold text-zinc-900" data-id="travelouge">برنامه سفر</h2>
+                        <div class="travelouge-lis w-full flex flex-col gap-3">
+                            @child
+
+                        </div>
+                    </div>
+                </layout>
+                <face>
+                    <div
+                        class="w-full cursor-pointer travelouge-item hover:border-primary-300 border border-zinc-300 py-3 px-4 rounded-xl flex flex-col">
+                        <div class="flex items-center w-full justify-between">
+                            <div class="flex items-center days-el gap-3">
+                                <span class="font-bold">@text </span>
+
+                            </div>
+                            <span class="">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="24" y1="16" x2="24" y2="32" stroke="#71717A" stroke-width="2"
+                                        stroke-linecap="round" />
+                                    <line x1="16" y1="24" x2="32" y2="24" stroke="#71717A" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+
+                            </span>
+                        </div>
+                        <div class="overflow-hidden flex show-content h-0 opacity-0">
+                            <div class="pt-3 gap-3">
+                                @largetext
+                            </div>
+                        </div>
+                    </div>
+                </face>
+            </basis>
+
+            <basis core="print" datamembername="db.tour-view">
+                <layout>
+                    <div
+                        class="description__container w-full flex flex-col gap-[32px] border border-zinc-300 p-[22px] rounded-3xl my-3">
+                        <h2 class="font-bold text-2xl" data-id="description">توضیحات</h2>
+                        <div class="text-base">@child</div>
+                    </div>
+                </layout>
+                <face filter="prpID=3088136">@largetext</face>
+            </basis>
+
+            <basis core="print" datamembername="db.tour-view">
+                <layout>
+                    <div
+                        class="w-full flex flex-col Additional-information gap-[32px] border border-zinc-300 p-[22px] rounded-3xl my-3">
+                        <h2 class="font-bold text-2xl">اطلاعات تکمیلی  </h2>
+                        <div class="text-base">@child</div>
+                    </div>
+                </layout>
+                <face filter="prpID=3088137">@largetext</face>
+            </basis>
+
+
+            <basis core="print" datamembername="db.tour-view">
+                <layout>
+                    <div
+                        class="w-full flex flex-col tourEquipment__container gap-[32px] border border-zinc-300 p-[22px] rounded-3xl my-3">
+                        <h2 class="font-bold text-2xl"> ملزومات مورد نیاز </h2>
+                        <div class="w-full grid grid-cols-4 gap-x-9 gap-y-3">
+
+                            @child
+
+                        </div>
+                    </div>
+                </layout>
+                <face filter="prpID in ('8085')">
+
+                    <div class="flex items-center gap-3">
+                        <span class="bg-primary-50 rounded-full w-10 h-10 flex justify-center items-center">
+                            <img width="40" height="40" loading="lazy" src="[##cms.cms.cdn##]/images/tike.svg"
+                                alt="tour-services">
+                        </span>
+                        <p class="text-base">@text</p>
+
+                    </div>
+                </face>
+            </basis>
+
+        </div>
+
+        <section class="w-full flex justify-center relative  ">
+            <div class="px-4 relative w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class="before-border last-section-brd-article relative w-full flex flex-col">
+                    <div class="flex  items-center gap-3 ">
+                        <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                                class="w-8 h-8">
+                            <p class="font-bold text-2xl text-zinc-900">ارتباط با کارشناسان </p>
+                            <span class="bullet-1"></span>
+                        </div>
+                    </div>
+                    <div class="my-[50px] z-[4] items-center w-full flex">
+                        <div
+                            class="w-full rounded-2xl overflow-hidden relative flex items-center justify-center h-[143px] px-[35px] py-5">
+                            <img src="[##cms.cms.cdn##]/images/contact-form-image.jpg" alt="contact-us"
+                                class="w-[42%] h-full z-0    absolute left-0 top-0">
+                            <span
+                                class="w-[80px] absolute left-[calc(42%-3px)] z-[3] bg-gradient-to-r from-[#d6d9d8] h-full"></span>
+                            <span
+                                class="w-full h-full rounded-2xl bg-gradient-to-r z-[1] from-[#fff0] to-[#F2F2F2] absolute top-0 left-0 "></span>
+                            <div class="flex z-[5] w-full flex-col h-full justify-between">
+                                <p class="">جهت مشاوره خرید ویزا با کارشناسان ما در ارتباط باشید</p>
+                                <div class="flex items-center">
+                                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
+                                        <basis core="schema" run="atclient"
+                                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
+                                            displaymode="new" button="[data-btn-uploadfooter]"
+                                            resultsourceid="upload.datafooter" OnRendered="RenderFormFooter">
+                                        </basis>
+                                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
+                                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject"
+                                            method="post"
+                                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
+                                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
+                                            OnProcessed="OnProcessedEditObjectFooter">
+                                        </basis>
+                                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
+                                            triggers="upload.datafooter"></basis>
+                                        <div class="captcha-button">
+                                            <div id="captchaContainer"
+                                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
+                                                data-bc-answer-container data-bc-schema-info-multi="0"
+                                                data-bc-schema-info-word="58" data-bc-schema-info-part="1"
+                                                data-bc-schema-info-part-0-type="text">
+                                                <basis core="dbsource" source="trust_login" name="captcha"
+                                                    run="atclient" triggers="captcha.refreshFooter">
+                                                    <member name="code" type="scalar" request="captcha"></member>
+                                                </basis>
+                                                <basis datamembername="captcha.code" core="print" run="atclient"
+                                                    OnRendered="captchaRenderedFooter">
+                                                    <face>
+                                                        <script type="text/template">
+                                    <div class="flex  justify-between ">
+                                        
+                                        <div class="flex sfvgwdcsdhc w-full items-center">
+
+                         <div class="float-right captcha-ctz w-1/2 relative">
+                           
+                            <input id="captcha-ct" type="text" class="contactUsInput codeinputm bg-white rounded-2xl p-3" name="captcha" maxlength="4" placeholder="کد امنیتی "/>
+                            <input type="hidden" name="captchaid" value="@captcha@" />
+                        </div>
+                      <div class="float-right w-1/2 justify-between lg:mt-0 bvgvkek h-fit leading-[65px] px-4 flex items-center gap-2">
+                       <img loading="lazy" src="/@captcha@" width="86" height="59" alt="captcha" />
+                        <span  onclick="refreshCaptchaFooter()">
+                            <svg class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="group-hover:stroke-primary"
+                                                d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3"
+                                                stroke="#020121" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <circle
+                                                class="group-hover:stroke-primary transition-all duration-300 ease-in-out"
+                                                cx="24" cy="24.5" r="10" stroke="#020121" stroke-width="1.5" />
+                                        </svg>
+                        </span>
+                       
+                    </div>
+
+                                                        </div></div>
+                    </script>
+                                                    </face>
+                                                </basis>
+                                                <button type="button" data-btn-uploadfooter
+                                                    class="  data-body-btn w-[108px] h-[59px] flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
+                                                    ارسال
+                                                </button>
+
+                                            </div>
+
+                                            <div
+                                                class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex">
+                                                <div id="ballsWaveG"
+                                                    class="ext-zinc-50 text-base font-normal leading-normal">
+                                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                                                </div>
+                                            </div>
+                                            <div class="message-api absolute text-center text-primary text-xs"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+
+
+        <!-- tour form section -->
+        <div>
+            <basis core="call" if="{##db.tourForm.run|(false)##}" triggers="db.tourForm" run="atclient"
+                file="/tour-book.bc" hotelName="{##db.tourForm.hotelName##}" method="post"
+                hotelRate="{##db.tourForm.hotelRate##}" hotelService="{##db.tourForm.hotelService##}"
+                tourName="{##db.tourForm.tourName##}" doubleP="{##db.tourForm.doubleP##}"
+                singleP="{##db.tourForm.singleP##}" wBedP="{##db.tourForm.wBedP##}" woBedP="{##db.tourForm.woBedP##}"
+                doubleU="{##db.tourForm.doubleU##}" singleU="{##db.tourForm.singleU##}" wBedU="{##db.tourForm.wBedU##}"
+                woBedU="{##db.tourForm.woBedU|()##}" startDate="{##db.tourForm.startDate##}"
+                endDate="{##db.tourForm.endDate##}" weekdayStartDate="{##db.tourForm.weekdayStartDate##}"
+                weekdayEndDate="{##db.tourForm.weekdayEndDate##}" departureName="{##db.tourForm.departureName##}"
+                destinationName="{##db.tourForm.destinationName##}" startTime="{##db.tourForm.startTime##}"
+                endTime="{##db.tourForm.endTime##}"></basis>
+        </div>
+        <!-- tour-installment form section -->
+        <div>
+            <basis core="call" if="{##db.tourFormInstallment.run|(false)##}" triggers="db.tourFormInstallment"
+                run="atclient" file="/tour-bookInstallment.bc" hotelName="{##db.tourFormInstallment.hotelName##}"
+                method="post" hotelRate="{##db.tourFormInstallment.hotelRate##}"
+                hotelService="{##db.tourFormInstallment.hotelService##}"
+                tourName="{##db.tourFormInstallment.tourName##}" doubleP="{##db.tourFormInstallment.doubleP##}"
+                singleP="{##db.tourFormInstallment.singleP##}" wBedP="{##db.tourFormInstallment.wBedP##}"
+                woBedP="{##db.tourFormInstallment.woBedP##}" doubleU="{##db.tourFormInstallment.doubleU##}"
+                singleU="{##db.tourFormInstallment.singleU##}" wBedU="{##db.tourFormInstallment.wBedU##}"
+                woBedU="{##db.tourFormInstallment.woBedU|()##}" adultCount="{##db.tourFormInstallment.adultCount|(2)##}"
+                childCount="{##db.tourFormInstallment.childCount|(0)##}"
+                infantCount="{##db.tourFormInstallment.infantCount|(0)##}"
+                startDate="{##db.tourFormInstallment.startDate##}" endDate="{##db.tourFormInstallment.endDate##}"
+                weekdayStartDate="{##db.tourFormInstallment.weekdayStartDate##}"
+                weekdayEndDate="{##db.tourFormInstallment.weekdayEndDate##}"
+                departureName="{##db.tourFormInstallment.departureName##}"
+                destinationName="{##db.tourFormInstallment.destinationName##}"
+                startTime="{##db.tourFormInstallment.startTime##}" endTime="{##db.tourFormInstallment.endTime##}"
+                totalAmountINS="{##db.tourFormInstallment.totalAmountINS##}"
+                totalAmountFacilityINS="{##db.tourFormInstallment.totalAmountFacilityINS##}"
+                totalAdvancePaymentINS="{##db.tourFormInstallment.totalAdvancePaymentINS##}"
+                amountEachInstallmentINS="{##db.tourFormInstallment.amountEachInstallmentINS##}"></basis>
+        </div>
+        <div id="load-form-lachin">
+            <basis core="call" if="{##db.tourFormInstallmentplan.run|(false)##}" triggers="db.tourFormInstallmentplan"
+                run="atclient" file="/installmentbook-plan.bc" hotelName="{##db.tourFormInstallmentplan.hotelName##}"
+                method="post" hotelRate="{##db.tourFormInstallmentplan.hotelRate##}"
+                hotelService="{##db.tourFormInstallmentplan.hotelService##}"
+                tourName="{##db.tourFormInstallmentplan.tourName##}" doubleP="{##db.tourFormInstallmentplan.doubleP##}"
+                singleP="{##db.tourFormInstallmentplan.singleP##}" wBedP="{##db.tourFormInstallmentplan.wBedP##}"
+                woBedP="{##db.tourFormInstallmentplan.woBedP##}" doubleU="{##db.tourFormInstallmentplan.doubleU##}"
+                singleU="{##db.tourFormInstallmentplan.singleU##}" wBedU="{##db.tourFormInstallmentplan.wBedU##}"
+                woBedU="{##db.tourFormInstallmentplan.woBedU|()##}"></basis>
+        </div>
+    </main>
+    <!-- footer -->
+    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
+    <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]"></basis>
+    <!----------------js file---------------->
+    <script src="[##cms.cms.cdn##]/js/satrap-tour.function.js" type="text/javascript"></script>
+
+
+</body>
+
+</html>
