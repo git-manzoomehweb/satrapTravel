@@ -954,3 +954,21 @@ background-color: #FFBD22;
   opacity: 1 !important;
   background-color: #fff ;
 }
+.pulse-animation1:hover{
+   animation: 1.3s infinite pulse-animation !important;
+}
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0 var(--secondary-700);
+  }
+  100% {
+    box-shadow: 0 0 0 11px transparent;
+  }
+}
+
+.gradient-border2 {
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: linear-gradient(#026b9f, #8e6913ca) padding-box,
+    linear-gradient(to bottom, #22B4FF, #ffbd22) border-box;
+}

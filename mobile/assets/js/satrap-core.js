@@ -2436,7 +2436,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = form ? form.querySelector('input[type="text"]') : null;
   const NOT_FOUND_ID = "visa-not-found-message";
 
-  if (!form || !grid || !input) return; // جلوگیری از ارور در صفحات دیگر
+  if (!form || !grid || !input) return; 
 
   const removeNotFound = () => {
     const msg = document.getElementById(NOT_FOUND_ID);
@@ -2478,13 +2478,25 @@ document.addEventListener("DOMContentLoaded", () => {
     if (visibleCount === 0) showNotFoundMessage();
   };
 
-  // اجرای فیلتر در لحظه تایپ (real-time)
+
   input.addEventListener("input", (e) => filterCards(e.target.value));
 
-  // حذف رفتار پیش‌فرض سابمیت فرم
+
   form.addEventListener("submit", (e) => e.preventDefault());
 });
 
+// ____________________________
+document.addEventListener("DOMContentLoaded",()=>{
+ const mobileTourG= document.querySelector('.mobile-tour-guide')
+  if(mobileTourG){
+  const showMoreCard=  mobileTourG.querySelector('.show-more-card')
+  showMoreCard.addEventListener('click',()=>{
+    
+     showMoreCard.classList.toggle('h-[200px]')
+     mobileTourG.querySelector('div.grid').classList.toggle('h-[236px]')
+  })
+  }
+})
 // ____________________________
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".modals-container");
@@ -2640,8 +2652,71 @@ if (document.querySelectorAll(".swiper-one-el").length > 0)
   });
 // ____________________________
 // ____________________________
+
+
+if (document.querySelectorAll(".swiper-mobile-c").length > 0)
+  swiper = new Swiper(".swiper-mobile-c", {
+    slidesPerView: 1.3,
+    speed: 900,
+    centeredSlides: !1,
+    spaceBetween: 11,
+    grabCursor: !0,
+    autoplay: { delay: 4500, disableOnInteraction: !1 },
+    loop: 1,
+    pagination: { el: ".swiper-pagination", clickable: !0 },
+    navigation: {
+      nextEl: ".swiper-button-next-f",
+      prevEl: ".swiper-button-prev-f",
+    },
+    breakpoints: {
+      640: { slidesPerView: 1.3, spaceBetween: 11 },
+      768: { slidesPerView: 1.3, spaceBetween: 11 },
+      1024: { slidesPerView: 1.3, spaceBetween: 11 },
+    },
+  });
 // ____________________________
+if (document.querySelectorAll(".swiper-mobile-c2").length > 0)
+  swiper = new Swiper(".swiper-mobile-c2", {
+    slidesPerView: 1.66,
+    speed: 900,
+    centeredSlides: !1,
+    spaceBetween: 12,
+    grabCursor: !0,
+    autoplay: { delay: 4500, disableOnInteraction: !1 },
+    loop: 1,
+    pagination: { el: ".swiper-pagination", clickable: !0 },
+    navigation: {
+      nextEl: ".swiper-button-next-f",
+      prevEl: ".swiper-button-prev-f",
+    },
+    breakpoints: {
+      640: { slidesPerView: 1.66, spaceBetween: 12 },
+      768: { slidesPerView: 1.66, spaceBetween: 12 },
+      1024: { slidesPerView: 1.66, spaceBetween: 12 },
+    },
+  });
 // ____________________________
+
+if (document.querySelectorAll(".swiper-mobile-c3").length > 0)
+  swiper = new Swiper(".swiper-mobile-c3", {
+    slidesPerView: 1.39,
+    speed: 900,
+    centeredSlides: !1,
+    spaceBetween: 11,
+    grabCursor: !0,
+    autoplay: { delay: 4500, disableOnInteraction: !1 },
+    loop: 1,
+    pagination: { el: ".swiper-pagination", clickable: !0 },
+    navigation: {
+      nextEl: ".swiper-button-next-f",
+      prevEl: ".swiper-button-prev-f",
+    },
+    breakpoints: {
+      640: { slidesPerView: 1.39, spaceBetween: 11 },
+      768: { slidesPerView: 1.39, spaceBetween: 11 },
+      1024: { slidesPerView: 1.39, spaceBetween: 11 },
+    },
+  });
 // ____________________________
 // ____________________________
 // ____________________________
