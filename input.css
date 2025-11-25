@@ -947,15 +947,15 @@ a.tel.sidebar-box:hover {
 header.fixed.px-4 {
   transition: backdrop-filter 0.4s ease, background-color 0.4s ease;
 }
-.swiper-one-el .swiper-pagination-bullet.swiper-pagination-bullet-active{
-background-color: #FFBD22;
+.swiper-one-el .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: #ffbd22;
 }
-.swiper-one-el .swiper-pagination-bullet{
+.swiper-one-el .swiper-pagination-bullet {
   opacity: 1 !important;
-  background-color: #fff ;
+  background-color: #fff;
 }
-.pulse-animation1:hover{
-   animation: 1.3s infinite pulse-animation !important;
+.pulse-animation1:hover {
+  animation: 1.3s infinite pulse-animation !important;
 }
 @keyframes pulse-animation {
   0% {
@@ -970,5 +970,55 @@ background-color: #FFBD22;
   border: 1px solid transparent;
   border-radius: 12px;
   background: linear-gradient(#026b9f, #8e6913ca) padding-box,
-    linear-gradient(to bottom, #22B4FF, #ffbd22) border-box;
+    linear-gradient(to bottom, #22b4ff, #ffbd22) border-box;
+}
+.image-fade {
+  mask-image: linear-gradient(to top, transparent 0%, black 40%);
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 40%);
+}
+.mobile-after-selector::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  height: calc(100% - 89px);
+  width: 54%;
+  left: 4px;
+  top: 13px;
+  border-top: 1px solid var(--zinc-300);
+  border-left: 1px solid var(--zinc-300);
+  border-bottom: 1px solid var(--zinc-300);
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+.full-after-mob::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  height: 102%;
+  width: 55%;
+  left: 4px;
+  top: 13px;
+  border-top: 1px solid var(--zinc-300);
+  border-left: 1px solid var(--zinc-300);
+  border-bottom: 1px solid var(--zinc-300);
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+.full-before-mob::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  height: 102%;
+  width: 55%;
+  right: 4px;
+  top: 13px;
+  border-top: 1px solid var(--zinc-300);
+  border-right: 1px solid var(--zinc-300);
+  border-bottom: 1px solid var(--zinc-300);
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+.mobile-after-selector footer,
+.mobile-after-selector section {
+  z-index: 1;
 }

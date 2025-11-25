@@ -2436,7 +2436,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = form ? form.querySelector('input[type="text"]') : null;
   const NOT_FOUND_ID = "visa-not-found-message";
 
-  if (!form || !grid || !input) return; 
+  if (!form || !grid || !input) return;
 
   const removeNotFound = () => {
     const msg = document.getElementById(NOT_FOUND_ID);
@@ -2478,25 +2478,101 @@ document.addEventListener("DOMContentLoaded", () => {
     if (visibleCount === 0) showNotFoundMessage();
   };
 
-
   input.addEventListener("input", (e) => filterCards(e.target.value));
-
 
   form.addEventListener("submit", (e) => e.preventDefault());
 });
 
 // ____________________________
-document.addEventListener("DOMContentLoaded",()=>{
- const mobileTourG= document.querySelector('.mobile-tour-guide')
-  if(mobileTourG){
-  const showMoreCard=  mobileTourG.querySelector('.show-more-card')
-  showMoreCard.addEventListener('click',()=>{
-    
-     showMoreCard.classList.toggle('h-[200px]')
-     mobileTourG.querySelector('div.grid').classList.toggle('h-[236px]')
-  })
-  }
-})
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector(".mobile-tour-guide");
+  if (!section) return;
+
+  const grid = section.querySelector("div.grid");
+  const toggleBtn = section.querySelector(".show-more-card");
+  if (!grid || !toggleBtn) return;
+
+  let isOpen = false;
+
+  const collapsedHeight = 236;
+
+  grid.style.transition =
+    "height 0.45s cubic-bezier(0.25, 1, 0.30, 1), opacity 0.35s ease";
+  grid.style.overflow = "hidden";
+
+  const updateHeight = () => {
+    if (isOpen) {
+      const fullHeight = [...grid.children].reduce(
+        (total, el) =>
+          total + el.offsetHeight + parseInt(getComputedStyle(grid).gap),
+        0
+      );
+      grid.style.height = fullHeight + "px";
+      grid.style.opacity = "1";
+      toggleBtn.classList.remove("h-[200px]");
+    } else {
+      grid.style.height = collapsedHeight + "px";
+      grid.style.opacity = "1";
+      toggleBtn.classList.add("h-[200px]");
+    }
+  };
+
+  updateHeight();
+
+  toggleBtn.addEventListener("click", () => {
+    isOpen = !isOpen;
+
+    updateHeight();
+
+    toggleBtn.textContent = isOpen ? "بستن" : "مشاهده بیشتر";
+  });
+
+  window.addEventListener("resize", () => {
+    if (isOpen) updateHeight();
+  });
+});
+
+// ____________________________
+document.addEventListener("DOMContentLoaded", () => {
+  const faqContainer = document.querySelector(".mobile-common-questions");
+  if (!faqContainer) return;
+
+  const questions = faqContainer.querySelectorAll(".question-box");
+
+  questions.forEach((box) => {
+    const qs = box.querySelector(".qs");
+    const answer = box.querySelector(".answer");
+    const arrow = box.querySelector(".arrow svg");
+
+    if (!qs || !answer || !arrow) return;
+
+    // آماده‌سازی انیمیشن
+    answer.style.transition =
+      "height 0.7s cubic-bezier(0.25, 1, 0.30, 1), opacity 0.65s ease";
+    answer.style.opacity = "0";
+    answer.style.overflow = "hidden";
+
+    arrow.style.transition = "transform 0.35s ease";
+
+    let isOpen = false;
+
+    qs.addEventListener("click", () => {
+      isOpen = !isOpen;
+
+      if (isOpen) {
+        const fullHeight = answer.scrollHeight;
+        answer.style.height = fullHeight + "px";
+        answer.style.opacity = "1";
+        arrow.style.transform = "rotate(180deg)";
+      } else {
+        answer.style.height = "0px";
+        answer.style.opacity = "0";
+        arrow.style.transform = "rotate(0deg)";
+      }
+    });
+  });
+});
+
 // ____________________________
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".modals-container");
@@ -2592,12 +2668,18 @@ window.addEventListener("scroll", () => {
   if (window.innerWidth <= 968) {
     const header = document.querySelector("header  div.px-4.fixed");
     if (header) {
-      if (window.scrollY > 150) {
+      if (window.scrollY > 50) {
         header.style.backdropFilter = "blur(5px)";
-        header.style.backgroundColor = "#4d819f76";
+        if (document.querySelector(".white-header")) {
+          header.style.backgroundColor = "#4d819f76";
+        } else {
+          header.style.backgroundColor = "#fff";
+          header.classList.add("shadow");
+        }
       } else {
         header.style.backdropFilter = "none";
         header.style.backgroundColor = "transparent";
+        header.classList.remove("shadow");
       }
     }
   } else {
@@ -2617,7 +2699,7 @@ window.addEventListener("resize", () => {
     header.style.backdropFilter = "none";
     header.style.backgroundColor = "transparent";
   } else {
-    if (window.scrollY > 150) {
+    if (window.scrollY > 50) {
       header.style.backdropFilter = "blur(5px)";
       header.style.backgroundColor = "#4d819f76";
     } else {
@@ -2652,7 +2734,6 @@ if (document.querySelectorAll(".swiper-one-el").length > 0)
   });
 // ____________________________
 // ____________________________
-
 
 if (document.querySelectorAll(".swiper-mobile-c").length > 0)
   swiper = new Swiper(".swiper-mobile-c", {
