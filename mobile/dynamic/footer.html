@@ -1,304 +1,184 @@
-<basis core="dbsource" source="basiscore" name="db" mid="10" lid="1" usedforid="2387763">
-    <member name="office-view1" type="view" />
-</basis>
-<basis core="dbsource" source="basiscore" name="db" mid="10" lid="1" usedforid="2387762">
-    <member name="office-view2" type="view" />
-</basis>
-<basis core="dbsource" source="basiscore" name="db" mid="10" lid="1" usedforid="2387761">
-    <member name="office-view3" type="view" />
-</basis>
-<basis core="dbsource" source="basiscore" name="db" mid="10" lid="1" usedforid="2387760">
-    <member name="office-view4" type="view" />
-</basis>
-<basis core="group" if="'[##cms.cms.page_index##]' = 'desktop'">
-    <footer class=" flex footer-landing-items flex-col overflow-hidden justify-center items-center">
-        <div class="flex flex-col gap-3 px-4 w-full lg:px-4 xl:!w-[1280px] xl:!px-0  ">
-            <div class="w-full flex gap-[26px]">
-                <div class="w-1/2 relative mt-[74.82px] flex flex-col gap-4  before-border">
-                    <p class="font-bold px-2 text-xl bg-white z-10 relative w-fit">با ما در ارتباط باشید</p>
-                    <div class="flex flex-col gap-6 mt-5 px-2">
-                        <basis core="print" datamembername="db.office-view4">
-                            <face filter="TypeID=150">
-                                <p class="text-base font-bold">@text :</p>
-                            </face>
-                        </basis>
-
-                        <basis core="print" datamembername="db.office-view4">
-                            <face filter="Question in('آدرس')">
-                                <div class="w-full flex items-center gap-1">
-                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin">
-                                    <div class="w-[calc(100%-32px)] text-sm text-zinc-900 line-clamp-2">
-                                        @largetext
-                                    </div>
-                                </div>
-                            </face>
-                        </basis>
-
-                        <div class="flex items-center gap-2">
-                            <basis core="print" datamembername="db.office-view4">
-                                <face filter="TypeID=240">
-                                    <a href="tel:@text"
-                                        class="h-12 flex group hover:bg-primary hover:border-primary hover:text-white gap-2 items-center border border-zinc-300 rounded-2xl px-3 text-sm text-zinc-900">
-                                        <img loading="lazy"
-                                            class="group-hover:brightness-[4000] group-hover:opacity-30 group-hover:invert-0"
-                                            src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
-                                        @text</a>
-                                </face>
-                            </basis>
+  <footer class="w-full px-4">
+    <div class="w-full flex flex-col justify-center items-center gap-2">
+      <a href="/">
+        <img loading="lazy"  src="[##cms.cms.cdn##]/images/logo.png" alt="logo-satrap" class="w-[77px]">
+      </a>
+      <p class="text-sm font-bold text-[#18181B]">گروه شرکت مسافربری ساتراپ تراول</p>
 
 
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-6 mt-5 px-2">
-                        <basis core="print" datamembername="db.office-view3">
-                            <face filter="TypeID=150">
-                                <p class="text-base font-bold">@text :</p>
-                            </face>
-                        </basis>
-                        <basis core="print" datamembername="db.office-view3">
-                            <face filter="Question in('آدرس')">
-                                <div class="w-full flex items-center gap-1">
-                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin">
-                                    <div class="w-[calc(100%-32px)] text-sm text-zinc-900 line-clamp-2">
-                                        @largetext
-                                    </div>
-                                </div>
-                            </face>
-                        </basis>
-                        <div class="flex items-center gap-2">
-                            <basis core="print" datamembername="db.office-view3">
-                                <face filter="TypeID=240">
-                                    <a href="tel:@text"
-                                        class="h-12 flex group hover:bg-primary hover:border-primary hover:text-white gap-2 items-center border border-zinc-300 rounded-2xl px-3 text-sm text-zinc-900">
-                                        <img loading="lazy"
-                                            class="group-hover:brightness-[4000] group-hover:opacity-30 group-hover:invert-0"
-                                            src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
-                                        @text</a>
-                                </face>
-                            </basis>
-                        </div>
-                    </div>
-                    <div class="w-full grid mt-7 grid-cols-3 mb-5">
-                        <ul class="flex flex-col gap-3">
-                            <li class="font-bold text-zinc-900 text-base">
-                                بلیت مارکت
-                            </li>
-                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary" data-id="flight"
-                                data-nav="flight" onclick="check_searchHistory('flight'); check_landing('flight')">پرواز
-                            </li>
-                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary" data-id="hotel"
-                                data-nav="hotel" onclick="check_searchHistory('hotel'); check_landing('hotel')">هتل</li>
-                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary">تورها</li>
-                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary">بیمه مسافرتی</li>
-                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary">پیشنهادات و تخفیفات</li>
+    </div>
+    <div class="w-full offices-container flex flex-col gap-[11px] my-[23px]">
+      <div class="office-item  w-full border border-zinc-300 rounded-lg  px-2">
+        <div class="w-full flex items-center cursor-pointer justify-between h-[50px]">
+          <div class="flex gap-2 ">
+            <img loading="lazy"  src="[##cms.cms.cdn##]/images/Pin-c.svg" alt="pin">
+            <p class="text-zinc-900 font-bold text-sm">دفتر تهران:</p>
+          </div>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="9" y1="1" x2="9" y2="17" stroke="#FFBD22" stroke-width="2" stroke-linecap="round" />
+            <line x1="1" y1="9" x2="17" y2="9" stroke="#FFBD22" stroke-width="2" stroke-linecap="round" />
+          </svg>
 
-                        </ul>
-                        <ul class="flex flex-col gap-3">
-                            <li class="font-bold text-zinc-900 text-base">
-                                امور مشتریان
-                            </li>
-                            <li>
-                                <a href="/contact-us"
-                                    class="text-sm text-zinc-700 cursor-pointer hover:text-primary">تماس با ما</a>
-                            </li>
-                            <li>
-                                <a href="/blog" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">مجله
-                                    گردشگری</a>
-                            </li>
-                            <li>
-                                <a href="" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">پیشتیبانی</a>
-                            </li>
-                            <li>
-                                <a href="" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">استخدامی</a>
-                            </li>
-                            <li>
-                                <a href="" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">سوالات
-                                    متداول</a>
-                            </li>
-
-                        </ul>
-                        <ul class="flex flex-col gap-3">
-                            <li class="font-bold text-zinc-900 text-base">
-                                امور مشتریان
-                            </li>
-                            <li>
-                                <a href="/about-us"
-                                    class="text-sm text-zinc-700 cursor-pointer hover:text-primary"> درباره ما</a>
-                            </li>
-                            <li>
-                                <a href="/blog" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">مجله
-                                    گردشگری</a>
-                            </li>
-                            <li>
-                                <a href="" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">پیشتیبانی</a>
-                            </li>
-                            <li>
-                                <a href="" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">استخدامی</a>
-                            </li>
-                            <li>
-                                <a href="" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">سوالات
-                                    متداول</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="w-1/2 flex flex-col gap-4">
-                    <div class="flex gap-[18px] mt-3 items-center">
-                        <a href="/"> <img loading="lazy" src="[##cms.cms.cdn##]/images/logo2.png" alt="logo"
-                                class="w-[154px]">
-                        </a>
-                        <p class="text-zinc-900 font-bold text-2xl">گروه شرکت مسافربری ساتراپ تراول</p>
-                    </div>
-                    <div class="flex relative flex-col w-full py-6 mt-5 gap-4  pr-6 border-r border-zinc-300">
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo3.png" alt="logo"
-                            class="absolute left-[-64px] grayscale top-[-70px] w-[576px] z-0">
-                        <div class="flex relative z-[1] flex-col gap-6  px-2">
-                            <basis core="print" datamembername="db.office-view2">
-                                <face filter="TypeID=150">
-                                    <p class="text-base font-bold">@text :</p>
-                                </face>
-                            </basis>
-                            <basis core="print" datamembername="db.office-view2">
-                                <face filter="Question in('آدرس')">
-                                    <div class="w-full flex items-center gap-1">
-                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin">
-                                        <div class="w-[calc(100%-32px)] text-sm text-zinc-900 line-clamp-2">
-                                            @largetext
-                                        </div>
-                                    </div>
-                                </face>
-                            </basis>
-                            <div class="flex items-center gap-2">
-                                <basis core="print" datamembername="db.office-view2">
-                                    <face filter="TypeID=240">
-                                        <a href="tel:@text"
-                                            class="h-12 flex group hover:bg-primary hover:border-primary hover:text-white gap-2 items-center border border-zinc-300 rounded-2xl px-3 text-sm text-zinc-900">
-                                            <img loading="lazy"
-                                                class="group-hover:brightness-[4000] group-hover:opacity-30 group-hover:invert-0"
-                                                src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
-                                            @text</a>
-                                    </face>
-                                </basis>
-                            </div>
-                        </div>
-                        <div class="flex relative z-[1] min-h-155 flex-col gap-6 mt-5 px-2">
-                            <basis core="print" datamembername="db.office-view1">
-                                <face filter="TypeID=150">
-                                    <p class="text-base font-bold">@text :</p>
-                                </face>
-                            </basis>
-                            <basis core="print" datamembername="db.office-view1">
-                                <face filter="Question in('آدرس')">
-                                    <div class="w-full flex items-center gap-1">
-                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin">
-                                        <div class="w-[calc(100%-32px)] text-sm text-zinc-900 line-clamp-2">
-                                            @largetext
-                                        </div>
-                                    </div>
-                                </face>
-                            </basis>
-                            <div class="flex items-center gap-2">
-                                <basis core="print" datamembername="db.office-view1">
-                                    <face filter="TypeID=240">
-                                        <a href="tel:@text"
-                                            class="h-12 flex group hover:bg-primary hover:border-primary hover:text-white gap-2 items-center border border-zinc-300 rounded-2xl px-3 text-sm text-zinc-900">
-                                            <img loading="lazy"
-                                                class="group-hover:brightness-[4000] group-hover:opacity-30 group-hover:invert-0"
-                                                src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling">
-                                            @text</a>
-                                    </face>
-                                </basis>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-full flex flex-col gap-3">
-                        <div class="w-full flex items-center gap-4 mt-2 pr-6">
-                            <img loading="lazy" width="92" height="92" src="[##cms.cms.cdn##]/images/qrCode.png"
-                                alt="qrCode">
-                            <div class="flex flex-col py-1 bg-white relative z-[2] h-full justify-between">
-                                <p class="font-bold text-base">دانلود وب اپلیکیشن بلیت مارکت</p>
-                                <p class="line-clamp-2 text-xs text-zinc-700">
-                                    سفر را از همین‌جا آغاز کنید؛ تنها چند لمس تا رزرو پرواز، هتل و تور مورد علاقه‌تان
-                                    فاصله دارید.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="w-full flex gap-2 mt-4 pr-6 items-center">
-                            <div class="flex items-center gap-1">
-                                <a href="https://www.caa.gov.ir/" target="_blank"
-                                    class="w-[56px] bg-white h-[56px] flex justify-center items-center border-[0.25px] rounded border-[#6D6A68]">
-                                    <img src="[##cms.cms.cdn##]/images/ep.png" alt="ep" width="42"></a>
-                                <a href="https://www.caa.gov.ir/" target="_blank"
-                                    class="w-[56px] bg-white h-[56px] flex justify-center items-center border-[0.25px] rounded border-[#6D6A68]">
-                                    <img src="[##cms.cms.cdn##]/_images/pax.png" alt="pax" width="42">
-                                </a>
-
-                                <a href="https://www.iata.org/" target="_blank"
-                                    class="w-[56px] bg-white h-[56px] flex justify-center items-center border-[0.25px] rounded border-[#6D6A68]">
-                                    <img src="[##cms.cms.cdn##]/_images/iata.png" alt="iata" width="42">
-                                </a>
-                                <a href="" target="_blank"
-                                    class="w-[56px] bg-white h-[56px] flex justify-center items-center border-[0.25px] rounded border-[#6D6A68]">
-                                    <img src="[##cms.cms.cdn##]/images/badge.png" alt="badge" width="42">
-                                </a>
-                                <a href="" target="_blank"
-                                    class="w-[56px] bg-white h-[56px] flex justify-center items-center border-[0.25px] rounded border-[#6D6A68]">
-
-                                </a>
-                            </div>
-                            <div class="flex flex-col h-full py-1 justify-between">
-                                <p class="text-base font-bold">ما رو دنبال کنید</p>
-                                <div class="flex footer-social  items-center">
-                                    <basis core="print" datamembername="db.info">
-                                        <face filter="text in('اینستاگرام')">
-                                            <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
-                                                class="insta  text-xs px-2 text-zinc-600 flex items-center">
-                                                <span>instagram</span>
-                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/insta.svg"
-                                                    alt="instagram">
-                                            </a>
-                                        </face>
-                                    </basis>
-                                    <basis core="print" datamembername="db.info">
-                                        <face filter="text in('فیس بوک')">
-                                            <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
-                                                class="  text-xs px-2 text-zinc-600 flex items-center">
-                                                <span>Facebook</span>
-                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/face.svg"
-                                                    alt="Facebook">
-                                            </a>
-                                        </face>
-                                    </basis>
-                                    <basis core="print" datamembername="db.info">
-                                        <face filter="text in('توییتر')">
-                                            <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
-                                                class="  text-xs px-2 text-zinc-600 flex items-center">
-                                                <span>Twitter(x)</span>
-                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/x.svg" alt="x">
-                                            </a>
-                                        </face>
-                                    </basis>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full flex my-6 items-center  justify-between footer-last-section relative">
-                <a href="https://www.basisfly.com/"
-                    class="flex items-center text-xs text-zinc-500 hover:text-primary gap-2">
-                    طراحی سایت آژانس مسافرتی و رزرواسیون آنلاین توسط بیسیس فلای
-                    <img loading="lazy" width="66" height="17" src="[##cms.cms.cdn##]/images/basisfly-logo.png"
-                        alt="basisfly">
-                </a>
-                <img loading="lazy" width="90" height="15" src="[##cms.cms.cdn##]/images/Trust_logo.png"
-                    alt="Trust_logo">
-            </div>
         </div>
-    </footer>
-</basis>
-<basis core="group" if="'[##cms.cms.page_index##]' = 'mobile phone'">
-    <basis core="call" file="footer.inc" lid="1" pageindex="[##cms.cms.pageindex##]"></basis>
-</basis>
-<basis core="call" file="script.inc"></basis>
+        <div class="w-full show-info h-0 overflow-hidden">
+          <div class="w-full flex flex-col gap-5 py-[15px] border-t border-zinc-300">
+            <div class="flex items-center gap-2">
+              <span class="border-l border-zinc-300 pl-2">
+                <img loading="lazy"  src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin" width="34" height="35">
+
+              </span>
+              <p class="text-zinc-900 w-[calc(100%-50px)]  text-xs text-justify pr-2">لورم ایپسوم متن ساختگی با تولید
+                سادگی
+                نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه</p>
+            </div>
+
+
+
+            <div class="flex items-center gap-2">
+              <span class="border-l border-zinc-300 pl-2">
+                <img loading="lazy"  src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling" width="34" height="35">
+
+              </span>
+              <div class="flex flex-col gap-2  text-xs  text-zinc-900 text-justify pr-2">
+                <a href="" class="hover:text-primary  text-xs ">021-22334455</a>
+              </div>
+            </div>
+
+
+
+            <div class="flex items-center gap-2">
+              <span class="border-l border-zinc-300 pl-2">
+                <img loading="lazy"  src="[##cms.cms.cdn##]/images/mailto-svg.svg" alt="mail" width="34" height="35">
+
+              </span>
+              <div class="flex  text-xs  flex-col gap-2 text-zinc-900 text-justify pr-2">
+                <a href="" class=" text-xs  hover:text-primary">support@gmail.com</a>
+              </div>
+            </div>
+
+
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.6501853391082!2d51.43713122550279!3d35.75940192567633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e041a2d8b61a9%3A0xf7e31ceb8e0e2a65!2z2KLamNin2YbYsyDZhdiz2KfZgdix2KrbjCDZvtin2LHZhduM2K_YpyDYs9uM2LEg2b7Yp9ix2LM!5e0!3m2!1sen!2s!4v1752138914789!5m2!1sen!2s"
+              class=" w-full rounded-xl align-middle !border-0 border-none" height="102" allowfullscreen=""
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="flex w-full flex-col gap-3 mb-[23px]">
+      <p class="bg-[#F9F9F9] h-[40px] flex items-center text-[#18181B] text-sm font-bold w-full p-2 rounded-lg">
+        امور مشتریان
+      </p>
+      <div class="w-full flex flex-col gap-2">
+        <div class="flex items-center gap-6">
+          <a href="" class="text-xs text-[#3F3F46]">سوالات متداول</a>
+          <a href="" class="text-xs text-[#3F3F46]"> استخدامی</a>
+          <a href="" class="text-xs text-[#3F3F46]"> پیشتیبانی</a>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="/blog" class="text-xs text-[#3F3F46]"> مجله گردشگری</a>
+          <a href="/contact-us" class="text-xs text-[#3F3F46]"> تماس با ما</a>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="flex w-full flex-col gap-3 mb-[23px]">
+      <p class="bg-[#F9F9F9] h-[40px] flex items-center text-[#18181B] text-sm font-bold w-full p-2 rounded-lg">
+        بلیت مارکت
+      </p>
+      <div class="w-full flex flex-col gap-2">
+
+        <ul class="flex items-center gap-6">
+          <li class="text-xs text-[#3F3F46]" data-id="flight" data-nav="flight"
+            onclick="check_searchHistory('flight'); check_landing('flight')">پرواز
+          </li>
+          <li class="text-xs text-[#3F3F46]" data-id="hotel" data-nav="hotel"
+            onclick="check_searchHistory('hotel'); check_landing('hotel')">هتل</li>
+          <a href="/tours" class="text-xs text-[#3F3F46]"> تورها</a>
+        </ul>
+        <div class="flex items-center gap-6">
+          <a href="/blog" class="text-xs text-[#3F3F46]"> بیمه مسافرتی</a>
+          <a href="/contact-us" class="text-xs text-[#3F3F46]"> پیشنهادات و تخفیفات </a>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="flex w-full flex-col gap-3 mb-[23px]">
+      <p class="bg-[#F9F9F9] h-[40px] flex items-center text-[#18181B] text-sm font-bold w-full p-2 rounded-lg">
+        امور مشتریان
+      </p>
+      <div class="w-full flex flex-col gap-2">
+        <div class="flex items-center gap-6">
+          <a href="" class="text-xs text-[#3F3F46]">سوالات متداول</a>
+          <a href="" class="text-xs text-[#3F3F46]"> استخدامی</a>
+          <a href="" class="text-xs text-[#3F3F46]"> پیشتیبانی</a>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="/blog" class="text-xs text-[#3F3F46]"> مجله گردشگری</a>
+          <a href="/contact-us" class="text-xs text-[#3F3F46]"> تماس با ما</a>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full gap-2 flex mb-[23px] p-3 rounded-lg bg-[#F9F9F9]">
+      <img loading="lazy"  src="[##cms.cms.cdn##]/images/qrCode.png" alt="qrCode" class="w-[72px] h-[72px]">
+      <div class="flex flex-col gap-2">
+        <p class="text-xs font-bold text-[#18181B]">دانلود وب اپلیکیشن بلیت مارکت</p>
+        <p class="text-[#3F3F46] line-clamp-3 text-justify text-xs">لورم ایپسوم متن ساختگی با تولید سادگی
+          نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون
+        </p>
+      </div>
+    </div>
+    <div class="w-full flex items-center mb-[23px] justify-between">
+
+      <p class="font-bold text-xs text-[#18181B]">ما رو دنبال کنید</p>
+      <div class="flex footer-social items-center gap-4">
+
+        <a href="##" target="_blank" rel="noopener" aria-label="فیس بوک"
+          class=" text-xs text-zinc-600 flex items-center">
+
+          <img  loading="lazy" src="http://cdn.basiscore.net/z121u112.undertest.ir/images/face.svg" alt="Facebook">
+        </a>
+        <a href="##" target="_blank" rel="noopener" aria-label="اینستاگرام"
+          class="insta text-xs text-zinc-600 flex items-center">
+
+          <img   loading="lazy" src="http://cdn.basiscore.net/z121u112.undertest.ir/images/insta.svg" alt="instagram">
+        </a>
+
+
+
+        <a href="##" target="_blank" rel="noopener" aria-label="توییتر"
+          class=" text-xs text-zinc-600 flex items-center">
+
+          <img loading="lazy"  src="http://cdn.basiscore.net/z121u112.undertest.ir/images/x.svg" alt="x">
+        </a>
+
+
+      </div>
+    </div>
+    <div class="flex items-center justify-between mb-[23px]">
+      <a href="" class="w-[54px] rounded border border-[#6D6A68] py-[2px] px-[5px] h-[54px] bg-white"></a>
+      <a href="" class="w-[54px] rounded border border-[#6D6A68] py-[2px] px-[5px] h-[54px] bg-white"></a>
+      <a href="" class="w-[54px] rounded border border-[#6D6A68] py-[2px] px-[5px] h-[54px] bg-white"></a>
+      <a href="" class="w-[54px] rounded border border-[#6D6A68] py-[2px] px-[5px] h-[54px] bg-white"></a>
+      <a href="" class="w-[54px] rounded border border-[#6D6A68] py-[2px] px-[5px] h-[54px] bg-white"></a>
+    </div>
+    <a target="_blank" href="https://www.basisfly.com/" class="mb-[23px] w-full flex flex-col gap-3">
+      <div class="w-full flex items-center justify-between">
+        <img loading="lazy"  width="66" height="17" src="[##cms.cms.cdn##]/images/basisfly-logo.png" alt="basisfly">
+        <img loading="lazy"  width="90" height="15" src="[##cms.cms.cdn##]/images/Trust_logo.png" alt="Trust_logo">
+
+      </div>
+      <p class="text-center text-xs text-[#71717A] hover:text-primary-600">طراحی سایت آژانس مسافرتی و رزرواسیون
+        آنلاین توسط بیسیس فلای</p>
+    </a>
+  </footer>
+  <basis core="call" file="script.inc"></basis>

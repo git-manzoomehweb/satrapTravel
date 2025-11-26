@@ -824,6 +824,10 @@ video {
   top: calc(100% - 127.5px);
 }
 
+.top-\[calc\(100\%-40px\)\] {
+  top: calc(100% - 40px);
+}
+
 .top-\[calc\(100\%-75px\)\] {
   top: calc(100% - 75px);
 }
@@ -844,20 +848,28 @@ video {
   top: 100%;
 }
 
-.top-\[calc\(100\%-40px\)\] {
-  top: calc(100% - 40px);
+.right-\[18px\] {
+  right: 18px;
 }
 
-.top-\[calc\(100\%-87\.5px\)\] {
-  top: calc(100% - 87.5px);
+.left-\[18px\] {
+  left: 18px;
 }
 
-.top-\[calc\(100\%-67\.5px\)\] {
-  top: calc(100% - 67.5px);
+.left-\[8px\] {
+  left: 8px;
 }
 
-.top-\[calc\(100\%-57\.5px\)\] {
-  top: calc(100% - 57.5px);
+.right-\[8px\] {
+  right: 8px;
+}
+
+.right-\[-8px\] {
+  right: -8px;
+}
+
+.left-\[-8px\] {
+  left: -8px;
 }
 
 .z-0 {
@@ -910,10 +922,6 @@ video {
 
 .z-\[7\] {
   z-index: 7;
-}
-
-.z-\[\] {
-  z-index: ;
 }
 
 .float-right {
@@ -971,6 +979,11 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.my-7 {
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -1001,9 +1014,9 @@ video {
   margin-bottom: 90px;
 }
 
-.my-7 {
-  margin-top: 1.75rem;
-  margin-bottom: 1.75rem;
+.my-\[20px\] {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .\!mt-5 {
@@ -1210,6 +1223,14 @@ video {
   margin-top: -240px;
 }
 
+.mt-\[-43px\] {
+  margin-top: -43px;
+}
+
+.mt-\[-50px\] {
+  margin-top: -50px;
+}
+
 .mt-\[-54px\] {
   margin-top: -54px;
 }
@@ -1226,6 +1247,10 @@ video {
   margin-top: 60px;
 }
 
+.mt-\[70px\] {
+  margin-top: 70px;
+}
+
 .mt-\[74\.82px\] {
   margin-top: 74.82px;
 }
@@ -1238,48 +1263,8 @@ video {
   margin-top: 9px;
 }
 
-.mt-\[-25px\] {
-  margin-top: -25px;
-}
-
-.mt-\[-35px\] {
-  margin-top: -35px;
-}
-
-.mt-\[-43px\] {
-  margin-top: -43px;
-}
-
-.mb-40 {
-  margin-bottom: 10rem;
-}
-
-.mb-36 {
-  margin-bottom: 9rem;
-}
-
-.mt-\[\] {
-  margin-top: ;
-}
-
-.mt-\[7\] {
-  margin-top: 7;
-}
-
-.mt-\[78rem\] {
-  margin-top: 78rem;
-}
-
-.mt-\[78px\] {
-  margin-top: 78px;
-}
-
-.mt-\[70px\] {
-  margin-top: 70px;
-}
-
-.mt-\[-50px\] {
-  margin-top: -50px;
+.mb-\[60px\] {
+  margin-bottom: 60px;
 }
 
 .line-clamp-1 {
@@ -1653,6 +1638,10 @@ video {
   height: 240px;
 }
 
+.h-\[241px\] {
+  height: 241px;
+}
+
 .h-\[242px\] {
   height: 242px;
 }
@@ -1683,6 +1672,10 @@ video {
 
 .h-\[288px\] {
   height: 288px;
+}
+
+.h-\[291px\] {
+  height: 291px;
 }
 
 .h-\[309px\] {
@@ -1897,6 +1890,10 @@ video {
   height: 80px;
 }
 
+.h-\[84px\] {
+  height: 84px;
+}
+
 .h-\[86px\] {
   height: 86px;
 }
@@ -1962,16 +1959,12 @@ video {
   height: 100vh;
 }
 
-.h-\[24px\] {
-  height: 24px;
+.h-\[311px\] {
+  height: 311px;
 }
 
-.h-\[241px\] {
-  height: 241px;
-}
-
-.h-\[84px\] {
-  height: 84px;
+.h-\[244px\] {
+  height: 244px;
 }
 
 .max-h-\[500px\] {
@@ -2508,18 +2501,6 @@ video {
   width: 100vw;
 }
 
-.w-\[\] {
-  width: ;
-}
-
-.w-\[calc\(100\%-\)\] {
-  width: calc(100% - );
-}
-
-.w-\[calc\(\)\] {
-  width: calc();
-}
-
 .min-w-20 {
   min-width: 5rem;
 }
@@ -2955,6 +2936,10 @@ video {
   border-radius: 0.5rem !important;
 }
 
+.\!rounded-none {
+  border-radius: 0px !important;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -3001,14 +2986,6 @@ video {
 
 .rounded-xl {
   border-radius: 0.75rem;
-}
-
-.rounded-none {
-  border-radius: 0px;
-}
-
-.\!rounded-none {
-  border-radius: 0px !important;
 }
 
 .rounded-b-xl {
@@ -3735,6 +3712,11 @@ video {
   padding-right: 27px;
 }
 
+.px-\[28px\] {
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
 .px-\[34px\] {
   padding-left: 34px;
   padding-right: 34px;
@@ -3763,6 +3745,11 @@ video {
 .px-\[63px\] {
   padding-left: 63px;
   padding-right: 63px;
+}
+
+.px-\[8px\] {
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .px-\[9px\] {
@@ -3825,6 +3812,11 @@ video {
   padding-bottom: 11px;
 }
 
+.py-\[12px\] {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
 .py-\[13px\] {
   padding-top: 13px;
   padding-bottom: 13px;
@@ -3873,16 +3865,6 @@ video {
 .py-\[38px\] {
   padding-top: 38px;
   padding-bottom: 38px;
-}
-
-.px-\[8px\] {
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
-.py-\[12px\] {
-  padding-top: 12px;
-  padding-bottom: 12px;
 }
 
 .\!pb-\[7px\] {

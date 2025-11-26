@@ -289,14 +289,15 @@ form:has(.flight-routes) .flightclass-field .label-text {
   top: 2.5px !important;
   left: -33px !important;
 }
-.exchangeRoute:hover {
-  background-color: var(--primary-600) !important;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
-}
 .exchangeRoute svg {
   width: 24px !important;
   height: 22px !important;
 }
+.exchangeRoute:hover {
+  background-color: var(--primary-600) !important;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
+}
+
 .flight-routes {
   gap: 1rem !important;
 }

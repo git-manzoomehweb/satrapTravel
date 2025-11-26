@@ -1,23 +1,23 @@
-function placeHolders() {
-  const depRoutes = document.querySelectorAll("departure-route .text-value");
-  depRoutes.forEach((input) => {
-    input.placeholder = "شهر مبدا";
-  });
+// function placeHolders() {
+//   const depRoutes = document.querySelectorAll("departure-route .text-value");
+//   depRoutes.forEach((input) => {
+//     input.placeholder = "شهر مبدا";
+//   });
 
-  const desRoutes = document.querySelectorAll("destination-route .text-value");
-  desRoutes.forEach((input) => {
-    input.placeholder = "شهر مقصد";
-  });
-}
+//   const desRoutes = document.querySelectorAll("destination-route .text-value");
+//   desRoutes.forEach((input) => {
+//     input.placeholder = "شهر مقصد";
+//   });
+// }
 document.addEventListener("DOMContentLoaded", function () {
-  const requiredFiles = ["satrap.ui.min.css"];
+  const isMobile = window.innerWidth <= 968;
+  const requiredFiles = [isMobile ? "satrap.mob.ui.min.css" : "satrap.ui.min.css"];
 
   function checkAllResourcesLoaded() {
     const resources = performance.getEntriesByType("resource");
     const loadedFiles = resources
       .map((res) => res.name.split("/").pop())
       .filter((name) => requiredFiles.includes(name));
-    // console.log(resources);
 
     return requiredFiles.every((file) => loadedFiles.includes(file));
   }
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (this.readyState == 4 && this.status == 200) {
             const container = document.getElementById("search-box");
             container.innerHTML = xhrobj.responseText;
-            placeHolders();
+            // placeHolders();
             const scripts = container.getElementsByTagName("script");
             for (let i = 0; i < scripts.length; i++) {
               const scriptTag = document.createElement("script");
@@ -43,9 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
               } else {
                 scriptTag.text = scripts[i].textContent;
               }
-              document.head
-                .appendChild(scriptTag)
-                .parentNode.removeChild(scriptTag);
+              document.head.appendChild(scriptTag).parentNode.removeChild(scriptTag);
             }
           }
         };
@@ -61,9 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(waitForFiles, 500);
       }
     }
+
     waitForFiles();
   }
 });
+
 // ___________________________________
 
 // const stories = document.querySelectorAll(".story");
@@ -338,6 +338,61 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// ___________________________________
+document.addEventListener("DOMContentLoaded", () => {
+  const swiperContainer = document.querySelector(".swiper-comments-mob");
+  const nextBtn = document.querySelector(".next-btn-sw");
+  const prevBtn = document.querySelector(".prev-btn-sw");
+
+  // بررسی وجود سوییپر و دکمه‌ها
+  if (swiperContainer && typeof Swiper !== "undefined") {
+    try {
+      const swiper = new Swiper(swiperContainer, {
+        slidesPerView: 1,
+        speed: 700,
+        centeredSlides: false,
+        spaceBetween: 34,
+        grabCursor: true,
+        loop: true,
+        autoplay: {
+          delay: 3500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: nextBtn || ".swiper-button-next-comments",
+          prevEl: prevBtn || ".swiper-button-prev-comments",
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 16,
+          },
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 14,
+          },
+          1024: {
+            slidesPerView: 1,
+            spaceBetween: 14,
+          },
+        },
+      });
+
+      if (nextBtn && prevBtn) {
+        nextBtn.addEventListener("click", () => swiper.slideNext());
+        prevBtn.addEventListener("click", () => swiper.slidePrev());
+      }
+    } catch (err) {
+      console.warn("Swiper initialization failed:", err);
+    }
+  } else {
+    // console.log("No .swiper-comments found on this page — Swiper skipped.");
+  }
+});
 // ___________________________________
 
 const headerMenu = document.querySelector(".header-menu");

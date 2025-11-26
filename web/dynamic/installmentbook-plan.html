@@ -293,8 +293,11 @@
                                     </span>
 
                                     <ul class="flex gap-3 mt-4" id="month-list">
-                                        <li month="2" rate="0.1" onclick="calculateMonth(2 , 0.1 , this)"
+                                        <li month="1" rate="0.05" onclick="calculateMonth(1 , 0.1 , this)"
                                             class="sayyadiplan h-8 rounded-lg  bg-primary w-1/3 text-white text-center leading-8 hover:bg-primary hover:text-white text-base cursor-pointer">
+                                            1ماهه</li>
+                                        <li month="2" rate="0.1" onclick="calculateMonth(2 , 0.1 , this)"
+                                            class="sayyadiplan h-8 rounded-lg  bg-zinc-100 w-1/3 text-neutralcolor-900 text-center leading-8 hover:bg-primary hover:text-white text-base cursor-pointer">
                                             2ماهه</li>
 
                                         <li onclick="calculateMonth(3 , 0.15 , this)"
@@ -381,57 +384,92 @@
         var rangeInput = document.getElementById('myRange');
         var amountInput = document.getElementById('amount');
         rangeInput.addEventListener('input', updateRangeBackground);
-
         var loanAmount = 10;
-        var loanMonths = 2;
+        var loanMonths = 1;
         var totalprice = 0;
-        var monthlyRates = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3];
 
         var adultCountF = 2;
         var childbedCountF = 0;
         var childwobedCountF = 0;
         var infantCountF = 0;
 
-        function updateRangeBackground() {
-            const value = rangeInput.value;
-            const min = rangeInput.min;
-            const max = rangeInput.max;
-            const percentage = ((value - min) / (max - min)) * 100;
-            rangeInput.style.background = `linear-gradient(to right, #22B4FF ${percentage}%, #e5e7eb ${percentage}%)`;
-            amountInput.value = value;
-            loanAmount = parseInt(value);
+        function selectPlanInstallment(el, plan, monthplan, limitinstallment, lm, ir) {
+            loanMonths = lm;
+
+            document.querySelectorAll(".plan-radio").forEach(element => {
+                element.addEventListener("click", function (ele) {
+                    document.querySelectorAll(".plan-container").forEach(div => {
+                        div.querySelector("label").classList.remove("bg-primary");
+                        div.querySelector("label").classList.remove("text-white");
+                        div.querySelector("label").classList.add("text-neutralcolor-900");
+                        div.querySelector("label").classList.add("bg-zinc-100");
+                    });
+                });
+            });
+
+            el.querySelector("label").classList.add("bg-primary");
+            el.querySelector("label").classList.remove("bg-zinc-100");
+            el.querySelector("label").classList.add("text-white");
+            el.querySelector("label").classList.remove("text-neutralcolor-900");
+
+            limitrange = limitinstallment;
+            rangeInput.setAttribute("max", limitrange);
+            var lrEl = document.getElementById("limit-range");
+            if (lrEl) lrEl.innerText = limitrange;
+
+            var monthList = document.getElementById("month-list");
+            if (monthList) monthList.querySelectorAll("li").forEach(element => {
+                element.classList.add("hidden");
+            });
+
+            document.querySelectorAll(`.${monthplan}`).forEach(element => {
+                element.classList.remove("hidden");
+            });
+
+            updateRangeBackground();
             calculateInstallments();
         }
 
+        function updateRangeBackground() {
+            const value = rangeInput.value;
+            const min = rangeInput.min || 0;
+            const max = rangeInput.max || 100;
+            const percentage = ((value - min) / (max - min)) * 100;
+            rangeInput.style.background = `linear-gradient(to right, #22B4FF ${percentage}%, #e5e7eb ${percentage}%)`;
+            amountInput.value = value;
+        }
+
         function updateLoanAmount(amount) {
-            loanAmount = parseInt(amount);
-            rangeInput.value = loanAmount;
+            loanAmount = amount;
+            if (document.getElementById('myRange')) document.getElementById('myRange').value = amount;
             updateRangeBackground();
+            calculateInstallments();
         }
 
         function updateLoanFromRange(amount) {
-            loanAmount = parseInt(amount);
-            amountInput.value = loanAmount;
+            loanAmount = amount;
+            if (document.getElementById('amount')) document.getElementById('amount').value = amount;
             updateRangeBackground();
+            calculateInstallments();
         }
 
-        function increase() {
-            loanAmount = Math.min(loanAmount + 1, limitrange);
-            amountInput.value = loanAmount;
-            rangeInput.value = loanAmount;
+        function increase(element) {
+            loanAmount = Math.min(parseInt(loanAmount) + 1, limitrange);
+            if (document.getElementById('amount')) document.getElementById('amount').value = loanAmount;
+            if (document.getElementById('myRange')) document.getElementById('myRange').value = loanAmount;
+            calculateInstallments();
             updateRangeBackground();
         }
 
         function decrease() {
-            loanAmount = Math.max(loanAmount - 1, 10);
-            amountInput.value = loanAmount;
-            rangeInput.value = loanAmount;
+            loanAmount = Math.max(parseInt(loanAmount) - 1, 10);
+            if (document.getElementById('amount')) document.getElementById('amount').value = loanAmount;
+            if (document.getElementById('myRange')) document.getElementById('myRange').value = loanAmount;
+            calculateInstallments();
             updateRangeBackground();
         }
 
         function calculateMonth(months, interestrate, element) {
-            if (!element) return;
-
             const allTabs = document.querySelectorAll('#month-list li');
             allTabs.forEach(function (tab) {
                 tab.classList.remove('bg-primary');
@@ -446,55 +484,83 @@
             element.classList.add('bg-primary');
 
             loanMonths = months;
-            interestRate = interestrate;
             calculateInstallments();
         }
 
+        function parseNumberSafe(str) {
+            if (!str && str !== 0) return 0;
+            try {
+                return parseFloat(String(str).replaceAll(",", "").trim()) || 0;
+            } catch (e) {
+                return 0;
+            }
+        }
 
         function calculateInstallments() {
-            var inpHDNdoubleP = parseFloat(document.getElementById("inphidden-doubleP").value.replaceAll(",", ""));
-            var inpHDNsingleP = parseFloat(document.getElementById("inphidden-singleP").value.replaceAll(",", ""));
-            var inpHDNwBedP = parseFloat(document.getElementById("inphidden-wBedP").value.replaceAll(",", ""));
-            var inpHDNwoBedP = parseFloat(document.getElementById("inphidden-woBedP").value.replaceAll(",", ""));
+            var inpHDNdoubleP = parseNumberSafe(document.getElementById("inphidden-doubleP")?.value);
+            var inpHDNsingleP = parseNumberSafe(document.getElementById("inphidden-singleP")?.value);
+            var inpHDNwBedP = parseNumberSafe(document.getElementById("inphidden-wBedP")?.value);
+            var inpHDNwoBedP = parseNumberSafe(document.getElementById("inphidden-woBedP")?.value);
 
-            adultCountF = parseInt(document.getElementById("adult-installment").value);
-            childbedCountF = parseInt(document.getElementById("child-bed-installment").value);
-            childwobedCountF = parseInt(document.getElementById("child-installment").value);
-            infantCountF = parseInt(document.getElementById("infant-installment").value);
+            if (inpHDNdoubleP == 0) document.getElementById("adult-installment").disabled = true;
+            if (inpHDNsingleP == 0) document.getElementById("adult-installment").disabled = true;
+            if (inpHDNwBedP == 0) {
+                document.getElementById("child-installment").disabled = true;
+                document.getElementById("child-bed-installment").disabled = true;
+            }
+            if (inpHDNwoBedP == 0) document.getElementById("infant-installment").disabled = true;
 
-            if (adultCountF == 1) {
+            adultCountF = parseNumberSafe(document.getElementById("adult-installment")?.value) || 0;
+            childbedCountF = parseNumberSafe(document.getElementById("child-bed-installment")?.value) || 0;
+            childwobedCountF = parseNumberSafe(document.getElementById("child-installment")?.value) || 0;
+            infantCountF = parseNumberSafe(document.getElementById("infant-installment")?.value) || 0;
+
+            if (adultCountF === 1) {
                 totalprice = (adultCountF * inpHDNsingleP) + (childwobedCountF * inpHDNwoBedP) + (infantCountF * inpHDNwoBedP) + (childbedCountF * inpHDNwBedP);
             } else {
                 totalprice = (adultCountF * inpHDNdoubleP) + (childwobedCountF * inpHDNwoBedP) + (infantCountF * inpHDNwoBedP) + (childbedCountF * inpHDNwBedP);
             }
 
-            var totalAmount = loanAmount * 1000000;
-            var totalAdvancePayment = totalprice > totalAmount ? totalprice - totalAmount : 0;
-            var totalAmountWithFacilities = totalAmount + totalAdvancePayment;
-            var remainingAmount = totalAmount;
-
-            var installmentContainer = document.querySelector('.amount-each-installment');
-            installmentContainer.innerHTML = '';
-            for (var i = 0; i < loanMonths; i++) {
-                var rate = monthlyRates[i] || monthlyRates[monthlyRates.length - 1];
-                var interest = remainingAmount * rate;
-                var principal = totalAmount / loanMonths;
-                var monthAmount = principal + interest;
-                remainingAmount -= principal;
-                var div = document.createElement('div');
-                div.innerText = `ماه ${i + 1}: ${Math.round(monthAmount).toLocaleString()} تومان`;
-                installmentContainer.appendChild(div);
-                totalAmountWithFacilities += interest;
+            if (!isFinite(totalprice) || totalprice <= 0) {
+                // fallback: اگر totalprice محاسبه نشده از ورودی loanAmount استفاده کن
+                totalprice = loanAmount * 1000000;
             }
 
-            document.querySelector('.total-amount').textContent = totalprice.toLocaleString();
-            document.querySelector('.Total-amount-facilities').textContent = Math.round(totalAmountWithFacilities).toLocaleString();
-            document.querySelector('.Total-advance-payment').textContent = totalAdvancePayment.toLocaleString();
+            document.querySelector('.total-amount').textContent = Math.round(totalprice).toLocaleString();
+
+            // حالا محاسبات قسط بر پایه مبلغ واقعی نمایش داده شده در .total-amount انجام می‌شود
+            var principal = parseNumberSafe(document.querySelector('.total-amount')?.textContent);
+
+            if (!principal || principal <= 0) principal = loanAmount * 1000000;
+
+            var baseInstallment = principal / loanMonths;
+
+            let monthlyInstallments = [];
+            let totalInterest = 0;
+
+            for (let i = 0; i < loanMonths; i++) {
+                let percent = 5 * (i + 1); // 5%,10%,15%...
+                let interest = baseInstallment * (percent / 100);
+                let finalAmount = baseInstallment + interest;
+                monthlyInstallments.push(finalAmount);
+                totalInterest += interest;
+            }
+
+            const totalWithInterest = principal + totalInterest;
+
+            document.querySelector('.Total-amount-facilities').textContent = Math.round(totalWithInterest).toLocaleString();
+            document.querySelector('.Total-advance-payment').textContent = "0";
+
+            let listHTML = "";
+            for (let i = 0; i < monthlyInstallments.length; i++) {
+                listHTML += `ماه ${i + 1}: ${Math.round(monthlyInstallments[i]).toLocaleString()} تومان<br>`;
+            }
+
+            document.querySelector('.amount-each-installment').innerHTML = listHTML;
         }
 
         updateRangeBackground();
         calculateInstallments();
-
 
         function closeModalContainerForm(event) {
             if (event.target === event.currentTarget) {
@@ -502,6 +568,8 @@
             }
         }
     </script>
+
+
 
 
 
