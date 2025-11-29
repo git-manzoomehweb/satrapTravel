@@ -361,3 +361,29 @@ input.bg-bgColor-100 {
     width: fit-content !important;
     height: fit-content !important;
 }
+
+.module-banner-background {
+  background-color: var(--primary);
+   background-image: url("../images/Flight-mob.jpg");
+}
+
+.module-banner-background.flight-banner-background {
+  background-image: url("../images/Flight-mob.jpg") !important;
+  animation: bg_Fade 1.3s ease-in-out;
+}
+
+.module-banner-background.hotel-banner-background {
+  background-image: url("../images/hotel-mob.jpg") !important;
+ }
+
+.module-banner-background.flighthotel-banner-background {
+  background-image: url("../images/flighthotel-mob.jpg") !important;
+ }
+
+.module-banner-background.tour-banner-background {
+  background-image: url("../images/tour-mob.jpg") !important;
+ }
+
+.module-banner-background.insurance-banner-background {
+  background-image: url("../images/insurance-mob.jpg") !important;
+ }

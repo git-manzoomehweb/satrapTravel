@@ -26,7 +26,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover" />
-    <title>[##cms.seo.title|(لیست ویزاهای ساتراپ تراول)##]</title>
+    <title>[##cms.seo.title|(لیست تورهای ساتراپ تراول)##]</title>
     <meta name="description" content="[##cms.seo.description|(شرکت خدمات مسافرت هوایی و گردشگری  ساتراپ تراول)##]" />
     <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
         <member type="list" name="list" request="taglist" preview=""></member>
@@ -39,29 +39,28 @@
             <meta property="@key" content="@value" />
         </face>
     </basis>
-    <basis core="call" file="pwa.inc" />
-    <basis core="call" file="style.inc" />
-    <link href="[##cms.cms.cdn##]/css/contact-us-form.css" type="text/css" rel="stylesheet" />
+    <basis core="call" file="pwa.inc" pageindex="[##cms.cms.pageindex##]" />
+    <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]" />
+    <link href="[##cms.cms.cdn##]/css/contact-us-form-mob.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
 </head>
 
 <body class="overflow-x-hidden relative">
-    <basis core="call" file="header.inc" />
-
-    <main>
-        <section class="banner-list flex justify-center items-center h-[348px] relative w-full">
+    <basis core="call" pageindex="[##cms.cms.pageindex##]" file="header.inc" />
+    <main class="mb-28">
+        <section class="flex justify-center items-center px-4 h-[241px] relative w-full">
             <basis core="print" datamembername="db.banner-info">
                 <face>
-                    <img loading="lazy" src="/@image" alt="@urltitle"
-                        class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+                    <img src="/@image" alt="@urltitle" class="z-0 absolute top-0 left-0 w-full h-full object-cover">
 
                 </face>
             </basis>
+
             <div
-                class="px-4 w-full h-[138px] border border-[#CDCDCD] lg:px-4 xl:!w-[1280px] xl:!px-0 flex items-center gap-4 p-[34px] bg-white rounded-xl absolute top-[calc(100%-75px)] justify-center">
+                class="px-4 w-[calc(100%-32px)] h-[84px] border border-[#CDCDCD] flex items-center gap-4 p-[34px] bg-white rounded-xl absolute top-[calc(100%-40px)] justify-center">
                 <div class="flex flex-col items-center justify-center gap-4">
-                    <h1 class="font-semibold text-[32px] text-[#191919]">دسته بندی تور ها</h1>
-                    <ul class="!text-[#848484] !text-xl flex items-center gap-1">
+                    <h1 class="font-semibold text-base text-[#191919]"> دسته بندی تورها</h1>
+                    <ul class="!text-[#848484] !text-xs flex items-center gap-1">
                         <li>
                             <a href="/" class="hover:text-primary">خانه</a>
                         </li>
@@ -72,296 +71,158 @@
             </div>
 
         </section>
-        <ul class="fixed flex flex-col gap-2 right-0 top-[324px] z-40">
-            <li data-id="flight" data-nav="flight" onclick="check_searchHistory('flight'); check_landing('flight')"
-                class="flex landing-item pr-5 transition-width box-hover1 group gap-2 cursor-pointer w-[170px] border border-transparent rounded-l-[60px] bg-zinc-100 h-[68px] items-center show">
-                <svg class="group-hover:scale-110" width="36" height="36" viewBox="0 0 36 36" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M23.135 32.6293C22.9874 32.6295 22.8411 32.6005 22.7048 32.5443C22.5684 32.4879 22.4444 32.4052 22.34 32.3008L20.153 30.1123C20.0349 29.9941 19.9445 29.851 19.8885 29.6935C19.8324 29.5362 19.8122 29.3682 19.829 29.2018L20.1965 25.6453L17.405 23.3473L11.0119 29.6368C10.9068 29.7483 10.7783 29.8351 10.6357 29.8912C10.4931 29.9472 10.3398 29.971 10.1869 29.9608C10.0348 29.9557 9.88525 29.9199 9.74734 29.8554C9.60941 29.791 9.48598 29.6994 9.38443 29.5858C9.16693 29.3428 8.94793 29.1088 8.73193 28.8778C8.19413 28.3294 7.69304 27.7462 7.23193 27.1318C6.82852 26.521 6.5845 25.8187 6.52214 25.0893C6.45977 24.3598 6.58106 23.6265 6.87493 22.9558C7.72693 20.4988 8.58343 18.0433 9.49693 15.6058C9.5123 15.5656 9.52532 15.5247 9.53593 15.4828C9.52093 15.4708 9.49093 15.4363 9.44293 15.3913C8.22643 14.2109 6.85093 12.8744 5.57743 11.4614C3.83293 9.51441 2.85793 6.50091 4.86943 4.49091C6.88093 2.48091 9.89293 3.45289 11.8429 5.20489C13.1749 6.40489 14.4094 7.66341 15.77 9.06741C15.8021 9.10233 15.8367 9.13489 15.8735 9.16489C15.89 9.15589 15.929 9.14389 15.9845 9.12439C18.422 8.21089 20.8775 7.35289 23.3345 6.50089C24.0045 6.20775 24.7373 6.08673 25.4661 6.14881C26.1948 6.2109 26.8965 6.45412 27.5075 6.85641C28.1162 7.31104 28.6938 7.80564 29.237 8.33691C29.4725 8.55741 29.7125 8.78691 29.9615 9.00291C30.0753 9.10426 30.1673 9.2277 30.2321 9.36573C30.2967 9.50376 30.3327 9.65347 30.3377 9.80583C30.3428 9.95817 30.3168 10.1099 30.2613 10.2519C30.206 10.3939 30.1223 10.5232 30.0155 10.6319L23.7305 17.0218L26.042 19.8013L29.585 19.4503C29.7497 19.4338 29.9159 19.4544 30.0716 19.5105C30.2274 19.5666 30.3686 19.6567 30.485 19.7743L32.672 21.9613C32.793 22.0818 32.8851 22.2282 32.9412 22.3896C32.9972 22.5508 33.0159 22.7227 32.9957 22.8922C32.9754 23.0619 32.9168 23.2246 32.8244 23.3682C32.7318 23.5117 32.6079 23.6323 32.462 23.7208L27.233 26.8573L24.0965 32.0833C24.0084 32.2302 23.8881 32.355 23.7447 32.4484C23.6012 32.5417 23.4383 32.601 23.2685 32.6218C23.2242 32.6272 23.1795 32.6298 23.135 32.6293ZM22.1225 28.9003L22.913 29.6893L25.451 25.4593C25.5464 25.3012 25.6787 25.1685 25.8365 25.0723L30.068 22.5328L29.2775 21.7423L25.67 22.0993C25.4868 22.1176 25.302 22.0906 25.1318 22.0207C24.9615 21.951 24.8111 21.8404 24.6935 21.6988L21.35 17.6773C21.1739 17.4634 21.083 17.1921 21.0947 16.9153C21.1062 16.6386 21.2196 16.3758 21.413 16.1773L27.5975 9.89089C27.158 9.46104 26.691 9.06021 26.1995 8.69091C25.8485 8.44041 25.2905 8.20641 24.071 8.63241C21.632 9.47691 19.1945 10.3289 16.7765 11.2334C16.3329 11.4295 15.8379 11.477 15.3651 11.3689C14.8923 11.2608 14.4672 11.0028 14.1529 10.6334C12.8224 9.26091 11.6179 8.03091 10.3384 6.88341C9.38593 6.02841 7.48843 5.05341 6.46093 6.08841C5.43343 7.12341 6.39943 9.01341 7.25593 9.96591C8.47693 11.3159 9.82393 12.6299 11.0059 13.7834C11.375 14.0975 11.6328 14.5224 11.7409 14.9949C11.849 15.4672 11.8016 15.9621 11.6059 16.4053C10.7059 18.8218 9.84943 21.2593 9.00343 23.6998C8.58043 24.9178 8.81443 25.4773 9.06493 25.8283C9.43418 26.3199 9.83503 26.787 10.2649 27.2263L16.5515 21.0403C16.7495 20.8465 17.012 20.7327 17.2889 20.7205C17.5656 20.7084 17.8371 20.7987 18.0515 20.9743L22.094 24.2968C22.2369 24.415 22.3485 24.5667 22.4189 24.7383C22.4894 24.91 22.5162 25.0963 22.4975 25.2808L22.1225 28.9003Z"
-                        fill="#27272A" class="group-hover:fill-primary"></path>
-                </svg>
-                <span
-                    class="font-bold group-hover:scale-110 transition-all duration-300 ease-in-out text-zinc-800 group-hover:text-primary">پرواز</span>
-            </li>
-            <li data-nav="hotel" data-id="hotel" onclick="check_searchHistory('hotel'); check_landing('hotel')"
-                class="flex landing-item pr-5 transition-width box-hover1 group gap-2 cursor-pointer w-[170px] border border-transparent rounded-l-[60px] bg-zinc-100 h-[68px] items-center show">
 
-
-                <svg class="group-hover:scale-110" width="36" height="36" viewBox="0 0 36 36" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" class="group-hover:fill-primary" clip-rule="evenodd"
-                        d="M18.037 5.625C17.5545 5.625 17.164 6.0165 17.164 6.49654V8.84481C17.164 9.46613 16.6603 9.96981 16.039 9.96981H9.03658C8.55508 9.96981 8.16504 10.3602 8.16504 10.8414V29.5035C8.16504 29.9855 8.55454 30.375 9.03658 30.375H23.9145V6.49654C23.9145 6.01597 23.5236 5.625 23.043 5.625H18.037ZM9.03658 32.625C7.31191 32.625 5.91504 31.2282 5.91504 29.5035V10.8414C5.91504 9.11868 7.31137 7.71981 9.03658 7.71981H14.9141V6.49654C14.9141 4.77279 16.3129 3.375 18.037 3.375H23.043C24.7662 3.375 26.1645 4.77333 26.1645 6.49654V12.3755H29.1246C30.8478 12.3755 32.2461 13.7738 32.2461 15.4971V29.5035C32.2461 31.2287 30.8472 32.625 29.1246 32.625H9.03658ZM26.1645 14.6255H29.1246C29.6052 14.6255 29.9961 15.0165 29.9961 15.4971V29.5035C29.9961 29.985 29.6056 30.375 29.1246 30.375H26.1645V14.6255Z"
-                        fill="#27272A"></path>
-                    <path fill-rule="evenodd" class="group-hover:fill-primary" clip-rule="evenodd"
-                        d="M12.8215 24.4077C13.4313 24.2889 14.022 24.6871 14.1406 25.297L14.1435 25.312C14.2622 25.9219 13.864 26.5125 13.2541 26.6311C12.6442 26.7499 12.0536 26.3517 11.935 25.7418L11.9321 25.7268C11.8134 25.1169 12.2116 24.5263 12.8215 24.4077Z"
-                        fill="#27272A"></path>
-                    <path fill-rule="evenodd" class="group-hover:fill-primary" clip-rule="evenodd"
-                        d="M12.8215 19.0287C13.4313 18.9101 14.022 19.3083 14.1406 19.9182L14.1435 19.9332C14.2622 20.5431 13.864 21.1337 13.2541 21.2523C12.6442 21.371 12.0536 20.9727 11.935 20.363L11.9321 20.348C11.8134 19.7381 12.2116 19.1474 12.8215 19.0287Z"
-                        fill="#27272A"></path>
-                    <path fill-rule="evenodd" class="group-hover:fill-primary" clip-rule="evenodd"
-                        d="M12.8215 13.5268C13.4313 13.4081 14.022 13.8063 14.1406 14.4162L14.1435 14.4312C14.2622 15.0411 13.864 15.6317 13.2541 15.7503C12.6442 15.8691 12.0536 15.4709 11.935 14.8609L11.9321 14.8459C11.8134 14.2361 12.2116 13.6454 12.8215 13.5268Z"
-                        fill="#27272A"></path>
-                    <path fill-rule="evenodd" class="group-hover:fill-primary" clip-rule="evenodd"
-                        d="M18.8253 24.4077C19.4352 24.2889 20.0258 24.6871 20.1446 25.297L20.1474 25.312C20.2662 25.9218 19.868 26.5125 19.2581 26.6311C18.6483 26.7499 18.0576 26.3517 17.939 25.7418L17.936 25.7268C17.8173 25.117 18.2154 24.5263 18.8253 24.4077Z"
-                        fill="#27272A"></path>
-                    <path fill-rule="evenodd" class="group-hover:fill-primary" clip-rule="evenodd"
-                        d="M18.8253 19.0287C19.4352 18.9101 20.0258 19.3082 20.1446 19.9181L20.1474 19.9331C20.2662 20.543 19.868 21.1337 19.2581 21.2523C18.6483 21.371 18.0576 20.9729 17.939 20.363L17.936 20.348C17.8173 19.7381 18.2154 19.1475 18.8253 19.0287Z"
-                        fill="#27272A"></path>
-                    <path fill-rule="evenodd" class="group-hover:fill-primary" clip-rule="evenodd"
-                        d="M18.8253 13.5268C19.4352 13.4081 20.0258 13.8063 20.1446 14.4161L20.1474 14.4311C20.2662 15.041 19.868 15.6317 19.2581 15.7503C18.6483 15.8691 18.0576 15.4709 17.939 14.861L17.936 14.846C17.8173 14.2361 18.2154 13.6455 18.8253 13.5268Z"
-                        fill="#27272A"></path>
-                </svg>
-
-
-                <span
-                    class="font-bold group-hover:scale-110 transition-all duration-300 ease-in-out text-zinc-800 group-hover:text-primary">هتل</span>
-            </li>
-            <li data-nav="tour" data-id="tour" onclick="check_searchHistory('tour'); check_landing('tour')"
-                class="flex landing-item pr-5 transition-width box-hover1 group gap-2 cursor-pointer w-[170px] border border-transparent rounded-l-[60px] bg-zinc-100 h-[68px] items-center show">
-                <svg class="group-hover:scale-110" width="36" height="36" viewBox="0 0 36 36" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path class="group-hover:fill-primary" fill-rule="evenodd" clip-rule="evenodd"
-                        d="M20.4574 4.27062C21.0043 4.56539 21.2088 5.24772 20.914 5.79468L7.18489 31.2695C6.89013 31.8165 6.20779 32.021 5.66083 31.7261C5.11389 31.4313 4.90945 30.749 5.20422 30.2021L18.9334 4.72724C19.2282 4.18029 19.9105 3.97586 20.4574 4.27062Z"
-                        fill="#27272A"></path>
-                    <path class="group-hover:fill-primary" fill-rule="evenodd" clip-rule="evenodd"
-                        d="M3.75 30.7402C3.75 30.1189 4.25368 29.6152 4.875 29.6152H31.875C32.4963 29.6152 33 30.1189 33 30.7402C33 31.3615 32.4963 31.8652 31.875 31.8652H4.875C4.25368 31.8652 3.75 31.3615 3.75 30.7402Z"
-                        fill="#27272A"></path>
-                    <path class="group-hover:fill-primary" fill-rule="evenodd" clip-rule="evenodd"
-                        d="M16.2979 4.26943C16.845 3.97489 17.5273 4.17959 17.8218 4.72666L31.5378 30.2016C31.8324 30.7486 31.6276 31.4308 31.0806 31.7254C30.5335 32.02 29.8512 31.8153 29.5567 31.2682L15.8407 5.79331C15.5461 5.24624 15.7509 4.56398 16.2979 4.26943Z"
-                        fill="#27272A"></path>
-                    <path class="group-hover:fill-primary" fill-rule="evenodd" clip-rule="evenodd"
-                        d="M18.3776 20.458C18.7912 20.458 19.1715 20.685 19.3678 21.0492L24.3037 30.2058C24.5985 30.7527 24.3942 31.4352 23.8471 31.7299C23.3002 32.0247 22.6179 31.8204 22.3231 31.2735L18.3776 23.9539L14.4319 31.2735C14.1371 31.8204 13.4547 32.0247 12.9078 31.7299C12.3609 31.435 12.1565 30.7527 12.4513 30.2058L17.3872 21.0492C17.5834 20.685 17.9639 20.458 18.3776 20.458Z"
-                        fill="#27272A"></path>
-                    <path class="group-hover:fill-primary" fill-rule="evenodd" clip-rule="evenodd"
-                        d="M11.9648 18.124C11.9648 17.5027 12.4685 16.999 13.0898 16.999H23.7498C24.3711 16.999 24.8748 17.5027 24.8748 18.124C24.8748 18.7453 24.3711 19.249 23.7498 19.249H13.0898C12.4685 19.249 11.9648 18.7453 11.9648 18.124Z"
-                        fill="#27272A"></path>
-                    <path class="group-hover:fill-primary" fill-rule="evenodd" clip-rule="evenodd"
-                        d="M14.0068 14.2529C14.0068 13.6316 14.5105 13.1279 15.1319 13.1279H21.6249C22.2464 13.1279 22.7499 13.6316 22.7499 14.2529C22.7499 14.8743 22.2464 15.378 21.6249 15.378H15.1319C14.5105 15.378 14.0068 14.8743 14.0068 14.2529Z"
-                        fill="#27272A"></path>
-                </svg>
-                <span
-                    class="font-bold group-hover:scale-110 transition-all duration-300 ease-in-out text-zinc-800 group-hover:text-primary">تور</span>
-            </li>
-            <li data-nav="flighthotel" data-id="flighthotel"
-                onclick="check_searchHistory('flighthotel'); check_landing('flighthotel')"
-                class="flex landing-item pr-5 transition-width box-hover1 group gap-2 cursor-pointer w-[170px] border border-transparent rounded-l-[60px] bg-zinc-100 h-[68px] items-center show">
-                <svg class="group-hover:scale-110" width="36" height="36" viewBox="0 0 36 36" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" class="group-hover:fill-primary" clip-rule="evenodd"
-                        d="M5.58616 10.3401C6.80641 9.03111 8.53908 8.30566 10.5669 8.30566H26.1816C28.2138 8.30566 29.9473 9.03063 31.1673 10.3405C32.3789 11.6413 33 13.4277 33 15.4129V24.8731C33 26.8584 32.3788 28.6449 31.167 29.9459C29.9469 31.2556 28.2129 31.9806 26.1803 31.9806H10.5669C8.5347 31.9806 6.80142 31.2555 5.58185 29.9455C4.37072 28.6446 3.75 26.8582 3.75 24.8731V15.4129C3.75 13.4266 4.3741 11.6403 5.58616 10.3401ZM7.23198 11.8743C6.47268 12.6888 6 13.8938 6 15.4129V24.8731C6 26.3939 6.47095 27.5985 7.22865 28.4124C7.97788 29.2172 9.09056 29.7306 10.5669 29.7306H26.1803C27.6575 29.7306 28.7709 29.217 29.5206 28.4121C30.2789 27.5982 30.75 26.3935 30.75 24.8731V15.4129C30.75 13.8926 30.2789 12.6879 29.5208 11.8739C28.7712 11.069 27.658 10.5557 26.1816 10.5557H10.5669C9.09637 10.5557 7.98311 11.0686 7.23198 11.8743Z"
-                        fill="#27272A"></path>
-                    <path fill-rule="evenodd" class="group-hover:fill-primary" clip-rule="evenodd"
-                        d="M11.6543 15.0205C12.2756 15.0205 12.7793 15.5242 12.7793 16.1455V24.9519C12.7793 25.5732 12.2756 26.0769 11.6543 26.0769C11.033 26.0769 10.5293 25.5732 10.5293 24.9519V16.1455C10.5293 15.5242 11.033 15.0205 11.6543 15.0205Z"
-                        fill="#27272A"></path>
-                    <path fill-rule="evenodd" class="group-hover:fill-primary" clip-rule="evenodd"
-                        d="M18.375 15.0205C18.9963 15.0205 19.5 15.5242 19.5 16.1455V24.9519C19.5 25.5732 18.9963 26.0769 18.375 26.0769C17.7537 26.0769 17.25 25.5732 17.25 24.9519V16.1455C17.25 15.5242 17.7537 15.0205 18.375 15.0205Z"
-                        fill="#27272A"></path>
-                    <path fill-rule="evenodd" class="group-hover:fill-primary" clip-rule="evenodd"
-                        d="M25.0957 15.0205C25.717 15.0205 26.2207 15.5242 26.2207 16.1455V24.9519C26.2207 25.5732 25.717 26.0769 25.0957 26.0769C24.4744 26.0769 23.9707 25.5732 23.9707 24.9519V16.1455C23.9707 15.5242 24.4744 15.0205 25.0957 15.0205Z"
-                        fill="#27272A"></path>
-                    <path fill-rule="evenodd" class="group-hover:fill-primary" clip-rule="evenodd"
-                        d="M12.2109 8.47356C12.2109 6.01332 14.2047 4.01953 16.665 4.01953H20.0859C22.5462 4.01953 24.54 6.01332 24.54 8.47356V9.43098C24.54 10.0523 24.0363 10.556 23.415 10.556C22.7937 10.556 22.29 10.0523 22.29 9.43098V8.47356C22.29 7.25596 21.3036 6.26953 20.0859 6.26953H16.665C15.4473 6.26953 14.4609 7.25596 14.4609 8.47356V9.43098C14.4609 10.0523 13.9573 10.556 13.3359 10.556C12.7146 10.556 12.2109 10.0523 12.2109 9.43098V8.47356Z"
-                        fill="#27272A"></path>
-                </svg>
-
-
-
-
-                <span
-                    class="font-bold group-hover:scale-110 transition-all duration-300 ease-in-out text-zinc-800 group-hover:text-primary">پرواز
-                    + هتل</span>
-            </li>
-            <li data-nav="insurance" data-id="insurance"
-                onclick="check_searchHistory('insurance'); check_landing('insurance')"
-                class="flex landing-item pr-5 transition-width box-hover1 group gap-2 cursor-pointer w-[170px] border border-transparent rounded-l-[60px] bg-zinc-100 h-[68px] items-center show">
-                <svg class="group-hover:scale-110" width="36" height="36" viewBox="0 0 36 36" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path class="group-hover:stroke-primary"
-                        d="M32.2198 18.1067C32.443 19.3846 31.3981 20.5474 30.0481 20.5474H7.45147C6.10294 20.5474 5.05798 19.3846 5.27982 18.1067C6.41527 11.5945 12.0123 6.65015 18.7491 6.65015C25.4845 6.65015 31.0843 11.5945 32.2198 18.1067Z"
-                        stroke="#27272A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path class="group-hover:stroke-primary"
-                        d="M18.75 6.65015C18.75 6.65015 22.52 9.71386 23.6757 16.4903" stroke="#27272A" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path class="group-hover:stroke-primary"
-                        d="M13.4912 20.5388C13.4912 16.2609 14.532 13.0403 15.6876 10.7831" stroke="#27272A"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path class="group-hover:stroke-primary"
-                        d="M24.6929 28.296C24.6929 29.8709 23.3619 31.1487 21.7215 31.1487C20.0796 31.1487 18.75 29.8709 18.75 28.296V20.5481"
-                        stroke="#27272A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-
-
-
-
-                <span
-                    class="font-bold group-hover:scale-110 transition-all duration-300 ease-in-out text-zinc-800 group-hover:text-primary">بیمه</span>
-            </li>
-        </ul>
-
-        <section class="w-full flex justify-center relative mt-28">
-            <div
-                class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class="flex bg-white relative items-center gap-3">
-                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                            class="w-8   h-8">
-                        <h2 class="font-bold text-2xl text-zinc-900"> لیست تور های ساتراپ </h2>
-                        <span class="bullet-1 "></span>
-                    </div>
+        <section class="w-full px-4 mt-[70px]">
+            <div class="w-full flex justify-center">
+                <div class="flex z-10 relative w-fit bg-white  items-center gap-3">
+                    <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                        class="w-8   h-8">
+                    <h2 class="font-bold text-base text-zinc-900"> لیست تور های ساتراپ </h2>
+                    <span class="bullet-1 "></span>
                 </div>
-                <div class="my-[50px] z-10 flex flex-col w-full gap-[13px]">
-                    <basis core="tree" datamembername="tours.cat" idcol="catid" parentidcol="parentid"
-                        nullvalue="[##cms.query.catid##]">
-                        <layout>
-                            <div class="w-full grid grid-cols-4 gap-6">
-                                @child
-                            </div>
-                        </layout>
-                        <face filter="link is null">
-                            <a href="/tour-list.bc?catid=@catid"
-                                class=" transition-all ease-in-out duration-700  relative group p-[14px] flex items-end h-[180px] rounded-xl overflow-hidden">
-                                <div
-                                    class="absolute rounded-full z-[4]  w-full h-full top-[-100%] right-[-100%] transition-all ease-in-out duration-700  group-hover:right-0 group-hover:top-0   bg-[#1e54714c]">
-                                </div>
-                                <img loading="lazy" src="/@image" alt="@title"
-                                    class="w-full h-full object-cover absolute top-0 left-0 z-0">
-                                <span
-                                    class="w-full h-full group-hover:!bg-transparent top-0 left-0 absolute bg-gradient-to-t from-[#000000bf]  "></span>
-                                <p
-                                    class="text-white group-hover:opacity-0 font-semibold text-xl  group-hover:text-5xl line-clamp-1 transition-all duration-150 group-hover:font-bold z-[7]   absolute">
-                                    @title</p>
-                                <div
-                                    class="text-white shadow-txt w-full h-full justify-center flex items-center opacity-0 group-hover:opacity-50 scale-0 group-hover:scale-100 font-semibold  text-7xl left-0 top-0 line-clamp-1 group-hover:font-bold z-[7] transition-all ease-in-out duration-300 absolute">
-                                    @title</div>
-                            </a>
+            </div>
+            <basis core="tree" datamembername="tours.cat" idcol="catid" parentidcol="parentid"
+                nullvalue="[##cms.query.catid##]">
+                <layout>
+                    <div class="my-7 flex flex-col gap-4 w-full">
+                        @child
+                    </div>
+                </layout>
+                <face filter="link is null">
+                    <a href="/tour-list.bc?catid=@catid"
+                        class=" transition-all ease-in-out duration-700 relative group p-[14px] flex items-end h-[180px] rounded-xl overflow-hidden">
+                        <div
+                            class="absolute   z-[4] w-full h-full top-[-100%] right-[-100%] transition-all ease-in-out duration-700 group-hover:right-0 group-hover:top-0 bg-[#1e54714c]">
+                        </div>
+                        <img loading="lazy" src="/@image" alt="@title"
+                            class="w-full h-full object-cover absolute top-0 left-0 z-0">
+                        <span
+                            class="w-full h-full group-hover:!bg-transparent top-0 left-0 absolute bg-gradient-to-t from-[#000000bf] "></span>
+                        <p class="text-white z-[5] text-xl line-clamp-1">
+                            @title</p>
+
+                    </a>
+                </face>
+                <face>
+                    <a href="@link"
+                        class=" transition-all ease-in-out duration-700 relative group p-[14px] flex items-end h-[180px] rounded-xl overflow-hidden">
+                        <div
+                            class="absolute   z-[4] w-full h-full top-[-100%] right-[-100%] transition-all ease-in-out duration-700 group-hover:right-0 group-hover:top-0 bg-[#1e54714c]">
+                        </div>
+                        <img loading="lazy" src="/@image" alt="@title"
+                            class="w-full h-full object-cover absolute top-0 left-0 z-0">
+                        <span
+                            class="w-full h-full group-hover:!bg-transparent top-0 left-0 absolute bg-gradient-to-t from-[#000000bf] "></span>
+                        <p class="text-white z-[5] text-xl line-clamp-1">
+                            @title</p>
+
+                    </a>
+                </face>
+            </basis>
+
+
+
+
+
+
+            <div class="flex flex-col justify-center items-center mt-10 gap-8">
+                <div class="max-h-[500px] aid-content  flex flex-col gap-3 overflow-hidden w-full ">
+                    <basis core="print" datamembername="db.aid-text">
+                        <face filter="TypeID=150">
+                            <h3
+                                class="title-wrapper w-full flex items-center gap-3 relative p-4 bg-primary-50 font-bold   text-zinc-900 rounded-xl">
+                                @text
+                            </h3>
                         </face>
-                        <face>
-                            <a href="@link"
-                                class=" transition-all ease-in-out duration-700  relative group p-[14px] flex items-end h-[180px] rounded-xl overflow-hidden">
-                                <div
-                                    class="absolute rounded-full z-[4]  w-full h-full top-[-100%] right-[-100%] transition-all ease-in-out duration-700  group-hover:right-0 group-hover:top-0   bg-[#1e54714c]">
-                                </div>
-                                <img loading="lazy" src="/@image" alt="@title"
-                                    class="w-full h-full object-cover absolute top-0 left-0 z-0">
-                                <span
-                                    class="w-full h-full group-hover:!bg-transparent top-0 left-0 absolute bg-gradient-to-t from-[#000000bf]  "></span>
-                                <p
-                                    class="text-white group-hover:opacity-0 font-semibold text-xl  group-hover:text-5xl line-clamp-1 transition-all duration-150 group-hover:font-bold z-[7]   absolute">
-                                    @title</p>
-                                <div
-                                    class="text-white shadow-txt w-full h-full justify-center flex items-center opacity-0 group-hover:opacity-50 scale-0 group-hover:scale-100 font-semibold  text-7xl left-0 top-0 line-clamp-1 group-hover:font-bold z-[7] transition-all ease-in-out duration-300 absolute">
-                                    @title</div>
-                            </a>
+                    </basis>
+                    <basis core="print" datamembername="db.aid-text">
+                        <face filter="TypeID=129">
+                            <div class="text-xs text-zinc-900 text-justify">@largetext</div>
                         </face>
                     </basis>
 
 
-                    <div class="flex flex-col justify-center items-center mt-[60px] gap-8">
-                        <div class="max-h-[500px] aid-content  flex flex-col gap-3 overflow-hidden w-full ">
-                            <basis core="print" datamembername="db.aid-text">
-                                <face filter="TypeID=150">
-                                    <h3
-                                        class="title-wrapper w-full flex items-center gap-3 relative p-4 bg-primary-50 font-bold text-2xl text-zinc-900 rounded-xl">
-                                        @text
-                                    </h3>
-                                </face>
-                            </basis>
-                            <basis core="print" datamembername="db.aid-text">
-                                <face filter="TypeID=129">
-                                    <div class="text-sm text-zinc-900 text-justify">@largetext</div>
-                                </face>
-                            </basis>
+                    <basis core="print" datamembername="db.aid-text">
+                        <face filter="TypeID=250">
+                            <p
+                                class="title-wrapper w-full flex items-center gap-3 relative p-4 bg-primary-50 font-bold   text-zinc-900 rounded-xl">
+                                @text
+                            </p>
+                            <div class="text-xs text-zinc-900 text-justify">@largetext</div>
 
-
-                            <basis core="print" datamembername="db.aid-text">
-                                <face filter="TypeID=250">
-                                    <p
-                                        class="title-wrapper w-full flex items-center gap-3 relative p-4 bg-primary-50 font-bold text-2xl text-zinc-900 rounded-xl">
-                                        @text
-                                    </p>
-                                    <div class="text-sm text-zinc-900 text-justify">@largetext</div>
-
-                                </face>
-                            </basis>
+                        </face>
+                    </basis>
 
 
 
-                        </div>
-
-                        <basis core="print" datamembername="db.aid-text">
-                            <layout><button type="button"
-                                    class="flex hover:text-secondary-900 group text-primary-600 items-center gap-3"
-                                    id="see-more">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M11.9972 19C8.27467 19 4.93239 16.4801 3.0568 12.2638C3.01933 12.1804 3 12.0905 3 11.9996C3 11.9086 3.01933 11.8187 3.0568 11.7353C4.93424 7.51815 8.27652 5 11.9982 5C15.7198 5 19.0658 7.51815 20.9432 11.7353C20.9807 11.8187 21 11.9086 21 11.9996C21 12.0905 20.9807 12.1804 20.9432 12.2638C19.0667 16.4801 15.7244 18.9973 12.0028 19H11.9972ZM4.44503 12C6.11201 15.5513 8.91802 17.662 11.9954 17.6629C15.0728 17.6638 17.8778 15.5513 19.5457 12C17.8769 8.44785 15.0709 6.33707 11.9935 6.33707C8.91617 6.33707 6.1148 8.44785 4.44689 12H4.44503Z"
-                                            fill="#049AEE" class="group-hover:fill-secondary-900" />
-                                        <path
-                                            d="M11.9973 15.4146C11.2988 15.4146 10.616 15.2146 10.0352 14.8398C9.45445 14.465 9.00182 13.9323 8.73456 13.3091C8.46729 12.6859 8.39741 12.0001 8.53374 11.3385C8.67008 10.6769 9.00652 10.0693 9.5005 9.59232C9.99448 9.1154 10.6238 8.79066 11.3089 8.65917C11.994 8.52768 12.7041 8.59534 13.3494 8.8536C13.9947 9.11186 14.5462 9.54912 14.9341 10.1101C15.322 10.6711 15.529 11.3305 15.5288 12.0051C15.5274 12.9091 15.1548 13.7756 14.4928 14.4147C13.8308 15.0539 12.9334 15.4134 11.9973 15.4146ZM11.9973 9.93081C11.5727 9.93081 11.1577 10.0524 10.8046 10.2802C10.4516 10.508 10.1764 10.8318 10.0139 11.2106C9.85135 11.5894 9.80878 12.0062 9.89155 12.4084C9.97432 12.8105 10.1787 13.18 10.4789 13.47C10.779 13.76 11.1615 13.9575 11.5779 14.0376C11.9943 14.1177 12.426 14.0768 12.8183 13.92C13.2106 13.7632 13.546 13.4976 13.782 13.1567C14.018 12.8159 14.1441 12.4151 14.1443 12.0051C14.1435 11.4553 13.9171 10.9283 13.5147 10.5395C13.1122 10.1507 12.5666 9.93176 11.9973 9.93081Z"
-                                            fill="#049AEE" class="group-hover:fill-secondary-900" />
-                                    </svg>
-                                    <span> مشاهده بیشتر</span>
-                                </button></layout>
-                        </basis>
-
-                    </div>
                 </div>
+
+                <basis core="print" datamembername="db.aid-text">
+                    <layout><button type="button"
+                            class="flex hover:text-secondary-900 group text-primary-600 items-center gap-3"
+                            id="see-more">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.9972 19C8.27467 19 4.93239 16.4801 3.0568 12.2638C3.01933 12.1804 3 12.0905 3 11.9996C3 11.9086 3.01933 11.8187 3.0568 11.7353C4.93424 7.51815 8.27652 5 11.9982 5C15.7198 5 19.0658 7.51815 20.9432 11.7353C20.9807 11.8187 21 11.9086 21 11.9996C21 12.0905 20.9807 12.1804 20.9432 12.2638C19.0667 16.4801 15.7244 18.9973 12.0028 19H11.9972ZM4.44503 12C6.11201 15.5513 8.91802 17.662 11.9954 17.6629C15.0728 17.6638 17.8778 15.5513 19.5457 12C17.8769 8.44785 15.0709 6.33707 11.9935 6.33707C8.91617 6.33707 6.1148 8.44785 4.44689 12H4.44503Z"
+                                    fill="#049AEE" class="group-hover:fill-secondary-900" />
+                                <path
+                                    d="M11.9973 15.4146C11.2988 15.4146 10.616 15.2146 10.0352 14.8398C9.45445 14.465 9.00182 13.9323 8.73456 13.3091C8.46729 12.6859 8.39741 12.0001 8.53374 11.3385C8.67008 10.6769 9.00652 10.0693 9.5005 9.59232C9.99448 9.1154 10.6238 8.79066 11.3089 8.65917C11.994 8.52768 12.7041 8.59534 13.3494 8.8536C13.9947 9.11186 14.5462 9.54912 14.9341 10.1101C15.322 10.6711 15.529 11.3305 15.5288 12.0051C15.5274 12.9091 15.1548 13.7756 14.4928 14.4147C13.8308 15.0539 12.9334 15.4134 11.9973 15.4146ZM11.9973 9.93081C11.5727 9.93081 11.1577 10.0524 10.8046 10.2802C10.4516 10.508 10.1764 10.8318 10.0139 11.2106C9.85135 11.5894 9.80878 12.0062 9.89155 12.4084C9.97432 12.8105 10.1787 13.18 10.4789 13.47C10.779 13.76 11.1615 13.9575 11.5779 14.0376C11.9943 14.1177 12.426 14.0768 12.8183 13.92C13.2106 13.7632 13.546 13.4976 13.782 13.1567C14.018 12.8159 14.1441 12.4151 14.1443 12.0051C14.1435 11.4553 13.9171 10.9283 13.5147 10.5395C13.1122 10.1507 12.5666 9.93176 11.9973 9.93081Z"
+                                    fill="#049AEE" class="group-hover:fill-secondary-900" />
+                            </svg>
+                            <span> مشاهده بیشتر</span>
+                        </button></layout>
+                </basis>
+
             </div>
         </section>
-        <section class="w-full flex justify-center relative  ">
-            <div class="px-4 relative w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class="before-border last-section-brd-article relative w-full flex flex-col">
-                    <div class="flex  items-center gap-3 ">
-                        <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
-                            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                                class="w-8 h-8">
-                            <p class="font-bold text-2xl text-zinc-900">ارتباط با کارشناسان </p>
-                            <span class="bullet-1"></span>
-                        </div>
-                    </div>
-                    <div class="my-[50px] z-[4] items-center w-full flex">
-                        <div
-                            class="w-full rounded-2xl overflow-hidden relative flex items-center justify-center h-[143px] px-[35px] py-5">
-                            <img loading="lazy" src="[##cms.cms.cdn##]/images/contact-form-image.jpg" alt="contact-us"
-                                class="w-[42%] h-full z-0    absolute left-0 top-0">
-                            <span
-                                class="w-[80px] absolute left-[calc(42%-3px)] z-[3] bg-gradient-to-r from-[#d6d9d8] h-full"></span>
-                            <span
-                                class="w-full h-full rounded-2xl bg-gradient-to-r z-[1] from-[#fff0] to-[#F2F2F2] absolute top-0 left-0 "></span>
-                            <div class="flex z-[5] w-full flex-col h-full justify-between">
-                                <p class="">جهت مشاوره خرید تور با کارشناسان ما در ارتباط باشید</p>
-                                <div class="flex items-center">
-                                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
-                                        <basis core="schema" run="atclient"
-                                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
-                                            displaymode="new" button="[data-btn-uploadfooter]"
-                                            resultsourceid="upload.datafooter" OnRendered="RenderFormFooter">
-                                        </basis>
-                                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
-                                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject"
-                                            method="post"
-                                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
-                                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
-                                            OnProcessed="OnProcessedEditObjectFooter">
-                                        </basis>
-                                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
-                                            triggers="upload.datafooter"></basis>
-                                        <div class="captcha-button">
-                                            <div id="captchaContainer"
-                                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
-                                                data-bc-answer-container data-bc-schema-info-multi="0"
-                                                data-bc-schema-info-word="58" data-bc-schema-info-part="1"
-                                                data-bc-schema-info-part-0-type="text">
-                                                <basis core="dbsource" source="trust_login" name="captcha"
-                                                    run="atclient" triggers="captcha.refreshFooter">
-                                                    <member name="code" type="scalar" request="captcha"></member>
-                                                </basis>
-                                                <basis datamembername="captcha.code" core="print" run="atclient"
-                                                    OnRendered="captchaRenderedFooter">
-                                                    <face>
-                                                        <script type="text/template">
+
+    </main>
+    <div class="w-full mobile-after-selector flex flex-col mt-[-43px] gap-3 relative">
+        <div class="w-full flex justify-center">
+            <div class="flex z-10 relative w-fit bg-white  items-center gap-3">
+                <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8   h-8">
+                <p class="font-bold text-base text-zinc-900">ارتباط با کارشناسان </p>
+                <span class="bullet-1 "></span>
+            </div>
+        </div>
+        <section class="w-full px-4 mb-8">
+            <div
+                class="w-full flex flex-col justify-end relative  overflow-hidden  bg-gradient-to-t from-[#F2F2F2]   to-[#FFFFFF00] rounded-2xl ">
+                <figure class="h-[50%] z-0 w-full rounded-t-2xl">
+                    <img loading="lazy" class="image-fade w-full h-full object-cover  rounded-t-2xl"
+                        src="[##cms.cms.cdn##]/images/contact-image-mob.jpg" alt="contact-us">
+                </figure>
+                <div class="relative z-[2] pb-3 px-3 w-full flex flex-col gap-1">
+                    <p class="font-bold text-sm leading-6">جهت مشاوره خرید تور با کارشناسان ما در ارتباط باشید</p>
+
+                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
+                        <basis core="schema" run="atclient"
+                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
+                            displaymode="new" button="[data-btn-uploadfooter]" resultsourceid="upload.datafooter"
+                            OnRendered="RenderFormFooter">
+                        </basis>
+                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
+                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject" method="post"
+                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
+                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
+                            OnProcessed="OnProcessedEditObjectFooter">
+                        </basis>
+                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
+                            triggers="upload.datafooter"></basis>
+                        <div class="captcha-button">
+                            <div id="captchaContainer"
+                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
+                                data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
+                                data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
+                                <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                                    triggers="captcha.refreshFooter">
+                                    <member name="code" type="scalar" request="captcha"></member>
+                                </basis>
+                                <basis datamembername="captcha.code" core="print" run="atclient"
+                                    OnRendered="captchaRenderedFooter">
+                                    <face>
+                                        <script type="text/template">
                                     <div class="flex  justify-between ">
                                         
                                         <div class="flex sfvgwdcsdhc w-full items-center">
@@ -390,44 +251,41 @@
 
                                                         </div></div>
                     </script>
-                                                    </face>
-                                                </basis>
-                                                <button type="button" data-btn-uploadfooter
-                                                    class="  data-body-btn w-[108px] h-[59px] flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
-                                                    ارسال
-                                                </button>
+                                    </face>
+                                </basis>
+                                <button type="button" data-btn-uploadfooter
+                                    class="text-sm  data-body-btn w-full h-12 flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
+                                    ارسال
+                                </button>
 
-                                            </div>
+                            </div>
 
-                                            <div
-                                                class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex">
-                                                <div id="ballsWaveG"
-                                                    class="ext-zinc-50 text-base font-normal leading-normal">
-                                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
-                                                </div>
-                                            </div>
-                                            <div class="message-api absolute text-center text-primary text-xs"></div>
-                                        </div>
-                                    </div>
-
+                            <div
+                                class="Loading_Form hidden data-body-btn h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex !w-full ">
+                                <div id="ballsWaveG" class="ext-zinc-50 text-base font-normal leading-normal">
+                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
                                 </div>
                             </div>
+                            <div class="message-api text-center text-primary text-xs"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    </main>
-    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
-    <basis core="call" file="footer.inc" />
+        <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
+
+        <basis core="call" pageindex="[##cms.cms.pageindex##]" file="footer.inc" />
+
+    </div>
 </body>
+
 
 
 </html>

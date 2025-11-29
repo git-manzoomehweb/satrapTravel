@@ -5,16 +5,18 @@
 #contact-form-resize [data-bc-schema-column] {
   display: flex !important;
   align-items: center;
-  gap: 12px !important;
+  flex-direction: column;
+  gap: 8px !important;
 }
 #contact-form-resize [data-bc-answer] {
   max-height: 60px;
 }
 #contact-form-resize [data-bc-question] {
-  width: 50% !important;
+  width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
   position: relative;
+  height: 58px !important;
 }
 #contact-form-resize
   [data-bc-schema-direction="rtl"]
@@ -22,7 +24,7 @@
   [data-bc-validation-part] {
   padding-right: 0px !important;
   position: absolute;
-  top: 55px;
+  top: 45px;
 }
 #contact-form-resize
   [data-bc-part][data-bc-invalid]
@@ -36,21 +38,32 @@
   width: 100% !important;
 }
 #contact-form-resize {
-  width: 65% !important;
-  flex-direction: row !important;
+  width: 100% !important;
+  flex-direction: column !important;
   align-items: start !important;
   transform: translateY(20px);
 }
+.mt-199px {
+  margin-top: 220px !important;
+}
+.rounded-t-2xl {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+#contact-form-resize [data-bc-schema-main-container] {
+  width: 100% !important;
+}
 #captchaContainer {
   display: flex !important;
-  flex-direction: row !important;
+  flex-direction: column !important;
+  gap: 8px;
 }
 #contact-form-resize [data-bc-section] {
   padding: 0 !important;
   margin: 0 !important;
 }
 #contact-form-resize input {
-  height: 59px !important;
+  height: 48px !important;
   background-color: #fff !important;
   outline: none !important;
   padding: 0 12px;
@@ -81,7 +94,7 @@
 #visa-form input[type="text"],
 #visa-form input[type="file"],
 #visa-form textarea {
-  height: 59px !important;
+  height: 48px !important;
   background-color: #fff;
   border: 1px solid var(--zinc-300) !important;
   border-radius: 8px !important;
@@ -147,7 +160,7 @@
 .captcha__container__info input::placeholder {
   color: var(--primary-500) !important;
 }
-.modal__content [data-bc-section]{
+.modal__content [data-bc-section] {
   margin: 0 !important;
   padding: 0 !important;
 }

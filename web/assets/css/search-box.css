@@ -453,51 +453,31 @@ button.add-routs:hover {
   width: 100% !important;
   justify-content: space-between !important;
 }
+
+ 
 .module-banner-background {
   background-color: var(--primary);
-  animation: bg_Fade 1.3s ease-in-out;
-  transition: background-image 0.6s ease-in-out, filter 0.6s ease-in-out;
   background-image: url("../images/Flight-bg.jpg");
-}
-
-@keyframes bg_Fade {
-  0% {
-    opacity: 0;
-    filter: brightness(1.1) blur(2px);
-  }
-  50% {
-    opacity: 0.6;
-    filter: brightness(1) blur(1px);
-  }
-  100% {
-    opacity: 1;
-    filter: brightness(1) blur(0);
-  }
 }
 
 .module-banner-background.flight-banner-background {
   background-image: url("../images/Flight-bg.jpg") !important;
-  animation: bg_Fade 1.3s ease-in-out;
 }
 
 .module-banner-background.hotel-banner-background {
   background-image: url("../images/hotel-bg.jpg") !important;
-  animation: bg_Fade 1.3s ease-in-out;
 }
 
 .module-banner-background.flighthotel-banner-background {
   background-image: url("../images/flighthotel-bg.jpg") !important;
-  animation: bg_Fade 1.3s ease-in-out;
 }
 
 .module-banner-background.tour-banner-background {
   background-image: url("../images/tour-bg.jpg") !important;
-  animation: bg_Fade 1.3s ease-in-out;
 }
 
 .module-banner-background.insurance-banner-background {
   background-image: url("../images/insurance-bg.jpg") !important;
-  animation: bg_Fade 1.3s ease-in-out;
 }
 
 form.multicity-flight-form:has(.flight-routes) .Flightclass-Passenger {

@@ -1,37 +1,77 @@
------------pwa-------------------------------------------------------
-<link rel="manifest" href="homescreen-manifest.json" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="mobile-web-app-capable" content="yes" />
-<link
-  rel="apple-touch-icon"
-  href="[##cms.cms.cdn##]/images/custom_icon_180.png"
-/>
-<meta name="apple-mobile-web-app-status-bar-style" content="#00A8FE" />
-<meta name="theme-color" content="#00A8FE" />
-----------homescreen-manifest.json-----------------------------------------------------------
-{ "name": "ساتراپ تراول", "short_name": "", "description": " ساتراپ تراول",
-"start_url": "/", "display": "standalone", "background_color": "#ffffff",
-"theme_color": "#00A8FE", "icons": [ { "src":
-"[##cms.cms.cdn##]/images/custom_icon_192.png", "sizes": "192x192", "type":
-"image/png" }, { "src": "[##cms.cms.cdn##]/images/custom_icon_512.png", "sizes":
-"512x512", "type": "image/png" } ] }
----------------------style.inc--------------------------------------------------------------------------
-<link
-  href="[##cms.cms.cdn##]/css/satrap.ui.min.css"
-  type="text/css"
-  rel="stylesheet"
-/>
+ <basis core="list" datamembername="joining-last-minute-offer.list">
+      <layout>
+        <section class="w-full mb-8  flex flex-col gap-3 ">
+          <div class="w-full flex px-4 mb-5 items-center gap-2">
+            <img loading="lazy" class="w-[21px] h-[21px]" width="32" height="32"
+              src="[##cms.cms.cdn##]/images/logo-small.png" alt="logo">
+            <h5 class="textsm font-bold text-[#18181B]">تور های لحظه آخری </h5>
 
----------------------script.inc------------
-<script
-  src="[##cms.cms.cdn##]/js/satrap-core.js"
-  type="text/javascript"
-></script>
----------------------script
-<link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
-----------------------------
-<basis core="call" file="search/engine/ver.1/Fa" pageindexid="1"></basis>
-___________________tour.bc________________________
-<basis core="call" file="tour/view/ver.1/Fa" pageindexid="1"></basis>
-<basis core="call" file="tour/view/ver.1/Fa" pageindexid="2"></basis>
-___________________article.bc________________________
+          </div>
+          <div class="px-4 w-full">
+            <img loading="lazy" src="[##cms.cms.cdn##]/images/young-woman.jpg" alt="women"
+              class="w-full h-[105px] object-cover rounded-lg">
+          </div>
+          <div class="w-full pr-4 overflow-hidden">
+            <div class="!mt-5 swiper-mobile-c3 !h-[282px] swiper !w-full">
+              <div class="swiper-wrapper">
+                @child
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </section>
+      </layout>
+      <face>
+        <a href="@db.last-minute-offer.link" class="!h-[222px] group swiper-slide rounded-lg p-2 bg-[#FFBD22]">
+          <div class="h-[170px] w-full bg-white rounded-lg p-2 justify-between flex flex-col">
+            <div class="w-full flex flex-col gap-[7px]">
+              <h6 class="text-sm font-bold text-[#18181B] line-clamp-1">@db.last-minute-offer.title </h6>
+              <div class="w-full mt-3 !text-[#18181B] flex flex-col gap-1">
+                <div class="w-full flex  items-center justify-between">
+                  <div class="flex items-center gap-1">
+                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Time Circle.svg" alt="time">
+                    <p class="text-xs">مدت سفر</p>
+                  </div>
+                  <p class="text-xs"> @db.last-minute-offer.prp_8076 </p>
+                </div>
+
+
+                <div class="w-full flex  items-center justify-between">
+                  <div class="flex items-center gap-1">
+                    <img loading="lazy" src="[##cms.cms.cdn##]/images/plane up.svg" alt="planeup">
+                    <p class="text-xs"> ایرلاین </p>
+                  </div>
+                  <img loading="lazy" src="@list.airline.pic" alt="@list.airline.name	" class="w-[57px]">
+                </div>
+
+
+                <div class="w-full flex  items-center justify-between">
+                  <div class="flex items-center gap-1">
+                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg" alt="Calendar">
+                    <p class="text-xs"> تاریخ سفر </p>
+                  </div>
+                  <p class="text-xs"> @db.last-minute-offer.prp_8077 </p>
+                </div>
+
+              </div>
+            </div>
+            <div class="w-full justify-between flex items-center">
+              <p class="text-xs text-[#18181B]">شروع قیمت:</p>
+              <p class="text-sm font-medium text-[#18181B]">@db.last-minute-offer.prp_8181</p>
+            </div>
+          </div>
+          <div class="w-full flex justify-center items-center h-[calc(100%-170px)]">
+            <p class="text-center text-xs tetx-[#141414] group-hover:opacity-0 transition-all ease-in-out duration-300">
+              مشاهده</p>
+            <span class="group-hover:opacity-100 scale-75 opacity-0 absolute transition-all ease-in-out duration-300">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M4 24C4 12.972 12.972 4 24 4C35.028 4 44 12.972 44 24C44 35.028 35.028 44 24 44C12.972 44 4 35.028 4 24ZM7 24C7 33.374 14.626 41 24 41C33.374 41 41 33.374 41 24C41 14.626 33.374 7 24 7C14.626 7 7 14.626 7 24ZM18.8528 22.9366L25.8268 15.9946C26.4148 15.4106 27.3628 15.4126 27.9468 15.9986C28.2388 16.2906 28.3848 16.6746 28.3848 17.0566C28.3848 17.4406 28.2388 17.8266 27.9428 18.1186L22.0368 24.0006L27.9428 29.8786C28.5308 30.4626 28.5308 31.4126 27.9468 32.0006C27.3628 32.5866 26.4148 32.5906 25.8268 32.0046L18.8528 25.0626C18.2868 24.5006 18.2868 23.5006 18.8528 22.9366Z"
+                  fill="#111111" />
+              </svg>
+
+            </span>
+          </div>
+        </a>
+      </face>
+    </basis>

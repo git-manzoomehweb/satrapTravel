@@ -1520,3 +1520,9 @@ input::placeholder {
     padding-right: 0px !important;
   }
 }
+@media not all and (min-width: 980px) {
+  .main-login-container.rtl-lang {
+    background-color: #fff !important;
+    height: 100vh !important;
+  }
+}
