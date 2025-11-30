@@ -10,8 +10,8 @@
     <member name="data" type="view" request="rdfa" />
 </basis>
 <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.id##]">
-    <member propertyid="7249" name="view-article" type="view" 
-     postsql="SELECT * FROM [db.view-article] where TypeID in(250) and text not in('')"/>
+    <member propertyid="7249" name="view-article" type="view"
+        postsql="SELECT * FROM [db.view-article] where TypeID in(250) and text not in('')" />
 </basis>
 
 <basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.id##]" sourcemid="article">
@@ -54,18 +54,17 @@
             <meta property="@key" content="@value" />
         </face>
     </basis>
-    <basis core="call" file="pwa.inc" />
-    <basis core="call" file="style.inc" />
-    <link href="[##cms.cms.cdn##]/css/contact-us-form.css" type="text/css" rel="stylesheet" />
+    <basis core="call" file="pwa.inc" pageindex="[##cms.cms.pageindex##]" />
+    <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]" />
+    <link href="[##cms.cms.cdn##]/css/contact-us-form-mob.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
 </head>
 
 <body class="overflow-x-hidden relative">
-    <basis core="call" file="header.inc" />
+    <basis core="call" pageindex="[##cms.cms.pageindex##]" file="header.inc" />
 
     <main>
-        <section class="flex justify-center items-center h-[544px] relative w-full">
-
+        <section class="flex justify-center items-center h-[244px] relative w-full">
             <basis core="print" datamembername="db.gallery">
                 <else-layout>
                     <img src="[##cms.cms.cdn##]/images/blog.jpg" alt="article"
@@ -80,73 +79,73 @@
                 </face>
             </basis>
 
-            <div class="absolute w-full bottom-0 bg-[#0000008F] h-[50px] flex justify-center z-[1]">
-                <div class="px-4  w-full  lg:px-4 xl:!w-[1280px] xl:!px-0 flex   gap-[87px] items-center ">
+            <div class="absolute w-full bottom-0 bg-[#0000008F] h-[40px] flex justify-center z-[1]">
+                <div class="  w-full flex overflow-hidden gap-[87px] items-center ">
 
-                    <ul class="flex items-center gap-1">
+                    <ul
+                        class="flex px-4 w-screen overflow-x-auto [&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar-thumb]:hidden  items-center !text-xs gap-1">
                         <li>
                             <a href="/"
-                                class="text-sm text-white hover:text-secondary-600 hover:font-semibold transition-all">صفحه
+                                class=" !text-xs  whitespace-nowrap  text-white hover:text-secondary-600 hover:font-semibold transition-all">صفحه
                                 اصلی</a>
                         </li>
-                        <li class="text-white text-sm">/</li>
+                        <li class="text-white text-xs  whitespace-nowrap ">/</li>
                         <li>
                             <a href="/blog"
-                                class="text-sm text-white hover:text-secondary-600 hover:font-semibold transition-all">
+                                class="text-xs  whitespace-nowrap  text-white hover:text-secondary-600 hover:font-semibold transition-all">
                                 لیست مقاله</a>
                         </li>
-                        <li class="text-white text-sm">/</li>
+                        <li class="text-white text-xs  whitespace-nowrap ">/</li>
                         <basis core="print" datamembername="db.view">
                             <face filter="TypeID=150">
-                                <li class="text-white text-sm">@text</li>
+                                <li class="text-white whitespace-nowrap text-xs">@text</li>
                             </face>
                         </basis>
-
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section class="w-full flex justify-center relative mt-16">
-            <div
-                class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+        <section class="w-full flex justify-center relative mt-10">
+            <div class="px-4  w-full h-full flex flex-col">
                 <div class="flex bg-white relative items-center gap-3">
                     <div class="flex z-10 relative bg-white px-2 items-center gap-3">
                         <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                            class="w-8 h-8">
+                            class="w-8   h-8">
                         <basis core="print" datamembername="db.view">
                             <face filter="TypeID=150">
-                                <h1 class="font-bold text-2xl text-zinc-900"> @text </h1>
+                                <h1 class="font-bold text-base text-zinc-900"> @text </h1>
                             </face>
-                        </basis>
-                        <span class="bullet-1 "></span>
+                        </basis> <!-- <span class="bullet-1 "></span> -->
                     </div>
                 </div>
-                <div class="my-[50px] z-10 flex flex-col w-full gap-[13px]">
-                    <div class="w-full flex gap-[33px]">
-                        <div class="w-[973px] flex flex-col gap-3 article-content">
+                <div class="my-4 z-10 flex flex-col w-full gap-[13px]">
+                    <div class="w-full flex flex-col gap-[13px]">
+                        <div class="w-full flex flex-col gap-3 article-content">
                             <basis core="print" datamembername="db.view">
-                                <face filter="TypeID=250">
-                                    <p id="@valueID"
-                                        class="title-wrapper w-full flex items-center gap-3 relative p-4 bg-primary-50 font-bold text-2xl text-zinc-900 rounded-xl">
-                                        @text
-                                    </p>
-                                    <div class="text-sm text-zinc-900 text-justify">
+                                <face filter="TypeID=129">
+                                    <div class="text-xs text-zinc-900 text-justify">
                                         @largetext
                                     </div>
                                 </face>
                             </basis>
-
-
-
+                            <basis core="print" datamembername="db.view">
+                                <face filter="TypeID=250">
+                                    <p id="@valueID"
+                                        class="title-wrapper w-full flex items-center gap-3 relative p-4 bg-primary-50 font-bold text-base text-zinc-900 rounded-xl">
+                                        @text
+                                    </p>
+                                    <div class="text-xs text-zinc-900 text-justify">
+                                        @largetext
+                                    </div>
+                                </face>
+                            </basis>
                         </div>
-
-                        <aside class="w-[calc(100%-973px)] flex flex-col gap-4">
-
+                        <aside class="w-full flex flex-col gap-4">
                             <basis core="print" datamembername="db.view-article">
                                 <layout>
                                     <div class="w-full py-[17px] bg-[#F5F9FB] border border-[#EBEBEB] rounded-2xl">
-                                        <p class="px-6 font-bold text-xl pb-4 border-b border-[#D7DDE0]">موضوع ها</p>
+                                        <p class="px-6 font-bold text-base pb-4 border-b border-[#D7DDE0]">موضوع ها</p>
                                         <div class="w-full flex flex-col gap-4 mt-4 px-6">
                                             @child
                                         </div>
@@ -165,7 +164,7 @@
                             <basis core="print" datamembername="db.news-list">
                                 <layout>
                                     <div class="w-full py-[17px] bg-[#F9F9F9] border border-[#CCCCCC] rounded-2xl">
-                                        <p class="px-6 font-bold text-xl pb-4 border-b border-[#D7DDE0]"> لیست های پر
+                                        <p class="px-6 font-bold text-base pb-4 border-b border-[#D7DDE0]"> لیست های پر
                                             بازدید</p>
                                         <div class="w-full flex flex-col gap-4 mt-4 px-3">
                                             @child
@@ -176,10 +175,10 @@
                                     <a href="@link"
                                         class="flex pl-1 h-[62px] border border-transparent group rounded-xl w-full gap-[5px] items-center">
                                         <img loading="lazy" src="@00072X00060prp" alt="@title"
-                                            class="w-[72px] h-[60px] rounded-xl">
-                                        <div class="flex py-[2px]  flex-col gap-[7px] ">
+                                            class="w-[96px] h-[60px] rounded-xl">
+                                        <div class="flex py-[2px] w-[calc(100%-100px)] flex-col gap-[7px] ">
                                             <p
-                                                class="line-clamp-1 group-hover:text-primary-600 font-medium text-[#222222]">
+                                                class="line-clamp-1 group-hover:text-primary-600 text-xs font-medium text-[#222222]">
 
                                                 @title
                                             </p>
@@ -191,64 +190,47 @@
                                 </face>
                             </basis>
 
-
-                            <basis core="print" datamembername="db.info">
-                                <face filter="text in('اینستاگرام')">
-                                    <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
-                                        class="w-full relative group rounded-3xl hover:shadow-lg py-[37px] px-3 flex-col justify-between h-[475px] flex my-4">
-                                        <div class="w-full flex flex-col gap-[13px] relative z-[3]">
-                                            <p class="text-white text-xl">به دنبال بهترین پیشنهاد های لحظه اخری هسیتد؟
-                                            </p>
-                                            <span class="  text-sm text-white">ما را در ایسنتاگرام دنبال کنید</span>
-                                        </div>
-                                        <div
-                                            class="z-[4] w-full gap-2 transition-all ease-in-out duration-300 group-hover:shadow-xl group-hover:bg-primary group-hover:!text-white h-[51px] flex justify-center items-center bg-secondary-700 rounded-[50px] text-sm text-zinc-900">
-
+                            <div
+                                class="h-[149px] w-full rounded-lg py-[14px] px-2 overflow-hidden relative flex flex-col justify-between">
+                                <img loading="lazy" src="[##cms.cms.cdn##]/images/insta-banner.png" alt="insta-banner"
+                                    class="w-full h-full object-cover z-0 absolute left-0 top-0">
+                                <span
+                                    class="absolute z-[1] w-full h-full top-0 left-0 bg-gradient-to-r opacity-75 from-[#E0356B] to-[#1D0202]"></span>
+                                <p class="z-[2] text-xs text-white">به دنبال بهترین پیشنهاد های لحظه اخری هسیتد؟</p>
+                                <p class="z-[2] text-xs text-white">ما را در اینستاگرام دنبال کنید</p>
+                                <basis core="print" datamembername="db.info">
+                                    <face filter="text in('اینستاگرام')">
+                                        <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
+                                            class="pulse-animation1 hover:font-semibold w-full rounded-lg text-xs z-[2] bg-secondary-700 h-12 flex justify-center items-center gap-[10px]">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                                     d="M3.7402 3.89737C4.72468 2.84117 6.12669 2.25 7.78216 2.25H16.2169C17.8762 2.25 19.2788 2.84084 20.2629 3.89765C21.2413 4.94841 21.75 6.39889 21.75 8.02638V15.9736C21.75 17.6011 21.2413 19.0516 20.2627 20.1024C19.2785 21.1592 17.8756 21.75 16.2159 21.75H7.78216C6.1228 21.75 4.72038 21.1591 3.73657 20.1023C2.75842 19.0515 2.25 17.601 2.25 15.9736V8.02638C2.25 6.39806 2.76117 4.94771 3.7402 3.89737ZM4.83745 4.92012C4.16024 5.64666 3.75 6.70951 3.75 8.02638V15.9736C3.75 17.2914 4.15861 18.3541 4.83451 19.0802C5.50475 19.8003 6.49341 20.25 7.78216 20.25H16.2159C17.5052 20.25 18.4944 19.8002 19.165 19.0801C19.8412 18.354 20.25 17.2913 20.25 15.9736V8.02638C20.25 6.70868 19.8412 5.64597 19.1651 4.91984C18.4946 4.19975 17.5056 3.75 16.2169 3.75H7.78216C6.49828 3.75 5.50921 4.19943 4.83745 4.92012Z"
-                                                    fill="#18181B" class="group-hover:fill-white"></path>
+                                                    fill="#18181B" />
                                                 <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M11.8445 9.57812C10.3244 9.57812 9.0918 10.8108 9.0918 12.3308C9.0918 13.8509 10.3244 15.0835 11.8445 15.0835C13.3646 15.0835 14.5972 13.8509 14.5972 12.3308C14.5972 10.8108 13.3646 9.57812 11.8445 9.57812ZM7.5918 12.3308C7.5918 9.98234 9.49602 8.07812 11.8445 8.07812C14.193 8.07812 16.0972 9.98234 16.0972 12.3308C16.0972 14.6793 14.193 16.5835 11.8445 16.5835C9.49602 16.5835 7.5918 14.6793 7.5918 12.3308Z"
-                                                    fill="#18181B" class="group-hover:fill-white"></path>
+                                                    d="M11.8464 9.57812C10.3263 9.57812 9.09375 10.8108 9.09375 12.3308C9.09375 13.8509 10.3263 15.0835 11.8464 15.0835C13.3665 15.0835 14.5992 13.8509 14.5992 12.3308C14.5992 10.8108 13.3665 9.57812 11.8464 9.57812ZM7.59375 12.3308C7.59375 9.98234 9.49797 8.07812 11.8464 8.07812C14.1949 8.07812 16.0991 9.98234 16.0991 12.3308C16.0991 14.6793 14.1949 16.5835 11.8464 16.5835C9.49797 16.5835 7.59375 14.6793 7.59375 12.3308Z"
+                                                    fill="#18181B" />
                                                 <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M15.8291 7.37875C15.8291 6.80764 16.2928 6.34375 16.8641 6.34375C17.4387 6.34375 17.8981 6.811 17.8981 7.37875C17.8981 7.94997 17.4353 8.41275 16.8641 8.41275C16.2962 8.41275 15.8291 7.95332 15.8291 7.37875Z"
-                                                    fill="#18181B" class="group-hover:fill-white"></path>
+                                                    d="M15.8281 7.37875C15.8281 6.80764 16.2918 6.34375 16.8631 6.34375C17.4377 6.34375 17.8971 6.811 17.8971 7.37875C17.8971 7.94997 17.4343 8.41275 16.8631 8.41275C16.2952 8.41275 15.8281 7.95332 15.8281 7.37875Z"
+                                                    fill="#18181B" />
                                             </svg>
 
                                             اینستاگرام ساتراپ
-
-                                            <span class="rotate-90 hidden group-hover:!flex">
-                                                <svg width="16" height="9" viewBox="0 0 16 9" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M0.46967 0.46967C0.735936 0.203403 1.1526 0.179197 1.44621 0.397052L1.53033 0.46967L8 6.939L14.4697 0.469669C14.7359 0.203403 15.1526 0.179197 15.4462 0.397051L15.5303 0.469669C15.7966 0.735936 15.8208 1.1526 15.6029 1.44621L15.5303 1.53033L8.53033 8.53033C8.26406 8.7966 7.8474 8.8208 7.55379 8.60295L7.46967 8.53033L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967Z"
-                                                        fill="#fff"></path>
-                                                </svg>
-
-                                            </span>
-                                        </div>
-
-                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/insta-banner.png"
-                                            alt="insta-banner"
-                                            class="w-full rounded-3xl absolute z-0 left-0 top-0 h-full object-cover">
-                                        <span
-                                            class="absolute w-full h-full top-0 left-0 right-0 bg-gradient-to-r from-[#E0356B] rounded-3xl opacity-70 to-[#1D0202] z-[2]"></span>
-                                    </a>
-                                </face>
-                            </basis>
+                                        </a>
+                                    </face>
+                                </basis>
+                            </div>
 
                             <a href="[##cms.host.article-advertisement##]"
-                                class="w-full advertisment flex hover:shadow-xl h-[468px] relative  rounded-3xl">
-                                <img loading="lazy" class="w-full rounded-3xl h-full object-cover"
+                                class="w-full advertisment flex hover:shadow-xl h-[468px] relative  rounded-xl">
+                                <img loading="lazy" class="w-full rounded-xl h-full object-cover"
                                     src="[##cms.cms.cdn##]/images/article-advertisement.jpg" alt="advertisment">
                             </a>
                         </aside>
                     </div>
                     <form action="/OpinionAction.bc" method="post" onsubmit="SubmitOpinionForm(this , event)"
-                        class="w-full h-[271px] mt-10 rounded-2xl p-6 bg-[#F5F9FB] flex flex-col justify-between">
-                        <p class="text-xl font-bold">نظر کاربران</p>
+                        class="w-full mt-10 mb-10 rounded-2xl p-3 bg-[#F5F9FB] flex flex-col justify-between">
+                        <p class="text-base mb-2 font-bold">نظر کاربران</p>
                         <div class="w-full flex flex-col gap-x-[6px] gap-y-3">
                             <div class="w-full flex items-center gap-3 user-info-comment">
                                 <div class="w-[calc(50%-3px)] flname">
@@ -270,7 +252,7 @@
                                     class="h-[55px] resize-none w-full border-[#E5E5E5] border p-3 outline-none rounded-lg focus:border-primary-400 placeholder:text-[#ABABAB]"></textarea>
                             </div>
 
-                            <div class="w-full captcha-container flex items-center gap-3">
+                            <div class="w-full flex-wrap gap-2 captcha-container flex items-center gap-3">
                                 <div class="SecurityCodeRight w-[126px]">
                                     <input type="text" required name="Captcha"
                                         class="h-[55px] w-full border-[#E5E5E5] border p-3 outline-none rounded-lg focus:border-primary-400 placeholder:text-[#ABABAB]"
@@ -301,9 +283,9 @@
                                     <input name="mid" value="1" type="hidden">
                                 </div>
 
-                                <div class="submit-comment ">
+                                <div class="submit-comment w-full">
                                     <input id="OpinionSubmit" name="OpinionSubmit" type="submit"
-                                        class="w-[100px] h-[55px] flex justify-center items-center bg-secondary-600 rounded-xl hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50"
+                                        class="w-full cursor-pointer h-[55px] flex justify-center items-center bg-secondary-600 rounded-xl hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50"
                                         value="ارسال" />
 
                                 </div>
@@ -316,9 +298,9 @@
                     <basis core="tree" datamembername="db.comment" idcol="id" parentidcol="parentid" nullvalue="0">
                         <layout>
                             <div class="!w-full bg-[#F5F9FB] flex
-                     justify-center overflow-hidden rounded-2xl py-6 relative px-[38px]">
+                     justify-center overflow-hidden rounded-2xl py-6 relative px-4 mb-10">
                                 <div
-                                    class="next-btn-sw absolute cursor-pointer z-10 group right-[38px] top-[calc(50%-20px)]">
+                                    class="next-btn-sw absolute cursor-pointer z-10 group right-[-8px] top-[calc(50%-20px)]">
                                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -327,7 +309,7 @@
                                     </svg>
                                 </div>
                                 <div
-                                    class="prev-btn-sw absolute cursor-pointer z-10 rotate-180 group left-[38px] top-[calc(50%-20px)]">
+                                    class="prev-btn-sw absolute cursor-pointer z-10 rotate-180 group left-[-8px] top-[calc(50%-20px)]">
                                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -335,7 +317,7 @@
                                             fill="#FFBD22" class="group-hover:fill-primary-800" />
                                     </svg>
                                 </div>
-                                <div class="!w-[1068px] overflow-hidden swiper-comments relative !h-[192px]">
+                                <div class="!w-full overflow-hidden swiper-comments-mob relative !h-[192px]">
                                     <div class="swiper-button-next-comments absolute hidden">1</div>
                                     <div class="swiper-button-prev-comments absolute hidden">2</div>
                                     <div class="swiper-wrapper">
@@ -350,10 +332,9 @@
                                 <div class="flex items-center gap-2">
                                     <img loading="lazy" src="[##cms.cms.cdn##]/images/user-comments.svg" alt="user"
                                         width="32" height="32">
-                                    <p class="text-sm font-medium">@username </p>
+                                    <p class="text-sm font-medium"> @username </p>
                                 </div>
-                                <p class="text-sm leading-[17px] h-[90px] text-justify line-clamp-5 text-[#3D3D3D]">
-                                    @comment
+                                <p class="text-sm leading-[17px] text-justify line-clamp-5 text-[#3D3D3D]"> @comment
                                 </p>
                                 <div class="flex justify-end items-center gap-2">
                                     <p class="text-[#747474] text-xs">@createdate</p>
@@ -364,81 +345,48 @@
                         </face>
                     </basis>
 
-                    <div id="popuparticle" class="popup hidden">
-                        <div
-                            class="fixed z-[60] left-0 right-0 bottom-0 top-[80px] w-screen h-screen  justify-center items-center">
-                            <div
-                                class="popup-content bg-white rounded-xl p-5 border border-solid border-primary-600 w-2/3 ">
-                                <span id="closePopuparticle" class="close cursor-pointer hover:text-primary-700">
 
-                                    <button class="hover:bg-secondary-900 p-1 rounded-full">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px"
-                                            viewBox="0 0 24 24" fill="none">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"
-                                                fill="#000"></path>
-                                        </svg>
-                                    </button>
-                                </span>
-                                <div id="popupMessage" class="font-danaregular"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="w-full flex justify-center relative  ">
-            <div class="px-4 relative w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class="before-border last-section-brd-article relative w-full flex flex-col">
-                    <div class="flex  items-center gap-3 ">
-                        <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
-                            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                                class="w-8 h-8">
-                            <p class="font-bold text-2xl text-zinc-900">ارتباط با کارشناسان </p>
-                            <span class="bullet-1"></span>
-                        </div>
-                    </div>
-                    <div class="my-[50px] z-[4] items-center w-full flex">
+
+                    <section class="w-full  mb-8">
                         <div
-                            class="w-full rounded-2xl overflow-hidden relative flex items-center justify-center h-[143px] px-[35px] py-5">
-                            <img loading="lazy" src="[##cms.cms.cdn##]/images/contact-form-image.jpg" alt="contact-us"
-                                class="w-[42%] h-full z-0    absolute left-0 top-0">
-                            <span
-                                class="w-[80px] absolute left-[calc(42%-3px)] z-[3] bg-gradient-to-r from-[#d6d9d8] h-full"></span>
-                            <span
-                                class="w-full h-full rounded-2xl bg-gradient-to-r z-[1] from-[#fff0] to-[#F2F2F2] absolute top-0 left-0 "></span>
-                            <div class="flex z-[5] w-full flex-col h-full justify-between">
-                                <p class="">جهت مشاوره خرید تور با کارشناسان ما در ارتباط باشید</p>
-                                <div class="flex items-center">
-                                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
-                                        <basis core="schema" run="atclient"
-                                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
-                                            displaymode="new" button="[data-btn-uploadfooter]"
-                                            resultsourceid="upload.datafooter" OnRendered="RenderFormFooter">
-                                        </basis>
-                                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
-                                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject"
-                                            method="post"
-                                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
-                                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
-                                            OnProcessed="OnProcessedEditObjectFooter">
-                                        </basis>
-                                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
-                                            triggers="upload.datafooter"></basis>
-                                        <div class="captcha-button">
-                                            <div id="captchaContainer"
-                                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
-                                                data-bc-answer-container data-bc-schema-info-multi="0"
-                                                data-bc-schema-info-word="58" data-bc-schema-info-part="1"
-                                                data-bc-schema-info-part-0-type="text">
-                                                <basis core="dbsource" source="trust_login" name="captcha"
-                                                    run="atclient" triggers="captcha.refreshFooter">
-                                                    <member name="code" type="scalar" request="captcha"></member>
-                                                </basis>
-                                                <basis datamembername="captcha.code" core="print" run="atclient"
-                                                    OnRendered="captchaRenderedFooter">
-                                                    <face>
-                                                        <script type="text/template">
+                            class="w-full flex flex-col justify-end relative  overflow-hidden  bg-gradient-to-t from-[#F2F2F2]   to-[#FFFFFF00] rounded-2xl ">
+                            <figure class="h-[50%] z-0 w-full rounded-t-2xl">
+                                <img loading="lazy" class="image-fade w-full h-full object-cover  rounded-t-2xl"
+                                    src="[##cms.cms.cdn##]/images/contact-image-mob.jpg" alt="contact-us">
+                            </figure>
+                            <div class="relative z-[2] pb-3 px-3 w-full flex flex-col gap-1">
+                                <p class="font-bold text-sm leading-6">جهت مشاوره خرید تور با کارشناسان ما در ارتباط
+                                    باشید</p>
+
+                                <div id="contact-form-resize" class="w-full flex flex-col gap-3">
+                                    <basis core="schema" run="atclient"
+                                        schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
+                                        displaymode="new" button="[data-btn-uploadfooter]"
+                                        resultsourceid="upload.datafooter" OnRendered="RenderFormFooter">
+                                    </basis>
+                                    <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
+                                        url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject"
+                                        method="post"
+                                        body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
+                                        content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
+                                        OnProcessed="OnProcessedEditObjectFooter">
+                                    </basis>
+                                    <basis core="callback" run="atclient" method="uploadDocumentFooter"
+                                        triggers="upload.datafooter"></basis>
+                                    <div class="captcha-button">
+                                        <div id="captchaContainer"
+                                            class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
+                                            data-bc-answer-container data-bc-schema-info-multi="0"
+                                            data-bc-schema-info-word="58" data-bc-schema-info-part="1"
+                                            data-bc-schema-info-part-0-type="text">
+                                            <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                                                triggers="captcha.refreshFooter">
+                                                <member name="code" type="scalar" request="captcha"></member>
+                                            </basis>
+                                            <basis datamembername="captcha.code" core="print" run="atclient"
+                                                OnRendered="captchaRenderedFooter">
+                                                <face>
+                                                    <script type="text/template">
                                     <div class="flex  justify-between ">
                                         
                                         <div class="flex sfvgwdcsdhc w-full items-center">
@@ -467,44 +415,45 @@
 
                                                         </div></div>
                     </script>
-                                                    </face>
-                                                </basis>
-                                                <button type="button" data-btn-uploadfooter
-                                                    class="  data-body-btn w-[108px] h-[59px] flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
-                                                    ارسال
-                                                </button>
+                                                </face>
+                                            </basis>
+                                            <button type="button" data-btn-uploadfooter
+                                                class="text-sm  data-body-btn w-full h-12 flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
+                                                ارسال
+                                            </button>
 
-                                            </div>
-
-                                            <div
-                                                class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex">
-                                                <div id="ballsWaveG"
-                                                    class="ext-zinc-50 text-base font-normal leading-normal">
-                                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
-                                                </div>
-                                            </div>
-                                            <div class="message-api absolute text-center text-primary text-xs"></div>
                                         </div>
+
+                                        <div
+                                            class="Loading_Form hidden data-body-btn h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex !w-full ">
+                                            <div id="ballsWaveG"
+                                                class="ext-zinc-50 text-base font-normal leading-normal">
+                                                <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                                <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                                <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                                <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                                <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                                <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                                <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                                <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                                            </div>
+                                        </div>
+                                        <div class="message-api text-center text-primary text-xs"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
                 </div>
             </div>
         </section>
+
     </main>
     <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
-    <basis core="call" file="footer.inc" />
-</body>
 
+    <basis core="call" pageindex="[##cms.cms.pageindex##]" file="footer.inc" />
+
+</body>
 
 
 </html>

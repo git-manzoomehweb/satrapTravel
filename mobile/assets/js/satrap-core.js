@@ -1993,6 +1993,27 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 // ____________________________
+document.addEventListener("DOMContentLoaded", function () {
+  const flightItem = document.querySelector(
+    'header .header-menu li[data-id="flight"]'
+  );
+  const hotelItem = document.querySelector(
+    'header .header-menu li[data-id="hotel"]'
+  );
+  if (flightItem) {
+    flightItem.addEventListener("click", () => {
+      document.querySelector("header  .header-menu ").style.transform =
+        "translateX(1024px)";
+    });
+  }
+
+  if (hotelItem) {
+    hotelItem.addEventListener("click", () => {
+      document.querySelector("header  .header-menu ").style.transform =
+        "translateX(1024px)";
+    });
+  }
+});
 // ____________________________
 if (document.getElementById("search-content-article")) {
   var input = document.getElementById("search-content-name"),
@@ -2491,7 +2512,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // ____________________________
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".visa-form-cn");
-  const grid = document.querySelector(".grid.grid-cols-4");
+  const grid = document.querySelector(".grid.visa-container");
   const input = form ? form.querySelector('input[type="text"]') : null;
   const NOT_FOUND_ID = "visa-not-found-message";
 

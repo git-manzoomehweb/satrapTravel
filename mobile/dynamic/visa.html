@@ -27,7 +27,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover" />
-    <title>[##cms.seo.title|(ویزا ی ساتراپ تراول)##]</title>
+    <title>[##cms.seo.title|(ویزای ساتراپ تراول)##]</title>
     <meta name="description" content="[##cms.seo.description|(شرکت خدمات مسافرت هوایی و گردشگری  ساتراپ تراول)##]" />
     <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
         <member type="list" name="list" request="taglist" preview=""></member>
@@ -40,16 +40,17 @@
             <meta property="@key" content="@value" />
         </face>
     </basis>
-    <basis core="call" file="pwa.inc" />
-    <basis core="call" file="style.inc" />
-    <link href="[##cms.cms.cdn##]/css/contact-us-form.css" type="text/css" rel="stylesheet" />
+    <basis core="call" file="pwa.inc" pageindex="[##cms.cms.pageindex##]" />
+    <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]" />
+    <link href="[##cms.cms.cdn##]/css/contact-us-form-mob.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
 </head>
 
 <body class="overflow-x-hidden relative">
-    <basis core="call" file="header.inc" />
+    <basis core="call" pageindex="[##cms.cms.pageindex##]" file="header.inc" />
+
     <main>
-        <section class="flex justify-center items-center h-[348px] relative w-full">
+        <section class="flex justify-center items-center h-[149px] relative w-full">
             <basis core="print" datamembername="db.gallery">
                 <face filter="ord=1">
                     <img src="/@largeIMG" alt="@name" class="z-0 absolute top-0 left-0 w-full h-full object-cover">
@@ -60,75 +61,71 @@
                 </face>
             </basis>
 
-
             <div
-                class="px-4 w-full h-[186px] border border-[#CDCDCD] lg:px-4 xl:!w-[1280px] xl:!px-0 flex items-center gap-4 p-[34px] bg-white rounded-xl absolute top-[calc(100%-93px)] justify-center">
+                class="px-4 w-[calc(100%-32px)] mx-auto   border border-zinc-300 flex items-center gap-4 p-2 bg-white rounded-xl absolute top-[calc(100%-33px)] justify-center">
+
                 <basis core="print" datamembername="db.gallery">
                     <face filter="ord=2">
                         <img loading="lazy" src="/@largeIMG" alt="@name"
-                            class="w-[118px] h-[118px] rounded-full shadow-flag">
+                            class="w-[56px] h-[56px] rounded-full shadow-flag">
 
                     </face>
                 </basis>
                 <div class="flex flex-col gap-4">
                     <basis core="print" datamembername="db.view">
                         <face filter="prpID=8470">
-                            <h1 class="font-semibold text-[32px] text-[#191919]"> @text</h1>
+                            <h1 class="font-semibold text-base text-[#191919]"> @text</h1>
                         </face>
                     </basis>
+
+
                     <basis core="print" datamembername="db.view">
                         <face filter="prpID=3088128">
-                            <p class="text-[#848484] text-xl">زمان پردازش:
+                            <p class="text-[#848484] text-xs">زمان پردازش:
                                 @text
 
                             </p>
                         </face>
                     </basis>
-
                 </div>
             </div>
 
         </section>
 
 
-
-        <section
-            class="px-4 w-full mb-28 mx-auto relative mt-[135px] lg:px-4 xl:!w-[1280px] xl:!px-0 flex gap-4 justify-between">
-            <div class="w-[981px] calculate-h flex flex-col gap-5">
+        <section class="px-4 flex-col-reverse w-full mb-10 mx-auto relative mt-20   flex gap-4 justify-between">
+            <div class="w-full flex flex-col gap-5">
                 <div class="w-full flex flex-col gap-3 bg-[#F5F9FB] p-6 rounded-xl">
-                    <h2 class="text-[#3A6871] font-bold text-2xl">کشور اخذ ویزا</h2>
+                    <h2 class="text-[#3A6871] font-bold text-base">کشور اخذ ویزا</h2>
                     <basis core="print" datamembername="db.view">
                         <face filter="prpID=8471">
-                            <div class="text-base text-[#3A6871]">@largetext</div>
+                            <div class="text-xs text-[#3A6871]">@largetext</div>
                         </face>
                     </basis>
-
                 </div>
-                <div class="w-full grid grid-cols-2 gap-[23px]">
+                <div class="w-full grid grid-cols-1 gap-[23px]">
                     <basis core="print" datamembername="db.view">
                         <face filter="prpID=3088128">
                             <div
-                                class="w-full h-[215px] rounded-[18px] bg-[#F5F9FB] flex flex-col gap-[10px] items-center justify-center">
+                                class="w-full h-[134px] rounded-[18px] bg-[#F5F9FB] flex flex-col gap-[10px] items-center justify-center">
                                 <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar-v.svg" alt="Calendar"
                                     width="55" height="55">
-                                <p class="font-bold text-xl text-[#202020]">زمان پردازش ویزا</p>
-                                <span class="text-[#8F8F8F]">@text </span>
+                                <p class="font-bold text-base text-[#202020]">زمان پردازش ویزا</p>
+                                <span class="text-[#8F8F8F] text-sm">@text </span>
                             </div>
                         </face>
                     </basis>
-
                     <basis core="print" datamembername="db.view">
                         <face filter="prpID=3088131">
                             <div
-                                class="w-full h-[215px] rounded-[18px] bg-[#F5F9FB] flex flex-col gap-[10px] items-center justify-center">
+                                class="w-full h-[134px] rounded-[18px] bg-[#F5F9FB] flex flex-col gap-[10px] items-center justify-center">
                                 <img loading="lazy" src="[##cms.cms.cdn##]/images/TimeCircle-v.svg" alt="TimeCircle"
                                     width="55" height="55">
-                                <p class="font-bold text-xl text-[#202020]">اعتبار ویزا از زمان صدور</p>
-                                <span class="text-[#8F8F8F]"> @text </span>
+                                <p class="font-bold text-base text-[#202020]">اعتبار ویزا از زمان صدور</p>
+                                <span class="text-[#8F8F8F] text-sm"> @text </span>
                             </div>
                         </face>
                     </basis>
-
                 </div>
                 <div class="w-full flex flex-col mt-5 gap-[38px]">
                     <div class="flex items-center gap-[18px]">
@@ -136,7 +133,7 @@
                             height="32" class="w-8 h-8">
                         <basis core="print" datamembername="db.view">
                             <face filter="prpID=8470">
-                                <h2 class="font-bold tetx-[#252525] text-[32px]">
+                                <h2 class="font-bold text-[#252525] text-base">
 
                                     قیمت ویزای
 
@@ -146,19 +143,18 @@
                                 </h2>
                             </face>
                         </basis>
-
                     </div>
-                    <div class="w-full p-[55px] border-[#CDCDCD] border rounded-xl flex flex-col gap-[47px]">
-                        <h3 class="text-[#252525] text-2xl font-semibold">هزینه خدمات ویزا ( بزرگسال)</h3>
+                    <div class="w-full p-3 border-zinc-300 border rounded-xl flex flex-col gap-[17px]">
+                        <h3 class="text-[#252525] text-base font-semibold">هزینه خدمات ویزا ( بزرگسال)</h3>
                         <div class="w-full flex flex-col">
                             <div
-                                class="w-full border border-[#EAEAEA] text-2xl font-semibold rounded-t-xl text-[#252525] flex items-center h-[86px] justify-center bg-[#F5F9FB]">
+                                class="w-full border border-[#EAEAEA] text-base font-semibold rounded-t-xl text-[#252525] flex items-center h-12 justify-center bg-[#F5F9FB]">
                                 مدت اقامت متغیر
                             </div>
                             <div
                                 class="w-full border border-[#EAEAEA] flex flex-col divide-y divide-[#EAEAEA] rounded-b-xl">
-                                <div class="flex items-center py-6 w-[653px] justify-between mx-auto">
-                                    <div class="w-1/2 text-2xl font-semibold tetx-[#252525]">
+                                <div class="flex items-center px-2 py-6 w-full justify-between mx-auto">
+                                    <div class="w-1/2 text-sm font-semibold tetx-[#252525]">
                                         <basis core="print" datamembername="db.view">
 
                                             <face filter="prpID=8470">
@@ -167,7 +163,7 @@
                                             </face>
                                         </basis>
                                     </div>
-                                    <div class="w-1/2 flex justify-end text-2xl font-semibold tetx-[#252525]">
+                                    <div class="w-1/2 flex justify-end text-sm font-semibold tetx-[#252525]">
                                         <basis core="print" datamembername="db.view">
 
                                             <face filter="prpID=3087433">
@@ -191,7 +187,7 @@
                     <div class="flex items-center gap-[18px]">
                         <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="logo" width="32"
                             height="32" class="w-8 h-8">
-                        <h2 class="font-bold tetx-[#252525] text-[32px]"> مدارک مورد نیاز برای
+                        <h2 class="font-bold text-[#252525] text-base"> مدارک مورد نیاز برای
                             <basis core="print" datamembername="db.view">
 
                                 <face filter="prpID=8470">
@@ -200,7 +196,7 @@
                             </basis>
                         </h2>
                     </div>
-                    <div class="w-full p-6 border-[#CDCDCD] border rounded-xl flex flex-col gap-6">
+                    <div class="w-full p-6 border-zinc-300 border rounded-xl flex flex-col gap-6">
                         <basis core="print" datamembername="db.document-text">
                             <else-layout>
                                 <p class="text-xs text-zinc-900">
@@ -210,79 +206,72 @@
                             <layout>@child</layout>
                             <face filter="TypeID=250">
 
-                                <div class="w-full flex gap-6">
-                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/@text.svg" class="h-16" alt=""
-                                        width="64" height="64">
+                                <div class="w-full flex gap-3">
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/@text.svg" class="h-12 w-12"
+                                        alt="" width="48" height="48">
                                     <div class="flex flex-col gap-4">
-                                        <p class="text-xl font-bold">@text</p>
+                                        <p class="text-base font-bold">@text</p>
 
                                         <div class="pr-5 flex flex-col gap-3 before-elm">
-                                            <div class="text-xl text-[#000000]">@largetext</div>
+                                            <div class="text-xs text-[#000000]">@largetext</div>
 
                                         </div>
                                     </div>
                                 </div>
                             </face>
                         </basis>
-
                     </div>
                 </div>
 
-                <div class="flex flex-col w-full gap-6 mt-11 visa-aid">
+                <div class="flex flex-col w-full gap-6 mt-11">
                     <basis core="print" datamembername="db.aid-text">
                         <face filter="prpID=7243">
-
-                            <h4 class="bg-[#EEF6FF] text-xl font-bold rounded-xl w-full px-4 py-[11px]">@text</h4>
-
+                            <h4 class="bg-[#EEF6FF] text-base  font-bold rounded-xl w-full px-4 py-[11px]">@text</h4>
                         </face>
                     </basis>
                     <basis core="print" datamembername="db.aid-text">
 
                         <face filter="prpID<>7243">
 
-                            <h5 content="@text" class="bg-[#EEF6FF] text-xl font-bold rounded-xl w-full px-4 py-[11px]">
-                                @text</h5>
+                            <h5 content="@text"
+                                class="bg-[#EEF6FF] text-base  font-bold rounded-xl w-full px-4 py-[11px]">
+                                @text
+                            </h5>
 
 
-                            <div class="w-full flex flex-col gap-3 text-justify">
+                            <div class="w-full flex flex-col text-xs gap-3 text-justify">
 
                                 @largetext
 
                             </div>
                         </face>
                     </basis>
-
                 </div>
-
-
-
                 <basis core="print" datamembername="db.faq">
                     <layout>
-                        <div class="w-full flex flex-col gap-4 mt-10 border border-[#CDCDCD] rounded-3xl p-5">
-                            <h5 class="font-bold text-xl">سوالات متداول</h5>
+                        <div class="w-full flex flex-col gap-4 mt-10 border border-zinc-300 rounded-xl p-3">
+                            <h5 class="font-bold text-base">سوالات متداول</h5>
                             <div class="flex common-questions  flex-col justify-center items-center gap-8">
                                 @child
+
 
                             </div>
                         </div>
                     </layout>
                     <face>
-                        <div class="questions-box w-full cursor-pointer group flex gap-[31px]">
+                        <div class="questions-box w-full cursor-pointer group flex flex-col gap-4">
                             <div class="flex items-center gap-2 w-[109px]">
-                                <img loading="lazy" src="[##cms.cms.cdn##]/images/user-qs.svg" alt="user-icon">
+                                <img width="48" height="48" loading="lazy" src="[##cms.cms.cdn##]/images/user-qs.svg"
+                                    alt="user-icon">
                                 <div class="flex flex-col gap-1  ">
                                     <p class="font-bold text-zinc-900 whitespace-nowrap">سوال ۱</p>
                                     <span class="text-zinc-400 text-xs">ویزا</span>
                                 </div>
 
                             </div>
-                            <div
-                                class="w-[calc(100%-160px)] flex flex-col pr-[20px] items-center   border-r border-zinc-200 group-hover:border-secondary-700">
+                            <div class="w-full flex flex-col pr-[20px] items-center pt-2  ">
                                 <div class="w-full flex items-center justify-between">
-                                    <p class="question text-xl font-medium">
-
-                                        @text
-                                    </p>
+                                    <p class="question text-sm"> @text</p>
                                     <span class="arrow">
                                         <svg width="33" height="32" viewBox="0 0 33 32" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -294,19 +283,20 @@
 
                                     </span>
                                 </div>
+                                <div
+                                    class="border-t mt-2 border-element w-full border-zinc-200 group-hover:border-secondary-700">
+                                </div>
                                 <div class="answer text-sm text-zinc-600 h-0 overflow-hidden ">
-                                    <div class="pt-6">
-                                        @largetext
+                                    <div class="pt-6"> @largetext
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </face>
                 </basis>
-
             </div>
-            <aside class="w-[274px] set-h h-full relative">
-                <div class="flex flex-col gap-[21px] w-full sticky top-[73px]">
+            <aside class="w-full h-full relative">
+                <div class="flex flex-col gap-[21px] w-full  ">
                     <div
                         class="w-full h-[177px] group px-[12px] py-[11px] flex flex-col justify-between items-center border border-[#D7D6D6] rounded-xl">
                         <img loading="lazy" class="transition-all duration-500 ease-in-out group-hover:scale-125"
@@ -331,7 +321,7 @@
                     <div class="w-full hidden items-center gap-2 shareIcon-container justify-between ">
 
                         <a
-                            class="shareIcon cursor-pointer facebook   w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
+                            class="shareIcon facebook  w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect width="24" height="24" rx="8" />
@@ -342,7 +332,7 @@
                             </svg>
                         </a>
                         <a
-                            class="shareIcon cursor-pointer mail  w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
+                            class="shareIcon mail  w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect width="24" height="24" rx="8" />
@@ -357,7 +347,7 @@
                         </a>
 
                         <a
-                            class="shareIcon cursor-pointer twitt   w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
+                            class="shareIcon twitt   w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect width="24" height="24" rx="8" />
@@ -370,7 +360,7 @@
                         </a>
 
                         <a
-                            class="shareIcon cursor-pointer whatapp   w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
+                            class="shareIcon whatapp   w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect width="24" height="24" rx="8" />
@@ -388,7 +378,7 @@
 
 
                         <a
-                            class="shareIcon cursor-pointer telegram   w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
+                            class="shareIcon telegram   w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect width="24" height="24" rx="8" />
@@ -404,15 +394,6 @@
                     </div>
 
 
-                    <!-- <div
-                        class="sidebar-box relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 !pr-0">
-                        <div>
-                            <img  loading="lazy"   src="[##cms.cms.cdn##]/images/dwn-package.svg" alt="download">
-
-                        </div>
-                        <span class="shadow-txt text-white font-semibold text-xl">دانلود پکیج</span>
-                    </div> -->
-
                     <basis core="print" datamembername="db.info">
                         <face filter="TypeID=240">
                             <a href="tel:@text"
@@ -421,68 +402,51 @@
                                     <img loading="lazy" src="[##cms.cms.cdn##]/images/shadow-tel.svg" alt="phone">
 
                                 </div>
-                                <span class="shadow-txt text-white font-semibold text-xl"> @text</span>
+                                <span class="shadow-txt text-white font-semibold text-xl"> 021-25644755</span>
                             </a>
                         </face>
                     </basis>
-
                 </div>
             </aside>
         </section>
 
-        <section class="w-full flex justify-center relative">
+        <section class="w-full px-4 mb-8">
             <div
-                class="px-4 relative after-to-bottom-border mb-16 w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class=" last-section-form relative w-full flex flex-col">
-                    <div class="flex  items-center gap-3 ">
-                        <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
-                            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                                class="w-8 h-8">
-                            <p class="font-bold text-2xl text-zinc-900"> ارتباط با کارشناسان</p>
-                            <span class="bullet-1"></span>
-                        </div>
-                    </div>
-                    <div class="my-[50px] z-[4] items-center w-full flex">
-                        <div
-                            class="w-full rounded-2xl overflow-hidden relative flex items-center justify-center h-[143px] px-[35px] py-5">
-                            <img loading="lazy" src="[##cms.cms.cdn##]/images/contact-form-image.jpg" alt="contact-us"
-                                class="w-[42%] h-full z-0    absolute left-0 top-0">
-                            <span
-                                class="w-[80px] absolute left-[calc(42%-3px)] z-[3] bg-gradient-to-r from-[#d6d9d8] h-full"></span>
-                            <span
-                                class="w-full h-full rounded-2xl bg-gradient-to-r z-[1] from-[#fff0] to-[#F2F2F2] absolute top-0 left-0 "></span>
-                            <div class="flex z-[5] w-full flex-col h-full justify-between">
-                                <p class="">جهت مشاوره خرید ویزا با کارشناسان ما در ارتباط باشید</p>
-                                <div class="flex items-center">
-                                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
-                                        <basis core="schema" run="atclient"
-                                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
-                                            displaymode="new" button="[data-btn-uploadfooter]"
-                                            resultsourceid="upload.datafooter" OnRendered="RenderFormFooter">
-                                        </basis>
-                                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
-                                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject"
-                                            method="post"
-                                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
-                                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
-                                            OnProcessed="OnProcessedEditObjectFooter">
-                                        </basis>
-                                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
-                                            triggers="upload.datafooter"></basis>
-                                        <div class="captcha-button">
-                                            <div id="captchaContainer"
-                                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
-                                                data-bc-answer-container data-bc-schema-info-multi="0"
-                                                data-bc-schema-info-word="58" data-bc-schema-info-part="1"
-                                                data-bc-schema-info-part-0-type="text">
-                                                <basis core="dbsource" source="trust_login" name="captcha"
-                                                    run="atclient" triggers="captcha.refreshFooter">
-                                                    <member name="code" type="scalar" request="captcha"></member>
-                                                </basis>
-                                                <basis datamembername="captcha.code" core="print" run="atclient"
-                                                    OnRendered="captchaRenderedFooter">
-                                                    <face>
-                                                        <script type="text/template">
+                class="w-full flex flex-col justify-end relative  overflow-hidden  bg-gradient-to-t from-[#F2F2F2]   to-[#FFFFFF00] rounded-2xl ">
+                <figure class="h-[50%] z-0 w-full rounded-t-2xl">
+                    <img loading="lazy" class="image-fade w-full h-full object-cover  rounded-t-2xl"
+                        src="[##cms.cms.cdn##]/images/contact-image-mob.jpg" alt="contact-us">
+                </figure>
+                <div class="relative z-[2] pb-3 px-3 w-full flex flex-col gap-1">
+                    <p class="font-bold text-sm leading-6">جهت مشاوره خرید تور با کارشناسان ما در ارتباط باشید</p>
+
+                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
+                        <basis core="schema" run="atclient"
+                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
+                            displaymode="new" button="[data-btn-uploadfooter]" resultsourceid="upload.datafooter"
+                            OnRendered="RenderFormFooter">
+                        </basis>
+                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
+                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject" method="post"
+                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
+                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
+                            OnProcessed="OnProcessedEditObjectFooter">
+                        </basis>
+                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
+                            triggers="upload.datafooter"></basis>
+                        <div class="captcha-button">
+                            <div id="captchaContainer"
+                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
+                                data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
+                                data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
+                                <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                                    triggers="captcha.refreshFooter">
+                                    <member name="code" type="scalar" request="captcha"></member>
+                                </basis>
+                                <basis datamembername="captcha.code" core="print" run="atclient"
+                                    OnRendered="captchaRenderedFooter">
+                                    <face>
+                                        <script type="text/template">
                                     <div class="flex  justify-between ">
                                         
                                         <div class="flex sfvgwdcsdhc w-full items-center">
@@ -493,7 +457,7 @@
                             <input type="hidden" name="captchaid" value="@captcha@" />
                         </div>
                       <div class="float-right w-1/2 justify-between lg:mt-0 bvgvkek h-fit leading-[65px] px-4 flex items-center gap-2">
-                       <img loading="lazy" src="/@captcha@" width="86" height="59" alt="captcha" />
+                       <img      loading="lazy" src="/@captcha@" width="86" height="59" alt="captcha" />
                         <span  onclick="refreshCaptchaFooter()">
                             <svg class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -511,35 +475,29 @@
 
                                                         </div></div>
                     </script>
-                                                    </face>
-                                                </basis>
-                                                <button type="button" data-btn-uploadfooter
-                                                    class="  data-body-btn w-[108px] h-[59px] flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
-                                                    ارسال
-                                                </button>
+                                    </face>
+                                </basis>
+                                <button type="button" data-btn-uploadfooter
+                                    class="text-sm  data-body-btn w-full h-12 flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
+                                    ارسال
+                                </button>
 
-                                            </div>
+                            </div>
 
-                                            <div
-                                                class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex">
-                                                <div id="ballsWaveG"
-                                                    class="ext-zinc-50 text-base font-normal leading-normal">
-                                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
-                                                </div>
-                                            </div>
-                                            <div class="message-api absolute text-center text-primary text-xs"></div>
-                                        </div>
-                                    </div>
-
+                            <div
+                                class="Loading_Form hidden data-body-btn h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex !w-full ">
+                                <div id="ballsWaveG" class="ext-zinc-50 text-base font-normal leading-normal">
+                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
                                 </div>
                             </div>
+                            <div class="message-api text-center text-primary text-xs"></div>
                         </div>
                     </div>
                 </div>
@@ -547,7 +505,9 @@
         </section>
     </main>
     <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
-    <basis core="call" file="footer.inc" />
+
+    <basis core="call" pageindex="[##cms.cms.pageindex##]" file="footer.inc" />
+
 </body>
 
 

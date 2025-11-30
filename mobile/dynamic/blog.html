@@ -1,87 +1,94 @@
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
+    <member name="banner-info" type="tree" request="cat" parentid=""
+        postsql="select * from [db.banner-info] where catid = [##cms.query.catid##]" />
+</basis>
+<basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.pid|(2388726)##]" sourcemid="article">
+    <member type="list" name="gallery-story" format="4" order="ord"></member>
+</basis>
+
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.oid##]">
+    <member name="Special-offers-first" type="list" link="article.bc" size="632x264" propertyid="7244" perpage="16"
+        pageno="[##cms.query.pagenum|(1)##]" order="ord" />
+</basis>
+
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.oid##]">
+    <member name="Special-offers-second" type="list" link="article.bc" size="416x264" propertyid="7244"
+        pageno="[##cms.query.pagenum|(1)##]" order="ord" />
+</basis>
+
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.nid##]">
+    <member name="news-of-the-day" type="list" link="article.bc" size="287x206" propertyid="7244"
+        pageno="[##cms.query.pagenum|(1)##]" order="ord" />
+</basis>
+
+
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="another-news">
+    <member name="cat" type="tree" request="cat" parentid="[##cms.query.onid##]" order="ord"
+        postsql="select * from [another-news.cat] order by countid desc"></member>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.onid##]">
+    <member name="articles-another" type="list" link="article.bc" propertyid="7249" order="ord" size="72x60" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.jid##]">
+    <member name="travelogue" type="list" link="article.bc" propertyid="7244,7249" perpage="8" order="ord" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.fid##]">
+    <member name="sidebar-travelogue" type="list" link="article.bc" propertyid="7249" order="ord" size="72x60" />
+</basis>
+
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.gid|(218270)##]">
+    <member name="Tour-Reservation-Guide" type="list" link="article.bc" propertyid="7244" perpage="9"
+        pageno="[##cms.query.pagenum|(1)##]" order="ord" />
+</basis>
+
+
+
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="218236">
+    <member name="all-blogs" type="list" link="article.bc" propertyid="7244,7249" perpage="8" order="ord" />
+</basis>
+
 <!DOCTYPE html>
 <html dir="rtl" lang="fa">
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>satrap</title>
-    <link rel="stylesheet" href="../../output.css" />
-    <link rel="stylesheet" href="https://cdn.basiscore.net/basisfly.com/css/swiper-bundle.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover" />
+    <title>[##cms.seo.title|(مقالات ساتراپ تراول)##]</title>
+    <meta name="description" content="[##cms.seo.description|(شرکت خدمات مسافرت هوایی و گردشگری  ساتراپ تراول)##]" />
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <basis core="call" file="pwa.inc" pageindex="[##cms.cms.pageindex##]" />
+    <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]" />
+    <link href="[##cms.cms.cdn##]/css/contact-us-form-mob.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
 </head>
 
 <body class="white-header overflow-x-hidden">
-    <header class="h-[54px]">
-        <div class="w-full  z-40 px-4 fixed top-0 right-0 flex justify-center items-center h-[54px]">
-            <div class="w-full flex justify-between items-center">
-                <button class="bars3">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M20 20H4C3.448 20 3 19.553 3 19C3 18.447 3.448 18 4 18H20C20.552 18 21 18.447 21 19C21 19.553 20.552 20 20 20Z"
-                            fill="#049AEE" />
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M20 6H4C3.448 6 3 5.553 3 5C3 4.447 3.448 4 4 4H20C20.552 4 21 4.447 21 5C21 5.553 20.552 6 20 6Z"
-                            fill="#049AEE" />
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M20 13H4C3.448 13 3 12.553 3 12C3 11.447 3.448 11 4 11H20C20.552 11 21 11.447 21 12C21 12.553 20.552 13 20 13Z"
-                            fill="#049AEE" />
-                    </svg>
+    <basis core="call" pageindex="[##cms.cms.pageindex##]" file="header.inc" />
 
-                </button>
-                <a href="/">
-                    <img src="../assets/images/logo.png" alt="logo-satrap" class="w-[68px] logo-header">
-                </a>
-            </div>
-            <nav
-                class="header-menu translate-x-[3000px] transition-all ease-in-out duration-500 px-4 py-6 flex flex-col gap-7 w-screen h-screen fixed top-0 left-0 bg-white">
-                <div class="w-full flex justify-between items-center">
-
-                    <button type="button" class="header-menu-close">
-                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd"
-                                d="M12.25 3.28467C6.874 3.28467 2.5 7.65867 2.5 13.0347C2.5 18.4107 6.874 22.7847 12.25 22.7847C17.626 22.7847 22 18.4107 22 13.0347C22 7.65867 17.626 3.28467 12.25 3.28467Z"
-                                fill="#71717A" />
-                            <path
-                                d="M14.6496 16.4849L15.7106 15.4239L13.3106 13.0259L15.7106 10.6309L14.6506 9.56889L12.2496 11.9659L9.84957 9.56689L8.78857 10.6279L11.1876 13.0259L8.78857 15.4209L9.84857 16.4819L12.2486 14.0859L14.6496 16.4849Z"
-                                fill="#71717A" />
-                        </svg>
-
-                    </button> <a href="/">
-                        <img src="../assets/images/logo.png" alt="logo-satrap" class="w-[68px]">
-                    </a>
-                </div>
-                <ul class="w-full flex flex-col divide-y divide-primary-50">
-                    <li class="w-full">
-                        <a href="/tours" class="py-6 block  text-zinc-900 w-full hover:bg-primary-200">تورها</a>
-                    </li>
-
-                    <li data-id="flight" data-nav="flight"
-                        onclick="check_searchHistory('flight'); check_landing('flight')"
-                        class="py-6 cursor-pointer block text-zinc-900 w-full hover:bg-primary-200">
-                        بلیط
-                        هواپیما</li>
-
-                    <li class="w-full">
-                        <a href="/" class="py-6 block  text-zinc-900 w-full hover:bg-primary-200">هتل</a>
-                    </li>
-
-                    <li class="w-full">
-                        <a href="/visa" class="py-6 block  text-zinc-900 w-full hover:bg-primary-200">ویزا</a>
-                    </li>
-
-                    <li class="w-full">
-                        <a href="/blog" class="py-6 block  text-zinc-900 w-full hover:bg-primary-200">مجله ساتراپ</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-    </header>
     <main>
         <div class="w-full h-[54px] bg-primary-600 mt-[-54px]"></div>
         <section class="flex h-[408px] flex-col justify-center items-center relative w-full">
 
-            <img src="../assets/images/article-list-bg.jpg" alt=""
-                class="z-0 w-full absolute top-0 left-0 h-full object-cover">
+            <basis core="print" datamembername="db.banner-info">
+                <face filter="image is null">
+
+                    <img src="[##cms.cms.cdn##]/images/article-list-bg.jpg" alt="@urltitle"
+                        class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+                </face>
+                <face>
+                    <img src="@image" alt="@urltitle" class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+                </face>
+            </basis>
             <span class="absolute w-full h-full bg-[#010101A8] top-0 left-0 z-[1]"></span>
             <div class="w-full h-full relative z-10 flex flex-col justify-center items-center px-4 gap-5">
                 <ul class="flex items-center gap-2 text-white !text-xs">
@@ -106,762 +113,302 @@
                         class="flex-col top-full absolute overflow-hidden hidden w-full shadow-lg search-drop-down bg-white rounded-lg">
                         <div class="w-full flex flex-col overflow-auto h-[180px]">
 
-                            <li onclick="contentSearched('دبی شهری به سوی آینده','2388755')">
-                                دبی شهری به سوی آینده
-                                <span class="hidden linkspan">travel-dubai</span>
-                            </li>
 
-                            <li onclick="contentSearched('بهترین جاهای دیدنی کیش','2388760')">
-                                بهترین جاهای دیدنی کیش
-                                <span class="hidden linkspan">article.bc?lid=1&amp;id=2388760</span>
-                            </li>
-
-                            <li onclick="contentSearched('تورهای نمایشگاهی','2388827')">
-                                تورهای نمایشگاهی
-                                <span class="hidden linkspan">festival-travel</span>
-                            </li>
-
-                            <li
-                                onclick="contentSearched('کاخ باکینگهام لندن؛ سفر به قلب تاریخ و سلطنت انگلستان','2388865')">
-                                کاخ باکینگهام لندن؛ سفر به قلب تاریخ و سلطنت انگلستان
-                                <span class="hidden linkspan">buckingham-palace</span>
-                            </li>
-
-                            <li onclick="contentSearched('بهترین هتل های دبی را بشناسید','2388866')">
-                                بهترین هتل های دبی را بشناسید
-                                <span class="hidden linkspan">dubai-hotel</span>
-                            </li>
-
-                            <li
-                                onclick="contentSearched('محله بشیکتاش استانبول، مقصدی بی‌نظیر برای عاشقان تاریخ و فرهنگ','2388867')">
-                                محله بشیکتاش استانبول، مقصدی بی‌نظیر برای عاشقان تاریخ و فرهنگ
-                                <span class="hidden linkspan">beshiktash-istanbul</span>
-                            </li>
-
-                            <li onclick="contentSearched('خوش‌مزه‌گردی در بهترین رستوران های اصفهان','2388868')">
-                                خوش‌مزه‌گردی در بهترین رستوران های اصفهان
-                                <span class="hidden linkspan">resturant-isfahan</span>
-                            </li>
-
-                            <li onclick="contentSearched('ایل گلی تبریز: قصه‌ای از شاه تا ایل (مردم)','2388869')">
-                                ایل گلی تبریز: قصه‌ای از شاه تا ایل (مردم)
-                                <span class="hidden linkspan">elgoli-tabriz</span>
-                            </li>
-
-                            <li onclick="contentSearched('دبی شهری به سوی آینده','2388755')">
-                                دبی شهری به سوی آینده
-                                <span class="hidden linkspan">travel-dubai</span>
-                            </li>
-
-                            <li onclick="contentSearched('جاهای دیدنی استانبول','2388757')">
-                                جاهای دیدنی استانبول
-                                <span class="hidden linkspan">travel-istanbul</span>
-                            </li>
-
-                            <li onclick="contentSearched('بهترین جاهای دیدنی کیش','2388760')">
-                                بهترین جاهای دیدنی کیش
-                                <span class="hidden linkspan">article.bc?lid=1&amp;id=2388760</span>
-                            </li>
-
-                            <li onclick="contentSearched('راهنمای سفر به قشم','2388762')">
-                                راهنمای سفر به قشم
-                                <span class="hidden linkspan">qeshm-travel</span>
-                            </li>
-
-                            <li onclick="contentSearched('جاهای دیدنی تفلیس که نباید از دست دهید!','2388763')">
-                                جاهای دیدنی تفلیس که نباید از دست دهید!
-                                <span class="hidden linkspan">tbilisi-travel</span>
-                            </li>
-
-                            <li onclick="contentSearched('جاهای دیدنی شیراز','2388764')">
-                                جاهای دیدنی شیراز
-                                <span class="hidden linkspan">shiraz-travel</span>
-                            </li>
-
-                            <li onclick="contentSearched('لوکس ترین جاهای دبی و استانبول','2388825')">
-                                لوکس ترین جاهای دبی و استانبول
-                                <span class="hidden linkspan">dubai-istanbul-luxury-places</span>
-                            </li>
-
-                            <li
-                                onclick="contentSearched('راهنمای سفر به سنگاپور؛ کشوری که شما را عاشق خودش می‌کند.','2388835')">
-                                راهنمای سفر به سنگاپور؛ کشوری که شما را عاشق خودش می‌کند.
-                                <span class="hidden linkspan">singapour-travel</span>
-                            </li>
-
-                            <li
-                                onclick="contentSearched('میدان تکسیم استانبول؛ پاتوق رویاها و ماجراجویی‌های بی‌پایان','2388840')">
-                                میدان تکسیم استانبول؛ پاتوق رویاها و ماجراجویی‌های بی‌پایان
-                                <span class="hidden linkspan">taksim-istanbul</span>
-                            </li>
-
-                            <li
-                                onclick="contentSearched('فرودگاه جدید استانبول؛ راهنمای جامع و کامل فرودگاه','2388844')">
-                                فرودگاه جدید استانبول؛ راهنمای جامع و کامل فرودگاه
-                                <span class="hidden linkspan">article.bc?lid=1&amp;id=2388844</span>
-                            </li>
-
-                            <li onclick="contentSearched('ساحل فلوریا استانبول؛ گشت‌وگذاری با چاشنی آفتاب','2388861')">
-                                ساحل فلوریا استانبول؛ گشت‌وگذاری با چاشنی آفتاب
-                                <span class="hidden linkspan">feloria-beach</span>
-                            </li>
-
-                            <li onclick="contentSearched('جزیره ساموس یونان؛ جواهر پنهان دریای اژه','2388863')">
-                                جزیره ساموس یونان؛ جواهر پنهان دریای اژه
-                                <span class="hidden linkspan">samos-island</span>
-                            </li>
-
-                            <li
-                                onclick="contentSearched('کاخ باکینگهام لندن؛ سفر به قلب تاریخ و سلطنت انگلستان','2388865')">
-                                کاخ باکینگهام لندن؛ سفر به قلب تاریخ و سلطنت انگلستان
-                                <span class="hidden linkspan">buckingham-palace</span>
-                            </li>
-
-                            <li onclick="contentSearched('بهترین هتل های دبی را بشناسید','2388866')">
-                                بهترین هتل های دبی را بشناسید
-                                <span class="hidden linkspan">dubai-hotel</span>
-                            </li>
-
-                            <li
-                                onclick="contentSearched('محله بشیکتاش استانبول، مقصدی بی‌نظیر برای عاشقان تاریخ و فرهنگ','2388867')">
-                                محله بشیکتاش استانبول، مقصدی بی‌نظیر برای عاشقان تاریخ و فرهنگ
-                                <span class="hidden linkspan">beshiktash-istanbul</span>
-                            </li>
-
-                            <li onclick="contentSearched('خوش‌مزه‌گردی در بهترین رستوران های اصفهان','2388868')">
-                                خوش‌مزه‌گردی در بهترین رستوران های اصفهان
-                                <span class="hidden linkspan">resturant-isfahan</span>
-                            </li>
-
-                            <li onclick="contentSearched('ایل گلی تبریز: قصه‌ای از شاه تا ایل (مردم)','2388869')">
-                                ایل گلی تبریز: قصه‌ای از شاه تا ایل (مردم)
-                                <span class="hidden linkspan">elgoli-tabriz</span>
-                            </li>
-
-                            <li onclick="contentSearched('سوغات ترکیه چیست؟','2388870')">
-                                سوغات ترکیه چیست؟
-                                <span class="hidden linkspan">turkey-souvenir</span>
-                            </li>
-
-                            <li
-                                onclick="contentSearched('راهنمای سفر به سنگاپور؛ کشوری که شما را عاشق خودش می‌کند.','2388835')">
-                                راهنمای سفر به سنگاپور؛ کشوری که شما را عاشق خودش می‌کند.
-                                <span class="hidden linkspan">singapour-travel</span>
-                            </li>
-
-                            <li onclick="contentSearched('جاهای دیدنی استانبول','2388757')">
-                                جاهای دیدنی استانبول
-                                <span class="hidden linkspan">travel-istanbul</span>
-                            </li>
-
-                            <li onclick="contentSearched('دبی شهری به سوی آینده','2388755')">
-                                دبی شهری به سوی آینده
-                                <span class="hidden linkspan">travel-dubai</span>
-                            </li>
-
-                            <li onclick="contentSearched('تورهای نمایشگاهی','2388827')">
-                                تورهای نمایشگاهی
-                                <span class="hidden linkspan">festival-travel</span>
-                            </li>
-
-                            <li onclick="contentSearched('بهترین جاهای دیدنی کیش','2388760')">
-                                بهترین جاهای دیدنی کیش
-                                <span class="hidden linkspan">article.bc?lid=1&amp;id=2388760</span>
-                            </li>
-
-                            <li onclick="contentSearched('راهنمای سفر به قشم','2388762')">
-                                راهنمای سفر به قشم
-                                <span class="hidden linkspan">qeshm-travel</span>
-                            </li>
-
-                            <li onclick="contentSearched('جاهای دیدنی تفلیس که نباید از دست دهید!','2388763')">
-                                جاهای دیدنی تفلیس که نباید از دست دهید!
-                                <span class="hidden linkspan">tbilisi-travel</span>
-                            </li>
-
-                            <li onclick="contentSearched('جاهای دیدنی شیراز','2388764')">
-                                جاهای دیدنی شیراز
-                                <span class="hidden linkspan">shiraz-travel</span>
-                            </li>
-
-                            <li onclick="contentSearched('لوکس ترین جاهای دبی و استانبول','2388825')">
-                                لوکس ترین جاهای دبی و استانبول
-                                <span class="hidden linkspan">dubai-istanbul-luxury-places</span>
-                            </li>
-
-                            <li
-                                onclick="contentSearched('مهمترین نمایشگاه‌ های ترکیه که نباید از دست بدهید','2388826')">
-                                مهمترین نمایشگاه‌ های ترکیه که نباید از دست بدهید
-                                <span class="hidden linkspan">exhibition-turkey</span>
-                            </li>
-
-                            <li onclick="contentSearched('چگونه هزینه های سفر با کشتی کروز را کم کنیم؟','2388828')">
-                                چگونه هزینه های سفر با کشتی کروز را کم کنیم؟
-                                <span class="hidden linkspan">cruise-travel</span>
-                            </li>
-
-                            <li
-                                onclick="contentSearched('میدان تکسیم استانبول؛ پاتوق رویاها و ماجراجویی‌های بی‌پایان','2388840')">
-                                میدان تکسیم استانبول؛ پاتوق رویاها و ماجراجویی‌های بی‌پایان
-                                <span class="hidden linkspan">taksim-istanbul</span>
-                            </li>
-
-                            <li
-                                onclick="contentSearched('فرودگاه جدید استانبول؛ راهنمای جامع و کامل فرودگاه','2388844')">
-                                فرودگاه جدید استانبول؛ راهنمای جامع و کامل فرودگاه
-                                <span class="hidden linkspan">article.bc?lid=1&amp;id=2388844</span>
-                            </li>
-
+                            <basis core="print" datamembername="db.travelogue">
+                                <face>
+                                    <li class="!text-xs" onclick="contentSearched('@title','@id')">
+                                        @title
+                                        <span class="hidden linkspan">@link</span>
+                                    </li>
+                                </face>
+                            </basis>
+                            <basis core="print" datamembername="db.news-of-the-day">
+                                <face>
+                                    <li class="!text-xs" onclick="contentSearched('@title','@id')">
+                                        @title
+                                        <span class="hidden linkspan">@link</span>
+                                    </li>
+                                </face>
+                            </basis>
                         </div>
-                        <p class="no-result-msg text-center text-zinc-500 w-full py-2 hidden">هیچ موردی یافت نشد</p>
                     </ul>
 
 
 
 
                 </form>
-                <div class="text-xs text-white text-center">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
-                    با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است،
-                </div>
+                <basis core="print" datamembername="db.banner-info">
+                    <face>
+                        <div class="text-white text-xs">@urldescription</div>
+                    </face>
+                </basis>
             </div>
         </section>
         <section class="w-full overflow-hidden flex flex-col gap-3 relative my-16">
             <div class="w-full flex items-center mb-3 px-4 gap-2">
-                <img class="w-[21px] h-[21px]" width="32" height="32" src="../assets/images/logo-small.png" alt="logo">
+                <img loading="lazy" class="w-[21px] h-[21px]" width="32" height="32"
+                    src="[##cms.cms.cdn##]/images/logo-small.png" alt="logo">
                 <h2 class="textsm font-bold text-[#18181B] "> دسته بندی اخبار </h2>
             </div>
-            <span class="absolute left-0 h-full top-0 bg-gradient-to-r from-white w-28 z-[1]"></span>
-            <div
-                class="w-screen overflow-x-auto [&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar-thumb]:hidden pr-4 pl-12 stories-container flex items-center gap-6 relative">
+            <basis core="print" datamembername="db.gallery-story">
+                <layout>
+                    <span class="absolute left-0 h-full top-0 bg-gradient-to-r from-white w-28 z-[1]"></span>
+                    <div
+                        class="w-screen overflow-x-auto [&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar-thumb]:hidden pr-4 pl-12 stories-container flex  gap-5 relative">
 
-                <div catid="2703087" class="story flex flex-col gap-3">
-                    <div class="">
-                        <article class=" cursor-pointer group relative flex flex-col gap-2 justify-center items-center">
-                            <div
-                                class=" border  rounded-full border-[#FFBD22] w-[80px] h-[80px] flex justify-center items-center">
-                                <div class="w-[70px] h-[70px] relative ">
-                                    <div class="w-full h-full absolute top-0 left-0 z-0 overflow-hidden rounded-full">
-                                        <img loading="lazy" src="../assets/images/slider-tour.png" alt="هتل ترنج کیش"
-                                            class=" w-full h-full group-hover:scale-125 transition-all ease-in-out duration-500 object-cover rounded-full">
-                                    </div>
-                                    <span
-                                        class="bg-[#00000057] group-hover:bg-[#00000061] transition-all ease-in-out duration-500 absolute w-full h-full rounded-full top-0 left-0 z-[1]"></span>
-
-
-                                </div>
-
-                            </div>
-
-
-                            <p class="text-center text-xs w-[60px] font-bold line-clamp-2"> هتل ترنج کیش </p>
-
-
-
-                        </article>
+                        @child
                     </div>
-                </div>
-                <div catid="2703087" class="story flex flex-col gap-3">
-                    <div class="">
-                        <article class=" cursor-pointer group relative flex flex-col gap-2 justify-center items-center">
-                            <div
-                                class=" border  rounded-full border-[#FFBD22] w-[80px] h-[80px] flex justify-center items-center">
-                                <div class="w-[70px] h-[70px] relative ">
-                                    <div class="w-full h-full absolute top-0 left-0 z-0 overflow-hidden rounded-full">
-                                        <img loading="lazy" src="../assets/images/slider-tour.png" alt="هتل ترنج کیش"
-                                            class=" w-full h-full group-hover:scale-125 transition-all ease-in-out duration-500 object-cover rounded-full">
-                                    </div>
-                                    <span
-                                        class="bg-[#00000057] group-hover:bg-[#00000061] transition-all ease-in-out duration-500 absolute w-full h-full rounded-full top-0 left-0 z-[1]"></span>
+                    <div
+                        class="hidden video-popup   w-screen h-screen fixed flex-col gap-4 justify-center items-center blur2 top-0 left-0 z-50 bg-[#0000009a] ">
+                        <div class="!w-full px-4 flex justify-end relative">
+                            <button class="close-popup hover:bg-secondary-900 p-1 rounded-full">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"
+                                        fill="#fff" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="swiper-story relative swiper !flex overflow-hidden !w-full !h-[80vh]">
 
 
+                            <div class="swiper-wrapper fetch-story">
+                                <div dir="ltr" class="w-full flex justify-center">
+                                    <span class="loader"></span>
                                 </div>
-
                             </div>
-
-
-                            <p class="text-center text-xs w-[60px] font-bold line-clamp-2"> هتل ترنج کیش </p>
-
-
-
-                        </article>
-                    </div>
-                </div>
-                <div catid="2703087" class="story flex flex-col gap-3">
-                    <div class="">
-                        <article class=" cursor-pointer group relative flex flex-col gap-2 justify-center items-center">
-                            <div
-                                class=" border  rounded-full border-[#FFBD22] w-[80px] h-[80px] flex justify-center items-center">
-                                <div class="w-[70px] h-[70px] relative ">
-                                    <div class="w-full h-full absolute top-0 left-0 z-0 overflow-hidden rounded-full">
-                                        <img loading="lazy" src="../assets/images/slider-tour.png" alt="هتل ترنج کیش"
-                                            class=" w-full h-full group-hover:scale-125 transition-all ease-in-out duration-500 object-cover rounded-full">
-                                    </div>
-                                    <span
-                                        class="bg-[#00000057] group-hover:bg-[#00000061] transition-all ease-in-out duration-500 absolute w-full h-full rounded-full top-0 left-0 z-[1]"></span>
-
-
-                                </div>
-
-                            </div>
-
-
-                            <p class="text-center text-xs w-[60px] font-bold line-clamp-2"> هتل ترنج کیش </p>
-
-
-
-                        </article>
-                    </div>
-                </div>
-                <div catid="2703087" class="story flex flex-col gap-3">
-                    <div class="">
-                        <article class=" cursor-pointer group relative flex flex-col gap-2 justify-center items-center">
-                            <div
-                                class=" border  rounded-full border-[#FFBD22] w-[80px] h-[80px] flex justify-center items-center">
-                                <div class="w-[70px] h-[70px] relative ">
-                                    <div class="w-full h-full absolute top-0 left-0 z-0 overflow-hidden rounded-full">
-                                        <img loading="lazy" src="../assets/images/slider-tour.png" alt="هتل ترنج کیش"
-                                            class=" w-full h-full group-hover:scale-125 transition-all ease-in-out duration-500 object-cover rounded-full">
-                                    </div>
-                                    <span
-                                        class="bg-[#00000057] group-hover:bg-[#00000061] transition-all ease-in-out duration-500 absolute w-full h-full rounded-full top-0 left-0 z-[1]"></span>
-
-
-                                </div>
-
-                            </div>
-
-
-                            <p class="text-center text-xs w-[60px] font-bold line-clamp-2"> هتل ترنج کیش </p>
-
-
-
-                        </article>
-                    </div>
-                </div>
-                <div catid="2703087" class="story flex flex-col gap-3">
-                    <div class="">
-                        <article class=" cursor-pointer group relative flex flex-col gap-2 justify-center items-center">
-                            <div
-                                class=" border  rounded-full border-[#FFBD22] w-[80px] h-[80px] flex justify-center items-center">
-                                <div class="w-[70px] h-[70px] relative ">
-                                    <div class="w-full h-full absolute top-0 left-0 z-0 overflow-hidden rounded-full">
-                                        <img loading="lazy" src="../assets/images/slider-tour.png" alt="هتل ترنج کیش"
-                                            class=" w-full h-full group-hover:scale-125 transition-all ease-in-out duration-500 object-cover rounded-full">
-                                    </div>
-                                    <span
-                                        class="bg-[#00000057] group-hover:bg-[#00000061] transition-all ease-in-out duration-500 absolute w-full h-full rounded-full top-0 left-0 z-[1]"></span>
-
-
-                                </div>
-
-                            </div>
-
-
-                            <p class="text-center text-xs w-[60px] font-bold line-clamp-2"> هتل ترنج کیش </p>
-
-
-
-                        </article>
-                    </div>
-                </div>
-                <div catid="2703087" class="story flex flex-col gap-3">
-                    <div class="">
-                        <article class=" cursor-pointer group relative flex flex-col gap-2 justify-center items-center">
-                            <div
-                                class=" border  rounded-full border-[#FFBD22] w-[80px] h-[80px] flex justify-center items-center">
-                                <div class="w-[70px] h-[70px] relative ">
-                                    <div class="w-full h-full absolute top-0 left-0 z-0 overflow-hidden rounded-full">
-                                        <img loading="lazy" src="../assets/images/slider-tour.png" alt="هتل ترنج کیش"
-                                            class=" w-full h-full group-hover:scale-125 transition-all ease-in-out duration-500 object-cover rounded-full">
-                                    </div>
-                                    <span
-                                        class="bg-[#00000057] group-hover:bg-[#00000061] transition-all ease-in-out duration-500 absolute w-full h-full rounded-full top-0 left-0 z-[1]"></span>
-
-
-                                </div>
-
-                            </div>
-
-
-                            <p class="text-center text-xs w-[60px] font-bold line-clamp-2"> هتل ترنج کیش </p>
-
-
-
-                        </article>
-                    </div>
-                </div>
-                <div catid="2703087" class="story flex flex-col gap-3">
-                    <div class="">
-                        <article class=" cursor-pointer group relative flex flex-col gap-2 justify-center items-center">
-                            <div
-                                class=" border  rounded-full border-[#FFBD22] w-[80px] h-[80px] flex justify-center items-center">
-                                <div class="w-[70px] h-[70px] relative ">
-                                    <div class="w-full h-full absolute top-0 left-0 z-0 overflow-hidden rounded-full">
-                                        <img loading="lazy" src="../assets/images/slider-tour.png" alt="هتل ترنج کیش"
-                                            class=" w-full h-full group-hover:scale-125 transition-all ease-in-out duration-500 object-cover rounded-full">
-                                    </div>
-                                    <span
-                                        class="bg-[#00000057] group-hover:bg-[#00000061] transition-all ease-in-out duration-500 absolute w-full h-full rounded-full top-0 left-0 z-[1]"></span>
-
-
-                                </div>
-
-                            </div>
-
-
-                            <p class="text-center text-xs w-[60px] font-bold line-clamp-2"> هتل ترنج کیش </p>
-
-
-
-                        </article>
-                    </div>
-                </div>
-                <div catid="2703087" class="story flex flex-col gap-3">
-                    <div class="">
-                        <article class=" cursor-pointer group relative flex flex-col gap-2 justify-center items-center">
-                            <div
-                                class=" border  rounded-full border-[#FFBD22] w-[80px] h-[80px] flex justify-center items-center">
-                                <div class="w-[70px] h-[70px] relative ">
-                                    <div class="w-full h-full absolute top-0 left-0 z-0 overflow-hidden rounded-full">
-                                        <img loading="lazy" src="../assets/images/slider-tour.png" alt="هتل ترنج کیش"
-                                            class=" w-full h-full group-hover:scale-125 transition-all ease-in-out duration-500 object-cover rounded-full">
-                                    </div>
-                                    <span
-                                        class="bg-[#00000057] group-hover:bg-[#00000061] transition-all ease-in-out duration-500 absolute w-full h-full rounded-full top-0 left-0 z-[1]"></span>
-
-
-                                </div>
-
-                            </div>
-
-
-                            <p class="text-center text-xs w-[60px] font-bold line-clamp-2"> هتل ترنج کیش </p>
-
-
-
-                        </article>
-                    </div>
-                </div>
-                <div catid="2703087" class="story flex flex-col gap-3">
-                    <div class="">
-                        <article class=" cursor-pointer group relative flex flex-col gap-2 justify-center items-center">
-                            <div
-                                class=" border  rounded-full border-[#FFBD22] w-[80px] h-[80px] flex justify-center items-center">
-                                <div class="w-[70px] h-[70px] relative ">
-                                    <div class="w-full h-full absolute top-0 left-0 z-0 overflow-hidden rounded-full">
-                                        <img loading="lazy" src="../assets/images/slider-tour.png" alt="هتل ترنج کیش"
-                                            class=" w-full h-full group-hover:scale-125 transition-all ease-in-out duration-500 object-cover rounded-full">
-                                    </div>
-                                    <span
-                                        class="bg-[#00000057] group-hover:bg-[#00000061] transition-all ease-in-out duration-500 absolute w-full h-full rounded-full top-0 left-0 z-[1]"></span>
-
-
-                                </div>
-
-                            </div>
-
-
-                            <p class="text-center text-xs w-[60px] font-bold line-clamp-2"> هتل ترنج کیش </p>
-
-
-
-                        </article>
-                    </div>
-                </div>
-                <div catid="2703087" class="story flex flex-col gap-3">
-                    <div class="">
-                        <article class=" cursor-pointer group relative flex flex-col gap-2 justify-center items-center">
-                            <div
-                                class=" border  rounded-full border-[#FFBD22] w-[80px] h-[80px] flex justify-center items-center">
-                                <div class="w-[70px] h-[70px] relative ">
-                                    <div class="w-full h-full absolute top-0 left-0 z-0 overflow-hidden rounded-full">
-                                        <img loading="lazy" src="../assets/images/slider-tour.png" alt="هتل ترنج کیش"
-                                            class=" w-full h-full group-hover:scale-125 transition-all ease-in-out duration-500 object-cover rounded-full">
-                                    </div>
-                                    <span
-                                        class="bg-[#00000057] group-hover:bg-[#00000061] transition-all ease-in-out duration-500 absolute w-full h-full rounded-full top-0 left-0 z-[1]"></span>
-
-
-                                </div>
-
-                            </div>
-
-
-                            <p class="text-center text-xs w-[60px] font-bold line-clamp-2"> هتل ترنج کیش </p>
-
-
-
-                        </article>
-                    </div>
-                </div>
-                <div catid="2703087" class="story flex flex-col gap-3">
-                    <div class="">
-                        <article class=" cursor-pointer group relative flex flex-col gap-2 justify-center items-center">
-                            <div
-                                class=" border  rounded-full border-[#FFBD22] w-[80px] h-[80px] flex justify-center items-center">
-                                <div class="w-[70px] h-[70px] relative ">
-                                    <div class="w-full h-full absolute top-0 left-0 z-0 overflow-hidden rounded-full">
-                                        <img loading="lazy" src="../assets/images/slider-tour.png" alt="هتل ترنج کیش"
-                                            class=" w-full h-full group-hover:scale-125 transition-all ease-in-out duration-500 object-cover rounded-full">
-                                    </div>
-                                    <span
-                                        class="bg-[#00000057] group-hover:bg-[#00000061] transition-all ease-in-out duration-500 absolute w-full h-full rounded-full top-0 left-0 z-[1]"></span>
-
-
-                                </div>
-
-                            </div>
-
-
-                            <p class="text-center text-xs w-[60px] font-bold line-clamp-2"> هتل ترنج کیش </p>
-
-
-
-                        </article>
-                    </div>
-                </div>
-                <div catid="2703087" class="story flex flex-col gap-3">
-                    <div class="">
-                        <article class=" cursor-pointer group relative flex flex-col gap-2 justify-center items-center">
-                            <div
-                                class=" border  rounded-full border-[#FFBD22] w-[80px] h-[80px] flex justify-center items-center">
-                                <div class="w-[70px] h-[70px] relative ">
-                                    <div class="w-full h-full absolute top-0 left-0 z-0 overflow-hidden rounded-full">
-                                        <img loading="lazy" src="../assets/images/slider-tour.png" alt="هتل ترنج کیش"
-                                            class=" w-full h-full group-hover:scale-125 transition-all ease-in-out duration-500 object-cover rounded-full">
-                                    </div>
-                                    <span
-                                        class="bg-[#00000057] group-hover:bg-[#00000061] transition-all ease-in-out duration-500 absolute w-full h-full rounded-full top-0 left-0 z-[1]"></span>
-
-
-                                </div>
-
-                            </div>
-
-
-                            <p class="text-center text-xs w-[60px] font-bold line-clamp-2"> هتل ترنج کیش </p>
-
-
-
-                        </article>
-                    </div>
-                </div>
-            </div>
-            <div
-                class="video-popup py-12 hidden w-screen h-screen fixed flex-col gap-4 justify-center items-center blur2 top-0 left-0 z-50 bg-[#0000009a] flex">
-                <div class="!w-full  flex justify-end relative">
-                    <button class="close-popup hover:bg-secondary-900 p-1 rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 24 24"
-                            fill="none">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"
-                                fill="#fff"></path>
-                        </svg>
-                    </button>
-                    <button
-                        class="popup-nav p-2 bg-white rounded-full shadow-lg ml-2 opacity-0 transition-opacity duration-300 hover:opacity-100"
-                        style="opacity: 0; pointer-events: none;"><svg xmlns="http://www.w3.org/2000/svg" width="32"
-                            height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                            </path>
-                        </svg></button><button
-                        class="popup-nav p-2 bg-white rounded-full shadow-lg ml-2 opacity-0 transition-opacity duration-300 hover:opacity-100"
-                        style="opacity: 1; pointer-events: auto;"><svg xmlns="http://www.w3.org/2000/svg" width="32"
-                            height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
-                            </path>
-                        </svg></button>
-                </div>
-                <div class="swiper-story relative swiper !flex overflow-hidden w-[85%]  !h-[100vh]">
-
-
-                    <div class="swiper-wrapper fetch-story">
-
-
-                        <div
-                            class="swiper-slide relative !h-full px-4 bg-[#0000009a] rounded-xl !flex justify-center items-center">
-
-                            <div class="px-4 w-full z-20 absolute top-0 left-0">
-                                <div
-                                    class=" w-full mt-3 py-3 bg-white shadow-2xl rounded-xl flex justify-center items-center text-clip font-bold text-2xl ">
-                                    هتل ترنج کیش</div>
-                            </div>
-
-                            <a href="https://www.eghamat24.com/KishHotels/ToranjHotel.html" target="_blank"
-                                class=" px-14 z-20 py-3 mb-5 rounded-lg text-xl font-bold bg-white before-line absolute bottom-0">مشاهده
-                                مطلب</a>
-
-                            <div class="!rounded-lg !w-full  story-item "
-                                data-video="https://www.aparat.com/embed/zyt3674"><iframe
-                                    src="https://www.aparat.com/video/video/embed/videohash/zyt3674/vt/frame"
-                                    width="100%" height="700px" allowfullscreen="true"
-                                    class="w-full h-full rounded-lg"></iframe></div>
-
-                            <div class="h-[700px]"></div>
-
-
-
                         </div>
                     </div>
-                </div>
-            </div>
+                </layout>
+                <face filter="RowNumber < 10">
+                    <div catid="@Table2ID" class="story flex flex-col gap-3">
+                        <div class="">
+                            <article
+                                class=" cursor-pointer group relative flex flex-col gap-2 justify-center items-center">
+                                <div
+                                    class=" border  rounded-full border-[#FFBD22] w-[80px] h-[80px] flex justify-center items-center">
+                                    <div class="w-[70px] h-[70px] relative ">
+                                        <div
+                                            class="w-full h-full absolute top-0 left-0 z-0 overflow-hidden rounded-full">
+                                            <img loading="lazy" src="@largeIMG" alt="@name"
+                                                class=" w-full h-full group-hover:scale-125 transition-all ease-in-out duration-500 object-cover rounded-full">
+                                        </div>
+                                        <span
+                                            class="bg-[#00000057] group-hover:bg-[#00000061] transition-all ease-in-out duration-500 absolute w-full h-full rounded-full top-0 left-0 z-[1]"></span>
+
+
+                                    </div>
+
+                                </div>
+
+
+                                <p class="text-center text-xs w-[60px] font-bold line-clamp-2"> @name</p>
+
+
+
+                            </article>
+                        </div>
+                    </div>
+                </face>
+            </basis>
         </section>
 
 
 
         <section class="w-full overflow-hidden px-4 flex flex-col gap-3 relative my-16">
             <div class="w-full flex items-center  gap-2">
-                <img class="w-[21px] h-[21px]" width="32" height="32" src="../assets/images/logo-small.png" alt="logo">
+                <img loading="lazy" class="w-[21px] h-[21px]" width="32" height="32"
+                    src="[##cms.cms.cdn##]/images/logo-small.png" alt="logo">
                 <h3 class="textsm font-bold text-[#18181B]"> پیشنهاد های ویژه</h3>
             </div>
-            <div class="!w-full swiper !h-[200px] relative swiper-one-el blue-paging">
-                <div class="swiper-wrapper ">
+            <basis core="list" datamembername="db.Special-offers-first">
+                <layout>
+                    <div class="!w-full swiper !h-[200px] relative swiper-one-el blue-paging">
+                        <div class="swiper-wrapper ">
+                            @child
+
+                        </div>
+                        <div class="swiper-pagination !top-[90%]"></div>
+                    </div>
+                </layout>
+                <face filter="RowNumber in (1,2)">
                     <div class="w-full !h-[169px] swiper-slide">
-                        <a href="singapour-travel"
+                        <a href="@link"
                             class="relative box-hover1 group rounded-xl h-full w-full overflow-hidden flex items-end">
-                            <img loading="lazy"
-                                src="http://cdn.basiscore.net/z121u112.undertest.ir/pict5388832000015736024000011861101	"
-                                alt="راهنمای سفر به سنگاپور؛ کشوری که شما را عاشق خودش می‌کند."
+                            <img loading="lazy" src="[##cms.cms.cdn##]/@00632X00264prp	" alt="@title"
                                 class="group-hover:scale-110 transition-all duration-700 ease-in-out w-full z-0 block h-full object-cover">
                             <div
                                 class="absolute w-full h-full z-[2] bg-gradient-to-b from-[#00000000] py-5 px-[27px] transition-all duration-700 ease-in-out flex flex-col gap-3 justify-end to-[#000000]">
                                 <p class="text-white text-base line-clamp-1 font-bold">
-                                    راهنمای سفر به سنگاپور؛ کشوری که شما را عاشق خودش می‌کند.
+                                    @title
                                 </p>
                                 <div
                                     class="text-white line-clamp-2 text-xs transition-all duration-300 ease-in-out absolute bottom-[-300px] group-hover:bottom-0 group-hover:!relative ">
-                                    گردشگران دو دسته هستند؛ دسته اول می‌خواهند به سنگاپور بروند و دسته دوم هنوز با
-                                    جذابیت‌های این کشور کوچک و باصفا آشنا نشده‌اند. خبر خوب این است که مهم نیست شما جزو
-                                    کدام دسته باشید، به هر حال این مطلب برای شما نوشته شده است.
+                                    @prp_7244
                                 </div>
                             </div>
                         </a>
                     </div>
+                </face>
+            </basis>
 
-                </div>
-                <div class="swiper-pagination !top-[90%]"></div>
-            </div>
 
-            <div class="!w-full swiper mt-5 !h-[200px] relative swiper-one-el blue-paging">
-                <div class="swiper-wrapper ">
+            <basis core="list" datamembername="db.Special-offers-first">
+                <layout>
+                    <div class="!w-full swiper !h-[200px] relative swiper-one-el blue-paging">
+                        <div class="swiper-wrapper ">
+                            @child
+
+                        </div>
+                        <div class="swiper-pagination !top-[90%]"></div>
+                    </div>
+                </layout>
+                <face filter="RowNumber not in (1,2)">
                     <div class="w-full !h-[169px] swiper-slide">
-                        <a href="singapour-travel"
+                        <a href="@link"
                             class="relative box-hover1 group rounded-xl h-full w-full overflow-hidden flex items-end">
-                            <img loading="lazy"
-                                src="http://cdn.basiscore.net/z121u112.undertest.ir/pict5388832000015736024000011861101	"
-                                alt="راهنمای سفر به سنگاپور؛ کشوری که شما را عاشق خودش می‌کند."
+                            <img loading="lazy" src="[##cms.cms.cdn##]/@00632X00264prp	" alt="@title"
                                 class="group-hover:scale-110 transition-all duration-700 ease-in-out w-full z-0 block h-full object-cover">
                             <div
                                 class="absolute w-full h-full z-[2] bg-gradient-to-b from-[#00000000] py-5 px-[27px] transition-all duration-700 ease-in-out flex flex-col gap-3 justify-end to-[#000000]">
                                 <p class="text-white text-base line-clamp-1 font-bold">
-                                    راهنمای سفر به سنگاپور؛ کشوری که شما را عاشق خودش می‌کند.
+                                    @title
                                 </p>
                                 <div
                                     class="text-white line-clamp-2 text-xs transition-all duration-300 ease-in-out absolute bottom-[-300px] group-hover:bottom-0 group-hover:!relative ">
-                                    گردشگران دو دسته هستند؛ دسته اول می‌خواهند به سنگاپور بروند و دسته دوم هنوز با
-                                    جذابیت‌های این کشور کوچک و باصفا آشنا نشده‌اند. خبر خوب این است که مهم نیست شما جزو
-                                    کدام دسته باشید، به هر حال این مطلب برای شما نوشته شده است.
+                                    @prp_7244
                                 </div>
                             </div>
                         </a>
                     </div>
-
-                </div>
-                <div class="swiper-pagination !top-[90%]"></div>
-            </div>
+                </face>
+            </basis>
 
         </section>
 
 
         <section class="w-full  px-4 flex mb-10 flex-col gap-3 ">
             <div class="w-full flex  mb-5 items-center gap-2">
-                <img class="w-[21px] h-[21px]" width="32" height="32" src="../assets/images/logo-small.png" alt="logo">
+                <img loading="lazy" class="w-[21px] h-[21px]" width="32" height="32"
+                    src="[##cms.cms.cdn##]/images/logo-small.png" alt="logo">
                 <h5 class="textsm font-bold text-[#18181B]"> اخبار روز ساتراپ</h5>
 
             </div>
-            <div class="w-full grid grid-cols-1 gap-3">
-                <a href="tbilisi-travel"
-                    class="h-[336px] hover:bg-[#fff5dd] hover:border-[#f9c751] w-full border p-2 flex flex-col gap-2 bg-[#F5F9FB] rounded-2xl border-[#C1E5F2]">
-                    <img loading="lazy"
-                        src="http://cdn.basiscore.net/z121u112.undertest.ir/pict3678832000014046024000013861101"
-                        alt="جاهای دیدنی تفلیس که نباید از دست دهید!" class="w-full h-[206px] rounded-2xl">
-                    <p class="font-semibold text-[#1A1A1A]"> جاهای دیدنی تفلیس که نباید از دست دهید! </p>
-                    <div class="line-clamp-4 text-xs text-[#202020]">
-                        شهر زیبای تفلیس، پایتخت گرجستان است و تاریخچه آن به قرن پنجم میلادی برمی‌گردد. خونگرمی و
-                        مهمان‌نوازی از ویژگی‌های بارز مردم این شهر بوده و سفر به آن و دیدن جاذبه های گردشگری تفلیس و
-                        ارتباط با مردم محلی گرجستان تجربه‌ی شیرینی برای گردشگران رقم می‌زند. این شهر به عروس آسیای میانه
-                        و قفقاز شهرت دارد و جلوه‌های دیدنی بسیاری را در خود جای داده است. دیدنی های تفلیس تنها محدود به
-                        جاذبه های تاریخی نیست، بلکه تفلیس طبیعت بسیار زیبایی نیز داشته و با سفر به این شهر، می‌توانید از
-                        ساختمان‌ها و معماری مدرن و زیبا نیز لذت ببرید. اگر قصد سفر به این شهر را دارید،
-
+            <basis core="list" datamembername="db.news-of-the-day">
+                <layout>
+                    <div class="w-full grid grid-cols-1 gap-3">
+                        @child
                     </div>
-                </a>
-            </div>
+                </layout>
+                <face>
+                    <a href="@link"
+                        class="h-[336px] hover:bg-[#fff5dd] hover:border-[#f9c751] w-full border p-2 flex flex-col gap-2 bg-[#F5F9FB] rounded-2xl border-[#C1E5F2]">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/@00287X00206prp" alt="@title"
+                            class="w-full h-[206px] rounded-2xl">
+                        <p class="font-semibold text-[#1A1A1A]"> @title </p>
+                        <div class="line-clamp-4 text-xs text-[#202020]"> @prp_7244
+                        </div>
+                    </a>
+                </face>
+            </basis>
 
-            <div class="w-full flex justify-center gap-[19px] mt-6">
 
-                <div
-                    class="w-12 h-12 ml-3 rotate-180 flex justify-center items-center rounded bg-[#F5F5F5] hover:bg-secondary-200">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M16.0303 4.46967C16.2966 4.73594 16.3208 5.1526 16.1029 5.44621L16.0303 5.53033L9.561 12L16.0303 18.4697C16.2966 18.7359 16.3208 19.1526 16.1029 19.4462L16.0303 19.5303C15.7641 19.7966 15.3474 19.8208 15.0538 19.6029L14.9697 19.5303L7.96967 12.5303C7.7034 12.2641 7.6792 11.8474 7.89705 11.5538L7.96967 11.4697L14.9697 4.46967C15.2626 4.17678 15.7374 4.17678 16.0303 4.46967Z"
-                            fill="#4C4C4C" />
-                    </svg>
+            <!-- <div dir="ltr" class="w-full mt-5 flex gap-4 justify-center items-center">
+                <basis core="print" datamembername="db.paging">
+                    <face filter="(@sta='pre')">
+                        <a class=" rotate-180 w-12 h-12 flex justify-center text-sm text-[#888888] items-center rounded bg-[#F5F5F5] hover:text-primary-700"
+                            href="/[##cms.cms.link_page##]&pagenum=@page&catid=[##cms.query.catid##]&vid=[##cms.query.vid##]&pid=[##cms.query.pid##]&aid=[##cms.query.aid##]&did=[##cms.query.did##]&gid=[##cms.query.gid##]&qid=[##cms.query.qid##]"
+                            aria-label="angle-left">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M16.0303 4.46967C16.2966 4.73594 16.3208 5.1526 16.1029 5.44621L16.0303 5.53033L9.561 12L16.0303 18.4697C16.2966 18.7359 16.3208 19.1526 16.1029 19.4462L16.0303 19.5303C15.7641 19.7966 15.3474 19.8208 15.0538 19.6029L14.9697 19.5303L7.96967 12.5303C7.7034 12.2641 7.6792 11.8474 7.89705 11.5538L7.96967 11.4697L14.9697 4.46967C15.2626 4.17678 15.7374 4.17678 16.0303 4.46967Z"
+                                    fill="#4C4C4C"></path>
+                            </svg>
+                        </a>
+                    </face>
+                </basis>
 
-                </div>
+                <basis core="print" datamembername="db.paging">
+                    <face filter="(@page=[##cms.query.pagenum|(1)##])">
+                        <a class="w-12 h-12 flex justify-center text-sm text-[#888888] items-center rounded bg-[#F5F5F5] hover:text-primary-700"
+                            href="/[##cms.cms.link_page##]&pagenum=@page&catid=[##cms.query.catid##]&vid=[##cms.query.vid##]&pid=[##cms.query.pid##]&aid=[##cms.query.aid##]&did=[##cms.query.did##]&gid=[##cms.query.gid##]&qid=[##cms.query.qid##]">
+                            @page
+                        </a>
+                    </face>
+                    <face filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no')">
+                        <a href="/[##cms.cms.link_page##]&pagenum=@page&catid=[##cms.query.catid##]&vid=[##cms.query.vid##]&pid=[##cms.query.pid##]&aid=[##cms.query.aid##]&did=[##cms.query.did##]&gid=[##cms.query.gid##]&qid=[##cms.query.qid##]"
+                            class="w-12 h-12 flex justify-center text-sm text-[#888888] items-center rounded bg-[#F5F5F5] hover:text-primary-700">
+                            @page
+                        </a>
+                    </face>
+                </basis>
 
-                <div
-                    class="w-12 h-12 flex justify-center text-sm text-[#888888] items-center rounded bg-[#F5F5F5] hover:text-primary-700">
-                    1
-
-                </div>
-                <div
-                    class="w-12 h-12 mr-3 flex justify-center items-center rounded bg-[#F5F5F5] hover:bg-secondary-200">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M16.0303 4.46967C16.2966 4.73594 16.3208 5.1526 16.1029 5.44621L16.0303 5.53033L9.561 12L16.0303 18.4697C16.2966 18.7359 16.3208 19.1526 16.1029 19.4462L16.0303 19.5303C15.7641 19.7966 15.3474 19.8208 15.0538 19.6029L14.9697 19.5303L7.96967 12.5303C7.7034 12.2641 7.6792 11.8474 7.89705 11.5538L7.96967 11.4697L14.9697 4.46967C15.2626 4.17678 15.7374 4.17678 16.0303 4.46967Z"
-                            fill="#4C4C4C" />
-                    </svg>
-
-                </div>
-            </div>
+                <basis core="print" datamembername="db.paging">
+                    <face filter="(@sta='nex')">
+                        <a href="/[##cms.cms.link_page##]&pagenum=@page&catid=[##cms.query.catid##]&vid=[##cms.query.vid##]&pid=[##cms.query.pid##]&aid=[##cms.query.aid##]&did=[##cms.query.did##]&gid=[##cms.query.gid##]&qid=[##cms.query.qid##]"
+                            aria-label="angle-right"
+                            class="w-12 h-12 flex justify-center text-sm text-[#888888] items-center rounded bg-[#F5F5F5] hover:text-primary-700">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M16.0303 4.46967C16.2966 4.73594 16.3208 5.1526 16.1029 5.44621L16.0303 5.53033L9.561 12L16.0303 18.4697C16.2966 18.7359 16.3208 19.1526 16.1029 19.4462L16.0303 19.5303C15.7641 19.7966 15.3474 19.8208 15.0538 19.6029L14.9697 19.5303L7.96967 12.5303C7.7034 12.2641 7.6792 11.8474 7.89705 11.5538L7.96967 11.4697L14.9697 4.46967C15.2626 4.17678 15.7374 4.17678 16.0303 4.46967Z"
+                                    fill="#4C4C4C"></path>
+                            </svg>
+                        </a>
+                    </face>
+                </basis>
+            </div> -->
         </section>
 
         <section class="w-full  px-4 flex mb-10 flex-col gap-6 py-3 bg-[#F6F6F6] ">
             <div class="w-full flex  mb-5 items-center gap-2">
-                <img class="w-[21px] h-[21px]" width="32" height="32" src="../assets/images/logo-small.png" alt="logo">
-                <p class="textsm font-bold text-[#18181B]"> دیگر اخبار ساتراپ</p>
+                <img loading="lazy" class="w-[21px] h-[21px]" width="32" height="32"
+                    src="[##cms.cms.cdn##]/images/logo-small.png" alt="logo">
+                <p class="text-sm font-bold text-[#18181B]"> دیگر اخبار ساتراپ</p>
 
             </div>
-            <div class="!w-full swiper swiper-one-el blue-paging !h-[199px]">
-                <div class="swiper-wrapper">
-                    <a href="entertainment"
+            <basis core="tree" datamembername="another-news.cat" idcol="catid" parentidcol="parentid"
+                nullvalue="[##cms.query.onid##]">
+                <layout>
+                    <div class="!w-full swiper swiper-one-el blue-paging !h-[199px]">
+                        <div class="swiper-wrapper">
+                            @child
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </layout>
+                <face filter="link is null">
+                    <a href="/article-list.bc?catid=@catid"
                         class="swiper-slide w-full group !h-[141px] relative overflow-hidden rounded-xl">
-                        <img loading="lazy" src="../assets/images/blog.jpg" alt="جاهای تفریحی"
+                        <img loading="lazy" src="@image" alt="@title"
                             class="absolute z-0 w-full h-full top-0 left-0 object-cover">
                         <div class="w-full relative h-full flex justify-center items-end px-[21px] py-3 z-[2]">
                             <span
                                 class="w-full top-[-800px] transition-all !duration-700 ease-in-out left-0 group-hover:top-0 z-0 absolute bg-[#22b5ff39] h-0 group-hover:h-full"></span>
                             <p
                                 class="line-clamp-1 z-[1] w-full text-xs font-bold h-10 flex justify-center items-center bg-white rounded-xl ">
-                                جاهای تفریحی</p>
+                                @title</p>
                         </div>
                     </a>
-                    <a href="entertainment"
-                        class="swiper-slide w-full group !h-[141px] relative overflow-hidden rounded-xl">
-                        <img loading="lazy" src="../assets/images/blog.jpg" alt="جاهای تفریحی"
+                </face>
+                <face>
+                    <a href="@link" class="swiper-slide w-full group !h-[141px] relative overflow-hidden rounded-xl">
+                        <img loading="lazy" src="@image" alt="@title"
                             class="absolute z-0 w-full h-full top-0 left-0 object-cover">
                         <div class="w-full relative h-full flex justify-center items-end px-[21px] py-3 z-[2]">
                             <span
                                 class="w-full top-[-800px] transition-all !duration-700 ease-in-out left-0 group-hover:top-0 z-0 absolute bg-[#22b5ff39] h-0 group-hover:h-full"></span>
                             <p
                                 class="line-clamp-1 z-[1] w-full text-xs font-bold h-10 flex justify-center items-center bg-white rounded-xl ">
-                                جاهای تفریحی</p>
+                                @title</p>
                         </div>
                     </a>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
+                </face>
+            </basis>
+
+
         </section>
 
 
@@ -872,66 +419,59 @@
 
 
 
-        <section class="w-full flex justify-center relative">
-            <div class="px-4  relative w-full h-full flex flex-col">
+         <section class="w-full flex flex-col gap-3 justify-center relative">
+            <div
+                class="px-4 w-full gap-3 flex flex-col">
                 <div class="flex relative items-center gap-3">
-                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img src="../assets/images/logo-small.png" alt="small-logo" class="w-8   h-8">
-                        <p class="font-bold text-2xl text-zinc-900"> سفر نامه ساتراپ </p>
-                        <span class="bullet-1 "></span>
+                    <div class="flex relative bg-white px-2 items-center gap-3">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
+                        <p class="font-bold text-base text-zinc-900"> سفر نامه ساتراپ </p>
+                        <!-- <span class="bullet-1 "></span> -->
                     </div>
                 </div>
-                <div class="my-[50px] z-10 w-full flex flex-col  gap-[24px]">
-                    <div class="w-full flex flex-col gap-[18px]">
+                <div class=" w-full flex flex-col  gap-3">
+                    <div class="w-full flex-col flex gap-[18px]">
 
-                        <div class="w-full flex flex-col gap-[29px]  h-fit p-2 rounded-2xl bg-[#F9F9F9]">
-                            <a href="" class="w-full group flex flex-col gap-2">
-                                <img src="../assets/images/sp-article.jpg" alt="" class="w-full h-60 rounded-xl">
-                                <p class="font-bold group-hover:text-primary-800 text-base">سفر به استانبول در مهر ماه
-                                </p>
-                                <span class="text-xs font-medium text-[#767676]">21 شهریور 1403</span>
-                                <p class="text-xs text-[#696969] line-clamp-3">لورم ایپسوم متن ساختگی با تولید سادگی
-                                    نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه
-                                    روزنامهلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
-                                    طراحان گرافیک</p>
-                            </a>
-                            <div class="w-full h-[228px] overflow-hidden">
-                                <div class="w-full flex overflow-y-auto  h-[210px] flex-col gap-[10px]">
-                                    <a href=""
-                                        class="flex h-[62px] whitespace-nowrap border border-transparent hover:shadow-lg hover:border-[#c5c5c59c] hover:bg-white rounded-xl w-full gap-[5px] items-center">
-                                        <img src="../assets/images/sp-article.jpg" alt=""
-                                            class="w-[96px] h-[60px] rounded-xl">
-                                        <div class="flex py-[2px] flex-col gap-[7px] ">
-                                            <p class="line-clamp-1 font-medium text-[#222222] text-xs ">سفر به استانبول
-                                                در مهر
-                                                ماه</p>
-                                            <span class="font-medium text-xs text-[#767676]">21 شهریور 1403</span>
-                                        </div>
-                                    </a>
-                                    <a href=""
-                                        class="flex h-[62px] whitespace-nowrap border border-transparent hover:shadow-lg hover:border-[#c5c5c59c] hover:bg-white rounded-xl w-full gap-[5px] items-center">
-                                        <img src="../assets/images/sp-article.jpg" alt=""
-                                            class="w-[96px] h-[60px] rounded-xl">
-                                        <div class="flex py-[2px] flex-col gap-[7px] ">
-                                            <p class="line-clamp-1 font-medium text-[#222222] text-xs ">سفر به استانبول
-                                                در مهر
-                                                ماه</p>
-                                            <span class="font-medium text-xs text-[#767676]">21 شهریور 1403</span>
-                                        </div>
-                                    </a>
-                                    <a href=""
-                                        class="flex h-[62px] whitespace-nowrap border border-transparent hover:shadow-lg hover:border-[#c5c5c59c] hover:bg-white rounded-xl w-full gap-[5px] items-center">
-                                        <img src="../assets/images/sp-article.jpg" alt=""
-                                            class="w-[96px] h-[60px] rounded-xl">
-                                        <div class="flex py-[2px] flex-col gap-[7px] ">
-                                            <p class="line-clamp-1 font-medium text-[#222222] text-xs ">سفر به استانبول
-                                                در مهر
-                                                ماه</p>
-                                            <span class="font-medium text-xs text-[#767676]">21 شهریور 1403</span>
-                                        </div>
-                                    </a>
+                        <div class="w-full flex flex-col gap-[29px]  h-[677px] p-2 rounded-xl bg-[#F9F9F9]">
+                            <basis core="list" datamembername="db.travelogue">
+                                <face filter="ord=1">
+                                    <a href="@link" class="w-full group flex flex-col gap-2">
+                                        <img loading="lazy" src="@image" alt="@title" class="w-full h-60 rounded-xl">
+                                        <p class="font-bold group-hover:text-primary-800 text-base">
+                                            @title
+                                        </p>
+                                        <span class="text-xs font-medium text-[#767676]"> @prp_7249 </span>
+                                        <div class="text-sm text-[#696969] line-clamp-3">
+                                            @prp_7244
 
-                                </div>
+                                        </div>
+                                    </a>
+                                </face>
+                            </basis>
+
+                            <div class="w-full overflow-hidden">
+                                <basis core="list" datamembername="db.travelogue">
+                                    <layout>
+                                        <div class="w-full flex   flex-col gap-[10px]">@child
+                                        </div>
+                                    </layout>
+                                    <face filter="ord in(3,4,5)">
+                                        <a href="@link"
+                                            class="flex h-[62px]   border border-transparent hover:shadow-lg hover:border-[#c5c5c59c] hover:bg-white rounded-xl w-full gap-[5px] items-center">
+                                            <img loading="lazy" src="@image" alt="@title"
+                                                class="w-[96px] h-[60px] rounded-xl">
+                                            <div
+                                                class="flex py-[2px] flex-col gap-[7px] line-clamp-1  w-[calc(100%-96px)]">
+                                                <p class="line-clamp-1 text-sm font-medium text-[#222222]"> @title
+                                                </p>
+                                                <span class="font-medium text-xs text-[#767676]">@prp_7249
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </face>
+                                </basis>
+
                             </div>
 
 
@@ -939,54 +479,43 @@
 
                         </div>
 
-                        <div class="w-full flex flex-col gap-[29px]  h-fit p-2 rounded-2xl bg-[#F9F9F9]">
-                            <a href="" class="w-full group flex flex-col gap-2">
-                                <img src="../assets/images/sp-article.jpg" alt="" class="w-full h-60 rounded-xl">
-                                <p class="font-bold group-hover:text-primary-800 text-base">سفر به استانبول در مهر ماه
-                                </p>
-                                <span class="text-xs font-medium text-[#767676]">21 شهریور 1403</span>
-                                <p class="text-xs text-[#696969] line-clamp-3">لورم ایپسوم متن ساختگی با تولید سادگی
-                                    نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه
-                                    روزنامهلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
-                                    طراحان گرافیک</p>
-                            </a>
-                            <div class="w-full h-[228px] overflow-hidden">
-                                <div class="w-full flex overflow-y-auto  h-[210px] flex-col gap-[10px]">
-                                    <a href=""
-                                        class="flex h-[62px] whitespace-nowrap border border-transparent hover:shadow-lg hover:border-[#c5c5c59c] hover:bg-white rounded-xl w-full gap-[5px] items-center">
-                                        <img src="../assets/images/sp-article.jpg" alt=""
-                                            class="w-[96px] h-[60px] rounded-xl">
-                                        <div class="flex py-[2px] flex-col gap-[7px] ">
-                                            <p class="line-clamp-1 font-medium text-[#222222] text-xs ">سفر به استانبول
-                                                در مهر
-                                                ماه</p>
-                                            <span class="font-medium text-xs text-[#767676]">21 شهریور 1403</span>
-                                        </div>
-                                    </a>
-                                    <a href=""
-                                        class="flex h-[62px] whitespace-nowrap border border-transparent hover:shadow-lg hover:border-[#c5c5c59c] hover:bg-white rounded-xl w-full gap-[5px] items-center">
-                                        <img src="../assets/images/sp-article.jpg" alt=""
-                                            class="w-[96px] h-[60px] rounded-xl">
-                                        <div class="flex py-[2px] flex-col gap-[7px] ">
-                                            <p class="line-clamp-1 font-medium text-[#222222] text-xs ">سفر به استانبول
-                                                در مهر
-                                                ماه</p>
-                                            <span class="font-medium text-xs text-[#767676]">21 شهریور 1403</span>
-                                        </div>
-                                    </a>
-                                    <a href=""
-                                        class="flex h-[62px] whitespace-nowrap border border-transparent hover:shadow-lg hover:border-[#c5c5c59c] hover:bg-white rounded-xl w-full gap-[5px] items-center">
-                                        <img src="../assets/images/sp-article.jpg" alt=""
-                                            class="w-[96px] h-[60px] rounded-xl">
-                                        <div class="flex py-[2px] flex-col gap-[7px] ">
-                                            <p class="line-clamp-1 font-medium text-[#222222] text-xs ">سفر به استانبول
-                                                در مهر
-                                                ماه</p>
-                                            <span class="font-medium text-xs text-[#767676]">21 شهریور 1403</span>
-                                        </div>
-                                    </a>
+                        <div class="w-full flex flex-col gap-[29px]   p-2 rounded-2xl bg-[#F9F9F9]">
+                            <basis core="list" datamembername="db.travelogue">
+                                <face filter="ord=2">
+                                    <a href="@link" class="w-full group flex flex-col gap-2">
+                                        <img loading="lazy" src="@image" alt="@title" class="w-full h-60 rounded-xl">
+                                        <p class="font-bold group-hover:text-primary-800 text-sm">
+                                            @title
+                                        </p>
+                                        <span class="text-xs font-medium text-[#767676]"> @prp_7249 </span>
+                                        <div class="text-sm text-[#696969] line-clamp-3">
+                                            @prp_7244
 
-                                </div>
+                                        </div>
+                                    </a>
+                                </face>
+                            </basis>
+                            <div class="w-full   overflow-hidden">
+                                <basis core="list" datamembername="db.travelogue">
+                                    <layout>
+                                        <div class="w-full flex   flex-col gap-[10px]">@child
+                                        </div>
+                                    </layout>
+                                    <face filter="ord in(6,7,8)">
+                                        <a href="@link"
+                                            class="flex h-[62px]   border border-transparent hover:shadow-lg hover:border-[#c5c5c59c] hover:bg-white rounded-xl w-full gap-[5px] items-center">
+                                            <img loading="lazy" src="@image" alt="@title"
+                                                class="w-[96px] h-[60px] rounded-xl">
+                                            <div
+                                                class="flex py-[2px] flex-col gap-[7px]   w-[calc(100%-96px)] line-clamp-1">
+                                                <p class="  font-medium text-xs text-[#222222] line-clamp-1"> @title
+                                                </p>
+                                                <span class="font-medium text-xs text-[#767676]">@prp_7249
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </face>
+                                </basis>
                             </div>
 
 
@@ -994,39 +523,29 @@
 
                         </div>
                     </div>
-                    <aside class="w-full relative">
-                        <div class="w-full flex flex-col gap-4 p-3 rounded-2xl bg-[#F9F9F9] border border-[#CCCCCC]">
-                            <a href=""
-                                class="flex pl-1 h-[62px] whitespace-nowrap border border-transparent group rounded-xl w-full gap-[5px] items-center">
-                                <img src="../assets/images/sp-article.jpg" alt="" class="w-[72px] h-[60px] rounded-xl">
-                                <div class="flex py-[2px]  flex-col gap-[7px] ">
-                                    <p class="line-clamp-1 group-hover:text-primary-600 font-medium text-[#222222]">سفر
-                                        به استانبول در مهر
-                                        ماه</p>
-                                    <span class="font-medium text-xs text-[#767676]">21 شهریور 1403</span>
+                    <basis core="list" datamembername="db.sidebar-travelogue">
+                        <layout>
+                            <aside class="w-full relative mb-10 ">
+                                <div
+                                    class="w-full flex flex-col gap-4 p-2 rounded-2xl bg-[#F9F9F9] border border-[#CCCCCC]">
+                                    @child</div>
+                            </aside>
+                        </layout>
+                        <face>
+                            <a href="@link"
+                                class="flex pl-1 h-[62px]   border border-transparent group rounded-xl w-full gap-[5px] items-center">
+                                <img loading="lazy" src="@00072X00060prp" alt="@title"
+                                    class="w-[96px] h-[60px] rounded-xl">
+                                <div class="flex py-[2px] w-[calc(100%-100px)]  flex-col gap-[7px] ">
+                                    <p class="line-clamp-1 text-xs group-hover:text-primary-600 font-medium text-[#222222]">
+                                        @title
+                                    </p>
+                                    <span class="font-medium text-xs text-[#767676]">@prp_7249 </span>
                                 </div>
                             </a>
-                            <a href=""
-                                class="flex pl-1 h-[62px] whitespace-nowrap border border-transparent group rounded-xl w-full gap-[5px] items-center">
-                                <img src="../assets/images/sp-article.jpg" alt="" class="w-[72px] h-[60px] rounded-xl">
-                                <div class="flex py-[2px]  flex-col gap-[7px] ">
-                                    <p class="line-clamp-1 group-hover:text-primary-600 font-medium text-[#222222]">سفر
-                                        به استانبول در مهر
-                                        ماه</p>
-                                    <span class="font-medium text-xs text-[#767676]">21 شهریور 1403</span>
-                                </div>
-                            </a><a href=""
-                                class="flex pl-1 h-[62px] whitespace-nowrap border border-transparent group rounded-xl w-full gap-[5px] items-center">
-                                <img src="../assets/images/sp-article.jpg" alt="" class="w-[72px] h-[60px] rounded-xl">
-                                <div class="flex py-[2px]  flex-col gap-[7px] ">
-                                    <p class="line-clamp-1 group-hover:text-primary-600 font-medium text-[#222222]">سفر
-                                        به استانبول در مهر
-                                        ماه</p>
-                                    <span class="font-medium text-xs text-[#767676]">21 شهریور 1403</span>
-                                </div>
-                            </a>
-                        </div>
-                    </aside>
+                        </face>
+                    </basis>
+
                 </div>
             </div>
         </section>
@@ -1044,10 +563,22 @@
 
 
 
-        <section class="w-full mb-16 px-4 flex flex-col relative gap-5 mobile-tour-guide">
-            <h6 class="text-sm font-bold text-zinc-900">راهنمای رزرو تور</h6>
-            <div class="w-full grid z-0 grid-cols-1 gap-1 h-[236px] overflow-hidden">
-                <a href="article.bc?lid=1&amp;id=2388901"
+         <basis core="print" datamembername="db.Tour-Reservation-Guide">
+            <layout>
+                <section class="w-full mb-16 px-4 flex flex-col relative gap-5 mobile-tour-guide">
+                    <h6 class="text-sm font-bold text-zinc-900">راهنمای رزرو تور</h6>
+                    <div class="w-full grid z-0 grid-cols-1 gap-1 h-[236px] overflow-hidden">
+
+                        @child
+                    </div>
+                    <div
+                        class="show-more-card bg-gradient-to-t from-white text-xs text-[#049AEE] z-[3] flex flex-col justify-end items-center absolute bottom-[-18px] left-0 w-full h-[200px]">
+                        مشاهده بیشتر
+                    </div>
+                </section>
+            </layout>
+            <face>
+                <a href="@link"
                     class="w-full z-[5] relative group overflow-hidden h-[56px] py-3 hover:bg-gradient-to-r hover:from-primary-300 hover:to-primary-50 px-6 bg-[#FBFBFB] rounded-lg flex items-center justify-between">
                     <div class="flex w-[calc(100%-48px)] z-[1] items-center gap-2">
                         <span class="pl-1 ">
@@ -1075,375 +606,120 @@
 
                         </span>
                         <p class="text-xs line-clamp-1">
-                            راهنمای رزرو تورهای خارجی
+                            @title
                         </p>
                     </div>
                     <span class="z-[1] w-10 h-10 flex justify-center items-center group-hover:bg-primary rounded-full">
                         <img loading="lazy" class=" group-hover:invert-0 group-hover:brightness-[10000]"
-                            src="http://cdn.basiscore.net/z121u112.undertest.ir/images/left-secondary-arrow.svg"
-                            alt="arrow">
+                            src="[##cms.cms.cdn##]/images/left-secondary-arrow.svg" alt="arrow">
                     </span>
                 </a>
-                <a href="article.bc?lid=1&amp;id=2388901"
-                    class="w-full z-[5] relative group overflow-hidden h-[56px] py-3 hover:bg-gradient-to-r hover:from-primary-300 hover:to-primary-50 px-6 bg-[#FBFBFB] rounded-lg flex items-center justify-between">
-                    <div class="flex w-[calc(100%-48px)] z-[1] items-center gap-2">
-                        <span class="pl-1 ">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M4.70707 6.67914C5.36006 5.99429 6.28735 5.65234 7.37429 5.65234H13.0457C14.1336 5.65234 15.0602 5.99627 15.712 6.68193C16.3597 7.36312 16.6658 8.30759 16.6658 9.37618V13.2793C16.6658 14.3503 16.3599 15.2953 15.712 15.9764C15.0598 16.6618 14.1332 17.0042 13.0461 17.0042H7.37449C6.28739 17.0042 5.36004 16.6619 4.70704 15.9767C4.0581 15.2957 3.75098 14.3504 3.75098 13.2785V9.37618C3.75098 8.30468 4.05808 7.35979 4.70707 6.67914ZM5.61174 7.54174C5.23872 7.93295 5.00098 8.53751 5.00098 9.37618V13.2785C5.00098 14.1177 5.2388 14.7228 5.61196 15.1143C5.98107 15.5017 6.55296 15.7542 7.37449 15.7542H13.0461C13.8676 15.7542 14.4382 15.5018 14.8064 15.1148C15.1787 14.7235 15.4158 14.1186 15.4158 13.2793V9.37618C15.4158 8.54026 15.1788 7.9353 14.8061 7.5432C14.4376 7.15558 13.8666 6.90234 13.0457 6.90234H7.37429C6.55261 6.90234 5.98074 7.15472 5.61174 7.54174Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M7.37598 8.60156C7.72116 8.60156 8.00098 8.8814 8.00098 9.22656V13.5408C8.00098 13.886 7.72116 14.1658 7.37598 14.1658C7.0308 14.1658 6.75098 13.886 6.75098 13.5408V9.22656C6.75098 8.8814 7.0308 8.60156 7.37598 8.60156Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M10.21 8.60156C10.5551 8.60156 10.835 8.8814 10.835 9.22656V13.5408C10.835 13.886 10.5551 14.1658 10.21 14.1658C9.86471 14.1658 9.58496 13.886 9.58496 13.5408V9.22656C9.58496 8.8814 9.86471 8.60156 10.21 8.60156Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M13.0488 8.60156C13.394 8.60156 13.6738 8.8814 13.6738 9.22656V13.5408C13.6738 13.886 13.394 14.1658 13.0488 14.1658C12.7037 14.1658 12.4238 13.886 12.4238 13.5408V9.22656C12.4238 8.8814 12.7037 8.60156 13.0488 8.60156Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M7.37496 15.7539C7.72014 15.7538 7.99998 16.0337 8 16.3788L8.00007 17.4993C8.00009 17.8446 7.72028 18.1244 7.37511 18.1244C7.02992 18.1244 6.75009 17.8447 6.75007 17.4994L6.75 16.3789C6.74998 16.0337 7.02978 15.7539 7.37496 15.7539ZM13.0466 15.7539C13.3917 15.7538 13.6716 16.0337 13.6716 16.3788L13.6717 17.4993C13.6717 17.8446 13.3919 18.1244 13.0467 18.1244C12.7015 18.1244 12.4217 17.8447 12.4217 17.4994L12.4216 16.3789C12.4216 16.0337 12.7014 15.7539 13.0466 15.7539Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M7.05566 3.85889C7.05566 2.76316 7.94334 1.875 9.03875 1.875H11.3795C12.4749 1.875 13.3626 2.76316 13.3626 3.85889V6.27748C13.3626 6.62266 13.0827 6.90248 12.7376 6.90248C12.3924 6.90248 12.1126 6.62266 12.1126 6.27748V3.85889C12.1126 3.45303 11.7841 3.125 11.3795 3.125H9.03875C8.63416 3.125 8.30566 3.45303 8.30566 3.85889V6.27748C8.30566 6.62266 8.02584 6.90248 7.68066 6.90248C7.33548 6.90248 7.05566 6.62266 7.05566 6.27748V3.85889Z"
-                                    fill="#18181B" />
-                            </svg>
+            </face>
+        </basis>
 
-                        </span>
-                        <p class="text-xs line-clamp-1">
-                            راهنمای رزرو تورهای خارجی
-                        </p>
-                    </div>
-                    <span class="z-[1] w-10 h-10 flex justify-center items-center group-hover:bg-primary rounded-full">
-                        <img loading="lazy" class=" group-hover:invert-0 group-hover:brightness-[10000]"
-                            src="http://cdn.basiscore.net/z121u112.undertest.ir/images/left-secondary-arrow.svg"
-                            alt="arrow">
-                    </span>
-                </a>
-                <a href="article.bc?lid=1&amp;id=2388901"
-                    class="w-full z-[5] relative group overflow-hidden h-[56px] py-3 hover:bg-gradient-to-r hover:from-primary-300 hover:to-primary-50 px-6 bg-[#FBFBFB] rounded-lg flex items-center justify-between">
-                    <div class="flex w-[calc(100%-48px)] z-[1] items-center gap-2">
-                        <span class="pl-1 ">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M4.70707 6.67914C5.36006 5.99429 6.28735 5.65234 7.37429 5.65234H13.0457C14.1336 5.65234 15.0602 5.99627 15.712 6.68193C16.3597 7.36312 16.6658 8.30759 16.6658 9.37618V13.2793C16.6658 14.3503 16.3599 15.2953 15.712 15.9764C15.0598 16.6618 14.1332 17.0042 13.0461 17.0042H7.37449C6.28739 17.0042 5.36004 16.6619 4.70704 15.9767C4.0581 15.2957 3.75098 14.3504 3.75098 13.2785V9.37618C3.75098 8.30468 4.05808 7.35979 4.70707 6.67914ZM5.61174 7.54174C5.23872 7.93295 5.00098 8.53751 5.00098 9.37618V13.2785C5.00098 14.1177 5.2388 14.7228 5.61196 15.1143C5.98107 15.5017 6.55296 15.7542 7.37449 15.7542H13.0461C13.8676 15.7542 14.4382 15.5018 14.8064 15.1148C15.1787 14.7235 15.4158 14.1186 15.4158 13.2793V9.37618C15.4158 8.54026 15.1788 7.9353 14.8061 7.5432C14.4376 7.15558 13.8666 6.90234 13.0457 6.90234H7.37429C6.55261 6.90234 5.98074 7.15472 5.61174 7.54174Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M7.37598 8.60156C7.72116 8.60156 8.00098 8.8814 8.00098 9.22656V13.5408C8.00098 13.886 7.72116 14.1658 7.37598 14.1658C7.0308 14.1658 6.75098 13.886 6.75098 13.5408V9.22656C6.75098 8.8814 7.0308 8.60156 7.37598 8.60156Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M10.21 8.60156C10.5551 8.60156 10.835 8.8814 10.835 9.22656V13.5408C10.835 13.886 10.5551 14.1658 10.21 14.1658C9.86471 14.1658 9.58496 13.886 9.58496 13.5408V9.22656C9.58496 8.8814 9.86471 8.60156 10.21 8.60156Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M13.0488 8.60156C13.394 8.60156 13.6738 8.8814 13.6738 9.22656V13.5408C13.6738 13.886 13.394 14.1658 13.0488 14.1658C12.7037 14.1658 12.4238 13.886 12.4238 13.5408V9.22656C12.4238 8.8814 12.7037 8.60156 13.0488 8.60156Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M7.37496 15.7539C7.72014 15.7538 7.99998 16.0337 8 16.3788L8.00007 17.4993C8.00009 17.8446 7.72028 18.1244 7.37511 18.1244C7.02992 18.1244 6.75009 17.8447 6.75007 17.4994L6.75 16.3789C6.74998 16.0337 7.02978 15.7539 7.37496 15.7539ZM13.0466 15.7539C13.3917 15.7538 13.6716 16.0337 13.6716 16.3788L13.6717 17.4993C13.6717 17.8446 13.3919 18.1244 13.0467 18.1244C12.7015 18.1244 12.4217 17.8447 12.4217 17.4994L12.4216 16.3789C12.4216 16.0337 12.7014 15.7539 13.0466 15.7539Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M7.05566 3.85889C7.05566 2.76316 7.94334 1.875 9.03875 1.875H11.3795C12.4749 1.875 13.3626 2.76316 13.3626 3.85889V6.27748C13.3626 6.62266 13.0827 6.90248 12.7376 6.90248C12.3924 6.90248 12.1126 6.62266 12.1126 6.27748V3.85889C12.1126 3.45303 11.7841 3.125 11.3795 3.125H9.03875C8.63416 3.125 8.30566 3.45303 8.30566 3.85889V6.27748C8.30566 6.62266 8.02584 6.90248 7.68066 6.90248C7.33548 6.90248 7.05566 6.62266 7.05566 6.27748V3.85889Z"
-                                    fill="#18181B" />
-                            </svg>
 
-                        </span>
-                        <p class="text-xs line-clamp-1">
-                            راهنمای رزرو تورهای خارجی
-                        </p>
-                    </div>
-                    <span class="z-[1] w-10 h-10 flex justify-center items-center group-hover:bg-primary rounded-full">
-                        <img loading="lazy" class=" group-hover:invert-0 group-hover:brightness-[10000]"
-                            src="http://cdn.basiscore.net/z121u112.undertest.ir/images/left-secondary-arrow.svg"
-                            alt="arrow">
-                    </span>
-                </a>
-                <a href="article.bc?lid=1&amp;id=2388901"
-                    class="w-full z-[5] relative group overflow-hidden h-[56px] py-3 hover:bg-gradient-to-r hover:from-primary-300 hover:to-primary-50 px-6 bg-[#FBFBFB] rounded-lg flex items-center justify-between">
-                    <div class="flex w-[calc(100%-48px)] z-[1] items-center gap-2">
-                        <span class="pl-1 ">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M4.70707 6.67914C5.36006 5.99429 6.28735 5.65234 7.37429 5.65234H13.0457C14.1336 5.65234 15.0602 5.99627 15.712 6.68193C16.3597 7.36312 16.6658 8.30759 16.6658 9.37618V13.2793C16.6658 14.3503 16.3599 15.2953 15.712 15.9764C15.0598 16.6618 14.1332 17.0042 13.0461 17.0042H7.37449C6.28739 17.0042 5.36004 16.6619 4.70704 15.9767C4.0581 15.2957 3.75098 14.3504 3.75098 13.2785V9.37618C3.75098 8.30468 4.05808 7.35979 4.70707 6.67914ZM5.61174 7.54174C5.23872 7.93295 5.00098 8.53751 5.00098 9.37618V13.2785C5.00098 14.1177 5.2388 14.7228 5.61196 15.1143C5.98107 15.5017 6.55296 15.7542 7.37449 15.7542H13.0461C13.8676 15.7542 14.4382 15.5018 14.8064 15.1148C15.1787 14.7235 15.4158 14.1186 15.4158 13.2793V9.37618C15.4158 8.54026 15.1788 7.9353 14.8061 7.5432C14.4376 7.15558 13.8666 6.90234 13.0457 6.90234H7.37429C6.55261 6.90234 5.98074 7.15472 5.61174 7.54174Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M7.37598 8.60156C7.72116 8.60156 8.00098 8.8814 8.00098 9.22656V13.5408C8.00098 13.886 7.72116 14.1658 7.37598 14.1658C7.0308 14.1658 6.75098 13.886 6.75098 13.5408V9.22656C6.75098 8.8814 7.0308 8.60156 7.37598 8.60156Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M10.21 8.60156C10.5551 8.60156 10.835 8.8814 10.835 9.22656V13.5408C10.835 13.886 10.5551 14.1658 10.21 14.1658C9.86471 14.1658 9.58496 13.886 9.58496 13.5408V9.22656C9.58496 8.8814 9.86471 8.60156 10.21 8.60156Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M13.0488 8.60156C13.394 8.60156 13.6738 8.8814 13.6738 9.22656V13.5408C13.6738 13.886 13.394 14.1658 13.0488 14.1658C12.7037 14.1658 12.4238 13.886 12.4238 13.5408V9.22656C12.4238 8.8814 12.7037 8.60156 13.0488 8.60156Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M7.37496 15.7539C7.72014 15.7538 7.99998 16.0337 8 16.3788L8.00007 17.4993C8.00009 17.8446 7.72028 18.1244 7.37511 18.1244C7.02992 18.1244 6.75009 17.8447 6.75007 17.4994L6.75 16.3789C6.74998 16.0337 7.02978 15.7539 7.37496 15.7539ZM13.0466 15.7539C13.3917 15.7538 13.6716 16.0337 13.6716 16.3788L13.6717 17.4993C13.6717 17.8446 13.3919 18.1244 13.0467 18.1244C12.7015 18.1244 12.4217 17.8447 12.4217 17.4994L12.4216 16.3789C12.4216 16.0337 12.7014 15.7539 13.0466 15.7539Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M7.05566 3.85889C7.05566 2.76316 7.94334 1.875 9.03875 1.875H11.3795C12.4749 1.875 13.3626 2.76316 13.3626 3.85889V6.27748C13.3626 6.62266 13.0827 6.90248 12.7376 6.90248C12.3924 6.90248 12.1126 6.62266 12.1126 6.27748V3.85889C12.1126 3.45303 11.7841 3.125 11.3795 3.125H9.03875C8.63416 3.125 8.30566 3.45303 8.30566 3.85889V6.27748C8.30566 6.62266 8.02584 6.90248 7.68066 6.90248C7.33548 6.90248 7.05566 6.62266 7.05566 6.27748V3.85889Z"
-                                    fill="#18181B" />
-                            </svg>
-
-                        </span>
-                        <p class="text-xs line-clamp-1">
-                            راهنمای رزرو تورهای خارجی
-                        </p>
-                    </div>
-                    <span class="z-[1] w-10 h-10 flex justify-center items-center group-hover:bg-primary rounded-full">
-                        <img loading="lazy" class=" group-hover:invert-0 group-hover:brightness-[10000]"
-                            src="http://cdn.basiscore.net/z121u112.undertest.ir/images/left-secondary-arrow.svg"
-                            alt="arrow">
-                    </span>
-                </a>
-                <a href="article.bc?lid=1&amp;id=2388901"
-                    class="w-full z-[5] relative group overflow-hidden h-[56px] py-3 hover:bg-gradient-to-r hover:from-primary-300 hover:to-primary-50 px-6 bg-[#FBFBFB] rounded-lg flex items-center justify-between">
-                    <div class="flex w-[calc(100%-48px)] z-[1] items-center gap-2">
-                        <span class="pl-1 ">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M4.70707 6.67914C5.36006 5.99429 6.28735 5.65234 7.37429 5.65234H13.0457C14.1336 5.65234 15.0602 5.99627 15.712 6.68193C16.3597 7.36312 16.6658 8.30759 16.6658 9.37618V13.2793C16.6658 14.3503 16.3599 15.2953 15.712 15.9764C15.0598 16.6618 14.1332 17.0042 13.0461 17.0042H7.37449C6.28739 17.0042 5.36004 16.6619 4.70704 15.9767C4.0581 15.2957 3.75098 14.3504 3.75098 13.2785V9.37618C3.75098 8.30468 4.05808 7.35979 4.70707 6.67914ZM5.61174 7.54174C5.23872 7.93295 5.00098 8.53751 5.00098 9.37618V13.2785C5.00098 14.1177 5.2388 14.7228 5.61196 15.1143C5.98107 15.5017 6.55296 15.7542 7.37449 15.7542H13.0461C13.8676 15.7542 14.4382 15.5018 14.8064 15.1148C15.1787 14.7235 15.4158 14.1186 15.4158 13.2793V9.37618C15.4158 8.54026 15.1788 7.9353 14.8061 7.5432C14.4376 7.15558 13.8666 6.90234 13.0457 6.90234H7.37429C6.55261 6.90234 5.98074 7.15472 5.61174 7.54174Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M7.37598 8.60156C7.72116 8.60156 8.00098 8.8814 8.00098 9.22656V13.5408C8.00098 13.886 7.72116 14.1658 7.37598 14.1658C7.0308 14.1658 6.75098 13.886 6.75098 13.5408V9.22656C6.75098 8.8814 7.0308 8.60156 7.37598 8.60156Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M10.21 8.60156C10.5551 8.60156 10.835 8.8814 10.835 9.22656V13.5408C10.835 13.886 10.5551 14.1658 10.21 14.1658C9.86471 14.1658 9.58496 13.886 9.58496 13.5408V9.22656C9.58496 8.8814 9.86471 8.60156 10.21 8.60156Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M13.0488 8.60156C13.394 8.60156 13.6738 8.8814 13.6738 9.22656V13.5408C13.6738 13.886 13.394 14.1658 13.0488 14.1658C12.7037 14.1658 12.4238 13.886 12.4238 13.5408V9.22656C12.4238 8.8814 12.7037 8.60156 13.0488 8.60156Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M7.37496 15.7539C7.72014 15.7538 7.99998 16.0337 8 16.3788L8.00007 17.4993C8.00009 17.8446 7.72028 18.1244 7.37511 18.1244C7.02992 18.1244 6.75009 17.8447 6.75007 17.4994L6.75 16.3789C6.74998 16.0337 7.02978 15.7539 7.37496 15.7539ZM13.0466 15.7539C13.3917 15.7538 13.6716 16.0337 13.6716 16.3788L13.6717 17.4993C13.6717 17.8446 13.3919 18.1244 13.0467 18.1244C12.7015 18.1244 12.4217 17.8447 12.4217 17.4994L12.4216 16.3789C12.4216 16.0337 12.7014 15.7539 13.0466 15.7539Z"
-                                    fill="#18181B" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M7.05566 3.85889C7.05566 2.76316 7.94334 1.875 9.03875 1.875H11.3795C12.4749 1.875 13.3626 2.76316 13.3626 3.85889V6.27748C13.3626 6.62266 13.0827 6.90248 12.7376 6.90248C12.3924 6.90248 12.1126 6.62266 12.1126 6.27748V3.85889C12.1126 3.45303 11.7841 3.125 11.3795 3.125H9.03875C8.63416 3.125 8.30566 3.45303 8.30566 3.85889V6.27748C8.30566 6.62266 8.02584 6.90248 7.68066 6.90248C7.33548 6.90248 7.05566 6.62266 7.05566 6.27748V3.85889Z"
-                                    fill="#18181B" />
-                            </svg>
-
-                        </span>
-                        <p class="text-xs line-clamp-1">
-                            راهنمای رزرو تورهای خارجی
-                        </p>
-                    </div>
-                    <span class="z-[1] w-10 h-10 flex justify-center items-center group-hover:bg-primary rounded-full">
-                        <img loading="lazy" class=" group-hover:invert-0 group-hover:brightness-[10000]"
-                            src="http://cdn.basiscore.net/z121u112.undertest.ir/images/left-secondary-arrow.svg"
-                            alt="arrow">
-                    </span>
-                </a>
-            </div>
+          <section class="w-full px-4 mb-8">
             <div
-                class="show-more-card bg-gradient-to-t from-white text-xs text-[#049AEE] z-[3] flex flex-col justify-end items-center absolute bottom-[-18px] left-0 w-full h-[200px]">
-                مشاهده بیشتر
-            </div>
-        </section>
-
-
-        <section class="w-full px-4 mb-16">
-            <div
-                class="w-full flex flex-col justify-end relative h-[460px] overflow-hidden  bg-gradient-to-t from-[#F2F2F2] py-5 px-3  to-[#FFFFFF00] rounded-2xl ">
-                <figure class="h-[50%] z-0 w-full absolute top-0 left-0">
-                    <img class="image-fade w-full h-full object-cover" src="../assets/images/contact-image-mob.jpg"
-                        alt="contact-us">
+                class="w-full flex flex-col justify-end relative  overflow-hidden  bg-gradient-to-t from-[#F2F2F2]   to-[#FFFFFF00] rounded-2xl ">
+                <figure class="h-[50%] z-0 w-full rounded-t-2xl">
+                    <img loading="lazy" class="image-fade w-full h-full object-cover  rounded-t-2xl"
+                        src="[##cms.cms.cdn##]/images/contact-image-mob.jpg" alt="contact-us">
                 </figure>
-                <div class="relative z-[2] h-[50%] w-full flex flex-col gap-1">
+                <div class="relative z-[2] pb-3 px-3 w-full flex flex-col gap-1">
                     <p class="font-bold text-sm leading-6">جهت مشاوره خرید تور با کارشناسان ما در ارتباط باشید</p>
+
+                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
+                        <basis core="schema" run="atclient"
+                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
+                            displaymode="new" button="[data-btn-uploadfooter]" resultsourceid="upload.datafooter"
+                            OnRendered="RenderFormFooter">
+                        </basis>
+                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
+                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject" method="post"
+                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
+                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
+                            OnProcessed="OnProcessedEditObjectFooter">
+                        </basis>
+                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
+                            triggers="upload.datafooter"></basis>
+                        <div class="captcha-button">
+                            <div id="captchaContainer"
+                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
+                                data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
+                                data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
+                                <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                                    triggers="captcha.refreshFooter">
+                                    <member name="code" type="scalar" request="captcha"></member>
+                                </basis>
+                                <basis datamembername="captcha.code" core="print" run="atclient"
+                                    OnRendered="captchaRenderedFooter">
+                                    <face>
+                                        <script type="text/template">
+                                    <div class="flex  justify-between ">
+                                        
+                                        <div class="flex sfvgwdcsdhc w-full items-center">
+
+                         <div class="float-right captcha-ctz w-1/2 relative">
+                           
+                            <input id="captcha-ct" type="text" class="contactUsInput codeinputm bg-white rounded-2xl p-3" name="captcha" maxlength="4" placeholder="کد امنیتی "/>
+                            <input type="hidden" name="captchaid" value="@captcha@" />
+                        </div>
+                      <div class="float-right w-1/2 justify-between lg:mt-0 bvgvkek h-fit leading-[65px] px-4 flex items-center gap-2">
+                       <img loading="lazy" src="/@captcha@" width="86" height="59" alt="captcha" />
+                        <span  onclick="refreshCaptchaFooter()">
+                            <svg class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="group-hover:stroke-primary"
+                                                d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3"
+                                                stroke="#020121" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <circle
+                                                class="group-hover:stroke-primary transition-all duration-300 ease-in-out"
+                                                cx="24" cy="24.5" r="10" stroke="#020121" stroke-width="1.5" />
+                                        </svg>
+                        </span>
+                       
+                    </div>
+
+                                                        </div></div>
+                    </script>
+                                    </face>
+                                </basis>
+                                <button type="button" data-btn-uploadfooter
+                                    class="text-sm  data-body-btn w-full h-12 flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
+                                    ارسال
+                                </button>
+
+                            </div>
+
+                            <div
+                                class="Loading_Form hidden data-body-btn h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex !w-full ">
+                                <div id="ballsWaveG" class="ext-zinc-50 text-base font-normal leading-normal">
+                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                                </div>
+                            </div>
+                            <div class="message-api text-center text-primary text-xs"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="w-full px-4">
-        <div class="w-full flex flex-col justify-center items-center gap-2">
-            <a href="/">
-                <img src="../assets/images/logo.png" alt="logo-satrap" class="w-[77px]">
-            </a>
-            <p class="text-sm font-bold text-[#18181B]">گروه شرکت مسافربری ساتراپ تراول</p>
+    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
 
+    <basis core="call" pageindex="[##cms.cms.pageindex##]" file="footer.inc" />
 
-        </div>
-        <div class="w-full offices-container flex flex-col gap-[11px] my-[23px]">
-            <div class="office-item  w-full border border-zinc-300 rounded-lg  px-2">
-                <div class="w-full flex items-center cursor-pointer justify-between h-[50px]">
-                    <div class="flex gap-2 ">
-                        <img src="../assets/images/Pin-c.svg" alt="pin">
-                        <p class="text-zinc-900 font-bold text-sm">دفتر تهران:</p>
-                    </div>
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <line x1="9" y1="1" x2="9" y2="17" stroke="#FFBD22" stroke-width="2" stroke-linecap="round" />
-                        <line x1="1" y1="9" x2="17" y2="9" stroke="#FFBD22" stroke-width="2" stroke-linecap="round" />
-                    </svg>
-
-                </div>
-                <div class="w-full show-info h-0 overflow-hidden">
-                    <div class="w-full flex flex-col gap-5 py-[15px] border-t border-zinc-300">
-                        <div class="flex items-center gap-2">
-                            <span class="border-l border-zinc-300 pl-2">
-                                <img src="../assets/images/Pin.svg" alt="pin" width="34" height="35">
-
-                            </span>
-                            <p class="text-zinc-900 w-[calc(100%-50px)]  text-xs text-justify pr-2">لورم ایپسوم متن
-                                ساختگی با تولید
-                                سادگی
-                                نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه</p>
-                        </div>
-
-
-
-                        <div class="flex items-center gap-2">
-                            <span class="border-l border-zinc-300 pl-2">
-                                <img src="../assets/images/Calling.svg" alt="Calling" width="34" height="35">
-
-                            </span>
-                            <div class="flex flex-col gap-2  text-xs  text-zinc-900 text-justify pr-2">
-                                <a href="" class="hover:text-primary  text-xs ">021-22334455</a>
-                            </div>
-                        </div>
-
-
-
-                        <div class="flex items-center gap-2">
-                            <span class="border-l border-zinc-300 pl-2">
-                                <img src="../assets/images/mailto-svg.svg" alt="mail" width="34" height="35">
-
-                            </span>
-                            <div class="flex  text-xs  flex-col gap-2 text-zinc-900 text-justify pr-2">
-                                <a href="" class=" text-xs  hover:text-primary">support@gmail.com</a>
-                            </div>
-                        </div>
-
-
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.6501853391082!2d51.43713122550279!3d35.75940192567633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e041a2d8b61a9%3A0xf7e31ceb8e0e2a65!2z2KLamNin2YbYsyDZhdiz2KfZgdix2KrbjCDZvtin2LHZhduM2K_YpyDYs9uM2LEg2b7Yp9ix2LM!5e0!3m2!1sen!2s!4v1752138914789!5m2!1sen!2s"
-                            class=" w-full rounded-xl align-middle !border-0 border-none" height="102"
-                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="flex w-full flex-col gap-3 mb-[23px]">
-            <p class="bg-[#F9F9F9] h-[40px] flex items-center text-[#18181B] text-sm font-bold w-full p-2 rounded-lg">
-                امور مشتریان
-            </p>
-            <div class="w-full flex flex-col gap-2">
-                <div class="flex items-center gap-6">
-                    <a href="" class="text-xs text-[#3F3F46]">سوالات متداول</a>
-                    <a href="" class="text-xs text-[#3F3F46]"> استخدامی</a>
-                    <a href="" class="text-xs text-[#3F3F46]"> پیشتیبانی</a>
-                </div>
-                <div class="flex items-center gap-6">
-                    <a href="/blog" class="text-xs text-[#3F3F46]"> مجله گردشگری</a>
-                    <a href="/contact-us" class="text-xs text-[#3F3F46]"> تماس با ما</a>
-
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="flex w-full flex-col gap-3 mb-[23px]">
-            <p class="bg-[#F9F9F9] h-[40px] flex items-center text-[#18181B] text-sm font-bold w-full p-2 rounded-lg">
-                بلیت مارکت
-            </p>
-            <div class="w-full flex flex-col gap-2">
-
-                <ul class="flex items-center gap-6">
-                    <li class="text-xs text-[#3F3F46]" data-id="flight" data-nav="flight"
-                        onclick="check_searchHistory('flight'); check_landing('flight')">پرواز
-                    </li>
-                    <li class="text-xs text-[#3F3F46]" data-id="hotel" data-nav="hotel"
-                        onclick="check_searchHistory('hotel'); check_landing('hotel')">هتل</li>
-                    <a href="/tours" class="text-xs text-[#3F3F46]"> تورها</a>
-                </ul>
-                <div class="flex items-center gap-6">
-                    <a href="/blog" class="text-xs text-[#3F3F46]"> بیمه مسافرتی</a>
-                    <a href="/contact-us" class="text-xs text-[#3F3F46]"> پیشنهادات و تخفیفات </a>
-
-                </div>
-            </div>
-        </div>
-
-
-        <div class="flex w-full flex-col gap-3 mb-[23px]">
-            <p class="bg-[#F9F9F9] h-[40px] flex items-center text-[#18181B] text-sm font-bold w-full p-2 rounded-lg">
-                امور مشتریان
-            </p>
-            <div class="w-full flex flex-col gap-2">
-                <div class="flex items-center gap-6">
-                    <a href="" class="text-xs text-[#3F3F46]">سوالات متداول</a>
-                    <a href="" class="text-xs text-[#3F3F46]"> استخدامی</a>
-                    <a href="" class="text-xs text-[#3F3F46]"> پیشتیبانی</a>
-                </div>
-                <div class="flex items-center gap-6">
-                    <a href="/blog" class="text-xs text-[#3F3F46]"> مجله گردشگری</a>
-                    <a href="/contact-us" class="text-xs text-[#3F3F46]"> تماس با ما</a>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="w-full gap-2 flex mb-[23px] p-3 rounded-lg bg-[#F9F9F9]">
-            <img src="../assets/images/qrCode.png" alt="qrCode" class="w-[72px] h-[72px]">
-            <div class="flex flex-col gap-2">
-                <p class="text-xs font-bold text-[#18181B]">دانلود وب اپلیکیشن بلیت مارکت</p>
-                <p class="text-[#3F3F46] line-clamp-3 text-justify text-xs">لورم ایپسوم متن ساختگی با تولید سادگی
-                    نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون
-                </p>
-            </div>
-        </div>
-        <div class="w-full flex items-center mb-[23px] justify-between">
-
-            <p class="font-bold text-xs text-[#18181B]">ما رو دنبال کنید</p>
-            <div class="flex footer-social items-center gap-4">
-
-                <a href="##" target="_blank" rel="noopener" aria-label="فیس بوک"
-                    class=" text-xs text-zinc-600 flex items-center">
-
-                    <img loading="lazy" src="http://cdn.basiscore.net/z121u112.undertest.ir/images/face.svg"
-                        alt="Facebook">
-                </a>
-                <a href="##" target="_blank" rel="noopener" aria-label="اینستاگرام"
-                    class="insta text-xs text-zinc-600 flex items-center">
-
-                    <img loading="lazy" src="http://cdn.basiscore.net/z121u112.undertest.ir/images/insta.svg"
-                        alt="instagram">
-                </a>
-
-
-
-                <a href="##" target="_blank" rel="noopener" aria-label="توییتر"
-                    class=" text-xs text-zinc-600 flex items-center">
-
-                    <img loading="lazy" src="http://cdn.basiscore.net/z121u112.undertest.ir/images/x.svg" alt="x">
-                </a>
-
-
-            </div>
-        </div>
-        <div class="flex items-center justify-between mb-[23px]">
-            <a href="" class="w-[54px] rounded border border-[#6D6A68] py-[2px] px-[5px] h-[54px] bg-white"></a>
-            <a href="" class="w-[54px] rounded border border-[#6D6A68] py-[2px] px-[5px] h-[54px] bg-white"></a>
-            <a href="" class="w-[54px] rounded border border-[#6D6A68] py-[2px] px-[5px] h-[54px] bg-white"></a>
-            <a href="" class="w-[54px] rounded border border-[#6D6A68] py-[2px] px-[5px] h-[54px] bg-white"></a>
-            <a href="" class="w-[54px] rounded border border-[#6D6A68] py-[2px] px-[5px] h-[54px] bg-white"></a>
-        </div>
-        <a target="_blank" href="https://www.basisfly.com/" class="mb-[23px] w-full flex flex-col gap-3">
-            <div class="w-full flex items-center justify-between">
-                <img width="66" height="17" src="../assets/images/basisfly-logo.png" alt="basisfly">
-                <img width="90" height="15" src="../assets/images/Trust_logo.png" alt="Trust_logo">
-
-            </div>
-            <p class="text-center text-xs text-[#71717A] hover:text-primary-600">طراحی سایت آژانس مسافرتی و رزرواسیون
-                آنلاین توسط بیسیس فلای</p>
-        </a>
-    </footer>
 </body>
 
-<script src="https://cdn.basiscore.net/basisfly.com/js/swiper-bundle.min.js"></script>
-<script src="../assets/js/satrap-core.js"></script>
+
 
 </html>

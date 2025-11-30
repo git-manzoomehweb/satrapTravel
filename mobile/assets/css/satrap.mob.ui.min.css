@@ -289,7 +289,9 @@
 .top-\[calc\(100\%-93px\)\] {
   top: calc(100% - 93px);
 }
-
+.top-\[calc\(100\%-33px\)\] {
+  top: calc(100% - 33px);
+}
 .top-\[calc\(50\%-20px\)\] {
   top: calc(50% - 20px);
 }
@@ -1596,7 +1598,9 @@
 .w-\[100px\] {
   width: 100px;
 }
-
+.w-\[96px\] {
+  width: 96px;
+}
 .w-\[101px\] {
   width: 101px;
 }
@@ -4649,14 +4653,16 @@ div.w-\[204px\][content=""] {
 }
 body:has(.\!w-full.swiper-story) .justify-end .popup-nav:nth-child(2) {
   position: absolute !important;
-  right: 10px !important;
-  top: unset !important;
+  right: 20px !important;
+  top: 77.75vh !important;
+  z-index: 30;
 }
 
 body:has(.\!w-full.swiper-story) .justify-end .popup-nav:nth-child(3) {
   position: absolute !important;
-  left: calc(100% - 120px) !important;
-  top: unset !important;
+  left: 20px !important;
+  z-index: 30;
+  top: 77.75vh !important;
 }
 
 .clicker-list .active {
@@ -5918,4 +5924,13 @@ header.fixed.px-4 {
 
 .\[\&\:\:-webkit-scrollbar\]\:hidden::-webkit-scrollbar {
   display: none;
+}
+h5[content=""] {
+  display: none !important;
+}
+.questions-box:last-child .border-element {
+  display: none;
+}
+.questions-box.faq-open .border-element {
+  display: block !important;
 }

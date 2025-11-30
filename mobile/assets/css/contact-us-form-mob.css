@@ -99,7 +99,7 @@
   border: 1px solid var(--zinc-300) !important;
   border-radius: 8px !important;
   color: var(--zinc-900);
-  font-size: 20px;
+  font-size: 14px;
 }
 #visa-form input[type="text"]:focus,
 #visa-form input[type="file"]:focus,
@@ -111,7 +111,7 @@
 #visa-form input[type="file"]::placeholder,
 #visa-form textarea::placeholder {
   color: var(--zinc-900);
-  font-size: 20px;
+  font-size: 14px;
 }
 #visa-form
   [data-bc-question]
@@ -125,14 +125,20 @@
 #visa-form [data-bc-question]:first-child,
 #visa-form [data-bc-question]:nth-child(2),
 #visa-form [data-bc-question]:nth-child(3) {
-  width: 32.5% !important;
+  width: 100% !important;
   margin: 0 !important;
 }
 #visa-form [data-bc-question]:nth-child(4),
 #visa-form [data-bc-question]:nth-child(5),
 #visa-form [data-bc-question]:nth-child(6),
 #visa-form [data-bc-question]:nth-child(7) {
-  width: 49.5% !important;
+  width: 100% !important;
+}
+#visa-form [data-bc-section] {
+  padding: 0 !important;
+}
+#visa-form .Upload_QS {
+  width: 100% !important;
 }
 .tour-detail #contact-form-resize {
   transform: none !important;
