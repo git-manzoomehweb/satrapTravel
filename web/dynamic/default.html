@@ -66,8 +66,8 @@
 
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="217944">
-  <member name="tour-list" type="list" link="tour.bc" propertyid="8077,8181,10000504,8076,3088134" typeid="159" size="296x206"
-    order="ord" />
+  <member name="tour-list" type="list" link="tour.bc" propertyid="8077,8181,10000504,8076,3088134" typeid="159"
+    size="296x206" order="ord" />
 </basis>
 
 <basis core="inlinesource" name="joining-diversTours">
@@ -90,6 +90,11 @@
   <member type="list" name="gallery-airlines" format="4" order="ord"></member>
 </basis>
 
+
+
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219068">
+  <member name="Special-service" type="list" link="article.bc" propertyid="7244" order="ord" />
+</basis>
 <!DOCTYPE html>
 <html dir="rtl" lang="fa">
 
@@ -222,11 +227,7 @@
     <!-- ---------------services------------------------------- -->
     <section class="w-full flex justify-center z-20 relative mb-16">
       <div class="px-4 w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col gap-7">
-        <basis core="print" datamembername="db.satrap-services">
-          <face>
-            <h2 class="font-bold text-2xl">@text</h2>
-          </face>
-        </basis>
+        <h2 class="font-bold text-2xl">خدمات ساتراپ تراول</h2>
         <div class="w-full flex flex-col gap-3">
           <div class="w-full flex items-center gap-3">
             <basis core="print" datamembername="db.info">
@@ -254,16 +255,19 @@
                 </a>
               </face>
             </basis>
-
             <div
               class="w-[calc(100%-332px)] service-el bg-zinc-100 rounded-2xl h-[87px] flex justify-between items-center px-4">
-              <basis core="print" datamembername="db.satrap-services-2">
-                <face filter="RowNumber>1">
-                  <a href="" class="flex w-[217px] items-center gap-3">
-                    <img loading="lazy" src="[##cms.cms.cdn##]/images/icon-1.svg" alt="@text">
+              <basis core="print" datamembername="db.Special-service">
+                <layout>
+                  @child
+
+                </layout>
+                <face filter="ord in('1','2','3')">
+                  <a href="@link" class="flex w-[217px] items-center gap-3">
+                    <img class="w-12 h-12" loading="lazy" src="@image" alt="@title">
                     <div class="flex flex-col gap-3">
-                      <p class="font-bold text-zinc-900">@text</p>
-                      <div class="line-clamp-1 text-xs text-zinc-600">@largetext </div>
+                      <p class="font-bold text-zinc-900">@title</p>
+                      <!-- <div class="line-clamp-1 text-xs text-zinc-600">@largetext </div> -->
                     </div>
                   </a>
                   <svg width="2" height="49" viewBox="0 0 2 49" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -271,29 +275,33 @@
                   </svg>
                 </face>
               </basis>
-
-
-
             </div>
-          </div>
-          <div class="w-full bg-zinc-100 service-el rounded-2xl h-[87px] flex justify-between items-center px-4">
-            <basis core="print" datamembername="db.satrap-services-3">
-              <face>
-                <a href="" class="flex w-[217px] items-center gap-3">
-                  <img loading="lazy" src="[##cms.cms.cdn##]/images/user-1.svg" alt="@text">
-                  <div class="flex flex-col gap-3">
-                    <p class="font-bold text-zinc-900">@text </p>
-                    <div class="line-clamp-1 text-xs text-zinc-600">@largetext </div>
-                  </div>
-                </a>
-                <svg width="2" height="49" viewBox="0 0 2 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <line x1="1.25" y1="48.5" x2="1.25" y2="0.5" stroke="#A1A1AA" />
-                </svg>
-              </face>
-            </basis>
 
 
+
+          
+
           </div>
+  <div class="w-full bg-zinc-100 service-el rounded-2xl h-[87px] flex justify-between items-center px-4">
+              <basis core="print" datamembername="db.Special-service">
+                <layout>
+                  @child
+
+                </layout>
+                <face filter="ord not in('1','2','3')">
+                  <a href="@link" class="flex w-[217px] items-center gap-3">
+                    <img class="w-12 h-12" loading="lazy" src="@image" alt="@title">
+                    <div class="flex flex-col gap-3">
+                      <p class="font-bold text-zinc-900">@title</p>
+                      <!-- <div class="line-clamp-1 text-xs text-zinc-600">@largetext </div> -->
+                    </div>
+                  </a>
+                  <svg width="2" height="49" viewBox="0 0 2 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="1.25" y1="48.5" x2="1.25" y2="0.5" stroke="#A1A1AA" />
+                  </svg>
+                </face>
+              </basis>
+            </div>
         </div>
       </div>
     </section>
@@ -368,14 +376,14 @@
           <div class="flex flex-col gap-[34px] w-full">
             <ul class="flex items-center gap-1 clicker-list">
               <li data-id="217951"
-                class="tour-li w-[101px] h-[53px] rounded-[50px] flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
+                class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
                 همه</li>
 
               <basis core="tree" datamembername="recommended-tour.cat" idcol="catid" parentidcol="parentid"
                 nullvalue="217951">
                 <face>
                   <li data-id="@catid"
-                    class="tour-li w-[101px] h-[53px] rounded-[50px] flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
+                    class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
                     @title</li>
                 </face>
               </basis>
@@ -657,14 +665,14 @@
           <div class="flex flex-col gap-[34px] w-full">
             <ul class="flex items-center gap-1 clicker-list">
               <li data-id="217939"
-                class="tour-li w-[101px] h-[53px] rounded-[50px] flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
+                class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
                 همه</li>
 
               <basis core="tree" datamembername="foreign-tour.cat" idcol="catid" parentidcol="parentid"
                 nullvalue="217939">
                 <face>
                   <li data-id="@catid"
-                    class="tour-li w-[101px] h-[53px] rounded-[50px] flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
+                    class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
                     @title</li>
                 </face>
               </basis>
@@ -692,14 +700,14 @@
           <div class="flex flex-col gap-[34px] w-full">
             <ul class="flex items-center gap-1 clicker-list">
               <li data-id="217935 "
-                class="tour-li w-[101px] h-[53px] rounded-[50px] flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
+                class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
                 همه</li>
 
               <basis core="tree" datamembername="inner-tour.cat" idcol="catid" parentidcol="parentid"
                 nullvalue="217935 ">
                 <face>
                   <li data-id="@catid"
-                    class="tour-li w-[101px] h-[53px] rounded-[50px] flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
+                    class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
                     @title</li>
                 </face>
               </basis>

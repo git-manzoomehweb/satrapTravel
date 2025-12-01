@@ -90,6 +90,14 @@
   <member type="list" name="gallery-airlines" format="4" order="ord"></member>
 </basis>
 
+
+
+
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219068">
+  <member name="Special-service" type="list" link="article.bc" propertyid="7244" order="ord" />
+</basis>
+
+
 <!DOCTYPE html>
 <html dir="rtl" lang="fa">
 
@@ -215,55 +223,33 @@
     </section>
 
     <section class="w-full mb-12 px-4 flex flex-col gap-3">
-      <basis core="print" datamembername="db.satrap-services">
-        <face>
-          <div class="w-full flex items-center gap-2">
-            <img loading="lazy" class="w-[21px] h-[21px]" width="32" height="32"
-              src="[##cms.cms.cdn##]/images/logo-small.png" alt="logo">
-            <h2 class="textsm font-bold text-[#18181B]"> @text</h2>
-          </div>
-        </face>
-      </basis>
+      <h2 class="textsm font-bold text-[#18181B]"> خدمات ساتراپ تراول</h2>
       <div class="w-full grid  grid-cols-3 gap-2">
-        <basis core="print" datamembername="db.satrap-services-3">
-          <face filter="valueID=4201920">
-            <a href=""
-              class="rounded-lg justify-center items-center group h-[78px] border border-[#DADADA] flex flex-col p-2 gap-3">
-              <img loading="lazy" src="[##cms.cms.cdn##]/images/Coins 1.svg" alt="coin">
-              <p class="text-sm font-medium text-[#18181B]">@text</p>
-            </a>
-          </face>
-        </basis>
+
 
         <basis core="print" datamembername="db.info">
           <face filter="TypeID=240">
             <a href="tel:@text"
               class="rounded-lg justify-center items-center group h-[78px] border border-[#DADADA] flex flex-col p-2 gap-3">
               <img loading="lazy" src="[##cms.cms.cdn##]/images/Telephone.svg" alt="Telephone">
-              <p class="text-sm font-medium text-[#18181B]"> @text </p>
+              <p class="text-xs font-medium text-[#18181B]">@text</p>
             </a>
           </face>
         </basis>
-        <a href=""
-          class="rounded-lg justify-center items-center group h-[78px] border border-[#DADADA] flex flex-col p-2 gap-3">
-          <img loading="lazy" src="[##cms.cms.cdn##]/images/Shield Done.svg" alt="tick">
-          <p class="text-sm font-medium text-[#18181B]"> خدمات cip </p>
-        </a>
-        <a href=""
-          class="rounded-lg justify-center items-center group h-[78px] border border-[#DADADA] flex flex-col p-2 gap-3">
-          <img loading="lazy" src="[##cms.cms.cdn##]/images/User scan.svg" alt="user">
-          <p class="text-sm font-medium text-[#18181B]"> خدمات ویزا </p>
-        </a>
-        <a href=""
-          class="rounded-lg justify-center items-center group h-[78px] border border-[#DADADA] flex flex-col p-2 gap-3">
-          <img loading="lazy" src="[##cms.cms.cdn##]/images/User scan.svg" alt="user">
-          <p class="text-sm font-medium text-[#18181B]"> خدمات ویزا </p>
-        </a>
-        <a href=""
-          class="rounded-lg justify-center items-center group h-[78px] border border-[#DADADA] flex flex-col p-2 gap-3">
-          <img loading="lazy" src="[##cms.cms.cdn##]/images/User scan.svg" alt="user">
-          <p class="text-sm font-medium text-[#18181B]"> خدمات ویزا </p>
-        </a>
+        <basis core="print" datamembername="db.Special-service">
+          <layout>
+            @child
+          </layout>
+          <face>
+            <a href="@link"
+              class="rounded-lg justify-center items-center group h-[78px] border border-[#DADADA] flex flex-col p-2 gap-2">
+              <img width="29" height="30" loading="lazy" src="@image" alt="@title">
+              <p class="text-xs font-medium text-center  text-[#18181B]">@title</p>
+            </a>
+          </face>
+        </basis>
+
+
       </div>
 
     </section>
@@ -678,6 +664,6 @@
   <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
   <basis core="call" pageindex="[##cms.cms.pageindex##]" file="footer.inc" />
 </body>
- 
+
 
 </html>

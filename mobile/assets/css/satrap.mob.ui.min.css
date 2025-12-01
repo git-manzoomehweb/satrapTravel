@@ -5148,7 +5148,16 @@ header.fixed.px-4 {
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
 }
-
+.mobile-after-selector::before{
+content: "";
+  position: absolute;
+  z-index: 0;
+  height: calc(100% - 89px);
+  width: 46%;
+  left: 54%;
+  top: 13px;
+  border-bottom: 1px solid var(--zinc-300);
+}
 .full-after-mob::after {
   content: "";
   position: absolute;
@@ -5790,6 +5799,9 @@ header.fixed.px-4 {
 }
 
 @media not all and (min-width: 768px) {
+  .transportation__img{
+    width: 66px !important;
+  }
   .max-md\:bottom-0 {
     bottom: 0px;
   }

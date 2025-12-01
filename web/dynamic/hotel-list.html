@@ -2,19 +2,15 @@
     <member name="scalar" type="scalar" typeid="150" />
 </basis>
 
-<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
     <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid##]" />
 </basis>
 
-<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
     <member name="banner-info" type="tree" request="cat" parentid=""
         postsql="select * from [db.banner-info] where catid = [##cms.query.catid##]" />
 </basis>
 
-
-<basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.pid|(2388726)##]" sourcemid="article">
-    <member type="list" name="gallery-story" format="4" order="ord"></member>
-</basis>
 
 <basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.vid|(0)##]" sourcemid="article">
     <member type="list" name="media-gallery" format="4" order="ord"></member>
@@ -31,57 +27,26 @@
 </basis>
 
 
-
-<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
-    <member name="tour-list" type="list" link="tour.bc" propertyid="8077,8181,10000504,8076,3088134" perpage="20" typeid="159"
-        size="296x206" order="ord" />
-    <member name="paging" type="list" request="paging" count="5" parentname="tour-list" />
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
+    <member name="hotel-list" type="list" link="hotel.bc" propertyid="3088197,3088199,3088198,3088200" perpage="20"
+        typeid="159" size="296x206" order="ord" />
+    <member name="paging" type="list" request="paging" count="5" parentname="hotel-list" />
 </basis>
-<basis core="dbsource" source="basiscore" mid="20" name="list" lid="1" schemaid="987" term="[##cms.query.term##]">
-    <member name="airline" type="list" request="spelist" />
-</basis>
-
-<basis core="inlinesource" name="joiningRoutes">
-    <member name="list" lefttblcol="db.tour-list.prp_10000504" righttblcol="list.airline.name" format="join"
-        jointype="leftjoin" />
-</basis>
-
 <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.aid|(2388897)##]">
     <member name="aid-text" type="view" />
 </basis>
 
 
-
-
-<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="217944">
-    <member name="last-minute-offer" type="list" link="tour.bc" propertyid="8077,8181,10000504,8076" typeid="159"
-        size="296x206" order="ord" perpage="20" />
-</basis>
-
-<basis core="inlinesource" name="joining-last-minute-offer">
-    <member name="list" lefttblcol="db.last-minute-offer.prp_10000504" righttblcol="list.airline.name" format="join"
-        jointype="leftjoin" />
-</basis>
-
-
-
-<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.qid|(2388767)##]">
-    <member name="faq" type="view" propertyid="7246" postsql="SELECT * FROM [db.faq] where TypeID not in(150)" />
-</basis>
-
-
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.gid|(218270)##]">
-    <member name="Tour-Reservation-Guide" type="list" link="article.bc" propertyid="7244" perpage="9"
-     order="ord" />
+    <member name="Tour-Reservation-Guide" type="list" link="article.bc" propertyid="7244" perpage="9"  order="ord" />
 </basis>
-
 <!DOCTYPE html>
 <html dir="rtl" lang="fa">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover" />
-    <title>[##cms.seo.title|(لیست تور های ساتراپ تراول)##]</title>
+    <title>[##cms.seo.title|(لیست هتل های ساتراپ تراول)##]</title>
     <meta name="description" content="[##cms.seo.description|(شرکت خدمات مسافرت هوایی و گردشگری  ساتراپ تراول)##]" />
     <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
         <member type="list" name="list" request="taglist" preview=""></member>
@@ -98,27 +63,28 @@
     <basis core="call" file="style.inc" />
     <link href="[##cms.cms.cdn##]/css/contact-us-form.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
+    <link href="[##cms.cms.cdn##]/css/search-box.css" type="text/css" rel="stylesheet" />
+
 </head>
 
-<body class="overflow-x-hidden relative">
-    <basis core="call" file="header.inc" />
+<body class="overflow-x-hidden relative hotel-list">
+    <basis core="call" file="header.inc" pageindex="[##cms.cms.pageindex##]" />
     <main>
-        <section class="flex banner-list justify-center items-center h-[408px] relative w-full">
+        <section class="flex banner-list flex-col gap-[18px] justify-between items-center h-[484px] relative w-full">
             <basis core="print" datamembername="db.banner-info">
                 <face filter="image is null">
-                    <img src="[##cms.cms.cdn##]/images/tour-list.jpg" alt="@urltitle"
+                    <img src="[##cms.cms.cdn##]/images/hotel-list.jpg" alt="@urltitle"
                         class="z-0 absolute top-0 left-0 w-full h-full object-cover">
                 </face>
                 <face>
                     <img src="@image" alt="@urltitle" class="z-0 absolute top-0 left-0 w-full h-full object-cover">
                 </face>
             </basis>
-
             <span class="absolute w-full h-full backdrop-12  top-0 left-0 z-[2]"></span>
 
-            <span class="absolute w-full h-full  bg-[#01010166] top-0 left-0 z-[1]"></span>
+            <span class="absolute w-full h-full  bg-[#010101A8] top-0 left-0 z-[1]"></span>
 
-            <div class="px-4  w-full  lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col gap-[87px] items-center">
+            <div class="px-4  w-full mt-12 lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col gap-[18px] items-center">
                 <div class="w-full z-[4]  flex justify-between">
                     <div class="flex flex-col gap-[17px]">
                         <ul class="flex items-center gap-2 text-white !text-xs">
@@ -126,13 +92,13 @@
                             </li>
                             <li> &gt; </li>
                             <basis core="print" datamembername="db.navigation">
-                                <face filter="RowNumber=max(RowNumber) and parentcatid<>217900">
+                                <face filter="RowNumber=max(RowNumber) and parentcatid<>217901">
                                     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                                         <span itemprop="name">@title</span>
                                         <meta itemprop="position" content="@rownumber" />
                                     </li>
                                 </face>
-                                <face filter="link is null and parentcatid<>217900">
+                                <face filter="link is null and parentcatid<>217901">
                                     <li class="flex items-center gap-2" itemprop="itemListElement" itemscope
                                         itemtype="https://schema.org/ListItem">
                                         <a class="hover:text-secondary-700" itemprop="item"
@@ -143,7 +109,7 @@
                                         <span class="text-white text-xs"> &gt; </span>
                                     </li>
                                 </face>
-                                <face filter="parentcatid<>217900">
+                                <face filter="parentcatid<>217901">
                                     <li class="flex items-center gap-2" itemprop="itemListElement" itemscope
                                         itemtype="https://schema.org/ListItem">
                                         <a class="hover:text-secondary-700" itemprop="item" href="@link"
@@ -167,82 +133,57 @@
                                 width="40" height="40">
                             <img loading="lazy" src="[##cms.cms.cdn##]/images/tour_icon (2).svg" alt="tour-icon"
                                 width="40" height="40">
-                            <img loading="lazy" src="[##cms.cms.cdn##]/images/tour_icon (3).svg" alt="tour-icon"
-                                width="40" height="40">
                         </div>
                         <basis core="print" datamembername="db.banner-info">
                             <face>
                                 <div class="text-white text-sm">@urldescription</div>
                             </face>
                         </basis>
+                    </div>
 
-                    </div>
-                    <div dir="ltr" class="timer-section flex  items-center gap-1">
-                        <span class="deadline hidden h-[165px]">[##cms.query.did##]</span>
-                        <div
-                            class="day w-[61px] h-[57px] flex-col flex items-center justify-center gradient-border1 gap-2 rounded-xl ">
-                            <p class="text-white font-bold text-xl"></p>
-                            <span class="text-white text-xs">روز</span>
-                        </div>
-                        <div
-                            class="hour w-[61px] h-[57px] flex flex-col items-center justify-center gradient-border1 gap-2 rounded-xl ">
-                            <p class="text-white font-bold text-xl"></p>
-                            <span class="text-white text-xs">ساعت</span>
-                        </div>
-                        <div
-                            class="minut w-[61px] h-[57px] flex flex-col items-center justify-center gradient-border1 gap-2 rounded-xl ">
-                            <p class="text-white font-bold text-xl"></p>
-                            <span class="text-white text-xs">دقیقه</span>
-                        </div>
-                        <div
-                            class="seconds w-[61px] h-[57px] flex flex-col items-center justify-center gradient-border1 gap-2 rounded-xl ">
-                            <p class="text-white font-bold text-xl"></p>
-                            <span class="text-white text-xs">ثانیه</span>
-                        </div>
-                    </div>
                 </div>
                 <div class="flex items-center w-full gap-[50px]">
-                    
-                        <basis core="list" datamembername="db.media-gallery">
-                            <face>
-                                <div data-id="@Table2ID"
-                                    class="flex z-[4] relative items-center gap-[13px] border border-transparent cursor-pointer transition-all duration-200 ease-in-out group video-player rounded-lg pl-2 py-1">
-                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Play.svg" alt="play" width="57"
-                                        height="61">
-                                    <div class="flex flex-col h-[59px] justify-between">
-                                        <p class="text-white font-bold group-hover:text-[#fff]"> @name </p>
-                                        <p class="text-white text-xs group-hover:text-[#fff]">@description</p>
-                                    </div>
 
+                    <basis core="list" datamembername="db.media-gallery">
+                        <face>
+                            <div data-id="@Table2ID"
+                                class="flex z-[4] relative items-center gap-[13px] border border-transparent cursor-pointer transition-all duration-200 ease-in-out group video-player rounded-lg pl-2 py-1">
+                                <img loading="lazy" src="[##cms.cms.cdn##]/images/Play.svg" alt="play" width="57"
+                                    height="61">
+                                <div class="flex flex-col h-[59px] justify-between">
+                                    <p class="text-white font-bold group-hover:text-[#fff]"> @name </p>
+                                    <p class="text-white text-xs group-hover:text-[#fff]">@description</p>
                                 </div>
+
+                            </div>
+                            <div
+                                class="list-video-popup hidden fixed top-0 left-0 z-[60] justify-center items-center w-screen h-screen">
                                 <div
-                                    class="list-video-popup hidden fixed top-0 left-0 z-[60] justify-center items-center w-screen h-screen">
-                                    <div
-                                        class="justify-between flex flex-col gap-4 px-4 py-[14px]   w-800   max-h-[90vh] bg-white rounded-3xl       shadow-2xl">
-                                        <div class="w-full flex justify-between items-center">
-                                            <p class="font-medium text-xl">مشاهده ویدیو</p>
-                                            <button type="button" class="close-popup group">
-                                                <svg width="33" height="34" viewBox="0 0 33 34" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M16.8438 4.46729C9.45175 4.46729 3.4375 10.4159 3.4375 17.7273C3.4375 25.0387 9.45175 30.9873 16.8438 30.9873C24.2358 30.9873 30.25 25.0387 30.25 17.7273C30.25 10.4159 24.2358 4.46729 16.8438 4.46729Z"
-                                                        fill="#7E7E7E" class="group-hover:fill-primary-950" />
-                                                    <path
-                                                        d="M20.1429 22.4192L21.6018 20.9763L18.3018 17.715L21.6018 14.4578L20.1443 13.0135L16.8429 16.2734L13.5429 13.0107L12.084 14.4537L15.3827 17.715L12.084 20.9722L13.5415 22.4152L16.8415 19.1566L20.1429 22.4192Z"
-                                                        fill="#7E7E7E" class="group-hover:fill-white" />
-                                                </svg>
-                                            </button>
-                                        </div>
-
-                                        <div class="set-fetch rounded-3xl overflow-hidden w-full h-440"></div>
-
+                                    class="justify-between flex flex-col gap-4 px-4 py-[14px]   w-800   max-h-[90vh] bg-white rounded-3xl       shadow-2xl">
+                                    <div class="w-full flex justify-between items-center">
+                                        <p class="font-medium text-xl">مشاهده ویدیو</p>
+                                        <button type="button" class="close-popup group">
+                                            <svg width="33" height="34" viewBox="0 0 33 34" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M16.8438 4.46729C9.45175 4.46729 3.4375 10.4159 3.4375 17.7273C3.4375 25.0387 9.45175 30.9873 16.8438 30.9873C24.2358 30.9873 30.25 25.0387 30.25 17.7273C30.25 10.4159 24.2358 4.46729 16.8438 4.46729Z"
+                                                    fill="#7E7E7E" class="group-hover:fill-primary-950" />
+                                                <path
+                                                    d="M20.1429 22.4192L21.6018 20.9763L18.3018 17.715L21.6018 14.4578L20.1443 13.0135L16.8429 16.2734L13.5429 13.0107L12.084 14.4537L15.3827 17.715L12.084 20.9722L13.5415 22.4152L16.8415 19.1566L20.1429 22.4192Z"
+                                                    fill="#7E7E7E" class="group-hover:fill-white" />
+                                            </svg>
+                                        </button>
                                     </div>
+
+                                    <div class="set-fetch rounded-3xl overflow-hidden w-full h-440"></div>
+
                                 </div>
-                            </face>
-                        </basis>
+                            </div>
+                        </face>
+                    </basis>
 
 
-                   
+
 
 
                     <basis core="list" datamembername="joining.podcast">
@@ -297,10 +238,23 @@
                     </basis>
 
                 </div>
+
+            </div>
+
+
+            <div class="w-full  z-20  bg-[#0606068C] flex justify-center h-[124px]">
+                <div
+                    class="px-4 search-box-container w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex justify-center items-center">
+                    <div id="search-box" class="bg-zinc-200 z-20 rounded-2xl  w-full">
+                        <div class="w-full flex items-center justify-center">
+                            <span dir="ltr" class="loader"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-        <ul class="fixed flex  flex-col gap-2 right-0 top-[324px] z-40">
-            <li data-id="flight" data-nav="flight" onclick="check_searchHistory('flight'); check_landing('flight')"
+        <div class="fixed flex  flex-col gap-2 right-0 top-[324px] z-40">
+            <div
                 class="flex landing-item pr-5 transition-width box-hover1 group  gap-2 cursor-pointer w-[170px] border border-transparent   rounded-l-[60px] bg-zinc-100 h-[68px] items-center">
                 <svg class="group-hover:scale-110" width="36" height="36" viewBox="0 0 36 36" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -310,8 +264,8 @@
                 </svg>
                 <span
                     class="font-bold group-hover:scale-110 transition-all duration-300 ease-in-out text-zinc-800 group-hover:text-primary">پرواز</span>
-            </li>
-            <li data-nav="hotel" data-id="hotel" onclick="check_searchHistory('hotel'); check_landing('hotel')"
+            </div>
+            <div
                 class="flex landing-item pr-5 transition-width box-hover1 group  gap-2 cursor-pointer w-[170px] border border-transparent   rounded-l-[60px] bg-zinc-100 h-[68px] items-center">
 
 
@@ -343,8 +297,8 @@
 
                 <span
                     class="font-bold group-hover:scale-110 transition-all duration-300 ease-in-out text-zinc-800 group-hover:text-primary">هتل</span>
-            </li>
-            <li data-nav="tour" data-id="tour" onclick="check_searchHistory('tour'); check_landing('tour')"
+            </div>
+            <div
                 class="flex landing-item pr-5 transition-width box-hover1 group  gap-2 cursor-pointer w-[170px] border border-transparent   rounded-l-[60px] bg-zinc-100 h-[68px] items-center">
                 <svg class="group-hover:scale-110" width="36" height="36" viewBox="0 0 36 36" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -368,10 +322,9 @@
                         fill="#27272A" />
                 </svg>
                 <span
-                    class="font-bold group-hover:scale-110 transition-all duration-300 ease-in-out text-zinc-800 group-hover:text-primary">تور</span>
-            </li>
-            <li data-nav="flighthotel" data-id="flighthotel"
-                onclick="check_searchHistory('flighthotel'); check_landing('flighthotel')"
+                    class="font-bold group-hover:scale-110 transition-all duration-300 ease-in-out text-zinc-800 group-hover:text-primary">هتل</span>
+            </div>
+            <div
                 class="flex landing-item pr-5 transition-width box-hover1 group  gap-2 cursor-pointer w-[170px] border border-transparent   rounded-l-[60px] bg-zinc-100 h-[68px] items-center">
                 <svg class="group-hover:scale-110" width="36" height="36" viewBox="0 0 36 36" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -398,9 +351,8 @@
                 <span
                     class="font-bold group-hover:scale-110 transition-all duration-300 ease-in-out text-zinc-800 group-hover:text-primary">پرواز
                     + هتل</span>
-            </li>
-            <li data-nav="insurance" data-id="insurance"
-                onclick="check_searchHistory('insurance'); check_landing('insurance')"
+            </div>
+            <div
                 class="flex landing-item pr-5 transition-width box-hover1 group  gap-2 cursor-pointer w-[170px] border border-transparent   rounded-l-[60px] bg-zinc-100 h-[68px] items-center">
                 <svg class="group-hover:scale-110" width="36" height="36" viewBox="0 0 36 36" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -423,255 +375,164 @@
 
                 <span
                     class="font-bold group-hover:scale-110 transition-all duration-300 ease-in-out text-zinc-800 group-hover:text-primary">بیمه</span>
-            </li>
-        </ul>
-        <section class="w-full flex justify-center relative mt-10">
+            </div>
+        </div>
+
+        <section class="w-full flex justify-center relative mt-16">
             <div
                 class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
                 <div class="flex bg-white relative items-center gap-3">
                     <div class="flex z-10 relative bg-white px-2 items-center gap-3">
                         <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
                             class="w-8   h-8">
-                        <h2 class="font-bold text-2xl text-zinc-900"> بهترین ها </h2>
+                        <h1 class="font-bold text-2xl text-zinc-900"> پیشنهاد های ویژه </h1>
                         <span class="bullet-1 "></span>
                     </div>
                 </div>
-                <div class="h-[216px] flex items-center w-full">
-                    <basis core="print" datamembername="db.gallery-story">
-                        <layout>
-                            <div class="w-full stories-container flex justify-between relative">
-                                @child
-                            </div>
-                            <div
-                                class="hidden video-popup py-12 w-screen h-screen fixed flex-col gap-4 justify-center items-center blur2 top-0 left-0 z-50 bg-[#0000009a]">
-                                <div class="!w-[580px] flex justify-end relative">
-                                    <button class="close-popup hover:bg-secondary-900 p-1 rounded-full">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px"
-                                            viewBox="0 0 24 24" fill="none">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"
-                                                fill="#fff" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div class="swiper-story relative swiper !flex overflow-hidden !w-[580px] !h-[80vh]">
+                <div class="my-[50px] z-10 flex flex-col w-full gap-[13px]">
 
+                    <div class="flex gap-[33px] w-full relative">
+                        <basis core="print" datamembername="db.hotel-list">
+                            <layout>
+                                <div class="w-[972px] flex flex-col gap-[14px]">
+                                    @child
 
-                                    <div class="swiper-wrapper fetch-story">
-                                        <div dir="ltr" class="w-full flex justify-center">
-                                            <span class="loader"></span>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
-                        </layout>
-                        <face filter="RowNumber < 10">
-                            <div catid="@Table2ID" class="story flex flex-col gap-3">
-                                <div class="">
-                                    <article
-                                        class=" cursor-pointer group relative flex flex-col gap-2 justify-center items-center">
+                            </layout>
+                            <face>
+                                <a href="@link"
+                                    class="hotel_card relative w-full flex gap-6 items-center bg-[#F5F9FB] rounded-2xl border border-[#C1E5F2] h-[230px] p-3 group">
+                                    <span content="@prp_3088200"
+                                        class="absolute right-4 top-4 bg-[#FF4949] flex w-[96px] h-[32px] justify-center items-center rounded-[40px] text-white text-xs">@prp_3088200</span>
+                                    <img loading="lazy" src="@00296X00206prp" alt="@title"
+                                        class="h-[206px] rounded-2xl w-[296px]">
+                                    <div class="w-[628px] flex items-center justify-between gap-[18px]">
                                         <div
-                                            class=" border-[3px] p-1 rounded-full border-[#FFBD22] w-[102px]  h-[102px] flex justify-center items-center">
-                                            <div class="w-full h-full   relative">
-                                                <div
-                                                    class="w-full h-full  absolute top-0 left-0 z-0 overflow-hidden rounded-full">
-                                                    <img loading="lazy" src="@largeimg" alt="@name"
-                                                        class=" w-full h-full group-hover:scale-125 transition-all ease-in-out duration-500  object-cover rounded-full">
-                                                </div>
-                                                <span
-                                                    class="bg-[#00000057] group-hover:bg-[#00000061] transition-all ease-in-out duration-500  absolute w-full h-full rounded-full top-0 left-0 z-[1]"></span>
-
-
-                                            </div>
-
+                                            class="h-[186px] w-[326px] pl-3 border-l border-dashed border-[#B1D1E8] flex flex-col justify-center gap-[13px]">
+                                            <p class="hotelName text-xl text-[#1A1A1A] font-semibold">@title</p>
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/hotel-star.png" alt="star"
+                                                width="106.5">
+                                            <p class="hotelStar hidden">@prp_3088197</p>
+                                            <p class=" font-bold text-sm">@prp_3088199</p>
                                         </div>
-
-
-                                        <p class="text-center w-[118px] font-bold line-clamp-1"> @name </p>
-
-
-
-                                    </article>
-                                </div>
-                            </div>
-                        </face>
-                    </basis>
-                </div>
-            </div>
-        </section>
-
-
-        <section class="w-full flex justify-center relative">
-            <div
-                class="px-4 before-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class="flex relative items-center gap-3">
-                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                            class="w-8   h-8">
-                        <h3 class="font-bold text-2xl text-zinc-900"> پیشنهاد های ویژه </h3>
-                        <span class="bullet-1 "></span>
-                    </div>
-                </div>
-                <div class="flex w-full flex-col my-[50px] gap-8">
-                    <div class="flex justify-between  gap-[33px]">
-                        <div class="flex flex-col gap-3 items-center">
-
-                            <basis core="list" datamembername="joiningRoutes.list">
-                                <layout>
-                                    <div class="flex flex-col gap-[14px]">
-                                        @child
-                                    </div>
-                                </layout>
-                                <face>
-                                    <a href="@db.tour-list.link	"
-                                        class="w-[973px] tour_card relative bg-[#F5F9FB] h-[230px] p-3 flex items-center justify-between group border border-[#C1E5F2] rounded-2xl">
-                                        <span content="تخفیف ویژه"
-                                            class="absolute right-4 top-4 bg-[#FF4949] flex w-[80px] h-[32px] justify-center items-center rounded-[40px] text-white text-xs">تخفیف
-                                            ویژه</span>
-                                        <img loading="lazy" src="[##cms.cms.cdn##]/@db.tour-list.00296X00206prp"
-                                            alt="@db.tour-list.title" class="w-[296px] h-[206px] rounded-2xl"
-                                            width="296" height="206">
-                                        <div
-                                            class="flex flex-col w-[246px] px-5 h-[186px] border-l border-dashed border-[#B1D1E8] justify-center">
-                                            <div class="w-full h-[109px] flex flex-col justify-between">
-                                                <p class="font-bold text-xl text-[#1A1A1A] line-clamp-2">
-                                                    @db.tour-list.title
+                                        <div class="h-[187px] w-[282px] flex gap-[18px] flex-col justify-end">
+                                            <p class="text-xs text-[#272727]">برای هر یک شب اقامت</p>
+                                            <div class="flex w-full items-center justify-between">
+                                                <span class="text-xs text-[#777777]">شروع قیمت:</span>
+                                                <p class="hotelPrice font-medium text-[#060606]">@prp_3088198 تومان
                                                 </p>
-                                                <div class="flex items-center gap-2">
-                                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Time Circle.svg"
-                                                        alt="time" width="24" height="24">
-                                                    <p class="text-sm text-[#1A1A1A]"> @db.tour-list.prp_8076 </p>
-                                                </div>
-                                                <div class="flex items-center gap-2">
-                                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg"
-                                                        alt="Calendar" width="24" height="24">
-                                                    <p class="text-sm text-[#1A1A1A]"> @db.tour-list.prp_8077 </p>
-                                                </div>
+                                            </div>
+                                            <div
+                                                class="w-full group-hover:bg-primary group-hover:text-white flex text-xs font-bold  justify-center items-center gap-2 h-12  rounded-xl bg-[#FFBD22]">
+                                                مشاهده
+                                                هتل
+
+                                                <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M4.96967 13.0303C4.67678 12.7374 4.67678 12.2626 4.96967 11.9697L10.9697 5.9697C11.2626 5.6768 11.7374 5.6768 12.0303 5.9697C12.3232 6.2626 12.3232 6.7374 12.0303 7.0303L7.31066 11.75L19.5 11.75C19.9142 11.75 20.25 12.0858 20.25 12.5C20.25 12.9142 19.9142 13.25 19.5 13.25L7.31066 13.25L12.0303 17.9697C12.3232 18.2626 12.3232 18.7374 12.0303 19.0303C11.7374 19.3232 11.2626 19.3232 10.9697 19.0303L4.96967 13.0303Z"
+                                                        fill="#171717" class="group-hover:fill-white" />
+                                                </svg>
                                             </div>
                                         </div>
-                                        <div
-                                            class="flex flex-col px-5 justify-center h-[186px] border-l border-dashed border-[#B1D1E8]">
-                                            <div class="h-[109px] flex flex-col gap-[33px]">
-                                                <div class="flex items-center gap-3">
-                                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/plane up.svg"
-                                                        alt="planeup" width="23" height="24">
-                                                    <p class="text-sm text-[#1A1A1A]">ایرلاین </p>
-                                                </div>
-                                                <img loading="lazy" src="@list.airline.pic" alt="@list.airline.name"
-                                                    class="w-[107px]">
-                                            </div>
+                                    </div>
+                                </a>
+                            </face>
+                        </basis>
+
+                        <aside class="w-[275px] flex flex-col gap-6 sticky h-fit  top-[68px] ">
+                            <div class="fiter-hotel-section w-full flex flex-col gap-4">
+                                <div
+                                    class="bg-[#F9F9F9] cursor-pointer fiter-box-handler group hover:border-primary h-[70px] py-3 px-6 rounded-2xl border border-[#C0C0C0] flex items-center justify-between">
+                                    <div class="flex items-center gap-2 font-bold text-[#222222]">
+                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/Sort down.svg" alt="sort">
+
+                                        مرتب سازی بر اساس
+                                    </div>
+                                    <span class="chevron-down ">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M4.46967 7.96967C4.73594 7.7034 5.1526 7.6792 5.44621 7.89705L5.53033 7.96967L12 14.439L18.4697 7.96967C18.7359 7.7034 19.1526 7.6792 19.4462 7.89705L19.5303 7.96967C19.7966 8.23594 19.8208 8.6526 19.6029 8.94621L19.5303 9.03033L12.5303 16.0303C12.2641 16.2966 11.8474 16.3208 11.5538 16.1029L11.4697 16.0303L4.46967 9.03033C4.17678 8.73744 4.17678 8.26256 4.46967 7.96967Z"
+                                                fill="#292929" class="group-hover:fill-primary" />
+                                        </svg>
+
+                                    </span>
+                                </div>
+                                <div
+                                    class="w-full marked-filter  transition-all duration-500 ease-in-out bg-[#F9F9F9] border border-[#CCCCCC] rounded-2xl py-3 flex flex-col gap-2">
+                                    <div
+                                        class="w-full font-bold text-[#222222] pt-2 pb-3 border-b border-[#C7C7C7] flex px-4 items-center">
+                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/Filter.svg" alt="filter">
+                                        فیلتر ها
+
+                                    </div>
+                                    <div class="flex w-full flex-col px-4 gap-4">
+                                        <div class="w-full pt-2 pb-3 border-b border-[#E2E2E2]">
+                                            <input type="text" placeholder="نام هتل"
+                                                class="h-[55px] hotel-name-filter placeholder:text-[#ABABAB] w-full p-3 outline-none focus:shadow-lg border border-[#E5E5E5] rounded-lg">
                                         </div>
-                                        <div class="px-5 flex flex-col justify-between h-[186px]">
-                                            <div content="@db.tour-list.prp_3088134"
-                                                class="w-[204px] flex justify-center items-center h-[53px] relative">
-                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/Subtract.png"
-                                                    alt="Subtract" class="absolute z-0 w-full">
-                                                <span
-                                                    class="relative z-[1] px-2 line-clamp-1 text-center font-bold text-[#3F3F3F]">
-                                                @db.tour-list.prp_3088134
-                                            </span>
-                                            </div>
-                                            <div class="flex flex-col gap-4">
-                                                <div class="flex w-[204px] items-center justify-between">
-                                                    <span class="text-xs text-[#777777]">شروع قیمت:</span>
-                                                    <p class="font-medium text-[#060606]">@db.tour-list.prp_8181 </p>
-                                                </div>
-                                                <button type="button"
-                                                    class="flex group-hover:bg-primary group-hover:text-white w-[204px] h-12 bg-[#FFBD22] rounded-xl font-bold text-xs text-[#272727] justify-center items-center gap-2">
-                                                    مشاهده تور
-                                                    <svg width="17" height="15" viewBox="0 0 17 15" fill="none"
+
+
+                                        <div class="w-full star-filter pt-2   flex flex-col gap-3 ">
+                                            <div class="flex cursor-pointer group items-center justify-between">
+
+                                                چند ستاره ها
+
+                                                <span class="chev">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                            d="M0.969668 8.0303C0.676778 7.7374 0.676778 7.2626 0.969668 6.9697L6.9697 0.969702C7.2626 0.676802 7.7374 0.676802 8.0303 0.969702C8.3232 1.2626 8.3232 1.7374 8.0303 2.0303L3.31066 6.75L15.5 6.75C15.9142 6.75 16.25 7.0858 16.25 7.5C16.25 7.9142 15.9142 8.25 15.5 8.25L3.31066 8.25L8.0303 12.9697C8.3232 13.2626 8.3232 13.7374 8.0303 14.0303C7.7374 14.3232 7.2626 14.3232 6.9697 14.0303L0.969668 8.0303Z"
-                                                            fill="#171717" class="group-hover:fill-white" />
+                                                        <path
+                                                            d="M4.46967 7.96967C4.73594 7.7034 5.1526 7.6792 5.44621 7.89705L5.53033 7.96967L12 14.439L18.4697 7.96967C18.7359 7.7034 19.1526 7.6792 19.4462 7.89705L19.5303 7.96967C19.7966 8.23594 19.8208 8.6526 19.6029 8.94621L19.5303 9.03033L12.5303 16.0303C12.2641 16.2966 11.8474 16.3208 11.5538 16.1029L11.4697 16.0303L4.46967 9.03033C4.17678 8.73744 4.17678 8.26256 4.46967 7.96967Z"
+                                                            fill="#292929" class="group-hover:fill-primary" />
                                                     </svg>
 
-                                                </button>
+                                                </span>
+                                            </div>
+                                            <div
+                                                class="flex flex-col star-box h-0 opacity-0 overflow-hidden gap-3 w-full">
+                                                <div class="flex items-center gap-2">
+                                                    <input type="checkbox" class="accent-secondary-800" name="checkbox"
+                                                        value="1" data-star="1" id="1-star">
+                                                    <label for="1-star">1 ستاره</label>
+                                                </div>
+
+
+                                                <div class="flex items-center gap-2">
+                                                    <input type="checkbox" class="accent-secondary-800" name="checkbox"
+                                                        value="2" data-star="2" id="2-star">
+                                                    <label for="2-star">2 ستاره</label>
+                                                </div>
+
+                                                <div class="flex items-center gap-2">
+                                                    <input type="checkbox" class="accent-secondary-800" name="checkbox"
+                                                        value="3" data-star="3" id="3-star">
+                                                    <label for="3-star">3 ستاره</label>
+                                                </div>
+
+
+                                                <div class="flex items-center gap-2">
+                                                    <input type="checkbox" class="accent-secondary-800" name="checkbox"
+                                                        value="4" data-star="4" id="4-star">
+                                                    <label for="4-star">4 ستاره</label>
+                                                </div>
+
+
+                                                <div class="flex items-center gap-2 pb-3">
+                                                    <input type="checkbox" class="accent-secondary-800" name="checkbox"
+                                                        value="5" data-star="5" id="5-star">
+                                                    <label for="1-star">5 ستاره</label>
+                                                </div>
                                             </div>
                                         </div>
-                                    </a>
-                                </face>
-                            </basis>
-                            <div dir="ltr" class="w-full flex gap-4 justify-center items-center">
-                                <basis core="print" datamembername="db.paging">
-                                    <face filter="(@sta='pre')">
-                                        <a class=" rotate-180 group cursor-pointer"
-                                            href="/[##cms.cms.link_page##]&pagenum=@page&catid=[##cms.query.catid##]&vid=[##cms.query.vid##]&pid=[##cms.query.pid##]&aid=[##cms.query.aid##]&did=[##cms.query.did##]&gid=[##cms.query.gid##]&qid=[##cms.query.qid##]"
-                                            aria-label="angle-left">
-                                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="47.5" y="47.5" width="47" height="47" rx="11.5"
-                                                    transform="rotate(-180 47.5 47.5)" stroke="#3F3F46"
-                                                    class="group-hover:stroke-secondary-600"></rect>
-                                                <path
-                                                    d="M19.9697 31.5306C19.7034 31.2643 19.6792 30.8476 19.8971 30.554L19.9697 30.4699L26.439 24.0002L19.9697 17.5306C19.7034 17.2643 19.6792 16.8476 19.8971 16.554L19.9697 16.4699C20.2359 16.2036 20.6526 16.1794 20.9462 16.3973L21.0303 16.4699L28.0303 23.4699C28.2966 23.7362 28.3208 24.1528 28.1029 24.4465L28.0303 24.5306L21.0303 31.5306C20.7374 31.8235 20.2626 31.8235 19.9697 31.5306Z"
-                                                    fill="#27272A" class="group-hover:fill-secondary-600"></path>
-                                            </svg>
-                                        </a>
-                                    </face>
-                                </basis>
-
-                                <basis core="print" datamembername="db.paging">
-                                    <face filter="(@page=[##cms.query.pagenum|(1)##])">
-                                        <a class="w-12 h-12 flex justify-center items-center bg-primary-50 rounded-xl text-zinc-700 cursor-pointer hover:bg-secondary-600 hover:text-zinc-900"
-                                            href="/[##cms.cms.link_page##]&pagenum=@page&catid=[##cms.query.catid##]&vid=[##cms.query.vid##]&pid=[##cms.query.pid##]&aid=[##cms.query.aid##]&did=[##cms.query.did##]&gid=[##cms.query.gid##]&qid=[##cms.query.qid##]">
-                                            @page
-                                        </a>
-                                    </face>
-                                    <face filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no')">
-                                        <a href="/[##cms.cms.link_page##]&pagenum=@page&catid=[##cms.query.catid##]&vid=[##cms.query.vid##]&pid=[##cms.query.pid##]&aid=[##cms.query.aid##]&did=[##cms.query.did##]&gid=[##cms.query.gid##]&qid=[##cms.query.qid##]"
-                                            class="w-12 h-12 flex justify-center items-center bg-primary-50 rounded-xl text-zinc-700 cursor-pointer hover:bg-secondary-600 hover:text-zinc-900">
-                                            @page
-                                        </a>
-                                    </face>
-                                </basis>
-
-                                <basis core="print" datamembername="db.paging">
-                                    <face filter="(@sta='nex')">
-                                        <a href="/[##cms.cms.link_page##]&pagenum=@page&catid=[##cms.query.catid##]&vid=[##cms.query.vid##]&pid=[##cms.query.pid##]&aid=[##cms.query.aid##]&did=[##cms.query.did##]&gid=[##cms.query.gid##]&qid=[##cms.query.qid##]"
-                                            aria-label="angle-right" class="group cursor-pointer">
-                                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="47.5" y="47.5" width="47" height="47" rx="11.5"
-                                                    transform="rotate(-180 47.5 47.5)" stroke="#3F3F46"
-                                                    class="group-hover:stroke-secondary-600"></rect>
-                                                <path
-                                                    d="M19.9697 31.5306C19.7034 31.2643 19.6792 30.8476 19.8971 30.554L19.9697 30.4699L26.439 24.0002L19.9697 17.5306C19.7034 17.2643 19.6792 16.8476 19.8971 16.554L19.9697 16.4699C20.2359 16.2036 20.6526 16.1794 20.9462 16.3973L21.0303 16.4699L28.0303 23.4699C28.2966 23.7362 28.3208 24.1528 28.1029 24.4465L28.0303 24.5306L21.0303 31.5306C20.7374 31.8235 20.2626 31.8235 19.9697 31.5306Z"
-                                                    fill="#27272A" class="group-hover:fill-secondary-600"></path>
-                                            </svg>
-                                        </a>
-                                    </face>
-                                </basis>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
-
-
-
-                        <aside class="w-[274px]">
-                            <basis core="print" datamembername="db.info">
-                                <face filter="TypeID=240">
-                                    <a href="tel:@text"
-                                        class="w-full flex hover:shadow-xl h-[468px] relative  rounded-3xl">
-                                        <div class="w-full absolute flex top-[140px] justify-center">
-                                            <span
-                                                class="h-12 flex bg-white  w-[182px] justify-center gap-2 items-center   rounded-2xl px-3 text-sm text-zinc-900">
-                                                <img loading="lazy" class="" src="[##cms.cms.cdn##]/images/Calling.svg"
-                                                    alt="Calling">
-                                                تماس با ما</span>
-                                        </div>
-                                        <span
-                                            class="absolute flex justify-center w-full bg-[#ffbd21] font-bold top-[64px] z-[2]">
-                                            تماس ما با کارشناسان ساتراپ</span>
-                                        <span
-                                            class="absolute flex justify-center w-full bg-[#ffbd21] font-bold top-[99px] z-[2]">@text</span>
-                                        <img loading="lazy" class="w-full rounded-3xl h-full object-cover"
-                                            src="[##cms.cms.cdn##]/images/tour-list-adv (1).jpg" alt="advertisment-1">
-                                    </a>
-                                </face>
-                            </basis>
-
-
+                            <a href="[##cms.host.hotel-list-advertisement##]"
+                                class="w-full advertisment flex hover:shadow-xl h-[468px] relative  rounded-3xl">
+                                <img loading="lazy" class="w-full rounded-3xl h-full object-cover"
+                                    src="[##cms.cms.cdn##]/images/hotel-list-advertisement.jpg" alt="advertisment-2">
+                            </a>
                             <basis core="print" datamembername="db.info">
                                 <face filter="text in('اینستاگرام')">
                                     <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
@@ -718,137 +579,63 @@
                                     </a>
                                 </face>
                             </basis>
-
-                            <a href="[##cms.host.tour-list-advertisement##]"
-                                class="w-full advertisment flex hover:shadow-xl h-[468px] relative  rounded-3xl">
-                                <img loading="lazy" class="w-full rounded-3xl h-full object-cover"
-                                    src="[##cms.cms.cdn##]/images/tour-list-advertisement.jpg" alt="advertisment-2">
-                            </a>
                         </aside>
                     </div>
 
+                    <div dir="ltr" class="w-full flex gap-4 justify-center items-center">
+                        <basis core="print" datamembername="db.paging">
+                            <face filter="(@sta='pre')">
+                                <a class=" rotate-180 group cursor-pointer"
+                                    href="[##cms.cms.pageurl##]?pagenum=@page "
+                                    aria-label="angle-left">
+                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="47.5" y="47.5" width="47" height="47" rx="11.5"
+                                            transform="rotate(-180 47.5 47.5)" stroke="#3F3F46"
+                                            class="group-hover:stroke-secondary-600"></rect>
+                                        <path
+                                            d="M19.9697 31.5306C19.7034 31.2643 19.6792 30.8476 19.8971 30.554L19.9697 30.4699L26.439 24.0002L19.9697 17.5306C19.7034 17.2643 19.6792 16.8476 19.8971 16.554L19.9697 16.4699C20.2359 16.2036 20.6526 16.1794 20.9462 16.3973L21.0303 16.4699L28.0303 23.4699C28.2966 23.7362 28.3208 24.1528 28.1029 24.4465L28.0303 24.5306L21.0303 31.5306C20.7374 31.8235 20.2626 31.8235 19.9697 31.5306Z"
+                                            fill="#27272A" class="group-hover:fill-secondary-600"></path>
+                                    </svg>
+                                </a>
+                            </face>
+                        </basis>
 
+                        <basis core="print" datamembername="db.paging">
+                            <face filter="(@page=[##cms.query.pagenum|(1)##])">
+                                <a class="w-12 h-12 flex justify-center items-center bg-primary-50 rounded-xl text-zinc-700 cursor-pointer hover:bg-secondary-600 hover:text-zinc-900"
+                                    href="[##cms.cms.pageurl##]?pagenum=@page ">
+                                    @page
+                                </a>
+                            </face>
+                            <face filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no')">
+                                <a href="[##cms.cms.pageurl##]?pagenum=@page "
+                                    class="w-12 h-12 flex justify-center items-center bg-primary-50 rounded-xl text-zinc-700 cursor-pointer hover:bg-secondary-600 hover:text-zinc-900">
+                                    @page
+                                </a>
+                            </face>
+                        </basis>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                </div>
-            </div>
-        </section>
-
-
-
-        <section class="w-full flex justify-center relative">
-            <div
-                class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class="flex relative items-center gap-3">
-                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                            class="w-8   h-8">
-                        <p class="font-bold text-2xl text-zinc-900"> تور های لحظه اخری </p>
-                        <span class="bullet-1 "></span>
-                    </div>
-                </div>
-                <div class="h-[677px] w-full flex items-center">
-                    <div class="w-full flex gap-3">
-                        <div class="!w-[836px] swiper-ver !h-[579px] overflow-hidden">
-                            <basis core="list" datamembername="joining-last-minute-offer.list">
-                                <layout>
-                                    <div class="swiper-wrapper">
-                                        @child
-                                    </div>
-                                    <div class="swiper-scrollbar"></div>
-                                </layout>
-                                <face>
-                                    <a href="@db.last-minute-offer.link	"
-                                        class="swiper-slide group relative  !h-[109px] !w-full ">
-                                        <div
-                                            class="w-full h-[95px] group-hover:bg-primary bg-secondary-700 rounded-2xl p-2 !flex justify-between items-center">
-                                            <span
-                                                class="text-white text-xs group-hover:bg-[#ffbd22ea] bg-[#ff4949c5] absolute -top-3 right-4 z-[2] px-4 line-clamp-1 h-8 flex justify-center items-center rounded-[40px]">اقساطی</span>
-                                            <div
-                                                class="w-[767px] h-[79px] bg-white rounded-xl !flex justify-between items-center py-4 px-[9px]">
-                                                <p class="font-bold w-[217px] text-zinc-900 line-clamp-1">
-                                                    @db.last-minute-offer.title </p>
-                                                <div class="flex h-full justify-between flex-col gap-2 ">
-                                                    <div
-                                                        class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-                                                        <img loading="lazy"
-                                                            src="[##cms.cms.cdn##]/images/Time Circle.svg"
-                                                            alt="time circle">
-                                                        <span
-                                                            class="w-[120px] line-clamp-1">@db.last-minute-offer.prp_8076
-                                                        </span>
-                                                    </div>
-                                                    <div
-                                                        class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-                                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg"
-                                                            alt="Calendar">
-                                                        <span
-                                                            class="line-clamp-1 w-[120px]">@db.last-minute-offer.prp_8077
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="flex h-full justify-between  flex-col gap-2 ">
-                                                    <div class="flex items-center gap-2">
-                                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/plane up.svg"
-                                                            alt="planeup">
-                                                        <span class="text-xs text-zinc-900">ایرلاین </span>
-                                                    </div>
-                                                    <img loading="lazy" src="@list.airline.pic"
-                                                        alt="@list.airline.name	" class="w-[77px]">
-                                                </div>
-                                                <div class="flex h-full justify-between  flex-col gap-2 ">
-                                                    <div
-                                                        class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-
-                                                        <span class="w-[120px] line-clamp-1">شروع قیمت:</span>
-                                                    </div>
-                                                    <div
-                                                        class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
-
-                                                        <span
-                                                            class="line-clamp-1 font-medium text-sm w-[150px]">@db.last-minute-offer.prp_8181
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <svg width="48" height="49" viewBox="0 0 48 49" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M9 24.5C9 16.229 15.729 9.5 24 9.5C32.271 9.5 39 16.229 39 24.5C39 32.771 32.271 39.5 24 39.5C15.729 39.5 9 32.771 9 24.5ZM11.25 24.5C11.25 31.5305 16.9695 37.25 24 37.25C31.0305 37.25 36.75 31.5305 36.75 24.5C36.75 17.4695 31.0305 11.75 24 11.75C16.9695 11.75 11.25 17.4695 11.25 24.5ZM20.1396 23.7024L25.3701 18.4959C25.8111 18.058 26.5221 18.0594 26.9601 18.499C27.1791 18.718 27.2886 19.006 27.2886 19.2924C27.2886 19.5804 27.1791 19.87 26.9571 20.089L22.5276 24.5004L26.9571 28.9089C27.3981 29.3469 27.3981 30.0594 26.9601 30.5004C26.5221 30.9399 25.8111 30.9429 25.3701 30.5034L20.1396 25.2969C19.7151 24.8754 19.7151 24.1254 20.1396 23.7024Z"
-                                                    fill="white" />
-                                            </svg>
-                                        </div>
-
-                                    </a>
-                                </face>
-                            </basis>
-
-                        </div>
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/young-woman.jpg" alt="تورهای متنوع ساتراپ"
-                            class="w-[432px] h-[577px] object-cover rounded-2xl">
+                        <basis core="print" datamembername="db.paging">
+                            <face filter="(@sta='nex')">
+                                <a href="[##cms.cms.pageurl##]?pagenum=@page "
+                                    aria-label="angle-right" class="group cursor-pointer">
+                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="47.5" y="47.5" width="47" height="47" rx="11.5"
+                                            transform="rotate(-180 47.5 47.5)" stroke="#3F3F46"
+                                            class="group-hover:stroke-secondary-600"></rect>
+                                        <path
+                                            d="M19.9697 31.5306C19.7034 31.2643 19.6792 30.8476 19.8971 30.554L19.9697 30.4699L26.439 24.0002L19.9697 17.5306C19.7034 17.2643 19.6792 16.8476 19.8971 16.554L19.9697 16.4699C20.2359 16.2036 20.6526 16.1794 20.9462 16.3973L21.0303 16.4699L28.0303 23.4699C28.2966 23.7362 28.3208 24.1528 28.1029 24.4465L28.0303 24.5306L21.0303 31.5306C20.7374 31.8235 20.2626 31.8235 19.9697 31.5306Z"
+                                            fill="#27272A" class="group-hover:fill-secondary-600"></path>
+                                    </svg>
+                                </a>
+                            </face>
+                        </basis>
                     </div>
                 </div>
             </div>
         </section>
-
-
 
         <section class="w-full flex justify-center relative">
             <div
@@ -859,7 +646,7 @@
                             class="w-8   h-8">
                         <basis core="print" datamembername="db.aid-text">
                             <face filter="TypeID=150">
-                                <h5 class="font-bold text-2xl text-zinc-900"> @text </h5>
+                                <p class="font-bold text-2xl text-zinc-900"> @text </p>
 
                             </face>
                         </basis>
@@ -971,69 +758,14 @@
                 </div>
             </div>
         </section>
-        <section class="w-full flex justify-center relative">
-            <div
-                class="px-4 before-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class="flex relative items-center gap-3">
-                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                            class="w-8   h-8">
-                        <p class="font-bold text-2xl text-zinc-900"> سوالات متداول </p>
-                        <span class="bullet-1 "></span>
-                    </div>
-                </div>
-                <div class="flex common-questions  flex-col justify-center items-center my-[50px] gap-8">
-                    <basis core="print" datamembername="db.faq">
-                        <face>
-                            <div class="questions-box w-full cursor-pointer group flex gap-[31px]">
-                                <div class="flex items-center gap-2 w-[109px]">
-                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/user-qs.svg" alt="user-icon">
-                                    <div class="flex flex-col gap-1  ">
-                                        <p class="font-bold text-zinc-900 whitespace-nowrap">سوال ۱</p>
-                                        <span class="text-zinc-400 text-xs">تور</span>
-                                    </div>
-
-                                </div>
-                                <div
-                                    class="w-[calc(100%-160px)] flex flex-col pr-[20px] items-center   border-r border-zinc-200 group-hover:border-secondary-700">
-                                    <div class="w-full flex items-center justify-between">
-                                        <p class="question text-xl font-medium">
-
-                                            @text
-                                        </p>
-                                        <span class="arrow">
-                                            <svg width="33" height="32" viewBox="0 0 33 32" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path class="group-hover:stroke-secondary-700"
-                                                    d="M8.25 12.0001C8.25 12.0001 14.326 20 16.5 20C18.6742 20 24.75 12 24.75 12"
-                                                    stroke="#52525B" stroke-width="1.5" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-
-                                        </span>
-                                    </div>
-                                    <div class="answer text-sm text-zinc-600 h-0 overflow-hidden ">
-                                        <div class="pt-6">
-                                            @largetext
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </face>
-                    </basis>
-
-                </div>
-            </div>
-        </section>
-        <section class="w-full flex justify-center relative">
-            <div
-                class="px-4 relative after-to-bottom-border mb-16 w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class=" last-section-form relative w-full flex flex-col">
+        <section class="w-full flex justify-center relative  ">
+            <div class="px-4 relative w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class="before-border last-section-brd-article relative w-full flex flex-col">
                     <div class="flex  items-center gap-3 ">
                         <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
                             <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
                                 class="w-8 h-8">
-                            <p class="font-bold text-2xl text-zinc-900"> ارتباط با کارشناسان</p>
+                            <p class="font-bold text-2xl text-zinc-900">ارتباط با کارشناسان </p>
                             <span class="bullet-1"></span>
                         </div>
                     </div>
@@ -1142,7 +874,8 @@
         </section>
     </main>
     <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
-    <basis core="call" file="footer.inc" />
+
+    <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
 </body>
 
 

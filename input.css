@@ -1059,3 +1059,7 @@ body:has(.\!w-full.swiper-story) .justify-end .popup-nav:nth-child(3) {
 
   z-index: 30;
 }
+@media not all and (min-width: 768px) {
+  .transportation__img{
+    width: 66px !important;
+  }}

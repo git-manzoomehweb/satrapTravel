@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover" />
-    <title>[##cms.seo.title|( ارتباط با ساتراپ تراول)##]</title>
+    <title>[##cms.seo.title|(ارتباط با ساتراپ تراول)##]</title>
     <meta name="description" content="[##cms.seo.description|(شرکت خدمات مسافرت هوایی و گردشگری  ساتراپ تراول)##]" />
     <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
         <member type="list" name="list" request="taglist" preview=""></member>
@@ -17,528 +17,539 @@
             <meta property="@key" content="@value" />
         </face>
     </basis>
-    <basis core="call" file="pwa.inc" />
-    <basis core="call" file="style.inc" />
-    <link href="[##cms.cms.cdn##]/css/contact-us-form.css" type="text/css" rel="stylesheet" />
+    <basis core="call" file="pwa.inc" pageindex="[##cms.cms.pageindex##]" />
+    <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]" />
+    <link href="[##cms.cms.cdn##]/css/contact-us-form-mob.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
 </head>
 
 <body class="overflow-x-hidden relative">
-    <basis core="call" file="header.inc" />
+    <basis core="call" pageindex="[##cms.cms.pageindex##]" file="header.inc" />
     <main>
-        <section class="flex justify-center items-center h-[407px] relative w-full">
-
-            <span class="absolute w-full h-full  bg-[#01010166] top-0 left-0 z-[1]"></span>
-            <img src="[##cms.cms.cdn##]/images/contact-us-bg.jpg" alt="contact-us"
+        <section class="flex banner-list justify-center items-center h-[225px] relative w-full">
+            <img loading="lazy" src="[##cms.cms.cdn##]/images/contact-us-bg.jpg" alt="contact"
                 class="z-0 absolute top-0 left-0 w-full h-full object-cover">
-            <div class="w-full z-10 h-full flex flex-col justify-center items-center gap-5">
-                <h1 class="text-white font-bold text-[64px]">ارتباط با ما</h1>
-                <ul class="flex gap-2 items-center !text-white text-xs">
+            <div
+                class="w-full h-full bg-[#0000006B] text-white absolute z-[2] left-0 top-0 flex flex-col gap-3 justify-center items-center">
+                <h1 class="font-medium text-3xl">ارتباط با ما</h1>
+                <ul class="flex items-center !text-xs gap-1 !text-white">
                     <li>
-                        <a href="/" class="hover:text-primary-700">
-                            صفحه اصلی
-
-                        </a>
+                        <a href="/" class="hover:!text-primary-500">صفحه اصلی </a>
                     </li>
                     <li>/</li>
-                    <li> ارتباط با ما</li>
+                    <li>ارتباط با ما</li>
                 </ul>
             </div>
 
         </section>
 
-        <section class="w-full flex justify-center relative mt-10">
-            <div
-                class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class="flex bg-white relative items-center gap-3">
-                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                            class="w-8   h-8">
-                        <p class="font-bold text-2xl text-zinc-900">ساتراپ در کنار شماست</p>
-                        <span class="bullet-1 "></span>
+        <section class="w-full relative full-after-mob mb-10 mt-6">
+            <div class="w-full px-4 flex flex-col gap-3">
+                <div class="w-full flex justify-center">
+                    <div class="flex w-fit bg-white relative items-center gap-3">
+                        <div class="flex z-10 relative bg-white items-center gap-3">
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                                class="w-8   h-8">
+                            <h2 class="font-bold text-base text-zinc-900"> ساتراپ در کنار شماست </h2>
+                            <span class="bullet-1 "></span>
+                        </div>
                     </div>
                 </div>
-                <div class="my-[70px] flex gap-6 z-10 w-full">
-                    <div class="w-[822px] flex flex-col gap-6">
-                        <div class="w-full flex gap-6">
-                            <div class="w-1/2 h-[191px] bg-zinc-50 p-[40px] rounded-3xl flex flex-col justify-between">
-                                <div class="flex items-center gap-3">
-                                    <svg width="46" height="46" viewBox="0 0 46 46" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M23.4795 7.1875C16.3067 7.1875 10.4922 13.0018 10.4922 20.1766C10.4922 24.7833 13.2429 29.4676 16.4761 33.1077C18.0713 34.9038 19.7289 36.3827 21.1062 37.4011C21.7964 37.9115 22.3946 38.2902 22.8619 38.5342C23.2215 38.7218 23.4166 38.783 23.4795 38.8029C23.5421 38.783 23.7374 38.7218 24.0968 38.5342C24.5641 38.2902 25.1623 37.9115 25.8527 37.4011C27.2298 36.3827 28.8875 34.9038 30.4828 33.1077C33.7158 29.4676 36.4666 24.7833 36.4666 20.1766C36.4666 13.0018 30.652 7.1875 23.4795 7.1875ZM7.61719 20.1766C7.61719 11.4142 14.7187 4.3125 23.4795 4.3125C32.2402 4.3125 39.3416 11.4142 39.3416 20.1766C39.3416 25.8342 36.0344 31.1865 32.6323 35.0169C30.91 36.9562 29.1058 38.5712 27.562 39.7128C26.7917 40.2824 26.0645 40.7502 25.4272 41.0828C24.8597 41.3791 24.1465 41.6875 23.4795 41.6875C22.8125 41.6875 22.0993 41.3791 21.5316 41.0828C20.8943 40.7502 20.1673 40.2824 19.397 39.7128C17.8531 38.5712 16.0489 36.9562 14.3265 35.0169C10.9245 31.1865 7.61719 25.8342 7.61719 20.1766ZM17.2329 20.055C17.2329 16.6051 20.0289 13.8098 23.4798 13.8098C26.9293 13.8098 29.7249 16.6055 29.7249 20.055C29.7249 23.5037 26.93 26.302 23.4798 26.302C20.0281 26.302 17.2329 23.5041 17.2329 20.055ZM23.4798 16.6848C21.6161 16.6848 20.1079 18.1937 20.1079 20.055C20.1079 21.9169 21.6167 23.427 23.4798 23.427C25.3407 23.427 26.8499 21.9173 26.8499 20.055C26.8499 18.1933 25.3415 16.6848 23.4798 16.6848Z"
-                                            fill="#FFBD22" />
-                                    </svg>
-                                    <h2 class="font-bold text-2xl text-zinc-900">آدرس</h2>
-                                </div>
-                                <basis core="print" datamembername="db.office-view4">
-                                    <face filter="TypeID=244">
-                                        <div class="text-justify leading-7 text-zinc-900 text-sm">
-                                            @largetext
-                                        </div>
-                                    </face>
-                                </basis>
+                <div class="my-6 z-[5] flex flex-col gap-4">
 
-
-                            </div>
-                            <div class="w-1/2 h-[191px] group bg-zinc-50 p-[40px] rounded-3xl flex flex-col gap-6">
-                                <div class="flex items-center gap-3">
-                                    <svg width="46" height="46" viewBox="0 0 46 46" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M12.7583 3.83307C14.8992 3.86182 16.4249 5.46607 18.3549 7.49582C18.8322 7.99607 19.3478 8.54232 19.9247 9.11732C22.7211 11.9157 21.9257 14.1984 21.2836 16.0307C20.5859 18.0298 19.9822 19.7548 23.597 23.3697C27.2119 26.9845 28.9349 26.3807 30.9321 25.6773C32.7664 25.0371 35.0434 24.236 37.8455 27.0343C38.4148 27.6036 38.9514 28.1134 39.4498 28.5868C41.4872 30.5265 43.0972 32.0579 43.1243 34.2046C43.1451 36.0331 42.0334 37.8999 39.2888 40.6446L39.1029 40.8228C38.4953 41.4457 36.8795 43.1056 33.7151 43.1247H33.6576C28.8813 43.1247 22.654 39.3221 15.1484 31.8183C7.61202 24.2839 3.8036 18.0375 3.83219 13.2516C3.8496 10.0891 5.50752 8.46948 6.13044 7.8619L6.18361 7.80383L6.31252 7.67407C9.06294 4.92365 10.9528 3.79282 12.7583 3.83307ZM12.7219 6.70807H12.7065C11.8458 6.70807 10.5387 7.57057 8.71569 9.34137L8.34962 9.70086L8.35377 9.69998C8.35377 9.69998 8.32249 9.73586 8.26918 9.79024L8.14102 9.91848C7.67719 10.3689 6.71694 11.3061 6.70726 13.2669C6.69202 16.0097 8.4956 21.1022 17.18 29.7847C25.8223 38.4251 30.9072 40.2497 33.6576 40.2497H33.6979C35.6586 40.2382 36.5939 39.278 37.0444 38.8161C37.1804 38.6762 37.2916 38.5707 37.3702 38.5075C39.2811 36.5851 40.2586 35.1572 40.2491 34.2391C40.2375 33.3037 39.0741 32.1997 37.466 30.6683C36.9543 30.1834 36.3984 29.6525 35.8119 29.066C34.2901 27.5499 33.5407 27.8087 31.8828 28.3913C29.5924 29.1944 26.4548 30.2946 21.5654 25.4013C16.674 20.5119 17.7704 17.3743 18.5696 15.082C19.1484 13.426 19.4129 12.6727 17.893 11.1509C17.2989 10.5567 16.7641 9.99323 16.2715 9.47573C14.7497 7.87723 13.6514 6.72148 12.7219 6.70807ZM29.2207 10.6516C33.2093 11.4259 36.2894 14.5041 37.0656 18.4946C37.217 19.2766 36.7091 20.0299 35.931 20.1813C35.837 20.1985 35.745 20.2081 35.653 20.2081C34.9784 20.2081 34.3785 19.7328 34.2443 19.0466C33.6923 16.2099 31.5054 14.023 28.6725 13.4729C27.8925 13.3215 27.3845 12.5683 27.536 11.7882C27.6874 11.0081 28.454 10.4983 29.2207 10.6516ZM29.1059 3.84399C36.9221 4.71224 42.9922 10.7747 43.8681 18.5889C43.9562 19.3786 43.3889 20.0897 42.6012 20.1778C42.5475 20.1836 42.4919 20.1874 42.4382 20.1874C41.7157 20.1874 41.0947 19.645 41.0122 18.9109C40.2858 12.4402 35.2603 7.41858 28.7877 6.69983C28 6.61166 27.4307 5.90249 27.5189 5.11282C27.6052 4.32507 28.3086 3.74432 29.1059 3.84399Z"
-                                            fill="#FFBD22" class="group-hover:fill-primary" />
-                                    </svg>
-
-                                    <h2 class="font-bold text-2xl text-zinc-900">تماس ما</h2>
-                                </div>
-                                <div class="w-full flex flex-col gap-2">
-                                    <basis core="print" datamembername="db.office-view4">
-                                        <face filter="TypeID=240">
-                                            <div class="w-full flex items-center justify-between">
-                                                <a href="tel:@text" class="font-medium hover:text-primary-800">@text</a>
-                                                <p class="text-sm text-primary-800">پشتیبانی</p>
-                                            </div>
-                                        </face>
-                                    </basis>
+                    <basis core="print" datamembername="db.office-view4">
+                        <face filter="TypeID=250">
+                            <iframe src="https://maps.google.com/maps?q=@largetext,@text&z=14&output=embed"
+                                class=" w-full mb-2 rounded-3xl align-middle !border-0 border-none" height="277"
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </face>
+                    </basis>
 
 
 
-                                </div>
-                            </div>
+                    <div class="w-full h-[191px] group bg-zinc-50 p-3 justify-center rounded-3xl flex flex-col gap-6">
+                        <div class="flex items-center gap-3">
+                            <svg width="46" height="46" viewBox="0 0 46 46" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M12.7583 3.83307C14.8992 3.86182 16.4249 5.46607 18.3549 7.49582C18.8322 7.99607 19.3478 8.54232 19.9247 9.11732C22.7211 11.9157 21.9257 14.1984 21.2836 16.0307C20.5859 18.0298 19.9822 19.7548 23.597 23.3697C27.2119 26.9845 28.9349 26.3807 30.9321 25.6773C32.7664 25.0371 35.0434 24.236 37.8455 27.0343C38.4148 27.6036 38.9514 28.1134 39.4498 28.5868C41.4872 30.5265 43.0972 32.0579 43.1243 34.2046C43.1451 36.0331 42.0334 37.8999 39.2888 40.6446L39.1029 40.8228C38.4953 41.4457 36.8795 43.1056 33.7151 43.1247H33.6576C28.8813 43.1247 22.654 39.3221 15.1484 31.8183C7.61202 24.2839 3.8036 18.0375 3.83219 13.2516C3.8496 10.0891 5.50752 8.46948 6.13044 7.8619L6.18361 7.80383L6.31252 7.67407C9.06294 4.92365 10.9528 3.79282 12.7583 3.83307ZM12.7219 6.70807H12.7065C11.8458 6.70807 10.5387 7.57057 8.71569 9.34137L8.34962 9.70086L8.35377 9.69998C8.35377 9.69998 8.32249 9.73586 8.26918 9.79024L8.14102 9.91848C7.67719 10.3689 6.71694 11.3061 6.70726 13.2669C6.69202 16.0097 8.4956 21.1022 17.18 29.7847C25.8223 38.4251 30.9072 40.2497 33.6576 40.2497H33.6979C35.6586 40.2382 36.5939 39.278 37.0444 38.8161C37.1804 38.6762 37.2916 38.5707 37.3702 38.5075C39.2811 36.5851 40.2586 35.1572 40.2491 34.2391C40.2375 33.3037 39.0741 32.1997 37.466 30.6683C36.9543 30.1834 36.3984 29.6525 35.8119 29.066C34.2901 27.5499 33.5407 27.8087 31.8828 28.3913C29.5924 29.1944 26.4548 30.2946 21.5654 25.4013C16.674 20.5119 17.7704 17.3743 18.5696 15.082C19.1484 13.426 19.4129 12.6727 17.893 11.1509C17.2989 10.5567 16.7641 9.99323 16.2715 9.47573C14.7497 7.87723 13.6514 6.72148 12.7219 6.70807ZM29.2207 10.6516C33.2093 11.4259 36.2894 14.5041 37.0656 18.4946C37.217 19.2766 36.7091 20.0299 35.931 20.1813C35.837 20.1985 35.745 20.2081 35.653 20.2081C34.9784 20.2081 34.3785 19.7328 34.2443 19.0466C33.6923 16.2099 31.5054 14.023 28.6725 13.4729C27.8925 13.3215 27.3845 12.5683 27.536 11.7882C27.6874 11.0081 28.454 10.4983 29.2207 10.6516ZM29.1059 3.84399C36.9221 4.71224 42.9922 10.7747 43.8681 18.5889C43.9562 19.3786 43.3889 20.0897 42.6012 20.1778C42.5475 20.1836 42.4919 20.1874 42.4382 20.1874C41.7157 20.1874 41.0947 19.645 41.0122 18.9109C40.2858 12.4402 35.2603 7.41858 28.7877 6.69983C28 6.61166 27.4307 5.90249 27.5189 5.11282C27.6052 4.32507 28.3086 3.74432 29.1059 3.84399Z"
+                                    fill="#FFBD22" class="group-hover:fill-primary"></path>
+                            </svg>
+
+                            <p class="font-bold text-2xl text-zinc-900">تماس ما</p>
+                        </div>
+                        <div class="w-full flex flex-col gap-2">
+                            <basis core="print" datamembername="db.office-view4">
+                                <face filter="TypeID=240">
+                                    <div class="w-full flex items-center justify-between">
+                                        <a href="tel:@text" class="font-medium hover:text-primary-800">@text</a>
+                                        <p class="text-sm text-primary-800">پشتیبانی</p>
+                                    </div>
+                                </face>
+                            </basis>
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="w-full h-[191px] bg-zinc-50 p-3 justify-center rounded-3xl flex flex-col  ">
+                        <div class="flex items-center gap-3">
+                            <svg width="46" height="46" viewBox="0 0 46 46" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M23.4795 7.1875C16.3067 7.1875 10.4922 13.0018 10.4922 20.1766C10.4922 24.7833 13.2429 29.4676 16.4761 33.1077C18.0713 34.9038 19.7289 36.3827 21.1062 37.4011C21.7964 37.9115 22.3946 38.2902 22.8619 38.5342C23.2215 38.7218 23.4166 38.783 23.4795 38.8029C23.5421 38.783 23.7374 38.7218 24.0968 38.5342C24.5641 38.2902 25.1623 37.9115 25.8527 37.4011C27.2298 36.3827 28.8875 34.9038 30.4828 33.1077C33.7158 29.4676 36.4666 24.7833 36.4666 20.1766C36.4666 13.0018 30.652 7.1875 23.4795 7.1875ZM7.61719 20.1766C7.61719 11.4142 14.7187 4.3125 23.4795 4.3125C32.2402 4.3125 39.3416 11.4142 39.3416 20.1766C39.3416 25.8342 36.0344 31.1865 32.6323 35.0169C30.91 36.9562 29.1058 38.5712 27.562 39.7128C26.7917 40.2824 26.0645 40.7502 25.4272 41.0828C24.8597 41.3791 24.1465 41.6875 23.4795 41.6875C22.8125 41.6875 22.0993 41.3791 21.5316 41.0828C20.8943 40.7502 20.1673 40.2824 19.397 39.7128C17.8531 38.5712 16.0489 36.9562 14.3265 35.0169C10.9245 31.1865 7.61719 25.8342 7.61719 20.1766ZM17.2329 20.055C17.2329 16.6051 20.0289 13.8098 23.4798 13.8098C26.9293 13.8098 29.7249 16.6055 29.7249 20.055C29.7249 23.5037 26.93 26.302 23.4798 26.302C20.0281 26.302 17.2329 23.5041 17.2329 20.055ZM23.4798 16.6848C21.6161 16.6848 20.1079 18.1937 20.1079 20.055C20.1079 21.9169 21.6167 23.427 23.4798 23.427C25.3407 23.427 26.8499 21.9173 26.8499 20.055C26.8499 18.1933 25.3415 16.6848 23.4798 16.6848Z"
+                                    fill="#FFBD22"></path>
+                            </svg>
+                            <h2 class="font-bold text-2xl text-zinc-900">آدرس</h2>
                         </div>
                         <basis core="print" datamembername="db.office-view4">
-                            <face filter="text in('اینستاگرام')">
-                                <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
-                                    class="w-full group h-[191px] bg-zinc-50 rounded-3xl p-[40px] gap-[10px] justify-between">
-                                    <div class="flex items-center gap-3">
-                                        <svg width="46" height="46" viewBox="0 0 46 46" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M7.16872 7.46996C9.05564 5.44558 11.7428 4.3125 14.9158 4.3125H31.0824C34.2627 4.3125 36.951 5.44494 38.8372 7.4705C40.7125 9.48445 41.6875 12.2645 41.6875 15.3839V30.6161C41.6875 33.7354 40.7125 36.5156 38.8368 38.5296C36.9505 40.5551 34.2616 41.6875 31.0805 41.6875H14.9158C11.7354 41.6875 9.04739 40.5549 7.16176 38.5294C5.28697 36.5154 4.3125 33.7353 4.3125 30.6161V15.3839C4.3125 12.2629 5.29224 9.48311 7.16872 7.46996ZM9.27178 9.43023C7.97379 10.8228 7.1875 12.8599 7.1875 15.3839V30.6161C7.1875 33.1418 7.97067 35.1787 9.26614 36.5704C10.5508 37.9506 12.4457 38.8125 14.9158 38.8125H31.0805C33.5516 38.8125 35.4476 37.9504 36.7329 36.5702C38.029 35.1785 38.8125 33.1417 38.8125 30.6161V15.3839C38.8125 12.8583 38.029 10.8214 36.7331 9.42969C35.448 8.04952 33.5524 7.1875 31.0824 7.1875H14.9158C12.455 7.1875 10.5593 8.04891 9.27178 9.43023Z"
-                                                fill="#FFBD22" class="group-hover:fill-primary" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M22.7018 18.3594C19.7883 18.3594 17.4258 20.722 17.4258 23.6353C17.4258 26.5489 19.7883 28.9114 22.7018 28.9114C25.6153 28.9114 27.9778 26.5489 27.9778 23.6353C27.9778 20.722 25.6153 18.3594 22.7018 18.3594ZM14.5508 23.6353C14.5508 19.1341 18.2005 15.4844 22.7018 15.4844C27.2031 15.4844 30.8528 19.1341 30.8528 23.6353C30.8528 28.1366 27.2031 31.7864 22.7018 31.7864C18.2005 31.7864 14.5508 28.1366 14.5508 23.6353Z"
-                                                fill="#FFBD22" class="group-hover:fill-primary" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M30.3398 14.142C30.3398 13.0473 31.2286 12.1582 32.3236 12.1582C33.4249 12.1582 34.3054 13.0538 34.3054 14.142C34.3054 15.2368 33.4184 16.1238 32.3236 16.1238C31.2351 16.1238 30.3398 15.2432 30.3398 14.142Z"
-                                                fill="#FFBD22" class="group-hover:fill-primary" />
-                                        </svg>
-
-                                        <h2 class="font-bold text-2xl text-zinc-900">اینستاگرام</h2>
-                                    </div>
-                                    <p class="text-xl mt-2 text-zinc-800 group-hover:text-primary">
-                                        @largetext
-                                    </p>
-                                    <p class="text-zinc-600 mt-2">تورهای خاص و هیجان‌انگیز در اینستاگرام</p>
-                                </a>
+                            <face filter="TypeID=244">
+                                <div class="text-justify leading-7 text-zinc-900 text-sm">
+                                    @largetext
+                                </div>
                             </face>
                         </basis>
 
 
-                        <div class="w-full flex gap-6">
-                            <basis core="print" datamembername="db.office-view4">
-                                <face filter="text in('تلگرام')">
-                                    <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
-                                        class="w-1/2 h-[191px] group bg-zinc-50 p-[40px] rounded-3xl flex flex-col justify-between">
-                                        <div class="flex items-center gap-3">
-                                            <svg width="46" height="46" viewBox="0 0 46 46" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M23.4795 7.1875C16.3067 7.1875 10.4922 13.0018 10.4922 20.1766C10.4922 24.7833 13.2429 29.4676 16.4761 33.1077C18.0713 34.9038 19.7289 36.3827 21.1062 37.4011C21.7964 37.9115 22.3946 38.2902 22.8619 38.5342C23.2215 38.7218 23.4166 38.783 23.4795 38.8029C23.5421 38.783 23.7374 38.7218 24.0968 38.5342C24.5641 38.2902 25.1623 37.9115 25.8527 37.4011C27.2298 36.3827 28.8875 34.9038 30.4828 33.1077C33.7158 29.4676 36.4666 24.7833 36.4666 20.1766C36.4666 13.0018 30.652 7.1875 23.4795 7.1875ZM7.61719 20.1766C7.61719 11.4142 14.7187 4.3125 23.4795 4.3125C32.2402 4.3125 39.3416 11.4142 39.3416 20.1766C39.3416 25.8342 36.0344 31.1865 32.6323 35.0169C30.91 36.9562 29.1058 38.5712 27.562 39.7128C26.7917 40.2824 26.0645 40.7502 25.4272 41.0828C24.8597 41.3791 24.1465 41.6875 23.4795 41.6875C22.8125 41.6875 22.0993 41.3791 21.5316 41.0828C20.8943 40.7502 20.1673 40.2824 19.397 39.7128C17.8531 38.5712 16.0489 36.9562 14.3265 35.0169C10.9245 31.1865 7.61719 25.8342 7.61719 20.1766ZM17.2329 20.055C17.2329 16.6051 20.0289 13.8098 23.4798 13.8098C26.9293 13.8098 29.7249 16.6055 29.7249 20.055C29.7249 23.5037 26.93 26.302 23.4798 26.302C20.0281 26.302 17.2329 23.5041 17.2329 20.055ZM23.4798 16.6848C21.6161 16.6848 20.1079 18.1937 20.1079 20.055C20.1079 21.9169 21.6167 23.427 23.4798 23.427C25.3407 23.427 26.8499 21.9173 26.8499 20.055C26.8499 18.1933 25.3415 16.6848 23.4798 16.6848Z"
-                                                    fill="#FFBD22" class="group-hover:fill-primary"></path>
-                                            </svg>
-                                            <h2 class="font-bold text-2xl text-zinc-900">تلگرام</h2>
-                                        </div>
-                                        <p class="text-xl mt-2 text-right text-zinc-800 group-hover:text-primary">
-                                            @largetext
-                                        </p>
-                                        <p class="text-zinc-600 mt-2">
-                                            پاسخ‌گویی سریع + پیشنهاد تورهای ویژه
-                                        </p>
 
-                                    </a>
-                                </face>
-                            </basis>
-                            <basis core="print" datamembername="db.office-view4">
-                                <face filter="Question in('ایمیل')">
-                                    <a href="mailto:@text"
-                                        class="w-1/2 h-[191px] group bg-zinc-50 p-[40px] rounded-3xl flex flex-col justify-between">
-                                        <div class="flex items-center gap-3">
-                                            <svg width="46" height="46" viewBox="0 0 46 46" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M31.9725 39.9641H14.9831C13.6885 39.9821 12.4035 39.74 11.2042 39.2524C10.0048 38.765 8.91547 38.0417 8.00069 37.1255C6.95006 36.0386 6.1255 34.754 5.57474 33.3462C5.02401 31.9384 4.75801 30.4354 4.79217 28.9241V17.0848C4.70793 15.6815 4.90845 14.2757 5.38166 12.9519C5.85486 11.6281 6.59096 10.4137 7.54569 9.38184C8.50042 8.34995 9.65402 7.52185 10.9371 6.94737C12.2202 6.37291 13.6062 6.06394 15.0118 6.03906H31.9475C33.353 6.06394 34.7392 6.37291 36.0222 6.94737C37.3054 7.52185 38.4588 8.34995 39.4137 9.38184C40.3684 10.4137 41.1044 11.6281 41.5776 12.9519C42.0509 14.2757 42.2513 15.6815 42.1672 17.0848V28.9241C42.2004 30.434 41.9338 31.9357 41.3831 33.3422C40.8324 34.7485 40.0083 36.0318 38.9587 37.1178C38.0441 38.0357 36.9543 38.7606 35.7542 39.2495C34.5542 39.7385 33.2681 39.9815 31.9725 39.9641ZM15.008 37.0891H31.9686C32.8869 37.105 33.799 36.9363 34.6508 36.5929C35.5026 36.2496 36.2765 35.7384 36.927 35.09C37.709 34.2695 38.3208 33.3021 38.7268 32.2437C39.1327 31.1854 39.325 30.0572 39.2922 28.9241V17.0848C39.2922 12.3506 36.2045 8.91406 31.9475 8.91406H15.0118C10.7549 8.91406 7.66717 12.3506 7.66717 17.0848V28.9241C7.63543 30.0559 7.82807 31.1827 8.23402 32.2397C8.63995 33.2966 9.25116 34.2628 10.0323 35.0823C10.6822 35.7304 11.4556 36.2411 12.3068 36.5846C13.1579 36.9281 14.0693 37.0969 14.9869 37.0814L15.008 37.0891Z"
-                                                    fill="#FFBD22" class="group-hover:fill-primary" />
-                                                <path
-                                                    d="M23.5293 26.1038C22.3096 26.103 21.1262 25.6883 20.1732 24.927L12.4337 18.6882C12.1368 18.4488 11.9472 18.1012 11.9066 17.722C11.866 17.3428 11.9777 16.963 12.2171 16.6661C12.4566 16.3693 12.8041 16.1797 13.1833 16.139C13.5625 16.0984 13.9423 16.2101 14.2392 16.4495L21.9692 22.6826C22.4142 23.0383 22.9672 23.2323 23.537 23.2323C24.1068 23.2323 24.6598 23.0383 25.1048 22.6826L32.7562 16.461C33.0519 16.2203 33.4314 16.107 33.8107 16.146C34.19 16.185 34.5385 16.3731 34.7792 16.669C35.0199 16.9648 35.1332 17.3442 35.0941 17.7236C35.0552 18.103 34.867 18.4513 34.5712 18.692L26.9046 24.9251C25.9451 25.6883 24.7552 26.1038 23.5293 26.1038Z"
-                                                    fill="#FFBD22" class="group-hover:fill-primary" />
-                                            </svg>
-
-                                            <h2 class="font-bold text-2xl text-zinc-900">ایمیل</h2>
-                                        </div>
-                                        <p class="text-xl mt-2 text-right text-zinc-800 group-hover:text-primary">
-                                            @text
-                                        </p>
-                                        <p class="text-zinc-600 mt-2">
-                                            برای همکاری‌ها و درخواست‌ها، ایمیل بزنید.
-                                        </p>
-
-                                    </a>
-                                </face>
-                            </basis>
-                        </div>
                     </div>
                     <basis core="print" datamembername="db.office-view4">
-                        <face filter="TypeID=250">
-                            <iframe src="https://maps.google.com/maps?q=@largetext,@text&z=14&output=embed"
-                                class=" w-[434px] rounded-3xl mb-10 align-middle !border-0 border-none" height="621"
-                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <face filter="text in('اینستاگرام')">
+                            <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
+                                class="w-full group h-[191px] bg-zinc-50 rounded-3xl p-3 justify-center gap-[10px] flex flex-col">
+                                <div class="flex items-center gap-3">
+                                    <svg width="46" height="46" viewBox="0 0 46 46" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M7.16872 7.46996C9.05564 5.44558 11.7428 4.3125 14.9158 4.3125H31.0824C34.2627 4.3125 36.951 5.44494 38.8372 7.4705C40.7125 9.48445 41.6875 12.2645 41.6875 15.3839V30.6161C41.6875 33.7354 40.7125 36.5156 38.8368 38.5296C36.9505 40.5551 34.2616 41.6875 31.0805 41.6875H14.9158C11.7354 41.6875 9.04739 40.5549 7.16176 38.5294C5.28697 36.5154 4.3125 33.7353 4.3125 30.6161V15.3839C4.3125 12.2629 5.29224 9.48311 7.16872 7.46996ZM9.27178 9.43023C7.97379 10.8228 7.1875 12.8599 7.1875 15.3839V30.6161C7.1875 33.1418 7.97067 35.1787 9.26614 36.5704C10.5508 37.9506 12.4457 38.8125 14.9158 38.8125H31.0805C33.5516 38.8125 35.4476 37.9504 36.7329 36.5702C38.029 35.1785 38.8125 33.1417 38.8125 30.6161V15.3839C38.8125 12.8583 38.029 10.8214 36.7331 9.42969C35.448 8.04952 33.5524 7.1875 31.0824 7.1875H14.9158C12.455 7.1875 10.5593 8.04891 9.27178 9.43023Z"
+                                            fill="#FFBD22" class="group-hover:fill-primary"></path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M22.7018 18.3594C19.7883 18.3594 17.4258 20.722 17.4258 23.6353C17.4258 26.5489 19.7883 28.9114 22.7018 28.9114C25.6153 28.9114 27.9778 26.5489 27.9778 23.6353C27.9778 20.722 25.6153 18.3594 22.7018 18.3594ZM14.5508 23.6353C14.5508 19.1341 18.2005 15.4844 22.7018 15.4844C27.2031 15.4844 30.8528 19.1341 30.8528 23.6353C30.8528 28.1366 27.2031 31.7864 22.7018 31.7864C18.2005 31.7864 14.5508 28.1366 14.5508 23.6353Z"
+                                            fill="#FFBD22" class="group-hover:fill-primary"></path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M30.3398 14.142C30.3398 13.0473 31.2286 12.1582 32.3236 12.1582C33.4249 12.1582 34.3054 13.0538 34.3054 14.142C34.3054 15.2368 33.4184 16.1238 32.3236 16.1238C31.2351 16.1238 30.3398 15.2432 30.3398 14.142Z"
+                                            fill="#FFBD22" class="group-hover:fill-primary"></path>
+                                    </svg>
+
+                                    <h2 class="font-bold text-2xl text-zinc-900">اینستاگرام</h2>
+                                </div>
+                                <p class="text-xl mt-2 text-zinc-800 group-hover:text-primary">
+                                    @largetext
+                                </p>
+                                <p class="text-zinc-600 mt-2">تورهای خاص و هیجان‌انگیز در اینستاگرام</p>
+                            </a>
+                        </face>
+                    </basis>
+
+                    <basis core="print" datamembername="db.office-view4">
+                        <face filter="Question in('ایمیل')">
+                            <a href="mailto:@text"
+                                class="w-full h-[191px] group bg-zinc-50 p-3 justify-center rounded-3xl flex flex-col  ">
+                                <div class="flex items-center gap-3">
+                                    <svg width="46" height="46" viewBox="0 0 46 46" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M31.9725 39.9641H14.9831C13.6885 39.9821 12.4035 39.74 11.2042 39.2524C10.0048 38.765 8.91547 38.0417 8.00069 37.1255C6.95006 36.0386 6.1255 34.754 5.57474 33.3462C5.02401 31.9384 4.75801 30.4354 4.79217 28.9241V17.0848C4.70793 15.6815 4.90845 14.2757 5.38166 12.9519C5.85486 11.6281 6.59096 10.4137 7.54569 9.38184C8.50042 8.34995 9.65402 7.52185 10.9371 6.94737C12.2202 6.37291 13.6062 6.06394 15.0118 6.03906H31.9475C33.353 6.06394 34.7392 6.37291 36.0222 6.94737C37.3054 7.52185 38.4588 8.34995 39.4137 9.38184C40.3684 10.4137 41.1044 11.6281 41.5776 12.9519C42.0509 14.2757 42.2513 15.6815 42.1672 17.0848V28.9241C42.2004 30.434 41.9338 31.9357 41.3831 33.3422C40.8324 34.7485 40.0083 36.0318 38.9587 37.1178C38.0441 38.0357 36.9543 38.7606 35.7542 39.2495C34.5542 39.7385 33.2681 39.9815 31.9725 39.9641ZM15.008 37.0891H31.9686C32.8869 37.105 33.799 36.9363 34.6508 36.5929C35.5026 36.2496 36.2765 35.7384 36.927 35.09C37.709 34.2695 38.3208 33.3021 38.7268 32.2437C39.1327 31.1854 39.325 30.0572 39.2922 28.9241V17.0848C39.2922 12.3506 36.2045 8.91406 31.9475 8.91406H15.0118C10.7549 8.91406 7.66717 12.3506 7.66717 17.0848V28.9241C7.63543 30.0559 7.82807 31.1827 8.23402 32.2397C8.63995 33.2966 9.25116 34.2628 10.0323 35.0823C10.6822 35.7304 11.4556 36.2411 12.3068 36.5846C13.1579 36.9281 14.0693 37.0969 14.9869 37.0814L15.008 37.0891Z"
+                                            fill="#FFBD22" class="group-hover:fill-primary"></path>
+                                        <path
+                                            d="M23.5293 26.1038C22.3096 26.103 21.1262 25.6883 20.1732 24.927L12.4337 18.6882C12.1368 18.4488 11.9472 18.1012 11.9066 17.722C11.866 17.3428 11.9777 16.963 12.2171 16.6661C12.4566 16.3693 12.8041 16.1797 13.1833 16.139C13.5625 16.0984 13.9423 16.2101 14.2392 16.4495L21.9692 22.6826C22.4142 23.0383 22.9672 23.2323 23.537 23.2323C24.1068 23.2323 24.6598 23.0383 25.1048 22.6826L32.7562 16.461C33.0519 16.2203 33.4314 16.107 33.8107 16.146C34.19 16.185 34.5385 16.3731 34.7792 16.669C35.0199 16.9648 35.1332 17.3442 35.0941 17.7236C35.0552 18.103 34.867 18.4513 34.5712 18.692L26.9046 24.9251C25.9451 25.6883 24.7552 26.1038 23.5293 26.1038Z"
+                                            fill="#FFBD22" class="group-hover:fill-primary"></path>
+                                    </svg>
+
+                                    <h2 class="font-bold text-2xl text-zinc-900">ایمیل</h2>
+                                </div>
+                                <p class="text-xl mt-2 text-right text-zinc-800 group-hover:text-primary">
+                                    @text
+                                </p>
+                                <p class="text-zinc-600 mt-2">
+                                    برای همکاری‌ها و درخواست‌ها، ایمیل بزنید.
+                                </p>
+
+                            </a>
+                        </face>
+                    </basis>
+
+                    <basis core="print" datamembername="db.office-view4">
+                        <face filter="text in('تلگرام')">
+                            <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
+                                class="w-full h-[191px] group bg-zinc-50 p-3 rounded-3xl flex flex-col justify-center">
+                                <div class="flex items-center gap-3">
+                                    <svg width="46" height="46" viewBox="0 0 46 46" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M38.8035 9.70776C38.859 9.46457 38.6179 9.26079 38.3875 9.35524L7.44223 22.0184C7.31286 22.0713 7.26072 22.1367 7.23309 22.1884C7.19889 22.2523 7.17861 22.3439 7.19243 22.4489C7.20623 22.5538 7.24953 22.6369 7.29898 22.6896C7.33825 22.7314 7.40388 22.7803 7.5382 22.7987L16.726 23.8435C17.0111 23.8761 17.2799 23.993 17.498 24.1795L31.8521 36.458C31.8807 36.4824 31.9084 36.5081 31.9351 36.5347C32.1956 36.7959 32.6448 36.6683 32.7274 36.3056L38.8035 9.70776ZM41.6062 10.3483C42.1806 7.83537 39.6844 5.71572 37.2964 6.69539L6.35349 19.3575C3.23226 20.6346 3.8343 25.2269 7.18314 25.6517L15.9637 26.6504L29.9458 38.6106C31.8132 40.4157 34.9504 39.4894 35.5306 36.9449L41.6062 10.3483Z"
+                                            fill="#FFBD22" class="group-hover:fill-primary" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M16.4367 23.8435C17.2275 23.7739 17.925 24.3587 17.9946 25.1495L18.7035 33.2124L22.203 30.2245C22.8068 29.7089 23.7141 29.7806 24.2295 30.3843C24.7451 30.9881 24.6736 31.8954 24.0698 32.4108L20.4594 35.4934C18.8339 36.8816 16.3131 36.014 15.8885 33.9173C15.8778 33.8646 15.8701 33.8115 15.8654 33.7578L15.1306 25.4014C15.0611 24.6106 15.6458 23.9129 16.4367 23.8435Z"
+                                            fill="#FFBD22" class="group-hover:fill-primary" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M40.7933 7.45912C41.2637 8.09875 41.1264 8.9985 40.4868 9.4688L17.418 26.43C16.7784 26.9003 15.8786 26.7629 15.4084 26.1233C14.9381 25.4837 15.0753 24.5841 15.715 24.1137L38.7837 7.15249C39.4233 6.68221 40.3231 6.81949 40.7933 7.45912Z"
+                                            fill="#FFBD22" class="group-hover:fill-primary" />
+                                    </svg>
+
+
+                                    <h2 class="font-bold text-2xl text-zinc-900">تلگرام</h2>
+                                </div>
+                                <p class="text-xl mt-2 text-right text-zinc-800 group-hover:text-primary">
+                                    @largetext
+                                </p>
+                                <p class="text-zinc-600 mt-2">
+                                    پاسخ‌گویی سریع + پیشنهاد تورهای ویژه
+                                </p>
+
+                            </a>
                         </face>
                     </basis>
                 </div>
             </div>
         </section>
-        <section class="w-full flex justify-center relative">
-            <div
-                class="px-4 before-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class="flex relative items-center gap-3">
-                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                            class="w-8   h-8">
-                        <h3 class="font-bold text-2xl text-zinc-900"> ارتباط با ما </h3>
-                        <span class="bullet-1 "></span>
+
+
+        <section class="w-full relative full-before-mob mb-10 mt-[-15px]">
+            <div class="w-full px-4 flex flex-col ">
+                <div class="w-full flex justify-center">
+                    <div class="flex w-fit bg-white relative items-center gap-3">
+                        <div class="flex z-10 relative bg-white items-center gap-3">
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                                class="w-8   h-8">
+                            <h2 class="font-bold text-base text-zinc-900"> ارتباط با ما </h2>
+                            <span class="bullet-1 "></span>
+                        </div>
                     </div>
                 </div>
-                <div class="my-[70px] flex flex-col w-full gap-[21px] offices-container">
-                    <div class="office-item  w-full border border-zinc-300 rounded-xl  px-[34px]">
-                        <div class="w-full flex items-center cursor-pointer justify-between h-[73px]">
-                            <div class="flex gap-2 ">
-                                <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin-c.svg" alt="pin">
-                                <basis core="print" datamembername="db.office-view4">
-                                    <face filter="TypeID=150">
-                                        <p class="text-zinc-900 font-bold">@text</p>
-
-                                    </face>
-                                </basis>
-                            </div>
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <line x1="9" y1="1" x2="9" y2="17" stroke="#FFBD22" stroke-width="2"
-                                    stroke-linecap="round" />
-                                <line x1="1" y1="9" x2="17" y2="9" stroke="#FFBD22" stroke-width="2"
-                                    stroke-linecap="round" />
-                            </svg>
-
-                        </div>
-                        <div class="w-full show-info h-0 overflow-hidden">
-                            <div class="w-full flex flex-col gap-5 py-[15px] border-t border-zinc-300">
-                                <div class="flex items-center gap-2">
-                                    <span class="border-l border-zinc-300 pl-2">
-                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin" width="34"
-                                            height="35">
-
-                                    </span>
+                <div class="my-6 z-[5] flex flex-col gap-4">
+                    <div class="w-full offices-container flex flex-col gap-[11px] ">
+                        <div class="office-item  w-full border border-zinc-300 rounded-lg  px-2">
+                            <div class="w-full flex items-center cursor-pointer justify-between h-[50px]">
+                                <div class="flex gap-2 ">
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin-c.svg" alt="pin">
                                     <basis core="print" datamembername="db.office-view4">
-                                        <face filter="TypeID=244">
-                                            <div class="text-zinc-900 text-justify pr-2">
-                                                @largetext
+                                        <face filter="TypeID=150">
+                                            <p class="text-zinc-900 font-bold text-sm"> @text:</p>
 
+                                        </face>
+                                    </basis>
+                                </div>
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="9" y1="1" x2="9" y2="17" stroke="#FFBD22" stroke-width="2"
+                                        stroke-linecap="round" />
+                                    <line x1="1" y1="9" x2="17" y2="9" stroke="#FFBD22" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+
+                            </div>
+                            <div class="w-full show-info h-0 overflow-hidden">
+                                <div class="w-full flex flex-col gap-5 py-[15px] border-t border-zinc-300">
+                                    <basis core="print" datamembername="db.office-view4">
+                                        <face filter="Question in('آدرس')">
+                                            <div class="flex items-center gap-2">
+                                                <span class="border-l border-zinc-300 pl-2">
+                                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin"
+                                                        width="34" height="35">
+
+                                                </span>
+                                                <div
+                                                    class="text-zinc-900 w-[calc(100%-50px)]  text-xs text-justify pr-2">
+
+                                                    @largetext
+                                                </div>
                                             </div>
                                         </face>
                                     </basis>
 
+
+                                    <basis core="print" datamembername="db.office-view4">
+                                        <face filter="TypeID=240">
+                                            <a href="tel:@text" class="flex items-center gap-2">
+                                                <span class="border-l border-zinc-300 pl-2">
+                                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Calling.svg"
+                                                        alt="Calling" width="34" height="35">
+
+                                                </span>
+                                                <div
+                                                    class="flex flex-col gap-2  text-xs  text-zinc-900 text-justify pr-2">
+                                                    <div class="hover:text-primary  text-xs ">@text</div>
+                                                </div>
+                                            </a>
+                                        </face>
+                                    </basis>
+
+
+
+                                    <basis core="print" datamembername="db.office-view4">
+                                        <face filter="Question in('ایمیل')">
+                                            <a href="mailto:@text" class="flex items-center gap-2">
+                                                <span class="border-l border-zinc-300 pl-2">
+                                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/mailto-svg.svg"
+                                                        alt="mail" width="34" height="35">
+
+                                                </span>
+                                                <div
+                                                    class="flex  text-xs  flex-col gap-2 text-zinc-900 text-justify pr-2">
+                                                    <p href="" class=" text-xs  hover:text-primary">@text</p>
+                                                </div>
+                                            </a>
+                                        </face>
+                                    </basis>
+
+
+                                    <basis core="print" datamembername="db.office-view4">
+                                        <face filter="TypeID=250">
+                                            <iframe
+                                                src="https://maps.google.com/maps?q=@largetext,@text&z=14&output=embed"
+                                                title="satrap"
+                                                class=" w-full rounded-xl align-middle !border-0 border-none"
+                                                height="102" allowfullscreen="" loading="lazy"
+                                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                        </face>
+                                    </basis>
+
+
+
                                 </div>
-
-
-
-                                <div class="flex items-center gap-2">
-                                    <span class="border-l border-zinc-300 pl-2">
-                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling"
-                                            width="34" height="35">
-
-                                    </span>
-                                    <div class="flex flex-col gap-2 text-zinc-900 text-justify pr-2">
-                                        <basis core="print" datamembername="db.office-view4">
-                                            <face filter="TypeID=240">
-                                                <a href="tel:@text" class="hover:text-primary">@text</a>
-
-                                            </face>
-                                        </basis>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="flex items-center gap-2">
-                                    <span class="border-l border-zinc-300 pl-2">
-                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/mailto-svg.svg" alt="mail"
-                                            width="34" height="35">
-
-                                    </span>
-                                    <div class="flex flex-col gap-2 text-zinc-900 text-justify pr-2">
-                                        <basis core="print" datamembername="db.office-view4">
-                                            <face filter="TypeID=128">
-                                                <a href="mailto:@text" class="hover:text-primary">@text</a>
-
-                                            </face>
-                                        </basis>
-                                    </div>
-                                </div>
-
-                                <basis core="print" datamembername="db.office-view4">
-                                    <face filter="TypeID=250">
-                                        <iframe src="https://maps.google.com/maps?q=@largetext,@text&z=14&output=embed"
-                                            class=" w-full rounded-xl align-middle !border-0 border-none" height="206"
-                                            allowfullscreen="" loading="lazy"
-                                            referrerpolicy="no-referrer-when-downgrade">
-                                        </iframe>
-                                    </face>
-                                </basis>
-
 
                             </div>
-
                         </div>
-                    </div>
-                    <div class="office-item  w-full border border-zinc-300 rounded-xl  px-[34px]">
-                        <div class="w-full flex items-center cursor-pointer justify-between h-[73px]">
-                            <div class="flex gap-2 ">
-                                <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin-c.svg" alt="pin">
-                                <basis core="print" datamembername="db.office-view3">
-                                    <face filter="TypeID=150">
-                                        <p class="text-zinc-900 font-bold">@text</p>
-
-                                    </face>
-                                </basis>
-                            </div>
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <line x1="9" y1="1" x2="9" y2="17" stroke="#FFBD22" stroke-width="2"
-                                    stroke-linecap="round" />
-                                <line x1="1" y1="9" x2="17" y2="9" stroke="#FFBD22" stroke-width="2"
-                                    stroke-linecap="round" />
-                            </svg>
-
-                        </div>
-                        <div class="w-full show-info h-0 overflow-hidden">
-                            <div class="w-full flex flex-col gap-5 py-[15px] border-t border-zinc-300">
-                                <div class="flex items-center gap-2">
-                                    <span class="border-l border-zinc-300 pl-2">
-                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin" width="34"
-                                            height="35">
-
-                                    </span>
+                        <div class="office-item  w-full border border-zinc-300 rounded-lg  px-2">
+                            <div class="w-full flex items-center cursor-pointer justify-between h-[50px]">
+                                <div class="flex gap-2 ">
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin-c.svg" alt="pin">
                                     <basis core="print" datamembername="db.office-view3">
-                                        <face filter="TypeID=244">
-                                            <div class="text-zinc-900 text-justify pr-2">
-                                                @largetext
+                                        <face filter="TypeID=150">
+                                            <p class="text-zinc-900 font-bold text-sm"> @text:</p>
 
+                                        </face>
+                                    </basis>
+                                </div>
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="9" y1="1" x2="9" y2="17" stroke="#FFBD22" stroke-width="2"
+                                        stroke-linecap="round" />
+                                    <line x1="1" y1="9" x2="17" y2="9" stroke="#FFBD22" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+
+                            </div>
+                            <div class="w-full show-info h-0 overflow-hidden">
+                                <div class="w-full flex flex-col gap-5 py-[15px] border-t border-zinc-300">
+                                    <basis core="print" datamembername="db.office-view3">
+                                        <face filter="Question in('آدرس')">
+                                            <div class="flex items-center gap-2">
+                                                <span class="border-l border-zinc-300 pl-2">
+                                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin"
+                                                        width="34" height="35">
+
+                                                </span>
+                                                <div
+                                                    class="text-zinc-900 w-[calc(100%-50px)]  text-xs text-justify pr-2">
+
+                                                    @largetext
+                                                </div>
                                             </div>
                                         </face>
                                     </basis>
 
+
+                                    <basis core="print" datamembername="db.office-view3">
+                                        <face filter="TypeID=240">
+                                            <a href="tel:@text" class="flex items-center gap-2">
+                                                <span class="border-l border-zinc-300 pl-2">
+                                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Calling.svg"
+                                                        alt="Calling" width="34" height="35">
+
+                                                </span>
+                                                <div
+                                                    class="flex flex-col gap-2  text-xs  text-zinc-900 text-justify pr-2">
+                                                    <div class="hover:text-primary  text-xs ">@text</div>
+                                                </div>
+                                            </a>
+                                        </face>
+                                    </basis>
+
+
+
+                                    <basis core="print" datamembername="db.office-view3">
+                                        <face filter="Question in('ایمیل')">
+                                            <a href="mailto:@text" class="flex items-center gap-2">
+                                                <span class="border-l border-zinc-300 pl-2">
+                                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/mailto-svg.svg"
+                                                        alt="mail" width="34" height="35">
+
+                                                </span>
+                                                <div
+                                                    class="flex  text-xs  flex-col gap-2 text-zinc-900 text-justify pr-2">
+                                                    <p href="" class=" text-xs  hover:text-primary">@text</p>
+                                                </div>
+                                            </a>
+                                        </face>
+                                    </basis>
+
+
+                                    <basis core="print" datamembername="db.office-view3">
+                                        <face filter="TypeID=250">
+                                            <iframe title="satrap"
+                                                src="https://maps.google.com/maps?q=@largetext,@text&z=14&output=embed"
+                                                class=" w-full rounded-xl align-middle !border-0 border-none"
+                                                height="102" allowfullscreen="" loading="lazy"
+                                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                        </face>
+                                    </basis>
+
+
+
                                 </div>
-
-
-
-                                <div class="flex items-center gap-2">
-                                    <span class="border-l border-zinc-300 pl-2">
-                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling"
-                                            width="34" height="35">
-
-                                    </span>
-                                    <div class="flex flex-col gap-2 text-zinc-900 text-justify pr-2">
-                                        <basis core="print" datamembername="db.office-view3">
-                                            <face filter="TypeID=240">
-                                                <a href="tel:@text" class="hover:text-primary">@text</a>
-
-                                            </face>
-                                        </basis>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="flex items-center gap-2">
-                                    <span class="border-l border-zinc-300 pl-2">
-                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/mailto-svg.svg" alt="mail"
-                                            width="34" height="35">
-
-                                    </span>
-                                    <div class="flex flex-col gap-2 text-zinc-900 text-justify pr-2">
-                                        <basis core="print" datamembername="db.office-view3">
-                                            <face filter="TypeID=128">
-                                                <a href="mailto:@text" class="hover:text-primary">@text</a>
-
-                                            </face>
-                                        </basis>
-                                    </div>
-                                </div>
-
-                                <basis core="print" datamembername="db.office-view3">
-                                    <face filter="TypeID=250">
-                                        <iframe src="https://maps.google.com/maps?q=@largetext,@text&z=14&output=embed"
-                                            class=" w-full rounded-xl align-middle !border-0 border-none" height="206"
-                                            allowfullscreen="" loading="lazy"
-                                            referrerpolicy="no-referrer-when-downgrade">
-                                        </iframe>
-                                    </face>
-                                </basis>
-
 
                             </div>
-
                         </div>
-                    </div>
-                    <div class="office-item  w-full border border-zinc-300 rounded-xl  px-[34px]">
-                        <div class="w-full flex items-center cursor-pointer justify-between h-[73px]">
-                            <div class="flex gap-2 ">
-                                <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin-c.svg" alt="pin">
-                                <basis core="print" datamembername="db.office-view2">
-                                    <face filter="TypeID=150">
-                                        <p class="text-zinc-900 font-bold">@text</p>
-
-                                    </face>
-                                </basis>
-                            </div>
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <line x1="9" y1="1" x2="9" y2="17" stroke="#FFBD22" stroke-width="2"
-                                    stroke-linecap="round" />
-                                <line x1="1" y1="9" x2="17" y2="9" stroke="#FFBD22" stroke-width="2"
-                                    stroke-linecap="round" />
-                            </svg>
-
-                        </div>
-                        <div class="w-full show-info h-0 overflow-hidden">
-                            <div class="w-full flex flex-col gap-5 py-[15px] border-t border-zinc-300">
-                                <div class="flex items-center gap-2">
-                                    <span class="border-l border-zinc-300 pl-2">
-                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin" width="34"
-                                            height="35">
-
-                                    </span>
+                        <div class="office-item  w-full border border-zinc-300 rounded-lg  px-2">
+                            <div class="w-full flex items-center cursor-pointer justify-between h-[50px]">
+                                <div class="flex gap-2 ">
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin-c.svg" alt="pin">
                                     <basis core="print" datamembername="db.office-view2">
-                                        <face filter="TypeID=244">
-                                            <div class="text-zinc-900 text-justify pr-2">
-                                                @largetext
+                                        <face filter="TypeID=150">
+                                            <p class="text-zinc-900 font-bold text-sm"> @text:</p>
 
+                                        </face>
+                                    </basis>
+                                </div>
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="9" y1="1" x2="9" y2="17" stroke="#FFBD22" stroke-width="2"
+                                        stroke-linecap="round" />
+                                    <line x1="1" y1="9" x2="17" y2="9" stroke="#FFBD22" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+
+                            </div>
+                            <div class="w-full show-info h-0 overflow-hidden">
+                                <div class="w-full flex flex-col gap-5 py-[15px] border-t border-zinc-300">
+                                    <basis core="print" datamembername="db.office-view2">
+                                        <face filter="Question in('آدرس')">
+                                            <div class="flex items-center gap-2">
+                                                <span class="border-l border-zinc-300 pl-2">
+                                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin.svg" alt="pin"
+                                                        width="34" height="35">
+
+                                                </span>
+                                                <div
+                                                    class="text-zinc-900 w-[calc(100%-50px)]  text-xs text-justify pr-2">
+
+                                                    @largetext
+                                                </div>
                                             </div>
                                         </face>
                                     </basis>
 
+
+                                    <basis core="print" datamembername="db.office-view2">
+                                        <face filter="TypeID=240">
+                                            <a href="tel:@text" class="flex items-center gap-2">
+                                                <span class="border-l border-zinc-300 pl-2">
+                                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Calling.svg"
+                                                        alt="Calling" width="34" height="35">
+
+                                                </span>
+                                                <div
+                                                    class="flex flex-col gap-2  text-xs  text-zinc-900 text-justify pr-2">
+                                                    <div class="hover:text-primary  text-xs ">@text</div>
+                                                </div>
+                                            </a>
+                                        </face>
+                                    </basis>
+
+
+
+                                    <basis core="print" datamembername="db.office-view2">
+                                        <face filter="Question in('ایمیل')">
+                                            <a href="mailto:@text" class="flex items-center gap-2">
+                                                <span class="border-l border-zinc-300 pl-2">
+                                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/mailto-svg.svg"
+                                                        alt="mail" width="34" height="35">
+
+                                                </span>
+                                                <div
+                                                    class="flex  text-xs  flex-col gap-2 text-zinc-900 text-justify pr-2">
+                                                    <p href="" class=" text-xs  hover:text-primary">@text</p>
+                                                </div>
+                                            </a>
+                                        </face>
+                                    </basis>
+
+
+                                    <basis core="print" datamembername="db.office-view2">
+                                        <face filter="TypeID=250">
+                                            <iframe title="satrap"
+                                                src="https://maps.google.com/maps?q=@largetext,@text&z=14&output=embed"
+                                                class=" w-full rounded-xl align-middle !border-0 border-none"
+                                                height="102" allowfullscreen="" loading="lazy"
+                                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                        </face>
+                                    </basis>
+
+
+
                                 </div>
-
-
-
-                                <div class="flex items-center gap-2">
-                                    <span class="border-l border-zinc-300 pl-2">
-                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/Calling.svg" alt="Calling"
-                                            width="34" height="35">
-
-                                    </span>
-                                    <div class="flex flex-col gap-2 text-zinc-900 text-justify pr-2">
-                                        <basis core="print" datamembername="db.office-view2">
-                                            <face filter="TypeID=240">
-                                                <a href="tel:@text" class="hover:text-primary">@text</a>
-
-                                            </face>
-                                        </basis>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="flex items-center gap-2">
-                                    <span class="border-l border-zinc-300 pl-2">
-                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/mailto-svg.svg" alt="mail"
-                                            width="34" height="35">
-
-                                    </span>
-                                    <div class="flex flex-col gap-2 text-zinc-900 text-justify pr-2">
-                                        <basis core="print" datamembername="db.office-view2">
-                                            <face filter="TypeID=128">
-                                                <a href="mailto:@text" class="hover:text-primary">@text</a>
-
-                                            </face>
-                                        </basis>
-                                    </div>
-                                </div>
-
-                                <basis core="print" datamembername="db.office-view2">
-                                    <face filter="TypeID=250">
-                                        <iframe src="https://maps.google.com/maps?q=@largetext,@text&z=14&output=embed"
-                                            class=" w-full rounded-xl align-middle !border-0 border-none" height="206"
-                                            allowfullscreen="" loading="lazy"
-                                            referrerpolicy="no-referrer-when-downgrade">
-                                        </iframe>
-                                    </face>
-                                </basis>
-
 
                             </div>
-
                         </div>
+
                     </div>
                 </div>
             </div>
         </section>
 
+    </main>
 
-        <section class="w-full flex justify-center relative">
+    <div class="w-full mobile-after-selector flex flex-col mt-[-43px] gap-3 relative">
+        <div class="w-full flex justify-center">
+            <div class="flex z-10 relative w-fit bg-white  items-center gap-3">
+                <img src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8   h-8">
+                <h2 class="font-bold text-base text-zinc-900">ارتباط با کارشناسان </h2>
+                <span class="bullet-1 "></span>
+            </div>
+        </div>
+        <section class="w-full px-4 mb-8">
             <div
-                class="px-4 relative after-to-bottom-border mb-16 w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class=" last-section-form relative w-full flex flex-col">
-                    <div class="flex  items-center gap-3 ">
-                        <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
-                            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                                class="w-8 h-8">
-                            <p class="font-bold text-2xl text-zinc-900"> ارتباط با کارشناسان</p>
-                            <span class="bullet-1"></span>
-                        </div>
-                    </div>
-                    <div class="my-[50px] z-[4] items-center w-full flex">
-                        <div
-                            class="w-full rounded-2xl overflow-hidden relative flex items-center justify-center h-[143px] px-[35px] py-5">
-                            <img loading="lazy" src="[##cms.cms.cdn##]/images/contact-form-image.jpg" alt="contact-us"
-                                class="w-[42%] h-full z-0    absolute left-0 top-0">
-                            <span
-                                class="w-[80px] absolute left-[calc(42%-3px)] z-[3] bg-gradient-to-r from-[#d6d9d8] h-full"></span>
-                            <span
-                                class="w-full h-full rounded-2xl bg-gradient-to-r z-[1] from-[#fff0] to-[#F2F2F2] absolute top-0 left-0 "></span>
-                            <div class="flex z-[5] w-full flex-col h-full justify-between">
-                                <p class="">جهت مشاوره خرید تور با کارشناسان ما در ارتباط باشید</p>
-                                <div class="flex items-center">
-                                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
-                                        <basis core="schema" run="atclient"
-                                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
-                                            displaymode="new" button="[data-btn-uploadfooter]"
-                                            resultsourceid="upload.datafooter" OnRendered="RenderFormFooter">
-                                        </basis>
-                                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
-                                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject"
-                                            method="post"
-                                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
-                                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
-                                            OnProcessed="OnProcessedEditObjectFooter">
-                                        </basis>
-                                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
-                                            triggers="upload.datafooter"></basis>
-                                        <div class="captcha-button">
-                                            <div id="captchaContainer"
-                                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
-                                                data-bc-answer-container data-bc-schema-info-multi="0"
-                                                data-bc-schema-info-word="58" data-bc-schema-info-part="1"
-                                                data-bc-schema-info-part-0-type="text">
-                                                <basis core="dbsource" source="trust_login" name="captcha"
-                                                    run="atclient" triggers="captcha.refreshFooter">
-                                                    <member name="code" type="scalar" request="captcha"></member>
-                                                </basis>
-                                                <basis datamembername="captcha.code" core="print" run="atclient"
-                                                    OnRendered="captchaRenderedFooter">
-                                                    <face>
-                                                        <script type="text/template">
+                class="w-full flex flex-col justify-end relative  overflow-hidden  bg-gradient-to-t from-[#F2F2F2]   to-[#FFFFFF00] rounded-2xl ">
+                <figure class="h-[50%] z-0 w-full rounded-t-2xl">
+                    <img loading="lazy" class="image-fade w-full h-full object-cover  rounded-t-2xl"
+                        src="[##cms.cms.cdn##]/images/contact-image-mob.jpg" alt="contact-us">
+                </figure>
+                <div class="relative z-[2] pb-3 px-3 w-full flex flex-col gap-1">
+                    <p class="font-bold text-sm leading-6">جهت مشاوره خرید تور با کارشناسان ما در ارتباط باشید</p>
+
+                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
+                        <basis core="schema" run="atclient"
+                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
+                            displaymode="new" button="[data-btn-uploadfooter]" resultsourceid="upload.datafooter"
+                            OnRendered="RenderFormFooter">
+                        </basis>
+                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
+                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject" method="post"
+                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
+                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
+                            OnProcessed="OnProcessedEditObjectFooter">
+                        </basis>
+                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
+                            triggers="upload.datafooter"></basis>
+                        <div class="captcha-button">
+                            <div id="captchaContainer"
+                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
+                                data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
+                                data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
+                                <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                                    triggers="captcha.refreshFooter">
+                                    <member name="code" type="scalar" request="captcha"></member>
+                                </basis>
+                                <basis datamembername="captcha.code" core="print" run="atclient"
+                                    OnRendered="captchaRenderedFooter">
+                                    <face>
+                                        <script type="text/template">
                                     <div class="flex  justify-between ">
                                         
                                         <div class="flex sfvgwdcsdhc w-full items-center">
@@ -567,43 +578,42 @@
 
                                                         </div></div>
                     </script>
-                                                    </face>
-                                                </basis>
-                                                <button type="button" data-btn-uploadfooter
-                                                    class="  data-body-btn w-[108px] h-[59px] flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
-                                                    ارسال
-                                                </button>
+                                    </face>
+                                </basis>
+                                <button type="button" data-btn-uploadfooter
+                                    class="text-sm  data-body-btn w-full h-12 flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
+                                    ارسال
+                                </button>
 
-                                            </div>
+                            </div>
 
-                                            <div
-                                                class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex">
-                                                <div id="ballsWaveG"
-                                                    class="ext-zinc-50 text-base font-normal leading-normal">
-                                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
-                                                </div>
-                                            </div>
-                                            <div class="message-api absolute text-center text-primary text-xs"></div>
-                                        </div>
-                                    </div>
+                            <div
+                                class="Loading_Form hidden data-body-btn h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex !w-full ">
+                                <div id="ballsWaveG" class="ext-zinc-50 text-base font-normal leading-normal">
+                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
                                 </div>
                             </div>
+                            <div class="message-api text-center text-primary text-xs"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    </main>
-    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
-    <basis core="call" file="footer.inc" />
+        <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
+
+        <basis core="call" pageindex="[##cms.cms.pageindex##]" file="footer.inc" />
+    </div>
+
+
 </body>
+
 
 
 </html>

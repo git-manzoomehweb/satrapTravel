@@ -1,7 +1,7 @@
 <div class="tour__booking__form__modal__container_Ins modal__container fixed top-0 left-0 w-screen h-screen overflow-hidden z-50"
     onclick="closeModalContainer(this,event,'modal__container','hidden','parent')">
     <div
-        class="modal__content bg-white  rounded-xl mx-auto mt-10 p-4 overflow-hidden max-h-[90vh]">
+        class="modal__content h-screen bg-white p-2 !w-full overflow-hidden max-h-[100vh]">
         <div class="w-full flex justify-end">
             <span   onclick="closeModalContainer(this,event,'modal__container','hidden')" class="group cursor-pointer">
                  <svg width="33" height="34" viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,20 +55,20 @@
                                     class="hotel__service__container">[##cms.form.hotelService##]</span>)
                             </div>
                             <ul>
-                                <li class="flex justify-between mb-3 border-b border-dashed border-module-gray-2">
+                                <li class="flex justify-between mb-3 border-b border-dashed border-module-gray-2 pb-3">
                                     <div class="sm:min-w-44">(هر نفر) قیمت 2 تخته</div>
                                     <div><span
                                             class="ml-1 text-base">[##cms.form.doubleP##]</span><span>[##cms.form.doubleU##]</span>
                                     </div>
                                 </li>
-                                <li class="flex justify-between mb-3 border-b border-dashed border-module-gray-2">
+                                <li class="flex justify-between mb-3 border-b border-dashed border-module-gray-2 pb-3">
                                     <div class="sm:min-w-44">(هر نفر) قیمت 1 تخته</div>
                                     <div><span
                                             class="ml-1 text-base">[##cms.form.singleP##]</span><span>[##cms.form.singleU##]</span>
                                     </div>
                                 </li>
         
-                                <li class="flex justify-between mb-3 border-b border-dashed border-module-gray-2">
+                                <li class="flex justify-between mb-3 border-b border-dashed border-module-gray-2 pb-3">
                                     <div class="sm:min-w-44">(هر نفر) قیمت کودک با تخت</div>
                                     <div><span
                                             class="ml-1 text-base">[##cms.form.wBedP##]</span><span>[##cms.form.wBedU##]</span>
@@ -122,7 +122,7 @@
                                         <div data-bc-answer-collection="">
                                             <div data-bc-answer="">
                                                 <div data-bc-part-container="">
-                                                    <div class="captcha__container__info flex"
+                                                    <div class="captcha__container__info flex flex-col gap-2"
                                                         data-bc-part-related-cell="">
                                                         <input type="text" name="captcha" data-bc-text-input=""
                                                             data-sys-input-text="">
@@ -132,14 +132,12 @@
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49" fill="none"><path class="group-hover:stroke-primary" d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3" stroke="#020121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><circle class="group-hover:stroke-primary transition-all duration-300 ease-in-out" cx="24" cy="24.5" r="10" stroke="#020121" stroke-width="1.5"></circle></svg>
                                                     </span>
                                                              
-                                                            <span class="captcha__content">
-                                                                <img
+                                                            <span class="captcha__content"><img
                                                                     src="/[##db.tourBookingFormIns.captcha##]"
                                                                     width="80" height="40" class="rounded-md" />
                                                                 <input name="captchaid"
                                                                     value="[##db.tourBookingFormIns.captcha##]"
-                                                                    type="hidden" />
-                                                                </span>
+                                                                    type="hidden" /></span>
                                                         </div>
 
                                                     </div>
