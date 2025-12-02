@@ -386,6 +386,22 @@ html,
 
   pointer-events: none;
 }
+.backdrop-123 {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0) 39.66%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0) 39.66%,
+    rgba(0, 0, 0, 1) 100%
+  );
+
+  pointer-events: none;
+}
 .video-player:hover,
 .music-player:hover {
   backdrop-filter: blur(4px);
@@ -428,9 +444,7 @@ body:has(.list-video-popup.flex) {
 .list-music-popup.active {
   bottom: 0 !important;
 }
-.list-video-popup.flex {
-  animation: fadeIn 0.4s ease forwards;
-}
+ 
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -1060,6 +1074,7 @@ body:has(.\!w-full.swiper-story) .justify-end .popup-nav:nth-child(3) {
   z-index: 30;
 }
 @media not all and (min-width: 768px) {
-  .transportation__img{
+  .transportation__img {
     width: 66px !important;
-  }}
+  }
+}

@@ -354,17 +354,17 @@ input.bg-bgColor-100 {
 .Add-Remove {
   height: 48px !important;
 }
-.route-minus-btn span{
-    display: none !important;
+.route-minus-btn span {
+  display: none !important;
 }
-.route-minus-btn{
-    width: fit-content !important;
-    height: fit-content !important;
+.route-minus-btn {
+  width: fit-content !important;
+  height: fit-content !important;
 }
 
 .module-banner-background {
   background-color: var(--primary);
-   background-image: url("../images/Flight-mob.jpg");
+  background-image: url("../images/Flight-mob.jpg");
 }
 
 .module-banner-background.flight-banner-background {
@@ -374,16 +374,39 @@ input.bg-bgColor-100 {
 
 .module-banner-background.hotel-banner-background {
   background-image: url("../images/hotel-mob.jpg") !important;
- }
+}
 
 .module-banner-background.flighthotel-banner-background {
   background-image: url("../images/flighthotel-mob.jpg") !important;
- }
+}
 
 .module-banner-background.tour-banner-background {
   background-image: url("../images/tour-mob.jpg") !important;
- }
+}
 
 .module-banner-background.insurance-banner-background {
   background-image: url("../images/insurance-mob.jpg") !important;
- }
+}
+body.hotel-list .close-module-form {
+  display: none !important;
+}
+body.hotel-list .search-nav {
+  display: none !important;
+}
+body.hotel-list #search-box {
+  background-color: transparent !important;
+}
+body.hotel-list #search-box #r-hotel form {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body.hotel-list #r-hotel {
+  display: unset !important;
+}
+body.hotel-list #r-flight {
+  display: none !important;
+}
+
+body.hotel-list #search-box:has(.loader) {
+  min-height: unset !important;
+}

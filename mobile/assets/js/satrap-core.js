@@ -1145,7 +1145,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ____________________________
 // ____________________________
-if (document.querySelector("hotel-list")) {
+if (document.querySelector(".hotel-list")) {
   (function () {
     // ----- تنظیمات: اگر سلکتورهای صفحه‌ت متفاوت‌اند همین‌جا تغییر بده -----
     const SELECTORS = {

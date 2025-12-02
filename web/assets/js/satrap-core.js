@@ -1,23 +1,25 @@
-function placeHolders() {
-  const depRoutes = document.querySelectorAll("departure-route .text-value");
-  depRoutes.forEach((input) => {
-    input.placeholder = "شهر مبدا";
-  });
+// function placeHolders() {
+//   const depRoutes = document.querySelectorAll("departure-route .text-value");
+//   depRoutes.forEach((input) => {
+//     input.placeholder = "شهر مبدا";
+//   });
 
-  const desRoutes = document.querySelectorAll("destination-route .text-value");
-  desRoutes.forEach((input) => {
-    input.placeholder = "شهر مقصد";
-  });
-}
+//   const desRoutes = document.querySelectorAll("destination-route .text-value");
+//   desRoutes.forEach((input) => {
+//     input.placeholder = "شهر مقصد";
+//   });
+// }
 document.addEventListener("DOMContentLoaded", function () {
-  const requiredFiles = ["satrap.ui.min.css"];
+  const isMobile = window.innerWidth <= 968;
+  const requiredFiles = [
+    isMobile ? "satrap.mob.ui.min.css" : "satrap.ui.min.css",
+  ];
 
   function checkAllResourcesLoaded() {
     const resources = performance.getEntriesByType("resource");
     const loadedFiles = resources
       .map((res) => res.name.split("/").pop())
       .filter((name) => requiredFiles.includes(name));
-    // console.log(resources);
 
     return requiredFiles.every((file) => loadedFiles.includes(file));
   }
@@ -33,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (this.readyState == 4 && this.status == 200) {
             const container = document.getElementById("search-box");
             container.innerHTML = xhrobj.responseText;
-            placeHolders();
+            // placeHolders();
             const scripts = container.getElementsByTagName("script");
             for (let i = 0; i < scripts.length; i++) {
               const scriptTag = document.createElement("script");
@@ -61,9 +63,11 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(waitForFiles, 500);
       }
     }
+
     waitForFiles();
   }
 });
+
 // ___________________________________
 
 // const stories = document.querySelectorAll(".story");
@@ -339,6 +343,61 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ___________________________________
+document.addEventListener("DOMContentLoaded", () => {
+  const swiperContainer = document.querySelector(".swiper-comments-mob");
+  const nextBtn = document.querySelector(".next-btn-sw");
+  const prevBtn = document.querySelector(".prev-btn-sw");
+
+  // بررسی وجود سوییپر و دکمه‌ها
+  if (swiperContainer && typeof Swiper !== "undefined") {
+    try {
+      const swiper = new Swiper(swiperContainer, {
+        slidesPerView: 1,
+        speed: 700,
+        centeredSlides: false,
+        spaceBetween: 34,
+        grabCursor: true,
+        loop: true,
+        autoplay: {
+          delay: 3500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: nextBtn || ".swiper-button-next-comments",
+          prevEl: prevBtn || ".swiper-button-prev-comments",
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 16,
+          },
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 14,
+          },
+          1024: {
+            slidesPerView: 1,
+            spaceBetween: 14,
+          },
+        },
+      });
+
+      if (nextBtn && prevBtn) {
+        nextBtn.addEventListener("click", () => swiper.slideNext());
+        prevBtn.addEventListener("click", () => swiper.slidePrev());
+      }
+    } catch (err) {
+      console.warn("Swiper initialization failed:", err);
+    }
+  } else {
+    // console.log("No .swiper-comments found on this page — Swiper skipped.");
+  }
+});
+// ___________________________________
 
 const headerMenu = document.querySelector(".header-menu");
 const headerMenuClose = document.querySelector(".header-menu-close");
@@ -403,7 +462,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener("scroll", function () {
     if (window.scrollY >= 200) {
-      headerB.classList.add("shadow");
+      if (window.innerWidth > 968) {
+        headerB.classList.add("shadow");
+      }
     } else {
       headerB.classList.remove("shadow");
     }
@@ -1084,7 +1145,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ____________________________
 // ____________________________
-if (document.querySelector("hotel-list")) {
+if (document.querySelector(".hotel-list")) {
   (function () {
     // ----- تنظیمات: اگر سلکتورهای صفحه‌ت متفاوت‌اند همین‌جا تغییر بده -----
     const SELECTORS = {
@@ -1932,6 +1993,27 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 // ____________________________
+document.addEventListener("DOMContentLoaded", function () {
+  const flightItem = document.querySelector(
+    'header .header-menu li[data-id="flight"]'
+  );
+  const hotelItem = document.querySelector(
+    'header .header-menu li[data-id="hotel"]'
+  );
+  if (flightItem) {
+    flightItem.addEventListener("click", () => {
+      document.querySelector("header  .header-menu ").style.transform =
+        "translateX(1024px)";
+    });
+  }
+
+  if (hotelItem) {
+    hotelItem.addEventListener("click", () => {
+      document.querySelector("header  .header-menu ").style.transform =
+        "translateX(1024px)";
+    });
+  }
+});
 // ____________________________
 if (document.getElementById("search-content-article")) {
   var input = document.getElementById("search-content-name"),
@@ -2430,11 +2512,11 @@ document.addEventListener("DOMContentLoaded", () => {
 // ____________________________
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".visa-form-cn");
-  const grid = document.querySelector(".grid.grid-cols-4");
+  const grid = document.querySelector(".grid.visa-container");
   const input = form ? form.querySelector('input[type="text"]') : null;
   const NOT_FOUND_ID = "visa-not-found-message";
 
-  if (!form || !grid || !input) return; // جلوگیری از ارور در صفحات دیگر
+  if (!form || !grid || !input) return;
 
   const removeNotFound = () => {
     const msg = document.getElementById(NOT_FOUND_ID);
@@ -2476,11 +2558,99 @@ document.addEventListener("DOMContentLoaded", () => {
     if (visibleCount === 0) showNotFoundMessage();
   };
 
-  // اجرای فیلتر در لحظه تایپ (real-time)
   input.addEventListener("input", (e) => filterCards(e.target.value));
 
-  // حذف رفتار پیش‌فرض سابمیت فرم
   form.addEventListener("submit", (e) => e.preventDefault());
+});
+
+// ____________________________
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector(".mobile-tour-guide");
+  if (!section) return;
+
+  const grid = section.querySelector("div.grid");
+  const toggleBtn = section.querySelector(".show-more-card");
+  if (!grid || !toggleBtn) return;
+
+  let isOpen = false;
+
+  const collapsedHeight = 236;
+
+  grid.style.transition =
+    "height 0.45s cubic-bezier(0.25, 1, 0.30, 1), opacity 0.35s ease";
+  grid.style.overflow = "hidden";
+
+  const updateHeight = () => {
+    if (isOpen) {
+      const fullHeight = [...grid.children].reduce(
+        (total, el) =>
+          total + el.offsetHeight + parseInt(getComputedStyle(grid).gap),
+        0
+      );
+      grid.style.height = fullHeight + "px";
+      grid.style.opacity = "1";
+      toggleBtn.classList.remove("h-[200px]");
+    } else {
+      grid.style.height = collapsedHeight + "px";
+      grid.style.opacity = "1";
+      toggleBtn.classList.add("h-[200px]");
+    }
+  };
+
+  updateHeight();
+
+  toggleBtn.addEventListener("click", () => {
+    isOpen = !isOpen;
+
+    updateHeight();
+
+    toggleBtn.textContent = isOpen ? "بستن" : "مشاهده بیشتر";
+  });
+
+  window.addEventListener("resize", () => {
+    if (isOpen) updateHeight();
+  });
+});
+
+// ____________________________
+document.addEventListener("DOMContentLoaded", () => {
+  const faqContainer = document.querySelector(".mobile-common-questions");
+  if (!faqContainer) return;
+
+  const questions = faqContainer.querySelectorAll(".question-box");
+
+  questions.forEach((box) => {
+    const qs = box.querySelector(".qs");
+    const answer = box.querySelector(".answer");
+    const arrow = box.querySelector(".arrow svg");
+
+    if (!qs || !answer || !arrow) return;
+
+    // آماده‌سازی انیمیشن
+    answer.style.transition =
+      "height 0.7s cubic-bezier(0.25, 1, 0.30, 1), opacity 0.65s ease";
+    answer.style.opacity = "0";
+    answer.style.overflow = "hidden";
+
+    arrow.style.transition = "transform 0.35s ease";
+
+    let isOpen = false;
+
+    qs.addEventListener("click", () => {
+      isOpen = !isOpen;
+
+      if (isOpen) {
+        const fullHeight = answer.scrollHeight;
+        answer.style.height = fullHeight + "px";
+        answer.style.opacity = "1";
+        arrow.style.transform = "rotate(180deg)";
+      } else {
+        answer.style.height = "0px";
+        answer.style.opacity = "0";
+        arrow.style.transform = "rotate(0deg)";
+      }
+    });
+  });
 });
 
 // ____________________________
@@ -2576,18 +2746,24 @@ document.addEventListener("DOMContentLoaded", () => {
 // ____________________________
 window.addEventListener("scroll", () => {
   if (window.innerWidth <= 968) {
-    const header = document.querySelector("header");
+    const header = document.querySelector("header  div.px-4.fixed");
     if (header) {
-      if (window.scrollY > 350) {
+      if (window.scrollY > 50) {
         header.style.backdropFilter = "blur(5px)";
-        header.style.backgroundColor = "#8e8e8e59";
+        if (document.querySelector(".white-header")) {
+          header.style.backgroundColor = "var(--primary-600)";
+        } else {
+          header.style.backgroundColor = "#fff";
+          header.classList.add("shadow");
+        }
       } else {
         header.style.backdropFilter = "none";
         header.style.backgroundColor = "transparent";
+        header.classList.remove("shadow");
       }
     }
   } else {
-     const header = document.querySelector("header");
+    const header = document.querySelector("header");
     if (header) {
       header.style.backdropFilter = "none";
       header.style.backgroundColor = "transparent";
@@ -2596,16 +2772,16 @@ window.addEventListener("scroll", () => {
 });
 
 window.addEventListener("resize", () => {
-  const header = document.querySelector("header");
+  const header = document.querySelector("header div.px-4.fixed");
   if (!header) return;
 
   if (window.innerWidth > 968) {
     header.style.backdropFilter = "none";
     header.style.backgroundColor = "transparent";
   } else {
-    if (window.scrollY > 150) {
+    if (window.scrollY > 50) {
       header.style.backdropFilter = "blur(5px)";
-      header.style.backgroundColor = "#8e8e8e59";
+      header.style.backgroundColor = "#4d819f76";
     } else {
       header.style.backdropFilter = "none";
       header.style.backgroundColor = "transparent";
@@ -2613,49 +2789,259 @@ window.addEventListener("resize", () => {
   }
 });
 
-
-
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
-// ____________________________
 // ____________________________
 // ____________________________
 
- 
+if (document.querySelectorAll(".swiper-one-el").length > 0)
+  swiper = new Swiper(".swiper-one-el", {
+    slidesPerView: 1,
+    speed: 900,
+    centeredSlides: !1,
+    spaceBetween: 16,
+    grabCursor: !0,
+    autoplay: { delay: 4500, disableOnInteraction: !1 },
+    loop: 1,
+    pagination: { el: ".swiper-pagination", clickable: !0 },
+    navigation: {
+      nextEl: ".swiper-button-next-f",
+      prevEl: ".swiper-button-prev-f",
+    },
+    breakpoints: {
+      640: { slidesPerView: 1, spaceBetween: 16 },
+      768: { slidesPerView: 1, spaceBetween: 16 },
+      1024: { slidesPerView: 1, spaceBetween: 16 },
+    },
+  });
+// ____________________________
+// ____________________________
+
+if (document.querySelectorAll(".swiper-mobile-c").length > 0)
+  swiper = new Swiper(".swiper-mobile-c", {
+    slidesPerView: 1.3,
+    speed: 900,
+    centeredSlides: !1,
+    spaceBetween: 11,
+    grabCursor: !0,
+    autoplay: { delay: 4500, disableOnInteraction: !1 },
+    loop: 1,
+    pagination: { el: ".swiper-pagination", clickable: !0 },
+    navigation: {
+      nextEl: ".swiper-button-next-f",
+      prevEl: ".swiper-button-prev-f",
+    },
+    breakpoints: {
+      640: { slidesPerView: 1.3, spaceBetween: 11 },
+      768: { slidesPerView: 1.3, spaceBetween: 11 },
+      1024: { slidesPerView: 1.3, spaceBetween: 11 },
+    },
+  });
+// ____________________________
+if (document.querySelectorAll(".swiper-mobile-c2").length > 0)
+  swiper = new Swiper(".swiper-mobile-c2", {
+    slidesPerView: 1.66,
+    speed: 900,
+    centeredSlides: !1,
+    spaceBetween: 12,
+    grabCursor: !0,
+    autoplay: { delay: 4500, disableOnInteraction: !1 },
+    loop: 1,
+    pagination: { el: ".swiper-pagination", clickable: !0 },
+    navigation: {
+      nextEl: ".swiper-button-next-f",
+      prevEl: ".swiper-button-prev-f",
+    },
+    breakpoints: {
+      640: { slidesPerView: 1.66, spaceBetween: 12 },
+      768: { slidesPerView: 1.66, spaceBetween: 12 },
+      1024: { slidesPerView: 1.66, spaceBetween: 12 },
+    },
+  });
+// ____________________________
+
+if (document.querySelectorAll(".swiper-mobile-c3").length > 0)
+  swiper = new Swiper(".swiper-mobile-c3", {
+    slidesPerView: 1.39,
+    speed: 900,
+    centeredSlides: !1,
+    spaceBetween: 11,
+    grabCursor: !0,
+    autoplay: { delay: 4500, disableOnInteraction: !1 },
+    loop: 1,
+    pagination: { el: ".swiper-pagination", clickable: !0 },
+    navigation: {
+      nextEl: ".swiper-button-next-f",
+      prevEl: ".swiper-button-prev-f",
+    },
+    breakpoints: {
+      640: { slidesPerView: 1.39, spaceBetween: 11 },
+      768: { slidesPerView: 1.39, spaceBetween: 11 },
+      1024: { slidesPerView: 1.39, spaceBetween: 11 },
+    },
+  });
+// ____________________________
+// ____________________________
+document.addEventListener("DOMContentLoaded", () => {
+  const loaderHTML =
+    '<div dir="ltr" class="w-full flex justify-center p-6"><span class="loader"></span></div>';
+
+  document
+    .querySelectorAll(".clicker-list")
+    .forEach((clickerList, sectionIndex) => {
+      const section = clickerList.closest("section");
+      const fetchWrapper = section.querySelector(".fetch-content-tour-mob");
+      const listItems = Array.from(section.querySelectorAll(".tour-li-mob"));
+
+      if (!fetchWrapper || listItems.length === 0) return;
+
+      section._tourState = section._tourState || {
+        swiper: null,
+        currentCat: null,
+        loading: false,
+      };
+
+      const firstId = listItems[0].getAttribute("data-id");
+      section._tourState.currentCat = firstId ? firstId : null;
+
+      function setActiveItem(targetItem) {
+        listItems.forEach((li) => li.classList.remove("active"));
+        if (targetItem) targetItem.classList.add("active");
+      }
+
+      async function loadCategory(catid) {
+        if (
+          section._tourState.loading &&
+          section._tourState.currentCat === catid
+        )
+          return;
+        section._tourState.loading = true;
+        fetchWrapper.innerHTML = loaderHTML;
+
+        try {
+          const res = await fetch(
+            `/tour-load-items.bc?catid=${encodeURIComponent(catid)}`
+          );
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const html = await res.text();
+
+          fetchWrapper.innerHTML = html;
+
+          if (
+            section._tourState.swiper &&
+            typeof section._tourState.swiper.destroy === "function"
+          ) {
+            try {
+              section._tourState.swiper.destroy(true, true);
+            } catch (err) {
+              /* ignore */
+            }
+            section._tourState.swiper = null;
+          }
+
+          const container =
+            section.querySelector(".tourSwiperMob") ||
+            section.querySelector("#tour-list-container-mob") ||
+            fetchWrapper.closest(".tourSwiperMob") ||
+            fetchWrapper;
+          const swiperEl =
+            container instanceof Element ? container : fetchWrapper;
+
+          const params = {
+            slidesPerView: 1.3,
+            speed: 500,
+            centeredSlides: false,
+            spaceBetween: 11,
+            grabCursor: true,
+            autoplay: { delay: 9500, disableOnInteraction: false },
+            pagination: { el: ".swiper-pagination", clickable: true },
+            navigation: {
+              nextEl: ".swiper-button-next-ft",
+              prevEl: ".swiper-button-prev-ft",
+            },
+            breakpoints: {
+              640: { slidesPerView: 1.3, spaceBetween: 11 },
+              768: { slidesPerView: 1.3, spaceBetween: 11 },
+              1024: { slidesPerView: 1.3, spaceBetween: 11 },
+            },
+          };
+
+          if (
+            document.documentElement &&
+            document.documentElement.dir === "rtl"
+          ) {
+            params.rtl = true;
+          }
+
+          try {
+            section._tourState.swiper = new Swiper(swiperEl, params);
+          } catch (err) {
+            try {
+              section._tourState.swiper = new Swiper(
+                "#tour-list-container-mob",
+                params
+              );
+            } catch (e) {
+              console.warn("Swiper init failed:", e);
+            }
+          }
+
+          section._tourState.currentCat = catid;
+        } catch (err) {
+          console.error("Fetch failed:", err);
+          fetchWrapper.innerHTML = `<p class="text-red-500 p-4">Error loading data: ${err.message}</p>`;
+        } finally {
+          section._tourState.loading = false;
+        }
+      }
+
+      setActiveItem(listItems[0]);
+      if (section._tourState.currentCat)
+        loadCategory(section._tourState.currentCat);
+
+      listItems.forEach((li) => {
+        li.addEventListener("click", (ev) => {
+          const catid = li.getAttribute("data-id");
+          if (!catid) return;
+          if (section._tourState.currentCat === catid) {
+            setActiveItem(li);
+            return;
+          }
+          setActiveItem(li);
+          loadCategory(catid);
+        });
+      });
+    });
+});
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________

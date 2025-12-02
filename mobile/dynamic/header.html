@@ -5,7 +5,7 @@
     <div class="w-full  z-40 px-4 fixed top-0 right-0 flex justify-center items-center h-[54px]">
         <div class="w-full flex justify-between items-center">
             <div class="w-fit flex gap-2 items-center">
-                <button class="bars3" aria-label="open-menu">
+                <button class="bars3">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M20 20H4C3.448 20 3 19.553 3 19C3 18.447 3.448 18 4 18H20C20.552 18 21 18.447 21 19C21 19.553 20.552 20 20 20Z"
@@ -28,7 +28,7 @@
                         class="text-sm z-[1] login-information transition-all duration-150 ease-in-out group-hover:text-white">
                         <basis core="call" file="authentication/modal"></basis>
                     </span>
-                    
+
 
                 </div>
             </div>
@@ -66,7 +66,7 @@
                     هواپیما</li>
 
                 <li class="w-full">
-                    <a href="/" class="py-6 block  text-zinc-900 w-full hover:bg-primary-200">هتل</a>
+                    <a href="/hotels" class="py-6 block  text-zinc-900 w-full hover:bg-primary-200">هتل</a>
                 </li>
 
                 <li class="w-full">
@@ -79,5 +79,5 @@
             </ul>
         </nav>
     </div>
-
+    <basis core="call" file="add_to_home_screen.inc" lid="1" pageindex="[##cms.cms.pageindex##]"></basis>
 </header>

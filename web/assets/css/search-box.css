@@ -454,7 +454,6 @@ button.add-routs:hover {
   justify-content: space-between !important;
 }
 
- 
 .module-banner-background {
   background-color: var(--primary);
   background-image: url("../images/Flight-bg.jpg");
@@ -509,18 +508,24 @@ form.multicity-flight-form:has(.flight-routes) .Flightclass-Passenger {
 body.hotel-list .search-nav {
   display: none !important;
 }
-body.hotel-list  #search-box{
+body.hotel-list #search-box {
   background-color: transparent !important;
 }
-body.hotel-list  #search-box #r-hotel form{
+body.hotel-list #search-box #r-hotel form {
   margin: 0 !important;
   padding: 0 !important;
 }
-body.hotel-list  #r-hotel {
+body.hotel-list #r-hotel {
   display: unset !important;
 }
-body.hotel-list  #r-flight {
+body.hotel-list #r-flight {
   display: none !important;
+}
+body.hotel-list #picker {
+  margin-top: -70px;
+}
+body.hotel-list #search-box:has(.loader) {
+  min-height: unset !important;
 }
 .confirm-passenger {
   display: flex !important;
@@ -534,12 +539,10 @@ body.hotel-list  #r-flight {
   color: var(--primary-600) !important;
 }
 
-.confirm-passenger:hover{
-    background-color: var(--secondary-50) !important;
+.confirm-passenger:hover {
+  background-color: var(--secondary-50) !important;
   border-radius: 12px !important;
   border: 1px solid var(--secondary-800) !important;
   color: var(--secondary-800) !important;
 }
-body.hotel-list  #picker{
-  margin-top: -70px;
-}
+

@@ -1282,6 +1282,11 @@ span {
 
 *,
 body,
+.calendar-switch,
+.calendar-today,
+.calendar-footer input,
+.calendar-footer ::placeholder,
+.calendar-apply-date,
 html,
 input,
 input::placeholder {
@@ -1324,6 +1329,10 @@ input::placeholder {
   --zinc-200: #e4e4e7;
   --zinc-100: #f4f4f5;
   --zinc-50: #fafafa;
+
+  --bookSpecial-1: #f4f4f5;
+  --bookSpecial-2: #00a8fe;
+  --bookSpecial-3: #ffbd22;
 }
 
 .bullet-1 {
