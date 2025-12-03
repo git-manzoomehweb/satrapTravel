@@ -106,11 +106,11 @@
   <meta name="description"
     content="ساتراپ تراول با ارائه جدیدترین نرخ‌های پرواز داخلی و خارجی، رزرو آنلاین هتل‌های بین‌المللی و تورهای متنوع، سفری آسان و اقتصادی را برای شما فراهم می‌کند. تجربه خرید سریع و امن با پشتیبانی ۲۴ ساعتهس">
   <!-- canonical for Homepage -->
-  <link rel="canonical" href="[##cms.request.:scheme##]://[##cms.request.full-url##]" />
+  <link rel="canonical" href="http://satraptravel.ir/" />
   <!-- fill items with Agancy Info -->
   <meta name="og:locale" content="fa_IR">
   <meta property="og:title" content="ساتراپ تراول | رزرو آنلاین پرواز، هتل و تور با بهترین قیمت">
-  <meta property="og:url" content="[##cms.request.:scheme##]://[##cms.request.full-url##]">
+  <meta property="og:url" content="[##cms.request.full-url##]">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ساتراپ تراول">
   <meta property="og:image" content="https://domainname.com/images/custom_image_1200x630.png">
@@ -172,7 +172,7 @@
             <div
               class="hidden video-popup py-12 w-screen h-screen fixed flex-col gap-4 justify-center items-center blur2 top-0 left-0 z-50 bg-[#0000009a]">
               <div class="!w-[580px] flex justify-end relative">
-                <button class="close-popup hover:bg-secondary-900 p-1 rounded-full">
+                <button aria-label="close-button" class="close-popup hover:bg-secondary-900 p-1 rounded-full">
                   <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 24 24" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                       d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"
@@ -263,8 +263,9 @@
 
                 </layout>
                 <face filter="ord in('1','2','3')">
-                  <a href="@link" class="flex w-[217px] items-center gap-3">
-                    <img class="w-12 h-12" loading="lazy" src="@image" alt="@title">
+                  <a href="@link" class="group flex w-[217px] items-center gap-3">
+                    <img class="w-12 h-12 group-hover:scale-125  transition-all ease-in-out " loading="lazy"
+                      src="@image" alt="@title-@order">
                     <div class="flex flex-col gap-3">
                       <p class="font-bold text-zinc-900">@title</p>
                       <!-- <div class="line-clamp-1 text-xs text-zinc-600">@largetext </div> -->
@@ -279,29 +280,30 @@
 
 
 
-          
+
 
           </div>
-  <div class="w-full bg-zinc-100 service-el rounded-2xl h-[87px] flex justify-between items-center px-4">
-              <basis core="print" datamembername="db.Special-service">
-                <layout>
-                  @child
+          <div class="w-full bg-zinc-100 service-el rounded-2xl h-[87px] flex justify-between items-center px-4">
+            <basis core="print" datamembername="db.Special-service">
+              <layout>
+                @child
 
-                </layout>
-                <face filter="ord not in('1','2','3')">
-                  <a href="@link" class="flex w-[217px] items-center gap-3">
-                    <img class="w-12 h-12" loading="lazy" src="@image" alt="@title">
-                    <div class="flex flex-col gap-3">
-                      <p class="font-bold text-zinc-900">@title</p>
-                      <!-- <div class="line-clamp-1 text-xs text-zinc-600">@largetext </div> -->
-                    </div>
-                  </a>
-                  <svg width="2" height="49" viewBox="0 0 2 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="1.25" y1="48.5" x2="1.25" y2="0.5" stroke="#A1A1AA" />
-                  </svg>
-                </face>
-              </basis>
-            </div>
+              </layout>
+              <face filter="ord not in('1','2','3')">
+                <a href="@link" class="group flex w-[217px] items-center gap-3">
+                  <img class="group-hover:scale-125 transition-all ease-in-out w-12 h-12" loading="lazy" src="@image"
+                    alt="@title-@order">
+                  <div class="flex flex-col gap-3">
+                    <p class="font-bold text-zinc-900">@title</p>
+                    <!-- <div class="line-clamp-1 text-xs text-zinc-600">@largetext </div> -->
+                  </div>
+                </a>
+                <svg width="2" height="49" viewBox="0 0 2 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="1.25" y1="48.5" x2="1.25" y2="0.5" stroke="#A1A1AA" />
+                </svg>
+              </face>
+            </basis>
+          </div>
         </div>
       </div>
     </section>
@@ -348,14 +350,14 @@
             class="absolute z-[1] w-full h-full rounded-2xl top-0 left-0 bg-gradient-to-t from-[#000000b7] group-hover:from-[#000000] transition-all ease-in-out duration-500"></span>
           <div class="w-full relative z-[3] h-12 flex items-center justify-between">
             <img loading="lazy" src="@list.airline.pic" alt="@list.airline.name	" class="w-[131px] airline">
-            <button type="button" class="group-hover:scale-125 transition-all ease-in-out">
+            <div class="group-hover:scale-125 transition-all ease-in-out">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
                   d="M9 24C9 15.729 15.729 9 24 9C32.271 9 39 15.729 39 24C39 32.271 32.271 39 24 39C15.729 39 9 32.271 9 24ZM11.25 24C11.25 31.0305 16.9695 36.75 24 36.75C31.0305 36.75 36.75 31.0305 36.75 24C36.75 16.9695 31.0305 11.25 24 11.25C16.9695 11.25 11.25 16.9695 11.25 24ZM20.1396 23.2024L25.3701 17.9959C25.8111 17.558 26.5221 17.5594 26.9601 17.999C27.1791 18.218 27.2886 18.506 27.2886 18.7924C27.2886 19.0804 27.1791 19.37 26.9571 19.589L22.5276 24.0004L26.9571 28.4089C27.3981 28.8469 27.3981 29.5594 26.9601 30.0004C26.5221 30.4399 25.8111 30.4429 25.3701 30.0034L20.1396 24.7969C19.7151 24.3754 19.7151 23.6254 20.1396 23.2024Z"
                   fill="white" class="group-hover:fill-secondary " />
               </svg>
 
-            </button>
+            </div>
           </div>
         </div>
       </face>
@@ -374,20 +376,36 @@
         </div>
         <div class="flex items-center h-[592px] z-20 ">
           <div class="flex flex-col gap-[34px] w-full">
-            <ul class="flex items-center gap-1 clicker-list">
-              <li data-id="217951"
-                class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
-                همه</li>
+            <div class="w-full flex items-center justify-between">
+              <ul class="flex items-center gap-1 clicker-list">
+                <li data-id="217951" data-link="/tours"
+                  class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
+                  همه</li>
 
-              <basis core="tree" datamembername="recommended-tour.cat" idcol="catid" parentidcol="parentid"
-                nullvalue="217951">
-                <face>
-                  <li data-id="@catid"
-                    class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
-                    @title</li>
-                </face>
-              </basis>
-            </ul>
+                <basis core="tree" datamembername="recommended-tour.cat" idcol="catid" parentidcol="parentid"
+                  nullvalue="217951">
+                  <face filter="link is null">
+                    <li data-id="@catid" data-link="/tour-list.bc?catid=@catid"
+                      class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
+                      @title</li>
+                  </face>
+                  <face>
+                    <li data-id="@catid" data-link="/@link"
+                      class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
+                      @title</li>
+                  </face>
+                </basis>
+              </ul>
+              <a href="/tours"
+                class="see-all-cats box-hover2  py-1  rounded-lg px-2 bg-[#FFBD22]   flex items-center gap-2">
+                مشاهده همه
+
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.333 12.6667L5.66634 8.00004L10.333 3.33337" stroke="#000" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </a>
+            </div>
             <div id="tour-list-container" class="tourSwiper !h-[386px] !w-full swiper">
               <div class="swiper-wrapper fetch-content-tour">
 
@@ -495,6 +513,41 @@
                   </div>
                 </div>
               </layout>
+              <face filter="list.airline.name	is null">
+                <div
+                  class="swiper-slide scroll-to-search-box-card !cursor-pointer group !h-[229px] !p-2 rounded-xl bg-zinc-100 !flex flex-col justify-between gap-[10px] destination-card">
+                  <img loading="lazy" src="@db.StanbulSatrap.00220X00128prp	" alt="@db.StanbulSatrap.title"
+                    class="w-full h-[128px] object-cover rounded-lg">
+                  <div class="w-full h-[calc(100%-128px)] flex flex-col justify-between">
+                    <div class="w-full flex items-center justify-between gap-2">
+                      <p class="text-sm text-zinc-900 dep-name">@db.StanbulSatrap.prp_3088109 </p>
+                      <p class="hidden dep-id">@db.StanbulSatrap.prp_3088107</p>
+                      <span
+                        class="h-[1px] group-hover:border-secondary relative w-full border-t border-zinc-300 flex justify-center">
+                        <svg class="absolute top-[-8px]" width="17" height="15" viewBox="0 0 17 15" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M16.4736 3.82925L14.8759 3.82816C14.7604 3.8287 14.652 3.87798 14.5764 3.96996L13.344 5.46958L11.2104 5.27303L11.172 0.473572C11.1709 0.368451 11.1266 0.267163 11.0499 0.194886C10.9727 0.122068 10.8693 0.0842947 10.7636 0.0903178C10.5993 0.099078 10.4384 0.103452 10.2796 0.108927C9.87498 0.12152 9.49283 0.13357 9.10465 0.200913C8.45968 0.308225 7.9505 0.740756 7.59352 1.48537C7.06737 2.56122 6.45197 3.83363 5.87051 5.11807C5.79167 5.2867 5.7654 5.29766 5.58746 5.29164L5.43197 5.28945C4.55704 5.27959 3.65366 5.26864 2.75848 5.31408C1.49374 5.38197 0.133732 6.06526 0.137565 7.4083C0.13976 8.74531 1.49867 9.43079 2.76287 9.50142C3.72484 9.54796 4.68736 9.53811 5.59294 9.52388C5.77088 9.52004 5.79935 9.53756 5.87162 9.69743C6.44376 10.9627 7.06135 12.2373 7.59408 13.3318C7.95872 14.0863 8.45257 14.5067 9.10629 14.6184C9.49886 14.6836 9.90182 14.6956 10.2916 14.7088C10.4477 14.7137 10.6048 14.7186 10.7641 14.7268C10.8698 14.7318 10.9733 14.694 11.0499 14.6217C11.1217 14.5478 11.1704 14.4476 11.1715 14.3425C11.1808 12.9316 11.2011 10.4497 11.2093 9.53811L13.3451 9.3317L14.5742 10.8445C14.6482 10.9348 14.7582 10.9868 14.8748 10.9874L16.4719 10.989C16.5748 10.989 16.6739 10.9479 16.7462 10.8757C16.7572 10.8647 16.7676 10.8532 16.7774 10.8401C16.8502 10.7465 16.8765 10.6238 16.848 10.5077L16.0761 7.41104L16.8486 4.31051C16.8782 4.19444 16.8519 4.0718 16.7785 3.97872C16.7051 3.88455 16.5924 3.8298 16.4736 3.82925Z"
+                            fill="#D4D4D8" class="group-hover:fill-secondary" />
+                        </svg>
+
+                      </span>
+                      <p class="text-sm text-zinc-900 des-name">@db.StanbulSatrap.prp_3088110 </p>
+                      <p class="hidden des-id">@db.StanbulSatrap.prp_3088108</p>
+
+                    </div>
+                    <div class="w-full flex justify-between items-center">
+                      <div></div>
+                      <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M9.7998 24C9.7998 15.729 16.5288 9 24.7998 9C33.0708 9 39.7998 15.729 39.7998 24C39.7998 32.271 33.0708 39 24.7998 39C16.5288 39 9.7998 32.271 9.7998 24ZM12.0498 24C12.0498 31.0305 17.7693 36.75 24.7998 36.75C31.8303 36.75 37.5498 31.0305 37.5498 24C37.5498 16.9695 31.8303 11.25 24.7998 11.25C17.7693 11.25 12.0498 16.9695 12.0498 24ZM20.9394 23.2024L26.1699 17.9959C26.6109 17.558 27.3219 17.5594 27.7599 17.999C27.9789 18.218 28.0884 18.506 28.0884 18.7924C28.0884 19.0804 27.9789 19.37 27.7569 19.589L23.3274 24.0004L27.7569 28.4089C28.1979 28.8469 28.1979 29.5594 27.7599 30.0004C27.3219 30.4399 26.6109 30.4429 26.1699 30.0034L20.9394 24.7969C20.5149 24.3754 20.5149 23.6254 20.9394 23.2024Z"
+                          fill="#00A8FE" class="group-hover:fill-secondary" />
+                      </svg>
+
+                    </div>
+                  </div>
+                </div>
+              </face>
               <face>
                 <div
                   class="swiper-slide scroll-to-search-box-card !cursor-pointer group !h-[229px] !p-2 rounded-xl bg-zinc-100 !flex flex-col justify-between gap-[10px] destination-card">
@@ -519,7 +572,7 @@
 
                     </div>
                     <div class="w-full flex justify-between items-center">
-                      <img loading="lazy" src="@list.airline.pic" alt="@list.airline.name	" class="w-[108px]">
+                      <img loading="lazy" src="@list.airline.pic" alt="@list.airline.name-logo" class="w-[108px]">
                       <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                           d="M9.7998 24C9.7998 15.729 16.5288 9 24.7998 9C33.0708 9 39.7998 15.729 39.7998 24C39.7998 32.271 33.0708 39 24.7998 39C16.5288 39 9.7998 32.271 9.7998 24ZM12.0498 24C12.0498 31.0305 17.7693 36.75 24.7998 36.75C31.8303 36.75 37.5498 31.0305 37.5498 24C37.5498 16.9695 31.8303 11.25 24.7998 11.25C17.7693 11.25 12.0498 16.9695 12.0498 24ZM20.9394 23.2024L26.1699 17.9959C26.6109 17.558 27.3219 17.5594 27.7599 17.999C27.9789 18.218 28.0884 18.506 28.0884 18.7924C28.0884 19.0804 27.9789 19.37 27.7569 19.589L23.3274 24.0004L27.7569 28.4089C28.1979 28.8469 28.1979 29.5594 27.7599 30.0004C27.3219 30.4399 26.6109 30.4429 26.1699 30.0034L20.9394 24.7969C20.5149 24.3754 20.5149 23.6254 20.9394 23.2024Z"
@@ -537,16 +590,16 @@
             <basis core="print" datamembername="db.info">
               <face filter="text in('اینستاگرام')">
                 <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
-                  class="!w-full group h-[138px] rounded-[24px] p-[37px] flex items-center overflow-hidden justify-between relative">
+                  class="!w-full group h-[138px] rounded-[24px] p-[37px] flex items-center instagram-banner overflow-hidden justify-between relative">
                   <img loading="lazy" src="[##cms.cms.cdn##]/images/insta-banner.png" alt="instagram-banner"
-                    class="absolute w-full h-full group-hover:scale-125 transition-all duration-500 ease-in-out object-cover top-0 z-0 left-0">
+                    class="absolute w-full h-full  transition-all duration-500 ease-in-out object-cover top-0 z-0 left-0">
                   <span class="absolute top-0 right-0 w-full h-full banner-gr z-[1]"></span>
                   <div class="relative z-[2] flex flex-col h-full justify-between">
                     <p class="text-white text-xl font-medium">به دنبال بهترین پیشنهاد های لحظه اخری هستید؟</p>
-                    <p class="text-white text-sm">ما را در ایسنتاگرام دنبال کنید</p>
+                    <p class="text-white text-sm">ما را در اینستاگرام دنبال کنید</p>
                   </div>
                   <div
-                    class="z-[2] w-[219px] gap-2 transition-all ease-in-out duration-300 group-hover:shadow-xl group-hover:bg-primary group-hover:!text-white h-[51px] flex justify-center items-center bg-secondary-700 rounded-[50px] text-sm text-zinc-900">
+                    class="z-[2] w-[219px]  gap-2 transition-all ease-in-out duration-300 group-hover:shadow-xl group-hover:bg-primary group-hover:!text-white h-[51px] flex justify-center items-center bg-secondary-700 rounded-[50px] text-sm text-zinc-900">
 
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd" clip-rule="evenodd"
@@ -663,20 +716,36 @@
         </div>
         <div class="flex items-center h-[592px] z-20 ">
           <div class="flex flex-col gap-[34px] w-full">
-            <ul class="flex items-center gap-1 clicker-list">
-              <li data-id="217939"
-                class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
-                همه</li>
+            <div class="flex w-full justify-between items-center">
+              <ul class="flex items-center gap-1 clicker-list">
+                <li data-id="217939" data-link="/international-tours"
+                  class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
+                  همه</li>
 
-              <basis core="tree" datamembername="foreign-tour.cat" idcol="catid" parentidcol="parentid"
-                nullvalue="217939">
-                <face>
-                  <li data-id="@catid"
-                    class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
-                    @title</li>
-                </face>
-              </basis>
-            </ul>
+                <basis core="tree" datamembername="foreign-tour.cat" idcol="catid" parentidcol="parentid"
+                  nullvalue="217939">
+                  <face filter="link is null">
+                    <li data-id="@catid" data-link="/tour-list.bc?catid=@catid"
+                      class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
+                      @title</li>
+                  </face>
+                  <face>
+                    <li data-id="@catid" data-link="/@link"
+                      class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
+                      @title</li>
+                  </face>
+                </basis>
+              </ul>
+              <a href="/international-tours"
+                class="see-all-cats box-hover2  py-1  rounded-lg px-2 bg-[#FFBD22]   flex items-center gap-2">
+                مشاهده همه
+
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.333 12.6667L5.66634 8.00004L10.333 3.33337" stroke="#000" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </a>
+            </div>
             <div id="tour-list-container" class="tourSwiper !h-[386px] !w-full swiper">
               <div class="swiper-wrapper fetch-content-tour">
 
@@ -698,20 +767,36 @@
         </div>
         <div class="flex items-center h-[592px] z-20 ">
           <div class="flex flex-col gap-[34px] w-full">
-            <ul class="flex items-center gap-1 clicker-list">
-              <li data-id="217935 "
-                class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
-                همه</li>
+            <div class="w-full flex justify-between items-center">
+              <ul class="flex items-center gap-1 clicker-list">
+                <li data-id="217935 " data-link="/domestic-tours"
+                  class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
+                  همه</li>
 
-              <basis core="tree" datamembername="inner-tour.cat" idcol="catid" parentidcol="parentid"
-                nullvalue="217935 ">
-                <face>
-                  <li data-id="@catid"
-                    class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
-                    @title</li>
-                </face>
-              </basis>
-            </ul>
+                <basis core="tree" datamembername="foreign-tour.cat" idcol="catid" parentidcol="parentid"
+                  nullvalue="217939">
+                  <face filter="link is null">
+                    <li data-id="@catid" data-link="/tour-list.bc?catid=@catid"
+                      class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
+                      @title</li>
+                  </face>
+                  <face>
+                    <li data-id="@catid" data-link="/@link"
+                      class="tour-li w-[101px] h-[53px] rounded-[50px] !flex justify-center cursor-pointer text-zinc-600 relative  click-item   hover:bg-secondary hover:text-zinc-900 items-center line-clamp-1 bg-zinc-100">
+                      @title</li>
+                  </face>
+                </basis>
+              </ul>
+              <a href="/domestic-tours"
+                class="see-all-cats box-hover2  py-1  rounded-lg px-2 bg-[#FFBD22]   flex items-center gap-2">
+                مشاهده همه
+
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.333 12.6667L5.66634 8.00004L10.333 3.33337" stroke="#000" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </a>
+            </div>
             <div id="tour-list-container" class="tourSwiper !h-[386px] !w-full swiper">
               <div class="swiper-wrapper fetch-content-tour">
 

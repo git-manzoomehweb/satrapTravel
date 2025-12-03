@@ -1287,3 +1287,17 @@ header {
     padding-right: 0px !important;
   }
 }
+@media not all and (min-width: 1024px) {
+  body:not(.white-header) .header-landing-items {
+    background-color: #fff;
+  }
+  body.white-header .header-landing-items {
+    background-color: var(--primary-600);
+  }
+}
+body.book-rtl {
+  background-color: #fff !important;
+}
+.book-research__container.book-bg-white{
+  border: 1px solid var(--zinc-300);
+}

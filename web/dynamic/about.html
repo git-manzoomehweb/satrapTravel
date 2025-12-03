@@ -15,7 +15,7 @@
     <member name="satrap-services" type="view" propertyid="7246" />
 </basis>
 
-<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.tserviceid|(2389793)##]">
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.tserviceid|(2390776)##]">
     <member name="article-services" type="view" propertyid="7246"
         postsql="SELECT * FROM [db.article-services] where TypeID not in(150)" />
 </basis>
@@ -146,7 +146,7 @@
                             <div class="w-full flex flex-col gap-12">
                                 <p class="font-bold text-2xl text-zinc-900">انواع خدمات ساتراپ</p>
                                 <basis core="list" datamembername="db.satrap-services">
-                                    <face filter="TypeID<>150">
+                                    <face filter="TypeID=129">
                                         <div class="text-zinc-900 text-justify">
                                             @largetext
                                         </div>
@@ -268,7 +268,7 @@
                 <div class="flex relative items-center gap-3">
                     <div class="flex z-10 relative bg-white px-2 items-center gap-3">
                         <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                            class="w-8   h-8">
+                            class="w-8 h-8">
                         <h5 class="font-bold text-2xl text-zinc-900"> برند هاي ساتراپ </h5>
                         <span class="bullet-1 "></span>
                     </div>

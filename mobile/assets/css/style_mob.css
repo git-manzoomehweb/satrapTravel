@@ -93,32 +93,32 @@
     url("../fonts/reservation_IRANSansWeb_Medium.ttf") format("truetype");
 }
 :root {
-  --primary: #14405b;
-  --secondary: #c18f3e;
-  --primary-50: #ecf5fb;
-  --primary-100: #c6e1f3;
-  --primary-200: #a0cdea;
-  --primary-300: #7ab9e2;
-  --primary-400: #54a6da;
-  --primary-500: #2e92d1;
-  --primary-600: #2577ab;
-  --primary-700: #1d5d85;
-  --primary-800: #14405b;
-  --primary-900: #0c2839;
-  --primary-950: #040d13;
-  --secondary-950: #110d06;
-  --secondary-900: #342711;
-  --secondary-800: #57411c;
-  --secondary-700: #7b5b28;
-  --secondary-600: #9e7533;
-  --secondary-500: #c18f3e;
-  --secondary-400: #d4b37c;
-  --secondary-300: #e5d1b0;
-  --secondary-200: #f1e6d3;
-  --secondary-100: #f6f0e5;
-  --secondary-50: #fcfaf6;
+  --primary: #00a8fe;
+  --primary-950: #074388;
+  --primary-900: #1255a2;
+  --primary-800: #0a76c5;
+  --primary-700: #0b87d9;
+  --primary-600: #049aee;
+  --primary-500: #00a8fe;
+  --primary-400: #22b5ff;
+  --primary-300: #4bc3ff;
+  --primary-200: #80d4ff;
+  --primary-100: #b3e5ff;
+  --primary-50: #e1f5ff;
+  --secondary: #ffbd22;
+  --secondary-950: #e6710e;
+  --secondary-900: #fa7a0f;
+  --secondary-800: #fda41b;
+  --secondary-700: #ffbd22;
+  --secondary-600: #ffd529;
+  --secondary-500: #fee428;
+  --secondary-400: #ffe94d;
+  --secondary-300: #ffef70;
+  --secondary-200: #fff399;
+  --secondary-100: #fff8c2;
+  --secondary-50: #fffde6;
   --zinc-950: #09090b;
-  --zinc-900: #1c1917;
+  --zinc-900: #18181b;
   --zinc-800: #27272a;
   --zinc-700: #3f3f46;
   --zinc-600: #52525b;
@@ -146,20 +146,20 @@
 .select-arrow::before,
 .selectCountry i,
 .sort-box .sort-items li.active {
-  color: var(--primary-800);
+  color: var(--primary-600);
 }
 .background-color_1 {
-  background: var(--primary-800) !important;
+  background: var(--primary-600) !important;
 }
 .seatcount {
   width: 99px;
   display: flex;
 }
 .item-search:before {
-  border: 1px dashedvar(--primary-800);
+  border: 1px dashedvar(--primary-600);
 }
 .top-menu {
-  background: linear-gradient(-135deg, var(--primary-800), #3a434a);
+  background: linear-gradient(-135deg, var(--primary-600), #3a434a);
 }
 .Basis_Calendar .selected_day,
 .createChildDropdown select,
@@ -168,93 +168,93 @@
 .second-part-header .col1-second-part-header a:before,
 .section-details button:hover,
 .section-input_2 input[type="checkbox"]:checked + label span.checkbox::after {
-  background: var(--primary-800);
+  background: var(--primary-600);
 }
 .total-cost {
   color: #00a703;
   font-size: 15px;
 }
 .reserve-button {
-  border: 1px solidvar(--primary-800);
+  border: 1px solidvar(--primary-600);
 }
 .title-result {
-  border-bottom: 1px solidvar(--primary-800);
+  border-bottom: 1px solidvar(--primary-600);
 }
 .confirm {
-  background: linear-gradient(-90deg, var(--primary-800) 0, #a7e5da 100%);
+  background: linear-gradient(-90deg, var(--primary-600) 0, #a7e5da 100%);
 }
 .confirm:hover {
-  background: linear-gradient(-90deg, #a7e5da 0, var(--primary-800) 100%);
+  background: linear-gradient(-90deg, #a7e5da 0, var(--primary-600) 100%);
 }
 .details-item-title {
-  border-bottom: 2px solidvar(--primary-800);
+  border-bottom: 2px solidvar(--primary-600);
 }
 .section-details button,
 .section-input_2 span.checkbox::before {
-  border: 2px solidvar(--primary-800);
+  border: 2px solidvar(--primary-600);
 }
 .progress-bar {
-  background: var(--primary-800);
+  background: var(--primary-600);
   background-image: -webkit-linear-gradient(
     top,
-    var(--primary-800) 0,
+    var(--primary-600) 0,
     (--secondary-600) 100%
   );
   background-image: -o-linear-gradient(
     top,
-    var(--primary-800) 0,
+    var(--primary-600) 0,
     (--secondary-600) 100%
   );
   background-image: -webkit-gradient(
     linear,
     left top,
     left bottom,
-    from(var(--primary-800)),
+    from(var(--primary-600)),
     to((--secondary-600))
   );
   background-image: linear-gradient(
     to bottom,
-    var(--primary-800) 0,
+    var(--primary-600) 0,
     (--secondary-600) 100%
   );
   background-repeat: repeat-x;
 }
 .radioButton:checked + label span::after {
-  color: var(--primary-800);
-  border: 2px solidvar(--primary-800);
+  color: var(--primary-600);
+  border: 2px solidvar(--primary-600);
   color: #465f88;
   border: 3px;
 }
 .link-2:hover:after {
-  border-color: var(--primary-800);
+  border-color: var(--primary-600);
 }
 .ui-datepicker-buttonpane .ui-datepicker-current:focus,
 .ui-datepicker-buttonpane .ui-datepicker-current:hover,
 .ui-datepicker-buttonpane .ui-state-default:focus,
 .ui-datepicker-buttonpane .ui-state-default:hover {
-  background-color: var(--primary-800);
+  background-color: var(--primary-600);
 }
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-  border: 1px solidvar(--primary-800);
-  background: var(--primary-800) !important;
+  border: 1px solidvar(--primary-600);
+  background: var(--primary-600) !important;
 }
 .loader {
-  border-top: 5px solidvar(--primary-800);
+  border-top: 5px solidvar(--primary-600);
 }
 .Link-Forgetpass:hover,
 .Link-Login:hover,
 .Link-Register:hover,
 .Link-ResendMail:hover {
-  color: var(--primary-800) !important;
+  color: var(--primary-600) !important;
 }
 .ChangeFlight-header {
-  background: linear-gradient(-135deg, var(--primary-800), #a7e5da);
+  background: linear-gradient(-135deg, var(--primary-600), #a7e5da);
 }
 .active_tab_tour {
   color: #fff !important;
-  background: var(--primary-800);
+  background: var(--primary-600);
 }
 .Basis_Calendar .selected_date,
 .active-item-search img,
@@ -280,10 +280,10 @@
   color: #465f88;
 }
 .background-color_2 {
-  background: var(--secondary-900) !important;
+  background: var(--secondary-700) !important;
 }
 .add-room {
-  background: linear-gradient(-90deg, #465f88 0, var(--secondary-900) 100%);
+  background: linear-gradient(-90deg, #465f88 0, var(--secondary-700) 100%);
 }
 .Others-Button,
 .details-button,
@@ -322,10 +322,10 @@
   color: #34495e;
 }
 .font-color_3 {
-  color: var(--secondary-900);
+  color: var(--secondary-700);
 }
 .background-color_3 {
-  background: var(--secondary-900);
+  background: var(--secondary-700);
 }
 .font-color_4 {
   color: #fff;
@@ -337,18 +337,19 @@
   -webkit-filter: none;
 }
 .col2-second-part-header img {
-  height: auto;
-  margin-top: 15px;
+  margin-top: 10px;
+  width: 80px;
+  height: 30px;
 }
 .mm-spn.mm-spn--navbar ul {
   margin-top: 100px !important;
 }
 .Basis_Calendar .date_info_selected,
 .Basis_Calendar .month_detail {
-  border-bottom: 2px solid var(--primary-800);
+  border-bottom: 2px solid var(--primary-600);
 }
 .close-search-box::before {
-  color: var(--secondary-900) !important;
+  color: var(--secondary-700) !important;
 }
 .warning {
   color: red;

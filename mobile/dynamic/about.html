@@ -15,7 +15,7 @@
     <member name="satrap-services" type="view" propertyid="7246" />
 </basis>
 
-<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.tserviceid|(2389793)##]">
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.tserviceid|(2390776)##]">
     <member name="article-services" type="view" propertyid="7246"
         postsql="SELECT * FROM [db.article-services] where TypeID not in(150)" />
 </basis>
@@ -61,42 +61,39 @@
             <meta property="@key" content="@value" />
         </face>
     </basis>
-    <basis core="call" file="pwa.inc" />
-    <basis core="call" file="style.inc" />
-    <link href="[##cms.cms.cdn##]/css/contact-us-form.css" type="text/css" rel="stylesheet" />
+    <basis core="call" file="pwa.inc" pageindex="[##cms.cms.pageindex##]" />
+    <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]" />
+    <link href="[##cms.cms.cdn##]/css/contact-us-form-mob.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
 </head>
 
 <body class="overflow-x-hidden relative">
-    <basis core="call" file="header.inc" />
+    <basis core="call" pageindex="[##cms.cms.pageindex##]" file="header.inc" />
 
     <main>
-        <section class="flex banner-list justify-center items-center h-[451px] relative w-full">
-
+        <section class="flex banner-list justify-center items-center h-[613px] relative w-full">
             <basis core="list" datamembername="db.banner-gallery">
                 <face filter="ord=1000">
                     <img src="/@largeIMG" alt="@name" class="z-0 absolute top-0 left-0 w-full h-full object-cover">
 
                 </face>
             </basis>
-
             <span class="absolute w-full h-full  bg-[#000000AB] top-0 left-0 z-[1]"></span>
 
-            <div
-                class="px-4  w-full z-[4] lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col gap-[10px] items-center justify-center">
-                <h1 class="typing-demo text-white text-[64px] font-bold">ساتراپ تراول</h1>
+            <div class=" w-full z-[4] px-4 flex flex-col gap-[10px] items-center justify-center">
+                <h1 class="typing-demo text-white text-2xl font-bold">ساتراپ تراول</h1>
                 <basis core="list" datamembername="db.satrap-information">
                     <layout>
-                        <div class="w-full flex items-center justify-between">
+                        <div class="w-full flex items-center flex-col gap-3">
                             @child
                         </div>
                     </layout>
                     <face>
-                        <div class="h-[156px] flex flex-col justify-center items-center gap-2 !text-white">
-                            <div dir="ltr" class="font-extrabold flex items-center gap-[2px] text-[40px]">
-                                @largetext
-                            </div>
-                            <h2 class="text-xl font-medium">@text</h2>
+                        <div class="h-[77px] flex flex-col justify-center items-center gap-2 !text-white">
+                            <p class="font-extrabold flex items-center gap-[2px]">
+                                <span class="text-base">@largetext</span>
+                            </p>
+                            <h2 class=" text-sm">@text</h2>
                         </div>
                     </face>
                 </basis>
@@ -104,23 +101,22 @@
             </div>
         </section>
 
-        <section class="w-full flex justify-center relative mt-24">
-            <div
-                class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+        <section class="w-full flex justify-center relative mt-14">
+            <div class=" relative w-full h-full px-4 flex flex-col">
                 <div class="flex bg-white relative items-center gap-3">
-                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
+                    <div class="flex z-10 relative bg-white items-center gap-3">
                         <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
                             class="w-8   h-8">
                         <basis core="list" datamembername="db.aid-text">
                             <face filter="TypeID=150">
-                                <h2 class="font-bold text-2xl text-zinc-900"> @text </h2>
+                                <h2 class="font-bold text-base text-zinc-900"> @text </h2>
 
                             </face>
                         </basis>
                         <span class="bullet-1 "></span>
                     </div>
                 </div>
-                <div class="my-[50px] flex items-center w-full">
+                <div class="my-4 flex items-center w-full">
                     <div class="text-zinc-900 text-base text-justify">
                         <basis core="list" datamembername="db.aid-text">
                             <face filter="TypeID<>150">@largetext</face>
@@ -130,77 +126,73 @@
             </div>
         </section>
         <section class="w-full flex justify-center relative">
-            <div
-                class="px-4 before-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+
+            <div class=" relative w-full h-full px-4 flex flex-col">
                 <div class="flex relative items-center gap-3">
-                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                            class="w-8   h-8">
-                        <h3 class="font-bold text-2xl text-zinc-900"> خدمات ساتراپ </h3>
-                        <span class="bullet-1 "></span>
+                    <div class="flex z-10 relative bg-white items-center gap-3">
+                        <h3 class="font-bold text-base text-zinc-900"> خدمات ساتراپ </h3>
                     </div>
                 </div>
-                <div class="w-full my-[50px]">
-                    <div class="w-full border border-[#CDCDCD] flex gap-[34px] rounded-3xl p-[55px]">
-                        <div class="w-1/2 min-h-[634px] flex flex-col justify-between gap-10">
+                <div class="w-full my-2">
+                    <div class="w-full border border-[#CDCDCD] flex flex-col-reverse gap-[34px] rounded-xl p-2">
+                        <div class="w-full  flex flex-col justify-between gap-10">
                             <div class="w-full flex flex-col gap-12">
-                                <p class="font-bold text-2xl text-zinc-900">انواع خدمات ساتراپ</p>
+                                <p class="font-bold text-base text-zinc-900">انواع خدمات ساتراپ</p>
                                 <basis core="list" datamembername="db.satrap-services">
-                                    <face filter="TypeID<>150">
-                                        <div class="text-zinc-900 text-justify">
+                                    <face filter="TypeID=129">
+                                        <div class="text-zinc-900 text-xs text-justify">
                                             @largetext
                                         </div>
                                     </face>
                                 </basis>
-
                             </div>
-                            <div class="w-full  ">
-                                <ul class="w-full h-full grid grid-cols-3 gap-[14px]  ">
+                            <div class="w-full h-[148px] overflow-hidden">
+                                <ul class="w-full h-full grid grid-cols-3 gap-3 ">
 
                                     <li data-nav="flight" data-id="flight"
                                         onclick="check_searchHistory('flight'); check_landing('flight')"
-                                        class="box-hover1 h-10 bg-[#F5F9FB] cursor-pointer flex justify-center items-center rounded-xl text-zinc-900 text-center">
+                                        class="box-hover1 text-sm h-10 bg-[#F5F9FB] cursor-pointer flex justify-center items-center rounded-xl text-zinc-900 text-center">
                                         پرواز
                                     </li>
                                     <li data-nav="hotel" data-id="hotel"
                                         onclick="check_searchHistory('hotel'); check_landing('hotel')"
-                                        class="box-hover1 h-10 bg-[#F5F9FB] cursor-pointer flex justify-center items-center rounded-xl text-zinc-900 text-center">
+                                        class="box-hover1 text-sm  h-10 bg-[#F5F9FB] cursor-pointer flex justify-center items-center rounded-xl text-zinc-900 text-center">
                                         هتل
                                     </li>
                                     <li data-nav="flighthotel" data-id="flighthotel"
                                         onclick="check_searchHistory('flighthotel'); check_landing('flighthotel')"
-                                        class="box-hover1 h-10 bg-[#F5F9FB] cursor-pointer flex justify-center items-center rounded-xl text-zinc-900 text-center">
+                                        class="box-hover1 text-sm  h-10 bg-[#F5F9FB] cursor-pointer flex justify-center items-center rounded-xl text-zinc-900 text-center">
                                         پرواز + هتل
                                     </li>
                                     <li data-nav="tour" data-id="tour"
                                         onclick="check_searchHistory('tour'); check_landing('tour')"
-                                        class="box-hover1 h-10 bg-[#F5F9FB] cursor-pointer flex justify-center items-center rounded-xl text-zinc-900 text-center">
+                                        class="box-hover1 text-sm  h-10 bg-[#F5F9FB] cursor-pointer flex justify-center items-center rounded-xl text-zinc-900 text-center">
                                         تور
                                     </li>
                                     <li data-nav="insurance" data-id="insurance"
                                         onclick="check_searchHistory('insurance'); check_landing('insurance')"
-                                        class="box-hover1 h-10 bg-[#F5F9FB] cursor-pointer flex justify-center items-center rounded-xl text-zinc-900 text-center">
+                                        class="box-hover1 text-sm  h-10 bg-[#F5F9FB] cursor-pointer flex justify-center items-center rounded-xl text-zinc-900 text-center">
                                         بیمه
                                     </li>
 
                                     <li>
                                         <a href="/visa"
-                                            class="box-hover1 h-10 bg-[#F5F9FB] flex justify-center items-center rounded-xl text-zinc-900 text-center">
+                                            class="box-hover1 text-sm  h-10 bg-[#F5F9FB] flex justify-center items-center rounded-xl text-zinc-900 text-center">
                                             ویزا</a>
                                     </li>
                                     <li>
                                         <a href="/blog"
-                                            class="box-hover1 h-10 bg-[#F5F9FB] flex justify-center items-center rounded-xl text-zinc-900 text-center">مجله
+                                            class="box-hover1 text-sm  h-10 bg-[#F5F9FB] flex justify-center items-center rounded-xl text-zinc-900 text-center">مجله
                                             گردشگری</a>
                                     </li>
                                     <li>
                                         <a href="/tours"
-                                            class="box-hover1 h-10 bg-[#F5F9FB] flex justify-center items-center rounded-xl text-zinc-900 text-center">
+                                            class="box-hover1 text-sm  h-10 bg-[#F5F9FB] flex justify-center items-center rounded-xl text-zinc-900 text-center">
                                             تور ها</a>
                                     </li>
                                     <li>
                                         <a href="/contact-us"
-                                            class="box-hover1 h-10 bg-[#F5F9FB] flex justify-center items-center rounded-xl text-zinc-900 text-center">
+                                            class="box-hover1 text-sm  h-10 bg-[#F5F9FB] flex justify-center items-center rounded-xl text-zinc-900 text-center">
                                             تماس با ما</a>
                                     </li>
 
@@ -209,22 +201,21 @@
                         </div>
                         <basis core="list" datamembername="db.article-services">
                             <layout>
-                                <div class="w-1/2 grid  grid-cols-2 gap-4">
+                                <div class="w-full grid  grid-cols-2 gap-2">
                                     @child
 
                                 </div>
                             </layout>
                             <face>
                                 <article
-                                    class="bg-[#F5F9FB] h-[309px] rounded-xl p-6 flex flex-col justify-center items-center gap-3">
+                                    class="bg-[#F5F9FB] h-[333px] rounded-xl p-2 flex flex-col justify-center items-center gap-3">
                                     <span
                                         class="bg-white rounded-full h-[133px] w-[133px] flex justify-center items-center">
                                         <img loading="lazy" class="soft-animation"
-                                            src="[##cms.cms.cdn##]/images/tserviceid-@RowNumber.png" alt="@text">
+                                            src="[##cms.cms.cdn##]/images/tserviceid-@RowNumber.png" alt="@text-us">
                                     </span>
                                     <h4 class="text-2xl font-bold text-zinc-900"> @text</h4>
-                                    <div class="text-zinc-900 text-sm text-center">@largetext
-                                    </div>
+                                    <div class="text-zinc-900 text-sm text-center">@largetext</div>
                                 </article>
                             </face>
                         </basis>
@@ -234,192 +225,146 @@
                 </div>
             </div>
         </section>
-        <section class="w-full flex justify-center relative">
-            <div
-                class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+        <section class="w-full my-6 flex justify-center relative">
+            <div class="relative w-full h-full flex flex-col">
                 <div class="flex relative items-center gap-3">
-                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                            class="w-8   h-8">
-                        <h4 class="font-bold text-2xl text-zinc-900"> نمایندگی های انحصاری ایرلاین (GSA)</h4>
-                        <span class="bullet-1 "></span>
-                    </div>
+                    <!-- <div class="flex z-10 mb-3 px-4 relative bg-white items-center gap-3">
+                         <h4 class="font-bold text-base text-zinc-900"> نمایندگی های انحصاری ایرلاین (GSA)</h4>
+                        
+                    </div> -->
                 </div>
                 <basis core="print" datamembername="db.gallery-airlines">
                     <layout>
-                        <div class="my-[70px] w-full">
-                            <div class="!w-full swiper swiper-4">
-                                <div class="swiper-wrapper">@child</div>
-                            </div>
-                        </div>
-                    </layout>
-                    <face>
-                        <div class="swiper-slide !h-[88px] bg-zinc-100 rounded-xl !flex justify-center items-center">
-                            <img loading="lazy" src="/@largeIMG" alt="@name" class="w-[126px]">
-                        </div>
-                    </face>
-                </basis>
 
-            </div>
-        </section>
-        <section class="w-full flex justify-center relative">
-            <div
-                class="px-4 before-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class="flex relative items-center gap-3">
-                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                            class="w-8   h-8">
-                        <h5 class="font-bold text-2xl text-zinc-900"> برند هاي ساتراپ </h5>
-                        <span class="bullet-1 "></span>
-                    </div>
-                </div>
-                <basis core="print" datamembername="db.gallery-certificates">
-                    <layout>
-                        <div class="my-[70px] z-10 w-full">
-                            <div class="!w-full swiper swiper-4 modals-container">
-                                <div class="swiper-wrapper">@child
-
+                        <div class="my-2 w-full overflow-hidden pr-4">
+                            <div class="!w-full swiper swiper-mobile-c">
+                                <div class="swiper-wrapper">
+                                    @child
                                 </div>
 
                             </div>
                         </div>
                     </layout>
-                    <face filter="ord<5">
-                        <div class="swiper-slide !h-[198px]  rounded-xl !flex justify-center items-center">
-                            <img loading="lazy" src="/@largeIMG" alt="@name"
-                                class="w-full h-full object-cover  rounded-xl">
-                        </div>
-                    </face>
-                </basis>
-
-            </div>
-        </section>
-        <section class="w-full flex justify-center relative">
-            <div
-                class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class="flex relative items-center gap-3">
-                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                            class="w-8   h-8">
-                        <p class="font-bold text-2xl text-zinc-900"> افتخارات ساتراپ </p>
-                        <span class="bullet-1 "></span>
-                    </div>
-                </div>
-                <basis core="print" datamembername="db.gallery-statue">
-                    <layout>
-                        <div class="my-[90px] z-10 flex w-full justify-between items-center">@child</div>
-                    </layout>
                     <face>
-                        <article class="h-[287px] w-[213px] flex flex-col justify-between items-center">
-                            <img loading="lazy" class="w-full h-[235px]" src="/@largeIMG" alt="@name">
-                            <p class="text-sm text-zinc-900"> @name</p>
-                        </article>
+                        <div class="swiper-slide !h-[71px] bg-zinc-100 rounded-xl !flex justify-center items-center">
+                            <img loading="lazy" src="/@largeIMG" alt="@name" class="w-[126px]">
+                        </div>
                     </face>
                 </basis>
-
             </div>
         </section>
-        <section class="w-full flex justify-center relative">
-            <div
-                class="px-4 before-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class="flex relative items-center gap-3">
-                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                            class="w-8   h-8">
-                        <p class="font-bold text-2xl text-zinc-900"> سیاسیت و کیفیت </p> <span class="bullet-1 "></span>
-                    </div>
+        <basis core="print" datamembername="db.gallery-certificates">
+            <layout>
+                <section class="w-full px-4  my-6 flex flex-col gap-6">
+                    @child
+                </section>
+            </layout>
+            <face>
+                <div class="w-full rounded-xl overflow-hidden h-[198px]">
+                    <img loading="lazy" src="/@largeIMG" alt="@name" class="!w-full h-full ">
                 </div>
-                <basis core="print" datamembername="db.Quality-Policy">
-                    <layout>
-                        <div class="w-full my-[60px]">
-                            <div class="text-justify text-zinc-900">
-                                @child
+            </face>
+        </basis>
+        <basis core="print" datamembername="db.gallery-statue">
+            <layout>
+                <section class="w-full flex justify-center items-center flex-col relative">
+                    <div class="relative w-full h-full px-4 flex flex-col">
+                        <div class="flex relative  items-center gap-3">
+                            <div class="flex z-10 relative bg-white items-center gap-3">
+                                <p class="font-bold text-zinc-900"> افتخارات ساتراپ </p>
+
                             </div>
-
                         </div>
-                    </layout>
-                    <face filter="TypeID<>150">@largetext</face>
-                </basis>
 
-            </div>
-        </section>
-
-        <section class="w-full flex justify-center relative">
-            <div
-                class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class="flex relative items-center gap-3">
-                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                            class="w-8   h-8">
-                        <p class="font-bold text-2xl text-zinc-900"> چشم انداز و ماموریت ها </p>
-                        <span class="bullet-1 "></span>
+                        <div class="my-3 z-10 flex w-full flex-col gap-[75px] items-center">
+                            @child
+                        </div>
                     </div>
+                </section>
+            </layout>
+            <face>
+                <article class="h-[198px] w-full  flex flex-col justify-center items-center">
+                    <img loading="lazy" class="w-[132px] h-[146px]" src="/@largeIMG" alt="@name">
+                    <p class="text-sm text-zinc-900">@name</p>
+                </article>
+            </face>
+        </basis>
+        <basis core="print" datamembername="db.Quality-Policy">
+            <layout>
+                <div class="flex flex-col gap-3 px-4 my-6">
+                    <p class="font-bold text-zinc-900"> سیاست و کیفیت
+
+                    </p>
+
+                    <div class=" text-justify text-sm text-[#18181B]">@child</div>
                 </div>
-                <basis core="print" datamembername="db.viewid">
-                    <layout>
-                        <div class="w-full my-[60px]">
-                            <div class="text-justify text-zinc-900">
-                                @child
-                            </div>
+            </layout>
+            <face filter="TypeID<>150">@largetext</face>
+        </basis>
 
-                        </div>
-                    </layout>
-                    <face filter="TypeID<>150">@largetext</face>
-                </basis>
+
+
+
+
+
+        <basis core="print" datamembername="db.viewid">
+            <layout>
+                <div class="flex flex-col gap-3 px-4 mb-16">
+                    <p class="font-bold text-zinc-900">چشم انداز و ماموریت ها
+                    </p>
+
+                    <div class="text-justify text-sm text-[#18181B]">@child</div>
+                </div>
+            </layout>
+            <face filter="TypeID<>150">@largetext</face>
+        </basis>
+    </main>
+
+    <div class="w-full mobile-after-selector flex flex-col mt-[-43px] gap-3 relative">
+        <div class="w-full flex justify-center">
+            <div class="flex z-10 relative w-fit bg-white  items-center gap-3">
+                <img src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8   h-8">
+                <h2 class="font-bold text-base text-zinc-900">ارتباط با کارشناسان </h2>
+                <span class="bullet-1 "></span>
             </div>
-        </section>
-        <section class="w-full flex justify-center relative  ">
-            <div class="px-4 relative w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class="before-border last-section-brd-article relative w-full flex flex-col">
-                    <div class="flex  items-center gap-3 ">
-                        <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
-                            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                                class="w-8 h-8">
-                            <p class="font-bold text-2xl text-zinc-900">ارتباط با کارشناسان </p>
-                            <span class="bullet-1"></span>
-                        </div>
-                    </div>
-                    <div class="my-[50px] z-[4] items-center w-full flex">
-                        <div
-                            class="w-full rounded-2xl overflow-hidden relative flex items-center justify-center h-[143px] px-[35px] py-5">
-                            <img loading="lazy" src="[##cms.cms.cdn##]/images/contact-form-image.jpg" alt="contact-us"
-                                class="w-[42%] h-full z-0    absolute left-0 top-0">
-                            <span
-                                class="w-[80px] absolute left-[calc(42%-3px)] z-[3] bg-gradient-to-r from-[#d6d9d8] h-full"></span>
-                            <span
-                                class="w-full h-full rounded-2xl bg-gradient-to-r z-[1] from-[#fff0] to-[#F2F2F2] absolute top-0 left-0 "></span>
-                            <div class="flex z-[5] w-full flex-col h-full justify-between">
-                                <p class="">جهت مشاوره خرید تور با کارشناسان ما در ارتباط باشید</p>
-                                <div class="flex items-center">
-                                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
-                                        <basis core="schema" run="atclient"
-                                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
-                                            displaymode="new" button="[data-btn-uploadfooter]"
-                                            resultsourceid="upload.datafooter" OnRendered="RenderFormFooter">
-                                        </basis>
-                                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
-                                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject"
-                                            method="post"
-                                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
-                                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
-                                            OnProcessed="OnProcessedEditObjectFooter">
-                                        </basis>
-                                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
-                                            triggers="upload.datafooter"></basis>
-                                        <div class="captcha-button">
-                                            <div id="captchaContainer"
-                                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
-                                                data-bc-answer-container data-bc-schema-info-multi="0"
-                                                data-bc-schema-info-word="58" data-bc-schema-info-part="1"
-                                                data-bc-schema-info-part-0-type="text">
-                                                <basis core="dbsource" source="trust_login" name="captcha"
-                                                    run="atclient" triggers="captcha.refreshFooter">
-                                                    <member name="code" type="scalar" request="captcha"></member>
-                                                </basis>
-                                                <basis datamembername="captcha.code" core="print" run="atclient"
-                                                    OnRendered="captchaRenderedFooter">
-                                                    <face>
-                                                        <script type="text/template">
+        </div>
+        <section class="w-full px-4 mb-8">
+            <div
+                class="w-full flex flex-col justify-end relative  overflow-hidden  bg-gradient-to-t from-[#F2F2F2]   to-[#FFFFFF00] rounded-2xl ">
+                <figure class="h-[50%] z-0 w-full rounded-t-2xl">
+                    <img loading="lazy" class="image-fade w-full h-full object-cover  rounded-t-2xl"
+                        src="[##cms.cms.cdn##]/images/contact-image-mob.jpg" alt="contact-us">
+                </figure>
+                <div class="relative z-[2] pb-3 px-3 w-full flex flex-col gap-1">
+                    <p class="font-bold text-sm leading-6">جهت مشاوره خرید تور با کارشناسان ما در ارتباط باشید</p>
+
+                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
+                        <basis core="schema" run="atclient"
+                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
+                            displaymode="new" button="[data-btn-uploadfooter]" resultsourceid="upload.datafooter"
+                            OnRendered="RenderFormFooter">
+                        </basis>
+                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
+                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject" method="post"
+                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
+                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
+                            OnProcessed="OnProcessedEditObjectFooter">
+                        </basis>
+                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
+                            triggers="upload.datafooter"></basis>
+                        <div class="captcha-button">
+                            <div id="captchaContainer"
+                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
+                                data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
+                                data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
+                                <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                                    triggers="captcha.refreshFooter">
+                                    <member name="code" type="scalar" request="captcha"></member>
+                                </basis>
+                                <basis datamembername="captcha.code" core="print" run="atclient"
+                                    OnRendered="captchaRenderedFooter">
+                                    <face>
+                                        <script type="text/template">
                                     <div class="flex  justify-between ">
                                         
                                         <div class="flex sfvgwdcsdhc w-full items-center">
@@ -448,43 +393,39 @@
 
                                                         </div></div>
                     </script>
-                                                    </face>
-                                                </basis>
-                                                <button type="button" data-btn-uploadfooter
-                                                    class="  data-body-btn w-[108px] h-[59px] flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
-                                                    ارسال
-                                                </button>
+                                    </face>
+                                </basis>
+                                <button type="button" data-btn-uploadfooter
+                                    class="text-sm  data-body-btn w-full h-12 flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
+                                    ارسال
+                                </button>
 
-                                            </div>
+                            </div>
 
-                                            <div
-                                                class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex">
-                                                <div id="ballsWaveG"
-                                                    class="ext-zinc-50 text-base font-normal leading-normal">
-                                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
-                                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
-                                                </div>
-                                            </div>
-                                            <div class="message-api absolute text-center text-primary text-xs"></div>
-                                        </div>
-                                    </div>
+                            <div
+                                class="Loading_Form hidden data-body-btn h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex !w-full ">
+                                <div id="ballsWaveG" class="ext-zinc-50 text-base font-normal leading-normal">
+                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
                                 </div>
                             </div>
+                            <div class="message-api text-center text-primary text-xs"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
 
-    </main>
-    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
-    <basis core="call" file="footer.inc" />
+        <basis core="call" pageindex="[##cms.cms.pageindex##]" file="footer.inc" />
+    </div>
+
 </body>
 
 

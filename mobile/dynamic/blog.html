@@ -12,12 +12,12 @@
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.oid##]">
-    <member name="Special-offers-second" type="list" link="article.bc" size="416x264" propertyid="7244"
+    <member name="Special-offers-second" type="list" link="article.bc" size="416x264" propertyid="7244" perpage="16"
         pageno="[##cms.query.pagenum|(1)##]" order="ord" />
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.nid##]">
-    <member name="news-of-the-day" type="list" link="article.bc" size="287x206" propertyid="7244"
+    <member name="news-of-the-day" type="list" link="article.bc" size="287x206" propertyid="7244" perpage="16"
         pageno="[##cms.query.pagenum|(1)##]" order="ord" />
 </basis>
 
@@ -37,14 +37,7 @@
 </basis>
 
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.gid|(218270)##]">
-    <member name="Tour-Reservation-Guide" type="list" link="article.bc" propertyid="7244" perpage="9"
-        pageno="[##cms.query.pagenum|(1)##]" order="ord" />
-</basis>
-
-
-
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="218236">
-    <member name="all-blogs" type="list" link="article.bc" propertyid="7244,7249" perpage="8" order="ord" />
+    <member name="Tour-Reservation-Guide" type="list" link="article.bc" propertyid="7244" perpage="9" order="ord" />
 </basis>
 
 <!DOCTYPE html>
@@ -94,7 +87,7 @@
                 <ul class="flex items-center gap-2 text-white !text-xs">
                     <li> <a href="/" class="hover:text-secondary-700">صفحه اصلی</a>
                     </li>
-                    <li> &gt; </li>
+                    <li> > </li>
                     <li> بلاگ </li>
 
                 </ul>
@@ -103,8 +96,12 @@
                     class="seraching-form search-content relative flex flex-col w-full justify-center gap-3 items-center ">
                     <input required="" id="search-content-name" placeholder="جستجوی موضوع" type="text"
                         class="h-[55px] w-full px-3 placeholder:text-[#ABABAB] outline-none focus:border-primary-200 bg-white border border-[#E5E5E5] rounded-lg">
-                    <a
-                        class="w-full font-bold h-12 text-xs flex justify-center items-center bg-secondary-700 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">جستجو</a>
+                    <a class="w-full font-bold h-12 text-xs flex
+                         justify-center items-center bg-secondary-700 rounded-lg 
+                         hover:shadow-lg hover:bg-gradient-to-br 
+                         hover:from-primary hover:to-primary-50">
+                        جستجو
+            </a>
                     <input type="hidden" value="1" name="lid">
                     <input id="catidsearched" type="hidden" value="0" name="id">
 
@@ -144,12 +141,7 @@
                 </basis>
             </div>
         </section>
-        <section class="w-full overflow-hidden flex flex-col gap-3 relative my-16">
-            <div class="w-full flex items-center mb-3 px-4 gap-2">
-                <img loading="lazy" class="w-[21px] h-[21px]" width="32" height="32"
-                    src="[##cms.cms.cdn##]/images/logo-small.png" alt="logo">
-                <h2 class="textsm font-bold text-[#18181B] "> دسته بندی اخبار </h2>
-            </div>
+        <section class="w-full overflow-hidden relative my-16">
             <basis core="print" datamembername="db.gallery-story">
                 <layout>
                     <span class="absolute left-0 h-full top-0 bg-gradient-to-r from-white w-28 z-[1]"></span>
@@ -161,7 +153,7 @@
                     <div
                         class="hidden video-popup   w-screen h-screen fixed flex-col gap-4 justify-center items-center blur2 top-0 left-0 z-50 bg-[#0000009a] ">
                         <div class="!w-full px-4 flex justify-end relative">
-                            <button class="close-popup hover:bg-secondary-900 p-1 rounded-full">
+                            <button aria-label="close-btn" class="close-popup hover:bg-secondary-900 p-1 rounded-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 24 24"
                                     fill="none">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -212,15 +204,15 @@
                     </div>
                 </face>
             </basis>
+
+
         </section>
-
-
 
         <section class="w-full overflow-hidden px-4 flex flex-col gap-3 relative my-16">
             <div class="w-full flex items-center  gap-2">
                 <img loading="lazy" class="w-[21px] h-[21px]" width="32" height="32"
                     src="[##cms.cms.cdn##]/images/logo-small.png" alt="logo">
-                <h3 class="textsm font-bold text-[#18181B]"> پیشنهاد های ویژه</h3>
+                <p class="textsm font-bold text-[#18181B]"> پیشنهاد های ویژه</p>
             </div>
             <basis core="list" datamembername="db.Special-offers-first">
                 <layout>
@@ -236,7 +228,7 @@
                     <div class="w-full !h-[169px] swiper-slide">
                         <a href="@link"
                             class="relative box-hover1 group rounded-xl h-full w-full overflow-hidden flex items-end">
-                            <img loading="lazy" src="[##cms.cms.cdn##]/@00632X00264prp	" alt="@title"
+                            <img loading="lazy" src="[##cms.cms.cdn##]/@00632X00264prp" alt="@title-img"
                                 class="group-hover:scale-110 transition-all duration-700 ease-in-out w-full z-0 block h-full object-cover">
                             <div
                                 class="absolute w-full h-full z-[2] bg-gradient-to-b from-[#00000000] py-5 px-[27px] transition-all duration-700 ease-in-out flex flex-col gap-3 justify-end to-[#000000]">
@@ -268,7 +260,7 @@
                     <div class="w-full !h-[169px] swiper-slide">
                         <a href="@link"
                             class="relative box-hover1 group rounded-xl h-full w-full overflow-hidden flex items-end">
-                            <img loading="lazy" src="[##cms.cms.cdn##]/@00632X00264prp	" alt="@title"
+                            <img loading="lazy" src="[##cms.cms.cdn##]/@00632X00264prp" alt="@title-element"
                                 class="group-hover:scale-110 transition-all duration-700 ease-in-out w-full z-0 block h-full object-cover">
                             <div
                                 class="absolute w-full h-full z-[2] bg-gradient-to-b from-[#00000000] py-5 px-[27px] transition-all duration-700 ease-in-out flex flex-col gap-3 justify-end to-[#000000]">
@@ -288,11 +280,14 @@
         </section>
 
 
+
+
+
         <section class="w-full  px-4 flex mb-10 flex-col gap-3 ">
             <div class="w-full flex  mb-5 items-center gap-2">
                 <img loading="lazy" class="w-[21px] h-[21px]" width="32" height="32"
                     src="[##cms.cms.cdn##]/images/logo-small.png" alt="logo">
-                <h5 class="textsm font-bold text-[#18181B]"> اخبار روز ساتراپ</h5>
+                <p class=" font-bold text-[#18181B]"> اخبار روز ساتراپ</p>
 
             </div>
             <basis core="list" datamembername="db.news-of-the-day">
@@ -304,7 +299,7 @@
                 <face>
                     <a href="@link"
                         class="h-[336px] hover:bg-[#fff5dd] hover:border-[#f9c751] w-full border p-2 flex flex-col gap-2 bg-[#F5F9FB] rounded-2xl border-[#C1E5F2]">
-                        <img loading="lazy" src="[##cms.cms.cdn##]/@00287X00206prp" alt="@title"
+                        <img loading="lazy" src="[##cms.cms.cdn##]/@00287X00206prp" alt="@title_image"
                             class="w-full h-[206px] rounded-2xl">
                         <p class="font-semibold text-[#1A1A1A]"> @title </p>
                         <div class="line-clamp-4 text-xs text-[#202020]"> @prp_7244
@@ -314,53 +309,13 @@
             </basis>
 
 
-            <!-- <div dir="ltr" class="w-full mt-5 flex gap-4 justify-center items-center">
-                <basis core="print" datamembername="db.paging">
-                    <face filter="(@sta='pre')">
-                        <a class=" rotate-180 w-12 h-12 flex justify-center text-sm text-[#888888] items-center rounded bg-[#F5F5F5] hover:text-primary-700"
-                            href="/[##cms.cms.link_page##]&pagenum=@page&catid=[##cms.query.catid##]&vid=[##cms.query.vid##]&pid=[##cms.query.pid##]&aid=[##cms.query.aid##]&did=[##cms.query.did##]&gid=[##cms.query.gid##]&qid=[##cms.query.qid##]"
-                            aria-label="angle-left">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M16.0303 4.46967C16.2966 4.73594 16.3208 5.1526 16.1029 5.44621L16.0303 5.53033L9.561 12L16.0303 18.4697C16.2966 18.7359 16.3208 19.1526 16.1029 19.4462L16.0303 19.5303C15.7641 19.7966 15.3474 19.8208 15.0538 19.6029L14.9697 19.5303L7.96967 12.5303C7.7034 12.2641 7.6792 11.8474 7.89705 11.5538L7.96967 11.4697L14.9697 4.46967C15.2626 4.17678 15.7374 4.17678 16.0303 4.46967Z"
-                                    fill="#4C4C4C"></path>
-                            </svg>
-                        </a>
-                    </face>
-                </basis>
-
-                <basis core="print" datamembername="db.paging">
-                    <face filter="(@page=[##cms.query.pagenum|(1)##])">
-                        <a class="w-12 h-12 flex justify-center text-sm text-[#888888] items-center rounded bg-[#F5F5F5] hover:text-primary-700"
-                            href="/[##cms.cms.link_page##]&pagenum=@page&catid=[##cms.query.catid##]&vid=[##cms.query.vid##]&pid=[##cms.query.pid##]&aid=[##cms.query.aid##]&did=[##cms.query.did##]&gid=[##cms.query.gid##]&qid=[##cms.query.qid##]">
-                            @page
-                        </a>
-                    </face>
-                    <face filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no')">
-                        <a href="/[##cms.cms.link_page##]&pagenum=@page&catid=[##cms.query.catid##]&vid=[##cms.query.vid##]&pid=[##cms.query.pid##]&aid=[##cms.query.aid##]&did=[##cms.query.did##]&gid=[##cms.query.gid##]&qid=[##cms.query.qid##]"
-                            class="w-12 h-12 flex justify-center text-sm text-[#888888] items-center rounded bg-[#F5F5F5] hover:text-primary-700">
-                            @page
-                        </a>
-                    </face>
-                </basis>
-
-                <basis core="print" datamembername="db.paging">
-                    <face filter="(@sta='nex')">
-                        <a href="/[##cms.cms.link_page##]&pagenum=@page&catid=[##cms.query.catid##]&vid=[##cms.query.vid##]&pid=[##cms.query.pid##]&aid=[##cms.query.aid##]&did=[##cms.query.did##]&gid=[##cms.query.gid##]&qid=[##cms.query.qid##]"
-                            aria-label="angle-right"
-                            class="w-12 h-12 flex justify-center text-sm text-[#888888] items-center rounded bg-[#F5F5F5] hover:text-primary-700">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M16.0303 4.46967C16.2966 4.73594 16.3208 5.1526 16.1029 5.44621L16.0303 5.53033L9.561 12L16.0303 18.4697C16.2966 18.7359 16.3208 19.1526 16.1029 19.4462L16.0303 19.5303C15.7641 19.7966 15.3474 19.8208 15.0538 19.6029L14.9697 19.5303L7.96967 12.5303C7.7034 12.2641 7.6792 11.8474 7.89705 11.5538L7.96967 11.4697L14.9697 4.46967C15.2626 4.17678 15.7374 4.17678 16.0303 4.46967Z"
-                                    fill="#4C4C4C"></path>
-                            </svg>
-                        </a>
-                    </face>
-                </basis>
-            </div> -->
         </section>
+
+
+
+
+
+
 
         <section class="w-full  px-4 flex mb-10 flex-col gap-6 py-3 bg-[#F6F6F6] ">
             <div class="w-full flex  mb-5 items-center gap-2">
@@ -382,7 +337,7 @@
                 <face filter="link is null">
                     <a href="/article-list.bc?catid=@catid"
                         class="swiper-slide w-full group !h-[141px] relative overflow-hidden rounded-xl">
-                        <img loading="lazy" src="@image" alt="@title"
+                        <img loading="lazy" src="@image" alt="@title-wrapper"
                             class="absolute z-0 w-full h-full top-0 left-0 object-cover">
                         <div class="w-full relative h-full flex justify-center items-end px-[21px] py-3 z-[2]">
                             <span
@@ -395,7 +350,7 @@
                 </face>
                 <face>
                     <a href="@link" class="swiper-slide w-full group !h-[141px] relative overflow-hidden rounded-xl">
-                        <img loading="lazy" src="@image" alt="@title"
+                        <img loading="lazy" src="@image" alt="@title-images"
                             class="absolute z-0 w-full h-full top-0 left-0 object-cover">
                         <div class="w-full relative h-full flex justify-center items-end px-[21px] py-3 z-[2]">
                             <span
@@ -411,17 +366,8 @@
 
         </section>
 
-
-
-
-
-
-
-
-
-         <section class="w-full flex flex-col gap-3 justify-center relative">
-            <div
-                class="px-4 w-full gap-3 flex flex-col">
+        <section class="w-full flex flex-col gap-3 justify-center relative">
+            <div class="px-4 w-full gap-3 flex flex-col">
                 <div class="flex relative items-center gap-3">
                     <div class="flex relative bg-white px-2 items-center gap-3">
                         <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
@@ -437,7 +383,7 @@
                             <basis core="list" datamembername="db.travelogue">
                                 <face filter="ord=1">
                                     <a href="@link" class="w-full group flex flex-col gap-2">
-                                        <img loading="lazy" src="@image" alt="@title" class="w-full h-60 rounded-xl">
+                                        <img loading="lazy" src="@image" alt="@title-container" class="w-full h-60 rounded-xl">
                                         <p class="font-bold group-hover:text-primary-800 text-base">
                                             @title
                                         </p>
@@ -458,8 +404,8 @@
                                     </layout>
                                     <face filter="ord in(3,4,5)">
                                         <a href="@link"
-                                            class="flex h-[62px]   border border-transparent hover:shadow-lg hover:border-[#c5c5c59c] hover:bg-white rounded-xl w-full gap-[5px] items-center">
-                                            <img loading="lazy" src="@image" alt="@title"
+                                            class="flex h-[62px] border border-transparent hover:shadow-lg hover:border-[#c5c5c59c] hover:bg-white rounded-xl w-full gap-[5px] items-center">
+                                            <img loading="lazy" src="@image" alt="@title-d"
                                                 class="w-[96px] h-[60px] rounded-xl">
                                             <div
                                                 class="flex py-[2px] flex-col gap-[7px] line-clamp-1  w-[calc(100%-96px)]">
@@ -483,7 +429,7 @@
                             <basis core="list" datamembername="db.travelogue">
                                 <face filter="ord=2">
                                     <a href="@link" class="w-full group flex flex-col gap-2">
-                                        <img loading="lazy" src="@image" alt="@title" class="w-full h-60 rounded-xl">
+                                        <img loading="lazy" src="@image" alt="@title-" class="w-full h-60 rounded-xl">
                                         <p class="font-bold group-hover:text-primary-800 text-sm">
                                             @title
                                         </p>
@@ -504,7 +450,7 @@
                                     <face filter="ord in(6,7,8)">
                                         <a href="@link"
                                             class="flex h-[62px]   border border-transparent hover:shadow-lg hover:border-[#c5c5c59c] hover:bg-white rounded-xl w-full gap-[5px] items-center">
-                                            <img loading="lazy" src="@image" alt="@title"
+                                            <img loading="lazy" src="@image" alt="@title_"
                                                 class="w-[96px] h-[60px] rounded-xl">
                                             <div
                                                 class="flex py-[2px] flex-col gap-[7px]   w-[calc(100%-96px)] line-clamp-1">
@@ -534,10 +480,11 @@
                         <face>
                             <a href="@link"
                                 class="flex pl-1 h-[62px]   border border-transparent group rounded-xl w-full gap-[5px] items-center">
-                                <img loading="lazy" src="@00072X00060prp" alt="@title"
+                                <img loading="lazy" src="@00072X00060prp" alt="@title-x"
                                     class="w-[96px] h-[60px] rounded-xl">
                                 <div class="flex py-[2px] w-[calc(100%-100px)]  flex-col gap-[7px] ">
-                                    <p class="line-clamp-1 text-xs group-hover:text-primary-600 font-medium text-[#222222]">
+                                    <p
+                                        class="line-clamp-1 text-xs group-hover:text-primary-600 font-medium text-[#222222]">
                                         @title
                                     </p>
                                     <span class="font-medium text-xs text-[#767676]">@prp_7249 </span>
@@ -549,21 +496,7 @@
                 </div>
             </div>
         </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-         <basis core="print" datamembername="db.Tour-Reservation-Guide">
+        <basis core="print" datamembername="db.Tour-Reservation-Guide">
             <layout>
                 <section class="w-full mb-16 px-4 flex flex-col relative gap-5 mobile-tour-guide">
                     <h6 class="text-sm font-bold text-zinc-900">راهنمای رزرو تور</h6>
@@ -618,7 +551,7 @@
         </basis>
 
 
-          <section class="w-full px-4 mb-8">
+        <section class="w-full px-4 mb-8">
             <div
                 class="w-full flex flex-col justify-end relative  overflow-hidden  bg-gradient-to-t from-[#F2F2F2]   to-[#FFFFFF00] rounded-2xl ">
                 <figure class="h-[50%] z-0 w-full rounded-t-2xl">

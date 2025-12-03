@@ -221,7 +221,7 @@
                                         class="justify-between flex flex-col gap-4 px-4 py-[14px]   w-800   max-h-[90vh] bg-white rounded-3xl       shadow-2xl">
                                         <div class="w-full flex justify-between items-center">
                                             <p class="font-medium text-xl">مشاهده ویدیو</p>
-                                            <button type="button" class="close-popup group">
+                                            <button aria-label="close-btn" type="button" class="close-popup group">
                                                 <svg width="33" height="34" viewBox="0 0 33 34" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd"
@@ -276,7 +276,7 @@
                                             <p class="text-[#282828] font-medium"> @db.audio.name </p>
 
                                         </div>
-                                        <button type="button" class="close-popup-music group">
+                                        <button aria-label="close-poscast" type="button" class="close-popup-music group">
                                             <svg width="33" height="34" viewBox="0 0 33 34" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd"
@@ -445,7 +445,7 @@
                             <div
                                 class="hidden video-popup py-12 w-screen h-screen fixed flex-col gap-4 justify-center items-center blur2 top-0 left-0 z-50 bg-[#0000009a]">
                                 <div class="!w-[580px] flex justify-end relative">
-                                    <button class="close-popup hover:bg-secondary-900 p-1 rounded-full">
+                                    <button aria-label="close-video" class="close-popup hover:bg-secondary-900 p-1 rounded-full">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px"
                                             viewBox="0 0 24 24" fill="none">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -576,7 +576,7 @@
                                                     <span class="text-xs text-[#777777]">شروع قیمت:</span>
                                                     <p class="font-medium text-[#060606]">@db.tour-list.prp_8181 </p>
                                                 </div>
-                                                <button type="button"
+                                                <div  
                                                     class="flex group-hover:bg-primary group-hover:text-white w-[204px] h-12 bg-[#FFBD22] rounded-xl font-bold text-xs text-[#272727] justify-center items-center gap-2">
                                                     مشاهده تور
                                                     <svg width="17" height="15" viewBox="0 0 17 15" fill="none"
@@ -586,7 +586,7 @@
                                                             fill="#171717" class="group-hover:fill-white" />
                                                     </svg>
 
-                                                </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </a>
@@ -772,8 +772,9 @@
                                     <div class="swiper-wrapper">
                                         @child
                                     </div>
-                                    <div class="swiper-scrollbar"></div>
+                                    <!-- <div class="swiper-scrollbar"></div> -->
                                 </layout>
+                                
                                 <face>
                                     <a href="@db.last-minute-offer.link	"
                                         class="swiper-slide group relative  !h-[109px] !w-full ">
@@ -859,7 +860,7 @@
                             class="w-8   h-8">
                         <basis core="print" datamembername="db.aid-text">
                             <face filter="TypeID=150">
-                                <h5 class="font-bold text-2xl text-zinc-900"> @text </h5>
+                                <p class="font-bold text-2xl text-zinc-900"> @text </p>
 
                             </face>
                         </basis>
@@ -891,7 +892,8 @@
                     </div>
 
                     <basis core="print" datamembername="db.aid-text">
-                        <layout><button type="button"
+                        <layout>
+                            <button type="button" aria-label="see-more"
                                 class="flex hover:text-secondary-900 group text-primary-600 items-center gap-3"
                                 id="see-more">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -904,7 +906,8 @@
                                         fill="#049AEE" class="group-hover:fill-secondary-900" />
                                 </svg>
                                 <span> مشاهده بیشتر</span>
-                            </button></layout>
+                            </button>
+                        </layout>
                     </basis>
 
                 </div>
@@ -1108,7 +1111,7 @@
                     </script>
                                                     </face>
                                                 </basis>
-                                                <button type="button" data-btn-uploadfooter
+                                                <button aria-label="send" type="button" data-btn-uploadfooter
                                                     class="  data-body-btn w-[108px] h-[59px] flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
                                                     ارسال
                                                 </button>

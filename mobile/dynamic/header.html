@@ -1,36 +1,29 @@
 <basis core="dbsource" source="basiscore" name="db" mid="5" lid="1" usedforid="[##cms.cms.ownerid##]">
     <member name="info" type="view"></member>
 </basis>
-<header class="h-[54px]">
+<header class="h-[54px] header-landing-items">
     <div class="w-full  z-40 px-4 fixed top-0 right-0 flex justify-center items-center h-[54px]">
         <div class="w-full flex justify-between items-center">
             <div class="w-fit flex gap-2 items-center">
-                <button class="bars3">
+                <div  class="bars3">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M20 20H4C3.448 20 3 19.553 3 19C3 18.447 3.448 18 4 18H20C20.552 18 21 18.447 21 19C21 19.553 20.552 20 20 20Z"
-                            fill="#049AEE" />
+                            fill="#000" />
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M20 6H4C3.448 6 3 5.553 3 5C3 4.447 3.448 4 4 4H20C20.552 4 21 4.447 21 5C21 5.553 20.552 6 20 6Z"
-                            fill="#049AEE" />
+                            fill="#000" />
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M20 13H4C3.448 13 3 12.553 3 12C3 11.447 3.448 11 4 11H20C20.552 11 21 11.447 21 12C21 12.553 20.552 13 20 13Z"
-                            fill="#049AEE" />
+                            fill="#000" />
                     </svg>
-
-                </button>
+                    <span class="hidden">menu</span>
+                </div>
 
                 <div
-                    class=" box-hover1 w-fit gap-3 group p-2 relative overflow-hidden rounded-[50px] border border-[#22B4FF]  flex justify-center items-center bg-transparent">
-                    <span
-                        class="absolute w-full h-full group-hover:scale-100 rounded-[50px] transition-all duration-150 ease-in-out scale-0 bg-primary"></span>
-                    <span
                         class="text-sm z-[1] login-information transition-all duration-150 ease-in-out group-hover:text-white">
                         <basis core="call" file="authentication/modal"></basis>
-                    </span>
-
-
-                </div>
+            </div>
             </div>
 
             <a href="/">
@@ -41,7 +34,7 @@
             class="z-10 header-menu translate-x-[3000px] transition-all ease-in-out duration-500 px-4 py-6 flex flex-col gap-7 w-screen h-screen fixed top-0 left-0 bg-white">
             <div class="w-full flex justify-between items-center">
 
-                <button type="button" class="header-menu-close">
+                <div type="button" class="header-menu-close">
                     <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd"
                             d="M12.25 3.28467C6.874 3.28467 2.5 7.65867 2.5 13.0347C2.5 18.4107 6.874 22.7847 12.25 22.7847C17.626 22.7847 22 18.4107 22 13.0347C22 7.65867 17.626 3.28467 12.25 3.28467Z"
@@ -51,7 +44,7 @@
                             fill="#71717A" />
                     </svg>
 
-                </button> <a href="/">
+                </div> <a href="/">
                     <img loading="lazy" src="[##cms.cms.cdn##]/images/logo.png" alt="logo-satrap" class="w-[68px]">
                 </a>
             </div>

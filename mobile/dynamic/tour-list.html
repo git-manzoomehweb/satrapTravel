@@ -34,7 +34,7 @@
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
     <member name="tour-list" type="list" link="tour.bc" propertyid="8077,8181,10000504,8076,3088134" perpage="20"
-        typeid="159" size="296x206" order="ord" />
+        typeid="159" size="280x134" order="ord" />
     <member name="paging" type="list" request="paging" count="5" parentname="tour-list" />
 </basis>
 <basis core="dbsource" source="basiscore" mid="20" name="list" lid="1" schemaid="987" term="[##cms.query.term##]">
@@ -198,7 +198,7 @@
                                                     <p class="font-medium text-base">مشاهده ویدیو</p>
 
                                                 </div>
-                                                <button type="button" class="close-popup group">
+                                                <button aria-label="close-button" type="button" class="close-popup group">
                                                     <svg width="33" height="34" viewBox="0 0 33 34" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd"
@@ -249,7 +249,7 @@
                                                     <p class="text-[#282828] font-medium"> @db.audio.name </p>
 
                                                 </div>
-                                                <button type="button" class="close-popup-music group">
+                                                <button type="button" aria-label="close-button-popup"  class="close-popup-music group">
                                                     <svg width="33" height="34" viewBox="0 0 33 34" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd"
@@ -338,7 +338,7 @@
                     <div
                         class="hidden video-popup   w-screen h-screen fixed flex-col gap-4 justify-center items-center blur2 top-0 left-0 z-50 bg-[#0000009a] ">
                         <div class="!w-full px-4 flex justify-end relative">
-                            <button class="close-popup hover:bg-secondary-900 p-1 rounded-full">
+                            <button aria-label="close-button-video"  class="close-popup hover:bg-secondary-900 p-1 rounded-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 24 24"
                                     fill="none">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -411,7 +411,7 @@
                 <face>
                     <a href="@db.tour-list.link"
                         class="h-[352px] group w-full flex flex-col gap-[3px] border border-[#D4D4D8] rounded-lg bg-[#FAFAFA] p-1 !pb-[7px]">
-                        <img src="[##cms.cms.cdn##]/@db.tour-list.00296X00206prp" alt="@db.tour-list.title"
+                        <img width="280" height="134" src="[##cms.cms.cdn##]/@db.tour-list.00280X00134prp" alt="@db.tour-list.title - img"
                             class="w-full rounded-lg object-cover h-[134px]">
                         <div class="w-full flex flex-col gap-[6px] px-2 pb-2">
                             <h4 class="line-clamp-1 text-sm text-[#18181B] font-bold my-2"> @db.tour-list.title
@@ -632,7 +632,7 @@
                 </div>
 
                 <basis core="print" datamembername="db.aid-text">
-                    <layout><button type="button"
+                    <layout><button type="button" aria-label="see-more-content" 
                             class="flex hover:text-secondary-900 group text-primary-600 items-center gap-3"
                             id="see-more">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"

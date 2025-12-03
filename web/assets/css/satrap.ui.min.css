@@ -1,5 +1,4 @@
 @import url(customized.ui.min.css);
- 
 
 /*
 1. Correct the inability to style clickable types in iOS and Safari.
@@ -4041,17 +4040,16 @@ body:has(.list-video-popup.flex) {
 }
 
 span[content=""],
-span[content="null"]
- {
+span[content="null"] {
   display: none !important;
 }
-.tourInventory__details__item__unit{
+.tourInventory__details__item__unit {
   font-weight: normal;
 }
-.child-bed{
+.child-bed {
   width: 106px;
 }
-.w-58-54{
+.w-58-54 {
   width: 58.54px;
 }
 
@@ -4204,7 +4202,9 @@ div.w-\[204px\][content=""] {
 }
 
 .story-item {
-  height: 335px !important;
+  height: 305px !important;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .justify-end .popup-nav:nth-child(2) {
@@ -5141,4 +5141,43 @@ a.tel.sidebar-box:hover {
   outline: none;
   transition: background 450ms ease-in;
   direction: ltr;
+}
+a:has(.banner-gr) img {
+  transform: none !important;
+}
+a:has(.banner-gr):hover div.w-\[219px\] {
+  animation: 1.3s infinite pulse-animation !important;
+}
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0 var(--primary);
+  }
+  100% {
+    box-shadow: 0 0 0 11px transparent;
+  }
+}
+.popup-nav:hover {
+  background-color: var(--primary-200) !important;
+}
+a.before-line.absolute:hover {
+  background-color: var(--primary-200) !important;
+}
+ul.fixed.top-\[324px\] {
+  z-index: 20 !important;
+}
+
+body:has(.flight-searchHistory:not(.hidden)) .before-to-top-border::before {
+  height: 883px !important;
+}
+body:has(.hotel-searchHistory:not(.hidden)) .before-to-top-border::before {
+  height: 823px !important;
+}
+body:has(.tour-searchHistory:not(.hidden)) .before-to-top-border::before {
+  height: 823px !important;
+}
+body:has(.insurance-searchHistory:not(.hidden)) .before-to-top-border::before {
+  height: 823px !important;
+}
+.searchHistory-content  .sub-title svg{
+  display: none !important;
 }
