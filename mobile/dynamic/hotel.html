@@ -64,7 +64,7 @@
             <section id="page-resize" class="relative">
                 <div class="inner-resize max-xl:px-2.5 max-xl:w-full">
                     <div
-                        class="w-full  flex justify-between first-info   text-2xl float-right dir-rtl max-md:text-base max-md:text-center max-md:float-none">
+                        class="w-full mb-3 flex justify-between first-info   text-2xl float-right dir-rtl max-md:text-base max-md:text-center max-md:float-none">
                         <basis core="print" datamembername="db.view">
                             <face filter="typeid=150">
                                 <h1 class="font-bold ml-1.5" itemprop="@vocabulary">@text</h1>
@@ -75,9 +75,7 @@
                         </basis>
                         <basis core="print" datamembername="db.view">
                             <face filter="Question in('ستاره')">
-                                <img  
-                                    src="[##cms.cms.cdn##]/_images/@textstar.png" width="80" height="16"
-                                    alt="@textstar" />
+                                <img src="[##cms.cms.cdn##]/_images/@textstar.png" width="106" alt="@textstar" />
                             </face>
 
                         </basis>
@@ -139,62 +137,87 @@
                                     <input type="hidden" id="hotel-ex-info" value="[##db.hotel-info.Answer##]" />
                                     <ul
                                         class="extra-info mt-12 clear-both float-right w-full grid grid-cols-4 gap-4 dir-rtl max-xl:my-4 max-sm:grid-cols-2">
-                                        <li
-                                            class="hotel-star w-20 h-20 overflow-hidden shadow bg-white rounded-2xl text-center py-2.5 max-sm:m-auto">
-                                            <svg class="block m-auto mb-1" width="27" height="20" viewBox="0 0 27 20"
-                                                fill="none">
-                                                <path
-                                                    d="M11.7225 4.5267C12.7359 2.7089 13.2425 1.8 14 1.8C14.7575 1.8 15.2641 2.7089 16.2775 4.5267L16.5396 4.99699C16.8276 5.51355 16.9716 5.77183 17.196 5.94225C17.4205 6.11267 17.7001 6.17592 18.2593 6.30244L18.7684 6.41763C20.7361 6.86285 21.72 7.08546 21.9541 7.83819C22.1881 8.59092 21.5174 9.37526 20.1759 10.9439L19.8289 11.3498C19.4477 11.7956 19.2571 12.0184 19.1713 12.2942C19.0856 12.5699 19.1144 12.8673 19.172 13.462L19.2245 14.0035C19.4273 16.0965 19.5287 17.143 18.9159 17.6082C18.3031 18.0734 17.3819 17.6492 15.5395 16.8009L15.0628 16.5815C14.5393 16.3404 14.2775 16.2199 14 16.2199C13.7225 16.2199 13.4607 16.3404 12.9372 16.5815L12.4605 16.8009C10.6181 17.6492 9.69694 18.0734 9.08412 17.6082C8.4713 17.143 8.5727 16.0965 8.77552 14.0035L8.82799 13.462C8.88562 12.8673 8.91444 12.5699 8.82869 12.2942C8.74294 12.0184 8.55234 11.7956 8.17113 11.3498L7.82408 10.9439C6.4826 9.37526 5.81186 8.59092 6.04594 7.83819C6.28001 7.08546 7.26389 6.86285 9.23163 6.41763L9.74071 6.30244C10.2999 6.17592 10.5795 6.11267 10.804 5.94225C11.0284 5.77183 11.1724 5.51355 11.4604 4.99699L11.7225 4.5267Z"
-                                                    fill="#002448" fill-opacity="0.5" />
-                                            </svg>
-                                            <span class="hotel-result block text-sm"></span>
-                                            <span class="block text-xs text-zinc-600">درجه هتل</span>
-                                        </li>
-                                        <li
-                                            class="hotel-country w-20 h-20 overflow-hidden shadow bg-white shadow rounded-2xl text-center py-2.5 max-sm:m-auto">
-                                            <svg class="block m-auto mb-1" width="24" height="24" viewBox="0 0 24 24"
-                                                fill="none">
-                                                <path
-                                                    d="M8.38729 5.07916C8.2258 4.8117 8.05626 4.56198 7.8878 4.3346C9.04232 3.49515 10.4633 3 12 3C13.32 3 14.5547 3.36536 15.6084 4.00047C15.5932 4.08959 15.5717 4.19054 15.5419 4.30292C15.4363 4.70203 15.2701 5.08295 15.1288 5.3053C15.0801 5.38197 14.8798 5.5778 14.5164 5.84854C14.3544 5.96924 14.1745 6.08008 13.9603 6.20811L13.886 6.25243C13.6985 6.36416 13.4839 6.49199 13.2771 6.63373C12.7891 6.96807 12.2809 7.41998 11.9391 8.15075C11.6919 8.67927 11.7089 9.19402 11.8182 9.60686C11.8539 9.74163 11.8735 9.87731 11.8738 9.99652C11.8739 10.0336 11.8594 10.0928 11.7766 10.1619C11.6876 10.2363 11.5622 10.2812 11.4495 10.28C10.3725 10.2678 9.52299 9.37575 9.3997 7.95271C9.306 6.8712 8.8641 5.86882 8.38729 5.07916Z"
-                                                    fill="#002448" fill-opacity="0.5" />
-                                                <path
-                                                    d="M16.6517 14.5089C16.9162 14.5062 17.1643 14.4888 17.3969 14.4582C16.5193 15.5195 15.3346 16.3175 13.9791 16.7163C13.9326 16.3349 13.9631 15.8766 14.1879 15.4531C14.3798 15.0914 14.8657 14.8197 15.5216 14.6585C15.8229 14.5844 16.1094 14.5464 16.3222 14.5273C16.4277 14.5179 16.5125 14.5133 16.569 14.511C16.5972 14.5099 16.6181 14.5094 16.6308 14.5092L16.6429 14.509L16.6517 14.5089Z"
-                                                    fill="#002448" fill-opacity="0.5" />
-                                                <path
-                                                    d="M5 10C5 8.28063 5.6199 6.70604 6.64838 5.48753C6.74956 5.63106 6.85097 5.78497 6.94913 5.94753C7.35056 6.61238 7.66238 7.36367 7.72597 8.09772C7.89674 10.0688 9.20746 11.9347 11.4305 11.9599C12.3923 11.9708 13.5569 11.2479 13.5538 9.99234C13.5531 9.70484 13.5079 9.42468 13.4423 9.17689C13.4107 9.05761 13.4152 8.96019 13.4609 8.86248C13.6314 8.49787 13.8831 8.25497 14.2266 8.01963C14.3866 7.91002 14.5529 7.81086 14.7452 7.69614L14.8222 7.65014C15.0375 7.52146 15.283 7.37244 15.5202 7.1957C15.865 6.93877 16.3107 6.57794 16.5468 6.20623C16.7338 5.912 16.907 5.5347 17.0412 5.14341C18.2541 6.40212 19 8.11395 19 10C19 10.5323 18.9406 11.0508 18.828 11.5491C18.7606 11.7487 18.6766 11.9352 18.5253 12.1315C18.2881 12.4393 17.8131 12.8167 16.6342 12.829L16.6282 12.829L16.5995 12.8295C16.5758 12.8299 16.5432 12.8307 16.5027 12.8323C16.4218 12.8355 16.3087 12.8418 16.1721 12.8541C15.9008 12.8784 15.5264 12.9273 15.1206 13.027C14.3624 13.2134 13.2498 13.6368 12.7039 14.6656C12.2731 15.4773 12.2246 16.3106 12.3216 16.9927C12.215 16.9976 12.1078 17 12 17C8.13401 17 5 13.866 5 10Z"
-                                                    fill="#002448" fill-opacity="0.5" />
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M18.0035 1.49982C18.2797 1.19118 18.7539 1.16491 19.0625 1.44116C21.3246 3.4658 22.75 6.41044 22.75 9.687C22.75 15.4384 18.3612 20.1647 12.75 20.6996V21.25H14C14.4142 21.25 14.75 21.5858 14.75 22C14.75 22.4142 14.4142 22.75 14 22.75H10C9.58579 22.75 9.25001 22.4142 9.25001 22C9.25001 21.5858 9.58579 21.25 10 21.25H11.25V20.7415C8.14923 20.621 5.37537 19.2236 3.44116 17.0625C3.16491 16.7539 3.19118 16.2797 3.49982 16.0035C3.80847 15.7272 4.28261 15.7535 4.55886 16.0622C6.31098 18.0198 8.85483 19.25 11.687 19.25C16.9685 19.25 21.25 14.9685 21.25 9.687C21.25 6.85483 20.0198 4.31098 18.0622 2.55886C17.7535 2.28261 17.7272 1.80847 18.0035 1.49982Z"
-                                                    fill="#002448" fill-opacity="0.5" />
-                                            </svg>
-                                            <span class="hotel-result block text-sm"></span>
-                                            <span class="block text-xs text-zinc-600">کشور</span>
-                                        </li>
-                                        <li
-                                            class="hotel-city w-20 h-20 overflow-hidden shadow bg-white block shadow rounded-2xl text-center py-2.5 max-sm:m-auto">
-                                            <svg class="block m-auto mb-1" width="24" height="24" viewBox="0 0 24 24"
-                                                fill="none">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M12 2C7.58172 2 4 6.00258 4 10.5C4 14.9622 6.55332 19.8124 10.5371 21.6744C11.4657 22.1085 12.5343 22.1085 13.4629 21.6744C17.4467 19.8124 20 14.9622 20 10.5C20 6.00258 16.4183 2 12 2ZM12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z"
-                                                    fill="#002448" fill-opacity="0.5" />
-                                            </svg>
-                                            <span class="hotel-result block text-sm"></span>
-                                            <span class="block text-xs text-zinc-600">شهر</span>
-                                        </li>
-                                        <li
-                                            class="hotel-loc w-20 h-20 overflow-hidden shadow bg-white block shadow rounded-2xl text-center py-2.5 max-sm:m-auto">
-                                            <svg class="block m-auto mb-1" width="24" height="24" viewBox="0 0 24 24"
-                                                fill="none">
-                                                <path
-                                                    d="M21 16.829V11.1623C21 10.1187 21 9.5969 20.7169 9.20407C20.4881 8.88674 20.1212 8.71808 19.4667 8.49101C19.3328 10.0972 18.8009 11.7375 17.9655 13.1732C16.9928 14.8448 15.5484 16.3393 13.697 17.147C12.618 17.6177 11.382 17.6177 10.303 17.147C8.45164 16.3393 7.00718 14.8448 6.03449 13.1732C5.40086 12.0842 4.9418 10.8776 4.69862 9.65732C4.31607 9.60098 4.0225 9.62988 3.76917 9.77122C3.66809 9.82762 3.57388 9.89552 3.48841 9.97358C3 10.4197 3 11.2491 3 12.908V17.8377C3 18.8813 3 19.4031 3.28314 19.7959C3.56627 20.1888 4.06129 20.3538 5.05132 20.6838L5.43488 20.8116L5.43489 20.8116C7.01186 21.3373 7.80035 21.6001 8.60688 21.6016C8.8498 21.6021 9.09242 21.5849 9.33284 21.5501C10.131 21.4345 10.8809 21.0596 12.3806 20.3097C13.5299 19.735 14.1046 19.4477 14.715 19.3144C14.9292 19.2676 15.1463 19.235 15.3648 19.2167C15.9875 19.1646 16.6157 19.2693 17.8721 19.4787C19.1455 19.6909 19.7821 19.797 20.247 19.5301C20.4048 19.4394 20.5449 19.3208 20.6603 19.18C21 18.7653 21 18.1199 21 16.829Z"
-                                                    fill="#002448" fill-opacity="0.5" />
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M12 2C8.68629 2 6 4.55211 6 7.70031C6 10.8238 7.91499 14.4687 10.9028 15.7721C11.5993 16.076 12.4007 16.076 13.0972 15.7721C16.085 14.4687 18 10.8238 18 7.70031C18 4.55211 15.3137 2 12 2ZM12 10C13.1046 10 14 9.10457 14 8C14 6.89543 13.1046 6 12 6C10.8954 6 10 6.89543 10 8C10 9.10457 10.8954 10 12 10Z"
-                                                    fill="#002448" fill-opacity="0.5" />
-                                            </svg>
-                                            <span class="hotel-result block text-sm"></span>
-                                            <span class="block text-xs text-zinc-600">روی نقشه</span>
-                                        </li>
+                                        <basis core="print" datamembername="db.view">
+                                            <face filter="Question in('امتیاز')">
+                                                <li
+                                                    class="hotel-star w-20 h-20 overflow-hidden shadow bg-white rounded-2xl text-center py-2.5 max-sm:m-auto">
+                                                    <svg class="block m-auto mb-1" width="27" height="20"
+                                                        viewBox="0 0 27 20" fill="none">
+                                                        <path
+                                                            d="M11.7225 4.5267C12.7359 2.7089 13.2425 1.8 14 1.8C14.7575 1.8 15.2641 2.7089 16.2775 4.5267L16.5396 4.99699C16.8276 5.51355 16.9716 5.77183 17.196 5.94225C17.4205 6.11267 17.7001 6.17592 18.2593 6.30244L18.7684 6.41763C20.7361 6.86285 21.72 7.08546 21.9541 7.83819C22.1881 8.59092 21.5174 9.37526 20.1759 10.9439L19.8289 11.3498C19.4477 11.7956 19.2571 12.0184 19.1713 12.2942C19.0856 12.5699 19.1144 12.8673 19.172 13.462L19.2245 14.0035C19.4273 16.0965 19.5287 17.143 18.9159 17.6082C18.3031 18.0734 17.3819 17.6492 15.5395 16.8009L15.0628 16.5815C14.5393 16.3404 14.2775 16.2199 14 16.2199C13.7225 16.2199 13.4607 16.3404 12.9372 16.5815L12.4605 16.8009C10.6181 17.6492 9.69694 18.0734 9.08412 17.6082C8.4713 17.143 8.5727 16.0965 8.77552 14.0035L8.82799 13.462C8.88562 12.8673 8.91444 12.5699 8.82869 12.2942C8.74294 12.0184 8.55234 11.7956 8.17113 11.3498L7.82408 10.9439C6.4826 9.37526 5.81186 8.59092 6.04594 7.83819C6.28001 7.08546 7.26389 6.86285 9.23163 6.41763L9.74071 6.30244C10.2999 6.17592 10.5795 6.11267 10.804 5.94225C11.0284 5.77183 11.1724 5.51355 11.4604 4.99699L11.7225 4.5267Z"
+                                                            fill="#002448" fill-opacity="0.5" />
+                                                    </svg>
+
+                                                    <span class="block text-xs text-zinc-600">درجه هتل</span>
+                                                    <span class="  block text-xs">@text</span>
+                                                </li>
+                                            </face>
+                                        </basis>
+                                        <basis core="print" datamembername="db.view">
+
+                                            <face filter="Question in('کشور')">
+                                                <li
+                                                    class="hotel-country w-20 h-20 overflow-hidden shadow bg-white shadow rounded-2xl text-center py-2.5 max-sm:m-auto">
+                                                    <svg class="block m-auto mb-1" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none">
+                                                        <path
+                                                            d="M8.38729 5.07916C8.2258 4.8117 8.05626 4.56198 7.8878 4.3346C9.04232 3.49515 10.4633 3 12 3C13.32 3 14.5547 3.36536 15.6084 4.00047C15.5932 4.08959 15.5717 4.19054 15.5419 4.30292C15.4363 4.70203 15.2701 5.08295 15.1288 5.3053C15.0801 5.38197 14.8798 5.5778 14.5164 5.84854C14.3544 5.96924 14.1745 6.08008 13.9603 6.20811L13.886 6.25243C13.6985 6.36416 13.4839 6.49199 13.2771 6.63373C12.7891 6.96807 12.2809 7.41998 11.9391 8.15075C11.6919 8.67927 11.7089 9.19402 11.8182 9.60686C11.8539 9.74163 11.8735 9.87731 11.8738 9.99652C11.8739 10.0336 11.8594 10.0928 11.7766 10.1619C11.6876 10.2363 11.5622 10.2812 11.4495 10.28C10.3725 10.2678 9.52299 9.37575 9.3997 7.95271C9.306 6.8712 8.8641 5.86882 8.38729 5.07916Z"
+                                                            fill="#002448" fill-opacity="0.5" />
+                                                        <path
+                                                            d="M16.6517 14.5089C16.9162 14.5062 17.1643 14.4888 17.3969 14.4582C16.5193 15.5195 15.3346 16.3175 13.9791 16.7163C13.9326 16.3349 13.9631 15.8766 14.1879 15.4531C14.3798 15.0914 14.8657 14.8197 15.5216 14.6585C15.8229 14.5844 16.1094 14.5464 16.3222 14.5273C16.4277 14.5179 16.5125 14.5133 16.569 14.511C16.5972 14.5099 16.6181 14.5094 16.6308 14.5092L16.6429 14.509L16.6517 14.5089Z"
+                                                            fill="#002448" fill-opacity="0.5" />
+                                                        <path
+                                                            d="M5 10C5 8.28063 5.6199 6.70604 6.64838 5.48753C6.74956 5.63106 6.85097 5.78497 6.94913 5.94753C7.35056 6.61238 7.66238 7.36367 7.72597 8.09772C7.89674 10.0688 9.20746 11.9347 11.4305 11.9599C12.3923 11.9708 13.5569 11.2479 13.5538 9.99234C13.5531 9.70484 13.5079 9.42468 13.4423 9.17689C13.4107 9.05761 13.4152 8.96019 13.4609 8.86248C13.6314 8.49787 13.8831 8.25497 14.2266 8.01963C14.3866 7.91002 14.5529 7.81086 14.7452 7.69614L14.8222 7.65014C15.0375 7.52146 15.283 7.37244 15.5202 7.1957C15.865 6.93877 16.3107 6.57794 16.5468 6.20623C16.7338 5.912 16.907 5.5347 17.0412 5.14341C18.2541 6.40212 19 8.11395 19 10C19 10.5323 18.9406 11.0508 18.828 11.5491C18.7606 11.7487 18.6766 11.9352 18.5253 12.1315C18.2881 12.4393 17.8131 12.8167 16.6342 12.829L16.6282 12.829L16.5995 12.8295C16.5758 12.8299 16.5432 12.8307 16.5027 12.8323C16.4218 12.8355 16.3087 12.8418 16.1721 12.8541C15.9008 12.8784 15.5264 12.9273 15.1206 13.027C14.3624 13.2134 13.2498 13.6368 12.7039 14.6656C12.2731 15.4773 12.2246 16.3106 12.3216 16.9927C12.215 16.9976 12.1078 17 12 17C8.13401 17 5 13.866 5 10Z"
+                                                            fill="#002448" fill-opacity="0.5" />
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                            d="M18.0035 1.49982C18.2797 1.19118 18.7539 1.16491 19.0625 1.44116C21.3246 3.4658 22.75 6.41044 22.75 9.687C22.75 15.4384 18.3612 20.1647 12.75 20.6996V21.25H14C14.4142 21.25 14.75 21.5858 14.75 22C14.75 22.4142 14.4142 22.75 14 22.75H10C9.58579 22.75 9.25001 22.4142 9.25001 22C9.25001 21.5858 9.58579 21.25 10 21.25H11.25V20.7415C8.14923 20.621 5.37537 19.2236 3.44116 17.0625C3.16491 16.7539 3.19118 16.2797 3.49982 16.0035C3.80847 15.7272 4.28261 15.7535 4.55886 16.0622C6.31098 18.0198 8.85483 19.25 11.687 19.25C16.9685 19.25 21.25 14.9685 21.25 9.687C21.25 6.85483 20.0198 4.31098 18.0622 2.55886C17.7535 2.28261 17.7272 1.80847 18.0035 1.49982Z"
+                                                            fill="#002448" fill-opacity="0.5" />
+                                                    </svg>
+
+                                                    <span class="block text-xs text-zinc-600">کشور</span>
+                                                    <span class="block text-xs">@text</span>
+                                                </li>
+                                            </face>
+                                        </basis>
+                                        <basis core="print" datamembername="db.view">
+
+                                            <face filter="Question in('شهر')">
+                                                <li
+                                                    class="hotel-city w-20 h-20 overflow-hidden shadow bg-white block shadow rounded-2xl text-center py-2.5 max-sm:m-auto">
+                                                    <svg class="block m-auto mb-1" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                            d="M12 2C7.58172 2 4 6.00258 4 10.5C4 14.9622 6.55332 19.8124 10.5371 21.6744C11.4657 22.1085 12.5343 22.1085 13.4629 21.6744C17.4467 19.8124 20 14.9622 20 10.5C20 6.00258 16.4183 2 12 2ZM12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z"
+                                                            fill="#002448" fill-opacity="0.5" />
+                                                    </svg>
+                                                    <span class="block text-xs text-zinc-600">شهر</span>
+                                                    <span class="  block text-xs">@text</span>
+
+                                                </li>
+                                            </face>
+                                        </basis>
+
+                                        <basis core="print" datamembername="db.view">
+
+                                            <face filter="Question in('نقشه')">
+                                                <a href="@text">
+                                                    <li
+                                                        class="hotel-loc w-20 h-20 overflow-hidden shadow bg-white block shadow rounded-2xl text-center py-2.5 max-sm:m-auto">
+                                                        <svg class="block m-auto mb-1" width="24" height="24"
+                                                            viewBox="0 0 24 24" fill="none">
+                                                            <path
+                                                                d="M21 16.829V11.1623C21 10.1187 21 9.5969 20.7169 9.20407C20.4881 8.88674 20.1212 8.71808 19.4667 8.49101C19.3328 10.0972 18.8009 11.7375 17.9655 13.1732C16.9928 14.8448 15.5484 16.3393 13.697 17.147C12.618 17.6177 11.382 17.6177 10.303 17.147C8.45164 16.3393 7.00718 14.8448 6.03449 13.1732C5.40086 12.0842 4.9418 10.8776 4.69862 9.65732C4.31607 9.60098 4.0225 9.62988 3.76917 9.77122C3.66809 9.82762 3.57388 9.89552 3.48841 9.97358C3 10.4197 3 11.2491 3 12.908V17.8377C3 18.8813 3 19.4031 3.28314 19.7959C3.56627 20.1888 4.06129 20.3538 5.05132 20.6838L5.43488 20.8116L5.43489 20.8116C7.01186 21.3373 7.80035 21.6001 8.60688 21.6016C8.8498 21.6021 9.09242 21.5849 9.33284 21.5501C10.131 21.4345 10.8809 21.0596 12.3806 20.3097C13.5299 19.735 14.1046 19.4477 14.715 19.3144C14.9292 19.2676 15.1463 19.235 15.3648 19.2167C15.9875 19.1646 16.6157 19.2693 17.8721 19.4787C19.1455 19.6909 19.7821 19.797 20.247 19.5301C20.4048 19.4394 20.5449 19.3208 20.6603 19.18C21 18.7653 21 18.1199 21 16.829Z"
+                                                                fill="#002448" fill-opacity="0.5" />
+                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                d="M12 2C8.68629 2 6 4.55211 6 7.70031C6 10.8238 7.91499 14.4687 10.9028 15.7721C11.5993 16.076 12.4007 16.076 13.0972 15.7721C16.085 14.4687 18 10.8238 18 7.70031C18 4.55211 15.3137 2 12 2ZM12 10C13.1046 10 14 9.10457 14 8C14 6.89543 13.1046 6 12 6C10.8954 6 10 6.89543 10 8C10 9.10457 10.8954 10 12 10Z"
+                                                                fill="#002448" fill-opacity="0.5" />
+                                                        </svg>
+                                                        <span class="block text-xs text-zinc-600"> مشاهده ی</span>
+                                                        <span class="block text-xs text-zinc-600"> نقشه</span>
+                                                    </li>
+                                                </a>
+                                            </face>
+                                        </basis>
                                     </ul>
                                 </div>
                                 <div id="Gallery" class="w-1/2 float-right max-xl:w-full">
@@ -241,7 +264,7 @@
                                 </basis>
                                 <basis core="print" datamembername="db.view">
                                     <face
-                                        filter="typeid not in(159,150,160,161,162) and prpid not in (7249,7248,7245,7247)">
+                                        filter="typeid not in(159,150,160,161,162,200) and prpid not in (7249,7248,7245,7247)">
                                         <h2 class="mb-5 text-base font-color-2" itemprop="@vocabulary" id="@RowNumber">
                                             @text </h2>
                                         <p class="text-zinc-600 text-sm mb-1.5" itemprop="@vocabulary"> @largetext </p>
@@ -258,7 +281,7 @@
                                         <ul id="tabs" class="p-5">@child</ul>
                                     </layout>
                                     <face
-                                        filter="typeid not in(159,150,160,161,162) and prpid not in (7249,7248,7244,7245,7247) and text not in('')">
+                                        filter="typeid not in(159,150,160,161,162,200) and prpid not in (7249,7248,7244,7245,7247) and text not in('')">
                                         <li class="mb-2.5 text-base"><a class="font-color-2" href="#@RowNumber"><i
                                                     class="fa fa-paperclip ml-1.5 font-color-1"></i> @text</a></li>
                                     </face>
@@ -419,7 +442,7 @@
                     </aside>
                     <basis core="print" datamembername="db.view">
                         <face filter="prpID=7247">
-                            <div class="my-10 clear-both float-right w-full dir-rtl">
+                            <div class="my-3 clear-both float-right w-full dir-rtl">
                                 <h2 class="text-lg font-color-1 mb-1.5">موقعیت هتل روی نقشه</h2>
                                 <iframe itemprop="@vocabulary" class="rounded-2xl" src="@Answer" width="100%"
                                     height="370" style="border:0;" allowfullscreen="" loading="lazy"
@@ -427,7 +450,7 @@
                             </div>
                         </face>
                     </basis>
-                    <div class="my-10 clear-both float-right w-full dir-rtl">
+                    <div class="my-3 clear-both float-right w-full dir-rtl">
                         <h2 class="text-lg font-color-1 mb-1.5">مشاوره و رزرو</h2>
                         <div class="w-full bg-white float-right clear-both block shadow rounded-2xl mb-8 p-5">
                             <form method="post" action="/Tem_Tour_action.bc" class="form-content" id="message_form">
@@ -438,7 +461,7 @@
                                     class="w-full h-9 border-solid text-base border-neutral-300 border rounded-md mb-2.5 px-2.5 text-right max-md:text-xs"
                                     type="text" value="" name="phone" placeholder="شماره تماس" />
                                 <div
-                                    class="captcha-content w-full float-left text-left h-9 text-base mb-2.5 max-md:text-xs">
+                                    class="captcha-content flex items-center w-full float-left text-left h-9 text-base mb-2.5 max-md:text-xs">
                                     <input type="text"
                                         class="form-control form-control w-1/2 float-right h-9 border-solid text-base border-neutral-300 border rounded-md mb-2.5 px-2.5 text-right max-md:text-xs"
                                         name="Captcha" placeholder="کد امنیتی" required>
@@ -449,14 +472,13 @@
                                                 loading="lazy" width="80" height="35">
                                             <input type="hidden" value="[##captcha.code.captcha##]"
                                                 name="Captchaid"></span>
-                                        <i class="fa fa-sync refresh-captcha cursor-pointer ml-4 font-color-2 text-xl leading-10 not-italic"
-                                            onclick="refresh_captcha(this,event)"></i>
+                                         <span  onclick="refresh_captcha(this,event)"><svg xmlns="http://www.w3.org/2000/svg" class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49" fill="none"><path class="group-hover:stroke-primary" d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3" stroke="#020121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><circle class="group-hover:stroke-primary transition-all duration-300 ease-in-out" cx="24" cy="24.5" r="10" stroke="#020121" stroke-width="1.5"></circle></svg></span>
                                     </span>
                                     <div class="clr"></div>
                                 </div>
                                 <div class="clr"></div>
                                 <input type="submit" value="ثبت"
-                                    class="consult-submit w-full mb-6 float-left bg-color-1 text-center rounded-20-px text-sm text-white leading-9 hover:bg-color-2 max-md:w-24 max-md:m-auto max-md:clear-both max-md:float-none max-md:h-7 max-md:leading-7" />
+                                    class="consult-submit w-full mb-6 float-left bg-color-1 text-center rounded-20-px text-sm text-white leading-9 hover:bg-color-2  max-md:m-auto max-md:clear-both max-md:float-none max-md:h-7 max-md:leading-7" />
                                 <div class="clr"></div>
                                 <div class="Loading_Form unvisible text-center">
                                     <div id="ballsWaveG">
@@ -477,7 +499,7 @@
 
                     <basis core="list" datamembername="db.related-article">
                         <layout>
-                            <div class="my-10 clear-both float-right w-full dir-rtl">
+                            <div class="my-3 clear-both float-right w-full dir-rtl">
 
                                 <h2 class="text-lg font-color-1 mb-1.5">هتل های مرتبط</h2>
                                 <div class="hotel-list relatedt-hotels">@child</div>
@@ -558,7 +580,7 @@
 
                     <basis core="list" datamembername="joining.list">
                         <layout>
-                            <div class="my-10 clear-both float-right w-full dir-rtl">
+                            <div class="my-3 clear-both float-right w-full dir-rtl">
 
                                 <h2 class="text-lg font-color-1 mb-1.5">تور های مرتبط</h2>
                                 <div class="tour-list">@child</div>
@@ -671,7 +693,100 @@
             </section>
             <div class="clr"></div>
         </section>
-         <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
+         <section class="w-full px-4 mb-8">
+            <div
+                class="w-full flex flex-col justify-end relative  overflow-hidden  bg-gradient-to-t from-[#F2F2F2]   to-[#FFFFFF00] rounded-2xl ">
+                <figure class="h-[50%] z-0 w-full rounded-t-2xl">
+                    <img loading="lazy" class="image-fade w-full h-full object-cover  rounded-t-2xl"
+                        src="[##cms.cms.cdn##]/images/contact-image-mob.jpg" alt="contact-us">
+                </figure>
+                <div class="relative z-[2] pb-3 px-3 w-full flex flex-col gap-1">
+                    <p class="font-bold text-sm leading-6">جهت مشاوره خرید تور با کارشناسان ما در ارتباط باشید</p>
+
+                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
+                        <basis core="schema" run="atclient"
+                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
+                            displaymode="new" button="[data-btn-uploadfooter]" resultsourceid="upload.datafooter"
+                            OnRendered="RenderFormFooter">
+                        </basis>
+                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
+                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject" method="post"
+                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
+                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
+                            OnProcessed="OnProcessedEditObjectFooter">
+                        </basis>
+                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
+                            triggers="upload.datafooter"></basis>
+                        <div class="captcha-button">
+                            <div id="captchaContainer"
+                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
+                                data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
+                                data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
+                                <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                                    triggers="captcha.refreshFooter">
+                                    <member name="code" type="scalar" request="captcha"></member>
+                                </basis>
+                                <basis datamembername="captcha.code" core="print" run="atclient"
+                                    OnRendered="captchaRenderedFooter">
+                                    <face>
+                                        <script type="text/template">
+                                    <div class="flex  justify-between ">
+                                        
+                                        <div class="flex sfvgwdcsdhc w-full items-center">
+
+                         <div class="float-right captcha-ctz w-1/2 relative">
+                           
+                            <input id="captcha-ct" type="text" class="contactUsInput codeinputm bg-white rounded-2xl p-3" name="captcha" maxlength="4" placeholder="کد امنیتی "/>
+                            <input type="hidden" name="captchaid" value="@captcha@" />
+                        </div>
+                      <div class="float-right w-1/2 justify-between lg:mt-0 bvgvkek h-fit leading-[65px] px-4 flex items-center gap-2">
+                       <img loading="lazy" src="/@captcha@" width="86" height="59" alt="captcha" />
+                        <span  onclick="refreshCaptchaFooter()">
+                            <svg class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="group-hover:stroke-primary"
+                                                d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3"
+                                                stroke="#020121" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <circle
+                                                class="group-hover:stroke-primary transition-all duration-300 ease-in-out"
+                                                cx="24" cy="24.5" r="10" stroke="#020121" stroke-width="1.5" />
+                                        </svg>
+                        </span>
+                       
+                    </div>
+
+                                                        </div></div>
+                    </script>
+                                    </face>
+                                </basis>
+                                <button type="button" data-btn-uploadfooter
+                                    class="text-sm  data-body-btn w-full h-12 flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
+                                    ارسال
+                                </button>
+
+                            </div>
+
+                            <div
+                                class="Loading_Form hidden data-body-btn h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex !w-full ">
+                                <div id="ballsWaveG" class="ext-zinc-50 text-base font-normal leading-normal">
+                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                                </div>
+                            </div>
+                            <div class="message-api text-center text-primary text-xs"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
 
         <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
     </main>

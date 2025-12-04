@@ -1,14 +1,3 @@
-// function placeHolders() {
-//   const depRoutes = document.querySelectorAll("departure-route .text-value");
-//   depRoutes.forEach((input) => {
-//     input.placeholder = "شهر مبدا";
-//   });
-
-//   const desRoutes = document.querySelectorAll("destination-route .text-value");
-//   desRoutes.forEach((input) => {
-//     input.placeholder = "شهر مقصد";
-//   });
-// }
 document.addEventListener("DOMContentLoaded", function () {
   const isMobile = window.innerWidth <= 968;
   const requiredFiles = [
@@ -1798,7 +1787,10 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         };
 
-        if (document.documentElement && document.documentElement.dir === "rtl") {
+        if (
+          document.documentElement &&
+          document.documentElement.dir === "rtl"
+        ) {
           params.rtl = true;
         }
 
@@ -1808,7 +1800,10 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (err) {
           // fallback به selector کلی
           try {
-            section._tourState.swiper = new Swiper("#tour-list-container", params);
+            section._tourState.swiper = new Swiper(
+              "#tour-list-container",
+              params
+            );
           } catch (e) {
             console.warn("Swiper init failed:", e);
           }
@@ -1831,7 +1826,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // بارگذاری اولیه دسته اول
-    if (section._tourState.currentCat) loadCategory(section._tourState.currentCat);
+    if (section._tourState.currentCat)
+      loadCategory(section._tourState.currentCat);
 
     // لیسنر برای هر آیتم
     listItems.forEach((li) => {
@@ -1858,7 +1854,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
 
 // ____________________________
 // ____________________________
@@ -2314,27 +2309,29 @@ window.addEventListener("load", setElementHeight);
 // ____________________________
 // ____________________________
 // gallery swiper
-var swiper_thumbs = new Swiper(".nav-for-slider", {
-  loop: true,
-  spaceBetween: 4,
-  slidesPerView: 2,
-  navigation: {
-    nextEl: ".swiper-button-next-thumbs",
-    prevEl: ".swiper-button-prev-thumbs",
-  },
-});
-var swiper = new Swiper(".main-slide-carousel", {
-  slidesPerView: 1,
-  loop: true,
-  navigation: {
-    nextEl: ".swiper-button-next-gallery",
-    prevEl: ".swiper-button-prev-gallery",
-  },
-  effect: "fade",
-  thumbs: {
-    swiper: swiper_thumbs,
-  },
-});
+if (document.querySelector(".nav-for-slider")) {
+  var swiper_thumbs = new Swiper(".nav-for-slider", {
+    loop: true,
+    spaceBetween: 4,
+    slidesPerView: 2,
+    navigation: {
+      nextEl: ".swiper-button-next-thumbs",
+      prevEl: ".swiper-button-prev-thumbs",
+    },
+  });
+  var swiper = new Swiper(".main-slide-carousel", {
+    slidesPerView: 1,
+    loop: true,
+    navigation: {
+      nextEl: ".swiper-button-next-gallery",
+      prevEl: ".swiper-button-prev-gallery",
+    },
+    effect: "fade",
+    thumbs: {
+      swiper: swiper_thumbs,
+    },
+  });
+}
 // ____________________________
 document.addEventListener("DOMContentLoaded", () => {
   const travelItems = document.querySelectorAll(".travelouge-item");
@@ -3059,3 +3056,53 @@ document.addEventListener("DOMContentLoaded", () => {
 // ____________________________
 // ____________________________
 // ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+if (
+  document.querySelector(".about-counter-list") &&
+  document.querySelector(".about-counter")
+) {
+  const counters = document.querySelectorAll(".about-counter");
+  const duration = 2000;
+
+  const startCounter = (counter) => {
+    const target = +counter.getAttribute("data-target");
+    let startTimestamp = null;
+
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const current = Math.floor(progress * target);
+      counter.innerText = current;
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    window.requestAnimationFrame(step);
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          if (!counter.dataset.started) {
+            counter.dataset.started = "true";
+            startCounter(counter);
+          }
+        }
+      });
+    },
+    { threshold: 0.6 }
+  );
+
+  counters.forEach((counter) => observer.observe(counter));
+}

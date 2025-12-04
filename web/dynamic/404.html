@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="BasisCore">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <!-- Title & Description -->
+    <title>[##cms.seo.title|("Page not found!")##]</title>
+    <meta name="description" content="[##cms.seo.description|(" Page not found!")##]">
+    <!-- Title & Description -->
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <!-- pwa metatags -->
+    <basis core="call" file="pwa.inc"  pageindex="[##cms.cms.pageindex##]" />
+    <basis core="call" file="style.inc"  pageindex="[##cms.cms.pageindex##]" />
+
+    <!----CSS LIBRARY---->
+    <link href="https://cdn.basiscore.net/basisfly.com/css/reservation_tem5_style.css" type="text/css"
+        rel="stylesheet" />
+    <link href="https://cdn.basiscore.net/basisfly.com/css/reservation_tem4_font_awesome.css" type="text/css"
+        rel="stylesheet" />
+    <link href="css/style_tem.css" type="text/css" rel="stylesheet" />
+    <!----JS LIBRARY---->
+    <script src="[##cms.cms.cdn##]/_js/jquery/jquery-3.6.3.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <main class="bg-white">
+        <div class="loginRegister"></div>
+        <basis core="call" file="header.inc"  pageindex="[##cms.cms.pageindex##]" />
+        <div class="clr"></div>
+        <section class=" bg-white">
+            <section class="item-container">
+                <div class="bc-main">
+                    <div class="title-container text-right">
+                        <h1 class="title-content">صفحه مورد نظر یافت نشد</h1>
+                    </div>
+                    <div class="page-notfound text-justify  ">
+                        <img src="[##cms.cms.cdn##]/images/404-error.png" alt="page-notfound" />
+                    </div>
+                </div>
+            </section>
+        </section>
+        <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
+        <basis core="call" file="footer.inc"  pageindex="[##cms.cms.pageindex##]" />
+
+    </main>
+</body>
+
+</html>

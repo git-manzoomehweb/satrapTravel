@@ -135,16 +135,6 @@
   --tw-content: "";
 }
 
-/*
-1. Use a consistent sensible line-height in all browsers.
-2. Prevent adjustments of font size after orientation changes in iOS.
-3. Use a more readable tab size.
-4. Use the user's configured `sans` font-family by default.
-5. Use the user's configured `sans` font-feature-settings by default.
-6. Use the user's configured `sans` font-variation-settings by default.
-7. Disable tap highlights on iOS
-*/
-
 html,
 :host {
   line-height: 1.5;
@@ -285,26 +275,9 @@ sup {
   top: -0.5em;
 }
 
-/*
-1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
-2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
-3. Remove gaps between table borders by default.
-*/
-
-table {
-  text-indent: 0;
-  /* 1 */
-  border-color: inherit;
-  /* 2 */
-  border-collapse: collapse;
-  /* 3 */
+html {
+  direction: rtl !important;
 }
-
-/*
-1. Change the font styles in all browsers.
-2. Remove the margin in Firefox and Safari.
-3. Remove default padding in all browsers.
-*/
 
 button,
 input,
@@ -1294,10 +1267,36 @@ header {
   body.white-header .header-landing-items {
     background-color: var(--primary-600);
   }
+  body.white-header .hasNot-login-icon svg {
+    stroke: white !important;
+  }
 }
 body.book-rtl {
   background-color: #fff !important;
 }
-.book-research__container.book-bg-white{
+.book-research__container.book-bg-white {
   border: 1px solid var(--zinc-300);
+}
+
+@media (max-width: 1024px) {
+  .main-login-container {
+    height: 100vh !important;
+    background: #fff !important;
+  }
+}
+.duplicate-place-error {
+  color: var(--secondary-800) !important;
+  font-weight: 600 !important;
+}
+.hotel-list .searchHistory-content {
+  display: none !important;
+}
+.w-screen{
+  width: 100vw;
+}
+.h-screen{
+  height: 100vh;
+}
+.translate-x-\[3000px\] {
+  --tw-translate-x: 3000px;
 }

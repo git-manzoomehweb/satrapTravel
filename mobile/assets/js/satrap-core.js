@@ -1,14 +1,4 @@
-// function placeHolders() {
-//   const depRoutes = document.querySelectorAll("departure-route .text-value");
-//   depRoutes.forEach((input) => {
-//     input.placeholder = "شهر مبدا";
-//   });
 
-//   const desRoutes = document.querySelectorAll("destination-route .text-value");
-//   desRoutes.forEach((input) => {
-//     input.placeholder = "شهر مقصد";
-//   });
-// }
 document.addEventListener("DOMContentLoaded", function () {
   const isMobile = window.innerWidth <= 968;
   const requiredFiles = [
@@ -1715,136 +1705,150 @@ document.addEventListener("DOMContentLoaded", () => {
   const loaderHTML =
     '<div dir="ltr" class="w-full flex justify-center p-6"><span class="loader"></span></div>';
 
-  document
-    .querySelectorAll(".clicker-list")
-    .forEach((clickerList, sectionIndex) => {
-      const section =
-        clickerList.parentElement ||
-        clickerList.closest(".section") ||
-        document;
-      const fetchWrapper = section.querySelector(".fetch-content-tour");
-      const listItems = Array.from(section.querySelectorAll(".tour-li"));
+  document.querySelectorAll(".clicker-list").forEach((clickerList) => {
+    // پیدا کردن بخش والد واقعی (closest section) تا همه چیز داخل یک scope باشه
+    const section = clickerList.closest("section") || document;
+    const fetchWrapper = section.querySelector(".fetch-content-tour");
+    const listItems = Array.from(clickerList.querySelectorAll(".tour-li"));
+    const seeAllLink = section.querySelector(".see-all-cats");
 
-      if (!fetchWrapper || listItems.length === 0) return;
+    if (!fetchWrapper || listItems.length === 0) return;
 
-      section._tourState = section._tourState || {
-        swiper: null,
-        currentCat: null,
-        loading: false,
-      };
+    // state محلی برای هر section
+    section._tourState = section._tourState || {
+      swiper: null,
+      currentCat: null,
+      loading: false,
+    };
 
-      const firstId = listItems[0].getAttribute("data-id");
-      section._tourState.currentCat = firstId ? firstId : null;
+    // مقدار اولیه از اولین آیتم (اگر وجود داشت)
+    const firstId = listItems[0].getAttribute("data-id");
+    section._tourState.currentCat = firstId ? firstId : null;
 
-      function setActiveItem(targetItem) {
-        listItems.forEach((li) => li.classList.remove("active"));
-        if (targetItem) targetItem.classList.add("active");
-      }
+    function setActiveItem(targetItem) {
+      listItems.forEach((li) => li.classList.remove("active"));
+      if (targetItem) targetItem.classList.add("active");
+    }
 
-      async function loadCategory(catid) {
+    async function loadCategory(catid) {
+      // جلوگیری از fetch همزمان برای همان دسته
+      if (section._tourState.loading && section._tourState.currentCat === catid)
+        return;
+
+      section._tourState.loading = true;
+      fetchWrapper.innerHTML = loaderHTML;
+
+      try {
+        // استفاده از data-id برای fetch
+        const res = await fetch(
+          `/tour-load-items.bc?catid=${encodeURIComponent(catid)}`
+        );
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const html = await res.text();
+
+        // قرار دادن html دریافتی داخل wrapper (که در ساختار HTML تو، این wrapper داخل .swiper-wrapper است)
+        fetchWrapper.innerHTML = html;
+
+        // اگر swiper قبلی وجود داشت، آن را destroy کن
         if (
-          section._tourState.loading &&
-          section._tourState.currentCat === catid
-        )
-          return;
-        section._tourState.loading = true;
-        fetchWrapper.innerHTML = loaderHTML;
-
-        try {
-          const res = await fetch(
-            `/tour-load-items.bc?catid=${encodeURIComponent(catid)}`
-          );
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          const html = await res.text();
-
-          fetchWrapper.innerHTML = html;
-
-          if (
-            section._tourState.swiper &&
-            typeof section._tourState.swiper.destroy === "function"
-          ) {
-            try {
-              section._tourState.swiper.destroy(true, true);
-            } catch (err) {
-              /* ignore */
-            }
-            section._tourState.swiper = null;
-          }
-
-          const container =
-            section.querySelector(".tourSwiper") ||
-            section.querySelector("#tour-list-container") ||
-            fetchWrapper.closest(".tourSwiper") ||
-            fetchWrapper;
-          const swiperEl =
-            container instanceof Element ? container : fetchWrapper;
-
-          const params = {
-            slidesPerView: 4,
-            speed: 500,
-            centeredSlides: false,
-            spaceBetween: 11,
-            grabCursor: true,
-            autoplay: { delay: 9500, disableOnInteraction: false },
-            pagination: { el: ".swiper-pagination", clickable: true },
-            navigation: {
-              nextEl: ".swiper-button-next-ft",
-              prevEl: ".swiper-button-prev-ft",
-            },
-            breakpoints: {
-              640: { slidesPerView: 4, spaceBetween: 11 },
-              768: { slidesPerView: 4, spaceBetween: 11 },
-              1024: { slidesPerView: 4, spaceBetween: 11 },
-            },
-          };
-
-          if (
-            document.documentElement &&
-            document.documentElement.dir === "rtl"
-          ) {
-            params.rtl = true;
-          }
-
+          section._tourState.swiper &&
+          typeof section._tourState.swiper.destroy === "function"
+        ) {
           try {
-            section._tourState.swiper = new Swiper(swiperEl, params);
+            section._tourState.swiper.destroy(true, true);
           } catch (err) {
-            try {
-              section._tourState.swiper = new Swiper(
-                "#tour-list-container",
-                params
-              );
-            } catch (e) {
-              console.warn("Swiper init failed:", e);
-            }
+            /* ignore */
           }
-
-          section._tourState.currentCat = catid;
-        } catch (err) {
-          console.error("Fetch failed:", err);
-          fetchWrapper.innerHTML = `<p class="text-red-500 p-4">Error loading data: ${err.message}</p>`;
-        } finally {
-          section._tourState.loading = false;
+          section._tourState.swiper = null;
         }
-      }
 
-      setActiveItem(listItems[0]);
-      if (section._tourState.currentCat)
-        loadCategory(section._tourState.currentCat);
+        // پیدا کردن المنتی که لازم است به Swiper پاس دهیم
+        const swiperContainer =
+          section.querySelector(".tourSwiper") ||
+          section.querySelector("#tour-list-container") ||
+          fetchWrapper.closest(".tourSwiper") ||
+          fetchWrapper;
 
-      listItems.forEach((li) => {
-        li.addEventListener("click", (ev) => {
-          const catid = li.getAttribute("data-id");
-          if (!catid) return;
-          if (section._tourState.currentCat === catid) {
-            setActiveItem(li);
-            return;
+        const params = {
+          slidesPerView: 4,
+          speed: 500,
+          centeredSlides: false,
+          spaceBetween: 11,
+          grabCursor: true,
+          autoplay: { delay: 9500, disableOnInteraction: false },
+          pagination: { el: ".swiper-pagination", clickable: true },
+          navigation: {
+            nextEl: ".swiper-button-next-ft",
+            prevEl: ".swiper-button-prev-ft",
+          },
+          breakpoints: {
+            640: { slidesPerView: 2, spaceBetween: 8 },
+            768: { slidesPerView: 3, spaceBetween: 10 },
+            1024: { slidesPerView: 4, spaceBetween: 11 },
+          },
+        };
+
+        if (document.documentElement && document.documentElement.dir === "rtl") {
+          params.rtl = true;
+        }
+
+        // تلاش برای ساخت swiper
+        try {
+          section._tourState.swiper = new Swiper(swiperContainer, params);
+        } catch (err) {
+          // fallback به selector کلی
+          try {
+            section._tourState.swiper = new Swiper("#tour-list-container", params);
+          } catch (e) {
+            console.warn("Swiper init failed:", e);
           }
+        }
+
+        section._tourState.currentCat = catid;
+      } catch (err) {
+        console.error("Fetch failed:", err);
+        fetchWrapper.innerHTML = `<p class="text-red-500 p-4">Error loading data: ${err.message}</p>`;
+      } finally {
+        section._tourState.loading = false;
+      }
+    }
+
+    // مقداردهی اولیه: ست کردن active و آپدیت لینک see-all
+    setActiveItem(listItems[0] || null);
+    if (listItems[0] && seeAllLink) {
+      const link = listItems[0].getAttribute("data-link");
+      if (link) seeAllLink.setAttribute("href", link);
+    }
+
+    // بارگذاری اولیه دسته اول
+    if (section._tourState.currentCat) loadCategory(section._tourState.currentCat);
+
+    // لیسنر برای هر آیتم
+    listItems.forEach((li) => {
+      li.addEventListener("click", (ev) => {
+        const catid = li.getAttribute("data-id");
+        const datalink = li.getAttribute("data-link");
+
+        // هر بار که کلیک شد، لینک "مشاهده همه" را آپدیت کن
+        if (seeAllLink && datalink) {
+          seeAllLink.setAttribute("href", datalink);
+        }
+
+        if (!catid) return;
+
+        // اگر همان دستهٔ فعلی بود، فقط active کن و کاری نکن
+        if (section._tourState.currentCat === catid) {
           setActiveItem(li);
-          loadCategory(catid);
-        });
+          return;
+        }
+
+        setActiveItem(li);
+        loadCategory(catid);
       });
     });
+  });
 });
+
 
 // ____________________________
 // ____________________________
@@ -3045,3 +3049,53 @@ document.addEventListener("DOMContentLoaded", () => {
 // ____________________________
 // ____________________________
 // ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+if (
+  document.querySelector(".about-counter-list") &&
+  document.querySelector(".about-counter")
+) {
+  const counters = document.querySelectorAll(".about-counter");
+  const duration = 2000;
+
+  const startCounter = (counter) => {
+    const target = +counter.getAttribute("data-target");
+    let startTimestamp = null;
+
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const current = Math.floor(progress * target);
+      counter.innerText = current;
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    window.requestAnimationFrame(step);
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          if (!counter.dataset.started) {
+            counter.dataset.started = "true";
+            startCounter(counter);
+          }
+        }
+      });
+    },
+    { threshold: 0.6 }
+  );
+
+  counters.forEach((counter) => observer.observe(counter));
+}

@@ -87,16 +87,17 @@
                 <h1 class="typing-demo text-white text-[64px] font-bold">ساتراپ تراول</h1>
                 <basis core="list" datamembername="db.satrap-information">
                     <layout>
-                        <div class="w-full flex items-center justify-between">
+                        <div class="w-full about-counter-list flex items-center justify-between">
                             @child
                         </div>
                     </layout>
                     <face>
                         <div class="h-[156px] flex flex-col justify-center items-center gap-2 !text-white">
                             <div dir="ltr" class="font-extrabold flex items-center gap-[2px] text-[40px]">
-                                @largetext
+                                <span>+</span>
+                                <span data-target="@text" class="about-counter "> @text</span>
                             </div>
-                            <h2 class="text-xl font-medium">@text</h2>
+                            <h2 class="text-xl font-medium">@largetext</h2>
                         </div>
                     </face>
                 </basis>
