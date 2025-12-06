@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   const isMobile = window.innerWidth <= 968;
   const requiredFiles = [
@@ -1788,7 +1787,10 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         };
 
-        if (document.documentElement && document.documentElement.dir === "rtl") {
+        if (
+          document.documentElement &&
+          document.documentElement.dir === "rtl"
+        ) {
           params.rtl = true;
         }
 
@@ -1798,7 +1800,10 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (err) {
           // fallback به selector کلی
           try {
-            section._tourState.swiper = new Swiper("#tour-list-container", params);
+            section._tourState.swiper = new Swiper(
+              "#tour-list-container",
+              params
+            );
           } catch (e) {
             console.warn("Swiper init failed:", e);
           }
@@ -1821,7 +1826,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // بارگذاری اولیه دسته اول
-    if (section._tourState.currentCat) loadCategory(section._tourState.currentCat);
+    if (section._tourState.currentCat)
+      loadCategory(section._tourState.currentCat);
 
     // لیسنر برای هر آیتم
     listItems.forEach((li) => {
@@ -1848,7 +1854,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
 
 // ____________________________
 // ____________________________
@@ -3048,6 +3053,30 @@ document.addEventListener("DOMContentLoaded", () => {
 // ____________________________
 // ____________________________
 // ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+const useFullInfo = document.querySelector(".useful-information");
+
+if (useFullInfo) {
+  const ul = useFullInfo.querySelector("ul");
+
+  useFullInfo.addEventListener("click", (e) => {
+    e.stopPropagation();
+    ul.classList.toggle("active");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!useFullInfo.contains(e.target)) {
+      ul.classList.remove("active");
+    }
+  });
+}
+
 // ____________________________
 // ____________________________
 // ____________________________

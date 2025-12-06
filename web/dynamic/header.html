@@ -3,13 +3,12 @@
 </basis>
 <basis core="group" if="'[##cms.cms.page_index##]' = 'desktop'">
     <header class="w-full mb-[64px] header-landing-items">
-        <div
-            class="fixed transition-all ease-in-out duration-1000 w-full overflow-x-hidden flex flex-col top-0 left-0 z-40">
+        <div class="fixed transition-all ease-in-out duration-1000 w-full flex flex-col top-0 left-0 z-40">
 
             <div class="w-full h-[64px] bg-white items-center flex justify-center">
                 <div class="px-4 w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex items-center justify-between">
-                    <nav class="w-[504px]">
-                        <ul class="h-full flex items-center w-full justify-between">
+                    <nav class="h-full">
+                        <ul class="h-full gap-7 flex items-center w-full justify-between">
                             <li>
                                 <a href="/" class="hover:scale-110">
                                     <img src="[##cms.cms.cdn##]/images/logo.png" alt="logo-satrap" class="w-[81px]">
@@ -17,28 +16,101 @@
                             </li>
                             <li>
                                 <a href="/tours"
-                                    class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">تور ها</a>
-
-                            </li>
-                            <li data-id="flight" data-nav="flight"
-                                onclick="check_searchHistory('flight'); check_landing('flight')"
-                                class="h-full cursor-pointer text-center flex items-center text-zinc-900 hover:text-primary-700">
-                                بلیط
-                                هواپیما</li>
-                            <li>
-                                <a href="/hotels"
-                                    class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">هتل
-                                </a>
+                                    class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">تور
+                                    های ساتراپ</a>
 
                             </li>
                             <li>
-                                <a href="/visa"
-                                    class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">ویزا</a>
+                                <a href="/international-tours"
+                                    class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">تور
+                                    های خارجی</a>
 
                             </li>
-                            <li><a href="/blog"
-                                    class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">مجله
-                                    ساتراپ</a></li>
+                            <li>
+                                <a href="/luxury-tour"
+                                    class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">تور
+                                    های لوکس</a>
+
+                            </li>
+                            <li>
+                                <a href="/domestic-tours"
+                                    class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">تور
+                                    های داخلی</a>
+
+                            </li>
+                            <li class="useful-information relative h-full">
+                                <p
+                                    class=" h-full cursor-pointer text-center flex gap-1 items-center text-zinc-900 hover:text-primary-700">
+                                    اطلاعات
+                                    مفید
+                                    <svg class="inline-block arrowkey-main-navitem" width="16" height="16"
+                                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M17.9197 8.17969H11.6897H6.07975C5.11975 8.17969 4.63975 9.33969 5.31975 10.0197L10.4997 15.1997C11.3297 16.0297 12.6797 16.0297 13.5097 15.1997L15.4797 13.2297L18.6897 10.0197C19.3597 9.33969 18.8797 8.17969 17.9197 8.17969Z"
+                                            fill="#667085"></path>
+                                    </svg>
+                                </p>
+                                <ul
+                                    class="flex flex-col divide-y divide-zinc-300 opacity-0 h-0 transition-all ease-in-out">
+                                    <li>
+                                        <a href="/hotels"
+                                            class="flex items-center gap-3 text-zinc-900 hover:text-primary-700">
+
+
+
+                                            هتل
+                                            های ساتراپ
+                                        </a>
+
+                                    </li>
+                                    <li>
+                                        <a href="/"
+                                            class="flex items-center gap-3 text-zinc-900 hover:text-primary-700">
+
+
+
+                                            ایرلاین های داخلی و خارجی
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="/"
+                                            class="flex items-center gap-3 text-zinc-900 hover:text-primary-700">
+
+
+
+
+                                            تبدیل تاریخ
+                                        </a>
+
+                                    </li>
+
+
+                                    <li>
+                                        <a href="/"
+                                            class="flex items-center gap-3 text-zinc-900 hover:text-primary-700">
+
+
+
+
+                                            محاسبه اقساط </a>
+
+                                    </li>
+                                    <li>
+                                        <a href="/blog"
+                                            class="flex items-center gap-3 text-zinc-900 hover:text-primary-700">
+
+
+
+
+                                            مجله ساتراپ</a>
+
+                                    </li>
+                                </ul>
+
+                            </li>
+
 
                         </ul>
                     </nav>
