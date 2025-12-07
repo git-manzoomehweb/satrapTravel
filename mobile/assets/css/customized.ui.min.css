@@ -369,6 +369,9 @@ video {
 .top-\[-70px\] {
   top: -70px;
 }
+.top-\[-100px\] {
+  top: -100px;
+}
 .z-0 {
   z-index: 0;
 }
@@ -442,6 +445,9 @@ video {
 }
 .w-\[576px\] {
   width: 576px;
+}
+.w-\[566px\] {
+  width: 566px;
 }
 .w-\[81px\] {
   width: 81px;
@@ -544,7 +550,7 @@ video {
 .text-zinc-900 {
   color: var(--zinc-900);
 }
- 
+
 .grayscale {
   --tw-grayscale: grayscale(100%);
 }
@@ -678,7 +684,7 @@ header {
   border-bottom: 1px solid #d3d3d3;
   border-bottom-right-radius: 24px;
   border-top-right-radius: 24px;
-  right: -66px;
+  right: -45px;
   top: 16px;
 }
 .border-contact-us::after {
@@ -730,8 +736,8 @@ header {
 }
 .footer-last-section::before {
   width: 1000vw;
-  top: -20.85px;
-  right: 0;
+  top: -20.5px;
+  right: 21px;
   height: 1px;
 }
 .box-hover1:hover {
@@ -803,8 +809,11 @@ header {
     stroke: white !important;
   }
 }
-body.book-rtl {
-  background-color: #fff !important;
+body.book-rtl footer p.text-xl.bg-white {
+  background-color: var(--bookSpecial-1) !important;
+}
+body.book-rtl footer div.bg-white {
+  background-color: var(--bookSpecial-1) !important;
 }
 .book-research__container.book-bg-white {
   border: 1px solid var(--zinc-300);
@@ -1251,4 +1260,44 @@ body.book-rtl {
 }
 .useful-information:has(ul.active) p svg path {
   fill: var(--secondary) !important;
+}
+
+.pt-1 {
+  padding-top: 4px;
+}
+header.mb-\[64px\] .fixed.shadow {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px !important;
+}
+.header-menu {
+  overflow-y: scroll !important;
+}
+.header-menu::-webkit-scrollbar {
+  display: none !important;
+}
+.header-menu .useful-information ul {
+  opacity: 0;
+  height: 0;
+  overflow: hidden !important;
+  position: relative !important;
+  top: 0 !important;
+  right: 0;
+  width: 100% !important;
+  background-color: #fff !important;
+  transition: height 0.4s ease-in-out;
+  box-shadow: none !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+div.min-w-\[123px\]:has(.user-profile-btn) svg.z-\[1\] {
+  display: none !important;
+}
+.user-profile-container .user-icon svg {
+  stroke: var(--primary) !important;
+}
+div.min-w-\[123px\]:hover .user-profile-container .user-icon svg {
+  stroke: #fff !important;
+}
+div.min-w-\[123px\]:has(.user-profile-btn){
+  overflow: unset !important;
+  min-width: unset !important;
 }

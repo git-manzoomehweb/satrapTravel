@@ -15,17 +15,17 @@ body.hotel-list #search-box #r-hotel form {
   width: 48px;
   height: 48px;
 }
-#search-box .return-date[style="border: 1px solid rgb(244, 46, 54);"]{
-border: 1px solid var(--secondary-600) !important;
+#search-box .return-date[style="border: 1px solid rgb(244, 46, 54);"] {
+  border: 1px solid var(--secondary-600) !important;
 }
-#search-box .departure-date[style="border: 1px solid rgb(244, 46, 54);"]{
-border: 1px solid var(--secondary-600) !important;
+#search-box .departure-date[style="border: 1px solid rgb(244, 46, 54);"] {
+  border: 1px solid var(--secondary-600) !important;
 }
 #search-box:has(.loader) {
-  min-height: 392px !important;
+  min-height: 260.8px !important;
 }
 #search-box.mt-\[-130px\] {
-  margin-top: -180px !important;
+  margin-top: -210px !important;
 }
 #search-box {
   min-height: unset !important;
@@ -35,7 +35,7 @@ border: 1px solid var(--secondary-600) !important;
 #search-box #r-insurance form,
 #search-box #r-tour form {
   margin-top: 45px !important;
-  margin-bottom: 45px !important;
+  margin-bottom: 85px !important;
 }
 #search-box .Basis_Calendar_Box svg {
   width: unset !important;
@@ -73,7 +73,7 @@ body.hotel-list #search-box {
 }
 .reservation-item {
   width: 100%;
-  padding: 23px 4px;
+  padding: 16px 4px;
   display: flex;
   align-items: center;
   position: relative;
@@ -98,7 +98,7 @@ body.hotel-list #search-box {
   height: 4px;
   border-radius: 8px;
   background-color: var(--primary-500);
-  bottom: -26px;
+  bottom: -18px;
   right: -53px;
 }
 .flighthotel-btn.active-module::after,
@@ -142,8 +142,9 @@ body.hotel-list #search-box {
 #search-box form {
   padding-left: 24px;
   padding-right: 24px;
-  margin-top: 12px;
-  padding-bottom: 24px !important;
+  /* margin-top: 12px; */
+  padding-bottom: 10px !important;
+  gap: 4px;
 }
 #search-box form:has(.flight-routes) {
   display: flex !important;
@@ -169,7 +170,7 @@ body.hotel-list #search-box {
 #search-box .reserve-field.passengers-field,
 #search-box .return-date {
   height: 55px !important;
-  margin-top: 16px;
+  margin-top: 0px;
   background-color: #fff;
   border: 1px solid #e4e4e7 !important;
   border-radius: 8px;
@@ -291,6 +292,7 @@ form:has(.flight-routes) .flightclass-field .label-text {
 .passengers-field .label-text {
   color: #71717a !important;
   font-size: 12px !important;
+  display: none;
 }
 .click-content {
   display: flex;
@@ -369,7 +371,7 @@ form:has(.flight-routes) .reserve-search {
 .reserve-search {
   height: 55px !important;
   width: 163px !important;
-  margin-top: 15px;
+  /* margin-top: 15px; */
 }
 .Basis_Date_Box .no-activedate {
   background-color: #ffff !important;
@@ -497,4 +499,14 @@ body.hotel-list #search-box:has(.loader) {
   border-radius: 12px !important;
   border: 1px solid var(--secondary-800) !important;
   color: var(--secondary-800) !important;
+}
+
+.search-nav {
+  margin-bottom: 4px !important;
+}
+form#flightHotelSearch {
+  margin-top: 10px !important;
+}
+.module-banner-background {
+  margin-top: -64px !important;
 }

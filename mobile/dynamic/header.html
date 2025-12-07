@@ -5,7 +5,7 @@
     <div class="w-full  z-40 px-4 fixed top-0 right-0 flex justify-center items-center h-[54px]">
         <div class="w-full flex justify-between items-center">
             <div class="w-fit flex gap-2 items-center">
-                <div  class="bars3">
+                <div class="bars3">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M20 20H4C3.448 20 3 19.553 3 19C3 18.447 3.448 18 4 18H20C20.552 18 21 18.447 21 19C21 19.553 20.552 20 20 20Z"
@@ -21,9 +21,9 @@
                 </div>
 
                 <div
-                        class="text-sm z-[1] login-information transition-all duration-150 ease-in-out group-hover:text-white">
-                        <basis core="call" file="authentication/modal"></basis>
-            </div>
+                    class="text-sm z-[1] login-information transition-all duration-150 ease-in-out group-hover:text-white">
+                    <basis core="call" file="authentication/modal"></basis>
+                </div>
             </div>
 
             <a href="/">
@@ -50,24 +50,89 @@
             </div>
             <ul class="w-full flex flex-col divide-y divide-primary-50">
                 <li class="w-full">
-                    <a href="/tours" class="py-6 block  text-zinc-900 w-full hover:bg-primary-200">تورها</a>
-                </li>
-
-                <li data-id="flight" data-nav="flight" onclick="check_searchHistory('flight'); check_landing('flight')"
-                    class="py-6 cursor-pointer block text-zinc-900 w-full hover:bg-primary-200">
-                    بلیط
-                    هواپیما</li>
-
-                <li class="w-full">
-                    <a href="/hotels" class="py-6 block  text-zinc-900 w-full hover:bg-primary-200">هتل</a>
+                    <a href="/tours" class="py-6 block  text-zinc-900 w-full hover:bg-primary-200">تورهای ساتراپ</a>
                 </li>
 
                 <li class="w-full">
-                    <a href="/visa" class="py-6 block  text-zinc-900 w-full hover:bg-primary-200">ویزا</a>
+                    <a href="/international-tours" class="py-6 block  text-zinc-900 w-full hover:bg-primary-200">تورهای
+                        خارجی</a>
+                </li>
+                <li class="w-full">
+                    <a href="/luxury-tour" class="py-6 block  text-zinc-900 w-full hover:bg-primary-200">تورهای
+                        لوکس</a>
+                </li>
+                <li class="w-full">
+                    <a href="/domestic-tours" class="py-6 block  text-zinc-900 w-full hover:bg-primary-200">تورهای
+                        داخلی</a>
                 </li>
 
-                <li class="w-full">
-                    <a href="/blog" class="py-6 block  text-zinc-900 w-full hover:bg-primary-200">مجله ساتراپ</a>
+                <li class="useful-information relative w-full">
+                    <p
+                        class=" items-center justify-between cursor-pointer py-6 flex  text-zinc-900 w-full hover:bg-primary-20">
+                        اطلاعات
+                        مفید
+                        <svg class="inline-block arrowkey-main-navitem" width="16" height="16" viewBox="0 0 24 24"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M17.9197 8.17969H11.6897H6.07975C5.11975 8.17969 4.63975 9.33969 5.31975 10.0197L10.4997 15.1997C11.3297 16.0297 12.6797 16.0297 13.5097 15.1997L15.4797 13.2297L18.6897 10.0197C19.3597 9.33969 18.8797 8.17969 17.9197 8.17969Z"
+                                fill="#667085"></path>
+                        </svg>
+                    </p>
+                    <ul
+                        class="!w-full flex flex-col  divide-y divide-primary-50 opacity-0 h-0 transition-all ease-in-out">
+                        <li class="!w-full">
+                            <a href="/hotels" class="!w-full flex items-center gap-3 text-zinc-900 hover:text-primary-700">
+
+
+
+                                هتل
+                                های ساتراپ
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="/article-list.bc?lid=1&mid=18&catid=219140"
+                                class="flex items-center gap-3 text-zinc-900 hover:text-primary-700">
+
+
+
+                                ایرلاین های داخلی و خارجی
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a  href="/تبدیل-تاریخ" class="flex items-center gap-3 text-zinc-900 hover:text-primary-700">
+
+
+
+
+                                تبدیل تاریخ
+                            </a>
+
+                        </li>
+
+
+                        <li>
+                            <a href="/" class="flex items-center gap-3 text-zinc-900 hover:text-primary-700">
+
+
+
+
+                                محاسبه اقساط </a>
+
+                        </li>
+                        <li>
+                            <a href="/blog" class="flex items-center gap-3 text-zinc-900 hover:text-primary-700">
+
+
+
+
+                                مجله ساتراپ</a>
+
+                        </li>
+                    </ul>
+
                 </li>
             </ul>
         </nav>

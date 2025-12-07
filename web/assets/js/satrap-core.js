@@ -1467,6 +1467,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let currentStoryIndex = 0;
   const YTPlayers = {};
+  const storyCache = {};
 
   function updateNavButtons() {
     prevBtn.style.opacity = currentStoryIndex === 0 ? "0" : "1";
@@ -1496,10 +1497,17 @@ document.addEventListener("DOMContentLoaded", function () {
       '<div dir="ltr" class="w-full flex items-center h-[700px] justify-center"><span class="loader"></span></div>';
 
     try {
-      const response = await fetch(`/story-load-items.bc?catid=${catid}`);
-      if (!response.ok)
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      const html = await response.text();
+      let html;
+
+      if (storyCache[catid]) {
+        html = storyCache[catid];
+      } else {
+        const response = await fetch(`/story-load-items.bc?catid=${catid}`);
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        html = await response.text();
+        storyCache[catid] = html;
+      }
+
       fetchContainer.innerHTML = html;
 
       fetchContainer.querySelectorAll(".story-item").forEach((item, idx) => {
@@ -1509,9 +1517,7 @@ document.addEventListener("DOMContentLoaded", function () {
         item.innerHTML = "";
 
         if (url.includes("aparat.com")) {
-          const hashMatch = url.match(
-            /(?:embed\/|video\/|v\/)([a-zA-Z0-9_-]+)/
-          );
+          const hashMatch = url.match(/(?:embed\/|video\/|v\/)([a-zA-Z0-9_-]+)/);
           if (hashMatch && hashMatch[1]) {
             const hash = hashMatch[1];
             const iframe = document.createElement("iframe");
@@ -1609,6 +1615,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+
 // ____________________________
 // ____________________________
 const tCard = document.querySelectorAll(".scroll-to-search-box-card");
@@ -1705,7 +1712,6 @@ document.addEventListener("DOMContentLoaded", () => {
     '<div dir="ltr" class="w-full flex justify-center p-6"><span class="loader"></span></div>';
 
   document.querySelectorAll(".clicker-list").forEach((clickerList) => {
-    // پیدا کردن بخش والد واقعی (closest section) تا همه چیز داخل یک scope باشه
     const section = clickerList.closest("section") || document;
     const fetchWrapper = section.querySelector(".fetch-content-tour");
     const listItems = Array.from(clickerList.querySelectorAll(".tour-li"));
@@ -1713,14 +1719,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!fetchWrapper || listItems.length === 0) return;
 
-    // state محلی برای هر section
+    /* ------------------ STATE: cache برای جلوگیری از fetch دوباره ------------------ */
     section._tourState = section._tourState || {
       swiper: null,
       currentCat: null,
       loading: false,
+      cache: {}, // ← اینجا HTML کش می‌شود: cache[catid] = { html }
     };
+    /* ----------------------------------------------------------------------------- */
 
-    // مقدار اولیه از اولین آیتم (اگر وجود داشت)
     const firstId = listItems[0].getAttribute("data-id");
     section._tourState.currentCat = firstId ? firstId : null;
 
@@ -1729,8 +1736,51 @@ document.addEventListener("DOMContentLoaded", () => {
       if (targetItem) targetItem.classList.add("active");
     }
 
+    /* ---------------------------- قیمت‌فرمت‌کن حرفه ای ---------------------------- */
+    function formatPrices(wrapper) {
+      const priceElements = wrapper.querySelectorAll(".price-element");
+
+      priceElements.forEach((priceEl) => {
+        let raw = priceEl.textContent.trim();
+
+        const match = raw.match(/([\d.,]+)/);
+        let unit = raw.replace(/[\d.,\s]/g, "").trim();
+
+        if (!match) return;
+
+        let numberPart = match[1].replace(/[,]/g, "");
+        const formatted = Number(numberPart).toLocaleString("en-US");
+        const finalText = unit ? `${formatted} ${unit}` : formatted;
+
+        priceEl.textContent = finalText;
+      });
+    }
+    /* ------------------------------------------------------------------------------ */
+
+    /* --------------------- هندل سازی کامل برای لود با کش ------------------------ */
     async function loadCategory(catid) {
-      // جلوگیری از fetch همزمان برای همان دسته
+      const cache = section._tourState.cache;
+
+      // اگر قبلاً فچ شده → از کش استفاده کن
+      if (cache[catid]) {
+        fetchWrapper.innerHTML = cache[catid].html;
+
+        // فرمت قیمت برای محض اطمینان
+        formatPrices(fetchWrapper);
+
+        // Swiper قبلی را destroy کن
+        if (section._tourState.swiper) {
+          try {
+            section._tourState.swiper.destroy(true, true);
+          } catch {}
+        }
+
+        initSwiper();
+        section._tourState.currentCat = catid;
+        return;
+      }
+
+      // اگر در حال لود همان دسته است → ادامه نده
       if (section._tourState.loading && section._tourState.currentCat === catid)
         return;
 
@@ -1738,76 +1788,31 @@ document.addEventListener("DOMContentLoaded", () => {
       fetchWrapper.innerHTML = loaderHTML;
 
       try {
-        // استفاده از data-id برای fetch
         const res = await fetch(
           `/tour-load-items.bc?catid=${encodeURIComponent(catid)}`
         );
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
         const html = await res.text();
 
-        // قرار دادن html دریافتی داخل wrapper (که در ساختار HTML تو، این wrapper داخل .swiper-wrapper است)
+        // وارد کردن HTML تازه
         fetchWrapper.innerHTML = html;
 
-        // اگر swiper قبلی وجود داشت، آن را destroy کن
-        if (
-          section._tourState.swiper &&
-          typeof section._tourState.swiper.destroy === "function"
-        ) {
+        // فرمت قیمت‌ها
+        formatPrices(fetchWrapper);
+
+        // ذخیره‌سازی در CACHE
+        cache[catid] = { html: fetchWrapper.innerHTML };
+
+        // حذف swiper قبلی
+        if (section._tourState.swiper) {
           try {
             section._tourState.swiper.destroy(true, true);
-          } catch (err) {
-            /* ignore */
-          }
-          section._tourState.swiper = null;
+          } catch {}
         }
 
-        // پیدا کردن المنتی که لازم است به Swiper پاس دهیم
-        const swiperContainer =
-          section.querySelector(".tourSwiper") ||
-          section.querySelector("#tour-list-container") ||
-          fetchWrapper.closest(".tourSwiper") ||
-          fetchWrapper;
-
-        const params = {
-          slidesPerView: 4,
-          speed: 500,
-          centeredSlides: false,
-          spaceBetween: 11,
-          grabCursor: true,
-          autoplay: { delay: 9500, disableOnInteraction: false },
-          pagination: { el: ".swiper-pagination", clickable: true },
-          navigation: {
-            nextEl: ".swiper-button-next-ft",
-            prevEl: ".swiper-button-prev-ft",
-          },
-          breakpoints: {
-            640: { slidesPerView: 2, spaceBetween: 8 },
-            768: { slidesPerView: 3, spaceBetween: 10 },
-            1024: { slidesPerView: 4, spaceBetween: 11 },
-          },
-        };
-
-        if (
-          document.documentElement &&
-          document.documentElement.dir === "rtl"
-        ) {
-          params.rtl = true;
-        }
-
-        // تلاش برای ساخت swiper
-        try {
-          section._tourState.swiper = new Swiper(swiperContainer, params);
-        } catch (err) {
-          // fallback به selector کلی
-          try {
-            section._tourState.swiper = new Swiper(
-              "#tour-list-container",
-              params
-            );
-          } catch (e) {
-            console.warn("Swiper init failed:", e);
-          }
-        }
+        // اجرای مجدد Swiper
+        initSwiper();
 
         section._tourState.currentCat = catid;
       } catch (err) {
@@ -1818,31 +1823,68 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // مقداردهی اولیه: ست کردن active و آپدیت لینک see-all
+    /* --------------------- Swiper Init در یک تابع جدا ------------------------- */
+    function initSwiper() {
+      const swiperContainer =
+        section.querySelector(".tourSwiper") ||
+        section.querySelector("#tour-list-container") ||
+        fetchWrapper.closest(".tourSwiper") ||
+        fetchWrapper;
+
+      const params = {
+        slidesPerView: 4,
+        speed: 500,
+        centeredSlides: false,
+        spaceBetween: 11,
+        grabCursor: true,
+        autoplay: { delay: 9500, disableOnInteraction: false },
+        pagination: { el: ".swiper-pagination", clickable: true },
+        navigation: {
+          nextEl: ".swiper-button-next-ft",
+          prevEl: ".swiper-button-prev-ft",
+        },
+        breakpoints: {
+          640: { slidesPerView: 2, spaceBetween: 8 },
+          768: { slidesPerView: 3, spaceBetween: 10 },
+          1024: { slidesPerView: 4, spaceBetween: 11 },
+        },
+      };
+
+      if (document.documentElement.dir === "rtl") params.rtl = true;
+
+      try {
+        section._tourState.swiper = new Swiper(swiperContainer, params);
+      } catch (err) {
+        try {
+          section._tourState.swiper = new Swiper(
+            "#tour-list-container",
+            params
+          );
+        } catch (e) {
+          console.warn("Swiper init failed:", e);
+        }
+      }
+    }
+    /* -------------------------------------------------------------------------- */
+
     setActiveItem(listItems[0] || null);
     if (listItems[0] && seeAllLink) {
       const link = listItems[0].getAttribute("data-link");
       if (link) seeAllLink.setAttribute("href", link);
     }
 
-    // بارگذاری اولیه دسته اول
     if (section._tourState.currentCat)
       loadCategory(section._tourState.currentCat);
 
-    // لیسنر برای هر آیتم
     listItems.forEach((li) => {
-      li.addEventListener("click", (ev) => {
+      li.addEventListener("click", () => {
         const catid = li.getAttribute("data-id");
         const datalink = li.getAttribute("data-link");
 
-        // هر بار که کلیک شد، لینک "مشاهده همه" را آپدیت کن
-        if (seeAllLink && datalink) {
-          seeAllLink.setAttribute("href", datalink);
-        }
+        if (seeAllLink && datalink) seeAllLink.setAttribute("href", datalink);
 
         if (!catid) return;
 
-        // اگر همان دستهٔ فعلی بود، فقط active کن و کاری نکن
         if (section._tourState.currentCat === catid) {
           setActiveItem(li);
           return;
@@ -2897,7 +2939,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document
     .querySelectorAll(".clicker-list")
-    .forEach((clickerList, sectionIndex) => {
+    .forEach((clickerList) => {
       const section = clickerList.closest("section");
       const fetchWrapper = section.querySelector(".fetch-content-tour-mob");
       const listItems = Array.from(section.querySelectorAll(".tour-li-mob"));
@@ -2908,6 +2950,7 @@ document.addEventListener("DOMContentLoaded", () => {
         swiper: null,
         currentCat: null,
         loading: false,
+        cache: {} 
       };
 
       const firstId = listItems[0].getAttribute("data-id");
@@ -2918,12 +2961,46 @@ document.addEventListener("DOMContentLoaded", () => {
         if (targetItem) targetItem.classList.add("active");
       }
 
+      // 🔵🔵🔵  تابع فرمت قیمت  🔵🔵🔵
+      function formatPrices(wrapper) {
+        const priceElements = wrapper.querySelectorAll(".price-element");
+        priceElements.forEach((el) => {
+          let text = el.textContent.trim();
+
+          // جداسازی عدد از واحد
+          const match = text.match(/^(\d+)\s*(.*)$/);
+          if (!match) return;
+
+          let number = match[1];
+          let unit = match[2] || "";
+
+          // سه‌رقم سه‌رقم کردن
+          const formatted = Number(number).toLocaleString("en-US");
+
+          // بازگردانی به المنت
+          el.textContent = `${formatted} ${unit}`.trim();
+        });
+      }
+
       async function loadCategory(catid) {
-        if (
-          section._tourState.loading &&
-          section._tourState.currentCat === catid
-        )
+
+        // --- اگر در کش باشد: بدون فچ ---
+        if (section._tourState.cache[catid]) {
+          fetchWrapper.innerHTML = section._tourState.cache[catid];
+
+          // 🔵 بعد از رندر → فرمت قیمت‌ها
+          formatPrices(fetchWrapper);
+
+          if (section._tourState.swiper?.destroy) {
+            try { section._tourState.swiper.destroy(true, true); } catch (e) {}
+          }
+
+          initSwiper();
+          section._tourState.currentCat = catid;
           return;
+        }
+
+        // --- اگر نبود → فچ جدید ---
         section._tourState.loading = true;
         fetchWrapper.innerHTML = loaderHTML;
 
@@ -2932,69 +3009,24 @@ document.addEventListener("DOMContentLoaded", () => {
             `/tour-load-items.bc?catid=${encodeURIComponent(catid)}`
           );
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
           const html = await res.text();
 
+          // ذخیره در کش
+          section._tourState.cache[catid] = html;
+
+          // رندر
           fetchWrapper.innerHTML = html;
 
-          if (
-            section._tourState.swiper &&
-            typeof section._tourState.swiper.destroy === "function"
-          ) {
-            try {
-              section._tourState.swiper.destroy(true, true);
-            } catch (err) {
-              /* ignore */
-            }
-            section._tourState.swiper = null;
+          // 🔵 بعد از رندر → فرمت قیمت‌ها
+          formatPrices(fetchWrapper);
+
+          // Destroy swiper قبلی
+          if (section._tourState.swiper?.destroy) {
+            try { section._tourState.swiper.destroy(true, true); } catch (err) {}
           }
 
-          const container =
-            section.querySelector(".tourSwiperMob") ||
-            section.querySelector("#tour-list-container-mob") ||
-            fetchWrapper.closest(".tourSwiperMob") ||
-            fetchWrapper;
-          const swiperEl =
-            container instanceof Element ? container : fetchWrapper;
-
-          const params = {
-            slidesPerView: 1.3,
-            speed: 500,
-            centeredSlides: false,
-            spaceBetween: 11,
-            grabCursor: true,
-            autoplay: { delay: 9500, disableOnInteraction: false },
-            pagination: { el: ".swiper-pagination", clickable: true },
-            navigation: {
-              nextEl: ".swiper-button-next-ft",
-              prevEl: ".swiper-button-prev-ft",
-            },
-            breakpoints: {
-              640: { slidesPerView: 1.3, spaceBetween: 11 },
-              768: { slidesPerView: 1.3, spaceBetween: 11 },
-              1024: { slidesPerView: 1.3, spaceBetween: 11 },
-            },
-          };
-
-          if (
-            document.documentElement &&
-            document.documentElement.dir === "rtl"
-          ) {
-            params.rtl = true;
-          }
-
-          try {
-            section._tourState.swiper = new Swiper(swiperEl, params);
-          } catch (err) {
-            try {
-              section._tourState.swiper = new Swiper(
-                "#tour-list-container-mob",
-                params
-              );
-            } catch (e) {
-              console.warn("Swiper init failed:", e);
-            }
-          }
-
+          initSwiper();
           section._tourState.currentCat = catid;
         } catch (err) {
           console.error("Fetch failed:", err);
@@ -3004,24 +3036,429 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
+      function initSwiper() {
+        const container =
+          section.querySelector(".tourSwiperMob") ||
+          section.querySelector("#tour-list-container-mob") ||
+          fetchWrapper.closest(".tourSwiperMob") ||
+          fetchWrapper;
+
+        const swiperEl = container instanceof Element ? container : fetchWrapper;
+
+        const params = {
+          slidesPerView: 1.3,
+          speed: 500,
+          centeredSlides: false,
+          spaceBetween: 11,
+          grabCursor: true,
+          autoplay: { delay: 9500, disableOnInteraction: false },
+          pagination: { el: ".swiper-pagination", clickable: true },
+          navigation: {
+            nextEl: ".swiper-button-next-ft",
+            prevEl: ".swiper-button-prev-ft",
+          },
+          breakpoints: {
+            640: { slidesPerView: 1.3, spaceBetween: 11 },
+            768: { slidesPerView: 1.3, spaceBetween: 11 },
+            1024: { slidesPerView: 1.3, spaceBetween: 11 },
+          },
+        };
+
+        if (document.documentElement?.dir === "rtl") params.rtl = true;
+
+        try {
+          section._tourState.swiper = new Swiper(swiperEl, params);
+        } catch (err) {
+          try {
+            section._tourState.swiper = new Swiper("#tour-list-container-mob", params);
+          } catch (e) {
+            console.warn("Swiper init failed:", e);
+          }
+        }
+      }
+
       setActiveItem(listItems[0]);
-      if (section._tourState.currentCat)
-        loadCategory(section._tourState.currentCat);
+      if (section._tourState.currentCat) loadCategory(section._tourState.currentCat);
 
       listItems.forEach((li) => {
-        li.addEventListener("click", (ev) => {
+        li.addEventListener("click", () => {
           const catid = li.getAttribute("data-id");
           if (!catid) return;
+
           if (section._tourState.currentCat === catid) {
             setActiveItem(li);
             return;
           }
+
           setActiveItem(li);
           loadCategory(catid);
         });
       });
     });
 });
+
+
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+const useFullInfo = document.querySelector(".useful-information");
+
+if (useFullInfo) {
+  const ul = useFullInfo.querySelector("ul");
+
+  useFullInfo.addEventListener("click", (e) => {
+    e.stopPropagation();
+    ul.classList.toggle("active");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!useFullInfo.contains(e.target)) {
+      ul.classList.remove("active");
+    }
+  });
+}
+
+// ____________________________
+// ____________________________
+// ____________________________
+// ____________________________
+// calendar
+const weekDaysFa = [
+  "یکشنبه",
+  "دوشنبه",
+  "سه‌شنبه",
+  "چهارشنبه",
+  "پنجشنبه",
+  "جمعه",
+  "شنبه",
+];
+const weekDaysEn = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+function getWeekDay(gy, gm, gd) {
+  let date = new Date(gy, gm - 1, gd);
+  return [weekDaysEn[date.getDay()], weekDaysFa[date.getDay()]];
+}
+const monthsFa = [
+  "فروردین",
+  "اردیبهشت",
+  "خرداد",
+  "تیر",
+  "مرداد",
+  "شهریور",
+  "مهر",
+  "آبان",
+  "آذر",
+  "دی",
+  "بهمن",
+  "اسفند",
+];
+const monthsEn = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+// تابع تشخیص کبیسه بودن برای شمسی و میلادی
+function isLeap(year, type) {
+  if (type === "grg")
+    return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+  return (
+    year % 33 === 1 ||
+    year % 33 === 5 ||
+    year % 33 === 9 ||
+    year % 33 === 13 ||
+    year % 33 === 17 ||
+    year % 33 === 22 ||
+    year % 33 === 26 ||
+    year % 33 === 30
+  );
+}
+
+function toShamsi(gy, gm, gd) {
+  let g_d_m = [
+    0,
+    31,
+    isLeap(gy, "grg") ? 29 : 28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31,
+  ];
+  let gy_day_no =
+    (gy - 1600) * 365 +
+    Math.floor((gy - 1600 + 3) / 4) -
+    Math.floor((gy - 1600 + 99) / 100) +
+    Math.floor((gy - 1600 + 399) / 400);
+  for (let i = 1; i < gm; i++) gy_day_no += g_d_m[i];
+  gy_day_no += gd - 1;
+
+  let j_day_no = gy_day_no - 79;
+  let j_np = Math.floor(j_day_no / 12053);
+  j_day_no %= 12053;
+
+  let jy = 979 + 33 * j_np + 4 * Math.floor(j_day_no / 1461);
+  j_day_no %= 1461;
+
+  if (j_day_no >= 366) {
+    jy += Math.floor((j_day_no - 1) / 365);
+    j_day_no = (j_day_no - 1) % 365;
+  }
+
+  let jm =
+    j_day_no < 186
+      ? 1 + Math.floor(j_day_no / 31)
+      : 7 + Math.floor((j_day_no - 186) / 30);
+  let jd = j_day_no < 186 ? 1 + (j_day_no % 31) : 1 + ((j_day_no - 186) % 30);
+
+  return [jy, jm, jd, monthsFa[jm - 1]];
+}
+
+function toGregorian(jy, jm, jd) {
+  jy -= 979;
+  let days = jm <= 6 ? (jm - 1) * 31 + jd - 1 : 186 + (jm - 7) * 30 + jd - 1;
+  let g_day_no =
+    365 * jy +
+    Math.floor(jy / 33) * 8 +
+    Math.floor(((jy % 33) + 3) / 4) +
+    days +
+    79;
+
+  let gy = 1600 + 400 * Math.floor(g_day_no / 146097);
+  g_day_no %= 146097;
+
+  if (g_day_no >= 36525) {
+    g_day_no--;
+    gy += 100 * Math.floor(g_day_no / 36524);
+    g_day_no %= 36524;
+    if (g_day_no >= 365) g_day_no++;
+  }
+
+  gy += 4 * Math.floor(g_day_no / 1461);
+  g_day_no %= 1461;
+
+  if (g_day_no >= 366) {
+    gy += Math.floor((g_day_no - 1) / 365);
+    g_day_no = (g_day_no - 1) % 365;
+  }
+
+  let gm = 0,
+    gd = g_day_no + 1;
+  let g_days_in_month = [
+    31,
+    isLeap(gy, "grg") ? 29 : 28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31,
+  ];
+
+  while (gm < 12 && gd > g_days_in_month[gm]) gd -= g_days_in_month[gm++];
+
+  return [gy, gm + 1, gd, monthsEn[gm]];
+}
+
+function convert() {
+  let type = document.querySelector('input[name="calendar"]:checked').value;
+  let year = parseInt(document.getElementById("year").value);
+  let month = parseInt(document.getElementById("month").value);
+  let day = parseInt(document.getElementById("day").value);
+
+  if (!year || !month || !day) {
+    alert("لطفاً تمام فیلدها را پر کنید.");
+    return;
+  }
+
+  let resultGrg, resultShm, weekDayGrg, weekDayShm;
+
+  if (type === "shamsi") {
+    resultGrg = toGregorian(year, month, day);
+    weekDayGrg = getWeekDay(resultGrg[0], resultGrg[1], resultGrg[2])[0];
+    resultShm = [year, month, day, monthsFa[month - 1]];
+    weekDayShm = getWeekDay(resultGrg[0], resultGrg[1], resultGrg[2])[1];
+  } else {
+    resultShm = toShamsi(year, month, day);
+    weekDayShm = getWeekDay(year, month, day)[1];
+    resultGrg = [year, month, day, monthsEn[month - 1]];
+    weekDayGrg = getWeekDay(year, month, day)[0];
+  }
+
+  if (window.innerWidth > 1024) {
+    document.getElementById("result").innerHTML = `
+          <div class="text-primary-900 font-yekanbakhsemiboldFA text-base">${weekDayGrg} , ${resultGrg[3]} (${resultGrg[1]}) , ${resultGrg[2]}  , ${resultGrg[0]}</div>
+          <hr class="border-neutralcolor-800 block w-full  
+          
+          relative
+          after:content-[''] 
+          after:w-1 after:h-1 after:rounded-full after:bg-neutralcolor-800 after:inline-block 
+          after:absolute after:top-0 after:left-0 after:bottom-0 after:-mt-[2.5px] before:content-[''] 
+          before:w-1 before:h-1 before:rounded-full before:bg-neutralcolor-800 
+          before:inline-block before:absolute before:top-0 before:right-0 before:bottom-0 
+          before:-mt-[2.5px]
+          
+          ">
+          <div class="text-primary-900 font-yekanbakhsemiboldFA text-base">${weekDayShm} , ${resultShm[2]} , ${resultShm[3]} (${resultShm[1]}) , ${resultShm[0]}</div>
+        `;
+  } else {
+    document.getElementById("result").innerHTML = `
+          <div class="text-primary-900 font-yekanbakhsemiboldFA text-xs">${weekDayGrg} , ${resultGrg[3]} (${resultGrg[1]}) , ${resultGrg[2]}  , ${resultGrg[0]}</div>
+          <hr class="border-neutralcolor-800 block w-full  
+          
+          relative
+          after:content-[''] 
+          after:w-1 after:h-1 after:rounded-full after:bg-neutralcolor-800 after:inline-block 
+          after:absolute after:top-0 after:left-0 after:bottom-0 after:-mt-[2.5px] before:content-[''] 
+          before:w-1 before:h-1 before:rounded-full before:bg-neutralcolor-800 
+          before:inline-block before:absolute before:top-0 before:right-0 before:bottom-0 
+          before:-mt-[2.5px]
+          
+          ">
+          <div class="text-primary-900 font-yekanbakhsemiboldFA text-xs">${weekDayShm} , ${resultShm[2]} , ${resultShm[3]} (${resultShm[1]}) , ${resultShm[0]}</div>
+        `;
+  }
+}
+
+function fillOptions(select, start, end) {
+  select.innerHTML = "";
+  for (let i = start; i >= end; i--) {
+    select.innerHTML += `<option>${i}</option>`;
+  }
+}
+
+function updateYears() {
+  let type = document.querySelector('input[name="calendar"]:checked').value;
+  let yearSelect = document.getElementById("year");
+  fillOptions(
+    yearSelect,
+    type === "shamsi" ? 1500 : 2100,
+    type === "shamsi" ? 1300 : 1900
+  );
+}
+
+function updateMonths() {
+  let type = document.querySelector('input[name="calendar"]:checked').value;
+  let monthSelect = document.getElementById("month");
+  let months = type === "shamsi" ? monthsFa : monthsEn; // بررسی نوع تقویم
+  monthSelect.innerHTML = months
+    .map((m, i) => `<option value="${i + 1}">${m}</option>`)
+    .join("");
+}
+
+function updateDays() {
+  let daySelect = document.getElementById("day");
+  let month = parseInt(document.getElementById("month").value);
+  let year = parseInt(document.getElementById("year").value);
+  let type = document.querySelector('input[name="calendar"]:checked').value;
+
+  let days =
+    month <= 6
+      ? 31
+      : month <= 11
+      ? 30
+      : type === "shamsi"
+      ? isLeap(year, "hsh")
+        ? 30
+        : 29
+      : isLeap(year, "grg")
+      ? 29
+      : 28;
+  fillOptions(daySelect, days, 1);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.getElementById("date-convertor")) {
+    updateYears();
+    updateMonths();
+    updateDays();
+  }
+});
+
+// date-convertor
+
+if (document.getElementById("date-convertor")) {
+  const labels = document.querySelectorAll('label[name="calendar-label"]');
+
+  labels.forEach((label) => {
+    label.addEventListener("click", () => {
+      labels.forEach((l) =>
+        l.classList.remove("bg-secondary", "bg-white", "text-white")
+      );
+      label.classList.add("bg-secondary", "text-white");
+      labels.forEach((l) => {
+        if (l !== label) {
+          l.classList.add("bg-white");
+        }
+      });
+    });
+  });
+}
+
+// calendar
 // ____________________________
 // ____________________________
 // ____________________________

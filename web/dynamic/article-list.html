@@ -210,7 +210,11 @@
                 <div class="flex bg-white relative items-center gap-3">
                     <div class="flex z-10 relative bg-white px-2 items-center gap-3">
                         <img src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8   h-8">
-                        <h2 class="font-bold text-2xl text-zinc-900"> لیست مقاله های ساتراپ </h2>
+                        <basis core="print" datamembername="db.scalar">
+                            <face>
+                                <h2 class="font-bold text-2xl text-zinc-900">لیست @column1 </h2>
+                            </face>
+                        </basis>
                         <span class="bullet-1 "></span>
                     </div>
                 </div>

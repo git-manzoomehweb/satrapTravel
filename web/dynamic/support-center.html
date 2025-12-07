@@ -1,0 +1,382 @@
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
+    <member name="article-list" type="list" link="article.bc" size="64x65" propertyid="7244" perpage="100"
+        order="ord" />
+
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
+    <member name="banner-info" type="tree" request="cat" parentid=""
+        postsql="select * from [db.banner-info] where catid = [##cms.query.catid##]" />
+</basis>
+
+
+
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover" />
+    <title>[##cms.seo.title|( مرکز پشتیبانی ساتراپ تراول)##]</title>
+    <meta name="description" content="[##cms.seo.description|(شرکت خدمات مسافرت هوایی و گردشگری  ساتراپ تراول)##]" />
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <basis core="call" file="pwa.inc" />
+    <basis core="call" file="style.inc" />
+    <link href="[##cms.cms.cdn##]/css/contact-us-form.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
+</head>
+
+<body class="overflow-x-hidden relative">
+    <basis core="call" file="header.inc" />
+    <main class="suppurtCenter">
+        <section class="flex justify-center items-center h-[348px] relative w-full">
+            <basis core="print" datamembername="db.banner-info">
+                <face filter="image is null">
+
+                    <img src="[##cms.cms.cdn##]/images/support-center-bg.jpg" alt="@urltitle"
+                        class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+                </face>
+                <face>
+                    <img src="@image" alt="@urltitle" class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+                </face>
+            </basis>
+
+            <span class="absolute w-full h-full backdrop-12  top-0 left-0 z-[2]"></span>
+
+            <span class="absolute w-full h-full  bg-[#010101A8] top-0 left-0 z-[1]"></span>
+
+            <div
+                class="px-4  w-full  lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col gap-[87px] items-center justify-center">
+                <div class="w-full z-[4]  flex justify-center">
+                    <div class="flex flex-col items-center justify-center gap-[27px]">
+                        <ul class="flex items-center gap-2 text-white !text-xs">
+                            <li> <a href="/" class="hover:text-secondary-700">صفحه اصلی</a>
+                            </li>
+                            <li> &gt; </li>
+                            <li> پشتیبانی </li>
+
+                        </ul>
+                        <h1 class="text-white text-4xl font-bold"> مرکز پشتیبانی</h1>
+                        
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="w-full flex justify-center relative mt-10">
+            <div
+                class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class="flex bg-white relative items-center gap-3">
+                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
+                        <h2 class="font-bold text-2xl text-zinc-900">مرکز پشتیبانی ساتراپ تراول</h2>
+                        <span class="bullet-1 "></span>
+                    </div>
+                </div>
+                <div class="my-[50px] z-10 flex flex-col w-full gap-[13px]">
+
+                    <div class="grid w-full grid-cols-4 gap-3">
+                        <a href="/درخواست-پشتیبانی"
+                            class="w-full z-[5] relative group overflow-hidden h-[88px] py-3 hover:bg-gradient-to-r hover:from-primary-300 hover:to-primary-50 px-6 bg-secondary-50 rounded-2xl flex items-center justify-between">
+                            <div class="flex w-[calc(100%-48px)] z-[1] items-center gap-2">
+                                <span>
+                                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M35.5965 26.1042C35.5798 26.173 35.5608 26.2417 35.5398 26.3099C34.9298 28.2849 33.8932 30.3849 32.4582 32.5465C31.8698 33.5449 30.9332 34.2565 29.8132 34.5565C29.4348 34.6582 29.0498 34.7082 28.6682 34.7082C27.9065 34.7082 27.1548 34.5099 26.4782 34.1182C24.3848 32.9049 23.6665 30.2165 24.8748 28.1232L27.5115 23.5532C28.7215 21.4582 31.4115 20.7382 33.5065 21.9449L33.7395 22.0789C33.7465 21.8984 33.75 21.7172 33.75 21.5355C33.75 13.9572 27.5783 7.79218 19.9933 7.79218C12.415 7.79218 6.25 13.9572 6.25 21.5355C6.25 21.7189 6.25353 21.9015 6.26062 22.0837L6.51033 21.9417C7.51867 21.3584 8.70367 21.205 9.83367 21.5067C10.9653 21.81 11.9103 22.5367 12.497 23.5517L15.1353 28.125C16.342 30.2184 15.622 32.9067 13.5303 34.1167C12.8537 34.51 12.102 34.7084 11.3403 34.7084C10.9587 34.7084 10.5737 34.6584 10.1953 34.5567C9.07533 34.2567 8.13867 33.5434 7.55367 32.5467C6.3409 30.722 5.41197 28.9424 4.78495 27.2429C4.09712 25.428 3.75 23.5085 3.75 21.5355C3.75 12.5788 11.0367 5.29218 19.9933 5.29218C28.9567 5.29218 36.25 12.5788 36.25 21.5355C36.25 23.0984 36.0308 24.6279 35.5965 26.1042Z"
+                                            fill="#000" />
+                                        <path
+                                            d="M19.9409 22.8275C19.2576 22.8275 18.6993 22.2775 18.6909 21.5942C18.6693 19.8779 20.0656 19.0929 20.8156 18.671L20.9826 18.5759C21.7359 18.1609 21.8209 17.6792 21.8209 17.3509C21.8209 16.4743 21.1076 15.7609 20.2309 15.7609C19.3393 15.7609 18.6426 16.4593 18.6426 17.3509C18.6426 18.0409 18.0826 18.6009 17.3926 18.6009C16.7026 18.6009 16.1426 18.0409 16.1426 17.3509C16.1426 15.0959 17.9759 13.2609 20.2309 13.2609C22.4859 13.2609 24.3209 15.0959 24.3209 17.3509C24.3209 18.7959 23.5709 20.0042 22.2076 20.7559L22.0409 20.8492C21.4509 21.1825 21.1893 21.3642 21.1909 21.5609C21.1993 22.2509 20.6476 22.8192 19.9576 22.8275H19.9409Z"
+                                            fill="#000" />
+                                        <path
+                                            d="M19.9414 26.1942C19.2514 26.1942 18.6914 25.6342 18.6914 24.9442C18.6914 24.2542 19.2514 23.6825 19.9414 23.6825C20.6314 23.6825 21.1914 24.2292 21.1914 24.9192V24.9442C21.1914 25.6342 20.6314 26.1942 19.9414 26.1942Z"
+                                            fill="#000" />
+                                    </svg>
+
+                                </span>
+                                <div class="flex flex-col gap-2">
+                                    <p class="font-bold line-clamp-1">درخواست پشتیبانی</p>
+                                    <p class="text-xs text-zinc-500">ثبت درخواست تغییرات در رزرو</p>
+                                </div>
+                            </div>
+                            <span
+                                class="z-[1] w-12 h-12 flex justify-center items-center group-hover:bg-primary rounded-full">
+                                <img loading="lazy" class=" group-hover:invert-0 group-hover:brightness-[10000]"
+                                    src="[##cms.cms.cdn##]/images/left-secondary-arrow.svg" alt="arrow">
+                            </span>
+                        </a>
+
+
+                        <a href="/قوانین-و-مقررات"
+                            class="w-full z-[5] relative group overflow-hidden h-[88px] py-3 hover:bg-gradient-to-r hover:from-primary-300 hover:to-primary-50 px-6 bg-secondary-50 rounded-2xl flex items-center justify-between">
+                            <div class="flex w-[calc(100%-48px)] z-[1] items-center gap-2">
+                                <span>
+                                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M19.6457 7.87082C20.2441 7.87082 20.7113 8.34122 20.7113 8.94282C20.7113 9.52522 20.2329 9.99882 19.6457 9.99882C19.0585 9.99882 18.5817 9.52522 18.5817 8.94282C18.5817 8.34122 19.0489 7.87082 19.6457 7.87082ZM6.06176 12.3988C6.12736 12.3988 6.19456 12.394 6.26016 12.3828L16.6538 10.6548C17.0553 11.3492 17.6841 11.89 18.4473 12.1732V25.7141L15.8394 27.3941L14.737 28.2069C14.3194 28.5141 14.1482 29.0549 14.3098 29.5477C14.4714 30.0389 14.9322 30.3717 15.449 30.3717H24.0073C24.5257 30.3717 24.9849 30.0389 25.1465 29.5477C25.3097 29.0549 25.1369 28.5141 24.7193 28.2069L23.5385 27.3397L20.8473 25.6741V12.1716C21.9705 11.7556 22.8201 10.7812 23.0473 9.58122L33.4313 7.85482C34.0185 7.75722 34.4361 7.24682 34.4345 6.67242C34.4345 6.60682 34.4297 6.54122 34.4185 6.47402C34.3097 5.81962 33.6809 5.37162 33.0377 5.48682L22.6345 7.21482C22.0345 6.17802 20.9257 5.47082 19.6457 5.47082C17.9593 5.47082 16.5546 6.68682 16.2474 8.28842L5.86656 10.0148C5.21216 10.1236 4.77216 10.7428 4.87936 11.3956C4.97856 11.9828 5.48576 12.3988 6.06176 12.3988Z"
+                                            fill="#000" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M31.0715 31.5672H8.22677C7.56437 31.5672 7.02677 32.1048 7.02677 32.7672C7.02677 33.4296 7.56437 33.9672 8.22677 33.9672H31.0715C31.7339 33.9672 32.2715 33.4296 32.2715 32.7672C32.2715 32.1048 31.7339 31.5672 31.0715 31.5672Z"
+                                            fill="#000" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M9.67162 26.1489C11.6348 26.1489 13.5388 25.1186 14.8332 23.3346C15.0076 23.0946 15.0348 22.7778 14.9036 22.5106L10.5852 13.7745C10.4508 13.5025 10.1724 13.3281 9.86842 13.3281C9.56282 13.3281 9.28282 13.5041 9.15002 13.7777L4.88282 22.5138C4.77082 22.7394 4.77402 23.005 4.88922 23.2306C5.74842 24.9058 7.37562 25.989 9.24282 26.133C9.38522 26.1442 9.52922 26.1489 9.67162 26.1489Z"
+                                            fill="#000" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M35.1184 19.212L30.8016 10.476C30.6656 10.204 30.3888 10.0312 30.0848 10.0312C29.7792 10.0312 29.4992 10.2056 29.3648 10.4792L25.0976 19.2152C24.9872 19.4424 24.9904 19.708 25.1056 19.932C25.9648 21.6072 27.592 22.6936 29.4576 22.836C29.6016 22.8456 29.744 22.852 29.8864 22.852C31.8512 22.852 33.7536 21.8216 35.0496 20.0376C35.2224 19.796 35.2496 19.4792 35.1184 19.212Z"
+                                            fill="#000" />
+                                    </svg>
+
+
+                                </span>
+                                <div class="flex flex-col gap-2">
+                                    <p class="font-bold line-clamp-1"> قوانین و مقررات</p>
+                                    <p class="text-xs text-zinc-500">
+                                        گفتگو با کارشناسان</p>
+                                </div>
+                            </div>
+                            <span
+                                class="z-[1] w-12 h-12 flex justify-center items-center group-hover:bg-primary rounded-full">
+                                <img loading="lazy" class=" group-hover:invert-0 group-hover:brightness-[10000]"
+                                    src="[##cms.cms.cdn##]/images/left-secondary-arrow.svg" alt="arrow">
+                            </span>
+                        </a>
+
+
+
+                        <a href="/سوالات-متداول"
+                            class="w-full z-[5] relative group overflow-hidden h-[88px] py-3 hover:bg-gradient-to-r hover:from-primary-300 hover:to-primary-50 px-6 bg-secondary-50 rounded-2xl flex items-center justify-between">
+                            <div class="flex w-[calc(100%-48px)] z-[1] items-center gap-2">
+                                <span>
+                                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M22.3561 22.4411L22.1427 22.5563C21.1894 23.0715 20.8527 23.3291 20.8594 23.7515C20.8677 24.4139 20.3161 24.9595 19.6261 24.9691H19.6094C18.9261 24.9691 18.3677 24.4427 18.3594 23.7851C18.3294 21.8619 19.9511 20.9867 20.9177 20.4651L21.1311 20.3483C21.9827 19.8971 22.3911 19.3035 22.3911 18.5243C22.3911 17.2427 21.3111 16.2011 19.9827 16.2011C18.6344 16.2011 17.5761 17.2203 17.5761 18.5243C17.5761 19.1867 17.0161 19.7243 16.326 19.7243C15.636 19.7243 15.076 19.1867 15.076 18.5243C15.076 15.9195 17.2777 13.8011 19.9827 13.8011C22.6877 13.8011 24.8911 15.9195 24.8911 18.5243C24.8911 20.1835 23.9894 21.5739 22.3561 22.4411ZM20.8611 27.3755C20.8611 28.0395 20.3011 28.5755 19.6111 28.5755C18.9194 28.5755 18.3611 28.0395 18.3611 27.3755C18.3611 26.7131 18.9194 26.1707 19.6111 26.1707C20.3011 26.1707 20.8611 26.7035 20.8611 27.3659V27.3755ZM32.4561 11.7739C29.6361 8.33711 25.4344 6.22031 20.9261 5.96751C16.4043 5.70831 11.9893 7.33231 8.79601 10.4059C4.12101 14.9083 2.84601 21.8235 5.60767 27.5755C5.67434 27.7355 5.87767 28.2219 7.25767 30.5307C7.41267 30.7883 7.39601 31.1003 7.21767 31.3451C6.84767 31.8475 6.37934 32.4891 6.01434 33.0171C5.54267 33.6971 5.49934 34.5675 5.90101 35.2859C6.29767 35.9979 7.06767 36.4395 7.90767 36.4395H8.93601C12.8877 36.4395 18.5794 36.4347 19.9411 36.4395H19.9961C24.6661 36.4395 29.0811 34.4603 32.1161 31.0043C36.9461 25.5051 37.0894 17.4171 32.4561 11.7739Z"
+                                            fill="#000" />
+                                    </svg>
+
+
+
+                                </span>
+                                <div class="flex flex-col gap-2">
+                                    <p class="font-bold line-clamp-1">
+                                        سوالات پرتکرار</p>
+                                    <p class="text-xs text-zinc-500">
+                                        گفتگو با کارشناسان</p>
+                                </div>
+                            </div>
+                            <span
+                                class="z-[1] w-12 h-12 flex justify-center items-center group-hover:bg-primary rounded-full">
+                                <img loading="lazy" class=" group-hover:invert-0 group-hover:brightness-[10000]"
+                                    src="[##cms.cms.cdn##]/images/left-secondary-arrow.svg" alt="arrow">
+                            </span>
+                        </a>
+
+
+                        <basis core="print" datamembername="db.info">
+                            <face filter="TypeID=240">
+                                <a href="tel:@text"
+                                    class="w-full z-[5] relative group overflow-hidden h-[88px] py-3 hover:bg-gradient-to-r hover:from-primary-300 hover:to-primary-50 px-6 bg-secondary-50 rounded-2xl flex items-center justify-between">
+                                    <div class="flex w-[calc(100%-48px)] z-[1] items-center gap-2">
+                                        <span>
+                                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M24.0317 9.14988C23.2383 9.00332 22.5097 9.50964 22.3586 10.2841C22.2076 11.0586 22.7155 11.8147 23.4873 11.9663C25.8111 12.4193 27.6054 14.2181 28.0602 16.5498C28.1896 17.221 28.7805 17.7107 29.4611 17.7107C29.5524 17.7107 29.6436 17.7023 29.7366 17.6857C30.5084 17.5308 31.0163 16.7763 30.8653 16.0002C30.1864 12.5176 27.5058 9.82775 24.0317 9.14988Z"
+                                                    fill="#000" />
+                                                <path
+                                                    d="M23.9271 3.34653C23.5553 3.29323 23.1818 3.40316 22.8847 3.63966C22.5793 3.8795 22.3884 4.22593 22.3469 4.61399C22.2589 5.39845 22.8249 6.10797 23.6084 6.19624C29.0111 6.79916 33.2105 11.0079 33.818 16.4275C33.8994 17.1537 34.5085 17.7017 35.2355 17.7017C35.2903 17.7017 35.3434 17.6983 35.3982 17.6917C35.7783 17.65 36.1169 17.4618 36.3559 17.162C36.5933 16.8622 36.7012 16.4892 36.658 16.1078C35.9011 9.34574 30.6677 4.09768 23.9271 3.34653Z"
+                                                    fill="#000" />
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M18.3869 21.6206C25.0354 28.2673 26.5436 20.5779 30.7767 24.808C34.8578 28.8879 37.2034 29.7053 32.0327 34.8745C31.385 35.395 27.27 41.6571 12.8083 27.1994C-1.65515 12.74 4.60329 8.62074 5.12393 7.97325C10.3071 2.78974 11.1104 5.14897 15.1915 9.22888C19.4246 13.4608 11.7384 14.974 18.3869 21.6206Z"
+                                                    fill="#000" />
+                                            </svg>
+
+
+
+
+                                        </span>
+                                        <div class="flex flex-col gap-2">
+                                            <p class="font-bold line-clamp-1">
+                                                تماس تلفنی</p>
+                                            <p class="text-xs text-zinc-500">
+                                                مشاوره و ارتباط با پشتیبانی</p>
+                                        </div>
+                                    </div>
+                                    <span
+                                        class="z-[1] w-12 h-12 flex justify-center items-center group-hover:bg-primary rounded-full">
+                                        <img loading="lazy" class=" group-hover:invert-0 group-hover:brightness-[10000]"
+                                            src="[##cms.cms.cdn##]/images/left-secondary-arrow.svg" alt="arrow">
+                                    </span>
+                                </a>
+                            </face>
+                        </basis>
+                    </div>
+                    <div class="mt-10 flex flex-col gap-5 items-center justify-center w-full">
+                        <p class="text-center font-semibold text-lg">راهنمای مسافر</p>
+                        <basis core="list" datamembername="db.article-list">
+                            <layout>
+                                <div class="grid w-full grid-cols-4 gap-3">
+                                    @child
+
+                                </div>
+                            </layout>
+                            <face>
+                                <a href="@link"
+                                    class="w-full z-[5] relative group overflow-hidden h-[144px] py-3  px-6 bg-secondary-50 rounded-2xl flex flex-col items-center justify-between">
+                                    <img src="@00064X00065prp	" alt="@title" width="64" height="65">
+                                    <div class="w-full flex justify-between items-center">
+                                        <p class=" w-[calc(100%-48px)] font-bold line-clamp-1 text-base">@title</p>
+                                        <span
+                                            class="z-[1] w-12 h-12 flex justify-center items-center group-hover:bg-primary rounded-full">
+                                            <img loading="lazy"
+                                                class=" group-hover:invert-0 group-hover:brightness-[10000]"
+                                                src="[##cms.cms.cdn##]/images/left-secondary-arrow.svg" alt="arrow">
+                                        </span>
+                                    </div>
+
+
+                                </a>
+                            </face>
+                        </basis>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="w-full flex justify-center relative  ">
+            <div class="px-4 relative w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class="before-border last-section-brd-article relative w-full flex flex-col">
+                    <div class="flex  items-center gap-3 ">
+                        <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                                class="w-8 h-8">
+                            <p class="font-bold text-2xl text-zinc-900">ارتباط با کارشناسان </p>
+                            <span class="bullet-1"></span>
+                        </div>
+                    </div>
+                    <div class="my-[50px] z-[4] items-center w-full flex">
+                        <div
+                            class="w-full rounded-2xl overflow-hidden relative flex items-center justify-center h-[143px] px-[35px] py-5">
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/contact-form-image.jpg" alt="contact-us"
+                                class="w-[42%] h-full z-0    absolute left-0 top-0">
+                            <span
+                                class="w-[80px] absolute left-[calc(42%-3px)] z-[3] bg-gradient-to-r from-[#d6d9d8] h-full"></span>
+                            <span
+                                class="w-full h-full rounded-2xl bg-gradient-to-r z-[1] from-[#fff0] to-[#F2F2F2] absolute top-0 left-0 "></span>
+                            <div class="flex z-[5] w-full flex-col h-full justify-between">
+                                <p class="">جهت مشاوره خرید تور با کارشناسان ما در ارتباط باشید</p>
+                                <div class="flex items-center">
+                                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
+                                        <basis core="schema" run="atclient"
+                                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
+                                            displaymode="new" button="[data-btn-uploadfooter]"
+                                            resultsourceid="upload.datafooter" OnRendered="RenderFormFooter">
+                                        </basis>
+                                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
+                                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject"
+                                            method="post"
+                                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
+                                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
+                                            OnProcessed="OnProcessedEditObjectFooter">
+                                        </basis>
+                                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
+                                            triggers="upload.datafooter"></basis>
+                                        <div class="captcha-button">
+                                            <div id="captchaContainer"
+                                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
+                                                data-bc-answer-container data-bc-schema-info-multi="0"
+                                                data-bc-schema-info-word="58" data-bc-schema-info-part="1"
+                                                data-bc-schema-info-part-0-type="text">
+                                                <basis core="dbsource" source="trust_login" name="captcha"
+                                                    run="atclient" triggers="captcha.refreshFooter">
+                                                    <member name="code" type="scalar" request="captcha"></member>
+                                                </basis>
+                                                <basis datamembername="captcha.code" core="print" run="atclient"
+                                                    OnRendered="captchaRenderedFooter">
+                                                    <face>
+                                                        <script type="text/template">
+                                    <div class="flex  justify-between ">
+                                        
+                                        <div class="flex sfvgwdcsdhc w-full items-center">
+
+                         <div class="float-right captcha-ctz w-1/2 relative">
+                           
+                            <input id="captcha-ct" type="text" class="contactUsInput codeinputm bg-white rounded-2xl p-3" name="captcha" maxlength="4" placeholder="کد امنیتی "/>
+                            <input type="hidden" name="captchaid" value="@captcha@" />
+                        </div>
+                      <div class="float-right w-1/2 justify-between lg:mt-0 bvgvkek h-fit leading-[65px] px-4 flex items-center gap-2">
+                       <img loading="lazy" src="/@captcha@" width="86" height="59" alt="captcha" />
+                        <span  onclick="refreshCaptchaFooter()">
+                            <svg class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="group-hover:stroke-primary"
+                                                d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3"
+                                                stroke="#020121" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <circle
+                                                class="group-hover:stroke-primary transition-all duration-300 ease-in-out"
+                                                cx="24" cy="24.5" r="10" stroke="#020121" stroke-width="1.5" />
+                                        </svg>
+                        </span>
+                       
+                    </div>
+
+                                                        </div></div>
+                    </script>
+                                                    </face>
+                                                </basis>
+                                                <button type="button" data-btn-uploadfooter
+                                                    class="  data-body-btn w-[108px] h-[59px] flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
+                                                    ارسال
+                                                </button>
+
+                                            </div>
+
+                                            <div
+                                                class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex">
+                                                <div id="ballsWaveG"
+                                                    class="ext-zinc-50 text-base font-normal leading-normal">
+                                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                                                </div>
+                                            </div>
+                                            <div class="message-api absolute text-center text-primary text-xs"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
+    <basis core="call" file="footer.inc" />
+</body>
+
+
+
+</html>
