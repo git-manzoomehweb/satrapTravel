@@ -444,21 +444,21 @@ DropDownInFooter?.forEach((el) => {
   });
 });
 // ________
-document.addEventListener("DOMContentLoaded", function () {
-  const headerB = document.querySelector("header div.fixed");
+// document.addEventListener("DOMContentLoaded", function () {
+//   const headerB = document.querySelector("header div.fixed");
 
-  if (!headerB) return;
+//   if (!headerB) return;
 
-  window.addEventListener("scroll", function () {
-    if (window.scrollY >= 200) {
-      if (window.innerWidth > 968) {
-        headerB.classList.add("shadow");
-      }
-    } else {
-      headerB.classList.remove("shadow");
-    }
-  });
-});
+//   window.addEventListener("scroll", function () {
+//     if (window.scrollY >= 200) {
+//       if (window.innerWidth > 968) {
+//         headerB.classList.add("shadow");
+//       }
+//     } else {
+//       headerB.classList.remove("shadow");
+//     }
+//   });
+// });
 
 // ____________________________
 // ____________________________
@@ -2807,12 +2807,12 @@ window.addEventListener("scroll", () => {
           header.style.backgroundColor = "var(--primary-600)";
         } else {
           header.style.backgroundColor = "#fff";
-          header.classList.add("shadow");
+          // header.classList.add("shadow");
         }
       } else {
         header.style.backdropFilter = "none";
         header.style.backgroundColor = "transparent";
-        header.classList.remove("shadow");
+        // header.classList.remove("shadow");
       }
     }
   } else {
@@ -3462,6 +3462,45 @@ if (document.getElementById("date-convertor")) {
 // ____________________________
 // ____________________________
 // ____________________________
+function renderDestinationCards() {
+    const titleElements = document.querySelectorAll('.title-cnt');
+
+    if (!titleElements.length) return;
+
+    titleElements.forEach(titleEl => {
+        try {
+            const card = titleEl.closest('a, .destination-card, .stanbul-card');
+            if (!card) return;
+
+            const raw = titleEl.textContent.trim();
+            if (!raw) return;
+
+            const [travelPart, airlinePart] = raw.split('/').map(x => x?.trim());
+
+            if (!travelPart || !travelPart.includes('-')) return;
+
+            const [departure, destination] = travelPart.split('-').map(x => x?.trim());
+
+            const depEl = card.querySelector('.departure-name');
+            const desEl = card.querySelector('.destination-name');
+
+            if (depEl) depEl.textContent = departure || '';
+            if (desEl) desEl.textContent = destination || '';
+
+            if (airlinePart) {
+                const airlineImg = card.querySelector('img.airline');
+                if (airlineImg) airlineImg.src = airlinePart;
+            }
+
+        } catch (err) {
+            console.warn('Skipped one card due to format mismatch:', err);
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', renderDestinationCards);
+
+
 // ____________________________
 // ____________________________
 // ____________________________

@@ -1277,6 +1277,12 @@ video {
 .w-\[767px\] {
   width: 767px;
 }
+.w-\[747px\] {
+  width: 747px;
+}
+.w-\[730px\] {
+  width: 730px;
+}
 .w-\[77px\] {
   width: 77px;
 }
@@ -2726,6 +2732,20 @@ span[content="null"] {
   border-top-right-radius: 24px;
   right: -45px;
   top: 16px;
+}
+main.bg-list-pattern-v2 .before-border:has(#contact-form-resize)::before{
+  top: 16px !important;
+}
+body:has(.layout__body__container) footer .mt-\[74\.82px\] {
+    margin-top: 40.2px !important;
+}
+body:has(.layout__body__container) .footer-last-section::before {
+    
+    top: -21.5px !important;
+     
+}
+main .before-border:has(#contact-form-resize)::before{
+  top: 17px !important;
 }
 .search-box-banner {
   background-image: url("./web/assets/images/search-bg.jpg");
@@ -4265,4 +4285,44 @@ body:has(.insurance-searchHistory:not(.hidden)) .before-to-top-border::before {
 }
 .text-secondary {
   color: var(--secondary);
+}
+.swiper-ver .swiper-slide-prev{
+margin-bottom: 0 !important;
+
+}
+.swiper-ver .swiper-slide span.bg-\[\#ff4949c5\]{
+  top: 32px !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  right: 700px !important ;
+    transform: rotate(-90deg);
+  z-index: 0;
+  width: 68px !important;
+  height: 2rem !important;
+opacity: 0;
+}
+.swiper-ver .swiper-slide:hover span.bg-\[\#ff4949c5\]{
+  right: 732px !important ;
+  z-index: 0;
+  transform: rotate(-90deg);
+  opacity: 1  !important;
+}
+.swiper-ver  .date-btn{
+  padding: 6px 12px;
+  background-color: white;
+  font-size: 14px ;
+  font-weight: 600;
+  border-radius: 8px;
+  color: var(--zinc-800) !important;
+  border: 1px solid var(--zinc-300);
+}
+  .date-btn:hover{
+  background-color: var(--zinc-800);
+  color: white !important;
+  border: 1px solid white !important;
+}
+.tour-card:hover{
+  background-color: var(--primary-100) !important;
 }

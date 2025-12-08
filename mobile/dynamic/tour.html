@@ -313,18 +313,18 @@
                     </div>
                     <div class="w-full flex flex-col gap-[21px]">
                         <div
-                            class="sidebar-box share-box relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5">
+                            class="sidebar-box share-box relative w-full h-12 rounded-xl cursor-pointer flex items-center justify-between p-2">
                             <div>
-                                <img loading="lazy" src="[##cms.cms.cdn##]/images/Share.svg" alt="share" width="48"
-                                    height="48">
+                                <img loading="lazy" src="[##cms.cms.cdn##]/images/Share.svg" alt="share" width="30"
+                                    height="30">
 
                             </div>
-                            <span class="shadow-txt text-white font-semibold text-xl">اشتراک گذاری</span>
+                            <span class="shadow-txt text-white font-semibold text-base">اشتراک گذاری</span>
                         </div>
-                        <div class="w-full hidden items-center gap-2 shareIcon-container justify-between ">
+                        <div class="w-full hidden items-center gap-2 shareIcon-container justify-between !p-0">
 
                             <a href="/"
-                                class="shareIcon facebook  w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
+                                class="shareIcon facebook  w-10 h-10  flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <rect width="24" height="24" rx="8" />
@@ -335,7 +335,7 @@
                                 </svg>
                             </a>
                             <a href="/"
-                                class="shareIcon mail  w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
+                                class="shareIcon mail  w-10 h-10  flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <rect width="24" height="24" rx="8" />
@@ -350,7 +350,7 @@
                             </a>
 
                             <a href="/"
-                                class="shareIcon twitt   w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
+                                class="shareIcon twitt   w-10 h-10  flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <rect width="24" height="24" rx="8" />
@@ -363,7 +363,7 @@
                             </a>
 
                             <a href="/"
-                                class="shareIcon whatapp   w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
+                                class="shareIcon whatapp   w-10 h-10  flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <rect width="24" height="24" rx="8" />
@@ -381,7 +381,7 @@
 
 
                             <a href="/"
-                                class="shareIcon telegram   w-11 h-11 flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
+                                class="shareIcon telegram   w-10 h-10  flex justify-center opacity-0 items-center sidebar-box rounded-full transition-all ease-in-out duration-500 ">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <rect width="24" height="24" rx="8" />
@@ -399,51 +399,65 @@
 
 
 
-                        <basis core="print" datamembername="db.pdf">
-                            <else-layout>
-                                <form class="w-full tour-pdf-form" action="/tours/package/pdf?id=[##cms.query.id##]"
-                                    method="POST" target="_blank">
-                                    <input type="hidden" class="hidden" name="id" value="[##cms.query.id##]">
-                                    <input type="hidden" class="hidden" name="from" id="form-from">
-                                    <input type="hidden" class="hidden" name="to" id="form-to">
-                                    <input type="hidden" class="hidden" name="day" id="form-day">
-                                    <input type="hidden" class="hidden" name="fdate" id="fdate">
-                                    <input type="hidden" class="hidden" name="rdate" id="rdate">
-                                    <button type="submit" target="_blank"
-                                        class="sidebar-box relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 !pr-0">
-                                        <div>
-                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/dwn-package.svg"
-                                                alt="download">
+                         <basis core="print" datamembername="db.pdf">
+                                <else-layout>
+                                    <form class="w-full tour-pdf-form" action="/tours/package/pdf?id=[##cms.query.id##]"
+                                        method="POST" target="_blank">
+                                        <input type="hidden" class="hidden" name="id" value="[##cms.query.id##]">
+                                        <input type="hidden" class="hidden" name="from" id="form-from">
+                                        <input type="hidden" class="hidden" name="to" id="form-to">
+                                        <input type="hidden" class="hidden" name="day" id="form-day">
+                                        <input type="hidden" class="hidden" name="fdate" id="fdate">
+                                        <input type="hidden" class="hidden" name="rdate" id="rdate">
+                                        <button type="submit" target="_blank"
+                                            class="sidebar-box relative w-full h-12 rounded-xl cursor-pointer flex items-center justify-between p-2  ">
+                                            <div class="white-shadow w-8 h-8 rounded-full bg-white flex justify-center items-center">
+                                                <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M11.2616 15.903C11.2706 15.914 11.2816 15.924 11.2916 15.934C11.3766 16.021 11.4746 16.088 11.5796 16.137L11.5816 16.138C11.5996 16.146 11.6176 16.154 11.6366 16.161C11.7396 16.201 11.8496 16.225 11.9666 16.229H11.9696C11.9776 16.23 11.9866 16.23 11.9946 16.23H12.0006C12.0156 16.23 12.0306 16.229 12.0446 16.229H12.0466C12.1636 16.223 12.2756 16.198 12.3796 16.155C12.3966 16.149 12.4146 16.141 12.4316 16.132H12.4336C12.5336 16.084 12.6266 16.018 12.7086 15.936C12.7196 15.925 12.7306 15.914 12.7406 15.903L16.3196 12.05C16.6956 11.646 16.6726 11.013 16.2676 10.637C15.8636 10.261 15.2306 10.285 14.8546 10.689L13.0006 12.684V4.75C13.0006 4.197 12.5536 3.75 12.0006 3.75C11.4486 3.75 11.0006 4.197 11.0006 4.75V12.684L9.14661 10.689C8.77061 10.284 8.13761 10.26 7.73361 10.637C7.32861 11.013 7.30561 11.646 7.68161 12.05L11.2616 15.903Z"
+                                                        fill="#014BD5" />
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M20 14.7891C19.448 14.7891 19 15.2371 19 15.7891V17.4391C19 18.7131 17.964 19.7491 16.69 19.7491H7.311C6.037 19.7491 5 18.7131 5 17.4391V15.7891C5 15.2371 4.553 14.7891 4 14.7891C3.448 14.7891 3 15.2371 3 15.7891V17.4391C3 19.8151 4.934 21.7491 7.311 21.7491H16.69C19.066 21.7491 21 19.8151 21 17.4391V15.7891C21 15.2371 20.552 14.7891 20 14.7891Z"
+                                                        fill="#014BD5" />
+                                                </svg>
+
+                                            </div>
+                                            <span class="shadow-txt text-white font-semibold text-base">دانلود پکیج</span>
+                                        </button>
+                                    </form>
+                                </else-layout>
+                                <layout>@child </layout>
+                                <face>
+                                    <a href="/@largeIMG" target="_blank"
+                                        class="sidebar-box dwn relative w-full h-12 rounded-xl cursor-pointer flex items-center justify-between p-2  ">
+                                        <div class="white-shadow  w-8 h-8 rounded-full bg-white flex justify-center items-center">
+                                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M11.2616 15.903C11.2706 15.914 11.2816 15.924 11.2916 15.934C11.3766 16.021 11.4746 16.088 11.5796 16.137L11.5816 16.138C11.5996 16.146 11.6176 16.154 11.6366 16.161C11.7396 16.201 11.8496 16.225 11.9666 16.229H11.9696C11.9776 16.23 11.9866 16.23 11.9946 16.23H12.0006C12.0156 16.23 12.0306 16.229 12.0446 16.229H12.0466C12.1636 16.223 12.2756 16.198 12.3796 16.155C12.3966 16.149 12.4146 16.141 12.4316 16.132H12.4336C12.5336 16.084 12.6266 16.018 12.7086 15.936C12.7196 15.925 12.7306 15.914 12.7406 15.903L16.3196 12.05C16.6956 11.646 16.6726 11.013 16.2676 10.637C15.8636 10.261 15.2306 10.285 14.8546 10.689L13.0006 12.684V4.75C13.0006 4.197 12.5536 3.75 12.0006 3.75C11.4486 3.75 11.0006 4.197 11.0006 4.75V12.684L9.14661 10.689C8.77061 10.284 8.13761 10.26 7.73361 10.637C7.32861 11.013 7.30561 11.646 7.68161 12.05L11.2616 15.903Z"
+                                                    fill="#014BD5" />
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M20 14.7891C19.448 14.7891 19 15.2371 19 15.7891V17.4391C19 18.7131 17.964 19.7491 16.69 19.7491H7.311C6.037 19.7491 5 18.7131 5 17.4391V15.7891C5 15.2371 4.553 14.7891 4 14.7891C3.448 14.7891 3 15.2371 3 15.7891V17.4391C3 19.8151 4.934 21.7491 7.311 21.7491H16.69C19.066 21.7491 21 19.8151 21 17.4391V15.7891C21 15.2371 20.552 14.7891 20 14.7891Z"
+                                                    fill="#014BD5" />
+                                            </svg>
+
                                         </div>
-                                        <span class="shadow-txt text-white font-semibold text-xl">دانلود پکیج</span>
-                                    </button>
-                                </form>
-                            </else-layout>
-                            <layout>@child </layout>
-                            <face>
-                                <a href="/@largeIMG" target="_blank"
-                                    class="sidebar-box dwn relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 !pr-0">
-                                    <div>
-
-                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/dwn-package.svg"
-                                            alt="download">
-
-                                    </div>
-                                    <span class="shadow-txt text-white font-semibold text-xl">دانلود پکیج</span>
-                                </a>
-                            </face>
-                        </basis>
+                                        <span class="shadow-txt text-white font-semibold text-base">دانلود پکیج</span>
+                                    </a>
+                                </face>
+                            </basis>
 
 
                         <basis core="print" datamembername="db.info">
                             <face filter="TypeID=240">
                                 <a href="tel:@text"
-                                    class="sidebar-box tel relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 ">
+                                    class="sidebar-box tel relative w-full h12 rounded-xl cursor-pointer flex items-center justify-between p-2 ">
                                     <div>
-                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/shadow-tel.svg" alt="phone">
+                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/shadow-tel.svg" alt="phone" width="30" height="30">
 
                                     </div>
-                                    <span class="shadow-txt text-white font-semibold text-xl"> @text</span>
+                                    <span class="shadow-txt text-white font-semibold text-base"> @text</span>
                                 </a>
                             </face>
                         </basis>
@@ -904,7 +918,7 @@
                                             <div class="w-full flex flex-col gap-2 justify-between">
                                                 <div class="flex items-center gap-2 w-full justify-between">
                                                 <div class="w-full font-bold text-sm text-[#171717] flex items-center justify-between  gap-2 ">
-                                                    <div class="font-medium text-sm text-[#171717]">تک تخته : </div>
+                                                    <div class="font-medium text-sm text-[#171717]">یک تخته : </div>
                                                     {{ return await renderPriceInfo($data,'singlecost')}} 
                                                 </div>
                                             </div>

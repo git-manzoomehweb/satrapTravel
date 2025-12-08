@@ -33,8 +33,8 @@
 
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
-    <member name="tour-list" type="list" link="tour.bc" propertyid="8077,8181,10000504,8076,3088134" perpage="20" typeid="159"
-        size="296x206" order="ord" />
+    <member name="tour-list" type="list" link="tour.bc" propertyid="8077,8181,10000504,8076,3088134" perpage="20"
+        typeid="159" size="296x206" order="ord" />
     <member name="paging" type="list" request="paging" count="5" parentname="tour-list" />
 </basis>
 <basis core="dbsource" source="basiscore" mid="20" name="list" lid="1" schemaid="987" term="[##cms.query.term##]">
@@ -54,7 +54,7 @@
 
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="217944">
-    <member name="last-minute-offer" type="list" link="tour.bc" propertyid="8077,8181,10000504,8076" typeid="159"
+    <member name="last-minute-offer" type="list" link="tour.bc" propertyid="8077,8181,3088134,10000504,8076" typeid="159"
         size="296x206" order="ord" perpage="20" />
 </basis>
 
@@ -71,8 +71,7 @@
 
 
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.gid|(218270)##]">
-    <member name="Tour-Reservation-Guide" type="list" link="article.bc" propertyid="7244" perpage="9"
-     order="ord" />
+    <member name="Tour-Reservation-Guide" type="list" link="article.bc" propertyid="7244" perpage="9" order="ord" />
 </basis>
 
 <!DOCTYPE html>
@@ -202,47 +201,47 @@
                     </div>
                 </div>
                 <div class="flex items-center w-full gap-[50px]">
-                    
-                        <basis core="list" datamembername="db.media-gallery">
-                            <face>
-                                <div data-id="@Table2ID"
-                                    class="flex z-[4] relative items-center gap-[13px] border border-transparent cursor-pointer transition-all duration-200 ease-in-out group video-player rounded-lg pl-2 py-1">
-                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Play.svg" alt="play" width="57"
-                                        height="61">
-                                    <div class="flex flex-col h-[59px] justify-between">
-                                        <p class="text-white font-bold group-hover:text-[#fff]"> @name </p>
-                                        <p class="text-white text-xs group-hover:text-[#fff]">@description</p>
-                                    </div>
 
+                    <basis core="list" datamembername="db.media-gallery">
+                        <face>
+                            <div data-id="@Table2ID"
+                                class="flex z-[4] relative items-center gap-[13px] border border-transparent cursor-pointer transition-all duration-200 ease-in-out group video-player rounded-lg pl-2 py-1">
+                                <img loading="lazy" src="[##cms.cms.cdn##]/images/Play.svg" alt="play" width="57"
+                                    height="61">
+                                <div class="flex flex-col h-[59px] justify-between">
+                                    <p class="text-white font-bold group-hover:text-[#fff]"> @name </p>
+                                    <p class="text-white text-xs group-hover:text-[#fff]">@description</p>
                                 </div>
+
+                            </div>
+                            <div
+                                class="list-video-popup hidden fixed top-0 left-0 z-[60] justify-center items-center w-screen h-screen">
                                 <div
-                                    class="list-video-popup hidden fixed top-0 left-0 z-[60] justify-center items-center w-screen h-screen">
-                                    <div
-                                        class="justify-between flex flex-col gap-4 px-4 py-[14px]   w-800   max-h-[90vh] bg-white rounded-3xl       shadow-2xl">
-                                        <div class="w-full flex justify-between items-center">
-                                            <p class="font-medium text-xl">مشاهده ویدیو</p>
-                                            <button aria-label="close-btn" type="button" class="close-popup group">
-                                                <svg width="33" height="34" viewBox="0 0 33 34" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M16.8438 4.46729C9.45175 4.46729 3.4375 10.4159 3.4375 17.7273C3.4375 25.0387 9.45175 30.9873 16.8438 30.9873C24.2358 30.9873 30.25 25.0387 30.25 17.7273C30.25 10.4159 24.2358 4.46729 16.8438 4.46729Z"
-                                                        fill="#7E7E7E" class="group-hover:fill-primary-950" />
-                                                    <path
-                                                        d="M20.1429 22.4192L21.6018 20.9763L18.3018 17.715L21.6018 14.4578L20.1443 13.0135L16.8429 16.2734L13.5429 13.0107L12.084 14.4537L15.3827 17.715L12.084 20.9722L13.5415 22.4152L16.8415 19.1566L20.1429 22.4192Z"
-                                                        fill="#7E7E7E" class="group-hover:fill-white" />
-                                                </svg>
-                                            </button>
-                                        </div>
-
-                                        <div class="set-fetch rounded-3xl overflow-hidden w-full h-440"></div>
-
+                                    class="justify-between flex flex-col gap-4 px-4 py-[14px]   w-800   max-h-[90vh] bg-white rounded-3xl       shadow-2xl">
+                                    <div class="w-full flex justify-between items-center">
+                                        <p class="font-medium text-xl">مشاهده ویدیو</p>
+                                        <button aria-label="close-btn" type="button" class="close-popup group">
+                                            <svg width="33" height="34" viewBox="0 0 33 34" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M16.8438 4.46729C9.45175 4.46729 3.4375 10.4159 3.4375 17.7273C3.4375 25.0387 9.45175 30.9873 16.8438 30.9873C24.2358 30.9873 30.25 25.0387 30.25 17.7273C30.25 10.4159 24.2358 4.46729 16.8438 4.46729Z"
+                                                    fill="#7E7E7E" class="group-hover:fill-primary-950" />
+                                                <path
+                                                    d="M20.1429 22.4192L21.6018 20.9763L18.3018 17.715L21.6018 14.4578L20.1443 13.0135L16.8429 16.2734L13.5429 13.0107L12.084 14.4537L15.3827 17.715L12.084 20.9722L13.5415 22.4152L16.8415 19.1566L20.1429 22.4192Z"
+                                                    fill="#7E7E7E" class="group-hover:fill-white" />
+                                            </svg>
+                                        </button>
                                     </div>
+
+                                    <div class="set-fetch rounded-3xl overflow-hidden w-full h-440"></div>
+
                                 </div>
-                            </face>
-                        </basis>
+                            </div>
+                        </face>
+                    </basis>
 
 
-                   
+
 
 
                     <basis core="list" datamembername="joining.podcast">
@@ -276,7 +275,8 @@
                                             <p class="text-[#282828] font-medium"> @db.audio.name </p>
 
                                         </div>
-                                        <button aria-label="close-poscast" type="button" class="close-popup-music group">
+                                        <button aria-label="close-poscast" type="button"
+                                            class="close-popup-music group">
                                             <svg width="33" height="34" viewBox="0 0 33 34" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd"
@@ -445,7 +445,8 @@
                             <div
                                 class="hidden video-popup py-12 w-screen h-screen fixed flex-col gap-4 justify-center items-center blur2 top-0 left-0 z-50 bg-[#0000009a]">
                                 <div class="!w-[580px] flex justify-end relative">
-                                    <button aria-label="close-video" class="close-popup hover:bg-secondary-900 p-1 rounded-full">
+                                    <button aria-label="close-video"
+                                        class="close-popup hover:bg-secondary-900 p-1 rounded-full">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px"
                                             viewBox="0 0 24 24" fill="none">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -568,15 +569,15 @@
                                                     alt="Subtract" class="absolute z-0 w-full">
                                                 <span
                                                     class="relative z-[1] px-2 line-clamp-1 text-center font-bold text-[#3F3F3F]">
-                                                @db.tour-list.prp_3088134
-                                            </span>
+                                                    @db.tour-list.prp_3088134
+                                                </span>
                                             </div>
                                             <div class="flex flex-col gap-4">
                                                 <div class="flex w-[204px] items-center justify-between">
                                                     <span class="text-xs text-[#777777]">شروع قیمت:</span>
                                                     <p class="font-medium text-[#060606]">@db.tour-list.prp_8181 </p>
                                                 </div>
-                                                <div  
+                                                <div
                                                     class="flex group-hover:bg-primary group-hover:text-white w-[204px] h-12 bg-[#FFBD22] rounded-xl font-bold text-xs text-[#272727] justify-center items-center gap-2">
                                                     مشاهده تور
                                                     <svg width="17" height="15" viewBox="0 0 17 15" fill="none"
@@ -774,16 +775,16 @@
                                     </div>
                                     <!-- <div class="swiper-scrollbar"></div> -->
                                 </layout>
-                                
+
                                 <face>
                                     <a href="@db.last-minute-offer.link	"
                                         class="swiper-slide group relative  !h-[109px] !w-full ">
                                         <div
-                                            class="w-full h-[95px] group-hover:bg-primary bg-secondary-700 rounded-2xl p-2 !flex justify-between items-center">
-                                            <span
-                                                class="text-white text-xs group-hover:bg-[#ffbd22ea] bg-[#ff4949c5] absolute -top-3 right-4 z-[2] px-4 line-clamp-1 h-8 flex justify-center items-center rounded-[40px]">اقساطی</span>
+                                            class="w-full h-[95px] group-hover:bg-primary bg-zinc-100 rounded-2xl p-2 !flex justify-between items-center">
+                                            <span content="@db.last-minute-offer.prp_3088134"
+                                                class="text-white text-xs  bg-[#ff4949c5] absolute -top-3 right-4  px-4 line-clamp-1 h-8 flex justify-center items-center">@db.last-minute-offer.prp_3088134</span>
                                             <div
-                                                class="w-[767px] h-[79px] bg-white rounded-xl !flex justify-between items-center py-4 px-[9px]">
+                                                class="w-[747px] z-[2] h-[79px] bg-white rounded-xl !flex justify-between items-center py-4 px-[9px]">
                                                 <p class="font-bold w-[217px] text-zinc-900 line-clamp-1">
                                                     @db.last-minute-offer.title </p>
                                                 <div class="flex h-full justify-between flex-col gap-2 ">
@@ -818,22 +819,24 @@
                                                     <div
                                                         class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
 
-                                                        <span class="w-[120px] line-clamp-1">شروع قیمت:</span>
+                                                        <span class=" line-clamp-1">شروع قیمت:</span>
                                                     </div>
                                                     <div
                                                         class="flex items-center   text-xs text-zinc-900 gap-2 line-clamp-1">
 
                                                         <span
-                                                            class="line-clamp-1 font-medium text-sm w-[150px]">@db.last-minute-offer.prp_8181
+                                                            class="line-clamp-1 font-medium text-sm">@db.last-minute-offer.prp_8181
                                                         </span>
                                                     </div>
+                                                </div>
+                                                <div class="date-btn flex justify-center items-center">تاریخ برگذاری
                                                 </div>
                                             </div>
                                             <svg width="48" height="49" viewBox="0 0 48 49" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                                     d="M9 24.5C9 16.229 15.729 9.5 24 9.5C32.271 9.5 39 16.229 39 24.5C39 32.771 32.271 39.5 24 39.5C15.729 39.5 9 32.771 9 24.5ZM11.25 24.5C11.25 31.5305 16.9695 37.25 24 37.25C31.0305 37.25 36.75 31.5305 36.75 24.5C36.75 17.4695 31.0305 11.75 24 11.75C16.9695 11.75 11.25 17.4695 11.25 24.5ZM20.1396 23.7024L25.3701 18.4959C25.8111 18.058 26.5221 18.0594 26.9601 18.499C27.1791 18.718 27.2886 19.006 27.2886 19.2924C27.2886 19.5804 27.1791 19.87 26.9571 20.089L22.5276 24.5004L26.9571 28.9089C27.3981 29.3469 27.3981 30.0594 26.9601 30.5004C26.5221 30.9399 25.8111 30.9429 25.3701 30.5034L20.1396 25.2969C19.7151 24.8754 19.7151 24.1254 20.1396 23.7024Z"
-                                                    fill="white" />
+                                                    fill="black" class="group-hover:fill-white" />
                                             </svg>
                                         </div>
 
