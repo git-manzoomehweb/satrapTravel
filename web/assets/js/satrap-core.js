@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const container = document.getElementById("search-box");
             container.innerHTML = xhrobj.responseText;
             // placeHolders();
+
             const scripts = container.getElementsByTagName("script");
             for (let i = 0; i < scripts.length; i++) {
               const scriptTag = document.createElement("script");
@@ -1466,7 +1467,6 @@ document.addEventListener("DOMContentLoaded", function () {
   navContainer.appendChild(nextBtn);
 
   let currentStoryIndex = 0;
-  const YTPlayers = {};
   const storyCache = {};
 
   function updateNavButtons() {
@@ -1476,14 +1476,6 @@ document.addEventListener("DOMContentLoaded", function () {
     prevBtn.style.pointerEvents = currentStoryIndex === 0 ? "none" : "auto";
     nextBtn.style.pointerEvents =
       currentStoryIndex === stories.length - 1 ? "none" : "auto";
-  }
-
-  function stopAllVideos() {
-    fetchContainer.querySelectorAll("video").forEach((v) => {
-      v.pause();
-      v.currentTime = 0;
-    });
-    Object.values(YTPlayers).forEach((player) => player?.pauseVideo?.());
   }
 
   async function loadStoryItems(index) {
@@ -1503,82 +1495,13 @@ document.addEventListener("DOMContentLoaded", function () {
         html = storyCache[catid];
       } else {
         const response = await fetch(`/story-load-items.bc?catid=${catid}`);
-        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        if (!response.ok)
+          throw new Error(`HTTP error! Status: ${response.status}`);
         html = await response.text();
         storyCache[catid] = html;
       }
 
       fetchContainer.innerHTML = html;
-
-      fetchContainer.querySelectorAll(".story-item").forEach((item, idx) => {
-        const url = item.getAttribute("data-video")?.trim();
-        if (!url) return;
-
-        item.innerHTML = "";
-
-        if (url.includes("aparat.com")) {
-          const hashMatch = url.match(/(?:embed\/|video\/|v\/)([a-zA-Z0-9_-]+)/);
-          if (hashMatch && hashMatch[1]) {
-            const hash = hashMatch[1];
-            const iframe = document.createElement("iframe");
-            iframe.setAttribute(
-              "src",
-              `https://www.aparat.com/video/video/embed/videohash/${hash}/vt/frame`
-            );
-            iframe.setAttribute("width", "100%");
-            iframe.setAttribute("height", "700px");
-            iframe.setAttribute("allowfullscreen", "true");
-            iframe.className = "w-full h-full rounded-lg";
-            item.appendChild(iframe);
-          }
-        } else if (url.includes("youtube.com") || url.includes("youtu.be")) {
-          let videoId = null;
-          if (url.includes("youtu.be/"))
-            videoId = url.split("youtu.be/")[1].split(/[?&]/)[0];
-          else if (url.includes("v="))
-            videoId = url.split("v=")[1].split("&")[0];
-          else {
-            const match = url.match(/embed\/([a-zA-Z0-9_-]+)/);
-            if (match) videoId = match[1];
-          }
-          if (videoId) {
-            const iframe = document.createElement("iframe");
-            iframe.setAttribute("id", `ytplayer-${idx}`);
-            iframe.setAttribute(
-              "src",
-              `https://www.youtube.com/embed/${videoId}?enablejsapi=1&rel=0`
-            );
-            iframe.setAttribute("width", "100%");
-            iframe.setAttribute("height", "700px");
-            iframe.setAttribute("allowfullscreen", "true");
-            iframe.className = "w-full h-full rounded-lg";
-            item.appendChild(iframe);
-            YTPlayers[`ytplayer-${idx}`] = null;
-          }
-        } else if (url.endsWith(".mp4") || url.endsWith(".webm")) {
-          const videoEl = document.createElement("video");
-          videoEl.setAttribute("src", url);
-          videoEl.setAttribute("controls", "true");
-          videoEl.className = "w-full h-full rounded-lg";
-          item.appendChild(videoEl);
-        }
-      });
-
-      stopAllVideos();
-
-      if (Object.keys(YTPlayers).length > 0) {
-        if (typeof YT === "undefined") {
-          const tag = document.createElement("script");
-          tag.src = "https://www.youtube.com/iframe_api";
-          document.body.appendChild(tag);
-        }
-        window.onYouTubeIframeAPIReady = function () {
-          Object.keys(YTPlayers).forEach((id) => {
-            const iframe = document.getElementById(id);
-            YTPlayers[id] = new YT.Player(iframe, {});
-          });
-        };
-      }
     } catch (err) {
       fetchContainer.innerHTML = `<p class="text-white">خطا در بارگذاری محتوا: ${err.message}</p>`;
     }
@@ -1603,7 +1526,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   closeBtn?.addEventListener("click", () => {
-    stopAllVideos();
     fetchContainer.innerHTML = "";
     videoPopup.classList.add("hidden");
     videoPopup.classList.remove("flex");
@@ -1614,7 +1536,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.target === videoPopup) closeBtn.click();
   });
 });
-
 
 // ____________________________
 // ____________________________
@@ -2937,166 +2858,170 @@ document.addEventListener("DOMContentLoaded", () => {
   const loaderHTML =
     '<div dir="ltr" class="w-full flex justify-center p-6"><span class="loader"></span></div>';
 
-  document
-    .querySelectorAll(".clicker-list")
-    .forEach((clickerList) => {
-      const section = clickerList.closest("section");
-      const fetchWrapper = section.querySelector(".fetch-content-tour-mob");
-      const listItems = Array.from(section.querySelectorAll(".tour-li-mob"));
+  document.querySelectorAll(".clicker-list").forEach((clickerList) => {
+    const section = clickerList.closest("section");
+    const fetchWrapper = section.querySelector(".fetch-content-tour-mob");
+    const listItems = Array.from(section.querySelectorAll(".tour-li-mob"));
 
-      if (!fetchWrapper || listItems.length === 0) return;
+    if (!fetchWrapper || listItems.length === 0) return;
 
-      section._tourState = section._tourState || {
-        swiper: null,
-        currentCat: null,
-        loading: false,
-        cache: {} 
+    section._tourState = section._tourState || {
+      swiper: null,
+      currentCat: null,
+      loading: false,
+      cache: {},
+    };
+
+    const firstId = listItems[0].getAttribute("data-id");
+    section._tourState.currentCat = firstId ? firstId : null;
+
+    function setActiveItem(targetItem) {
+      listItems.forEach((li) => li.classList.remove("active"));
+      if (targetItem) targetItem.classList.add("active");
+    }
+
+    // 🔵🔵🔵  تابع فرمت قیمت  🔵🔵🔵
+    function formatPrices(wrapper) {
+      const priceElements = wrapper.querySelectorAll(".price-element");
+      priceElements.forEach((el) => {
+        let text = el.textContent.trim();
+
+        // جداسازی عدد از واحد
+        const match = text.match(/^(\d+)\s*(.*)$/);
+        if (!match) return;
+
+        let number = match[1];
+        let unit = match[2] || "";
+
+        // سه‌رقم سه‌رقم کردن
+        const formatted = Number(number).toLocaleString("en-US");
+
+        // بازگردانی به المنت
+        el.textContent = `${formatted} ${unit}`.trim();
+      });
+    }
+
+    async function loadCategory(catid) {
+      // --- اگر در کش باشد: بدون فچ ---
+      if (section._tourState.cache[catid]) {
+        fetchWrapper.innerHTML = section._tourState.cache[catid];
+
+        // 🔵 بعد از رندر → فرمت قیمت‌ها
+        // formatPrices(fetchWrapper);
+
+        if (section._tourState.swiper?.destroy) {
+          try {
+            section._tourState.swiper.destroy(true, true);
+          } catch (e) {}
+        }
+
+        initSwiper();
+        section._tourState.currentCat = catid;
+        return;
+      }
+
+      // --- اگر نبود → فچ جدید ---
+      section._tourState.loading = true;
+      fetchWrapper.innerHTML = loaderHTML;
+
+      try {
+        const res = await fetch(
+          `/tour-load-items.bc?catid=${encodeURIComponent(catid)}`
+        );
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        const html = await res.text();
+
+        // ذخیره در کش
+        section._tourState.cache[catid] = html;
+
+        // رندر
+        fetchWrapper.innerHTML = html;
+
+        // 🔵 بعد از رندر → فرمت قیمت‌ها
+        // formatPrices(fetchWrapper);
+
+        // Destroy swiper قبلی
+        if (section._tourState.swiper?.destroy) {
+          try {
+            section._tourState.swiper.destroy(true, true);
+          } catch (err) {}
+        }
+
+        initSwiper();
+        section._tourState.currentCat = catid;
+      } catch (err) {
+        console.error("Fetch failed:", err);
+        fetchWrapper.innerHTML = `<p class="text-red-500 p-4">Error loading data: ${err.message}</p>`;
+      } finally {
+        section._tourState.loading = false;
+      }
+    }
+
+    function initSwiper() {
+      const container =
+        section.querySelector(".tourSwiperMob") ||
+        section.querySelector("#tour-list-container-mob") ||
+        fetchWrapper.closest(".tourSwiperMob") ||
+        fetchWrapper;
+
+      const swiperEl = container instanceof Element ? container : fetchWrapper;
+
+      const params = {
+        slidesPerView: 1.3,
+        speed: 500,
+        centeredSlides: false,
+        spaceBetween: 11,
+        grabCursor: true,
+        autoplay: { delay: 9500, disableOnInteraction: false },
+        pagination: { el: ".swiper-pagination", clickable: true },
+        navigation: {
+          nextEl: ".swiper-button-next-ft",
+          prevEl: ".swiper-button-prev-ft",
+        },
+        breakpoints: {
+          640: { slidesPerView: 1.3, spaceBetween: 11 },
+          768: { slidesPerView: 1.3, spaceBetween: 11 },
+          1024: { slidesPerView: 1.3, spaceBetween: 11 },
+        },
       };
 
-      const firstId = listItems[0].getAttribute("data-id");
-      section._tourState.currentCat = firstId ? firstId : null;
+      if (document.documentElement?.dir === "rtl") params.rtl = true;
 
-      function setActiveItem(targetItem) {
-        listItems.forEach((li) => li.classList.remove("active"));
-        if (targetItem) targetItem.classList.add("active");
+      try {
+        section._tourState.swiper = new Swiper(swiperEl, params);
+      } catch (err) {
+        try {
+          section._tourState.swiper = new Swiper(
+            "#tour-list-container-mob",
+            params
+          );
+        } catch (e) {
+          console.warn("Swiper init failed:", e);
+        }
       }
+    }
 
-      // 🔵🔵🔵  تابع فرمت قیمت  🔵🔵🔵
-      function formatPrices(wrapper) {
-        const priceElements = wrapper.querySelectorAll(".price-element");
-        priceElements.forEach((el) => {
-          let text = el.textContent.trim();
+    setActiveItem(listItems[0]);
+    if (section._tourState.currentCat)
+      loadCategory(section._tourState.currentCat);
 
-          // جداسازی عدد از واحد
-          const match = text.match(/^(\d+)\s*(.*)$/);
-          if (!match) return;
+    listItems.forEach((li) => {
+      li.addEventListener("click", () => {
+        const catid = li.getAttribute("data-id");
+        if (!catid) return;
 
-          let number = match[1];
-          let unit = match[2] || "";
-
-          // سه‌رقم سه‌رقم کردن
-          const formatted = Number(number).toLocaleString("en-US");
-
-          // بازگردانی به المنت
-          el.textContent = `${formatted} ${unit}`.trim();
-        });
-      }
-
-      async function loadCategory(catid) {
-
-        // --- اگر در کش باشد: بدون فچ ---
-        if (section._tourState.cache[catid]) {
-          fetchWrapper.innerHTML = section._tourState.cache[catid];
-
-          // 🔵 بعد از رندر → فرمت قیمت‌ها
-          formatPrices(fetchWrapper);
-
-          if (section._tourState.swiper?.destroy) {
-            try { section._tourState.swiper.destroy(true, true); } catch (e) {}
-          }
-
-          initSwiper();
-          section._tourState.currentCat = catid;
+        if (section._tourState.currentCat === catid) {
+          setActiveItem(li);
           return;
         }
 
-        // --- اگر نبود → فچ جدید ---
-        section._tourState.loading = true;
-        fetchWrapper.innerHTML = loaderHTML;
-
-        try {
-          const res = await fetch(
-            `/tour-load-items.bc?catid=${encodeURIComponent(catid)}`
-          );
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-          const html = await res.text();
-
-          // ذخیره در کش
-          section._tourState.cache[catid] = html;
-
-          // رندر
-          fetchWrapper.innerHTML = html;
-
-          // 🔵 بعد از رندر → فرمت قیمت‌ها
-          formatPrices(fetchWrapper);
-
-          // Destroy swiper قبلی
-          if (section._tourState.swiper?.destroy) {
-            try { section._tourState.swiper.destroy(true, true); } catch (err) {}
-          }
-
-          initSwiper();
-          section._tourState.currentCat = catid;
-        } catch (err) {
-          console.error("Fetch failed:", err);
-          fetchWrapper.innerHTML = `<p class="text-red-500 p-4">Error loading data: ${err.message}</p>`;
-        } finally {
-          section._tourState.loading = false;
-        }
-      }
-
-      function initSwiper() {
-        const container =
-          section.querySelector(".tourSwiperMob") ||
-          section.querySelector("#tour-list-container-mob") ||
-          fetchWrapper.closest(".tourSwiperMob") ||
-          fetchWrapper;
-
-        const swiperEl = container instanceof Element ? container : fetchWrapper;
-
-        const params = {
-          slidesPerView: 1.3,
-          speed: 500,
-          centeredSlides: false,
-          spaceBetween: 11,
-          grabCursor: true,
-          autoplay: { delay: 9500, disableOnInteraction: false },
-          pagination: { el: ".swiper-pagination", clickable: true },
-          navigation: {
-            nextEl: ".swiper-button-next-ft",
-            prevEl: ".swiper-button-prev-ft",
-          },
-          breakpoints: {
-            640: { slidesPerView: 1.3, spaceBetween: 11 },
-            768: { slidesPerView: 1.3, spaceBetween: 11 },
-            1024: { slidesPerView: 1.3, spaceBetween: 11 },
-          },
-        };
-
-        if (document.documentElement?.dir === "rtl") params.rtl = true;
-
-        try {
-          section._tourState.swiper = new Swiper(swiperEl, params);
-        } catch (err) {
-          try {
-            section._tourState.swiper = new Swiper("#tour-list-container-mob", params);
-          } catch (e) {
-            console.warn("Swiper init failed:", e);
-          }
-        }
-      }
-
-      setActiveItem(listItems[0]);
-      if (section._tourState.currentCat) loadCategory(section._tourState.currentCat);
-
-      listItems.forEach((li) => {
-        li.addEventListener("click", () => {
-          const catid = li.getAttribute("data-id");
-          if (!catid) return;
-
-          if (section._tourState.currentCat === catid) {
-            setActiveItem(li);
-            return;
-          }
-
-          setActiveItem(li);
-          loadCategory(catid);
-        });
+        setActiveItem(li);
+        loadCategory(catid);
       });
     });
+  });
 });
-
 
 // ____________________________
 // ____________________________
@@ -3463,48 +3388,317 @@ if (document.getElementById("date-convertor")) {
 // ____________________________
 // ____________________________
 function renderDestinationCards() {
-    const titleElements = document.querySelectorAll('.title-cnt');
+  const titleElements = document.querySelectorAll(".title-cnt");
 
-    if (!titleElements.length) return;
+  if (!titleElements.length) return;
 
-    titleElements.forEach(titleEl => {
-        try {
-            const card = titleEl.closest('a, .destination-card, .stanbul-card');
-            if (!card) return;
+  titleElements.forEach((titleEl) => {
+    try {
+      const card = titleEl.closest("a, .destination-card, .stanbul-card");
+      if (!card) return;
 
-            const raw = titleEl.textContent.trim();
-            if (!raw) return;
+      const raw = titleEl.textContent.trim();
+      if (!raw) return;
 
-            const [travelPart, airlinePart] = raw.split('/').map(x => x?.trim());
+      const [travelPart, airlinePart] = raw.split("/").map((x) => x?.trim());
 
-            if (!travelPart || !travelPart.includes('-')) return;
+      if (!travelPart || !travelPart.includes("-")) return;
 
-            const [departure, destination] = travelPart.split('-').map(x => x?.trim());
+      const [departure, destination] = travelPart
+        .split("-")
+        .map((x) => x?.trim());
 
-            const depEl = card.querySelector('.departure-name');
-            const desEl = card.querySelector('.destination-name');
+      const depEl = card.querySelector(".departure-name");
+      const desEl = card.querySelector(".destination-name");
 
-            if (depEl) depEl.textContent = departure || '';
-            if (desEl) desEl.textContent = destination || '';
+      if (depEl) depEl.textContent = departure || "";
+      if (desEl) desEl.textContent = destination || "";
 
-            if (airlinePart) {
-                const airlineImg = card.querySelector('img.airline');
-                if (airlineImg) airlineImg.src = airlinePart;
-            }
-
-        } catch (err) {
-            console.warn('Skipped one card due to format mismatch:', err);
-        }
-    });
+      if (airlinePart) {
+        const airlineImg = card.querySelector("img.airline");
+        if (airlineImg) airlineImg.src = airlinePart;
+      }
+    } catch (err) {
+      console.warn("Skipped one card due to format mismatch:", err);
+    }
+  });
 }
 
-document.addEventListener('DOMContentLoaded', renderDestinationCards);
+document.addEventListener("DOMContentLoaded", renderDestinationCards);
 
+// ____________________________
+// ____________________________
+
+const toggleTourDateMenu = (button, tourId) => {
+  const card = button.closest(".tourL-tour-card");
+  const dateMenu = document.querySelector(".tourL-tour-date-menu");
+  const listContainer = dateMenu.querySelector(".tour-date-list");
+
+  document.querySelectorAll(".tourL-tour-date-menu").forEach((menu) => {
+    if (menu !== dateMenu)
+      menu.classList.add("opacity-0", "invisible", "scale-95");
+  });
+
+  if (dateMenu.classList.contains("opacity-0")) {
+    listContainer.innerHTML =
+      '<div class="loading py-4 text-sm text-gray-500">در حال بارگذاری...</div>';
+    window.currentDateContainer = listContainer;
+    window.currentTourId = tourId;
+    window.currentTourCard = card;
+    $bc.setSource("db.tourDatesRequest", tourId);
+    dateMenu.classList.remove("opacity-0", "invisible", "scale-95");
+  } else {
+    dateMenu.classList.add("opacity-0", "invisible", "scale-95");
+  }
+};
+
+document.addEventListener("click", (e) => {
+  if (e.target.closest(".close-tourL-tour-date-menu")) {
+    const menu = document.querySelector(".tourL-tour-date-menu");
+    menu.classList.add("opacity-0", "invisible", "scale-95");
+  }
+});
+
+function isMobileScreen() {
+  return window.innerWidth < 1024;
+}
+
+function buildTourDateRow({ start, end, day }, tourId, card) {
+  const mobile = isMobileScreen();
+  const wrap = document.createElement("div");
+  wrap.className = [
+    "flex",
+    "gap-3",
+    "border",
+    "border-primary-200",
+    "rounded-xl",
+    "transition-all",
+    "duration-300",
+    "box-hover1",
+    mobile ? "flex-col" : "items-center",
+    mobile ? "p-3" : "px-4 h-20",
+  ].join(" ");
+
+  const airlineSpan = card.querySelector(".tourL-tour-airline");
+  const airlineImg = airlineSpan?.dataset?.airlineImg || "";
+  const airlineAlt = (airlineSpan?.textContent || "").trim() || "Airline";
+
+  const daySpan = card.querySelector(".tourL-tour-day");
+  const dayText =
+    (daySpan?.textContent || "").trim() || `${day} شب - ${day + 1} روز`;
+
+  const priceSpan = card.querySelector(".tourL-tour-price");
+  const priceText = (priceSpan?.textContent || "").trim() || "—";
+
+  const left = document.createElement("div");
+  left.className = ["flex", "items-center", mobile ? "gap-3" : "gap-4"].join(
+    " "
+  );
+  left.innerHTML = `
+    <div class="flex items-center gap-2">
+      <img loading="lazy" src="/images/Calendar.svg" alt="Calendar">
+      <span class="start__date" data-date="${start.date}">${start.date}</span>
+    </div>
+    <div class="flex items-center gap-2 ">
+      <img loading="lazy" src="/images/Calendar.svg" alt="Calendar">
+      <span class="end__date" data-date="${end.date}">${end.date}</span>
+    </div>
+  `;
+
+  const mid = document.createElement("div");
+  mid.className = [
+    "flex",
+    mobile ? "flex-col" : "items-center",
+    mobile ? "" : "gap-4",
+    mobile ? "" : "flex-1",
+  ].join(" ");
+  mid.innerHTML = `
+    <div class="flex items-center gap-3">
+      <div class="flex items-center gap-1 text-sm text-primary-500 font-extrabold">
+     <img loading="lazy" src="/images/Time Circle.svg" alt="time circle">
+        <span class="tourL-tour-day">${dayText}</span>
+      </div>
+      ${
+        airlineImg
+          ? `<img src="${airlineImg}" class="h-auto" alt="${airlineAlt}" width="74" height="30" loading="lazy">`
+          : ""
+      }
+    </div>
+    <div class="${mobile ? "mt-2" : ""}">
+      <span class="inline-flex items-center gap-2 items-center">
+        از
+        <span class="inline-flex ${
+          mobile ? "text-lg" : "text-2xl"
+        } text-primary-500 font-extrabold">
+          ${priceText}
+        </span>
+      </span>
+    </div>
+  `;
+
+  const right = document.createElement("div");
+  right.className = [
+    "flex",
+    "items-center",
+    "gap-2",
+    mobile ? "w-full" : "",
+  ].join(" ");
+
+  const tourLink = `/tour.bc?id=${tourId}&day=${day}&from=${start.dateid}&to=${end.dateid}`;
+  const a = document.createElement("a");
+  a.href = tourLink;
+  a.className = [
+    "flex",
+    "gap-4",
+    mobile ? "flex-col" : "items-center",
+    mobile ? "" : "w-full",
+    "h-full",
+    "transition-all",
+    "duration-300",
+    "cursor-pointer",
+  ].join(" ");
+  a.appendChild(left);
+  a.appendChild(mid);
+
+  const contactLink = document.createElement("a");
+  contactLink.href = "tel:02122221422";
+  contactLink.className =
+    "flex items-center justify-center gap-2 w-28 h-12 font-extrabold rounded-xl bg-secondary-700 text-white transition-all duration-300 hover:shadow-btn-shadow";
+  contactLink.innerHTML = `
+    تماس
+    
+  `;
+
+  const form = document.createElement("form");
+  form.className = mobile ? "flex-1 mb-0" : "mb-0";
+  form.action = `/tours/package/pdf?id=${tourId}`;
+  form.method = "POST";
+  form.target = "_blank";
+  form.innerHTML = `
+    <input type="hidden" name="id" value="${tourId}">
+    <input type="hidden" name="from" value="${start.dateid}">
+    <input type="hidden" name="to" value="${end.dateid}">
+    <input type="hidden" name="day" value="${day}">
+    <input type="hidden" name="fdate" value="${start.date}">
+    <input type="hidden" name="rdate" value="${end.date}">
+    <button type="submit"
+      class="group flex cursor-pointer items-center justify-center gap-2 ${
+        mobile ? "w-full" : "w-28"
+      } h-12 text-zinc-900 font-extrabold rounded-xl transition-all duration-300 bg-primary hover:shadow-btn-shadow">
+      دانلود پکیج
+    </button>
+  `;
+
+  right.appendChild(contactLink);
+  right.appendChild(form);
+
+  wrap.appendChild(a);
+  wrap.appendChild(right);
+
+  return wrap;
+}
+
+const onTourDatesLoaded = async (apiResponse) => {
+  if (!window.currentDateContainer) return;
+
+  try {
+    const response = apiResponse.response;
+    const jsonData = await response.json();
+
+    let data = [];
+    if (jsonData?.sources?.length > 0) {
+      data = jsonData.sources[0].data || [];
+    }
+
+    if (!Array.isArray(data) || data.length === 0) {
+      window.currentDateContainer.innerHTML =
+        '<div class="no-dates py-4 text-sm text-gray-500">تاریخی موجود نیست</div>';
+      return;
+    }
+
+    const card = window.currentTourCard;
+    window.currentDateContainer.innerHTML = "";
+    data.forEach((dateItem) => {
+      const row = buildTourDateRow(dateItem, window.currentTourId, card);
+      window.currentDateContainer.appendChild(row);
+    });
+  } catch (error) {
+    console.error("خطا در پردازش response:", error);
+    window.currentDateContainer.innerHTML =
+      '<div class="error py-4 text-sm text-red-500">خطا در بارگذاری تاریخ‌ها</div>';
+  }
+};
+
+const renderInventoryList = async (element, day, from, to) => {
+  try {
+    const mobile = isMobile();
+    const selector = mobile ? ".swiper-slide" : ".date-li";
+
+    document.querySelectorAll(selector).forEach((e) => {
+      const group = e.querySelector(".group, .group\\/leveltwo");
+      const dates = e.querySelector(".tour-dates, span");
+      if (group) group.classList.remove("border-primary-400");
+      if (dates) dates.classList.remove("text-primary-500");
+    });
+
+    $bc.setSource("db.inventoryViewSpecificDate", { from, to, day });
+
+    const group = element.querySelector(".group, .group\\/leveltwo");
+    const dates = element.querySelector(".tour-dates, span");
+    if (group) group.classList.add("border-primary-400");
+    if (dates) dates.classList.add("text-primary-500");
+  } catch (err) {
+    console.error("خطا در renderInventoryList:", err);
+  }
+};
 
 // ____________________________
 // ____________________________
-// ____________________________
-// ____________________________
+document.addEventListener("DOMContentLoaded", () => {
+  const parents = document.querySelectorAll("#parent-p");
+  if (!parents.length) return;
+
+  parents.forEach((parent) => {
+    const triggers = parent.querySelectorAll(".phone-popup-container");
+    const popup = parent.querySelector(".popup-tel");
+    const closeBtn = parent.querySelector(".close-popup");
+
+    if (!popup || triggers.length === 0 || !closeBtn) return;
+
+    const openPopup = () => {
+      popup.classList.remove("hidden");
+      popup.classList.add("flex");
+      popup.style.opacity = "0";
+      popup.style.transition = "opacity 0.25s ease";
+      requestAnimationFrame(() => {
+        popup.style.opacity = "1";
+      });
+    };
+
+    const closePopup = () => {
+      popup.style.opacity = "0";
+      popup.addEventListener(
+        "transitionend",
+        () => {
+          popup.classList.add("hidden");
+          popup.classList.remove("flex");
+        },
+        { once: true }
+      );
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", openPopup);
+    });
+
+    closeBtn.addEventListener("click", closePopup);
+
+    popup.addEventListener("click", (e) => {
+      if (e.target === popup) closePopup();
+    });
+  });
+});
+
 // ____________________________
 // ____________________________
 // ____________________________

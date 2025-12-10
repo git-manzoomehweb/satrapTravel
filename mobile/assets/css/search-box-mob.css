@@ -341,7 +341,7 @@ input.bg-bgColor-100 {
 }
 .module-banner-background {
   background-color: var(--primary);
-  background-image: url("../images/Flight-mob.jpg");
+  background-image: url("../images/tour-mob.jpg");
 }
 .module-banner-background.flight-banner-background {
   background-image: url("../images/Flight-mob.jpg") !important;

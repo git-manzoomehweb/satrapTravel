@@ -64,7 +64,7 @@
 
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.gid|(218270)##]">
     <member name="Tour-Reservation-Guide" type="list" link="article.bc" propertyid="7244" perpage="9"
-        pageno="[##cms.query.pagenum|(1)##]" order="ord" />
+        order="ord" />
 </basis>
 
 
@@ -116,7 +116,7 @@
                         <ul class="flex items-center gap-2 text-white !text-xs">
                             <li> <a href="/" class="hover:text-secondary-700">صفحه اصلی</a>
                             </li>
-                            <li> &gt; </li>
+                            <li> > </li>
                             <basis core="print" datamembername="db.navigation">
                                 <face filter="RowNumber=max(RowNumber) and parentcatid<>217900">
                                     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -132,7 +132,7 @@
                                                 itemprop="name">@title</span>
                                             <meta itemprop="position" content="@rownumber" />
                                         </a>
-                                        <span class="text-white text-xs"> &gt; </span>
+                                        <span class="text-white text-xs"> > </span>
                                     </li>
                                 </face>
                                 <face filter="parentcatid<>217900">
@@ -143,7 +143,7 @@
                                             <span itemprop="name">@title</span>
                                             <meta itemprop="position" content="@rownumber" />
                                         </a>
-                                        <span class="text-white text-xs"> &gt; </span>
+                                        <span class="text-white text-xs"> > </span>
                                     </li>
                                 </face>
                             </basis>
@@ -265,17 +265,7 @@
                     </basis>
 
                 </div>
-                <form
-                    class="w-[1280px] visa-form-cn relative flex-col px-6 py-5 justify-between h-[143px] bg-[#F6F6F6] z-[4] rounded-2xl flex mb-[-140px]">
-                    <label for="search-content" class="text-xl font-bold">جستجوی ویزا </label>
-                    <div class="w-full flex gap-[6px] items-center">
-                        <input type="text"
-                            class="h-[55px] w-[calc(100%-100px)] outline-none focus:border-primary-100 px-4 border border-[#E5E5E5] rounded-lg placeholder:text-[#ABABAB]"
-                            placeholder="کشور مقصد">
-                        <button type="submit"
-                            class="w-[100px] h-[55px] flex justify-center items-center hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50 bg-[#FFBD22] rounded-xl">ارسال</button>
-                    </div>
-                </form>
+                
             </div>
         </section>
         <ul class="fixed flex  flex-col gap-2 right-0 top-[324px] z-40">

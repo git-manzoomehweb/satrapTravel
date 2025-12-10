@@ -344,6 +344,40 @@ const renderWeekDate = async (element, type) => {
     console.error("renderWeekDate=" + err.lineNumber + "," + err.message);
   }
 };
+const smoothAccurateScroll = (target) => {
+  return new Promise((resolve) => {
+    if (!target) return resolve();
+
+    const isMobile = window.innerWidth <= 1024;
+    const offset = isMobile ? -58 : -180;
+
+    let lastTop = -1;
+    let stableCount = 0;
+
+    const check = () => {
+      const rectTop = target.getBoundingClientRect().top + window.scrollY;
+      const finalTop = rectTop + offset;
+
+      if (rectTop === lastTop) {
+        stableCount++;
+        if (stableCount >= 3) {
+          window.scroll({
+            top: finalTop,
+            behavior: "smooth",
+          });
+          return resolve();
+        }
+      } else {
+        stableCount = 0;
+        lastTop = rectTop;
+      }
+
+      requestAnimationFrame(check);
+    };
+
+    check();
+  });
+};
 
 const renderInventoryView = async (element, day, from, to) => {
   try {
@@ -429,10 +463,12 @@ const renderInventoryView = async (element, day, from, to) => {
         .getAttribute("data-date");
     }
     element.classList.add("active");
-    window.scroll({
-      top: document.querySelector("h2[data-id='hotels']")?.offsetTop,
-      behavior: "smooth",
-    });
+
+    // ------- اسکرول کاملاً دقیق --------
+    await smoothAccurateScroll(
+      document.querySelector(".tourInventory__container")
+    );
+
     if (element.closest(".isFixed")) {
       element
         .closest(".tour__date__modal__container")
@@ -448,18 +484,6 @@ const renderInventoryView = async (element, day, from, to) => {
       element.querySelector(".end__date").innerText,
       element.querySelector(".end__date").dataset.date
     );
-
-    if (innerWidth < 1024) {
-      let closeelement = document.querySelector(
-        ".tour__date__modal__container .tourDate__container > svg"
-      );
-      closeModalContainer(
-        closeelement,
-        event,
-        "tour__date__modal__container",
-        "hidden"
-      );
-    }
   } catch (err) {
     console.error("renderInventoryView=" + err.lineNumber + "," + err.message);
   }
@@ -797,12 +821,8 @@ const renderRouteStop = async (element) => {
 // updatetd
 const renderTransportationName = async (element) => {
   try {
- 
     if (element) {
- 
       if (element.info.transportation.id) {
-    
-
         return `<div class="flex gap-1 items-center mb-2 min-h-4 transportation__img__details">
                 <img src="" width="90"  data-id="${element.info.transportation.id}" 
                 class="transportation__img w-[90px]" alt="${element.info.transportation.name}" />
@@ -918,14 +938,14 @@ const renderHotels = async (element, type) => {
           }`;
         }
 
-        output += ` <div class="tourInventory__details__item__info flex w-full justify-between gap-6" data-index="${index}">
-                                                <div class="md:w-9/12 flex gap-8">
+        output += ` <div class="tourInventory__details__item__info flex max-md:!flex-col w-full justify-between gap-6" data-index="${index}">
+                                                <div class="md:w-9/12 max-md:!mb-[150px] flex gap-8 max-md:!w-full max-md:!flex-col max-md:!gap-6">
                                                 <span content="${
                                                   item.hotel.label
                                                 }" class="rounded-[40px] bg-[#FF4949] h-[32px] text-white flex items-center absolute right-4 px-[13px] text-xs top-4">
                                                 ${item.hotel.label}
                                                 </span>
-                                                    <figure class="h-[206px] w-[296px] rounded-2xl overflow-hidden${
+                                                    <figure class="h-[206px] w-[296px] max-md:!w-full rounded-2xl overflow-hidden ${
                                                       index === 0
                                                         ? " lg:mt--16 "
                                                         : ""
@@ -939,7 +959,7 @@ const renderHotels = async (element, type) => {
                                                     <figcaption>
                                                         <div class="flex flex-col gap-3">
                                                             <div class="flex flex-col gap-3">
-                                                                <h3 class="showhotel text-xl text-[#262626]">${
+                                                                <h3 class="showhotel max-md:!line-clamp-1  text-xl text-[#262626]">${
                                                                   item.hotel
                                                                     .hotelname
                                                                 }</h3>
@@ -975,7 +995,7 @@ const renderHotels = async (element, type) => {
                                                   element.hotelinfo[0].hotels
                                                     .length -
                                                     1
-                                                    ? `<div class=" flex flex-col h-fit gap-4 pr-6 pl-4 border-r border-dashed border-[#DFDFDF]">
+                                                    ? `<div class="  flex flex-col h-fit gap-4 pr-6 pl-4 max-md:!p-0 max-md:!border-none border-r border-dashed border-[#DFDFDF]">
                                                     <svg class="hidden"  width="1" height="106" viewBox="0 0 1 106"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <line x1="0.5" y1="106" x2="0.499995" y2="2.18557e-08" stroke="#CFCFCF"
@@ -984,7 +1004,7 @@ const renderHotels = async (element, type) => {
                                                     <div class="flex gap-4 flex-col">
                                                         
                                                         <button  onclick="renderTourInstallmentForm(this)"
-                                                            class="font-bold mt-2 text-xs border border-[#2F2F2F] flex w-[131px] h-12 items-center justify-center rounded-xl text-[#2F2F2F] hover:border-primary hover:text-white hover:bg-primary transition-all ease-in-out duration-500">
+                                                            class="font-bold mt-2 max-md:!w-full  text-xs border border-[#2F2F2F] flex w-[131px] h-12 items-center justify-center rounded-xl text-[#2F2F2F] hover:border-primary hover:text-white hover:bg-primary transition-all ease-in-out duration-500">
                                                             ${
                                                               page_lang === "fa"
                                                                 ? "شرایط اقساط"
@@ -999,7 +1019,7 @@ const renderHotels = async (element, type) => {
                                                             </button>
         
                                                         <button type="button" onclick="renderTourForm(this)"
-                                                            class="w-[131px] h-12 group hover:text-secondary-700 border border-transparent hover:border-secondary-700 hover:bg-transparent flex justify-center items-center gap-2 rounded-xl bg-[#FFBD22] text-xs text-[#272727] font-bold">
+                                                            class="w-[131px] h-12 max-md:!w-full  group hover:text-secondary-700 border border-transparent hover:border-secondary-700 hover:bg-transparent flex justify-center items-center gap-2 rounded-xl bg-[#FFBD22] text-xs text-[#272727] font-bold">
                                                             
                                                             <span
                                                                 class="">
@@ -1913,7 +1933,6 @@ const callbackSourceTourBookingFormIns = async (args) => {
         .querySelector("input[name='captchaid']").value,
       run: true,
     });
-  
   } catch (err) {
     console.error(
       "callbackSourcetourBookingFormIns=" + err.lineNumber + "," + err.message
@@ -2104,10 +2123,10 @@ const onrenderedFormSchema = async () => {
 };
 const scrollToTourSection = async (element, type) => {
   try {
-    window.scroll({
-      top: document.querySelector(`.${type}`).offsetTop,
-      behavior: "smooth",
-    });
+    const target = document.querySelector(`.${type}`);
+
+    await smoothAccurateScroll(target);
+
     document
       .querySelector(".navBar__container")
       .querySelectorAll(".navbar-el")

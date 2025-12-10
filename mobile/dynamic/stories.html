@@ -8,7 +8,7 @@
         <face filter="Question in('نام عکس')">
             <div class="px-5 w-full z-20 absolute top-0 left-0">
                 <div
-                    class=" w-full mt-3  py-3 bg-white shadow-2xl rounded-xl flex justify-center items-center text-clip font-bold text-base ">
+                    class=" w-full mt-16  py-3 bg-white shadow-2xl rounded-xl flex justify-center items-center text-clip font-bold text-base ">
                     @text</div>
             </div>
         </face>
@@ -17,14 +17,18 @@
     <basis core="list" datamembername="gallery.details">
         <face filter="text in('link2')">
             <a href="@largetext" target="_blank"
-                class="  px-14 z-20 py-3 mb-5 rounded-lg text-sm font-bold bg-white before-line absolute bottom-0">مشاهده
+                class="  px-14 z-20 py-3 mb-16 rounded-lg text-sm font-bold bg-white before-line absolute bottom-0">مشاهده
                 مطلب</a>
         </face>
     </basis>
 
     <basis core="list" datamembername="gallery.details">
         <face filter="text in('link1')">
-            <div class="!rounded-lg !w-full  story-item  " data-video="@largetext"></div>
+            <div class="!rounded-lg !w-full  story-item  " data-video="@largetext">
+                <img src="[##cms.cms.cdn##]/images/@largetext" alt="@largetext"
+                    class=" w-full h-full object-cover absolute top-0 left-0">
+
+            </div>
         </face>
     </basis>
     <div class="h-[700px]"></div>

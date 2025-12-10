@@ -35,7 +35,7 @@ body.hotel-list #search-box #r-hotel form {
 #search-box #r-insurance form,
 #search-box #r-tour form {
   margin-top: 45px !important;
-  margin-bottom: 85px !important;
+  margin-bottom: 25px !important;
 }
 #search-box .Basis_Calendar_Box svg {
   width: unset !important;
@@ -336,6 +336,7 @@ form:has(.flight-routes) .flightclass-field .label-text {
 .searchList li.cursor-pointer:hover {
   background-color: var(--primary-50) !important;
   border-bottom: 1px solid var(--primary-50) !important;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset !important;
 }
 form:has(.flight-routes) .Basis_Date_Box {
   width: 34% !important;
@@ -437,7 +438,7 @@ button.add-routs:hover {
 }
 .module-banner-background {
   background-color: var(--primary);
-  background-image: url("../images/Flight-bg.jpg");
+  background-image: url("../images/tour-bg.jpg");
 }
 .module-banner-background.flight-banner-background {
   background-image: url("../images/Flight-bg.jpg") !important;

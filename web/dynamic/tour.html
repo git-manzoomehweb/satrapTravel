@@ -87,8 +87,8 @@
         <basis core="api" name="api.inventoryView" url="https://basisfly.com/api/inventory/packages/inventory-view/"
             method="post" content-type="application/json" run="atclient" triggers="db.inventoryViewSpecificDate" body='{
                 "pid": "[##cms.query.id##]",
-                "from": "{##db.inventoryViewSpecificDate.from|()##}",
-                "to": "{##db.inventoryViewSpecificDate.to|()##}",
+                "from": "{##db.inventoryViewSpecificDate.from|([##cms.query.from##])##}",
+                "to": "{##db.inventoryViewSpecificDate.to|([##cms.query.to##])##}",
                 "day": "{##db.inventoryViewSpecificDate.day|()##}",
                 "pagename": "[##cms.host.pageNameInventory|(Tem1_Hotel.bc)##]",
                 "dmnid": "[##cms.cms.domainid##]",
@@ -876,7 +876,8 @@
                                         <input type="hidden" class="hidden" name="rdate" id="rdate">
                                         <button type="submit" target="_blank"
                                             class="sidebar-box relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5  ">
-                                            <div class="white-shadow w-12 h-12 rounded-full bg-white flex justify-center items-center">
+                                            <div
+                                                class="white-shadow w-12 h-12 rounded-full bg-white flex justify-center items-center">
                                                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -896,7 +897,8 @@
                                 <face>
                                     <a href="/@largeIMG" target="_blank"
                                         class="sidebar-box dwn relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5  ">
-                                        <div class="white-shadow  w-12 h-12 rounded-full bg-white flex justify-center items-center">
+                                        <div
+                                            class="white-shadow  w-12 h-12 rounded-full bg-white flex justify-center items-center">
                                             <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -914,19 +916,77 @@
                             </basis>
 
 
-                            <basis core="print" datamembername="db.info">
-                                <face filter="TypeID=240">
-                                    <a href="tel:@text"
-                                        class="sidebar-box tel relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 ">
-                                        <div>
-                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/shadow-tel.svg"
-                                                alt="phone">
+                            <div id="parent-p">
+                                <basis core="print" datamembername="db.info">
+                                    <face filter="TypeID=240">
+                                        <div
+                                            class="sidebar-box tel phone-popup-container   relative w-full h-[72px] rounded-[21px] cursor-pointer flex items-center justify-between p-5 ">
+                                            <div>
+                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/shadow-tel.svg"
+                                                    alt="phone">
+
+                                            </div>
+                                            <span class="shadow-txt text-white font-semibold text-xl"> @text</span>
+                                        </div>
+                                    </face>
+                                </basis>
+                                <div
+                                    class="popup-tel top-0 left-0 fixed hidden w-screen h-screen justify-center items-center ">
+                                    <div class="bg-white w-[350px] rounded-xl p-3 flex flex-col gap-3">
+                                        <div class="w-full justify-end flex">
+                                            <svg class="close-popup cursor-pointer" width="33" height="34"
+                                                viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M16.8438 4.46729C9.45175 4.46729 3.4375 10.4159 3.4375 17.7273C3.4375 25.0387 9.45175 30.9873 16.8438 30.9873C24.2358 30.9873 30.25 25.0387 30.25 17.7273C30.25 10.4159 24.2358 4.46729 16.8438 4.46729Z"
+                                                    fill="#7E7E7E" class="group-hover:fill-primary-950"></path>
+                                                <path
+                                                    d="M20.1429 22.4192L21.6018 20.9763L18.3018 17.715L21.6018 14.4578L20.1443 13.0135L16.8429 16.2734L13.5429 13.0107L12.084 14.4537L15.3827 17.715L12.084 20.9722L13.5415 22.4152L16.8415 19.1566L20.1429 22.4192Z"
+                                                    fill="#7E7E7E" class="group-hover:fill-white"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="flex w-full justify-center items-center">
+                                            <p class="text-lg">مشاوره رایگان و رزرو تور
+
+                                            </p>
+                                        </div>
+                                        <div class="w-full flex justify-center items-center gap-3">
+                                            <basis core="print" datamembername="db.info">
+                                                <face filter="TypeID=240">
+                                                    <a href="tel:@text"
+                                                        class="flex text-xl font-bold text-primary items-center gap-3">
+                                                        @text
+                                                        <svg width="21" height="22" viewBox="0 0 21 22" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                d="M5.47656 3.63511C5.40131 3.63511 5.32519 3.64215 5.24819 3.65447C4.26994 3.82079 3.38881 4.96831 3.20681 5.26663C2.29506 6.55583 3.00731 9.54519 7.64656 14.2118C12.2876 18.8785 15.26 19.593 16.4946 18.7086C16.8393 18.4939 17.9786 17.6113 18.144 16.6257C18.2157 16.1971 18.0888 15.7905 17.7572 15.384C15.8173 13.015 15.2031 13.3151 14.357 13.7296C13.083 14.3544 11.8387 14.6826 9.50859 12.3401C7.18195 9.99839 7.50656 8.74703 8.12694 7.46487C8.53994 6.61215 8.83834 5.99615 6.48019 4.04255C6.15031 3.76975 5.81956 3.63511 5.47656 3.63511ZM15.323 20.3806C13.5887 20.3806 10.843 19.2929 6.71906 15.1446C0.560817 8.95207 1.18556 5.84831 2.10606 4.54855C2.10431 4.54855 3.26281 2.68559 4.98044 2.36263C5.79769 2.20951 6.60181 2.43743 7.31406 3.02263C10.2383 5.44615 9.96709 6.67991 9.30734 8.04215C8.90222 8.87903 8.58195 9.53991 10.437 11.4064C12.2928 13.2711 12.9508 12.9525 13.7821 12.5425C15.1375 11.8798 16.3633 11.6053 18.7713 14.5453C19.3558 15.2634 19.5833 16.0774 19.4276 16.9002C19.0977 18.6532 17.2147 19.8113 17.1963 19.8218C16.7895 20.1157 16.1787 20.3806 15.323 20.3806Z"
+                                                                fill="#22B4FF" />
+                                                        </svg>
+                                                    </a>
+
+
+                                                </face>
+                                            </basis>
+                                        </div>
+                                        <div class="text-zinc-700 text-sm flex justify-center items-center">امروز از
+                                            ساعت 9
+                                            الی
+                                            23
+                                            پاسخگوی
+                                            شما هستیم
 
                                         </div>
-                                        <span class="shadow-txt text-white font-semibold text-xl"> @text</span>
-                                    </a>
-                                </face>
-                            </basis>
+                                        <div class="w-full flex flex-col gap-4 items-center justify-center">
+                                            <img width="140" height="140" src="[##cms.cms.cdn##]/images/qrCode.png"
+                                                alt="qrcode">
+                                            <p class="text-sm text-zinc-700">تماس مستقیم توسط اسکن QR کد با تلفن همراه
+
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </aside>
@@ -978,7 +1038,7 @@
                         <div class="text-base">@child</div>
                     </div>
                 </layout>
-                <face filter="prpID=3088136">@largetext</face>
+                <face filter="prpID=8097">@largetext</face>
             </basis>
 
             <basis core="print" datamembername="db.tour-view">

@@ -60,23 +60,35 @@
 
                 </face>
             </basis>
+            <div class="flex flex-col z-[2] !text-white items-center justify-center gap-4">
+                <h1 class="font-semibold text-base  !text-white"> دسته بندی ویزا</h1>
+                <ul class=" !text-white !text-xs flex items-center gap-1">
+                    <li>
+                        <a href="/" class="hover:text-primary">خانه</a>
+                    </li>
+                    <li>/</li>
+                    <li> ویزاها</li>
+                </ul>
+            </div>
             <div
-                class="px-4 w-[calc(100%-32px)] h-[84px] border border-[#CDCDCD] flex items-center gap-4 p-[34px] bg-white rounded-xl absolute top-[calc(100%-40px)] justify-center">
-                <div class="flex flex-col items-center justify-center gap-4">
-                    <h1 class="font-semibold text-base text-[#191919]"> دسته بندی ویزا</h1>
-                    <ul class="!text-[#848484] !text-xs flex items-center gap-1">
-                        <li>
-                            <a href="/" class="hover:text-primary">خانه</a>
-                        </li>
-                        <li>/</li>
-                        <li> ویزاها</li>
-                    </ul>
-                </div>
+                class="px-4 w-[calc(100%-32px)]  flex items-center gap-4   bg-white rounded-xl absolute top-[calc(100%-40px)] justify-center">
+                <form class="w-full visa-form-cn relative gap-4 flex-col py-4 justify-between  flex ">
+                    <label for="search-content" class="text-xs font-bold">جستجوی ویزا </label>
+                    <div class="w-full flex flex-col gap-[6px] items-center">
+                        <input type="text"
+                            class="h-12 w-full outline-none focus:border-primary-100 px-4 border border-[#E5E5E5] rounded-lg placeholder:text-[#ABABAB]"
+                            placeholder="کشور مقصد">
+                        <button type="submit"
+                            class="w-full h-12 font-bold text-xs flex justify-center items-center hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50 bg-[#FFBD22] rounded-xl">ارسال</button>
+                    </div>
+                </form>
+
+
             </div>
 
         </section>
 
-        <section class="w-full px-4 mt-[70px]">
+        <section class="w-full px-4 mt-36">
             <div class="w-full flex justify-center">
                 <div class="flex z-10 relative w-fit bg-white  items-center gap-3">
                     <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
@@ -88,7 +100,7 @@
             <basis core="tree" datamembername="visa.cat" idcol="catid" parentidcol="parentid"
                 nullvalue="[##cms.query.catid##]">
                 <layout>
-                    <div class="my-7 flex flex-col gap-4 w-full">
+                    <div class="my-7 grid grid-cols-1  visa-container  gap-4 w-full">
                         @child
                     </div>
                 </layout>
@@ -106,7 +118,8 @@
                         </figure>
 
                         <div class="flex flex-col w-full gap-2 px-[14px]">
-                            <p class=" line-clamp-1 text-[#191919]">@title </p>
+                            <p class=" line-clamp-1 text-[#191919]  title-el">@title </p>
+                            <p class="hidden county-name">@title</p>
 
                         </div>
 
@@ -126,7 +139,8 @@
                         </figure>
 
                         <div class="flex flex-col w-full gap-2 px-[14px]">
-                            <p class=" line-clamp-1 text-[#191919]">@title </p>
+                            <p class=" line-clamp-1 text-[#191919]  title-el">@title </p>
+                            <p class="hidden county-name">@title</p>
 
                         </div>
 

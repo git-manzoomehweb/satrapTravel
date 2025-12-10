@@ -12,7 +12,7 @@
 
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="visa">
-  <member name="cat" type="tree" request="cat" parentid="[##cms.query.catid##]" order="ord"></member>
+    <member name="cat" type="tree" request="cat" parentid="[##cms.query.catid##]" order="ord"></member>
 </basis>
 
 
@@ -54,25 +54,39 @@
     <basis core="call" file="header.inc" />
     <main>
         <section class="flex justify-center items-center h-[348px] relative w-full">
-             <basis core="print" datamembername="db.banner-info">
-                   <face>
-                     <img loading="lazy" src="/@image" alt="@urltitle"
-                     class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+            <basis core="print" datamembername="db.banner-info">
+                <face>
+                    <img loading="lazy" src="/@image" alt="@urltitle"
+                        class="z-0 absolute top-0 left-0 w-full h-full object-cover">
 
-                   </face>
-             </basis>
-           
+                </face>
+            </basis>
+            <div class="flex flex-col w-full z-[1] justify-center items-center gap-5">
+                <h1 class="font-semibold text-[32px] text-white"> دسته بندی ویزا</h1>
+                <ul class="!text-white !text-xl flex items-center gap-1">
+                    <li>
+                        <a href="" class="hover:text-primary">خانه</a>
+                    </li>
+                    <li>/</li>
+                    <li> ویزاها</li>
+                </ul>
+            </div>
+
             <div
-                class="px-4 w-full h-[138px] border border-[#CDCDCD] lg:px-4 xl:!w-[1280px] xl:!px-0 flex items-center gap-4 p-[34px] bg-white rounded-xl absolute top-[calc(100%-75px)] justify-center">
-                <div class="flex flex-col items-center justify-center gap-4">
-                    <h1 class="font-semibold text-[32px] text-[#191919]"> دسته بندی ویزا</h1>
-                    <ul class="!text-[#848484] !text-xl flex items-center gap-1">
-                        <li>
-                            <a href="" class="hover:text-primary">خانه</a>
-                        </li>
-                        <li>/</li>
-                        <li> ویزاها</li>
-                    </ul>
+                class=" w-full  xl:!w-[1280px] flex items-center gap-4 absolute top-[calc(100%-75px)] justify-center">
+                <div class="flex flex-col w-full items-center justify-center gap-4">
+
+                    <form
+                        class="w-full visa-form-cn relative flex-col px-6 py-5 justify-between h-[143px] bg-[#F6F6F6] z-[4] rounded-2xl flex">
+                        <label for="search-content" class="text-xl font-bold">جستجوی کشور </label>
+                        <div class="w-full flex gap-[6px] items-center">
+                            <input type="text"
+                                class="h-[55px] w-[calc(100%-100px)] outline-none focus:border-primary-100 px-4 border border-[#E5E5E5] rounded-lg placeholder:text-[#ABABAB]"
+                                placeholder="کشور مقصد">
+                            <button type="submit"
+                                class="w-[100px] h-[55px] flex justify-center items-center hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50 bg-[#FFBD22] rounded-xl">ارسال</button>
+                        </div>
+                    </form>
                 </div>
             </div>
 
@@ -209,112 +223,113 @@
                 class="px-4 after-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
                 <div class="flex bg-white relative items-center gap-3">
                     <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8   h-8">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
                         <h2 class="font-bold text-2xl text-zinc-900"> ویزا های ساتراپ </h2>
                         <span class="bullet-1 "></span>
                     </div>
                 </div>
                 <div class="my-[50px] z-10 flex flex-col w-full gap-[13px]">
-                            
-                    <basis core="tree" datamembername="visa.cat" idcol="catid" parentidcol="parentid" nullvalue="[##cms.query.catid##]">
+
+                    <basis core="tree" datamembername="visa.cat" idcol="catid" parentidcol="parentid"
+                        nullvalue="[##cms.query.catid##]">
                         <layout>
-                             <div class="w-full grid grid-cols-4 gap-6">
-                        @child
-                    </div>
-                        </layout>
-                         <face filter="link is null">
-                            <a href="visa-list.bc?catid=@catid"
-                            class="w-full hover:shadow-lg visa_card z-10 overflow-hidden h-[242px] border border-[#D2D2D2] flex flex-col gap-[9px] rounded-xl">
-
-                            <figure class="h-[180px] overflow-hidden w-full relative">
-                                <img loading="lazy" src="/@image" alt="@title-image"
-                                    class="w-full block z-[1] h-full object-cover">
-                                <span
-                                    class="z-[2] absolute top-0 left-0 w-full h-full bg-gradient-to-t from-[#0000007c]"></span>
-                                <img loading="lazy" src="[##cms.cms.cdn##]/images/@catid.png"
-                                    alt='پرچم-@title'
-                                    class="absolute w-12 z-[3] h-12 rounded-full right-[14px] bottom-2">
-                            </figure>
-
-                            <div class="flex flex-col w-full gap-2 px-[14px]">
-                                <p class="font-semibold line-clamp-1 text-[#191919]">@title</p>
-
+                            <div class="w-full grid grid-cols-4 visa-container gap-6">
+                                @child
                             </div>
+                        </layout>
+                        <face filter="link is null">
+                            <a href="visa-list.bc?catid=@catid"
+                                class="w-full hover:shadow-lg visa_card z-10 overflow-hidden h-[242px] border border-[#D2D2D2] flex flex-col gap-[9px] rounded-xl">
 
-                        </a>
+                                <figure class="h-[180px] overflow-hidden w-full relative">
+                                    <img loading="lazy" src="/@image" alt="@title-image"
+                                        class="w-full block z-[1] h-full object-cover">
+                                    <span
+                                        class="z-[2] absolute top-0 left-0 w-full h-full bg-gradient-to-t from-[#0000007c]"></span>
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/@catid.png" alt='پرچم-@title'
+                                        class="absolute w-12 z-[3] h-12 rounded-full right-[14px] bottom-2">
+                                </figure>
+
+                                <div class="flex flex-col w-full gap-2 px-[14px]">
+                                    <p class="font-semibold line-clamp-1 text-[#191919] title-el">@title</p>
+                                    <p class="hidden county-name">@title</p>
+                                </div>
+
+                            </a>
                         </face>
                         <face>
                             <a href="@link"
-                            class="w-full hover:shadow-lg visa_card z-10 overflow-hidden h-[242px] border border-[#D2D2D2] flex flex-col gap-[9px] rounded-xl">
+                                class="w-full hover:shadow-lg visa_card z-10 overflow-hidden h-[242px] border border-[#D2D2D2] flex flex-col gap-[9px] rounded-xl">
 
-                            <figure class="h-[180px] overflow-hidden w-full relative">
-                                <img loading="lazy" src="/@image" alt="@title-image"
-                                    class="w-full block z-[1] h-full object-cover">
-                                <span
-                                    class="z-[2] absolute top-0 left-0 w-full h-full bg-gradient-to-t from-[#0000007c]"></span>
-                                <img loading="lazy" src="[##cms.cms.cdn##]/images/@catid.png"
-                                    alt='پرچم-@title'
-                                    class="absolute w-12 z-[3] h-12 rounded-full right-[14px] bottom-2">
-                            </figure>
+                                <figure class="h-[180px] overflow-hidden w-full relative">
+                                    <img loading="lazy" src="/@image" alt="@title-image"
+                                        class="w-full block z-[1] h-full object-cover">
+                                    <span
+                                        class="z-[2] absolute top-0 left-0 w-full h-full bg-gradient-to-t from-[#0000007c]"></span>
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/@catid.png" alt='پرچم-@title'
+                                        class="absolute w-12 z-[3] h-12 rounded-full right-[14px] bottom-2">
+                                </figure>
 
-                            <div class="flex flex-col w-full gap-2 px-[14px]">
-                                <p class="font-semibold line-clamp-1 text-[#191919]">@title</p>
+                                <div class="flex flex-col w-full gap-2 px-[14px]">
+                                    <p class="font-semibold line-clamp-1 text-[#191919] title-el">@title</p>
+                                    <p class="hidden county-name">@title</p>
 
-                            </div>
+                                </div>
 
-                        </a>
+                            </a>
                         </face>
-                            
+
                     </basis>
-                   
-                     <div class="flex flex-col justify-center items-center mt-[60px] gap-8">
+
+                    <div class="flex flex-col justify-center items-center mt-[60px] gap-8">
                         <div class="max-h-[500px] aid-content  flex flex-col gap-3 overflow-hidden w-full ">
-                        <basis core="print" datamembername="db.aid-text">
-                            <face filter="TypeID=150">
-                                <h3
-                                    class="title-wrapper w-full flex items-center gap-3 relative p-4 bg-primary-50 font-bold text-2xl text-zinc-900 rounded-xl">
-                                    @text
-                            </h3>
-                            </face>
-                        </basis>
                             <basis core="print" datamembername="db.aid-text">
-                            <face filter="TypeID=129">
-                                <div class="text-sm text-zinc-900 text-justify">@largetext</div>
-                            </face>
-                        </basis>
+                                <face filter="TypeID=150">
+                                    <h3
+                                        class="title-wrapper w-full flex items-center gap-3 relative p-4 bg-primary-50 font-bold text-2xl text-zinc-900 rounded-xl">
+                                        @text
+                                    </h3>
+                                </face>
+                            </basis>
+                            <basis core="print" datamembername="db.aid-text">
+                                <face filter="TypeID=129">
+                                    <div class="text-sm text-zinc-900 text-justify">@largetext</div>
+                                </face>
+                            </basis>
 
+
+                            <basis core="print" datamembername="db.aid-text">
+                                <face filter="TypeID=250">
+                                    <p
+                                        class="title-wrapper w-full flex items-center gap-3 relative p-4 bg-primary-50 font-bold text-2xl text-zinc-900 rounded-xl">
+                                        @text
+                                    </p>
+                                    <div class="text-sm text-zinc-900 text-justify">@largetext</div>
+
+                                </face>
+                            </basis>
+
+
+
+                        </div>
 
                         <basis core="print" datamembername="db.aid-text">
-                            <face filter="TypeID=250">
-                                <p
-                                    class="title-wrapper w-full flex items-center gap-3 relative p-4 bg-primary-50 font-bold text-2xl text-zinc-900 rounded-xl">
-                                    @text
-                                </p>
-                                <div class="text-sm text-zinc-900 text-justify">@largetext</div>
-
-                            </face>
+                            <layout><button type="button"
+                                    class="flex hover:text-secondary-900 group text-primary-600 items-center gap-3"
+                                    id="see-more">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M11.9972 19C8.27467 19 4.93239 16.4801 3.0568 12.2638C3.01933 12.1804 3 12.0905 3 11.9996C3 11.9086 3.01933 11.8187 3.0568 11.7353C4.93424 7.51815 8.27652 5 11.9982 5C15.7198 5 19.0658 7.51815 20.9432 11.7353C20.9807 11.8187 21 11.9086 21 11.9996C21 12.0905 20.9807 12.1804 20.9432 12.2638C19.0667 16.4801 15.7244 18.9973 12.0028 19H11.9972ZM4.44503 12C6.11201 15.5513 8.91802 17.662 11.9954 17.6629C15.0728 17.6638 17.8778 15.5513 19.5457 12C17.8769 8.44785 15.0709 6.33707 11.9935 6.33707C8.91617 6.33707 6.1148 8.44785 4.44689 12H4.44503Z"
+                                            fill="#049AEE" class="group-hover:fill-secondary-900" />
+                                        <path
+                                            d="M11.9973 15.4146C11.2988 15.4146 10.616 15.2146 10.0352 14.8398C9.45445 14.465 9.00182 13.9323 8.73456 13.3091C8.46729 12.6859 8.39741 12.0001 8.53374 11.3385C8.67008 10.6769 9.00652 10.0693 9.5005 9.59232C9.99448 9.1154 10.6238 8.79066 11.3089 8.65917C11.994 8.52768 12.7041 8.59534 13.3494 8.8536C13.9947 9.11186 14.5462 9.54912 14.9341 10.1101C15.322 10.6711 15.529 11.3305 15.5288 12.0051C15.5274 12.9091 15.1548 13.7756 14.4928 14.4147C13.8308 15.0539 12.9334 15.4134 11.9973 15.4146ZM11.9973 9.93081C11.5727 9.93081 11.1577 10.0524 10.8046 10.2802C10.4516 10.508 10.1764 10.8318 10.0139 11.2106C9.85135 11.5894 9.80878 12.0062 9.89155 12.4084C9.97432 12.8105 10.1787 13.18 10.4789 13.47C10.779 13.76 11.1615 13.9575 11.5779 14.0376C11.9943 14.1177 12.426 14.0768 12.8183 13.92C13.2106 13.7632 13.546 13.4976 13.782 13.1567C14.018 12.8159 14.1441 12.4151 14.1443 12.0051C14.1435 11.4553 13.9171 10.9283 13.5147 10.5395C13.1122 10.1507 12.5666 9.93176 11.9973 9.93081Z"
+                                            fill="#049AEE" class="group-hover:fill-secondary-900" />
+                                    </svg>
+                                    <span> مشاهده بیشتر</span>
+                                </button></layout>
                         </basis>
-
-
-
-                    </div>
-
-                    <basis core="print" datamembername="db.aid-text">
-                        <layout><button type="button"
-                                class="flex hover:text-secondary-900 group text-primary-600 items-center gap-3"
-                                id="see-more">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M11.9972 19C8.27467 19 4.93239 16.4801 3.0568 12.2638C3.01933 12.1804 3 12.0905 3 11.9996C3 11.9086 3.01933 11.8187 3.0568 11.7353C4.93424 7.51815 8.27652 5 11.9982 5C15.7198 5 19.0658 7.51815 20.9432 11.7353C20.9807 11.8187 21 11.9086 21 11.9996C21 12.0905 20.9807 12.1804 20.9432 12.2638C19.0667 16.4801 15.7244 18.9973 12.0028 19H11.9972ZM4.44503 12C6.11201 15.5513 8.91802 17.662 11.9954 17.6629C15.0728 17.6638 17.8778 15.5513 19.5457 12C17.8769 8.44785 15.0709 6.33707 11.9935 6.33707C8.91617 6.33707 6.1148 8.44785 4.44689 12H4.44503Z"
-                                        fill="#049AEE" class="group-hover:fill-secondary-900" />
-                                    <path
-                                        d="M11.9973 15.4146C11.2988 15.4146 10.616 15.2146 10.0352 14.8398C9.45445 14.465 9.00182 13.9323 8.73456 13.3091C8.46729 12.6859 8.39741 12.0001 8.53374 11.3385C8.67008 10.6769 9.00652 10.0693 9.5005 9.59232C9.99448 9.1154 10.6238 8.79066 11.3089 8.65917C11.994 8.52768 12.7041 8.59534 13.3494 8.8536C13.9947 9.11186 14.5462 9.54912 14.9341 10.1101C15.322 10.6711 15.529 11.3305 15.5288 12.0051C15.5274 12.9091 15.1548 13.7756 14.4928 14.4147C13.8308 15.0539 12.9334 15.4134 11.9973 15.4146ZM11.9973 9.93081C11.5727 9.93081 11.1577 10.0524 10.8046 10.2802C10.4516 10.508 10.1764 10.8318 10.0139 11.2106C9.85135 11.5894 9.80878 12.0062 9.89155 12.4084C9.97432 12.8105 10.1787 13.18 10.4789 13.47C10.779 13.76 11.1615 13.9575 11.5779 14.0376C11.9943 14.1177 12.426 14.0768 12.8183 13.92C13.2106 13.7632 13.546 13.4976 13.782 13.1567C14.018 12.8159 14.1441 12.4151 14.1443 12.0051C14.1435 11.4553 13.9171 10.9283 13.5147 10.5395C13.1122 10.1507 12.5666 9.93176 11.9973 9.93081Z"
-                                        fill="#049AEE" class="group-hover:fill-secondary-900" />
-                                </svg>
-                                <span> مشاهده بیشتر</span>
-                            </button></layout>
-                    </basis>
 
                     </div>
                 </div>
@@ -325,7 +340,8 @@
                 <div class="before-border last-section-brd-article relative w-full flex flex-col">
                     <div class="flex  items-center gap-3 ">
                         <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
-                            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8 h-8">
+                            <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                                class="w-8 h-8">
                             <p class="font-bold text-2xl text-zinc-900">ارتباط با کارشناسان </p>
                             <span class="bullet-1"></span>
                         </div>
@@ -341,7 +357,7 @@
                                 class="w-full h-full rounded-2xl bg-gradient-to-r z-[1] from-[#fff0] to-[#F2F2F2] absolute top-0 left-0 "></span>
                             <div class="flex z-[5] w-full flex-col h-full justify-between">
                                 <p class="">جهت مشاوره خرید تور با کارشناسان ما در ارتباط باشید</p>
-                                 <div class="flex items-center">
+                                <div class="flex items-center">
                                     <div id="contact-form-resize" class="w-full flex flex-col gap-3">
                                         <basis core="schema" run="atclient"
                                             schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
@@ -434,10 +450,10 @@
             </div>
         </section>
     </main>
-   <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
+    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
     <basis core="call" file="footer.inc" />
 </body>
 
- 
+
 
 </html>

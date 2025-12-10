@@ -344,6 +344,40 @@ const renderWeekDate = async (element, type) => {
     console.error("renderWeekDate=" + err.lineNumber + "," + err.message);
   }
 };
+const smoothAccurateScroll = (target) => {
+  return new Promise((resolve) => {
+    if (!target) return resolve();
+
+    const isMobile = window.innerWidth <= 1024;
+    const offset = isMobile ? -58 : -180;
+
+    let lastTop = -1;
+    let stableCount = 0;
+
+    const check = () => {
+      const rectTop = target.getBoundingClientRect().top + window.scrollY;
+      const finalTop = rectTop + offset;
+
+      if (rectTop === lastTop) {
+        stableCount++;
+        if (stableCount >= 3) {
+          window.scroll({
+            top: finalTop,
+            behavior: "smooth",
+          });
+          return resolve();
+        }
+      } else {
+        stableCount = 0;
+        lastTop = rectTop;
+      }
+
+      requestAnimationFrame(check);
+    };
+
+    check();
+  });
+};
 
 const renderInventoryView = async (element, day, from, to) => {
   try {
@@ -429,10 +463,12 @@ const renderInventoryView = async (element, day, from, to) => {
         .getAttribute("data-date");
     }
     element.classList.add("active");
-    window.scroll({
-      top: document.querySelector("h2[data-id='hotels']")?.offsetTop,
-      behavior: "smooth",
-    });
+
+    // ------- اسکرول کاملاً دقیق --------
+    await smoothAccurateScroll(
+      document.querySelector(".tourInventory__container")
+    );
+
     if (element.closest(".isFixed")) {
       element
         .closest(".tour__date__modal__container")
@@ -448,18 +484,6 @@ const renderInventoryView = async (element, day, from, to) => {
       element.querySelector(".end__date").innerText,
       element.querySelector(".end__date").dataset.date
     );
-
-    if (innerWidth < 1024) {
-      let closeelement = document.querySelector(
-        ".tour__date__modal__container .tourDate__container > svg"
-      );
-      closeModalContainer(
-        closeelement,
-        event,
-        "tour__date__modal__container",
-        "hidden"
-      );
-    }
   } catch (err) {
     console.error("renderInventoryView=" + err.lineNumber + "," + err.message);
   }
@@ -797,12 +821,8 @@ const renderRouteStop = async (element) => {
 // updatetd
 const renderTransportationName = async (element) => {
   try {
- 
     if (element) {
- 
       if (element.info.transportation.id) {
-    
-
         return `<div class="flex gap-1 items-center mb-2 min-h-4 transportation__img__details">
                 <img src="" width="90"  data-id="${element.info.transportation.id}" 
                 class="transportation__img w-[90px]" alt="${element.info.transportation.name}" />
@@ -1913,7 +1933,6 @@ const callbackSourceTourBookingFormIns = async (args) => {
         .querySelector("input[name='captchaid']").value,
       run: true,
     });
-  
   } catch (err) {
     console.error(
       "callbackSourcetourBookingFormIns=" + err.lineNumber + "," + err.message
@@ -2104,10 +2123,10 @@ const onrenderedFormSchema = async () => {
 };
 const scrollToTourSection = async (element, type) => {
   try {
-    window.scroll({
-      top: document.querySelector(`.${type}`).offsetTop,
-      behavior: "smooth",
-    });
+    const target = document.querySelector(`.${type}`);
+
+    await smoothAccurateScroll(target);
+
     document
       .querySelector(".navBar__container")
       .querySelectorAll(".navbar-el")

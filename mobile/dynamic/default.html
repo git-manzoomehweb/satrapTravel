@@ -142,15 +142,21 @@
   <!-- common styles for all page -->
   <!-- Common Styles -->
   <basis core="call" pageindex="[##cms.cms.pageindex##]" file="style.inc" />
-
-
   <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
-  <link href="[##cms.cms.cdn##]/css/search-box-mob.css" type="text/css" rel="stylesheet" />
-</head>
+ </head>
 
 <body class="white-header overflow-x-hidden">
   <basis core="call" pageindex="[##cms.cms.pageindex##]" file="header.inc" />
   <main>
+    <basis core="api" name="api.getTourDates" url="https://basisfly.com/api/inventory/packages/execution-plan-view/"
+      method="post" content-type="application/json" run="atclient" triggers="db.tourDatesRequest"
+      if="{##db.tourDatesRequest##}" onprocessed="onTourDatesLoaded" body='{
+        "pid": "{##db.tourDatesRequest.value##}",
+        "title": "dates",
+        "dmnid": "[##cms.cms.domainid##]",
+        "ownerid": "[##cms.cms.ownerid##]"
+    }'>
+    </basis>
     <h1 class="sr-only">ساتراپ تراول</h1>
     <section class="flex flex-col w-full mt-[-54px]">
       <div class="w-full module-banner-background h-[183px] bg-primary-600"></div>
@@ -528,11 +534,37 @@
               <div class="swiper-pagination"></div>
             </div>
           </div>
+          <div
+            class="tourL-tour-date-menu fixed inset-0 flex items-center justify-center opacity-0 invisible scale-95 transition-all duration-300 origin-top">
+            <div class="fixed inset-0 blur2 bg-black/45 w-screen h-screen"></div>
+
+            <div
+              class="tourL-tour-date-panel relative z-10 w-full
+                                             border border-primary-100 py-4 px-4  bg-white shadow-shadow-date h-full overflow-y-auto custom-scrollbar">
+              <div class="flex items-center justify-between gap-24 mb-6">
+                <h2 class="text-base font-bold text-zinc-900">تاریخ های برگزاری تور</h2>
+                <button type="button" class="close-tourL-tour-date-menu group cursor-pointer" aria-label="بستن">
+                  <svg width="33" height="34" viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd"
+                      d="M16.8438 4.46729C9.45175 4.46729 3.4375 10.4159 3.4375 17.7273C3.4375 25.0387 9.45175 30.9873 16.8438 30.9873C24.2358 30.9873 30.25 25.0387 30.25 17.7273C30.25 10.4159 24.2358 4.46729 16.8438 4.46729Z"
+                      fill="#7E7E7E" class="group-hover:fill-primary-950"></path>
+                    <path
+                      d="M20.1429 22.4192L21.6018 20.9763L18.3018 17.715L21.6018 14.4578L20.1443 13.0135L16.8429 16.2734L13.5429 13.0107L12.084 14.4537L15.3827 17.715L12.084 20.9722L13.5415 22.4152L16.8415 19.1566L20.1429 22.4192Z"
+                      fill="#7E7E7E" class="group-hover:fill-white"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="tour-date-list flex flex-col gap-3"></div>
+            </div>
+          </div>
         </section>
       </layout>
       <face>
-        <a href="@db.tour-list.link" class="!h-[222px] group swiper-slide rounded-lg p-2 bg-[#FFBD22]">
-          <div class="h-[170px] w-full bg-white rounded-lg p-2 justify-between flex flex-col">
+        <div class="tourL-tour-card swiper-slide hover:bg-primary !h-[222px] group swiper-slide rounded-lg p-2 bg-zinc-100">
+          <span class="tourL-tour-airline hidden"
+            data-airline-img="\@list.airline.pic">@db.tour-list.prp_10000504</span>
+
+          <a href="@db.tour-list.link" class="h-[170px] w-full bg-white rounded-lg p-2 justify-between flex flex-col">
             <div class="w-full flex flex-col gap-[7px]">
               <h6 class="text-sm font-bold text-[#18181B] line-clamp-1">@db.tour-list.title </h6>
               <div class="w-full mt-3 !text-[#18181B] flex flex-col gap-1">
@@ -566,22 +598,17 @@
             </div>
             <div class="w-full justify-between flex items-center">
               <p class="text-xs text-[#18181B]">شروع قیمت:</p>
-              <p class="text-sm font-medium text-[#18181B]">@db.tour-list.prp_8181</p>
+              <p class="text-sm font-medium text-[#18181B]  tourL-tour-price">@db.tour-list.prp_8181</p>
             </div>
+          </a>
+          <div class="w-full flex justify-between items-center h-[calc(100%-170px)]">
+            <button onclick="toggleTourDateMenu(this, '@db.tour-list.id')" type="button"
+              class="tourL-tour-date-btn h-full px-4 bg-white rounded-lg text-xs date-btn flex justify-center items-center">تاریخ برگذاری</button>
+            <a href="@db.tour-list.link"
+              class="text-center text-xs tetx-[#141414] transition-all ease-in-out duration-300">
+              مشاهده</a>
           </div>
-          <div class="w-full flex justify-center items-center h-[calc(100%-170px)]">
-            <p class="text-center text-xs tetx-[#141414] group-hover:opacity-0 transition-all ease-in-out duration-300">
-              مشاهده</p>
-            <span class="group-hover:opacity-100 scale-75 opacity-0 absolute transition-all ease-in-out duration-300">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M4 24C4 12.972 12.972 4 24 4C35.028 4 44 12.972 44 24C44 35.028 35.028 44 24 44C12.972 44 4 35.028 4 24ZM7 24C7 33.374 14.626 41 24 41C33.374 41 41 33.374 41 24C41 14.626 33.374 7 24 7C14.626 7 7 14.626 7 24ZM18.8528 22.9366L25.8268 15.9946C26.4148 15.4106 27.3628 15.4126 27.9468 15.9986C28.2388 16.2906 28.3848 16.6746 28.3848 17.0566C28.3848 17.4406 28.2388 17.8266 27.9428 18.1186L22.0368 24.0006L27.9428 29.8786C28.5308 30.4626 28.5308 31.4126 27.9468 32.0006C27.3628 32.5866 26.4148 32.5906 25.8268 32.0046L18.8528 25.0626C18.2868 24.5006 18.2868 23.5006 18.8528 22.9366Z"
-                  fill="#111111" />
-              </svg>
-
-            </span>
-          </div>
-        </a>
+        </div>
       </face>
     </basis>
 
