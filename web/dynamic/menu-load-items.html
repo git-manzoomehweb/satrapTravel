@@ -1,0 +1,45 @@
+<basis core="dbsource" source="basiscore" lid="1" mid="18" name="db" usedforid="[##cms.query.catid##]">
+    <member name="scalar" type="scalar" typeid="150" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
+    <member name="banner-info" type="tree" request="cat" parentid=""
+        postsql="select * from [db.banner-info] where catid = [##cms.query.catid##]" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="tours">
+    <member name="cat" type="tree" request="cat" parentid="[##cms.query.catid##]" order="ord"></member>
+</basis>
+
+<div class="flex flex-col h-320px w-570px gap-3">
+    <basis core="print" datamembername="db.scalar">
+        <face>
+            <p class="font-bold text-xl">@column1</p>
+        </face>
+    </basis>
+    <basis core="print" datamembername="db.banner-info">
+        <face>
+            <p class="text-zinc-500 text-sm">@urldescription</p>
+        </face>
+    </basis>
+    <basis core="tree" datamembername="tours.cat" idcol="catid" parentidcol="parentid"
+        nullvalue="[##cms.query.catid##]">
+        <layout>
+            <div class="w-full grid grid-cols-3 gap-3">
+                @child
+            </div>
+        </layout>
+        <face filter="link is null">
+            <a href="/tour-list.bc?catid=@catid" class="text-zinc-700 text-sm hover:text-primary-700">@title</a>
+        </face>
+        <face>
+            <a href="@link" class="text-zinc-700 text-sm hover:text-primary-700">@title</a>
+        </face>
+    </basis>
+
+
+
+</div>
+<basis core="print" datamembername="db.banner-info">
+    <face>
+        <img src="@image" alt="@title" class="h-320px w-251px rounded-xl">
+    </face>
+</basis>

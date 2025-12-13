@@ -59,13 +59,21 @@
             <div
                 class="px-4 w-[calc(100%-32px)] h-[84px] border border-[#CDCDCD] flex items-center gap-4 p-[34px] bg-white rounded-xl absolute top-[calc(100%-40px)] justify-center">
                 <div class="flex flex-col items-center justify-center gap-4">
-                    <h1 class="font-semibold text-base text-[#191919]"> دسته بندی تورها</h1>
+                    <basis core="print" datamembername="db.scalar">
+                        <face>
+                            <h1 class="font-semibold text-base text-[#191919]">@column1</h1>
+                        </face>
+                    </basis>
                     <ul class="!text-[#848484] !text-xs flex items-center gap-1">
                         <li>
                             <a href="/" class="hover:text-primary">خانه</a>
                         </li>
                         <li>/</li>
-                        <li> تورها</li>
+                        <basis core="print" datamembername="db.scalar">
+                            <face>
+                                <li> @column1</li>
+                            </face>
+                        </basis>
                     </ul>
                 </div>
             </div>

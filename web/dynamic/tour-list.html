@@ -1,15 +1,22 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="18" name="db" usedforid="[##cms.query.catid##]">
     <member name="scalar" type="scalar" typeid="150" />
 </basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
+    <member name="banner-info" type="tree" request="cat" parentid=""
+        postsql="select * from [db.banner-info] where catid = [##cms.query.catid##]" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
+    <member name="tour-list" type="list" link="tour.bc" propertyid="8077,8181,10000504,8076,3088134" perpage="20"
+        typeid="159" size="296x206" order="ord" />
+    <member name="paging" type="list" request="paging" count="5" parentname="tour-list" />
+</basis>
+
 
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
     <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid##]" />
 </basis>
 
-<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
-    <member name="banner-info" type="tree" request="cat" parentid=""
-        postsql="select * from [db.banner-info] where catid = [##cms.query.catid##]" />
-</basis>
+
 
 
 <basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.pid|(2388726)##]" sourcemid="article">
@@ -32,11 +39,7 @@
 
 
 
-<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
-    <member name="tour-list" type="list" link="tour.bc" propertyid="8077,8181,10000504,8076,3088134" perpage="20"
-        typeid="159" size="296x206" order="ord" />
-    <member name="paging" type="list" request="paging" count="5" parentname="tour-list" />
-</basis>
+
 <basis core="dbsource" source="basiscore" mid="20" name="list" lid="1" schemaid="987" term="[##cms.query.term##]">
     <member name="airline" type="list" request="spelist" />
 </basis>

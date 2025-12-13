@@ -1,0 +1,166 @@
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
+    <member name="hotel-list" type="list" link="hotel.bc" propertyid="3088197,3088199,3088198,3088200" perpage="40"
+        typeid="159" size="296x206" order="ord" />
+    <member name="paging" type="list" request="paging" count="5" parentname="hotel-list" />
+</basis>
+
+<div class="w-full  flex flex-col gap-[14px] hotels-cont" data-catid="[##cms.query.catid##]">
+    <basis core="print" datamembername="db.hotel-list">
+        <else-layout>موردی یافت نشد!</else-layout>
+        <layout>
+            <div class="w-full flex flex-col gap-[14px]">
+                @child
+
+            </div>
+        </layout>
+        <face>
+            <a href="@link"
+                class="hotel_card relative w-full flex gap-6 items-center bg-white rounded-2xl border border-[#C1E5F2] h-[230px] p-3 group">
+                <span content="@prp_3088200"
+                    class="absolute right-4 top-4 bg-[#FF4949] flex w-[96px] h-[32px] justify-center items-center rounded-[40px] text-white text-xs">@prp_3088200</span>
+                <img loading="lazy" src="@00296X00206prp" alt="@title" class="h-[206px] rounded-2xl w-[296px]">
+                <div class="w-[628px] flex items-center justify-between gap-[18px]">
+                    <div
+                        class="h-[186px] w-[326px] pl-3 border-l border-dashed border-[#B1D1E8] flex flex-col justify-center gap-[13px]">
+                        <p class="hotelName text-xl text-[#1A1A1A] font-semibold">@title</p>
+                        <img loading="lazy" src="[##cms.cms.cdn##]/_images/@prp_3088197star.png" alt="@prp_3088197star"
+                            width="106.5">
+                        <p class="hotelStar hidden">@prp_3088197</p>
+                        <p class=" font-bold text-sm">@prp_3088199</p>
+                    </div>
+                    <div class="h-[187px] w-[282px] flex gap-[18px] flex-col justify-end">
+                        <p class="text-xs text-[#272727]">برای هر یک شب اقامت</p>
+                        <div class="flex w-full items-center justify-between">
+                            <span class="text-xs text-[#777777]">شروع قیمت:</span>
+                            <p class="hotelPrice font-medium text-[#060606]">@prp_3088198 تومان
+                            </p>
+                        </div>
+                        <div
+                            class="w-full group-hover:bg-primary group-hover:text-white flex text-xs font-bold  justify-center items-center gap-2 h-12  rounded-xl bg-[#FFBD22]">
+                            مشاهده
+                            هتل
+
+                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M4.96967 13.0303C4.67678 12.7374 4.67678 12.2626 4.96967 11.9697L10.9697 5.9697C11.2626 5.6768 11.7374 5.6768 12.0303 5.9697C12.3232 6.2626 12.3232 6.7374 12.0303 7.0303L7.31066 11.75L19.5 11.75C19.9142 11.75 20.25 12.0858 20.25 12.5C20.25 12.9142 19.9142 13.25 19.5 13.25L7.31066 13.25L12.0303 17.9697C12.3232 18.2626 12.3232 18.7374 12.0303 19.0303C11.7374 19.3232 11.2626 19.3232 10.9697 19.0303L4.96967 13.0303Z"
+                                    fill="#171717" class="group-hover:fill-white" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </face>
+    </basis>
+
+
+    <div id="paging" class="flex cats-paging-load items-center justify-center gap-2 mt-10">
+        <ul class="flex w-full justify-center items-center gap-3 cd-pagination no-space dir-ltr" id="wibpaging">
+            <basis core="print" datamembername="db.paging">
+                <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'='')">
+                    <li
+                        class="w-12 h-12 flex justify-center items-center bg-primary-50 rounded-xl text-zinc-700 cursor-pointer hover:bg-secondary-600 hover:text-zinc-900 page-no prev-page">
+                        <span
+                            class="w-12 h-12 flex justify-center items-center bg-primary-50 rounded-xl text-zinc-700 cursor-pointer hover:bg-secondary-600 hover:text-zinc-900"
+                            aria-label="angle-left" onclick="FetchPageNumPrev('@page')">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="47.5" y="47.5" width="47" height="47" rx="11.5"
+                                    transform="rotate(-180 47.5 47.5)" stroke="#3F3F46" />
+                                <path
+                                    d="M19.9697 31.5303C19.7034 31.2641 19.6792 30.8474 19.8971 30.5538L19.9697 30.4697L26.439 24L19.9697 17.5303C19.7034 17.2641 19.6792 16.8474 19.8971 16.5538L19.9697 16.4697C20.2359 16.2034 20.6526 16.1792 20.9462 16.3971L21.0303 16.4697L28.0303 23.4697C28.2966 23.7359 28.3208 24.1526 28.1029 24.4462L28.0303 24.5303L21.0303 31.5303C20.7374 31.8232 20.2626 31.8232 19.9697 31.5303Z"
+                                    fill="#27272A" />
+                            </svg>
+
+                        </span>
+                    </li>
+                </face>
+                <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'<>'')">
+                    <li
+                        class="page-no prev-page w-12 h-12 flex justify-center items-center bg-primary-50 rounded-xl text-zinc-700 cursor-pointer hover:bg-secondary-600 hover:text-zinc-900">
+                        <span
+                            class="w-12 h-12 flex justify-center items-center bg-primary-50 rounded-xl text-zinc-700 cursor-pointer hover:bg-secondary-600 hover:text-zinc-900"
+                            aria-label="angle-left" onclick="FetchPageNumPrev('@page')">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="47.5" y="47.5" width="47" height="47" rx="11.5"
+                                    transform="rotate(-180 47.5 47.5)" stroke="#3F3F46" />
+                                <path
+                                    d="M19.9697 31.5303C19.7034 31.2641 19.6792 30.8474 19.8971 30.5538L19.9697 30.4697L26.439 24L19.9697 17.5303C19.7034 17.2641 19.6792 16.8474 19.8971 16.5538L19.9697 16.4697C20.2359 16.2034 20.6526 16.1792 20.9462 16.3971L21.0303 16.4697L28.0303 23.4697C28.2966 23.7359 28.3208 24.1526 28.1029 24.4462L28.0303 24.5303L21.0303 31.5303C20.7374 31.8232 20.2626 31.8232 19.9697 31.5303Z"
+                                    fill="#27272A" />
+                            </svg>
+                        </span>
+                    </li>
+                </face>
+            </basis>
+            <basis core="print" datamembername="db.paging">
+                <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'='')">
+                    <li
+                        class="page-no w-[32px] hover:bg-primary-100 Iran-sans h-[32px] cursor-pointer flex justify-center items-center bg-secondary-100 text-secondary-950 rounded-lg">
+                        <span
+                            class="page-number w-12 h-12 flex justify-center items-center bg-primary-50 rounded-xl text-zinc-700 cursor-pointer hover:bg-secondary-600 hover:text-zinc-900"
+                            data-pagenum="@page" onclick="FetchWithPageNum('@page')">@page</span>
+                    </li>
+                </face>
+                <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
+                    <li
+                        class="page-no w-[32px] hover:bg-primary-100 Iran-sans h-[32px] cursor-pointer flex justify-center items-center bg-secondary-100 text-secondary-950 rounded-lg">
+                        <span
+                            class="page-number w-12 h-12 flex justify-center items-center bg-primary-50 rounded-xl text-zinc-700 cursor-pointer hover:bg-secondary-600 hover:text-zinc-900"
+                            data-pagenum="@page" onclick="FetchWithPageNum('@page')">@page</span>
+                    </li>
+                </face>
+                <face
+                    filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'='') ">
+                    <li
+                        class="page-no w-[32px] hover:bg-primary-100 Iran-sans h-[32px] cursor-pointer flex justify-center items-center bg-secondary-100 text-secondary-950 rounded-lg">
+                        <span
+                            class="page-number w-12 h-12 flex justify-center items-center bg-primary-50 rounded-xl text-zinc-700 cursor-pointer hover:bg-secondary-600 hover:text-zinc-900 "
+                            data-pagenum="@page" onclick="FetchWithPageNum('@page')">@page</span>
+                    </li>
+                </face>
+                <face
+                    filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'<>'') ">
+                    <li
+                        class="page-no w-[32px] hover:bg-primary-100 Iran-sans h-[32px] cursor-pointer flex justify-center items-center bg-secondary-100 text-secondary-950 rounded-lg">
+                        <span
+                            class="page-number w-12 h-12 flex justify-center items-center bg-primary-50 rounded-xl text-zinc-700 cursor-pointer hover:bg-secondary-600 hover:text-zinc-900 "
+                            data-pagenum="@page" onclick="FetchWithPageNum('@page')">@page</span>
+                    </li>
+                </face>
+            </basis>
+            <basis core="print" datamembername="db.paging">
+                <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'='')">
+                    <li
+                        class="page-no next-page w-12 h-12 flex justify-center items-center bg-primary-50 rounded-xl text-zinc-700 cursor-pointer hover:bg-secondary-600 hover:text-zinc-900">
+                        <span
+                            class="w-12 h-12 flex justify-center items-center bg-primary-50 rounded-xl text-zinc-700 cursor-pointer hover:bg-secondary-600 hover:text-zinc-900"
+                            aria-label="angle-right" onclick="FetchPageNumNext('@page')"><svg width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M16.0303 4.46967C16.2966 4.73594 16.3208 5.1526 16.1029 5.44621L16.0303 5.53033L9.561 12L16.0303 18.4697C16.2966 18.7359 16.3208 19.1526 16.1029 19.4462L16.0303 19.5303C15.7641 19.7966 15.3474 19.8208 15.0538 19.6029L14.9697 19.5303L7.96967 12.5303C7.7034 12.2641 7.6792 11.8474 7.89705 11.5538L7.96967 11.4697L14.9697 4.46967C15.2626 4.17678 15.7374 4.17678 16.0303 4.46967Z"
+                                    fill="#27272A" />
+                            </svg>
+                        </span>
+                    </li>
+                </face>
+                <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'<>'')">
+                    <li
+                        class="page-no next-page w-12 h-12 flex justify-center items-center bg-primary-50 rounded-xl text-zinc-700 cursor-pointer hover:bg-secondary-600 hover:text-zinc-900">
+                        <span
+                            class="w-12 h-12 flex justify-center items-center bg-primary-50 rounded-xl text-zinc-700 cursor-pointer hover:bg-secondary-600 hover:text-zinc-900"
+                            aria-label="angle-right" onclick="FetchPageNumNext('@page')"><svg width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M16.0303 4.46967C16.2966 4.73594 16.3208 5.1526 16.1029 5.44621L16.0303 5.53033L9.561 12L16.0303 18.4697C16.2966 18.7359 16.3208 19.1526 16.1029 19.4462L16.0303 19.5303C15.7641 19.7966 15.3474 19.8208 15.0538 19.6029L14.9697 19.5303L7.96967 12.5303C7.7034 12.2641 7.6792 11.8474 7.89705 11.5538L7.96967 11.4697L14.9697 4.46967C15.2626 4.17678 15.7374 4.17678 16.0303 4.46967Z"
+                                    fill="#27272A" />
+                            </svg>
+                        </span>
+                    </li>
+                </face>
+            </basis>
+        </ul>
+    </div>
+
+
+</div>

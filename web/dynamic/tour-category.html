@@ -52,21 +52,28 @@
         <section class="banner-list flex justify-center items-center h-[348px] relative w-full">
             <basis core="print" datamembername="db.banner-info">
                 <face>
-                    <img src="/@image" alt="@urltitle"
-                        class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+                    <img src="/@image" alt="@urltitle" class="z-0 absolute top-0 left-0 w-full h-full object-cover">
 
                 </face>
             </basis>
             <div
                 class="px-4 w-full h-[138px] border border-[#CDCDCD] lg:px-4 xl:!w-[1280px] xl:!px-0 flex items-center gap-4 p-[34px] bg-white rounded-xl absolute top-[calc(100%-75px)] justify-center">
                 <div class="flex flex-col items-center justify-center gap-4">
-                    <h1 class="font-semibold text-[32px] text-[#191919]">دسته بندی تور ها</h1>
+                    <basis core="print" datamembername="db.scalar">
+                        <face>
+                            <h1 class="font-semibold text-[32px] text-[#191919]">@column1 </h1>
+                        </face>
+                    </basis>
                     <ul class="!text-[#848484] !text-xl flex items-center gap-1">
                         <li>
                             <a href="/" class="hover:text-primary">خانه</a>
                         </li>
                         <li>/</li>
-                        <li> تورها</li>
+                        <basis core="print" datamembername="db.scalar">
+                            <face>
+                                <li> @column1</li>
+                            </face>
+                        </basis>
                     </ul>
                 </div>
             </div>
