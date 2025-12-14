@@ -1,1 +1,214 @@
-#contact-form-resize [data-bc-section],.modal__content [data-bc-section]{margin:0!important;padding:0!important}#contact-form-resize [data-bc-section-title],#contact-form-resize [data-bc-title-container],#visa-form [data-bc-question]:not(.Upload_QS) [data-bc-title-container],#visa-form [data-bc-section-title],.modal__content [data-bc-title-container]{display:none!important}#contact-form-resize [data-bc-schema-column]{display:flex!important;align-items:center;gap:12px!important}#contact-form-resize [data-bc-answer]{max-height:60px}#contact-form-resize [data-bc-question]{width:50%!important;margin:0!important;padding:0!important;position:relative}#contact-form-resize [data-bc-schema-direction=rtl] [data-bc-part][data-bc-invalid] [data-bc-validation-part]{padding-right:0!important;position:absolute;top:55px}#contact-form-resize [data-bc-part][data-bc-invalid] [data-bc-validation-part] li{color:var(--secondary-900)!important;font-size:12px!important;white-space:nowrap!important}#contact-form-resize [data-bc-question] *,.modal__content [data-bc-answer-container],.modal__content [data-bc-part-container],.modal__content [data-bc-part]{width:100%!important}#contact-form-resize{width:65%!important;flex-direction:row!important;align-items:start!important;transform:translateY(20px)}#captchaContainer{display:flex!important;flex-direction:row!important}#contact-form-resize input{height:59px!important;background-color:#fff!important;outline:0!important;padding:0 12px;border-radius:8px!important;box-shadow:none!important;border:1px solid var(--zinc-300)!important}#contact-form-resize input:focus{border:1px solid var(--primary-300)!important}#contact-form-resize input::placeholder{color:#71717a!important}#contact-form-resize [data-bc-schema-direction=rtl] [data-bc-part-related-cell]{margin:0!important}#visa-form [data-bc-schema-column]{display:flex!important;flex-wrap:wrap;gap:12px}#visa-form input[type=file],#visa-form input[type=text],#visa-form textarea{height:59px!important;background-color:#fff;border:1px solid var(--zinc-300)!important;border-radius:8px!important;color:var(--zinc-900);font-size:20px}#visa-form input[type=file]:focus,#visa-form input[type=text]:focus,#visa-form textarea:focus{box-shadow:none!important;border-color:var(--primary-600)!important}#visa-form input[type=file]::placeholder,#visa-form input[type=text]::placeholder,#visa-form textarea::placeholder{color:var(--zinc-900);font-size:20px}#visa-form [data-bc-question] :not([data-bc-upload-file-list]):not([data-bc-upload-file-item]){width:100%!important;margin:0!important}#visa-form [data-bc-upload-file-list] [data-bc-upload-file-item]{width:60px!important}#visa-form [data-bc-question]:first-child,#visa-form [data-bc-question]:nth-child(2),#visa-form [data-bc-question]:nth-child(3){width:32.5%!important;margin:0!important}#visa-form [data-bc-question]:nth-child(4),#visa-form [data-bc-question]:nth-child(5),#visa-form [data-bc-question]:nth-child(6),#visa-form [data-bc-question]:nth-child(7){width:49.5%!important}.tour-detail #contact-form-resize{transform:none!important}.captcha__container__info input,.modal__content [data-bc-part] input{width:100%!important;border:1px solid var(--primary)!important;background-color:#fff!important;height:54px!important;color:var(--primary-800)!important;border-radius:12px!important}.captcha__container__info input::placeholder,.modal__content [data-bc-part] input::placeholder{color:var(--primary-500)!important}.count-btnnn{width:30px;height:30px;display:flex;justify-content:center;align-items:center;border:1px solid var(--primary-600);color:var(--primary-600);background-color:var(--primary-50);border-radius:4px}.count-btnnn:hover{border:1px solid var(--secondary-600)!important;color:var(--secondary-600)!important;background-color:var(--secondary-50)!important}
+#contact-form-resize [data-bc-section],
+.modal__content [data-bc-section] {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#contact-form-resize [data-bc-section-title],
+#contact-form-resize [data-bc-title-container],
+#visa-form [data-bc-question]:not(.Upload_QS) [data-bc-title-container],
+#visa-form [data-bc-section-title],
+.modal__content [data-bc-title-container] {
+  display: none !important;
+}
+#contact-form-resize [data-bc-schema-column] {
+  display: flex !important;
+  align-items: center;
+  gap: 12px !important;
+}
+#contact-form-resize [data-bc-answer] {
+  max-height: 60px;
+}
+#contact-form-resize [data-bc-question] {
+  width: 50% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+}
+#contact-form-resize
+  [data-bc-schema-direction="rtl"]
+  [data-bc-part][data-bc-invalid]
+  [data-bc-validation-part] {
+  padding-right: 0 !important;
+  position: absolute;
+  top: 55px;
+}
+#contact-form-resize
+  [data-bc-part][data-bc-invalid]
+  [data-bc-validation-part]
+  li {
+  color: var(--secondary-900) !important;
+  font-size: 12px !important;
+  white-space: nowrap !important;
+}
+#contact-form-resize [data-bc-question] *,
+.modal__content [data-bc-answer-container],
+.modal__content [data-bc-part-container],
+.modal__content [data-bc-part] {
+  width: 100% !important;
+}
+#contact-form-resize {
+  width: 65% !important;
+  flex-direction: row !important;
+  align-items: start !important;
+  transform: translateY(20px);
+}
+#captchaContainer {
+  display: flex !important;
+  flex-direction: row !important;
+}
+#contact-form-resize input {
+  height: 59px !important;
+  background-color: #fff !important;
+  outline: 0 !important;
+  padding: 0 12px;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  border: 1px solid var(--zinc-300) !important;
+}
+#contact-form-resize input:focus {
+  border: 1px solid var(--primary-300) !important;
+}
+#contact-form-resize input::placeholder {
+  color: #71717a !important;
+}
+#contact-form-resize
+  [data-bc-schema-direction="rtl"]
+  [data-bc-part-related-cell] {
+  margin: 0 !important;
+}
+#visa-form [data-bc-schema-column] {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+#visa-form input[type="file"],
+#visa-form input[type="text"],
+#visa-form textarea {
+  height: 59px !important;
+  background-color: #fff;
+  border: 1px solid var(--zinc-300) !important;
+  border-radius: 8px !important;
+  color: var(--zinc-900);
+  font-size: 20px;
+}
+#visa-form input[type="file"]:focus,
+#visa-form input[type="text"]:focus,
+#visa-form textarea:focus {
+  box-shadow: none !important;
+  border-color: var(--primary-600) !important;
+}
+#visa-form input[type="file"]::placeholder,
+#visa-form input[type="text"]::placeholder,
+#visa-form textarea::placeholder {
+  color: var(--zinc-900);
+  font-size: 20px;
+}
+#visa-form
+  [data-bc-question]
+  :not([data-bc-upload-file-list]):not([data-bc-upload-file-item]) {
+  width: 100% !important;
+  margin: 0 !important;
+}
+#visa-form [data-bc-upload-file-list] [data-bc-upload-file-item] {
+  width: 60px !important;
+}
+#visa-form [data-bc-question]:first-child,
+#visa-form [data-bc-question]:nth-child(2),
+#visa-form [data-bc-question]:nth-child(3) {
+  width: 32.5% !important;
+  margin: 0 !important;
+}
+#visa-form [data-bc-question]:nth-child(4),
+#visa-form [data-bc-question]:nth-child(5),
+#visa-form [data-bc-question]:nth-child(6),
+#visa-form [data-bc-question]:nth-child(7) {
+  width: 49.5% !important;
+}
+.tour-detail #contact-form-resize {
+  transform: none !important;
+}
+.captcha__container__info input,
+.modal__content [data-bc-part] input {
+  width: 100% !important;
+  border: 1px solid var(--primary) !important;
+  background-color: #fff !important;
+  height: 54px !important;
+  color: var(--primary-800) !important;
+  border-radius: 12px !important;
+}
+.captcha__container__info input::placeholder,
+.modal__content [data-bc-part] input::placeholder {
+  color: var(--primary-500) !important;
+}
+.count-btnnn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--primary-600);
+  color: var(--primary-600);
+  background-color: var(--primary-50);
+  border-radius: 4px;
+}
+.count-btnnn:hover {
+  border: 1px solid var(--secondary-600) !important;
+  color: var(--secondary-600) !important;
+  background-color: var(--secondary-50) !important;
+}
+#formRequest [data-bc-schema-column] {
+  display: flex !important;
+  flex-wrap: wrap;
+}
+#formRequest [data-bc-question] {
+  margin-bottom: 0px !important;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+#formRequest [data-bc-answer-container] {
+  width: 100% !important;
+}
+#formRequest [data-bc-part-container] {
+  width: 100% !important;
+}
+
+#formRequest input,
+#formRequest select,
+#formRequest textarea {
+  height: 50px !important;
+  background-color: #e1f5ff36 !important;
+  border: 1px solid var(--primary-600) !important;
+  border-radius: 12px !important;
+  outline: none !important;
+  resize: none !important;
+}
+#formRequest .resume-ans input::file-selector-button {
+  background-color: var(--primary-50);
+  border-radius: 10px !important;
+  color: var(--primary-600);
+  border: 1px solid var(--primary-600);
+  outline: 0 !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  cursor: pointer;
+}
+
+#formRequest .contactUsInput {
+  width: 370px !important;
+}
+#formRequest  #abs-cn{
+    width: 50%;
+    position: absolute;
+    left: 0;
+    bottom: 83px;
+}
+#formRequest   .resume-ans{
+position: relative;
+}
+#formRequest   .resume-ans [data-bc-upload-file-list]{
+    top: 100%;
+    right: 0;
+    position: absolute;
+    transform: scale(0.75) translateY(-16px);
+}

@@ -257,12 +257,13 @@ if (document.querySelectorAll(".swiper-ver").length > 0) {
     direction: "vertical",
     scrollbar: {
       el: ".swiper-scrollbar",
-      hide: true,
+      // hide: true,
+      draggable: true,
     },
     slidesPerView: 5,
     speed: 750,
     centeredSlides: !1,
-    loop: 1,
+    // loop: 1,
     autoplay: { delay: 4000, disableOnInteraction: !1 },
     spaceBetween: 8,
     grabCursor: !0,
@@ -691,7 +692,14 @@ const POPUP = document.querySelector(".list-video-popup");
 const CLOSE_BTN = document.querySelector(".close-popup");
 const MUSIC_POPUP = document.querySelector(".list-music-popup");
 const SET_FETCH_CLASS = "set-fetch";
-
+if (document.querySelector(".list-video-popup")) {
+  document
+    .querySelector(".list-video-popup .close-popup")
+    .addEventListener("click", () => {
+      document.querySelector(".list-video-popup").classList.toggle("hidden");
+      document.querySelector(".list-video-popup").classList.toggle("flex");
+    });
+}
 function ensureSetFetchContainer(parent) {
   let el = parent.querySelector("." + SET_FETCH_CLASS);
   if (!el) {
@@ -1201,22 +1209,6 @@ var FetchPageNumPrev = async (e) => {
   fetchCategory(loadContainer.getAttribute("data-cat"));
   initRadios();
 
-  function hookPagination(fn) {
-    return async function (...args) {
-      await fn.apply(this, args);
-      initHotelFilters();
-    };
-  }
-
-  if (typeof FetchPageNumPrev === "function")
-    FetchPageNumPrev = hookPagination(FetchPageNumPrev);
-
-  if (typeof FetchPageNumNext === "function")
-    FetchPageNumNext = hookPagination(FetchPageNumNext);
-
-  if (typeof FetchWithPageNum === "function")
-    FetchWithPageNum = hookPagination(FetchWithPageNum);
-
   function initHotelFilters() {
     if (!document.querySelector(".hotel-list")) return;
 
@@ -1229,6 +1221,7 @@ var FetchPageNumPrev = async (e) => {
         starToggleBtn: ".star-filter .flex.cursor-pointer",
         starBox: ".star-box",
         starCheckboxSelector: '.star-box input[type="checkbox"]',
+        resultsContainerSelector: null,
       };
 
       function $(s, r = document) {
@@ -1260,6 +1253,10 @@ var FetchPageNumPrev = async (e) => {
         return cleaned ? parseFloat(cleaned) : NaN;
       }
 
+      function getCards() {
+        return $$(SELECTORS.hotelCard);
+      }
+
       function debounce(fn, t = 250) {
         let id;
         return (...a) => {
@@ -1268,8 +1265,56 @@ var FetchPageNumPrev = async (e) => {
         };
       }
 
+      const noResult = document.createElement("div");
+      noResult.className = "no-results";
+      noResult.textContent = "هتلی یافت نشد";
+
+      function getAnchor() {
+        const cards = getCards();
+        return cards[0]?.parentNode || document.body;
+      }
+
+      function ensureCheckboxValues(box) {
+        if (!box) return;
+        $$(SELECTORS.starCheckboxSelector, box).forEach((cb) => {
+          if (cb.value) return;
+          const raw =
+            cb.dataset.star ||
+            cb.id ||
+            cb.name ||
+            box.querySelector(`label[for="${cb.id}"]`)?.textContent ||
+            "";
+          const d = raw.replace(/[^0-9۰-۹]/g, "");
+          if (d) cb.value = persianToEnglishDigits(d);
+        });
+      }
+
+      function attachStarToggle(btn, box) {
+        if (!btn || !box) return;
+        box.style.overflow = "hidden";
+        box.style.maxHeight = "0px";
+        box.style.opacity = "0";
+        box.style.transition =
+          "max-height 320ms cubic-bezier(.2,.9,.3,1),opacity 220ms";
+
+        btn.onclick = () => {
+          const open = box.classList.toggle("open");
+          box.style.maxHeight = open ? box.scrollHeight + "px" : "0px";
+          box.style.opacity = open ? "1" : "0";
+        };
+
+        box.addEventListener("transitionend", (e) => {
+          if (
+            e.propertyName === "max-height" &&
+            box.classList.contains("open")
+          ) {
+            box.style.maxHeight = "";
+          }
+        });
+      }
+
       function applyFilters() {
-        const cards = $$(SELECTORS.hotelCard);
+        const cards = getCards();
         const nameVal = normalizeText($(SELECTORS.hotelNameInput)?.value || "");
 
         const starBox = $(SELECTORS.starBox);
@@ -1289,21 +1334,37 @@ var FetchPageNumPrev = async (e) => {
             $(SELECTORS.hotelStar, card)?.textContent
           );
 
-          const show =
-            (!nameVal || name.includes(nameVal)) &&
-            (!stars.length || stars.some((s) => star >= s && star < s + 1));
+          const nameMatch = !nameVal || name.includes(nameVal);
+          const starMatch =
+            !stars.length || stars.some((s) => star >= s && star < s + 1);
 
+          const show = nameMatch && starMatch;
           card.style.display = show ? "" : "none";
           if (show) visible++;
         });
+
+        const anchor = getAnchor();
+        const exist = anchor.querySelector(".no-results");
+        if (!visible && !exist) anchor.appendChild(noResult);
+        if (visible && exist) exist.remove();
       }
 
       function init() {
         const starBox = $(SELECTORS.starBox);
+        ensureCheckboxValues(starBox);
+        attachStarToggle($(SELECTORS.starToggleBtn), $(SELECTORS.starBox));
+
         starBox?.addEventListener("change", applyFilters, true);
 
         const nameInput = $(SELECTORS.hotelNameInput);
         nameInput?.addEventListener("input", debounce(applyFilters, 220));
+
+        const anchor = getCards()[0]?.parentNode;
+        if (anchor) {
+          new MutationObserver(applyFilters).observe(anchor, {
+            childList: true,
+          });
+        }
 
         applyFilters();
       }
@@ -3682,6 +3743,19 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // ____________________________
 // ____________________________
+if (document.querySelector(".star-filter")) {
+  document
+    .querySelector(".star-filter div.flex.justify-between")
+    .addEventListener("click", () => {
+      document.querySelector(".star-filter .star-box").classList.toggle("h-0");
+      document
+        .querySelector(".star-filter .star-box")
+        .classList.toggle("h-fit");
+      document
+        .querySelector(".star-filter .star-box")
+        .classList.toggle("opacity-0");
+    });
+}
 // ____________________________
 // ____________________________
 // ____________________________

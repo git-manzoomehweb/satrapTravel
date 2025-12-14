@@ -3837,22 +3837,14 @@ div.sidebar-box:hover {
 .swiper-vertical > .swiper-scrollbar {
   top: 19% !important;
 }
-.swiper-ver .swiper-scrollbar.swiper-scrollbar-vertical,
-.swiper-vertical > .swiper-scrollbar {
-  top: 18% !important;
-  background-color: var(--secondary-400) !important;
-}
+
 .top-50 {
   top: 50%;
 }
 .right-set-cstm {
   right: 113px;
 }
-.swiper-ver .swiper-scrollbar-drag {
-  background-color: var(--secondary-400) !important;
-  width: 9px !important;
-  left: 3px !important;
-}
+
 .date__details li.active {
   background: linear-gradient(to left, var(--primary), var(--primary-50));
   border-color: #fff !important;

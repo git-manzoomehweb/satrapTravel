@@ -6,48 +6,48 @@
 
 <div class="w-full  flex flex-col gap-[14px] hotels-cont" data-catid="[##cms.query.catid##]">
     <basis core="print" datamembername="db.hotel-list">
-        <else-layout>موردی یافت نشد!</else-layout>
         <layout>
             <div class="w-full flex flex-col gap-[14px]">
+                <div class="flex z-10 relative bg-white px-2 items-center gap-3">
+                    <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                        class="w-8   h-8">
+                    <h1 class="font-bold text-base text-zinc-900"> پیشنهاد های ویژه </h1>
+                    <span class="bullet-1 "></span>
+                </div>
                 @child
-
             </div>
         </layout>
         <face>
             <a href="@link"
-                class="hotel_card relative w-full flex gap-6 items-center bg-white rounded-2xl border border-[#C1E5F2] h-[230px] p-3 group">
+                class="bg-[#FAFAFA] justify-between hotel_card group border border-zinc-300 rounded-2xl w-full flex-col relative flex p-2 gap-3 h-[446px]">
                 <span content="@prp_3088200"
-                    class="absolute right-4 top-4 bg-[#FF4949] flex w-[96px] h-[32px] justify-center items-center rounded-[40px] text-white text-xs">@prp_3088200</span>
-                <img loading="lazy" src="@00296X00206prp" alt="@title" class="h-[206px] rounded-2xl w-[296px]">
-                <div class="w-[628px] flex items-center justify-between gap-[18px]">
-                    <div
-                        class="h-[186px] w-[326px] pl-3 border-l border-dashed border-[#B1D1E8] flex flex-col justify-center gap-[13px]">
-                        <p class="hotelName text-xl text-[#1A1A1A] font-semibold">@title</p>
-                        <img loading="lazy" src="[##cms.cms.cdn##]/_images/@prp_3088197star.png" alt="@prp_3088197star"
-                            width="106.5">
-                        <p class="hotelStar hidden">@prp_3088197</p>
-                        <p class=" font-bold text-sm">@prp_3088199</p>
+                    class="absolute right-4 top-4 bg-[#FF4949] flex w-[96px] h-[32px] justify-center items-center rounded-[40px] text-white text-xs">
+                    @prp_3088200
+                </span>
+                <img loading="lazy" src="@00296X00206prp" alt="@title"
+                    class="w-full object-cover  rounded-2xl h-[206px]">
+                <p class="hotelName line-clamp-1 text-lg font-semibold text-[#1A1A1A]">@title</p>
+                <div class="w-full flex pb-2 border-b border-dashed border-zinc-300 justify-between items-center">
+                    <div class="flex items-center">
+                        <img loading="lazy" s src="[##cms.cms.cdn##]/_images/@prp_3088197star.png"
+                            alt="@prp_3088197star" width="106.5">
+                        <p class="hotelStar font-bold text-sm hidden">@prp_3088197</p>
                     </div>
-                    <div class="h-[187px] w-[282px] flex gap-[18px] flex-col justify-end">
-                        <p class="text-xs text-[#272727]">برای هر یک شب اقامت</p>
-                        <div class="flex w-full items-center justify-between">
-                            <span class="text-xs text-[#777777]">شروع قیمت:</span>
-                            <p class="hotelPrice font-medium text-[#060606]">@prp_3088198 تومان
-                            </p>
-                        </div>
-                        <div
-                            class="w-full group-hover:bg-primary group-hover:text-white flex text-xs font-bold  justify-center items-center gap-2 h-12  rounded-xl bg-[#FFBD22]">
-                            مشاهده
-                            هتل
-
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M4.96967 13.0303C4.67678 12.7374 4.67678 12.2626 4.96967 11.9697L10.9697 5.9697C11.2626 5.6768 11.7374 5.6768 12.0303 5.9697C12.3232 6.2626 12.3232 6.7374 12.0303 7.0303L7.31066 11.75L19.5 11.75C19.9142 11.75 20.25 12.0858 20.25 12.5C20.25 12.9142 19.9142 13.25 19.5 13.25L7.31066 13.25L12.0303 17.9697C12.3232 18.2626 12.3232 18.7374 12.0303 19.0303C11.7374 19.3232 11.2626 19.3232 10.9697 19.0303L4.96967 13.0303Z"
-                                    fill="#171717" class="group-hover:fill-white" />
-                            </svg>
-                        </div>
-                    </div>
+                    <p class=" font-bold text-sm">@prp_3088199</p>
+                </div>
+                <span class="text-[#272727] text-xs">برای هر یک شب اقامت</span>
+                <div class="w-full flex items-center justify-between">
+                    <p class="text-[#52525B] text-xs">شروع قیمت:</p>
+                    <p class="text-base text-zinc-900">@prp_3088198 تومان</p>
+                </div>
+                <div
+                    class="w-full font-medium group-hover:bg-primary-300 text-sm text-zinc-900 gap-2 h-[56px] flex justify-center items-center bg-secondary-700 rounded-xl">
+                    مشاهده هتل
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M16.4697 24.5303C16.1768 24.2374 16.1768 23.7626 16.4697 23.4697L22.4697 17.4697C22.7626 17.1768 23.2374 17.1768 23.5303 17.4697C23.8232 17.7626 23.8232 18.2374 23.5303 18.5303L18.8107 23.25L31 23.25C31.4142 23.25 31.75 23.5858 31.75 24C31.75 24.4142 31.4142 24.75 31 24.75L18.8107 24.75L23.5303 29.4697C23.8232 29.7626 23.8232 30.2374 23.5303 30.5303C23.2374 30.8232 22.7626 30.8232 22.4697 30.5303L16.4697 24.5303Z"
+                            fill="#18181B" />
+                    </svg>
                 </div>
             </a>
         </face>

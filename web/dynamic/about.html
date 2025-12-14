@@ -20,16 +20,21 @@
         postsql="SELECT * FROM [db.article-services] where TypeID not in(150)" />
 </basis>
 
-<basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.airlineid|(2387764)##]"
-    sourcemid="article">
-    <member type="list" name="gallery-airlines" format="4" order="ord"></member>
+
+
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219339">
+    <member name="gallery-airlines" type="list" link="article.bc" size="126x40" propertyid="7244" perpage="4"
+        order="ord" />
 </basis>
 
 <basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.certificateid|(2389804)##]"
     sourcemid="article">
     <member type="list" name="gallery-certificates" format="4" order="ord"></member>
 </basis>
-
+<basis core="dbsource" source="media" lid="1" name="db" usedforid="2391282"
+    sourcemid="article">
+    <member type="list" name="gallery-Acknowledgment" format="4" order="ord"></member>
+</basis>
 <basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.honorsid|(2389803)##]"
     sourcemid="article">
     <member type="list" name="gallery-statue" format="4" order="ord"></member>
@@ -255,9 +260,10 @@
                         </div>
                     </layout>
                     <face>
-                        <div class="swiper-slide !h-[88px] bg-zinc-100 rounded-xl !flex justify-center items-center">
-                            <img loading="lazy" src="/@largeIMG" alt="@name" class="w-[126px]">
-                        </div>
+                        <a href="@link"
+                            class="swiper-slide !h-[88px] bg-zinc-100 rounded-xl !flex justify-center items-center">
+                            <img loading="lazy" src="@00126X00040prp" alt="@title" class="w-[126px]">
+                        </a>
                     </face>
                 </basis>
 
@@ -308,11 +314,15 @@
                 </div>
                 <basis core="print" datamembername="db.gallery-statue">
                     <layout>
-                        <div class="my-[90px] z-10 flex w-full justify-between items-center">@child</div>
+                        <div class="my-[90px] z-10 flex w-full justify-between items-center">
+                            <div class="w-full swiper swiper-4">
+                                <div class="swiper-wrapper">@child</div>
+                            </div>
+                        </div>
                     </layout>
                     <face>
-                        <article class="h-[287px] w-[213px] flex flex-col justify-between items-center">
-                            <img loading="lazy" class="w-full h-[235px]" src="/@largeIMG" alt="@name">
+                        <article class="h-[287px] swiper-slide !flex flex-col justify-between items-center">
+                            <img loading="lazy" class="w-[213px] h-[235px]" src="/@largeIMG" alt="@name">
                             <p class="text-sm text-zinc-900"> @name</p>
                         </article>
                     </face>
@@ -327,19 +337,23 @@
                     <div class="flex z-10 relative bg-white px-2 items-center gap-3">
                         <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
                             class="w-8   h-8">
-                        <p class="font-bold text-2xl text-zinc-900"> سیاسیت و کیفیت </p> <span class="bullet-1 "></span>
+                        <p class="font-bold text-2xl text-zinc-900"> لوح تقدیرها </p> <span class="bullet-1 "></span>
                     </div>
                 </div>
-                <basis core="print" datamembername="db.Quality-Policy">
+                <basis core="print" datamembername="db.gallery-Acknowledgment">
                     <layout>
                         <div class="w-full my-[60px]">
-                            <div class="text-justify text-zinc-900">
-                                @child
+                            <div class="!w-full swiper swiper-4 h-[235px]">
+                                <div class="swiper-wrapper">@child</div>
                             </div>
 
                         </div>
                     </layout>
-                    <face filter="TypeID<>150">@largetext</face>
+                    <face>
+                        <div class="swiper-slide !flex justify-center items-center rounded-xl bg-zinc-100">
+                            <img src="@largeIMG" alt="@name" width="180" height="200">
+                        </div>
+                    </face>
                 </basis>
 
             </div>
@@ -369,14 +383,48 @@
                 </basis>
             </div>
         </section>
-        <section class="w-full flex justify-center relative  ">
-            <div class="px-4 relative w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
-                <div class="before-border last-section-brd-article relative w-full flex flex-col">
+
+
+
+        <section class="w-full flex justify-center relative">
+            <div
+                class="px-4 before-to-bottom-border relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class="flex relative items-center gap-3">
+                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
+                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
+                            class="w-8   h-8">
+                        <p class="font-bold text-2xl text-zinc-900"> سیاسیت و کیفیت </p> <span class="bullet-1 "></span>
+                    </div>
+                </div>
+                <basis core="print" datamembername="db.Quality-Policy">
+                    <layout>
+                        <div class="w-full my-[60px]">
+                            <div class="text-justify text-zinc-900">
+                                @child
+                            </div>
+
+                        </div>
+                    </layout>
+                    <face filter="TypeID<>150">@largetext</face>
+                </basis>
+
+            </div>
+        </section>
+
+
+
+
+
+
+        <section class="w-full flex justify-center relative">
+            <div
+                class="px-4 relative after-to-bottom-border mb-16 w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class=" last-section-form relative w-full flex flex-col">
                     <div class="flex  items-center gap-3 ">
                         <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
                             <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
                                 class="w-8 h-8">
-                            <p class="font-bold text-2xl text-zinc-900">ارتباط با کارشناسان </p>
+                            <p class="font-bold text-2xl text-zinc-900"> ارتباط با کارشناسان</p>
                             <span class="bullet-1"></span>
                         </div>
                     </div>
@@ -482,7 +530,6 @@
                 </div>
             </div>
         </section>
-
     </main>
     <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
     <basis core="call" file="footer.inc" />

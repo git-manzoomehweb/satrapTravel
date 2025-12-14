@@ -9,7 +9,7 @@
     <member name="cat" type="tree" request="cat" parentid="[##cms.query.catid##]" order="ord"></member>
 </basis>
 
-<div class="flex flex-col h-320px w-570px gap-3">
+<div class="flex flex-col h-320px w-400px gap-3">
     <basis core="print" datamembername="db.scalar">
         <face>
             <p class="font-bold text-xl">@column1</p>
@@ -17,14 +17,16 @@
     </basis>
     <basis core="print" datamembername="db.banner-info">
         <face>
-            <p class="text-zinc-500 text-sm">@urldescription</p>
+            <p class="text-zinc-500 text-sm mb-5">@urldescription</p>
         </face>
     </basis>
     <basis core="tree" datamembername="tours.cat" idcol="catid" parentidcol="parentid"
         nullvalue="[##cms.query.catid##]">
         <layout>
-            <div class="w-full grid grid-cols-3 gap-3">
-                @child
+            <div class="h-168px overflow-hidden">
+                <div class="w-full max-h-168px overflow-y-auto grid grid-cols-3 gap-3">
+                    @child
+                </div>
             </div>
         </layout>
         <face filter="link is null">

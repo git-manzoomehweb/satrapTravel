@@ -27,11 +27,7 @@
 </basis>
 
 
-<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.catid##]">
-    <member name="hotel-list" type="list" link="hotel.bc" propertyid="3088197,3088199,3088198,3088200" perpage="20"
-        typeid="159" size="296x206" order="ord" />
-    <member name="paging" type="list" request="paging" count="5" parentname="hotel-list" />
-</basis>
+ 
 <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.aid|(2388897)##]">
     <member name="aid-text" type="view" />
 </basis>
@@ -40,7 +36,9 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.gid|(218270)##]">
     <member name="Tour-Reservation-Guide" type="list" link="article.bc" propertyid="7244" perpage="9" order="ord" />
 </basis>
-
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="hotels">
+    <member name="cat" type="tree" request="cat" parentid="[##cms.query.catid##]" order="ord"></member>
+</basis>
 
 <!DOCTYPE html>
 <html dir="rtl" lang="fa">
@@ -66,7 +64,7 @@
     <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]" />
     <link href="[##cms.cms.cdn##]/css/contact-us-form-mob.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
- </head>
+</head>
 
 <body class="overflow-x-hidden relative hotel-list">
     <basis core="call" pageindex="[##cms.cms.pageindex##]" file="header.inc" />
@@ -263,12 +261,7 @@
         <section class="w-full flex justify-center relative mt-16">
             <div class="px-4   relative w-full h-full ">
                 <div class="flex bg-white relative items-center gap-3">
-                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
-                        <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
-                            class="w-8   h-8">
-                        <h1 class="font-bold text-base text-zinc-900"> پیشنهاد های ویژه </h1>
-                        <span class="bullet-1 "></span>
-                    </div>
+
                 </div>
                 <div class="my-6 z-10 flex flex-col w-full gap-[13px]">
                     <div class="flex gap-4 flex-col w-full">
@@ -299,6 +292,44 @@
 
                                 </div>
                                 <div class="flex w-full flex-col px-4 gap-4">
+                                    <div
+                                            class="w-full gap-3 pt-2 all-countries pb-3 border-b border-[#E2E2E2] flex flex-col overflow-hidden">
+                                            <div class="flex cursor-pointer group items-center justify-between">
+
+                                                دسته بندی کشورها
+
+                                                <span class="chev">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M4.46967 7.96967C4.73594 7.7034 5.1526 7.6792 5.44621 7.89705L5.53033 7.96967L12 14.439L18.4697 7.96967C18.7359 7.7034 19.1526 7.6792 19.4462 7.89705L19.5303 7.96967C19.7966 8.23594 19.8208 8.6526 19.6029 8.94621L19.5303 9.03033L12.5303 16.0303C12.2641 16.2966 11.8474 16.3208 11.5538 16.1029L11.4697 16.0303L4.46967 9.03033C4.17678 8.73744 4.17678 8.26256 4.46967 7.96967Z"
+                                                            fill="#292929" class="group-hover:fill-primary"></path>
+                                                    </svg>
+
+                                                </span>
+                                            </div>
+                                            <basis core="tree" datamembername="hotels.cat" idcol="catid"
+                                                parentidcol="parentid" nullvalue="[##cms.query.catid##]">
+                                                <layout>
+                                                    <ul class="w-full flex flex-col gap-2 hide-element">
+                                                        <li data-id="[##cms.query.catid##]" class="flex items-center gap-2">
+                                                            <input type="radio" class="accent-secondary-800"
+                                                                name="checkbox" checked value="[##cms.query.catid##]" id="[##cms.query.catid##]">
+                                                            <label for="[##cms.query.catid##]">همه هتل ها</label>
+                                                        </li>
+                                                        @child
+                                                    </ul>
+                                                </layout>
+                                                <face>
+                                                    <li data-id="@catid" class="flex items-center gap-2">
+                                                        <input type="radio" class="accent-secondary-800" name="checkbox"
+                                                            value="@catid" id="@catid">
+                                                        <label for="@catid">@title</label>
+                                                    </li>
+                                                </face>
+                                            </basis>
+
+                                        </div>
                                     <div class="w-full pt-2 pb-3 border-b border-[#E2E2E2]">
                                         <input type="text" placeholder="نام هتل"
                                             class="h-[55px] hotel-name-filter placeholder:text-[#ABABAB] w-full p-3 outline-none focus:shadow-lg border border-[#E5E5E5] rounded-lg">
@@ -358,95 +389,10 @@
                                 </div>
                             </div>
                         </div>
-                        <basis core="print" datamembername="db.hotel-list">
-                            <layout>
-                                <div class="w-full flex flex-col gap-[14px]">
-                                    @child
-                                </div>
-                            </layout>
-                            <face>
-                                <a href="@link"
-                                    class="bg-[#FAFAFA] justify-between hotel_card group border border-zinc-300 rounded-2xl w-full flex-col relative flex p-2 gap-3 h-[446px]">
-                                    <span content="@prp_3088200"
-                                        class="absolute right-4 top-4 bg-[#FF4949] flex w-[96px] h-[32px] justify-center items-center rounded-[40px] text-white text-xs">
-                                        @prp_3088200
-                                    </span>
-                                    <img loading="lazy" src="@00296X00206prp" alt="@title"
-                                        class="w-full object-cover  rounded-2xl h-[206px]">
-                                    <p class="hotelName line-clamp-1 text-lg font-semibold text-[#1A1A1A]">@title</p>
-                                    <div
-                                        class="w-full flex pb-2 border-b border-dashed border-zinc-300 justify-between items-center">
-                                        <div class="flex items-center">
-                                            <img loading="lazy" s src="[##cms.cms.cdn##]/_images/@prp_3088197star.png"
-                                                alt="@prp_3088197star" width="106.5">
-                                            <p class="hotelStar font-bold text-sm hidden">@prp_3088197</p>
-                                        </div>
-                                        <p class=" font-bold text-sm">@prp_3088199</p>
-                                    </div>
-                                    <span class="text-[#272727] text-xs">برای هر یک شب اقامت</span>
-                                    <div class="w-full flex items-center justify-between">
-                                        <p class="text-[#52525B] text-xs">شروع قیمت:</p>
-                                        <p class="text-base text-zinc-900">@prp_3088198 تومان</p>
-                                    </div>
-                                    <div
-                                        class="w-full font-medium group-hover:bg-primary-300 text-sm text-zinc-900 gap-2 h-[56px] flex justify-center items-center bg-secondary-700 rounded-xl">
-                                        مشاهده هتل
-                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M16.4697 24.5303C16.1768 24.2374 16.1768 23.7626 16.4697 23.4697L22.4697 17.4697C22.7626 17.1768 23.2374 17.1768 23.5303 17.4697C23.8232 17.7626 23.8232 18.2374 23.5303 18.5303L18.8107 23.25L31 23.25C31.4142 23.25 31.75 23.5858 31.75 24C31.75 24.4142 31.4142 24.75 31 24.75L18.8107 24.75L23.5303 29.4697C23.8232 29.7626 23.8232 30.2374 23.5303 30.5303C23.2374 30.8232 22.7626 30.8232 22.4697 30.5303L16.4697 24.5303Z"
-                                                fill="#18181B" />
-                                        </svg>
-                                    </div>
-                                </a>
-                            </face>
-                        </basis>
+
+                        <div class="load-hotel-section w-full flex flex-col gap-3" data-cat="[##cms.query.catid##]"></div>
 
 
-                        <div dir="ltr" class="w-full mt-5 flex gap-4 justify-center items-center">
-                            <basis core="print" datamembername="db.paging">
-                                <face filter="(@sta='pre')">
-                                    <a class=" rotate-180 w-12 h-12 flex justify-center text-sm text-[#888888] items-center rounded bg-[#F5F5F5] hover:text-primary-700"
-                                        href="/[##cms.cms.pageurl##]?pagenum=@page " aria-label="angle-left">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.0303 4.46967C16.2966 4.73594 16.3208 5.1526 16.1029 5.44621L16.0303 5.53033L9.561 12L16.0303 18.4697C16.2966 18.7359 16.3208 19.1526 16.1029 19.4462L16.0303 19.5303C15.7641 19.7966 15.3474 19.8208 15.0538 19.6029L14.9697 19.5303L7.96967 12.5303C7.7034 12.2641 7.6792 11.8474 7.89705 11.5538L7.96967 11.4697L14.9697 4.46967C15.2626 4.17678 15.7374 4.17678 16.0303 4.46967Z"
-                                                fill="#4C4C4C"></path>
-                                        </svg>
-                                    </a>
-                                </face>
-                            </basis>
-
-                            <basis core="print" datamembername="db.paging">
-                                <face filter="(@page=[##cms.query.pagenum|(1)##])">
-                                    <a class="w-12 h-12 flex justify-center text-sm text-[#888888] items-center rounded bg-[#F5F5F5] hover:text-primary-700"
-                                        href="/[##cms.cms.pageurl##]?pagenum=@page ">
-                                        @page
-                                    </a>
-                                </face>
-                                <face filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no')">
-                                    <a href="/[##cms.cms.pageurl##]?pagenum=@page "
-                                        class="w-12 h-12 flex justify-center text-sm text-[#888888] items-center rounded bg-[#F5F5F5] hover:text-primary-700">
-                                        @page
-                                    </a>
-                                </face>
-                            </basis>
-
-                            <basis core="print" datamembername="db.paging">
-                                <face filter="(@sta='nex')">
-                                    <a href="/[##cms.cms.pageurl##]?pagenum=@page " aria-label="angle-right"
-                                        class="w-12 h-12 flex justify-center text-sm text-[#888888] items-center rounded bg-[#F5F5F5] hover:text-primary-700">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.0303 4.46967C16.2966 4.73594 16.3208 5.1526 16.1029 5.44621L16.0303 5.53033L9.561 12L16.0303 18.4697C16.2966 18.7359 16.3208 19.1526 16.1029 19.4462L16.0303 19.5303C15.7641 19.7966 15.3474 19.8208 15.0538 19.6029L14.9697 19.5303L7.96967 12.5303C7.7034 12.2641 7.6792 11.8474 7.89705 11.5538L7.96967 11.4697L14.9697 4.46967C15.2626 4.17678 15.7374 4.17678 16.0303 4.46967Z"
-                                                fill="#4C4C4C"></path>
-                                        </svg>
-                                    </a>
-                                </face>
-                            </basis>
-                        </div>
 
                         <div class="w-full flex flex-col gap-6">
 

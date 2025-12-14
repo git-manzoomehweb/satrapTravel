@@ -3446,10 +3446,10 @@ div.sidebar-box:hover {
 .swiper-scrollbar.swiper-scrollbar-vertical,
 .swiper-ver .swiper-scrollbar.swiper-scrollbar-vertical,
 .swiper-vertical > .swiper-scrollbar {
-  background-color: var(--secondary-600) !important;
+  background-color: var(--primary-600) !important;
   position: absolute;
   left: var(--swiper-scrollbar-left, auto);
-  right: -24px !important;
+  right: -4px !important;
   z-index: 30 !important;
   width: 4px !important;
   opacity: 1 !important;
@@ -3532,13 +3532,17 @@ div.sidebar-box:hover {
 .swiper-ver .swiper-scrollbar.swiper-scrollbar-vertical,
 .swiper-vertical > .swiper-scrollbar {
   top: 18% !important;
-  background-color: var(--secondary-400) !important;
+  background-color: var(--zinc-200) !important;
 }
 .swiper-ver .swiper-scrollbar-drag {
-  background-color: var(--secondary-400) !important;
-  width: 9px !important;
-  left: 3px !important;
+  background-color: var(--primary-400) !important;
+  width: 7.5px !important;
+  left: 1.8px !important;
 }
+.swiper-ver .swiper-scrollbar-drag:hover {
+  box-shadow: 0 5px 10px 0 #22b5ff81 !important;
+}
+
 .date__details li.active {
   background: linear-gradient(to left, var(--primary), var(--primary-50));
   border-color: #fff !important;
@@ -4025,11 +4029,21 @@ body:has(.flighthotel-searchHistory:not(.hidden))
   width: 68px !important;
   height: 2rem !important;
   opacity: 0;
+  background-color: rgba(1, 116, 1, 0.702) !important;
 }
 .swiper-ver .swiper-slide:hover span.bg-\[\#ff4949c5\] {
   right: 747px !important;
   z-index: 0;
   opacity: 1 !important;
+}
+.swiper-ver .swiper-slide .bg-zinc-100 {
+  background-color: var(--zinc-100) !important;
+}
+.swiper-ver .swiper-slide:hover .bg-zinc-100 {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px !important;
+}
+.swiper-ver {
+  padding-right: 20px !important;
 }
 .swiper-ver .date-btn {
   padding: 6px 12px;
@@ -4598,4 +4612,19 @@ body.hotel-list #search-box:has(.loader) {
 }
 form#flightHotelSearch {
   margin-top: 10px !important;
+}
+a.h-\[180px\]:hover div.font-semibold.text-7xl.z-\[7\] {
+  text-align: center !important;
+  font-size: 54px !important;
+  background-color: #22b5ff66;
+}
+a.h-\[180px\] div.font-semibold.text-7xl.z-\[7\] {
+  transition: all 0.2s ease !important;
+}
+.swiper-story.\!h-\[80vh\] {
+  height: 590px !important;
+}
+body:has(.modals-container) .last-section-form::after {
+  height: 64.5px !important;
+  top: calc(100% + 15.5px) !important;
 }

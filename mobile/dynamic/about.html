@@ -20,9 +20,8 @@
         postsql="SELECT * FROM [db.article-services] where TypeID not in(150)" />
 </basis>
 
-<basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.airlineid|(2387764)##]"
-    sourcemid="article">
-    <member type="list" name="gallery-airlines" format="4" order="ord"></member>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219339">
+  <member name="gallery-airlines" type="list" link="article.bc" size="82x30" propertyid="7244" perpage="4" order="ord" />
 </basis>
 
 <basis core="dbsource" source="media" lid="1" name="db" usedforid="[##cms.query.certificateid|(2389804)##]"
@@ -41,7 +40,10 @@
 <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.viewid|(2389802 )##]">
     <member name="viewid" type="view" propertyid="7246" />
 </basis>
-
+<basis core="dbsource" source="media" lid="1" name="db" usedforid="2391282"
+    sourcemid="article">
+    <member type="list" name="gallery-Acknowledgment" format="4" order="ord"></member>
+</basis>
 <!DOCTYPE html>
 <html dir="rtl" lang="fa">
 
@@ -248,9 +250,9 @@
                         </div>
                     </layout>
                     <face>
-                        <div class="swiper-slide !h-[71px] bg-zinc-100 rounded-xl !flex justify-center items-center">
-                            <img loading="lazy" src="/@largeIMG" alt="@name" class="w-[126px]">
-                        </div>
+                        <a href="@link" class="swiper-slide !h-[71px] bg-zinc-100 rounded-xl !flex justify-center items-center">
+                            <img loading="lazy" src="@00082X00030prp" alt="@title"  class="w-[126px]">
+                        </a>
                     </face>
                 </basis>
             </div>
@@ -264,6 +266,21 @@
             <face>
                 <div class="w-full rounded-xl overflow-hidden h-[198px]">
                     <img loading="lazy" src="/@largeIMG" alt="@name" class="!w-full h-full ">
+                </div>
+            </face>
+        </basis>
+
+
+        <basis core="print" datamembername="db.gallery-Acknowledgment">
+            <layout>
+                <section class="w-full px-4  my-6 flex flex-col gap-6">
+                    <p class="font-bold text-base text-zinc-900">لوح تقدیرها</p>
+                    @child
+                </section>
+            </layout>
+            <face>
+                <div class="w-full rounded-xl bg-zinc-100 rounded-xl !flex justify-center items-center overflow-hidden h-[198px]">
+                    <img loading="lazy" src="/@largeIMG" alt="@name" width="150">
                 </div>
             </face>
         </basis>

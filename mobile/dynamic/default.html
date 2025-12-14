@@ -89,8 +89,8 @@
 </basis>
 
 
-<basis core="dbsource" source="media" lid="1" name="db" usedforid="2387764" sourcemid="article">
-  <member type="list" name="gallery-airlines" format="4" order="ord"></member>
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="219339">
+  <member name="airlines-list" type="list" link="article.bc" size="82x30" propertyid="7244" perpage="4" order="ord" />
 </basis>
 
 
@@ -269,7 +269,8 @@
           <div class="w-full flex items-center gap-2">
             <img loading="lazy" class="w-[21px] h-[21px]" width="32" height="32"
               src="[##cms.cms.cdn##]/images/logo-small.png" alt="logo">
-            <h2 class="text-sm font-bold text-[#18181B]">آنتالیا با ساتراپ</h2>
+            <h2 class="text-sm font-bold text-[#18181B]">سفر هوشمندانه با ساتراپ تراول
+</h2>
           </div>
           <div class="swiper swiper-one-el !w-full !h-[142px]">
             <div class="swiper-wrapper">
@@ -349,7 +350,7 @@
       <div class="w-full flex  items-center gap-2">
         <img loading="lazy" class="w-[21px] h-[21px]" width="32" height="32"
           src="[##cms.cms.cdn##]/images/logo-small.png" alt="logo">
-        <h3 class="text-sm font-bold text-[#18181B]"> انواع تور های ساتراپ تراول </h3>
+        <h3 class="text-sm font-bold text-[#18181B]">  تور های خاص ساتراپ تراول </h3>
       </div>
 
       <basis core="print" datamembername="db.gallery-tour-type">
@@ -691,7 +692,7 @@
       </div>
     </section>
 
-    <basis core="print" datamembername="db.gallery-airlines">
+    <basis core="print" datamembername="db.airlines-list">
       <layout>
         <section class="w-full mb-20 px-4 flex flex-col gap-3">
           <div class="w-full flex  items-center gap-2">
@@ -707,9 +708,9 @@
         </section>
       </layout>
       <face filter="RowNumber<5">
-        <div class="h-[50px] bg-[#F4F4F5] rounded flex justify-center items-center p-4">
-          <img loading="lazy" src="@largeIMG" alt="@name" class="w-[82px]">
-        </div>
+        <a href="@link" class="h-[50px] bg-[#F4F4F5] rounded flex justify-center items-center p-4">
+          <img loading="lazy" src="@00082X00030prp" alt="@title" class="w-[82px]">
+        </a>
       </face>
     </basis>
 
