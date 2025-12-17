@@ -1600,7 +1600,15 @@ tCard.forEach((card) => {
     document.querySelector(".r-flight .flight-routes .locationId.to").value =
       rtId;
     var main = document.querySelector("main");
-    main && window.scrollTo({ top: main.offsetTop + 180, behavior: "smooth" });
+    if (window.innerWidth >= 1024) {
+      main &&
+        window.scrollTo({ top: main.offsetTop + 180, behavior: "smooth" });
+    } else {
+      document
+        .querySelector("#r-flight")
+        .classList.remove("invisible-module-form");
+      document.querySelector("#r-flight").classList.add("visible-module-form");
+    }
   });
 });
 
