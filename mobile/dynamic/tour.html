@@ -237,7 +237,7 @@
                         class="w-full h-[412px] px-[12px] py-[11px] flex flex-col justify-between items-center border border-[#D7D6D6] rounded-xl">
                         <div class="w-full grid gap-3 grid-cols-2">
                             <basis core="print" datamembername="db.tour-view">
-                                <face filter="prpID=8076">
+                                <face filter="prpID=8076  and text not in('')">
                                     <div
                                         class="w-full h-[144px] bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
                                         <img loading="lazy" src="[##cms.cms.cdn##]/images/Time Circle.svg" alt="time"
@@ -249,7 +249,7 @@
                             </basis>
 
                             <basis core="print" datamembername="db.tour-view">
-                                <face filter="prpID=8077">
+                                <face filter="prpID=8077 and text not in('')">
                                     <div
                                         class="w-full h-[144px] bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
                                         <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg" alt="time"
@@ -607,7 +607,7 @@
             <h3 class="font-bold text-[#323232] line-clamp-1 details__city">@info.origin.city.name@</h3>
             <span class=" __times__start font-bold text-[#323232] text-module-gray-0">@info.departure.time@ </span>
           </div>
-          <span class="text-sm">
+          <span class="text-sm flex items-center gap-1">
             <span class="origins__start__day text-xs text-[#222222]">
 
             </span>
@@ -773,7 +773,7 @@
           <span class=" __times__start font-bold text-[#323232] text-module-gray-0">@info.departure.time@ </span>
 
         </div>
-        <span class="text-sm">
+        <span class="text-sm flex items-center gap-1">
           <span class="destinations__start__day text-xs text-[#222222]"></span><span
             class="mr-2 destinations__start__weekday text-xs text-[#222222]"></span></span>
       </div>

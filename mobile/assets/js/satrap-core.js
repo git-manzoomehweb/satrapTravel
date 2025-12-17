@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const isMobile = window.innerWidth <= 968;
+  const isMobileSatrap = window.innerWidth <= 968;
   const requiredFiles = [
-    isMobile ? "satrap.mob.ui.min.css" : "satrap.ui.min.css",
+    isMobileSatrap ? "satrap.mob.ui.min.css" : "satrap.ui.min.css",
   ];
 
   function checkAllResourcesLoaded() {
@@ -257,13 +257,14 @@ if (document.querySelectorAll(".swiper-ver").length > 0) {
     direction: "vertical",
     scrollbar: {
       el: ".swiper-scrollbar",
-      hide: true,
+      // hide: true,
+      draggable: true,
     },
     slidesPerView: 5,
     speed: 750,
     centeredSlides: !1,
-    loop: 1,
-    autoplay: { delay: 4000, disableOnInteraction: !1 },
+    // loop: 1,
+    autoplay: { delay: 5500, disableOnInteraction: !1 },
     spaceBetween: 8,
     grabCursor: !0,
     touchReleaseOnEdges: true,
@@ -691,7 +692,14 @@ const POPUP = document.querySelector(".list-video-popup");
 const CLOSE_BTN = document.querySelector(".close-popup");
 const MUSIC_POPUP = document.querySelector(".list-music-popup");
 const SET_FETCH_CLASS = "set-fetch";
-
+if (document.querySelector(".list-video-popup")) {
+  document
+    .querySelector(".list-video-popup .close-popup")
+    .addEventListener("click", () => {
+      document.querySelector(".list-video-popup").classList.toggle("hidden");
+      document.querySelector(".list-video-popup").classList.toggle("flex");
+    });
+}
 function ensureSetFetchContainer(parent) {
   let el = parent.querySelector("." + SET_FETCH_CLASS);
   if (!el) {
@@ -1135,296 +1143,282 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ____________________________
 // ____________________________
-if (document.querySelector(".hotel-list")) {
-  (function () {
-    // ----- تنظیمات: اگر سلکتورهای صفحه‌ت متفاوت‌اند همین‌جا تغییر بده -----
-    const SELECTORS = {
-      hotelCard: ".hotel_card",
-      hotelName: ".hotelName",
-      hotelStar: ".hotelStar",
-      hotelNameInput: ".hotel-name-filter",
-      starFilterContainer: ".star-filter", // کانتینر کلیِ بخش ستاره
-      starToggleBtn: ".star-filter .flex.cursor-pointer", // دیوی که کلیک میشه برای باز/بسته
-      starBox: ".star-box", // جعبه چک‌باکس‌ها
-      starCheckboxSelector: '.star-box input[type="checkbox"]',
-      resultsContainerSelector: null, // اگر میخوای پیام "هتلی یافت نشد" داخل المنت خاصی باشد، سلکتورش را اینجا بذار
-    };
+var FetchPageNumPrev = async (e) => {
+    let t = document.querySelector(".hotels-cont"),
+      n = t.getAttribute("data-catid"),
+      o = await fetch(`/hotel-load-items.bc?catid=${n}&pagenum=${e}`),
+      r = await o.text();
+    t.innerHTML = r;
+  },
+  FetchPageNumNext = async (e) => {
+    let t = document.querySelector(".hotels-cont"),
+      n = t.getAttribute("data-catid"),
+      o = await fetch(`/hotel-load-items.bc?catid=${n}&pagenum=${e}`),
+      r = await o.text();
+    t.innerHTML = r;
+  },
+  FetchWithPageNum = async (e) => {
+    let t = document.querySelector(".hotels-cont"),
+      n = t.getAttribute("data-catid"),
+      o = await fetch(`/hotel-load-items.bc?catid=${n}&pagenum=${e}`),
+      r = await o.text();
+    t.innerHTML = r;
+  };
 
-    // ---------- کمک‌فانکشن‌ها ----------
-    function $(sel, root = document) {
-      return root.querySelector(sel);
-    }
-    function $$(sel, root = document) {
-      return Array.from(root.querySelectorAll(sel));
-    }
+(function () {
+  const loadContainer = document.querySelector(".load-hotel-section");
+  if (!loadContainer) return;
 
-    // تبدیل ارقام فارسی/عربی به انگلیسی
-    function persianToEnglishDigits(s = "") {
-      s = String(s);
-      const persian = "۰۱۲۳۴۵۶۷۸۹";
-      const arabic = "٠١٢٣٤٥٦٧٨٩";
-      for (let i = 0; i < 10; i++) {
-        s = s.split(persian[i]).join(String(i));
-        s = s.split(arabic[i]).join(String(i));
-      }
-      return s;
-    }
+  const cache = new Map();
+  let controller = null;
 
-    // نرمال‌سازی متن برای مقایسه
-    function normalizeText(s = "") {
-      return String(s || "")
-        .replace(/\s+/g, " ")
-        .trim()
-        .toLowerCase();
+  const fetchCategory = async (catId) => {
+    if (!catId) return;
+
+    if (controller) controller.abort();
+    controller = new AbortController();
+
+    if (cache.has(catId)) {
+      loadContainer.innerHTML = cache.get(catId);
+      initHotelFilters();
+      return;
     }
 
-    // خواندن مقدار ستاره از متن داخل یک المنت (پشتیبانی از '3' یا '4.8' یا '۴.۸')
-    function parseStarValueFromText(text) {
-      if (text == null) return NaN;
-      const cleaned = persianToEnglishDigits(String(text))
-        .replace(/,/g, ".")
-        .replace(/[^\d.]/g, "");
-      if (cleaned === "") return NaN;
-      // اگر عدد صحیح (مثلاً "3") یا اعشاری "4.8"
-      const n = parseFloat(cleaned);
-      return Number.isFinite(n) ? n : NaN;
-    }
+    try {
+      const res = await fetch(`hotel-load-items.bc?catid=${catId}`, {
+        signal: controller.signal,
+      });
+      if (!res.ok) return;
+      const html = await res.text();
+      cache.set(catId, html);
+      loadContainer.innerHTML = html;
+      initHotelFilters();
+    } catch (e) {}
+  };
 
-    // بازگشت به لیست به‌روز کارت‌ها (برای موارد داینامیک)
-    function getHotelCards() {
-      return $$(SELECTORS.hotelCard);
-    }
+  const initRadios = () => {
+    document.querySelectorAll("li[data-id]").forEach((li) => {
+      const radio = li.querySelector('input[type="radio"]');
+      if (!radio) return;
+      radio.addEventListener("change", () => {
+        fetchCategory(li.getAttribute("data-id"));
+      });
+    });
+  };
 
-    // debounce کوچک
-    function debounce(fn, wait = 250) {
-      let t;
-      return function (...args) {
-        clearTimeout(t);
-        t = setTimeout(() => fn.apply(this, args), wait);
+  fetchCategory(loadContainer.getAttribute("data-cat"));
+  initRadios();
+
+  function initHotelFilters() {
+    if (!document.querySelector(".hotel-list")) return;
+
+    (function () {
+      const SELECTORS = {
+        hotelCard: ".hotel_card",
+        hotelName: ".hotelName",
+        hotelStar: ".hotelStar",
+        hotelNameInput: ".hotel-name-filter",
+        starToggleBtn: ".star-filter .flex.cursor-pointer",
+        starBox: ".star-box",
+        starCheckboxSelector: '.star-box input[type="checkbox"]',
+        resultsContainerSelector: null,
       };
-    }
 
-    // پیام "هتلی یافت نشد"
-    const noResultEl = document.createElement("div");
-    noResultEl.className = "no-results";
-    noResultEl.textContent = "هتلی یافت نشد";
-
-    // محلی که پیام قرار می‌گیرد
-    function getResultsAnchor() {
-      if (SELECTORS.resultsContainerSelector) {
-        return $(SELECTORS.resultsContainerSelector) || document.body;
+      function $(s, r = document) {
+        return r.querySelector(s);
       }
-      // پیش‌فرض: کانتینر والد اولین کارت یا خود body
-      const cards = getHotelCards();
-      return cards && cards[0] && cards[0].parentNode
-        ? cards[0].parentNode
-        : document.body;
-    }
+      function $$(s, r = document) {
+        return Array.from(r.querySelectorAll(s));
+      }
 
-    // ----- انیمیشن باز/بسته کردن star-box (محاسبه scrollHeight برای transition smooth) -----
-    function attachStarToggle(toggleEl, boxEl) {
-      if (!toggleEl || !boxEl) return;
-      // آماده‌سازی CSS inline برای transition پویا
-      boxEl.style.overflow = "hidden";
-      boxEl.style.maxHeight = "0px";
-      boxEl.style.transition =
-        "max-height 320ms cubic-bezier(.2,.9,.3,1), opacity 220ms linear";
-      boxEl.style.opacity = "0";
-
-      toggleEl.addEventListener("click", function () {
-        const isOpen = boxEl.classList.contains("open");
-        if (!isOpen) {
-          // باز کردن: تنظیم maxHeight برابر scrollHeight و opacity=1
-          boxEl.classList.add("open");
-          const sh = boxEl.scrollHeight;
-          boxEl.style.maxHeight = sh + "px";
-          boxEl.style.opacity = "1";
-          // اگر آیکون چگ دارید می‌چرخونیم
-          toggleEl.querySelector(".chev")?.classList.add("open");
-        } else {
-          // بستن
-          boxEl.classList.remove("open");
-          boxEl.style.maxHeight = "0px";
-          boxEl.style.opacity = "0";
-          toggleEl.querySelector(".chev")?.classList.remove("open");
+      function persianToEnglishDigits(s = "") {
+        const p = "۰۱۲۳۴۵۶۷۸۹";
+        const a = "٠١٢٣٤٥٦٧٨٩";
+        s = String(s);
+        for (let i = 0; i < 10; i++) {
+          s = s.split(p[i]).join(i).split(a[i]).join(i);
         }
-      });
+        return s;
+      }
 
-      // وقتی انتقال تمام شد و باز است، maxHeight را حذف کن (تا اگر محتوا تغییر کرد، اندازه تطبیق کند)
-      boxEl.addEventListener("transitionend", function (e) {
-        if (e.propertyName !== "max-height") return;
-        if (boxEl.classList.contains("open")) {
-          boxEl.style.maxHeight = ""; // آزاد کردن محدودیت تا اگر محتوا تغییر کرد اتوماتیک شود
-        }
-      });
-    }
+      function normalizeText(s = "") {
+        return String(s).replace(/\s+/g, " ").trim().toLowerCase();
+      }
 
-    // ----- مقداردهی ایمن به چک‌باکس‌ها (اگر value ندارند) -----
-    function ensureCheckboxValues(boxEl) {
-      if (!boxEl) return;
-      const cbs = $$(SELECTORS.starCheckboxSelector, boxEl);
-      cbs.forEach((cb) => {
-        if (!cb.value || cb.value.trim() === "") {
-          // سعی کن از data-star یا id ارقام را استخراج کنی
-          let v = cb.getAttribute("data-star") || cb.id || cb.name || "";
-          // استخراج ارقام
-          const digits = (v + "").replace(/[^0-9۰-۹]/g, "");
-          if (digits) {
-            cb.value = persianToEnglishDigits(digits);
-          } else {
-            // fallback: اگر label نزدیک هست، تلاش برای گرفتن متن label
-            const lbl = boxEl.querySelector(`label[for="${cb.id}"]`);
-            if (lbl) {
-              const t = lbl.textContent || "";
-              const digits2 = (t + "").replace(/[^0-9۰-۹]/g, "");
-              if (digits2) cb.value = persianToEnglishDigits(digits2);
-            }
+      function parseStarValueFromText(text) {
+        if (!text) return NaN;
+        const cleaned = persianToEnglishDigits(text)
+          .replace(/,/g, ".")
+          .replace(/[^\d.]/g, "");
+        return cleaned ? parseFloat(cleaned) : NaN;
+      }
+
+      function getCards() {
+        return $$(SELECTORS.hotelCard);
+      }
+
+      function debounce(fn, t = 250) {
+        let id;
+        return (...a) => {
+          clearTimeout(id);
+          id = setTimeout(() => fn(...a), t);
+        };
+      }
+
+      const noResult = document.createElement("div");
+      noResult.className = "no-results";
+      noResult.textContent = "هتلی یافت نشد";
+
+      function getAnchor() {
+        const cards = getCards();
+        return cards[0]?.parentNode || document.body;
+      }
+
+      function ensureCheckboxValues(box) {
+        if (!box) return;
+        $$(SELECTORS.starCheckboxSelector, box).forEach((cb) => {
+          if (cb.value) return;
+          const raw =
+            cb.dataset.star ||
+            cb.id ||
+            cb.name ||
+            box.querySelector(`label[for="${cb.id}"]`)?.textContent ||
+            "";
+          const d = raw.replace(/[^0-9۰-۹]/g, "");
+          if (d) cb.value = persianToEnglishDigits(d);
+        });
+      }
+
+      function attachStarToggle(btn, box) {
+        if (!btn || !box) return;
+        box.style.overflow = "hidden";
+        box.style.maxHeight = "0px";
+        box.style.opacity = "0";
+        box.style.transition =
+          "max-height 320ms cubic-bezier(.2,.9,.3,1),opacity 220ms";
+
+        btn.onclick = () => {
+          const open = box.classList.toggle("open");
+          box.style.maxHeight = open ? box.scrollHeight + "px" : "0px";
+          box.style.opacity = open ? "1" : "0";
+        };
+
+        box.addEventListener("transitionend", (e) => {
+          if (
+            e.propertyName === "max-height" &&
+            box.classList.contains("open")
+          ) {
+            box.style.maxHeight = "";
           }
-        }
-      });
-    }
+        });
+      }
 
-    // ----- تابع اصلی فیلتر -----
-    function applyFilters() {
-      const cards = getHotelCards();
-      const nameInput = $(SELECTORS.hotelNameInput);
-      const nameFilter = nameInput ? normalizeText(nameInput.value) : "";
+      function applyFilters() {
+        const cards = getCards();
+        const nameVal = normalizeText($(SELECTORS.hotelNameInput)?.value || "");
 
-      // کدام ستاره‌ها انتخاب شده‌اند
-      const starBoxEl = $(SELECTORS.starBox);
-      const checkedStars = starBoxEl
-        ? $$(SELECTORS.starCheckboxSelector, starBoxEl)
-            .filter((ch) => ch.checked)
-            .map((ch) => {
-              const v = ch.value ? persianToEnglishDigits(ch.value) : "";
-              return v === "" ? null : parseInt(v, 10);
-            })
-            .filter((n) => Number.isInteger(n))
-        : [];
+        const starBox = $(SELECTORS.starBox);
+        const stars = starBox
+          ? $$(SELECTORS.starCheckboxSelector, starBox)
+              .filter((c) => c.checked)
+              .map((c) => parseInt(persianToEnglishDigits(c.value)))
+          : [];
 
-      const starFilterActive = checkedStars.length > 0;
+        let visible = 0;
 
-      let visibleCount = 0;
-      cards.forEach((card) => {
-        const nameEl = $(SELECTORS.hotelName, card);
-        const starEl = $(SELECTORS.hotelStar, card);
-        const nameText = nameEl ? normalizeText(nameEl.textContent) : "";
-        const starVal = starEl
-          ? parseStarValueFromText(starEl.textContent)
-          : NaN;
+        cards.forEach((card) => {
+          const name = normalizeText(
+            $(SELECTORS.hotelName, card)?.textContent || ""
+          );
+          const star = parseStarValueFromText(
+            $(SELECTORS.hotelStar, card)?.textContent
+          );
 
-        // بررسی نام
-        const nameMatch = !nameFilter ? true : nameText.includes(nameFilter);
+          const nameMatch = !nameVal || name.includes(nameVal);
+          const starMatch =
+            !stars.length || stars.some((s) => star >= s && star < s + 1);
 
-        // بررسی ستاره
-        let starMatch = true;
-        if (starFilterActive) {
-          starMatch = checkedStars.some((st) => {
-            if (!Number.isFinite(starVal)) return false;
-            const min = st;
-            const max = st + 0.999999;
-            return starVal >= min && starVal <= max;
+          const show = nameMatch && starMatch;
+          card.style.display = show ? "" : "none";
+          if (show) visible++;
+        });
+
+        const anchor = getAnchor();
+        const exist = anchor.querySelector(".no-results");
+        if (!visible && !exist) anchor.appendChild(noResult);
+        if (visible && exist) exist.remove();
+      }
+
+      function init() {
+        const starBox = $(SELECTORS.starBox);
+        ensureCheckboxValues(starBox);
+        attachStarToggle($(SELECTORS.starToggleBtn), $(SELECTORS.starBox));
+
+        starBox?.addEventListener("change", applyFilters, true);
+
+        const nameInput = $(SELECTORS.hotelNameInput);
+        nameInput?.addEventListener("input", debounce(applyFilters, 220));
+
+        const anchor = getCards()[0]?.parentNode;
+        if (anchor) {
+          new MutationObserver(applyFilters).observe(anchor, {
+            childList: true,
           });
         }
 
-        const show = nameMatch && starMatch;
-        if (show) {
-          // نشان ده
-          card.classList.remove("hidden-by-filter");
-          card.style.display = ""; // برگرداندن به حالت اصلی (flex / block بسته به CSS)
-          visibleCount++;
-        } else {
-          card.classList.add("hidden-by-filter");
-          card.style.display = "none";
-        }
+        applyFilters();
+      }
+
+      try {
+        init();
+      } catch (e) {}
+    })();
+  }
+})();
+
+// ____________________________
+// ____________________________
+(function () {
+  const container = document.querySelector(".all-countries");
+  if (!container) return;
+
+  const toggle = container.querySelector(".flex.cursor-pointer");
+  const list = container.querySelector("ul");
+  if (!toggle || !list) return;
+
+  let isOpen = false;
+
+  list.style.overflow = "hidden";
+  list.style.height = "0px";
+  list.style.opacity = "0";
+  list.style.transition =
+    "height 360ms cubic-bezier(.22,.9,.3,1), opacity 220ms ease";
+
+  toggle.addEventListener("click", () => {
+    if (isOpen) {
+      const h = list.scrollHeight;
+      list.style.height = h + "px";
+      requestAnimationFrame(() => {
+        list.style.height = "0px";
+        list.style.opacity = "0";
       });
-
-      // مدیریت پیام "هتلی یافت نشد"
-      const anchor = getResultsAnchor();
-      const existing = anchor.querySelector(".no-results");
-      if (visibleCount === 0) {
-        if (!existing) anchor.appendChild(noResultEl);
-      } else {
-        if (existing) existing.remove();
-      }
+      isOpen = false;
+    } else {
+      const h = list.scrollHeight;
+      list.style.height = h + "px";
+      list.style.opacity = "1";
+      isOpen = true;
     }
+  });
 
-    // ----- یکپارچه‌سازی رویدادها و پشتیبانی از داینامیک بودن -----
-    function init() {
-      const starToggle = $(SELECTORS.starToggleBtn);
-      const starBox = $(SELECTORS.starBox);
-      const nameInput = $(SELECTORS.hotelNameInput);
-
-      // اگر starBox هست مقداردهی ایمن چک‌باکس‌ها
-      ensureCheckboxValues(starBox);
-
-      // انیمیشن باز/بسته
-      attachStarToggle(starToggle, starBox);
-
-      // delegated listener برای چک‌باکس‌ها (برای پشتیبانی از اضافه/حذف داینامیک)
-      if (starBox) {
-        starBox.addEventListener(
-          "change",
-          function (e) {
-            const target = e.target;
-            if (
-              target &&
-              target.matches &&
-              target.matches('input[type="checkbox"]')
-            ) {
-              // اگر لازم شد مقدار value رو ست کن (حتی اگر بعداً اضافه شده)
-              if (!target.value || target.value.trim() === "") {
-                const id = target.id || "";
-                const digits = (id + "").replace(/[^0-9۰-۹]/g, "");
-                if (digits) target.value = persianToEnglishDigits(digits);
-              }
-              applyFilters();
-            }
-          },
-          true
-        );
-      }
-
-      // ورودی نام هتل با debounce
-      if (nameInput) {
-        nameInput.addEventListener("input", debounce(applyFilters, 220));
-        nameInput.addEventListener("keydown", function (e) {
-          if (e.key === "Enter") applyFilters();
-        });
-      }
-
-      // اگر کارت‌ها به‌صورت داینامیک اضافه میشوند: MutationObserver روی والد کارت‌ها
-      const firstCards = getHotelCards();
-      const anchor =
-        firstCards && firstCards[0] ? firstCards[0].parentNode : document.body;
-      if (anchor) {
-        const mo = new MutationObserver((mutList) => {
-          let shouldReapply = false;
-          for (const m of mutList) {
-            if (m.addedNodes && m.addedNodes.length) shouldReapply = true;
-            if (m.removedNodes && m.removedNodes.length) shouldReapply = true;
-          }
-          if (shouldReapply) {
-            // دوباره مقداردهی چک‌باکس‌ها (حالت خاص) و اعمال فیلتر
-            ensureCheckboxValues($(SELECTORS.starBox));
-            applyFilters();
-          }
-        });
-        mo.observe(anchor, { childList: true, subtree: false });
-      }
-
-      // اجرای اولیه
-      applyFilters();
+  list.addEventListener("transitionend", (e) => {
+    if (e.propertyName !== "height") return;
+    if (isOpen) {
+      list.style.height = "auto";
     }
+  });
+})();
 
-    // ایمن اجرا کن (اگر المان‌ها اصلاً نیستند، خطا نده)
-    try {
-      init();
-    } catch (err) {
-      console.error("Filter init error:", err);
-    }
-  })();
-}
 // ____________________________
 // ____________________________
 document.querySelector(".fiter-box-handler")?.addEventListener("click", () => {
@@ -3459,12 +3453,12 @@ document.addEventListener("click", (e) => {
   }
 });
 
-function isMobileScreen() {
+function isMobileSatrapScreen() {
   return window.innerWidth < 1024;
 }
 
 function buildTourDateRow({ start, end, day }, tourId, card) {
-  const mobile = isMobileScreen();
+  const mobile = isMobileSatrapScreen();
   const wrap = document.createElement("div");
   wrap.className = [
     "flex",
@@ -3631,7 +3625,7 @@ const onTourDatesLoaded = async (apiResponse) => {
 
 const renderInventoryList = async (element, day, from, to) => {
   try {
-    const mobile = isMobile();
+    const mobile = isMobileSatrap();
     const selector = mobile ? ".swiper-slide" : ".date-li";
 
     document.querySelectorAll(selector).forEach((e) => {
@@ -3701,8 +3695,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ____________________________
 // ____________________________
+document.addEventListener("DOMContentLoaded", () => {
+  const megaMenus = document.querySelectorAll(".has-megaMenu");
+  if (!megaMenus.length) return;
+
+  const cache = new Map();
+
+  const fetchCategory = async (catId, target) => {
+    if (cache.has(catId)) {
+      target.innerHTML = cache.get(catId);
+      return;
+    }
+
+    const res = await fetch(`/menu-load-items.bc?catid=${catId}`);
+    if (!res.ok) return;
+    const html = await res.text();
+    cache.set(catId, html);
+    target.innerHTML = html;
+  };
+
+  megaMenus.forEach((menu) => {
+    const catContainer = menu.querySelector(".cat-container");
+    const itemsContainer = menu.querySelector(".load-mega-menu-items");
+    if (!catContainer || !itemsContainer) return;
+
+    const cats = catContainer.querySelectorAll("li[data-id]");
+    if (!cats.length) return;
+
+    const activate = (li) => {
+      cats.forEach((i) => i.classList.remove("active"));
+      li.classList.add("active");
+    };
+
+    const handleClick = (li) => {
+      const catId = li.dataset.id;
+      if (!catId) return;
+      activate(li);
+      fetchCategory(catId, itemsContainer);
+    };
+
+    cats.forEach((li) => {
+      li.addEventListener("click", () => handleClick(li));
+    });
+
+    handleClick(cats[0]);
+  });
+});
 // ____________________________
 // ____________________________
+if (document.querySelector(".star-filter")) {
+  document
+    .querySelector(".star-filter div.flex.justify-between")
+    .addEventListener("click", () => {
+      document.querySelector(".star-filter .star-box").classList.toggle("h-0");
+      document
+        .querySelector(".star-filter .star-box")
+        .classList.toggle("h-fit");
+      document
+        .querySelector(".star-filter .star-box")
+        .classList.toggle("opacity-0");
+    });
+}
 // ____________________________
 // ____________________________
 // ____________________________

@@ -5,6 +5,10 @@
 <basis core="dbsource" source="basiscore" lid="1" mid="20" name="header-tours">
     <member name="cat" type="tree" request="cat" parentid="219311" order="ord"></member>
 </basis>
+
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="header-tours2">
+    <member name="cat" type="tree" request="cat" parentid="219392" order="ord"></member>
+</basis>
 <basis core="group" if="'[##cms.cms.page_index##]' = 'desktop'">
     <header class="w-full mb-[64px] header-landing-items">
         <div class="fixed transition-all ease-in-out duration-1000 w-full flex flex-col top-0 left-0 z-40">
@@ -60,19 +64,46 @@
 </div>
 
 </li>
-<li class="h-full relative">
-    <a href="/international-tours" class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">تور
-        های خارجی</a>
+<li class="h-full relative has-megaMenu second">
+    <div class="flex h-full items-center gap-2">
+        <a href="/satrap-nowrouz" class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">تور
+            های نوروز 1405
+        </a>
+        <span class="chev">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M17.9197 8.17969H11.6897H6.07975C5.11975 8.17969 4.63975 9.33969 5.31975 10.0197L10.4997 15.1997C11.3297 16.0297 12.6797 16.0297 13.5097 15.1997L15.4797 13.2297L18.6897 10.0197C19.3597 9.33969 18.8797 8.17969 17.9197 8.17969Z"
+                    fill="#667085"></path>
+            </svg>
+        </span>
+    </div>
+    <div class="mega-menu-container overflow-hidden flex gap-3 absolute top-full bg-white mx-auto opacity-0">
+        <basis core="tree" datamembername="header-tours2.cat" idcol="catid" parentidcol="parentid" nullvalue="219392">
+            <layout>
+                <ul class="flex flex-col gap-3 cat-container">
+                    @child
+                </ul>
+            </layout>
+            <face>
+<li class="w-full flex items-center justify-between categories" data-id="@catid">@title
+    <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M8.28033 0.21967C8.5466 0.485936 8.5708 0.9026 8.35295 1.19621L8.28033 1.28033L1.811 7.75L8.28033 14.2197C8.5466 14.4859 8.5708 14.9026 8.35295 15.1962L8.28033 15.2803C8.01406 15.5466 7.5974 15.5708 7.30379 15.3529L7.21967 15.2803L0.219671 8.28033C-0.0465962 8.01406 -0.0708024 7.5974 0.147052 7.30379L0.219671 7.21967L7.21967 0.21967C7.51256 -0.0732233 7.98744 -0.0732233 8.28033 0.21967Z"
+            fill="#27272A" />
+    </svg>
 
 </li>
-<li class="h-full relative">
-    <a href="/luxury-tour" class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">تور
-        های لوکس</a>
+</face>
+</basis>
+
+<div class="load-mega-menu-items w-[calc(100%-320px)] justify-between flex gap-3"></div>
+
+</div>
 
 </li>
+
 <li class="h-full relative">
-    <a href="/domestic-tours" class="h-full text-center flex items-center text-zinc-900 hover:text-primary-700">تور
-        های داخلی</a>
+    <a href="/visa" class="h-full px-4 text-center flex items-center text-zinc-900 hover:text-primary-700">ویزا</a>
 
 </li>
 <li class="useful-information relative h-full">
@@ -97,15 +128,7 @@
             </a>
 
         </li>
-        <li>
-            <a href="/visa" class="flex items-center gap-3 text-zinc-900 hover:text-primary-700">
-
-
-
-                ویزا های ساتراپ
-            </a>
-
-        </li>
+        
         <li>
             <a href="/domestic-airline" class="flex items-center gap-3 text-zinc-900 hover:text-primary-700">
 

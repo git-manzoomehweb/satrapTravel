@@ -420,7 +420,7 @@
                                                 <div class="w-full flex flex-col gap-1">
                                                      <h3 class="font-bold text-[#323232] line-clamp-1 details__city">@info.origin.city.name@</h3>
                                                   <span class=" __times__start font-bold text-[#323232] text-module-gray-0">@info.departure.time@ </span>
-                                                       <span class="text-sm">
+                                                       <span class="text-sm flex items-center gap-1">
                                     <span class="origins__start__day text-xs text-[#222222]">
 
                                 </span>
@@ -536,7 +536,7 @@
                                                 <div class="w-full flex flex-col gap-1">
                                                      <h3 class="font-bold text-[#323232] line-clamp-1 details__city">@info.origin.city.name@</h3>
                                                   <span class=" __times__start font-bold text-[#323232] text-module-gray-0">@info.departure.time@ </span>
-                                                 <span class="text-sm">
+                                                 <span class="text-sm flex items-center gap-1">
                                     <span class="destinations__start__day text-xs text-[#222222]"></span><span
                                         class="mr-2 destinations__start__weekday text-xs text-[#222222]"></span></span>
                                                 </div>
@@ -645,7 +645,7 @@
                             <script type="text/template">
                                 <div class="tourInventory__details hotelCard w-full flex border p-3 rounded-2xl gap-6 items-center justify-between border-zinc-300">
                                     <div class="tourInventory__details__item w-full flex justify-between gap-6 relative">
-                                        <div class="flex flex-col gap-5 divide-y w-full">
+                                        <div class="flex flex-col gap-5   w-full">
                                             {{return await renderHotels($data)}}
                                         </div> 
                                         <div class="tourInventory__details__item__info w-[564px] border-t border-dashed border-[#DFDFDF] absolute bottom-0 left-0 flex justify-between items-center">
@@ -702,7 +702,7 @@
                             class="w-full h-[412px] px-[12px] py-[11px] flex flex-col justify-between items-center border border-[#D7D6D6] rounded-xl">
                             <div class="w-full grid gap-3 grid-cols-2">
                                 <basis core="print" datamembername="db.tour-view">
-                                    <face filter="prpID=8076">
+                                    <face filter="prpID=8076 and text not in('')">
                                         <div
                                             class="w-full h-[144px] bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
                                             <img loading="lazy" src="[##cms.cms.cdn##]/images/Time Circle.svg"
@@ -714,7 +714,7 @@
                                 </basis>
 
                                 <basis core="print" datamembername="db.tour-view">
-                                    <face filter="prpID=8077">
+                                    <face filter="prpID=8077 and text not in('')">
                                         <div
                                             class="w-full h-[144px] bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
                                             <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg" alt="time"
