@@ -1494,8 +1494,8 @@ span.chev {
   cursor: pointer;
   border: 1px solid white;
 }
-.mega-menu-container .cat-container li:hover,
-.mega-menu-container .cat-container li.active {
+.mega-menu-container .cat-container li:hover
+{
   background-color: var(--primary-100);
   box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
     rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
@@ -1612,3 +1612,4 @@ span.chev {
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+

@@ -4022,8 +4022,9 @@ body:has(.flighthotel-searchHistory:not(.hidden))
   margin-bottom: 0 !important;
 }
 .swiper-ver .swiper-slide span.bg-\[\#ff4949c5\] {
-  top: 12px !important;
-  border-radius: 8px 0 0 8px !important;
+  transform: rotate(-90deg);
+  top: 30px !important;
+  border-radius: 8px 8px 0 0px !important;
   right: 700px !important;
   z-index: 0;
   width: 68px !important;
@@ -4032,9 +4033,10 @@ body:has(.flighthotel-searchHistory:not(.hidden))
   background-color: rgba(1, 116, 1, 0.702) !important;
 }
 .swiper-ver .swiper-slide:hover span.bg-\[\#ff4949c5\] {
-  right: 747px !important;
+  right: 729px !important;
   z-index: 0;
   opacity: 1 !important;
+  transform: rotate(-90deg);
 }
 .swiper-ver .swiper-slide .bg-zinc-100 {
   background-color: var(--zinc-100) !important;

@@ -264,7 +264,7 @@ if (document.querySelectorAll(".swiper-ver").length > 0) {
     speed: 750,
     centeredSlides: !1,
     // loop: 1,
-    autoplay: { delay: 4000, disableOnInteraction: !1 },
+    autoplay: { delay: 5500, disableOnInteraction: !1 },
     spaceBetween: 8,
     grabCursor: !0,
     touchReleaseOnEdges: true,
