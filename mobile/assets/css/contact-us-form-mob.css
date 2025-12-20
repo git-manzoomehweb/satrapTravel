@@ -170,7 +170,6 @@
   background-color: var(--secondary-50) !important;
 }
 
- 
 #formRequest [data-bc-answer-container] {
   width: 100% !important;
 }
@@ -198,6 +197,6 @@
   padding-bottom: 5px !important;
   cursor: pointer;
 }
-
- 
- 
+#formRequest.Submit-complaint [data-bc-section-title] {
+  display: none !important;
+}

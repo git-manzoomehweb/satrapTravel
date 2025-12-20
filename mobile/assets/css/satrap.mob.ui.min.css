@@ -3950,6 +3950,20 @@ header.fixed.px-4 {
 .tour-card figure::after {
   transition: 0.5s ease-in-out;
 }
+/* .tour-card:hover {
+  background: linear-gradient(
+    to top,
+    var(--primary-600),
+    var(--primary-50)
+  ) !important;
+} */
+.tour-card:hover .h-12.bg-primary {
+  background-color: #ffd529 !important;
+}
+.tour-card:hover .h-12.bg-primary span,
+.tour-card:hover .h-12.bg-primary p {
+  color: black !important;
+}
 @keyframes fly {
   from {
     transform: translateX(49px);
@@ -5226,7 +5240,7 @@ body.hotel-list .label-dates {
 }
 .module-banner-background {
   background-color: var(--primary);
-  background-image: url("../images/tour-mob.jpg");
+  background-image: url("../images/Flight-mob.jpg");
 }
 .module-banner-background.flight-banner-background {
   background-image: url("../images/Flight-mob.jpg") !important;

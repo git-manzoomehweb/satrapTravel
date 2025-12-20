@@ -4081,6 +4081,20 @@ body:has(.flighthotel-searchHistory:not(.hidden))
 .tour-card:hover figure img {
   transform: scale(1.2);
 }
+/* .tour-card:hover {
+  background: linear-gradient(
+    to top,
+    var(--primary-600),
+    var(--primary-50)
+  ) !important;
+} */
+.tour-card:hover .h-12.bg-primary {
+  background-color: #ffd529 !important;
+}
+.tour-card:hover .h-12.bg-primary span,
+.tour-card:hover .h-12.bg-primary p {
+  color: black !important;
+}
 .bg-black\/45 {
   background-color: rgb(0 0 0 / 0.45);
 }
@@ -4545,7 +4559,7 @@ button.add-routs:hover {
 }
 .module-banner-background {
   background-color: var(--primary);
-  background-image: url("../images/tour-bg.jpg");
+  background-image: url("../images/Flight-bg.jpg");
   margin-top: -64px !important;
 }
 .module-banner-background.flight-banner-background {
@@ -4629,4 +4643,18 @@ a.h-\[180px\] div.font-semibold.text-7xl.z-\[7\] {
 body:has(.modals-container) .last-section-form::after {
   height: 64.5px !important;
   top: calc(100% + 15.5px) !important;
+}
+.tourInventory__details__item__info:nth-child(2),
+.tourInventory__details__item__info:nth-child(3),
+.tourInventory__details__item__info:nth-child(4),
+.tourInventory__details__item__info:nth-child(5),
+.tourInventory__details__item__info:nth-child(6) {
+  padding-top: 16px !important;
+}
+.tourInventory__details__item figcaption {
+  height: fit-content !important;
+}
+.tourInventory__details__item__info[data-index="0"]
+  div.max-md\:\!mb-\[150px\].gap-8 {
+  align-items: center !important;
 }

@@ -161,7 +161,7 @@
 
                                                     <a href="tel:@text"
                                                         class="flex text-xl font-bold text-primary items-center gap-3">
-                                                       <span dir="ltr"> @text</span>
+                                                        <span dir="ltr"> @text</span>
                                                         <svg width="21" height="22" viewBox="0 0 21 22" fill="none"
                                                             xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -199,68 +199,82 @@
                             </basis>
                         </div>
                     </div>
-                    <div class="w-full grid mt-7 grid-cols-3 mb-5">
+                    <div class="w-full grid mt-7 grid-cols-3 mb-5 z-10">
+                        <ul class="flex flex-col gap-3">
+                            <li class="font-bold text-zinc-900 text-base">
+                                خدمات ساتراپ تراول
+                            </li>
+                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary" data-id="flight"
+                                data-nav="flight" onclick="check_searchHistory('flight'); check_landing('flight')">بلیط هواپیما 
+                            </li>
+                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary" data-id="hotel"
+                                data-nav="hotel" onclick="check_searchHistory('hotel'); check_landing('hotel')">رزرو هتل</li>
+                            <li><a href="/visa" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">ویزا</a>
+                            </li>
+                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary" data-id="insurance"
+                                data-nav="insurance"
+                                onclick="check_searchHistory('insurance'); check_landing('insurance')">بیمه
+                            </li>
+                            <li>
+                                <a class="text-sm text-zinc-700 cursor-pointer hover:text-primary"
+                                    href="/article.bc?&mid=1&lid=1&id=2391556">سفرکارت</a>
+                            </li>
+                            <li>
+                                <a class="text-sm text-zinc-700 cursor-pointer hover:text-primary"
+                                    href="https://fids.airport.ir/" target="_blank"> اطلاعات فرودگاهی</a>
+                            </li>
+
+                        </ul>
+                        <ul class="flex flex-col gap-3">
+                            <li class="font-bold text-zinc-900 text-base">
+                                امور مشتریان
+                            </li>
+                            <li>
+                                <a href="/support-center"
+                                    class="text-sm text-zinc-700 cursor-pointer hover:text-primary"> مرکز پشتیبانی </a>
+                            </li>
+                            <li>
+                                <a href="/article.bc?id=2391557"
+                                    class="text-sm text-zinc-700 cursor-pointer hover:text-primary">پیشنهادات و
+                                    تخفیفات</a>
+                            </li>
+                            <li>
+                                <a href="/Submit-complaint"
+                                    class="text-sm text-zinc-700 cursor-pointer hover:text-primary">ثبت شکایت
+                                </a>
+                            </li>
+
+
+                        </ul>
                         <ul class="flex flex-col gap-3">
                             <li class="font-bold text-zinc-900 text-base">
                                 ساتراپ تراول
-                            </li>
-                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary" data-id="flight"
-                                data-nav="flight" onclick="check_searchHistory('flight'); check_landing('flight')">پرواز
-                            </li>
-                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary" data-id="hotel"
-                                data-nav="hotel" onclick="check_searchHistory('hotel'); check_landing('hotel')">هتل</li>
-                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary">تورها</li>
-                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary">بیمه مسافرتی</li>
-                            <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary">پیشنهادات و تخفیفات</li>
-
-                        </ul>
-                        <ul class="flex flex-col gap-3">
-                            <li class="font-bold text-zinc-900 text-base">
-                                امور مشتریان
-                            </li>
-                            <li>
-                                <a href="/contact-us"
-                                    class="text-sm text-zinc-700 cursor-pointer hover:text-primary">تماس با ما</a>
-                            </li>
-                            <li>
-                                <a href="/blog" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">مجله
-                                    گردشگری</a>
-                            </li>
-                            <li>
-                                <a href="" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">پیشتیبانی</a>
-                            </li>
-                            <li>
-                                <a href="/Job-opportunities"
-                                    class="text-sm text-zinc-700 cursor-pointer hover:text-primary">استخدامی</a>
-                            </li>
-                            <li>
-                                <a href="" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">سوالات
-                                    متداول</a>
-                            </li>
-
-                        </ul>
-                        <ul class="flex flex-col gap-3">
-                            <li class="font-bold text-zinc-900 text-base">
-                                امور مشتریان
                             </li>
                             <li>
                                 <a href="/about-us" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">
                                     درباره ما</a>
                             </li>
                             <li>
+                                <a href="/contact-us" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">
+                                    تماس با ما</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">شرایط
+                                    اقساط</a>
+                            </li>
+                            <li>
+                                <a class="text-sm text-zinc-700 cursor-pointer hover:text-primary"
+                                    href="/article.bc?&mid=1&lid=1&id=2391556">سفرکارت</a>
+                            </li>
+                            <li>
+                                <a class="text-sm text-zinc-700 cursor-pointer hover:text-primary"
+                                    href="/Job-opportunities">فرصت های شغلی</a>
+                            </li>
+                            <li>
                                 <a href="/blog" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">مجله
                                     گردشگری</a>
                             </li>
-                            <li>
-                                <a href="" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">پیشتیبانی</a>
-                            </li>
-                            <!-- <li>
-                                <a href="" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">استخدامی</a>
-                            </li> -->
-                            <li>
-                                <a href="" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">سوالات
-                                    متداول</a>
-                            </li>
+
                         </ul>
                     </div>
                 </div>

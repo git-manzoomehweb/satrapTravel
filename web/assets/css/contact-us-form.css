@@ -197,18 +197,24 @@
 #formRequest .contactUsInput {
   width: 370px !important;
 }
-#formRequest  #abs-cn{
-    width: 50%;
-    position: absolute;
-    left: 0;
-    bottom: 83px;
+#formRequest #abs-cn {
+  width: 50%;
+  position: absolute;
+  left: 0;
+  bottom: 83px;
 }
-#formRequest   .resume-ans{
-position: relative;
+#formRequest .resume-ans {
+  position: relative;
 }
-#formRequest   .resume-ans [data-bc-upload-file-list]{
-    top: 100%;
-    right: 0;
-    position: absolute;
-    transform: scale(0.75) translateY(-16px);
+#formRequest .resume-ans [data-bc-upload-file-list] {
+  top: 100%;
+  right: 0;
+  position: absolute;
+  transform: scale(0.75) translateY(-16px);
+}
+#formRequest.Submit-complaint #abs-cn {
+  bottom: 96px !important;
+}
+#formRequest.Submit-complaint [data-bc-section-title] {
+  display: none !important;
 }

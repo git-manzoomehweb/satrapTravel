@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover" />
+    <title>[##cms.seo.title|(ثبت شکایت ساتراپ تراول)##]</title>
+    <meta name="description" content="[##cms.seo.description|(شرکت خدمات مسافرت هوایی و گردشگری  ساتراپ تراول)##]" />
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <basis core="call" file="pwa.inc" pageindex="[##cms.cms.pageindex##]" />
+    <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]" />
+    <link href="[##cms.cms.cdn##]/css/contact-us-form-mob.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
+</head>
+
+<body class="overflow-x-hidden relative">
+    <basis core="call" file="header.inc" pageindex="[##cms.cms.pageindex##]" />
+    <main>
+        <section class="flex justify-center items-center h-[241px] relative w-full">
+            <img loading="lazy" src="[##cms.cms.cdn##]/images/employment-bg.jpg" alt="employment"
+                class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+
+            <div
+                class="px-4 w-[calc(100%-32px)] mx-auto h-[138px] border border-[#CDCDCD] lg:px-4 xl:!w-[1280px] xl:!px-0 flex items-center gap-4 p-[34px] bg-white rounded-xl absolute top-[calc(100%-75px)] justify-center">
+                <div class="flex flex-col items-center justify-center gap-4">
+
+                    <h1 class="font-semibold text-base text-[#191919]"> فرصت های شغلی</h1>
+
+                    <ul class="!text-[#848484] text-xs flex items-center gap-1">
+                        <li>
+                            <a href="/" class="hover:text-primary">خانه</a>
+                        </li>
+                        <li>/</li>
+
+                        <li> ثبت شکایت </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+
+        <section class="w-full flex justify-center relative mt-28">
+            <div class="px-4 relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class="flex bg-white relative items-center gap-3">
+                    <div class="flex z-10 relative bg-white px-2 items-center gap-3">
+                        <img src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8   h-8">
+
+                        <h2 class="font-bold text-base text-zinc-900">
+                        ثبت شکایات شما
+                        </h2>
+
+                        <span class="bullet-1 "></span>
+                    </div>
+                </div>
+                <div id="formRequest" class=" mb-16 Submit-complaint z-10 flex flex-col w-full gap-[13px]">
+
+                    <div class="free-form-container form-container w-full">
+                        <basis core="schema" run="atclient"
+                                  schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/EC4A79E3-A198-4EB6-AFAA-064E5F82DCE7/fa/ثبت-شکایت"
+                            displaymode="new" button="[data-btn-upload-request]" resultsourceid="upload.data"
+                            onrendered="RenderFormRequest"></basis>
+                        <basis core="api" if="{##cms.uploadrequest.run|(false)##}" run="atclient"
+                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject" method="post"
+                            body="object_edit={##cms.uploadrequest.value##}&captcha={##cms.uploadrequest.captcha##}&captchaid={##cms.uploadrequest.captchaid##}"
+                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadrequest"
+                            onprocessed="OnProcessedEditObjectRequest"></basis>
+                        <div class="free-form-content mt-6">
+                            <div id="abs-cn" class="flex w-full flex-col gap-3  justify-between items-center">
+                                <div id="captchaContainerRequest" class="captchaContainerclass captcha-sefaresh"
+                                    data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
+                                    data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
+                                    <basis core="dbsource" source="trust_login" name="captchaRequest" run="atclient"
+                                        triggers="captchaRequest.refresh">
+                                        <member name="code" type="scalar" request="captcha"></member>
+                                    </basis>
+                                    <basis datamembername="captchaRequest.code" core="print" run="atclient"
+                                        onrendered="captchaRenderedRequest">
+                                        <face>
+                                            <script
+                                                type="text/template"><div class="flex justify-between items-center"><div><input type="text" class="contactUsInput codeinputm" placeholder="کد امنیتی" name="captcha" maxlength="4" /><input type="hidden" name="captchaid" value="@captcha@" /></div><div class="flex flex-row-reverse items-center"><svg class="cursor-pointer min-w-12 min-h-12" onclick="refreshCaptchaRequest()" width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3" stroke="#020121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="24.5" r="10" stroke="#020121" stroke-width="1.5"/></svg><img class="inline-block rounded-xl" src="/@captcha@" width="90" height="45" alt="captcha code" /></div></div></script>
+                                        </face>
+                                    </basis>
+                                </div>
+                                <basis core="callback" run="atclient" method="uploadDocumentRequest"
+                                    triggers="upload.data">
+                                </basis>
+                                <div
+                                    class="text-center bg-secondary-1-700 hover:bg-primary-600 rounded-xl text-white sendform-btn mt-1 cursor-pointer w-full leading-[50px]">
+                                    <button
+                                        class="data-body-btn w-full h-12 flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50"
+                                        type="button" data-btn-upload-request><span>ثبت
+                                            شکایت</span></button>
+                                </div>
+                            </div>
+                            <div class="message-api w-full absolute text-center mt-2"></div>
+                            <div class="clear-both"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full px-4 mb-8">
+            <div
+                class="w-full flex flex-col justify-end relative  overflow-hidden  bg-gradient-to-t from-[#F2F2F2]   to-[#FFFFFF00] rounded-2xl ">
+                <figure class="h-[50%] z-0 w-full rounded-t-2xl">
+                    <img loading="lazy" class="image-fade w-full h-full object-cover  rounded-t-2xl"
+                        src="[##cms.cms.cdn##]/images/contact-image-mob.jpg" alt="contact-us">
+                </figure>
+                <div class="relative z-[2] pb-3 px-3 w-full flex flex-col gap-1">
+                    <p class="font-bold text-sm leading-6">جهت مشاوره خرید تور با کارشناسان ما در ارتباط
+                        باشید</p>
+
+                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
+                        <basis core="schema" run="atclient"
+                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
+                            displaymode="new" button="[data-btn-uploadfooter]" resultsourceid="upload.datafooter"
+                            OnRendered="RenderFormFooter">
+                        </basis>
+                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
+                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject" method="post"
+                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
+                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
+                            OnProcessed="OnProcessedEditObjectFooter">
+                        </basis>
+                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
+                            triggers="upload.datafooter"></basis>
+                        <div class="captcha-button">
+                            <div id="captchaContainer"
+                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
+                                data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
+                                data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
+                                <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                                    triggers="captcha.refreshFooter">
+                                    <member name="code" type="scalar" request="captcha"></member>
+                                </basis>
+                                <basis datamembername="captcha.code" core="print" run="atclient"
+                                    OnRendered="captchaRenderedFooter">
+                                    <face>
+                                        <script type="text/template">
+                                    <div class="flex  justify-between ">
+                                        
+                                        <div class="flex sfvgwdcsdhc w-full items-center">
+
+                         <div class="float-right captcha-ctz w-1/2 relative">
+                           
+                            <input id="captcha-ct" type="text" class="contactUsInput codeinputm bg-white rounded-2xl p-3" name="captcha" maxlength="4" placeholder="کد امنیتی "/>
+                            <input type="hidden" name="captchaid" value="@captcha@" />
+                        </div>
+                      <div class="float-right w-1/2 justify-between lg:mt-0 bvgvkek h-fit leading-[65px] px-4 flex items-center gap-2">
+                       <img loading="lazy" src="/@captcha@" width="86" height="59" alt="captcha" />
+                        <span  onclick="refreshCaptchaFooter()">
+                            <svg class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="group-hover:stroke-primary"
+                                                d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3"
+                                                stroke="#020121" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <circle
+                                                class="group-hover:stroke-primary transition-all duration-300 ease-in-out"
+                                                cx="24" cy="24.5" r="10" stroke="#020121" stroke-width="1.5" />
+                                        </svg>
+                        </span>
+                       
+                    </div>
+
+                                                        </div></div>
+                    </script>
+                                    </face>
+                                </basis>
+                                <button type="button" data-btn-uploadfooter
+                                    class="text-sm  data-body-btn w-full h-12 flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
+                                    ارسال
+                                </button>
+
+                            </div>
+
+                            <div
+                                class="Loading_Form hidden data-body-btn h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex !w-full ">
+                                <div id="ballsWaveG" class="ext-zinc-50 text-base font-normal leading-normal">
+                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                                </div>
+                            </div>
+                            <div class="message-api text-center text-primary text-xs"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        function uploadDocumentRequest(args) {
+            const formEl = document.getElementById("formRequest");
+            const captcha = formEl.querySelector("#captchaContainerRequest input[name='captcha']").value;
+            const captchaid = formEl.querySelector("#captchaContainerRequest input[name='captchaid']").value;
+            const stringJson = JSON.stringify(args.source?.rows[0] || {});
+            $bc.setSource("cms.uploadrequest", {
+                value: stringJson,
+                captcha: captcha,
+                captchaid: captchaid,
+                run: true
+            });
+        }
+
+        function refreshCaptchaRequest() {
+            $bc.setSource("captchaRequest.refresh", true);
+        }
+
+        function captchaRenderedRequest() {
+            const formEl = document.getElementById("formRequest");
+            const input = formEl.querySelector(".contactUsInput");
+            if (input) input.placeholder = "کد امنیتی";
+        }
+
+        async function OnProcessedEditObjectRequest(args) {
+            const formEl = document.getElementById("formRequest");
+            const msgBox = formEl.querySelector(".message-api");
+
+            // پاک کردن تمام ورودی‌ها
+            const inputs = formEl.querySelectorAll("input, _textarea");
+            inputs.forEach(input => input.value = '');
+
+            try {
+                const response = args.response;
+                const json = await response.json();
+                const errorid = json.errorid;
+
+                if (errorid == "6") {
+                    // پیغام موفقیت
+                    msgBox.innerHTML = "درخواست شما با موفقیت ثبت شد";
+                    msgBox.style.color = "green"; // سبز برای موفقیت
+
+                    // بعد از 5 ثانیه پیام پاک شود
+                    setTimeout(() => {
+                        msgBox.innerHTML = '';
+                    }, 5000);
+                } else {
+                    // پیغام خطا
+                    msgBox.innerHTML = "خطایی رخ داده, لطفا مجدد اقدام کنید";
+                    msgBox.style.color = "red"; // قرمز برای خطا
+
+                    // بعد از 5 ثانیه پیام پاک شود
+                    setTimeout(() => {
+                        msgBox.innerHTML = '';
+                    }, 5000);
+                }
+            } catch (e) {
+                // پیغام خطا در صورت بروز مشکل
+                msgBox.innerHTML = "مشکلی در پردازش پاسخ رخ داد.";
+                msgBox.style.color = "red"; // قرمز برای خطا
+
+                // بعد از 5 ثانیه پیام پاک شود
+                setTimeout(() => {
+                    msgBox.innerHTML = '';
+                }, 5000);
+            }
+        }
+
+        async function RenderFormRequest() {
+        }
+    </script>
+    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
+    <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
+</body>
+
+
+
+</html>

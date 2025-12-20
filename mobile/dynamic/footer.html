@@ -10,12 +10,12 @@
 <basis core="dbsource" source="basiscore" name="db" mid="10" lid="1" usedforid="2387760">
   <member name="office-view4" type="view" />
 </basis>
-<footer class="w-full px-4">
+<footer class="w-full px-4 footer-landing-items">
   <div class="w-full flex flex-col justify-center items-center gap-2">
     <a href="/">
       <img loading="lazy" src="[##cms.cms.cdn##]/images/logo.png" alt="logo-satrap" class="w-[77px]">
     </a>
-    <p class="text-sm font-bold text-[#18181B]">  گروه شرکت های مسافرتی ساتراپ تراول  </p>
+    <p class="text-sm font-bold text-[#18181B]"> گروه شرکت های مسافرتی ساتراپ تراول </p>
 
 
   </div>
@@ -260,7 +260,7 @@
 
       </div>
     </div>
-     <div class="office-item  w-full border border-zinc-300 rounded-lg  px-2">
+    <div class="office-item  w-full border border-zinc-300 rounded-lg  px-2">
       <div class="w-full flex items-center cursor-pointer justify-between h-[50px]">
         <div class="flex gap-2 ">
           <img loading="lazy" src="[##cms.cms.cdn##]/images/Pin-c.svg" alt="pin">
@@ -344,22 +344,52 @@
   </div>
   <div class="flex w-full flex-col gap-3 mb-[23px]">
     <p class="bg-[#F9F9F9] h-[40px] flex items-center text-[#18181B] text-sm font-bold w-full p-2 rounded-lg">
-      امور مشتریان
+      خدمات ساتراپ تراول
     </p>
     <div class="w-full flex flex-col gap-2">
-      <div class="flex items-center gap-6">
-        <a href="" class="text-xs text-[#3F3F46]">سوالات متداول</a>
-        <!-- <a href="" class="text-xs text-[#3F3F46]"> استخدامی</a> -->
-        <a href="" class="text-xs text-[#3F3F46]"> پیشتیبانی</a>
-      </div>
-      <div class="flex items-center gap-6">
-        <a href="/blog" class="text-xs text-[#3F3F46]"> مجله گردشگری</a>
-        <a href="/contact-us" class="text-xs text-[#3F3F46]"> تماس با ما</a>
+      <ul class="flex items-center gap-6">
+        <li class="text-xs text-[#3F3F46] cursor-pointer " data-id="flight" data-nav="flight"
+          onclick="check_searchHistory('flight'); check_landing('flight')">بلیط هواپیما
+        </li>
+        <li class="text-xs text-[#3F3F46] cursor-pointer " data-id="hotel" data-nav="hotel"
+          onclick="check_searchHistory('hotel'); check_landing('hotel')">رزرو هتل
+        </li>
+        <li> <a href="/visa" class="text-xs text-[#3F3F46]"> ویزا</a>
+        </li>
+      </ul>
+      <ul class="flex items-center gap-6">
+        <li class="text-xs text-[#3F3F46] cursor-pointer " data-id="insurance" data-nav="insurance"
+          onclick="check_searchHistory('insurance'); check_landing('insurance')">
+          بیمه
+        </li>
 
-      </div>
+        <li>
+          <a href="/article.bc?&mid=1&lid=1&id=2391556" class="text-xs text-[#3F3F46] cursor-pointer ">سفرکارت</a>
+        </li>
+
+        <li> <a href="/https://fids.airport.ir/" class="text-xs text-[#3F3F46]"> اطلاعات فرودگاهی</a>
+        </li>
+      </ul>
     </div>
   </div>
 
+
+
+  <div class="flex w-full flex-col gap-3 mb-[23px]">
+    <p class="bg-[#F9F9F9] h-[40px] flex items-center text-[#18181B] text-sm font-bold w-full p-2 rounded-lg">
+      امور مشتریان:
+    </p>
+    <div class="w-full flex flex-col gap-2">
+
+      <div class="flex items-center gap-6">
+        <a href="/support-center" class="text-xs text-[#3F3F46]"> مرکز پشتیبانی </a>
+        <a href="/article.bc?id=2391557" class="text-xs text-[#3F3F46]"> پیشنهادات و تخفیفات </a>
+        <a href="/Submit-complaint" class="text-xs text-[#3F3F46]"> ثبت شکایت</a>
+
+      </div>
+
+    </div>
+  </div>
 
 
   <div class="flex w-full flex-col gap-3 mb-[23px]">
@@ -367,37 +397,15 @@
       ساتراپ تراول
     </p>
     <div class="w-full flex flex-col gap-2">
-
-      <ul class="flex items-center gap-6">
-        <li class="text-xs text-[#3F3F46]" data-id="flight" data-nav="flight"
-          onclick="check_searchHistory('flight'); check_landing('flight')">پرواز
-        </li>
-        <li class="text-xs text-[#3F3F46]" data-id="hotel" data-nav="hotel"
-          onclick="check_searchHistory('hotel'); check_landing('hotel')">هتل</li>
-        <li><a href="/tours" class="text-xs text-[#3F3F46]"> تورها</a></li>
-      </ul>
       <div class="flex items-center gap-6">
-        <a href="/blog" class="text-xs text-[#3F3F46]"> بیمه مسافرتی</a>
-        <a href="/contact-us" class="text-xs text-[#3F3F46]"> پیشنهادات و تخفیفات </a>
-
-      </div>
-    </div>
-  </div>
-
-
-  <div class="flex w-full flex-col gap-3 mb-[23px]">
-    <p class="bg-[#F9F9F9] h-[40px] flex items-center text-[#18181B] text-sm font-bold w-full p-2 rounded-lg">
-      امور مشتریان
-    </p>
-    <div class="w-full flex flex-col gap-2">
-      <div class="flex items-center gap-6">
-        <a href="" class="text-xs text-[#3F3F46]">سوالات متداول</a>
-        <a href="/Job-opportunities" class="text-xs text-[#3F3F46]"> استخدامی</a>
-        <a href="" class="text-xs text-[#3F3F46]"> پیشتیبانی</a>
-      </div>
-      <div class="flex items-center gap-6">
-        <a href="/blog" class="text-xs text-[#3F3F46]"> مجله گردشگری</a>
         <a href="/about-us" class="text-xs text-[#3F3F46]"> درباره ما</a>
+        <a href="/contact-us" class="text-xs text-[#3F3F46]"> تماس با ما</a>
+        <a href="" class="text-xs text-[#3F3F46]"> شرایط اقساط</a>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="/article.bc?&mid=1&lid=1&id=2391556" class="text-xs text-[#3F3F46] cursor-pointer ">سفرکارت</a>
+        <a href="/Job-opportunities" class="text-xs text-[#3F3F46] cursor-pointer ">فرصت های شغلی</a>
+        <a href="/blog" class="text-xs text-[#3F3F46]"> مجله گردشگری</a>
 
       </div>
     </div>
@@ -524,10 +532,10 @@
 
 
   <a target="_blank" href="https://www.basisfly.com/" class="mb-[23px] w-full flex flex-col gap-3">
-    
+
     <p class="text-center text-xs text-[#71717A] hover:text-primary-600">طراحی سایت آژانس مسافرتی و رزرواسیون
       آنلاین توسط بیسیس فلای</p>
-      <div class="w-full flex items-center justify-between">
+    <div class="w-full flex items-center justify-between">
       <img loading="lazy" width="66" height="17" src="[##cms.cms.cdn##]/images/basisfly-logo.png" alt="basisfly">
       <img loading="lazy" width="90" height="15" src="[##cms.cms.cdn##]/images/Trust_logo.png" alt="Trust_logo">
 

@@ -277,6 +277,10 @@
                     class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
                     جدول قیمتی
                 </div>
+                <div onclick="scrollToTourSection(this,'services__container')"
+                    class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
+                    خدمات تور
+                </div>
                 <div onclick="scrollToTourSection(this,'travelouge-lis')"
                     class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
                     برنامه سفر
@@ -285,18 +289,16 @@
                     class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
                     توضیحات
                 </div>
-                <div onclick="scrollToTourSection(this,'services__container')"
-                    class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
-                    خدمات تور
-                </div>
-                <div onclick="scrollToTourSection(this,'tourEquipment__container')"
-                    class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
-                    ملزومات مورد نیاز
-                </div>
-                <div onclick="scrollToTourSection(this,'Additional-information')"
+                
+               <div onclick="scrollToTourSection(this,'Additional-information')"
                     class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
                     اطلاعات تکمیلی
                 </div>
+                 <div onclick="scrollToTourSection(this,'tourEquipment__container')"
+                    class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
+                    ملزومات مورد نیاز
+                </div>
+                
                 <div id="comments"
                     class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
                     نظرات
@@ -322,36 +324,6 @@
 
             <div class="w-full flex gap-4 relative">
                 <div class="w-[908px] calculate-h flex flex-col gap-[30px]">
-                    <basis core="print" datamembername="db.tour-view">
-                        <layout>
-                            <div
-                                class="services__container w-full flex flex-col gap-[32px] border border-zinc-300 p-[22px] rounded-3xl">
-                                <h2 class="font-bold text-2xl">خدمات تور </h2>
-                                <div class="w-full grid grid-cols-2 gap-x-9 gap-y-3">
-
-                                    @child
-
-                                </div>
-                            </div>
-                        </layout>
-                        <face
-                            filter="prpID in ('3088146','3088147','3088148','3088149','3088150','3088151','3088152','3088153','3088154','3088155')">
-
-                            <div class="flex items-center gap-3">
-                                <span class="bg-primary-50 rounded-full w-10 h-10 flex justify-center items-center">
-                                    <img width="40" height="40" loading="lazy" src="[##cms.cms.cdn##]/images/tike.svg"
-                                        alt="tour-services">
-                                </span>
-                                <p class="text-base">@text</p>
-
-                            </div>
-                        </face>
-                    </basis>
-
-
-
-
-
                     <div class="date__details">
                         <basis core="print" datamembername="db.dates" run="atclient" onrendered="onrenderedDates">
                             <layout>
@@ -411,7 +383,7 @@
                                     onrendered="onrenderedExecutionOrigins">
                                     <layout>
                                         <script
-                                            type="text/template"><div class="execution__details"><div class="flex flex-col   execution__details__path execution__details__path__origins">@child </div></div></script>
+                                            type="text/template"><div class="execution__details"><div class="flex flex-col gap-7  execution__details__path execution__details__path__origins">@child </div></div></script>
                                     </layout>
                                     <face>
                                         <script type="text/template"><div class="flex gap-2 execution__details__path__item">
@@ -526,7 +498,7 @@
                                     onrendered="onrenderedExecutionDestinations">
                                     <layout>
                                         <script
-                                            type="text/template"><div class="execution__details"><div class="flex flex-col   execution__details__path execution__details__path__destinations">@child </div></div></script>
+                                            type="text/template"><div class="execution__details"><div class="flex flex-col gap-7  execution__details__path execution__details__path__destinations">@child </div></div></script>
                                     </layout>
                                     <face>
                                         <script type="text/template">
@@ -624,12 +596,6 @@
                         </div>
 
                     </div>
-
-
-
-
-
-
                     <!-- tour inventory section -->
                     <basis core="print" datamembername="api.inventoryView" run="atclient"
                         onrendered="onrenderedInventoryView">
@@ -645,7 +611,7 @@
                             <script type="text/template">
                                 <div class="tourInventory__details hotelCard w-full flex border p-3 rounded-2xl gap-6 items-center justify-between border-zinc-300">
                                     <div class="tourInventory__details__item w-full flex justify-between gap-6 relative">
-                                        <div class="flex flex-col gap-5   w-full">
+                                        <div class="flex flex-col gap-5 w-full divide-y divide-zinc-300">
                                             {{return await renderHotels($data)}}
                                         </div> 
                                         <div class="tourInventory__details__item__info w-[564px] border-t border-dashed border-[#DFDFDF] absolute bottom-0 left-0 flex justify-between items-center">
@@ -690,11 +656,31 @@
                             </script>
                         </face>
                     </basis>
+                    <basis core="print" datamembername="db.tour-view">
+                        <layout>
+                            <div
+                                class="services__container w-full flex flex-col gap-[32px] border border-zinc-300 p-[22px] rounded-3xl">
+                                <h2 class="font-bold text-2xl">خدمات تور </h2>
+                                <div class="w-full grid grid-cols-2 gap-x-9 gap-y-3">
 
+                                    @child
 
+                                </div>
+                            </div>
+                        </layout>
+                        <face
+                            filter="prpID in ('3088146','3088147','3088148','3088149','3088150','3088151','3088152','3088153','3088154','3088155')">
 
+                            <div class="flex items-center gap-3">
+                                <span class="bg-primary-50 rounded-full w-10 h-10 flex justify-center items-center">
+                                    <img width="40" height="40" loading="lazy" src="[##cms.cms.cdn##]/images/tike.svg"
+                                        alt="tour-services">
+                                </span>
+                                <p class="text-base">@text</p>
 
-
+                            </div>
+                        </face>
+                    </basis>
                 </div>
                 <aside class=" w-[355px]">
                     <div class="flex flex-col gap-[21px] w-full h-full relative">
