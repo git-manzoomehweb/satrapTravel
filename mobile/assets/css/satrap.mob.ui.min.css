@@ -5307,3 +5307,6 @@ body.hotel-list .label-dates {
 body.white-header header.header-landing-items div.fixed {
   box-shadow: none !important;
 }
+.tourInventory__details__item__info[data-index="1"] {
+  padding-top: 10px !important;
+}

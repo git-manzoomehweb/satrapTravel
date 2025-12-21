@@ -656,6 +656,7 @@ video {
 .h-16 {
   height: 4rem;
 }
+
 .h-28 {
   height: 7rem;
 }
@@ -4657,4 +4658,41 @@ body:has(.modals-container) .last-section-form::after {
 .tourInventory__details__item__info[data-index="0"]
   div.max-md\:\!mb-\[150px\].gap-8 {
   align-items: center !important;
+}
+.tour-li.w-\[101px\] {
+  padding: 0 16px;
+  min-width: 101px;
+  width: unset !important;
+}
+.tourInventory__details__item__info div.border-r.border-dashed.pr-6.pl-4 {
+  height: 206px !important;
+  width: 228px;
+  align-items: center;
+}
+.tourInventory__details__item__info
+  div.border-r.border-dashed.pr-6.pl-4
+  div.flex.gap-4.flex-col {
+  height: 100% !important;
+  justify-content: center;
+}
+.tourInventory__details__item__info
+  div.border-r.border-dashed.pr-6.pl-4
+  div.flex.gap-4.flex-col
+  button {
+  width: 195px !important;
+}
+.tourInventory__details__item figure.h-\[206px\] {
+  width: 227px !important;
+}
+
+.tour-price b:nth-child(2) {
+  padding-right: 20px;
+  position: relative;
+}
+.tour-price b:nth-child(2)::before {
+  content: "+";
+  position: absolute;
+  right: 3px;
+  top: 0px;
+  color: #000;
 }

@@ -939,7 +939,7 @@ const renderHotels = async (element, type) => {
         }
 
         output += ` <div class="tourInventory__details__item__info flex max-md:!flex-col w-full justify-between gap-6" data-index="${index}">
-                                                <div class="md:w-9/12 max-md:!mb-[150px] flex gap-8 max-md:!w-full max-md:!flex-col max-md:!gap-6">
+                                                <div class="md:w-9/12   flex gap-8 max-md:!w-full max-md:!flex-col max-md:!gap-6">
                                                 <span content="${
                                                   item.hotel.label
                                                 }" class="rounded-[40px] bg-[#FF4949] h-[32px] text-white flex items-center absolute right-4 px-[13px] text-xs top-4">
@@ -1061,64 +1061,93 @@ const renderPriceInfo = async (element, type) => {
     if (element) {
       if (type == "doublecost") {
         let output = "";
-        for (const item of element.priceinfo.doublecost) {
+        const list = element.priceinfo.doublecost;
+
+        list.forEach((item, index) => {
           output += `<div class="tourInventory__details__item__double">
-                                <span class="tourInventory__details__item__price sm:text-xl font-bold">${new Intl.NumberFormat().format(
-                                  item.doublecost.doublecostf
-                                )}</span>
-                                ${
-                                  item.doublecost.doubleunit.length == 0
-                                    ? ``
-                                    : `<span class="tourInventory__details__item__unit sm:text-base max-sm:text-sm mr-1">${item.doublecost.doubleunit}</span>`
-                                }</div>`;
-        }
+              <span class="tourInventory__details__item__price sm:text-xl font-bold">
+                ${new Intl.NumberFormat().format(item.doublecost.doublecostf)}
+              </span>
+              ${
+                item.doublecost.doubleunit.length == 0
+                  ? ``
+                  : `<span class="tourInventory__details__item__unit sm:text-base max-sm:text-sm mr-1">${item.doublecost.doubleunit}</span>`
+              }
+            </div>`;
+
+          if (index < list.length - 1) {
+            output += `<span class="plus-icon">+</span>`;
+          }
+        });
 
         return output;
-      } else if (type == "singlecost") {
+      } 
+      else if (type == "singlecost") {
         let output = "";
-        for (const item of element.priceinfo.singlecost) {
-          // console.log(item.singlecost.singleunit);
+        const list = element.priceinfo.singlecost;
+
+        list.forEach((item, index) => {
           output += `<div class="tourInventory__details__item__single">
-                                <span class="tourInventory__details__item__price sm:text-xl font-bold">${new Intl.NumberFormat().format(
-                                  item.singlecost.singlecostf
-                                )}</span>
-                                ${
-                                  item.singlecost.singleunit.length == 0
-                                    ? ``
-                                    : `<span class="tourInventory__details__item__unit sm:text-base max-sm:text-sm mr-1">${item.singlecost.singleunit}</span>`
-                                }</div>`;
-        }
+              <span class="tourInventory__details__item__price sm:text-xl font-bold">
+                ${new Intl.NumberFormat().format(item.singlecost.singlecostf)}
+              </span>
+              ${
+                item.singlecost.singleunit.length == 0
+                  ? ``
+                  : `<span class="tourInventory__details__item__unit sm:text-base max-sm:text-sm mr-1">${item.singlecost.singleunit}</span>`
+              }
+            </div>`;
+
+          if (index < list.length - 1) {
+            output += `<span class="plus-icon">+</span>`;
+          }
+        });
 
         return output;
-      } else if (type == "childwithbed") {
+      } 
+      else if (type == "childwithbed") {
         let output = "";
-        for (const item of element.priceinfo.childwithbed) {
+        const list = element.priceinfo.childwithbed;
+
+        list.forEach((item, index) => {
           output += `<div class="tourInventory__details__item__wBed">
-                                <span class="tourInventory__details__item__price sm:text-xl font-bold">${new Intl.NumberFormat().format(
-                                  item.childwithbed.childwithbedf
-                                )}</span>
-                                ${
-                                  item.childwithbed.childwithbedunit.length == 0
-                                    ? ``
-                                    : `<span class="tourInventory__details__item__unit sm:text-base max-sm:text-sm mr-1">${item.childwithbed.childwithbedunit}</span>`
-                                }</div>`;
-        }
+              <span class="tourInventory__details__item__price sm:text-xl font-bold">
+                ${new Intl.NumberFormat().format(item.childwithbed.childwithbedf)}
+              </span>
+              ${
+                item.childwithbed.childwithbedunit.length == 0
+                  ? ``
+                  : `<span class="tourInventory__details__item__unit sm:text-base max-sm:text-sm mr-1">${item.childwithbed.childwithbedunit}</span>`
+              }
+            </div>`;
+
+          if (index < list.length - 1) {
+            output += `<span class="plus-icon">+</span>`;
+          }
+        });
 
         return output;
-      } else if (type == "childwithoutbed") {
+      } 
+      else if (type == "childwithoutbed") {
         let output = "";
-        for (const item of element.priceinfo.childwithoutbed) {
+        const list = element.priceinfo.childwithoutbed;
+
+        list.forEach((item, index) => {
           output += `<div class="tourInventory__details__item__woBed">
-                                <span class="tourInventory__details__item__price sm:text-xl font-bold">${new Intl.NumberFormat().format(
-                                  item.childwithoutbed.childwithoutbedf
-                                )}</span>
-                                ${
-                                  item.childwithoutbed.childwithoutbedunit
-                                    .length == 0
-                                    ? ``
-                                    : `<span class="tourInventory__details__item__unit sm:text-base max-sm:text-sm mr-1">${item.childwithoutbed.childwithoutbedunit}</span>`
-                                }</div>`;
-        }
+              <span class="tourInventory__details__item__price sm:text-xl font-bold">
+                ${new Intl.NumberFormat().format(item.childwithoutbed.childwithoutbedf)}
+              </span>
+              ${
+                item.childwithoutbed.childwithoutbedunit.length == 0
+                  ? ``
+                  : `<span class="tourInventory__details__item__unit sm:text-base max-sm:text-sm mr-1">${item.childwithoutbed.childwithoutbedunit}</span>`
+              }
+            </div>`;
+
+          if (index < list.length - 1) {
+            output += `<span class="plus-icon">+</span>`;
+          }
+        });
 
         return output;
       }
@@ -1127,6 +1156,7 @@ const renderPriceInfo = async (element, type) => {
     console.error("renderPriceInfo=" + err.lineNumber + "," + err.message);
   }
 };
+
 const renderHotelRate = async (element) => {
   try {
     if (element) {

@@ -939,7 +939,7 @@ const renderHotels = async (element, type) => {
         }
 
         output += ` <div class="tourInventory__details__item__info flex max-md:!flex-col w-full justify-between gap-6" data-index="${index}">
-                                                <div class="md:w-9/12 max-md:!mb-[150px] flex gap-8 max-md:!w-full max-md:!flex-col max-md:!gap-6">
+                                                <div class="md:w-9/12   flex gap-8 max-md:!w-full max-md:!flex-col max-md:!gap-6">
                                                 <span content="${
                                                   item.hotel.label
                                                 }" class="rounded-[40px] bg-[#FF4949] h-[32px] text-white flex items-center absolute right-4 px-[13px] text-xs top-4">

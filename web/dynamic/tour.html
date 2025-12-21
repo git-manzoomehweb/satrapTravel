@@ -289,16 +289,16 @@
                     class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
                     توضیحات
                 </div>
-                
-               <div onclick="scrollToTourSection(this,'Additional-information')"
+
+                <div onclick="scrollToTourSection(this,'Additional-information')"
                     class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
                     اطلاعات تکمیلی
                 </div>
-                 <div onclick="scrollToTourSection(this,'tourEquipment__container')"
+                <div onclick="scrollToTourSection(this,'tourEquipment__container')"
                     class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
                     ملزومات مورد نیاز
                 </div>
-                
+
                 <div id="comments"
                     class="h-[67px]  relative navbar-el w-[147px] transition-all duration-500  flex justify-center items-center font-bold  cursor-pointer hover:text-primary">
                     نظرات
@@ -610,45 +610,40 @@
                         <face>
                             <script type="text/template">
                                 <div class="tourInventory__details hotelCard w-full flex border p-3 rounded-2xl gap-6 items-center justify-between border-zinc-300">
-                                    <div class="tourInventory__details__item w-full flex justify-between gap-6 relative">
+                                    <div class="tourInventory__details__item w-full flex-col flex justify-between gap-6 relative">
                                         <div class="flex flex-col gap-5 w-full divide-y divide-zinc-300">
                                             {{return await renderHotels($data)}}
                                         </div> 
-                                        <div class="tourInventory__details__item__info w-[564px] border-t border-dashed border-[#DFDFDF] absolute bottom-0 left-0 flex justify-between items-center">
-                                            <div class="w-full flex justify-between items-center pt-3">
-                                            <div class="w-[50%] flex flex-col gap-[11px]">
-                                                <div class="flex items-center gap-2">
-                                                <div class="w-full font-bold text-sm text-[#171717] flex items-center gap-2 ">
-                                                    <div class="font-medium text-sm text-[#171717]">یک تخته : </div>
-                                                    {{ return await renderPriceInfo($data,'singlecost')}} 
-                                                </div>
-                                            </div>
-                                                <div class="flex items-center gap-2">
-                                                <div class="w-full font-bold text-sm text-[#171717] flex items-center gap-2 ">
-                                                    <div class="font-medium text-sm text-[#171717] w-58-54">دو تخته :</div>
+                                        <div class="tourInventory__details__item__info w-full border-t border-dashed border-[#DFDFDF]  flex justify-between items-center">
+                                            <div class="w-full px-4 flex  rounded-xl justify-between items-center ">
+                                               <div class="h-[102px] w-[219px]     flex flex-col items-center justify-center">
+                                                     <div class="font-medium text-sm text-[#171717] w-58-54">دو تخته :</div>
                                                     {{ return await renderPriceInfo($data,'doublecost')}} 
+                                                 
                                                 </div>
+                                                 <div class="h-[102px] w-[219px]  border-r border-dashed border-[#DFDFDF]     flex flex-col items-center justify-center">
+                                                     <div class="font-medium text-sm text-[#171717]">یک تخته : </div>
+                                                    {{ return await renderPriceInfo($data,'singlecost')}} 
+                                                 
+                                                </div>
+                                                
+
+
+
+                                            <div class="h-[102px] w-[219px]    border-r border-dashed border-[#DFDFDF]  flex flex-col items-center justify-center">
+
+                                                    <div class="font-medium text-sm text-[#171717]">کودک با تخت : </div>
+                                                {{ return await renderPriceInfo($data,'childwithbed')}} 
                                             </div>
-                                            
-                                            </div>
-                                           <div class="w-[50%] flex flex-col gap-[11px] border-r border-dashed border-[#DFDFDF] items-end">
-                                             <div class="flex flex-col gap-[11px]">
-                                               
-                                            <div class="flex items-center gap-2">
-                                                <div class="w-full font-bold text-sm text-[#171717] flex items-center gap-2 ">
-                                                    <div class="font-medium text-sm text-[#171717]">کودک بدون تخت : </div>
+                                             
+                                                <div class="h-[102px] w-[219px]    border-r border-dashed border-[#DFDFDF]  flex flex-col items-center justify-center">
+     
+                                                     <div class="font-medium text-sm text-[#171717]">کودک بدون تخت : </div>
                                                 {{ return await renderPriceInfo($data,'childwithoutbed')}} 
+                                           
+
                                             </div>
-                                        </div>
-                                         <div class="flex items-center gap-2">
-                                                <div class="w-full font-bold text-sm text-[#171717] flex items-center gap-2 ">
-                                                    <div class="font-medium child-bed text-sm text-[#171717]">
-                                                        کودک با تخت : </div>
-                                                    {{ return await renderPriceInfo($data,'childwithbed')}} 
-                                                </div>
-                                            </div>
-                                             </div>
-                                           </div>
+                                           
                                     </div>
                                 </div>
                             </div>
@@ -747,19 +742,22 @@
 
 
                             </div>
-                            <basis core="print" datamembername="db.tour-view">
-                                <face filter="prpID=8181">
-                                    <div
-                                        class="w-full flex justify-between items-center h-[51px] px-3 rounded-xl bg-[#FFBD22]">
-                                        <div class="flex items-center gap-2">
-                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/Wallet doublle.svg"
-                                                alt="Wallet">
-                                            @Question :
-                                        </div>
-                                        <b>@Answer </b>
-                                    </div>
-                                </face>
-                            </basis>
+                            <div class="w-full flex justify-between items-center  px-3 rounded-xl bg-[#FFBD22]">
+                                <div class="flex  items-center gap-2">
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Wallet doublle.svg" alt="Wallet">
+
+                                    <div class="h-[51px] flex items-center"> شروع قیمت ها از :</div>
+                                </div>
+                                <div class="flex flex-col tour-price">
+                                    <basis core="print" datamembername="db.tour-view">
+                                        <face filter="prpID=8181">
+
+                                            <b class="text-sm">@Answer </b>
+
+                                        </face>
+                                    </basis>
+                                </div>
+                            </div>
 
                         </div>
                         <div class="w-full flex flex-col gap-[21px]  sticky top-[153px]">
