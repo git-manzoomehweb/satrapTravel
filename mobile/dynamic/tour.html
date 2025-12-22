@@ -296,19 +296,22 @@
 
 
                         </div>
-                        <basis core="print" datamembername="db.tour-view">
-                            <face filter="prpID=8181">
-                                <div
-                                    class="w-full flex justify-between items-center h-[51px] px-3 rounded-xl bg-[#FFBD22]">
-                                    <div class="flex items-center gap-2">
-                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/Wallet doublle.svg"
-                                            alt="Wallet">
-                                        @Question :
-                                    </div>
-                                    <b>@Answer </b>
+                          <div class="w-full flex justify-between items-center  px-3 rounded-xl bg-[#FFBD22]">
+                                <div class="flex  items-center gap-2">
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Wallet doublle.svg" alt="Wallet">
+
+                                    <div class="h-[51px] flex items-center"> شروع قیمت ها از :</div>
                                 </div>
-                            </face>
-                        </basis>
+                                <div class="flex flex-col tour-price">
+                                    <basis core="print" datamembername="db.tour-view">
+                                        <face filter="prpID=8181">
+
+                                            <b class="text-sm">@Answer </b>
+
+                                        </face>
+                                    </basis>
+                                </div>
+                            </div>
 
                     </div>
                     <div class="w-full flex flex-col gap-[21px]">
@@ -981,7 +984,7 @@
                         class="w-full cursor-pointer travelouge-item hover:border-primary-300 border border-zinc-300 p-2 rounded-xl flex flex-col">
                         <div class="flex items-center w-full justify-between">
                             <div class="flex items-center days-el gap-3">
-                                <span class="font-bold">@text </span>
+                                <span class="font-bold text-sm">@text </span>
 
                             </div>
                             <span class="">
