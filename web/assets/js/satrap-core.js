@@ -3277,7 +3277,7 @@ function convert() {
 
   if (window.innerWidth > 1024) {
     document.getElementById("result").innerHTML = `
-          <div class="text-primary-900 font-yekanbakhsemiboldFA text-base">${weekDayGrg} , ${resultGrg[3]} (${resultGrg[1]}) , ${resultGrg[2]}  , ${resultGrg[0]}</div>
+          <div class="  text-base">${weekDayGrg} , ${resultGrg[3]} (${resultGrg[1]}) , ${resultGrg[2]}  , ${resultGrg[0]}</div>
           <hr class="border-neutralcolor-800 block w-full  
           
           relative
@@ -3289,11 +3289,11 @@ function convert() {
           before:-mt-[2.5px]
           
           ">
-          <div class="text-primary-900 font-yekanbakhsemiboldFA text-base">${weekDayShm} , ${resultShm[2]} , ${resultShm[3]} (${resultShm[1]}) , ${resultShm[0]}</div>
+          <div class="  text-base">${weekDayShm} , ${resultShm[2]} , ${resultShm[3]} (${resultShm[1]}) , ${resultShm[0]}</div>
         `;
   } else {
     document.getElementById("result").innerHTML = `
-          <div class="text-primary-900 font-yekanbakhsemiboldFA text-xs">${weekDayGrg} , ${resultGrg[3]} (${resultGrg[1]}) , ${resultGrg[2]}  , ${resultGrg[0]}</div>
+          <div class="  text-xs">${weekDayGrg} , ${resultGrg[3]} (${resultGrg[1]}) , ${resultGrg[2]}  , ${resultGrg[0]}</div>
           <hr class="border-neutralcolor-800 block w-full  
           
           relative
@@ -3305,7 +3305,7 @@ function convert() {
           before:-mt-[2.5px]
           
           ">
-          <div class="text-primary-900 font-yekanbakhsemiboldFA text-xs">${weekDayShm} , ${resultShm[2]} , ${resultShm[3]} (${resultShm[1]}) , ${resultShm[0]}</div>
+          <div class="  text-xs">${weekDayShm} , ${resultShm[2]} , ${resultShm[3]} (${resultShm[1]}) , ${resultShm[0]}</div>
         `;
   }
 }
@@ -3373,7 +3373,9 @@ if (document.getElementById("date-convertor")) {
   labels.forEach((label) => {
     label.addEventListener("click", () => {
       labels.forEach((l) =>
+
         l.classList.remove("bg-secondary", "bg-white", "text-white")
+      
       );
       label.classList.add("bg-secondary", "text-white");
       labels.forEach((l) => {

@@ -3,8 +3,8 @@
     <member request="json-ld" type="scalar" name="json" />
     <member name="dateconvert" type="view" />
 </basis>
- 
- <basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.id|(0)##]">
+
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.id|(0)##]">
     <member name="aid-text" type="view" />
 </basis>
 
@@ -36,67 +36,85 @@
 
 <body class="   ">
     <basis core="call" file="header.inc"></basis>
-    <main class="max-w-7xl w-[95%] mx-auto relative bg-list-pattern-v2 bg-no-repeat bg-top bg-cover">
-        
-        <section
-            class="bg-primary-950 max-w-7xl mx-auto clear-both rounded-[64px] h-[696px] p-14 pt-0 bg-tringle-pattern">
-            <h1 class="text-white  font-bold text-[80px] leading-[200px]">تبدیل تاریخ</h1>
-            <h2 class="text-secondary text-2xl  font-bold leading-10">تبدیل تاریخ شمسی به میلادی و بالعکس
-            </h2>
+    <main class=" relative bg-list-pattern-v2 bg-no-repeat bg-top bg-cover">
+
+        <section class="  w-full   clear-both   h-[523px] p-14 pt-0  relative">
+            <img src="[##cms.cms.cdn##]/images/date-change-banner.jpg" alt="/date-change-banner"
+                class="z-0 left-0 top-0 absolute w-full h-full object-cover">
+            <span class="w-full bg-[#0B1B4CCF] blur-4px h-full absolute top-0 left-0"></span>
+            <div class="w-full flex flex-col gap-2 justify-center items-center pt-36px z-[2]">
+                <h1 class="text-white  font-bold text-[48px]  text-center z-[2]">تبدیل تاریخ</h1>
+                <h2 class="text-white text-base  font-bold   z-[2]">تبدیل تاریخ شمسی به میلادی و بالعکس
+                </h2>
+                <ul class="flex items-center gap-1 z-[2]">
+                    <li>
+                        <a href="/" class="text-white text-xs hover:text-primary">صفحه اصلی</a>
+                    </li>
+                    <li class="text-xs text-white">/</li>
+                    <li class="text-xs text-white">تبدیل تاریخ</li>
+                </ul>
+            </div>
         </section>
-        <div id="date-convertor" class="max-w-7xl mx-auto w-[95%] -mt-[22rem]">
-            <div class="flex justify-center gap-x-4"><label name="calendar-label"
-                    class="flex cursor-pointer justify-center items-center h-[72px] rounded-lg bg-secondary w-60  font-bold text-base text-center text-white "><input
+        <div id="date-convertor" class="max-w-7xl mx-auto w-[95%] -mt-[21rem]  flex flex-col gap-7z-10 relative">
+            <div class="flex justify-center gap-2 p-3 bg-white rounded-xl w-fit mx-auto change-date-btn-container">
+                <label name="calendar-label"
+                    class="flex cursor-pointer transition-all ease-in-out duration-300 justify-center items-center   h-11 rounded-lg bg-secondary w-[126px]   font-bold text-sm text-center text-white "><input
                         class="appearance-none hidden" type="radio" name="calendar" value="shamsi" checked
-                        onclick="updateYears();updateMonths();">شمسی به میلادی</label><label name="calendar-label"
-                    class="flex justify-center items-center h-[72px] rounded-lg bg-white w-60  font-bold cursor-pointer text-base text-center "><input
+                        onclick="updateYears();updateMonths();">شمسی به میلادی</label>
+                <label name="calendar-label"
+                    class="flex justify-center items-center transition-all ease-in-out duration-300  h-11 rounded-lg bg-white w-[126px]   font-bold cursor-pointer text-sm text-center "><input
                         class="appearance-none hidden" type="radio" name="calendar" value="gregorian"
-                        onclick="updateYears();updateMonths();">میلادی به شمسی</label></div>
-            <div class="max-w-[946px] mx-auto bg-white rounded-3xl relative h-96 my-24 drop-shadow-xl"><img
-                    class="absolute -top-[17px] left-0 right-0 z-10 mx-auto"
-                    src="[##cms.cms.cdn##]/images/notebook-gutter.png" width="914" height="47" alt="notebook">
-                <div class="bg-secondary h-20 w-full rounded-t-3xl absolute top-0 left-0 right-0"></div>
-                <div class=" flex justify-between w-10/12 mx-auto py-36">
+                        onclick="updateYears();updateMonths();">میلادی به شمسی</label>
+            </div>
+            <div class="w-fullmx-auto bg-white border-t-7px border-secondary-700 rounded-3xl relative  mt-8 drop-shadow-xl">
+
+
+                <div class=" flex justify-between w-full px-5 py-5">
                     <div class="flex flex-col w-1/2 px-6">
                         <div class="py-3 flex justify-between items-center w-11/12 mx-auto"><label for="day"
-                                class="  text-base text-primary-900 ml-3 inline-block">روز</label><select
-                                class="w-20 bg-primary-50 outline-none border-none text-primary   text-xs p-2 rounded-lg "
-                                id="day" onchange="convert()"></select></div>
-                        <hr class="border-neutralcolor-800">
+                                class="  font-medium ml-3 text-lg  inline-block">روز</label><select
+                                class="w-[215px] bg-zinc-100 h-[55px]  outline-none pl-4 border-none text-xs p-2 rounded-lg " id="day"
+                                onchange="convert()"></select></div>
+
                         <div class="py-3 flex justify-between items-center w-11/12 mx-auto"><label for="month"
-                                class="  text-base text-primary-900 ml-3 inline-block">ماه</label><select
-                                class="w-20 bg-primary-50 outline-none border-none text-primary   text-xs p-2 rounded-lg "
-                                id="month" onchange="updateDays();convert()"></select></div>
-                        <hr class="border-neutralcolor-800">
+                                class="  font-medium ml-3 text-lg  inline-block">ماه</label>
+                                <select
+                                class="w-[215px] bg-zinc-100 h-[55px]  outline-none pl-4 border-none text-xs p-2 rounded-lg "
+                                id="month" onchange="updateDays();convert()">
+                            </select></div>
+
                         <div class="py-3 flex justify-between items-center w-11/12 mx-auto"><label for="year"
-                                class="  text-base text-primary-900 ml-3 inline-block">سال</label><select
-                                class="w-20 bg-primary-50 outline-none border-none text-primary   text-xs p-2 rounded-lg "
-                                id="year" onchange="updateDays();convert()"></select></div>
+                                class="  font-medium ml-3 text-lg  inline-block">سال</label>
+                            <select class="w-[215px] bg-zinc-100 h-[55px]  outline-none pl-4 border-none text-xs p-2 rounded-lg "
+                                id="year" onchange="updateDays();convert()"></select>
+                        </div>
                     </div>
                     <div id="result"
-                        class="w-1/2 border border-neutralcolor-800 rounded-2xl p-6 gap-y-6 flex flex-col justify-center items-center">
+                        class="w-1/2   border-r pr-[40px] border-zinc-300   gap-y-6 flex flex-col justify-center items-center">
                     </div>
                 </div>
             </div>
         </div>
 
 
-         <section class="w-full flex justify-center relative">
-            <div
-                class="px-4 relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+        <section class="max-w-7xl mt-24 w-[95%] mx-auto flex justify-center relative">
+            <div class="px-4 relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
                 <div class="flex relative items-center gap-3">
-                    <div class="flex z-10 relative bg-white px-2 items-center gap-1">
-                        
+                    <div class="flex z-10 w-full relative bg-white  items-center gap-1">
+
                         <basis core="print" datamembername="db.aid-text">
                             <face filter="TypeID=150">
-                                <p class="font-bold text-2xl text-zinc-900"> @text </p>
+                                <p
+                                    class="title-wrapper w-full flex items-center gap-3 relative p-4 bg-primary-50 font-bold text-2xl text-zinc-900 rounded-xl">
+                                    @text
+                                </p>
 
                             </face>
                         </basis>
                     </div>
                 </div>
-                <div class="flex  flex-col justify-center items-center my-[50px] gap-8">
-                    <div class="max-h-[500px] aid-content  flex flex-col gap-3 overflow-hidden w-full ">
+                <div class="flex  flex-col justify-center items-center mt-3 gap-8">
+                    <div class="  flex flex-col gap-3 overflow-hidden w-full ">
                         <basis core="print" datamembername="db.aid-text">
                             <face filter="TypeID=129">
                                 <div class="text-sm text-zinc-900 text-justify">@largetext</div>
@@ -119,24 +137,7 @@
 
                     </div>
 
-                    <basis core="print" datamembername="db.aid-text">
-                        <layout>
-                            <button type="button" aria-label="see-more"
-                                class="flex hover:text-secondary-900 group text-primary-600 items-center gap-3"
-                                id="see-more">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M11.9972 19C8.27467 19 4.93239 16.4801 3.0568 12.2638C3.01933 12.1804 3 12.0905 3 11.9996C3 11.9086 3.01933 11.8187 3.0568 11.7353C4.93424 7.51815 8.27652 5 11.9982 5C15.7198 5 19.0658 7.51815 20.9432 11.7353C20.9807 11.8187 21 11.9086 21 11.9996C21 12.0905 20.9807 12.1804 20.9432 12.2638C19.0667 16.4801 15.7244 18.9973 12.0028 19H11.9972ZM4.44503 12C6.11201 15.5513 8.91802 17.662 11.9954 17.6629C15.0728 17.6638 17.8778 15.5513 19.5457 12C17.8769 8.44785 15.0709 6.33707 11.9935 6.33707C8.91617 6.33707 6.1148 8.44785 4.44689 12H4.44503Z"
-                                        fill="#049AEE" class="group-hover:fill-secondary-900" />
-                                    <path
-                                        d="M11.9973 15.4146C11.2988 15.4146 10.616 15.2146 10.0352 14.8398C9.45445 14.465 9.00182 13.9323 8.73456 13.3091C8.46729 12.6859 8.39741 12.0001 8.53374 11.3385C8.67008 10.6769 9.00652 10.0693 9.5005 9.59232C9.99448 9.1154 10.6238 8.79066 11.3089 8.65917C11.994 8.52768 12.7041 8.59534 13.3494 8.8536C13.9947 9.11186 14.5462 9.54912 14.9341 10.1101C15.322 10.6711 15.529 11.3305 15.5288 12.0051C15.5274 12.9091 15.1548 13.7756 14.4928 14.4147C13.8308 15.0539 12.9334 15.4134 11.9973 15.4146ZM11.9973 9.93081C11.5727 9.93081 11.1577 10.0524 10.8046 10.2802C10.4516 10.508 10.1764 10.8318 10.0139 11.2106C9.85135 11.5894 9.80878 12.0062 9.89155 12.4084C9.97432 12.8105 10.1787 13.18 10.4789 13.47C10.779 13.76 11.1615 13.9575 11.5779 14.0376C11.9943 14.1177 12.426 14.0768 12.8183 13.92C13.2106 13.7632 13.546 13.4976 13.782 13.1567C14.018 12.8159 14.1441 12.4151 14.1443 12.0051C14.1435 11.4553 13.9171 10.9283 13.5147 10.5395C13.1122 10.1507 12.5666 9.93176 11.9973 9.93081Z"
-                                        fill="#049AEE" class="group-hover:fill-secondary-900" />
-                                </svg>
-                                <span> مشاهده بیشتر</span>
-                            </button>
-                        </layout>
-                    </basis>
+                   
 
                 </div>
             </div>
@@ -144,14 +145,15 @@
 
 
 
-         <section class="w-full flex justify-center relative  ">
-            <div class=" w-full">
-                <div class="before-border last-section-brd-article relative w-full flex flex-col">
+        <section class="max-w-7xl w-[95%] mx-auto flex justify-center relative mt-12">
+            <div
+                class="px-4 relative after-to-bottom-border mb-16 w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class=" last-section-form relative w-full flex flex-col">
                     <div class="flex  items-center gap-3 ">
                         <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
                             <img loading="lazy" src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo"
                                 class="w-8 h-8">
-                            <p class="font-bold text-2xl text-zinc-900">ارتباط با کارشناسان </p>
+                            <p class="font-bold text-2xl text-zinc-900"> ارتباط با کارشناسان</p>
                             <span class="bullet-1"></span>
                         </div>
                     </div>
@@ -159,7 +161,7 @@
                         <div
                             class="w-full rounded-2xl overflow-hidden relative flex items-center justify-center h-[143px] px-[35px] py-5">
                             <img loading="lazy" src="[##cms.cms.cdn##]/images/contact-form-image.jpg" alt="contact-us"
-                                class="w-[42%] h-full z-0    absolute left-0 top-0">
+                                class="w-[42%] h-full z-0 absolute left-0 top-0">
                             <span
                                 class="w-[80px] absolute left-[calc(42%-3px)] z-[3] bg-gradient-to-r from-[#d6d9d8] h-full"></span>
                             <span
@@ -196,34 +198,34 @@
                                                     OnRendered="captchaRenderedFooter">
                                                     <face>
                                                         <script type="text/template">
-                                    <div class="flex  justify-between ">
-                                        
-                                        <div class="flex sfvgwdcsdhc w-full items-center">
+         <div class="flex  justify-between ">
+          
+          <div class="flex sfvgwdcsdhc w-full items-center">
 
-                         <div class="float-right captcha-ctz w-1/2 relative">
-                           
-                            <input id="captcha-ct" type="text" class="contactUsInput codeinputm bg-white rounded-2xl p-3" name="captcha" maxlength="4" placeholder="کد امنیتی "/>
-                            <input type="hidden" name="captchaid" value="@captcha@" />
-                        </div>
-                      <div class="float-right w-1/2 justify-between lg:mt-0 bvgvkek h-fit leading-[65px] px-4 flex items-center gap-2">
-                       <img loading="lazy" src="/@captcha@" width="86" height="59" alt="captcha" />
-                        <span  onclick="refreshCaptchaFooter()">
-                            <svg class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path class="group-hover:stroke-primary"
-                                                d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3"
-                                                stroke="#020121" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                            <circle
-                                                class="group-hover:stroke-primary transition-all duration-300 ease-in-out"
-                                                cx="24" cy="24.5" r="10" stroke="#020121" stroke-width="1.5" />
-                                        </svg>
-                        </span>
-                       
-                    </div>
+       <div class="float-right captcha-ctz w-1/2 relative">
+         
+       <input id="captcha-ct" type="text" class="contactUsInput codeinputm bg-white rounded-2xl p-3" name="captcha" maxlength="4" placeholder="کد امنیتی "/>
+       <input type="hidden" name="captchaid" value="@captcha@" />
+      </div>
+       <div class="float-right w-1/2 justify-between lg:mt-0 bvgvkek h-fit leading-[65px] px-4 flex items-center gap-2">
+        <img loading="lazy" src="/@captcha@" width="86" height="59" alt="captcha" />
+      <span  onclick="refreshCaptchaFooter()">
+       <svg class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49"
+           fill="none" xmlns="http://www.w3.org/2000/svg">
+           <path class="group-hover:stroke-primary"
+            d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3"
+            stroke="#020121" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+           <circle
+            class="group-hover:stroke-primary transition-all duration-300 ease-in-out"
+            cx="24" cy="24.5" r="10" stroke="#020121" stroke-width="1.5" />
+          </svg>
+      </span>
+        
+     </div>
 
-                                                        </div></div>
-                    </script>
+              </div></div>
+     </script>
                                                     </face>
                                                 </basis>
                                                 <button type="button" data-btn-uploadfooter
@@ -250,7 +252,6 @@
                                             <div class="message-api absolute text-center text-primary text-xs"></div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -259,9 +260,9 @@
             </div>
         </section>
 
-     
+
     </main>
     <basis core="call" file="footer.inc"></basis>
- </body>
+</body>
 
 </html>

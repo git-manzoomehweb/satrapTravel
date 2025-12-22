@@ -681,6 +681,9 @@ video {
 .h-\[118px\] {
   height: 118px;
 }
+.h-\[523px\] {
+height: 523px;
+}
 .h-\[124px\] {
   height: 124px;
 }
@@ -866,6 +869,9 @@ video {
 }
 .h-\[50px\] {
   height: 50px;
+}
+.h-\[55px\] {
+  height: 55px;
 }
 .h-\[51px\] {
   height: 51px;
@@ -1113,6 +1119,9 @@ video {
 }
 .w-\[213px\] {
   width: 213px;
+}
+.w-\[215px\] {
+  width: 215px;
 }
 .w-\[219px\] {
   width: 219px;
@@ -1617,6 +1626,12 @@ video {
 .border-t {
   border-top-width: 1px;
 }
+.border-t-7px{
+   border-top-width: 7px;
+}
+.border-secondary-700{
+  border-color: #FFBD22;
+}
 .border-dashed {
   border-style: dashed;
 }
@@ -1752,6 +1767,9 @@ body.hotel-list #search-box {
 }
 .bg-\[\#00000033\] {
   background-color: #00000033;
+}
+.bg-\[\#0B1B4CCF\] {
+  background-color: #0B1B4CCF;
 }
 .bg-\[\#00000045\] {
   background-color: #00000045;
@@ -2187,6 +2205,9 @@ body.hotel-list #search-box {
 .pr-\[20px\] {
   padding-right: 20px;
 }
+.pr-\[40px\] {
+  padding-right: 40px;
+}
 .pt-2 {
   padding-top: 0.5rem;
 }
@@ -2207,6 +2228,9 @@ body.hotel-list #search-box {
 }
 .pt-\[14px\] {
   padding-top: 14px;
+}
+.pt-36px{
+  padding-top: 36px;
 }
 .text-left {
   text-align: left;
@@ -2239,6 +2263,9 @@ body.hotel-list #search-box {
 }
 .text-\[64px\] {
   font-size: 64px;
+}
+.text-\[48px\] {
+  font-size: 48px;
 }
 .text-\[72px\] {
   font-size: 72px;
@@ -3678,6 +3705,12 @@ body:has(.flighthotel-searchHistory:not(.hidden))
 .-mt-\[22rem\] {
   margin-top: -22rem;
 }
+.-mt-\[11rem\] {
+  margin-top: -11rem;
+}
+.-mt-\[21rem\] {
+  margin-top: -21rem;
+}
 .mb-12 {
   margin-bottom: 3rem;
 }
@@ -4695,4 +4728,12 @@ body:has(.modals-container) .last-section-form::after {
   right: 3px;
   top: 0px;
   color: #000;
+}
+.change-date-btn-container label{
+  border: 1px solid #E0E0E0 !important;
+  color: #858585 !important;
+}
+.change-date-btn-container label.bg-secondary{
+  border: 1px solid var(--secondary) !important;
+  color: #fff !important;
 }
