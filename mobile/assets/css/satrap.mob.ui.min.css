@@ -5322,3 +5322,7 @@ body.white-header header.header-landing-items div.fixed {
   top: 0px;
   color: #000;
 }
+.tour-li-mob {
+  padding-left: 55px !important;
+  padding-right: 55px !important;
+}
