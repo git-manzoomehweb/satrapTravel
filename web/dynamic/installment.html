@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover" />
+    <title>[##cms.seo.title|(شرایط اقساط ساتراپ تراول)##]</title>
+    <meta name="description" content="[##cms.seo.description|(شرکت خدمات مسافرت هوایی و گردشگری ساتراپ تراول)##]" />
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <basis core="call" file="pwa.inc" />
+    <basis core="call" file="style.inc" />
+    <link href="[##cms.cms.cdn##]/css/contact-us-form.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
+</head>
+
+<body class="overflow-x-hidden relative">
+    <basis core="call" file="header.inc" pageindex="[##cms.cms.pageindex##]" />
+    <main>
+
+        <section class="flex banner-list justify-center h-[833px] relative w-full">
+            <span class="absolute w-full h-full bg-[#0B1B4CCF] top-0 left-0 z-[1]"></span>
+            <img src="[##cms.cms.cdn##]/images/installment-banner.jpg" alt="installment"
+                class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+            <div class="max-w-7xl mx-auto w-full pt-[9rem] ">
+                <div class=" w-full h-[904px]  my-6">
+                    <div class="relative z-20 w-[90%] mx-auto">
+                        <div class="float-right mt-5 w-full flex gap-3 flex-col justify-center items-center">
+                            <h1 class="text-white text-5xl font-bold">شرایط اقساط ساتراپ
+                            </h1>
+                            <h2 class="text-white text-sm font-bold">جیبتو خالی نکن
+                                ،
+                                قسطی سفر کن !</h2>
+                            <ul class="flex items-center gap-2 text-white !text-xs">
+                                <li> <a href="/" class="hover:text-secondary-700">صفحه اصلی</a>
+                                </li>
+                                <li> &gt; </li>
+                                <li> شرایط اقساط </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="flex justify-between relative z-20 items-stretch w-full mx-auto -mt-[769px]">
+
+                    <div class=" w-1/2 flex flex-col gap-4 mt-3">
+                        <div class="font-yekanbakhboldFA text-white text-base flex items-center font-bold">
+                            طرح اقساط
+                        </div>
+                        <ul>
+
+
+                            <li
+                                class="group w-[344px] h-[252px] flex flex-col justify-between p-3  bg-white rounded-xl ">
+                                <div class=" w-full flex flex-col h-full justify-between">
+                                    <div>
+                                        <div class="w-full flex justify-center">
+                                            <span class="  text-2xl font-bold text-center">طرح
+                                                اقساط ساتراپ</span>
+                                        </div>
+                                        <hr class="border-[#D5D5D5] w-[95%] mx-auto my-2">
+                                        <div class="w-full flex justify-center">
+                                            <span class="text-sm text-[#1B1B1B] text-center pt-2">طرح
+                                                تا
+                                                سقف 1 میلیارد تومان</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="w-full h-[55px] bg-[#FFBD22] rounded-xl font-bold text-[#272727] flex items-center justify-center cursor-pointer hover:bg-primary"
+                                        onclick="selectPlanInstallment(this ,'satrap' , 'satrapplan  transition-all ease-in-out duration-300 !flex justify-center items-center ' , 130 , 4 , 0.21)">
+                                        <input type="radio" id="satrap" name="plan" value="satrap"
+                                            class="plan-radio w-0 h-0 inline m-0 p-0 appearance-none" selected>
+                                        <label class=" " for="satrap">انتخاب</label>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="w-[565px]  flex flex-col gap-4 mt-3">
+                        <div class="font-yekanbakhboldFA text-white text-base flex items-center font-bold">
+                            تعداد مسافران
+                        </div>
+
+                        <ul class=" w-[565px] relative grid grid-cols-2 gap-[13px]">
+                            <li>
+                                <div
+                                    class="w-full bg-white justify-between rounded-2xl  gap-[10px] flex flex-col p-3 l h-[123px]">
+                                    <div class="w-full text-center">
+                                        <span class="font-bold text-base">بزرگسال</span>
+                                        <span class=" ">(12 سال به
+                                            بالا)</span>
+                                    </div>
+                                    <div class="w-full ">
+                                        <select onChange="calculateInstallments(this)"
+                                            class="w-full  h-[55px] rounded-lg border border-[#E5E5E5]"
+                                            name="adult-installment" id="adult-installment">
+                                            <option value="1">1</option>
+                                            <option value="2" selected>2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div
+                                    class="w-full bg-white justify-between rounded-2xl  gap-[10px] flex flex-col p-3 l h-[123px]">
+                                    <div class="text-center">
+                                        <span class="font-bold text-base">کودک با
+                                            تخت</span>
+                                        <span class=" ">(6 تا 12
+                                            سال)</span>
+                                    </div>
+                                    <div class="w-full ">
+                                        <select onChange="calculateInstallments(this)"
+                                            class="w-full h-[55px] rounded-lg border border-[#E5E5E5]"
+                                            name="child-bed-installment" id="child-bed-installment">
+                                            <option value="0" selected>0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div
+                                    class="w-full bg-white justify-between rounded-2xl  gap-[10px] flex flex-col p-3 l h-[123px]">
+                                    <div class="text-center">
+                                        <span class="font-bold text-base">کودک بدون
+                                            تخت</span>
+                                        <span class=" ">(2 تا 6
+                                            سال)</span>
+                                    </div>
+                                    <div class="w-full ">
+                                        <select onChange="calculateInstallments(this)"
+                                            class="w-full h-[55px] rounded-lg border border-[#E5E5E5]"
+                                            name="child-installment" id="child-installment">
+                                            <option value="0" selected>0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div
+                                    class="w-full bg-white justify-between rounded-2xl  gap-[10px] flex flex-col p-3 l h-[123px]">
+                                    <div class="text-center">
+                                        <span class="font-bold text-base">نوزاد</span>
+                                        <span class=" ">(زیر 2
+                                            سال)</span>
+                                    </div>
+                                    <div class="w-full ">
+                                        <select onChange="calculateInstallments(this)"
+                                            class="w-full h-[55px] rounded-lg border border-[#E5E5E5]"
+                                            name="infant-installment" id="infant-installment">
+                                            <option value="0" selected>0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="my-4 relative w-full flex justify-center z-10">
+
+                    <span class="text-white  text-lg font-bold text-center">
+                        محاسبه گر اقساط
+                    </span>
+
+
+                </div>
+
+                <div
+                    class="z-10 relative bg-white  w-full mt-3  rounded-3xl border-[#C7E2F1] border p-6 flex gap-x-10 mx-auto  ">
+                    <section class="w-1/2 relative">
+
+                        <div class="w-full h-full">
+                            <form action="" class="w-full h-full flex justify-between flex-col">
+                                <div class="w-full flex flex-col gap-4">
+                                    <div class=" flex gap-2 items-center w-full flex-wrap">
+                                        <label class="font-bold w-full text-zinc-900 text-base block" for="amount">میزان
+                                            مبلغ درخواستی
+                                        </label>
+
+                                        <div class="flex items-center justify-center w-full">
+                                            <input id="amount"
+                                                class="bg-transparent w-[170px] font-bold text-2xl text-left pl-3 text-zinc-900"
+                                                type="text" value="10000000" placeholder="10000000">
+                                            <span class="text-sm text-zinc-500 ">
+                                                تومان
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="relative mt-6 flex justify-between gap-x-3 items-center">
+                                        <div class="absolute w-full -top-[40px] flex items-center justify-between">
+                                            <button class="increase-500 cursor-pointer">
+                                                <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="25" height="25" rx="4" fill="#FFFDE6" />
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M12.5 5.5C13.0523 5.5 13.5 5.94772 13.5 6.5V11.5H18.5C19.0523 11.5 19.5 11.9477 19.5 12.5C19.5 13.0523 19.0523 13.5 18.5 13.5H13.5V18.5C13.5 19.0523 13.0523 19.5 12.5 19.5C11.9477 19.5 11.5 19.0523 11.5 18.5V13.5H6.5C5.94772 13.5 5.5 13.0523 5.5 12.5C5.5 11.9477 5.94772 11.5 6.5 11.5H11.5V6.5C11.5 5.94772 11.9477 5.5 12.5 5.5Z"
+                                                        fill="#FFBD22" />
+                                                </svg>
+
+                                            </button>
+                                            <button class="decress-500 cursor-pointer">
+                                                <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="25" height="25" rx="4" fill="#FFFDE6" />
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M12 11.5C12.5523 11.5 12.5 11.5 13 11.5H13.5H18.5C19.0523 11.5 19.5 11.9477 19.5 12.5C19.5 13.0523 19.0523 13.5 18.5 13.5H13.5C13 13.5 13.5523 13.5 13 13.5C12.4477 13.5 12.5 13.5 12.5 13.5H11.5H6.5C5.94772 13.5 5.5 13.0523 5.5 12.5C5.5 11.9477 5.94772 11.5 6.5 11.5H11.5C12 11.5 11.4477 11.5 12 11.5Z"
+                                                        fill="#FFBD22" />
+                                                </svg>
+
+                                            </button>
+                                        </div>
+                                        <span
+                                            class="text-txtneutral-500 right-0 absolute top-[25px] font-yekanbakhregularFA text-base ">
+                                            <span id="limit-range " class="hidden">10,000,000</span>
+                                            <span>1,000,000,000</span>
+                                            تومان
+                                        </span>
+                                        <input dir="ltr" oninput="updateLoanFromRange(this.value)" type="range"
+                                            min="10000000" max="1000000000" step="100000" value="10000000"
+                                            class="slider w-full accent-secondary" id="myRange">
+
+                                        <span
+                                            class="text-txtneutral-500 left-0 absolute top-[25px] font-yekanbakhregularFA text-base ">
+                                            <span id="limit-range">10</span>
+                                            میلیون تومان</span>
+                                    </div>
+                                </div>
+
+
+                                <button class="cursor-pointer bg-[#FFBD22] rounded-lg mt-5 w-full text-center text-zinc-900 font-semibold
+ hover:bg-primary text-base leading-[56px]" onclick="openSignupInstallmentForm();">
+                                    ثبت نام
+                                </button>
+                                <div class="w-full  absolute left-110dr top-0">
+                                    <span class="text-sm   text-zinc-600">
+                                        مدت باز پرداخت
+                                    </span>
+
+                                    <div id="month-list" class="swiper mt-7 planitems w-full mx-auto">
+                                        <div class="swiper-wrapper h-11">
+
+                                            <div class="swiper-slide w-88rem">
+                                                <div month="4" rate="0.21" onclick="calculateMonth(4 , 0.21 , this)"
+                                                    class="satrapplan transition-all ease-in-out duration-300 !flex justify-center items-center
+            plan-item !bg-[#DBE8FF] rounded-lg text-sm cursor-pointer
+            !border-[#2870ED] !text-[#2870ED] h-11 border">
+                                                    4ماهه
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide w-88rem">
+                                                <div month="5" rate="0.21" onclick="calculateMonth(5 , 0.21 , this)"
+                                                    class="satrapplan transition-all ease-in-out duration-300 !flex justify-center items-center
+            plan-item bg-white rounded-lg text-sm cursor-pointer
+            border border-[#ABB3D1] text-[#ABB3D1] h-11">
+                                                    5ماهه
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide w-88rem">
+                                                <div month="6" rate="0.21" onclick="calculateMonth(6 , 0.21 , this)"
+                                                    class="satrapplan transition-all ease-in-out duration-300 !flex justify-center items-center
+            plan-item bg-white rounded-lg text-sm cursor-pointer
+            border border-[#ABB3D1] text-[#ABB3D1] h-11">
+                                                    6ماهه
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </form>
+
+
+
+                        </div>
+                    </section>
+                    <div class="w-1/2      ">
+                        <ul class="text-primary  divide-y divide-[#F0F0F1] pt-28 pb-1">
+                            <!-- <li class=" hidden ">
+                                <span class="text-sm text-[#3A415D]  ">مبلغ کل : </span>
+                                <div class="font-yekanbakhregularFA text-xl ">
+                                    <span class="total-amount">
+                                        0
+                                    </span>
+
+                                    <span class="text-xs text-[#ABB3D1]">تومان</span>
+                                </div>
+                            </li> -->
+                            <li class=" flex justify-between mt-24 leading-64px text-sm font-danaregular">
+                                <span class="text-sm text-[#3A415D]  ">مبلغ کل با اعمال تسهیلات: </span>
+                                <div class="font-yekanbakhregularFA text-xl ">
+                                    <span class="Total-amount-facilities font-bold text-[#3A415E] text-sm">
+                                        0
+                                    </span>
+
+                                    <span class="text-xs text-[#ABB3D1]">تومان</span>
+                                </div>
+                            </li>
+                            <li class="hidden">
+                                <span class="text-sm text-[#3A415D]  ">مبلغ کل پیش پرداخت :</span>
+                                <div class="font-yekanbakhregularFA text-xl ">
+                                    <span class="Total-advance-payment font-bold text-[#3A415E] text-sm">
+                                        0
+                                    </span>
+
+                                    <span class="text-xs text-[#ABB3D1]">تومان</span>
+                                </div>
+                            </li>
+                            <li class=" flex justify-between   pt-3 leading-64px text-sm font-danaregular">
+                                <span class="text-sm text-[#3A415D]  ">مبلغ هر قسط : </span>
+                                <div class="font-yekanbakhregularFA ">
+                                    <span class="amount-each-installment font-bold text-[#3A415E] text-sm ">
+                                        0
+                                    </span>
+
+                                    <span class="text-xs text-[#ABB3D1]">تومان</span>
+                                </div>
+                            </li>
+                        </ul>
+
+
+                    </div>
+                </div>
+
+
+
+                <div id="modal-signup-background"
+                    class="fixed bg-black/40 backdrop-blur-xl top-0 left-0 right-0 bottom-0 hidden z-[999]">
+
+                    <basis core="call" if="{##db.installmentsignup.run|(false)##}" triggers="db.installmentsignup"
+                        run="atclient" file="/installment-signup.bc" method="post"
+                        plan="{##db.installmentsignup.plan##}" count="{##db.installmentsignup.count##}"
+                        loanamount="{##db.installmentsignup.loanamount##}"
+                        amountfacilities="{##db.installmentsignup.amountfacilities##}"
+                        amounteach="{##db.installmentsignup.amounteach##}"
+                        adultcount="{##db.installmentsignup.adultcount##}"
+                        childbed="{##db.installmentsignup.childbed##}"
+                        childwobed="{##db.installmentsignup.childwobed##}"
+                        infantcount="{##db.installmentsignup.infantcount##}"></basis>
+
+                </div>
+            </div>
+        </section>
+        <section class="max-w-7xl mx-auto  mt-[270px] ">
+            <div class="w-full   gap-[63px] flex">
+                <article class="w-1/2 flex flex-col gap-10">
+                    <p class="text-[#2870ED] font-bold text-2xl">با نحوه دریافت وام از ساتراپ بیشتر آشنا شوید.</p>
+                    <p class="text-[#18181B] text-justify">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
+                        با
+                        استفاده از طراحان گرافیک
+                        است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                        تکنولوژی
+                        مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه
+                        درصد
+                        گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را
+                        برای
+                        طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت
+                        لورم
+                        ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها
+                        و
+                        متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز،
+                        و
+                        کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال
+                        و
+                        آینده، </p>
+                    <a href=""
+                        class="bg-[#FFBD22] w-[196px] h-[54px] flex items-center justify-center rounded-lg hover:shadow-xl transition-all ease-in-out duration-300 hover:bg-[#9cbffb] hover:font-bold">بیشتر
+                        بخوانید</a>
+                </article>
+            </div>
+        </section>
+        <section class="bg-[#FAFAFA] overflow-hidden w-full relative min-h-[556px] flex items-center my-16">
+            <div class="flex items-center justify-center max-w-7xl mx-auto">
+                <div class="w-[603px] relative flex justify-center items-center">
+                    <img class=" h-[496px] z-[2] absolute bottom-0 left-28"
+                        src="[##cms.cms.cdn##]/images/intallment-plans- (1).png" alt="woman">
+                    <img class="z-0 w-full " src="[##cms.cms.cdn##]/images/intallment-plans- (2).png" alt="logo">
+                </div>
+                <div class="w-[676px] flex flex-col gap-[61px]">
+                    <p class="font-bold text-2xl">مدارک مورد نیاز برای تور اقساطی (چک صیادی)</p>
+                    <div class="grid w-full grid-cols-2 gap-[38px]">
+                        <article class="flex gap-3">
+                            <span class="w-[84px] h-[84px] flex items-center justify-center bg-[#E1F5FF] rounded-xl">
+                                <img src="[##cms.cms.cdn##]/images/Document-paper.svg" alt="Document">
+                            </span>
+                            <div class="flex flex-col gap-3 w-[calc(100%-100px)]">
+                                <p class="font-bold text-[#012047]">فایل صور‌تحساب ۶ ماهه</p>
+                                <p class="text-xs">پلتفرم مرهمیار با هدف معرفی تسهیلات اعتباری درمانی برای بیماران
+                                    راه‌اندازی شده است.</p>
+                            </div>
+                        </article>
+                        <article class="flex gap-3">
+                            <span class="w-[84px] h-[84px] flex items-center justify-center bg-[#E1F5FF] rounded-xl">
+                                <img src="[##cms.cms.cdn##]/images/Document-paper.svg" alt="Document">
+                            </span>
+                            <div class="flex flex-col gap-3 w-[calc(100%-100px)]">
+                                <p class="font-bold text-[#012047]">فایل صور‌تحساب ۶ ماهه</p>
+                                <p class="text-xs">پلتفرم مرهمیار با هدف معرفی تسهیلات اعتباری درمانی برای بیماران
+                                    راه‌اندازی شده است.</p>
+                            </div>
+                        </article>
+                        <article class="flex gap-3">
+                            <span class="w-[84px] h-[84px] flex items-center justify-center bg-[#E1F5FF] rounded-xl">
+                                <img src="[##cms.cms.cdn##]/images/Document-paper.svg" alt="Document">
+                            </span>
+                            <div class="flex flex-col gap-3 w-[calc(100%-100px)]">
+                                <p class="font-bold text-[#012047]">فایل صور‌تحساب ۶ ماهه</p>
+                                <p class="text-xs">پلتفرم مرهمیار با هدف معرفی تسهیلات اعتباری درمانی برای بیماران
+                                    راه‌اندازی شده است.</p>
+                            </div>
+                        </article>
+                        <article class="flex gap-3">
+                            <span class="w-[84px] h-[84px] flex items-center justify-center bg-[#E1F5FF] rounded-xl">
+                                <img src="[##cms.cms.cdn##]/images/Document-paper.svg" alt="Document">
+                            </span>
+                            <div class="flex flex-col gap-3 w-[calc(100%-100px)]">
+                                <p class="font-bold text-[#012047]">فایل صور‌تحساب ۶ ماهه</p>
+                                <p class="text-xs">پلتفرم مرهمیار با هدف معرفی تسهیلات اعتباری درمانی برای بیماران
+                                    راه‌اندازی شده است.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mt-4 mb-28 max-w-7xl mx-auto flex flex-col gap-[42px]">
+            <div class="flex justify-center items-center flex-col gap-3">
+                <p class="font-bold text-2xl">مراحل خرید تور اقساطی (چک صیادی)</p>
+                <p class="text-center">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
+                    طراحان
+                    گرافیک است، چاپگرها</p>
+            </div>
+            <div class="w-full grid grid-cols-4 gap-[35px]">
+                <article class="bg-[#FAFAFA] relative h-[197px] rounded-[30px] py-3 px-[29px] flex gap-[10px]">
+                    <div class="flex w-[184px] flex-col h-full justify-between">
+                        <span
+                            class="h-10 w-10 rounded-full flex justify-center items-center bg-[#FFBD22] text-white font-bold">1</span>
+                        <div class="flex flex-col gap-2">
+                            <p class="font-bold text-[#1255A2]">ثبت نام</p>
+                            <p class="text-xs text-[#222631]">ثبت نام | ورود و احراز اطلاعات هویتی متقاضی</p>
+                        </div>
+                    </div>
+                    <img src="[##cms.cms.cdn##]/images/installment-plan-icon- (1).png" alt="installment-plan"
+                        class="absolute left-3 top-4 w-[73px]">
+                </article>
+
+
+                <article class="bg-[#FAFAFA] relative h-[197px] rounded-[30px] py-3 px-[29px] flex gap-[10px]">
+                    <div class="flex w-[184px] flex-col h-full justify-between">
+                        <span
+                            class="h-10 w-10 rounded-full flex justify-center items-center bg-[#FFBD22] text-white font-bold">2</span>
+                        <div class="flex flex-col gap-2">
+                            <p class="font-bold text-[#1255A2]">ثبت نام</p>
+                            <p class="text-xs text-[#222631]">ثبت نام | ورود و احراز اطلاعات هویتی متقاضی</p>
+                        </div>
+                    </div>
+                    <img src="[##cms.cms.cdn##]/images/installment-plan-icon- (2).png" alt="installment-plan"
+                        class="absolute left-3 top-4 w-[73px]">
+                </article>
+            </div>
+        </section>
+        <section class="w-full flex justify-center relative mt-8 ">
+            <div
+                class="px-4 relative after-to-bottom-border mb-16 w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class=" last-section-form relative w-full flex flex-col">
+                    <div class="flex items-center gap-3 ">
+                        <div class="flex z-10 items-center px-2 gap-3 relative bg-white">
+                            <img src="[##cms.cms.cdn##]/images/logo-small.png" alt="small-logo" class="w-8 h-8">
+                            <p class="font-bold text-2xl text-zinc-900"> ارتباط با کارشناسان</p>
+                            <span class="bullet-1"></span>
+                        </div>
+                    </div>
+                    <div class="my-[50px] z-[4] items-center w-full flex">
+                        <div
+                            class="w-full rounded-2xl overflow-hidden relative flex items-center justify-center h-[143px] px-[35px] py-5">
+                            <img src="[##cms.cms.cdn##]/images/contact-form-image.jpg" alt="contact-us"
+                                class="w-[42%] h-full z-0  absolute left-0 top-0">
+                            <span
+                                class="w-[80px] absolute left-[calc(42%-3px)] z-[3] bg-gradient-to-r from-[#d6d9d8] h-full"></span>
+                            <span
+                                class="w-full h-full rounded-2xl bg-gradient-to-r z-[1] from-[#fff0] to-[#F2F2F2] absolute top-0 left-0 "></span>
+                            <div class="flex z-[5] w-full flex-col h-full justify-between">
+                                <p class="">جهت مشاوره خرید تور با کارشناسان ما در ارتباط باشید</p>
+                                <div class="flex items-center">
+                                    <div id="contact-form-resize" class="w-full flex flex-col gap-3">
+                                        <basis core="schema" run="atclient"
+                                            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/7F0B6A53-0EBB-4989-810C-014B112083E9/fa/ارتباط-با-کارشناسان"
+                                            displaymode="new" button="[data-btn-uploadfooter]"
+                                            resultsourceid="upload.datafooter" OnRendered="RenderFormFooter">
+                                        </basis>
+                                        <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
+                                            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject"
+                                            method="post"
+                                            body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
+                                            content-type="application/x-www-form-urlencoded" triggers="cms.uploadFooter"
+                                            OnProcessed="OnProcessedEditObjectFooter">
+                                        </basis>
+                                        <basis core="callback" run="atclient" method="uploadDocumentFooter"
+                                            triggers="upload.datafooter"></basis>
+                                        <div class="captcha-button">
+                                            <div id="captchaContainer"
+                                                class="captchaContainerclass !w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
+                                                data-bc-answer-container data-bc-schema-info-multi="0"
+                                                data-bc-schema-info-word="58" data-bc-schema-info-part="1"
+                                                data-bc-schema-info-part-0-type="text">
+                                                <basis core="dbsource" source="trust_login" name="captcha"
+                                                    run="atclient" triggers="captcha.refreshFooter">
+                                                    <member name="code" type="scalar" request="captcha"></member>
+                                                </basis>
+                                                <basis datamembername="captcha.code" core="print" run="atclient"
+                                                    OnRendered="captchaRenderedFooter">
+                                                    <face>
+                                                        <script type="text/template">
+                  <div class="flex justify-between ">
+                    
+                    <div class="flex sfvgwdcsdhc w-full items-center">
+
+             <div class="float-right captcha-ctz w-1/2 relative">
+              
+              <input id="captcha-ct" type="text" class="contactUsInput codeinputm bg-white rounded-2xl p-3" name="captcha" maxlength="4" placeholder="کد امنیتی "/>
+              <input type="hidden" name="captchaid" value="@captcha@" />
+            </div>
+           <div class="float-right w-1/2 justify-between lg:mt-0 bvgvkek h-fit leading-[65px] px-4 flex items-center gap-2">
+            <img loading="lazy" src="/@captcha@" width="86" height="59" alt="captcha" />
+            <span onclick="refreshCaptchaFooter()">
+              <svg class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49"
+                      fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path class="group-hover:stroke-primary"
+                        d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3"
+                        stroke="#020121" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <circle
+                        class="group-hover:stroke-primary transition-all duration-300 ease-in-out"
+                        cx="24" cy="24.5" r="10" stroke="#020121" stroke-width="1.5" />
+                    </svg>
+            </span>
+            
+          </div>
+
+                            </div></div>
+          </script>
+                                                    </face>
+                                                </basis>
+                                                <button aria-label="send" type="button" data-btn-uploadfooter
+                                                    class=" data-body-btn w-[108px] h-[59px] flex justify-center items-center bg-secondary-600 rounded-lg hover:shadow-lg hover:bg-gradient-to-br hover:from-primary hover:to-primary-50">
+                                                    ارسال
+                                                </button>
+
+                                            </div>
+
+                                            <div
+                                                class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex">
+                                                <div id="ballsWaveG"
+                                                    class="ext-zinc-50 text-base font-normal leading-normal">
+                                                    <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                                    <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                                                </div>
+                                            </div>
+                                            <div class="message-api absolute text-center text-primary text-xs">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
+    <basis core="call" file="footer.inc" />
+
+</body>
+
+<script>
+    var planswiper = new Swiper(".planitems", {
+        slidesPerView: 'auto',
+        spaceBetween: 10,
+    });
+
+    let planselected = 'satrap';
+
+    var limitrange = 1000000000;
+    var rangeInput = document.getElementById('myRange');
+    var amountInput = document.getElementById('amount');
+
+    var loanAmount = 10000000;
+    var loanMonths = 4;
+    var interestRate = 0.21;
+    var totalprice = 0;
+    var installmentAmount = 0;
+
+    var adultCountF = 2;
+    var childbedCountF = 0;
+    var childwobedCountF = 0;
+    var infantCountF = 0;
+
+    const STEP_500 = 500000;
+    const RANGE_STEP = 100000;
+    const MIN_AMOUNT = 10000000;
+    const MAX_AMOUNT = 1000000000;
+
+    function formatAmountText(val) {
+        if (val >= 1000000000) return '1 میلیارد تومان';
+        return (val / 1000000).toLocaleString() + ' میلیون تومان';
+    }
+
+    function normalizeAmount(val) {
+        val = Math.round(val / RANGE_STEP) * RANGE_STEP;
+        return Math.max(MIN_AMOUNT, Math.min(val, MAX_AMOUNT));
+    }
+
+    function extractNumber(value) {
+        return Number(value.replace(/[^\d]/g, ''));
+    }
+
+    function updateRangeBackground() {
+        if (!rangeInput) return;
+
+        const value = Number(rangeInput.value);
+        const min = Number(rangeInput.min);
+        const max = Number(rangeInput.max);
+
+        const percent = ((value - min) / (max - min)) * 100;
+        rangeInput.style.background =
+            `linear-gradient(to right, #FDA41B ${percent}%, #F3F3F3 ${percent}%)`;
+
+        if (amountInput) amountInput.value = value.toLocaleString();
+
+        const limitSpans = document.querySelectorAll('#limit-range');
+        limitSpans.forEach(span => span.textContent = value.toLocaleString());
+    }
+
+    function syncAllInputs(value) {
+        value = normalizeAmount(value);
+        loanAmount = value;
+
+        if (rangeInput) rangeInput.value = value;
+        if (amountInput) amountInput.value = value.toLocaleString();
+
+        updateRangeBackground();
+        calculateInstallments();
+    }
+
+    function updateLoanFromRange(value) {
+        syncAllInputs(Number(value));
+    }
+
+    function calculateMonth(months, rate, el) {
+        document.querySelectorAll('.plan-item').forEach(i => {
+            i.classList.remove('!bg-[#DBE8FF]', '!border-[#2870ED]', '!text-[#2870ED]');
+            i.classList.add('bg-white', 'border-[#ABB3D1]', 'text-[#ABB3D1]');
+        });
+
+        if (el) {
+            el.classList.add('!bg-[#DBE8FF]', '!border-[#2870ED]', '!text-[#2870ED]');
+            el.classList.remove('bg-white');
+        }
+
+        loanMonths = months;
+        interestRate = rate;
+        calculateInstallments();
+    }
+
+    function calculateInstallments() {
+        adultCountF = +document.getElementById("adult-installment")?.value || 0;
+        childbedCountF = +document.getElementById("child-bed-installment")?.value || 0;
+        childwobedCountF = +document.getElementById("child-installment")?.value || 0;
+        infantCountF = +document.getElementById("infant-installment")?.value || 0;
+
+        // شرط اکسل
+        if (loanMonths > 6) {
+            document.querySelector('.Total-amount-facilities').textContent = '—';
+            document.querySelector('.amount-each-installment').textContent = '—';
+            return;
+        }
+
+        const remainingAmount = loanAmount;
+
+        // فرمول دقیق اکسل
+        const fee =
+            remainingAmount *
+            ((loanMonths * 1) + 1) *
+            0.025;
+
+        const totalAmountWithFacilities = remainingAmount + fee;
+        installmentAmount = totalAmountWithFacilities / loanMonths;
+
+        totalprice = totalAmountWithFacilities;
+
+        document.querySelector('.Total-amount-facilities').textContent =
+            Math.floor(totalAmountWithFacilities).toLocaleString();
+
+        document.querySelector('.amount-each-installment').textContent =
+            Math.floor(installmentAmount).toLocaleString();
+    }
+
+    function openSignupInstallmentForm() {
+        document.getElementById('modal-signup-background').classList.remove("hidden");
+
+        $bc.setSource("db.installmentsignup", {
+            plan: planselected,
+            count: loanMonths,
+            loanamount: loanAmount,
+            amountfacilities: totalprice,
+            amounteach: installmentAmount,
+            adultcount: adultCountF,
+            childbed: childbedCountF,
+            childwobed: childwobedCountF,
+            infantcount: infantCountF,
+            run: true,
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const incBtn = document.querySelector('.increase-500');
+        const decBtn = document.querySelector('.decress-500');
+
+        if (incBtn) {
+            incBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                syncAllInputs(loanAmount + STEP_500);
+            });
+        }
+
+        if (decBtn) {
+            decBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                syncAllInputs(loanAmount - STEP_500);
+            });
+        }
+
+        if (amountInput) {
+            amountInput.addEventListener('input', function () {
+                const numericValue = extractNumber(this.value);
+                if (!numericValue) return;
+                syncAllInputs(numericValue);
+            });
+        }
+    });
+
+    updateRangeBackground();
+    calculateInstallments();
+</script>
+
+
+
+
+
+
+</html>

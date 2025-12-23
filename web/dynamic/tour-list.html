@@ -116,9 +116,16 @@
         </basis>
         <section class="flex banner-list justify-center items-center h-[408px] relative w-full">
 
-            <img src="[##cms.cms.cdn##]/images/[##cms.query.catid##].jpg" alt="tour-list-banner"
-                class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+            <basis core="print" datamembername="db.banner-info">
+                <face filter="image is null">
 
+                    <img src="[##cms.cms.cdn##]/images/tour-list.jpg" alt="@urltitle"
+                        class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+                </face>
+                <face>
+                    <img src="/@image" alt="@urltitle" class="z-0 absolute top-0 left-0 w-full h-full object-cover">
+                </face>
+            </basis>
 
             <span class="absolute w-full h-full backdrop-12  top-0 left-0 z-[2]"></span>
 
