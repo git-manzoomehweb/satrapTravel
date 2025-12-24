@@ -1589,6 +1589,9 @@ video {
 body.hotel-list #search-box {
   background-color: transparent !important;
 }
+#search-box {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px !important;
+}
 .\!bg-zinc-100,
 .swiper-ver .swiper-slide .bg-zinc-100 {
   background-color: var(--zinc-100) !important;
@@ -5179,6 +5182,23 @@ body:has(.modals-container) .last-section-form::after {
 .left-110dr {
   left: -107%;
 }
-.w-88rem{
+.w-88rem {
   width: 8.8rem !important;
+}
+.overflow-x-auto {
+  overflow-x: auto;
+}
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
+.swiper-pagination-t .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: var(--primary) !important;
+  background-color: var(--primary) !important;
+}
+.swiper-pagination-t .swiper-pagination-bullet{
+  background: white !important;
+  background-color: white !important;
+  opacity: 1 !important;
+  width: 12px !important;
+  height: 12px !important;
 }

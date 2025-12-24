@@ -2168,3 +2168,29 @@ const scrollToTourSection = async (element, type) => {
     console.error("scrollToTourSection=" + err.lineNumber + "," + err.message);
   }
 };
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const breadcrumbs = document.querySelectorAll("ul.bread-crumbs li"); // گرفتن تمامی li ها
+
+ 
+  const seenLinks = {};
+
+  breadcrumbs.forEach(function(li) {
+    const anchor = li.querySelector('a');  
+    if (anchor) {
+      const ariaLabel = anchor.getAttribute('aria-label');
+      const href = anchor.getAttribute('href');
+
+      const key = ariaLabel + href;  
+
+      if (seenLinks[key]) {
+        li.remove();  
+      } else {
+        seenLinks[key] = true;  
+      }
+    }
+  });
+});

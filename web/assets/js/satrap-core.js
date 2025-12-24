@@ -208,6 +208,40 @@ if (document.querySelectorAll(".swiper-tour").length > 0)
     },
   });
 // ___________________________________
+
+if (document.querySelectorAll(".swiper-tourtype-2").length > 0) {
+  const swiperTourType = new Swiper(".swiper-tourtype-2", {
+    slidesPerView: 1,
+    speed: 700,
+    centeredSlides: false,
+    spaceBetween: 11,
+    grabCursor: true,
+    autoplay: {
+      delay: 4500,
+      disableOnInteraction: false,
+    },
+    loop: false,
+    pagination: {
+      el: ".swiper-pagination-t",
+      clickable: true,
+      dynamicBullets: false,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      640: { slidesPerView: 1, spaceBetween: 11 },
+      768: { slidesPerView: 1, spaceBetween: 11 },
+      1024: { slidesPerView: 1, spaceBetween: 11 },
+    },
+  });
+
+  // برای اطمینان از به روزرسانی پیجینگ
+  swiperTourType.update();
+}
+
+// ___________________________________
 if (document.querySelectorAll(".swiper-tourtype").length > 0)
   swiper = new Swiper(".swiper-tourtype", {
     slidesPerView: 1,
@@ -1688,8 +1722,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (cache[catid]) {
         fetchWrapper.innerHTML = cache[catid].html;
 
-        // فرمت قیمت برای محض اطمینان
-        formatPrices(fetchWrapper);
+        
 
         // Swiper قبلی را destroy کن
         if (section._tourState.swiper) {
@@ -1722,7 +1755,7 @@ document.addEventListener("DOMContentLoaded", () => {
         fetchWrapper.innerHTML = html;
 
         // فرمت قیمت‌ها
-        formatPrices(fetchWrapper);
+        
 
         // ذخیره‌سازی در CACHE
         cache[catid] = { html: fetchWrapper.innerHTML };
@@ -3373,9 +3406,7 @@ if (document.getElementById("date-convertor")) {
   labels.forEach((label) => {
     label.addEventListener("click", () => {
       labels.forEach((l) =>
-
         l.classList.remove("bg-secondary", "bg-white", "text-white")
-      
       );
       label.classList.add("bg-secondary", "text-white");
       labels.forEach((l) => {
@@ -3769,6 +3800,24 @@ if (document.querySelector(".star-filter")) {
 // ____________________________
 // ____________________________
 // ____________________________
+const watchMoreBtn = document.querySelector(".watch-more-content");
+if (watchMoreBtn) {
+  watchMoreBtn.addEventListener("click", () => {
+    const showMore =
+      watchMoreBtn.parentElement.querySelector(".show-more-loan");
+    if (showMore) {
+      if (showMore.classList.contains("hidden")) {
+        showMore.classList.remove("hidden");
+        showMore.classList.add("flex");
+        watchMoreBtn.innerText = "بستـن";
+      } else {
+        showMore.classList.add("hidden");
+        showMore.classList.remove("flex");
+        watchMoreBtn.innerText = "بیشتر بخوانید";
+      }
+    }
+  });
+}
 // ____________________________
 // ____________________________
 // ____________________________

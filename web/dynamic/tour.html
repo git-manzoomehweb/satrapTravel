@@ -128,50 +128,47 @@
 
         <!-- tour section -->
         <div
-            class="tour__container px-4 mb-16  relative  w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col mx-auto gap-[18px]">
-            <ul class="flex gap-1 mt-4 items-center">
-                <li class="text-xs text-[#121212]">
-                    <a href="/" class="">صفحه اصلی </a>
-                </li>
-                <li class="text-xs text-[#121212]">/</li>
-
-                <basis core="print" datamembername="db.navigation">
-                    <face filter="RowNumber=max(RowNumber) and parentcatid<>217900">
-                        <li class="text-xs text-[#121212]" itemprop="itemListElement" itemscope=""
-                            itemtype="https://schema.org/ListItem">
-                            <span itemprop="name">@title</span>
-                            <meta itemprop="position" content="@rownumber" />
-
-                        </li>
-                    </face>
-                    <face filter="link is null and parentcatid<>217900">
-                        <li class="flex items-center gap-1" itemprop="itemListElement" itemscope=""
-                            itemtype="https://schema.org/ListItem">
-                            <a class="text-xs text-[#121212] hover:text-primary-700" itemprop="item"
-                                href="/tour-list.bc?catid=@parentcatid" aria-label="@title">
-
-                                <span itemprop="name ">@title</span>
-                                <meta itemprop="position" content="@rownumber" />
-
-                            </a>
-                            <span class="text-xs text-[#121212]">/</span>
-                        </li>
-                    </face>
-                    <face filter="parentcatid<>217900">
-                        <li class="flex items-center gap-1" itemprop="itemListElement" itemscope=""
-                            itemtype="https://schema.org/ListItem">
-                            <a class="text-xs text-[#121212] hover:text-primary-700" itemprop="item" href="@link"
-                                aria-label="@title">
+            class="tour__container px-4 mb-16    relative  w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col mx-auto gap-[18px]">
+            <div class="overflow-x-auto">
+                <ul class="flex gap-1 items-center bread-crumbs">
+                    <li class="text-xs text-[#121212]">
+                        <a href="/" class=" whitespace-nowrap">صفحه اصلی </a>
+                    </li>
 
 
+                    <basis core="print" datamembername="db.navigation">
+                        <face filter="RowNumber=max(RowNumber) and parentcatid<>217900">
+                            <li class="text-xs text-[#121212]" itemprop="itemListElement" itemscope=""
+                                itemtype="https://schema.org/ListItem">
+                                <span class="text-xs text-[#121212]">/</span>
                                 <span itemprop="name">@title</span>
                                 <meta itemprop="position" content="@rownumber" />
-                            </a>
-                            <span class="text-xs text-[#121212]">/</span>
-                        </li>
-                    </face>
-                </basis>
-            </ul>
+                            </li>
+                        </face>
+                        <face filter="link is null and parentcatid<>217900">
+                            <li class="text-xs text-[#121212]" itemprop="itemListElement" itemscope=""
+                                itemtype="https://schema.org/ListItem">
+                                <a itemprop="item" href="/tour-list.bc?catid=@parentcatid" aria-label="@title">
+                                    <span class="text-xs text-[#121212]">/</span>
+                                    <span itemprop="name "
+                                        class="text-xs hover:text-primary-700 text-[#121212]">@title</span>
+                                    <meta itemprop="position" content="@rownumber" />
+                                </a>
+                            </li>
+                        </face>
+                        <face filter="parentcatid<>217900">
+                            <li class="" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                                <a itemprop="item" href="@link" aria-label="@title">
+                                    <span class="text-xs text-[#121212]">/</span>
+                                    <span itemprop="name"
+                                        class="text-xs text-[#121212] hover:text-primary-700">@title</span>
+                                    <meta itemprop="position" content="@rownumber" />
+                                </a>
+                            </li>
+                        </face>
+                    </basis>
+                </ul>
+            </div>
             <div class="flex flex-col gap-2">
                 <basis core="print" datamembername="db.tour-view">
                     <face filter="TypeID in(150)">
@@ -689,7 +686,7 @@
                                             <img loading="lazy" src="[##cms.cms.cdn##]/images/Time Circle.svg"
                                                 alt="time" width="32" height="32">
                                             <p class="text-sm text-[#777777]">@Question</p>
-                                            <p class="font-bold text-[#044773]">@text</p>
+                                            <p class="font-bold text-[#044773] text-center">@text</p>
                                         </div>
                                     </face>
                                 </basis>
@@ -701,22 +698,27 @@
                                             <img loading="lazy" src="[##cms.cms.cdn##]/images/Calendar.svg" alt="time"
                                                 width="32" height="32">
                                             <p class="text-sm text-[#777777]">@Question </p>
-                                            <p class="font-bold text-[#044773]"> @text </p>
+                                            <p class="font-bold text-[#044773] text-center"> @text </p>
                                         </div>
                                     </face>
                                 </basis>
 
 
                                 <basis core="list" datamembername="db.tour-joining">
-                                    <face>
+                                    <layout>
                                         <div
                                             class="w-full h-[144px] bg-[#F3F6F8] rounded-xl flex flex-col justify-center items-center gap-[10px]">
                                             <img loading="lazy" src="[##cms.cms.cdn##]/images/plane up.svg"
                                                 alt="ایرلاین" width="32" height="32">
                                             <p class="text-sm text-[#777777]">ایرلاین:</p>
-                                            <img loading="lazy" src="@db.airline.pic" alt="@db.airline.name	"
-                                                class="w-[90px]">
+                                            <div class="flex flex-col justify-center items-center w-full  gap-2">
+                                                @child
+                                            </div>
                                         </div>
+                                    </layout>
+                                    <face>
+                                        <img loading="lazy" src="@db.airline.pic" alt="@db.airline.name	"
+                                            class="w-[61px]">
                                     </face>
                                 </basis>
 
@@ -732,7 +734,7 @@
                                         </div>
                                     </layout>
                                     <face filter="prpID=3088134">
-                                        <span class="font-bold text-[#044773]  ">@text </span>
+                                        <span class="font-bold text-[#044773] text-center  ">@text </span>
 
                                     </face>
                                 </basis>

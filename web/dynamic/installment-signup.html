@@ -1,0 +1,166 @@
+<section id="signup-form-amitis"
+    class="bg-white rounded-10px absolute top-0 bottom-0 left-0 right-0 w-318px m-auto p-4 dir-rtl font-danaregular h-613px overflow-y-auto">
+    <div class="flex w-full justify-end">
+        <button type="button" class="close-form group">
+        <svg width="33" height="34" viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd"
+                d="M16.8438 4.46729C9.45175 4.46729 3.4375 10.4159 3.4375 17.7273C3.4375 25.0387 9.45175 30.9873 16.8438 30.9873C24.2358 30.9873 30.25 25.0387 30.25 17.7273C30.25 10.4159 24.2358 4.46729 16.8438 4.46729Z"
+                fill="#7E7E7E" class="group-hover:fill-primary-950"></path>
+            <path
+                d="M20.1429 22.4192L21.6018 20.9763L18.3018 17.715L21.6018 14.4578L20.1443 13.0135L16.8429 16.2734L13.5429 13.0107L12.084 14.4537L15.3827 17.715L12.084 20.9722L13.5415 22.4152L16.8415 19.1566L20.1429 22.4192Z"
+                fill="#7E7E7E" class="group-hover:fill-white"></path>
+        </svg>
+    </button>
+    </div>
+    <div class="free-form-container form-container mt-7 max-xl:mx-auto  max-xl:pb-4">
+        <basis core="schema" run="atclient"
+            schemaurl="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/D3C36B87-91DE-4B20-97C0-408681D670DB/fa/فرم-طرح-اقساطی"
+            displaymode="new" button="[data-btn-upload]" resultsourceid="upload.data" onrendered="RenderForm">
+        </basis>
+        <basis core="api" if="{##cms.upload.run|(false)##}" run="atclient"
+            url="/schema/domainform/45FC3D20-CDFB-455D-8499-BE9734C540D3/fa/editobject" method="post"
+            body="object_edit={##cms.upload.value##}&captcha={##cms.upload.captcha##}&captchaid={##cms.upload.captchaid##}"
+            content-type="application/x-www-form-urlencoded" triggers="cms.upload" onprocessed="OnProcessedEditObject">
+        </basis>
+        <div class="free-form-content">
+            <div id="captchaContainer" class="captchaContainerclass captcha-sefaresh justify-between" data-bc-answer-container
+                data-bc-schema-info-multi="0" data-bc-schema-info-word="58" data-bc-schema-info-part="1"
+                data-bc-schema-info-part-0-type="text">
+                <basis core="dbsource" source="trust_login" name="captcha" run="atclient" triggers="captcha.refresh">
+                    <member name="code" type="scalar" request="captcha"></member>
+                </basis>
+                <div class="flex justify-between items-center gap-3 captcha-submit-container">
+                    <basis datamembername="captcha.code" core="print" run="atclient" onrendered="captchaRendered">
+                        <face>
+                            <script type="text/template">
+                                            <div class="flex items-center w-49per">
+                                                <input type="text" class="contactUsInput codeinputm" placeholder="کد امنیتی" name="captcha" maxlength="4" />
+                                                <input type="hidden" name="captchaid" value="@captcha@" />
+                                            </div>
+
+                                        <div class="flex flex-row-reverse items-center bg-neutralcolor-100 rounded-10px w-49per ">
+                                            <span onclick="refreshCaptcha()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="group cursor-pointer" width="48" height="49" viewBox="0 0 48 49" fill="none"><path class="group-hover:stroke-primary" d="M25.7857 18.5L26.5807 20.5021C25.8273 20.0776 24.9442 19.8333 24 19.8333C21.2386 19.8333 19 21.9227 19 24.5C19 24.9149 19.058 25.3171 19.1669 25.7M22.2143 30.5L21.4193 28.4978C22.1727 28.9224 23.0558 29.1667 24 29.1667C26.7614 29.1667 29 27.0773 29 24.5C29 24.0851 28.942 23.6829 28.8331 23.3" stroke="#020121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><circle class="group-hover:stroke-primary transition-all duration-300 ease-in-out" cx="24" cy="24.5" r="10" stroke="#020121" stroke-width="1.5"></circle></svg>
+                                            </span>
+                                             <img  class="inline-block" src="https://www.basispanel.ir/@captcha@" width="80" height="40" alt="captcha code" /></div>
+                                    </script>
+                        </face>
+                    </basis>
+                </div>
+                <div class="sendform-btn my-4">
+                    <button
+                        class="data-body-btn bg-[#FFBD22] w-[196px] h-[54px] flex items-center justify-center rounded-lg hover:shadow-xl transition-all ease-in-out duration-300 hover:bg-[#9cbffb]"
+                        type="button" data-btn-upload><span>ارسال</span></button>
+                </div>
+            </div>
+            <basis core="callback" run="atclient" method="uploadDocument" triggers="upload.data"></basis>
+            <div class="clear-both"></div>
+            <div class="message-api text-center text-white bg-primary p-4 rounded-2xl hidden mt-3"></div>
+            <div class="clear-both"></div>
+        </div>
+    </div>
+</section>
+
+
+<div>
+    <input type="hidden" name="ins-plan-frm" id="ins-plan-frm" value="[##cms.form.plan##]">
+    <input type="hidden" name="ins-count-frm" id="ins-count-frm" value="[##cms.form.count##]">
+    <input type="hidden" name="ins-loan-amount-frm" id="ins-loan-amount-frm" value="[##cms.form.loanamount##]">
+    <input type="hidden" name="ins-amount-facilities-frm" id="ins-amount-facilities-frm"
+        value="[##cms.form.amountfacilities##]">
+    <input type="hidden" name="ins-amount-each-frm" id="ins-amount-each-frm" value="[##cms.form.amounteach##]">
+    <input type="hidden" name="ins-adult-count-frm" id="ins-adult-count-frm" value="[##cms.form.adultcount##]">
+    <input type="hidden" name="ins-child-bed-frm" id="ins-child-bed-frm" value="[##cms.form.childbed##]">
+    <input type="hidden" name="ins-child-wobed-frm" id="ins-child-wobed-frm" value="[##cms.form.childwobed##]">
+    <input type="hidden" name="ins-infant-count-frm" id="ins-infant-count-frm" value="[##cms.form.infantcount##]">
+</div>
+<script>
+
+
+    async function RenderForm() {
+        document.getElementById("signup-form-amitis").querySelector(".name-family-form").querySelector("input").placeholder = "نام و نام خانوادگی";
+        document.getElementById("signup-form-amitis").querySelector(".phone-number-form").querySelector("input").placeholder = "شماره تماس";
+        document.getElementById("signup-form-amitis").querySelector(".email-address-form").querySelector("input").placeholder = "ایمیل";
+        document.getElementById("signup-form-amitis").querySelector(".job-title-form").querySelector("input").placeholder = "شغل";
+
+        document.getElementById("signup-form-amitis").querySelector(".ins-plan-frm").querySelector("input").value = document.getElementById("ins-plan-frm").value;
+        document.getElementById("signup-form-amitis").querySelector(".ins-count-frm").querySelector("input").value = document.getElementById("ins-count-frm").value;
+        document.getElementById("signup-form-amitis").querySelector(".ins-loan-amount-frm").querySelector("input").value = document.getElementById("ins-loan-amount-frm").value;
+        document.getElementById("signup-form-amitis").querySelector(".ins-amount-facilities-frm").querySelector("input").value = document.getElementById("ins-amount-facilities-frm").value;
+        document.getElementById("signup-form-amitis").querySelector(".ins-amount-each-frm").querySelector("input").value = document.getElementById("ins-amount-each-frm").value;
+        document.getElementById("signup-form-amitis").querySelector(".ins-adult-count-frm").querySelector("input").value = document.getElementById("ins-adult-count-frm").value;
+        document.getElementById("signup-form-amitis").querySelector(".ins-child-bed-frm").querySelector("input").value = document.getElementById("ins-child-bed-frm").value;
+        document.getElementById("signup-form-amitis").querySelector(".ins-child-wobed-frm").querySelector("input").value = document.getElementById("ins-child-wobed-frm").value;
+        document.getElementById("signup-form-amitis").querySelector(".ins-infant-count-frm").querySelector("input").value = document.getElementById("ins-infant-count-frm").value;
+document.getElementById("signup-form-amitis").querySelector("textarea").placeholder="توضیحات"
+
+
+
+
+
+
+    }
+
+    function uploadDocument(args) {
+        const captcha = document.getElementById("signup-form-amitis").querySelector(" input[name='captcha']").value;
+        const captchaid = document.getElementById("signup-form-amitis").querySelector(" input[name='captchaid']").value;
+        const stringJson = JSON.stringify(args.source?.rows[0]);
+        $bc.setSource("cms.upload", {
+            value: stringJson,
+            captcha: captcha,
+            captchaid: captchaid,
+            run: true
+        });
+    };
+
+    function refreshCaptcha(e) {
+        $bc.setSource("captcha.refresh", true);
+    }
+
+    function captchaRendered() {
+        document.querySelector(".contactUsInput").placeholder = "کد امنیتی";
+    }
+
+    async function OnProcessedEditObject(args) {
+        var response = args.response;
+        var json = await response.json();
+        var errorid = json.errorid;
+        if (errorid == "6") {
+            document.getElementById("signup-form-amitis").querySelector(".message-api").classList.remove("hidden")
+            document.getElementById("signup-form-amitis").querySelector(".message-api").innerHTML = "درخواست شما با موفقیت ثبت شد";
+            refreshCaptcha();
+            setTimeout(() => {
+                document.getElementById('modal-signup-background').classList.add("hidden");
+            }, 3000);
+        } else {
+            refreshCaptcha()
+            setTimeout(() => {
+                document.getElementById("signup-form-amitis").querySelector(".message-api").classList.remove("hidden")
+                document.getElementById("signup-form-amitis").querySelector(".message-api").innerHTML = "خطایی رخ داده, لطفا مجدد اقدام کنید";
+            }, 2000);
+            setTimeout(() => {
+                document.getElementById('modal-signup-background').classList.add("hidden");
+            }, 3000);
+        }
+    }
+
+
+    function toggleModalSignup() {
+        document.getElementById('modal-signup-background').classList.toggle('hidden');
+    }
+
+    document.getElementById('modal-signup-background').addEventListener('click', function (e) {
+        if (e.target === document.getElementById('modal-signup-background')) {
+            toggleModalSignup();
+        }
+    });
+    document.querySelector('#signup-form-amitis .close-form').addEventListener('click', () => {
+        toggleModalSignup()
+    })
+    // function openSignupInstallmentForm() {
+    //     document.getElementById('modal-signup-background').classList.toggle('hidden');
+    // }
+
+
+
+</script>
