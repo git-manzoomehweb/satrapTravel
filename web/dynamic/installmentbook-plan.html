@@ -266,7 +266,7 @@
                                         onclick="increase(this)">+</span>
                                     <div>
                                         <input id="amount"
-                                            class="bg-transparent w-[69px] font-danaregular text-base text-center"
+                                            class="bg-transparent w-[170px] font-danaregular text-base text-center"
                                             type="text" value="10" placeholder="1000"
                                             oninput="updateLoanAmount(this.value)">
                                         <span id="amount-unit" class="font-danaregular text-base ">میلیون تومان</span>
@@ -277,8 +277,9 @@
                                 </div>
 
                                 <div class="relative mt-6">
-                                    <input oninput="updateLoanFromRange(this.value)" type="range" min="10" max="1000"
-                                        value="10" class="slider w-full" id="myRange">
+                                    <input oninput="updateLoanFromRange(this.value)" type="range" min="10000000"
+                                        max="1000000000" step="100000" value="10000000" class="slider w-full"
+                                        id="myRange" />
                                     <span class=" absolute left-0 text-zinc-500 top-6 mt-3 font-medium text-sm">10
                                         میلیون تومان </span>
                                     <span class=" absolute right-0 text-zinc-500 top-6 mt-3 font-medium text-sm">
@@ -382,12 +383,14 @@
     </div>
 
     <script>
-        var limitrange = 100;
+        var limitrange = 1000000000;
         var rangeInput = document.getElementById('myRange');
         var amountInput = document.getElementById('amount');
-        var amountUnit = document.getElementById('amount-unit'); // اضافه شد
-        rangeInput.addEventListener('input', updateRangeBackground);
-        var loanAmount = 10;
+        var amountUnit = document.getElementById('amount-unit');
+
+        const STEP = 100000;
+
+        var loanAmount = 10000000;
         var loanMonths = 1;
         var totalprice = 0;
 
@@ -396,213 +399,136 @@
         var childwobedCountF = 0;
         var infantCountF = 0;
 
-        function selectPlanInstallment(el, plan, monthplan, limitinstallment, lm, ir) {
-            loanMonths = lm;
-
-            document.querySelectorAll(".plan-radio").forEach(element => {
-                element.addEventListener("click", function (ele) {
-                    document.querySelectorAll(".plan-container").forEach(div => {
-                        div.querySelector("label").classList.remove("bg-primary");
-                        div.querySelector("label").classList.remove("text-white");
-                        div.querySelector("label").classList.add("text-neutralcolor-900");
-                        div.querySelector("label").classList.add("bg-zinc-100");
-                    });
-                });
-            });
-
-            el.querySelector("label").classList.add("bg-primary");
-            el.querySelector("label").classList.remove("bg-zinc-100");
-            el.querySelector("label").classList.add("text-white");
-            el.querySelector("label").classList.remove("text-neutralcolor-900");
-
-            limitrange = limitinstallment;
-            rangeInput.setAttribute("max", limitrange);
-            var lrEl = document.getElementById("limit-range");
-            if (lrEl) lrEl.innerText = limitrange;
-
-            var monthList = document.getElementById("month-list");
-            if (monthList) monthList.querySelectorAll("li").forEach(element => {
-                element.classList.add("hidden");
-            });
-
-            document.querySelectorAll(`.${monthplan}`).forEach(element => {
-                element.classList.remove("hidden");
-            });
-
-            updateRangeBackground();
-            calculateInstallments();
+        function normalizeAmount(val) {
+            val = Math.round(val / STEP) * STEP;
+            const min = Number(rangeInput.min || 0);
+            const max = Number(rangeInput.max || limitrange);
+            return Math.max(min, Math.min(val, max));
         }
 
         function updateRangeBackground() {
-            let value = parseInt(rangeInput.value);
-            if (value >= 1000) {
-                value = 1000;
-                amountInput.value = 1;
-                amountUnit.textContent = "میلیارد تومان";
-            } else {
-                amountInput.value = value;
-                amountUnit.textContent = "میلیون تومان";
-            }
-            const min = rangeInput.min || 0;
-            const max = rangeInput.max || 1000;
-            const percentage = ((value - min) / (max - min)) * 100;
-            rangeInput.style.background = `linear-gradient(to right, #22B4FF ${percentage}%, #e5e7eb ${percentage}%)`;
+            const value = Number(rangeInput.value);
+
+            loanAmount = value;
+            amountInput.value = value.toLocaleString();
+            amountUnit.textContent = "تومان";
+
+            const min = Number(rangeInput.min);
+            const max = Number(rangeInput.max);
+            const percent = ((value - min) / (max - min)) * 100;
+
+            rangeInput.style.background =
+                `linear-gradient(to right, #22B4FF ${percent}%, #e5e7eb ${percent}%)`;
         }
 
-        function updateLoanAmount(amount) {
-            loanAmount = parseInt(amount);
-            if (loanAmount >= 1000) {
-                loanAmount = 1000;
-                amountInput.value = 1;
-                amountUnit.textContent = "میلیارد تومان";
-            } else {
-                amountInput.value = loanAmount;
-                amountUnit.textContent = "میلیون تومان";
-            }
-            if (document.getElementById('myRange')) document.getElementById('myRange').value = loanAmount;
+        function updateLoanFromRange(val) {
+            loanAmount = normalizeAmount(Number(val));
+            rangeInput.value = loanAmount;
             updateRangeBackground();
             calculateInstallments();
         }
 
-        function updateLoanFromRange(amount) {
-            loanAmount = parseInt(amount);
-            if (loanAmount >= 1000) {
-                loanAmount = 1000;
-                amountInput.value = 1;
-                amountUnit.textContent = "میلیارد تومان";
-            } else {
-                amountInput.value = loanAmount;
-                amountUnit.textContent = "میلیون تومان";
-            }
+        function updateLoanAmount(val) {
+            const numeric = parseNumberSafe(val);
+            if (!numeric) return;
+
+            loanAmount = normalizeAmount(numeric);
+            rangeInput.value = loanAmount;
             updateRangeBackground();
             calculateInstallments();
         }
 
-        function increase(element) {
-            loanAmount = Math.min(parseInt(loanAmount) + 1, limitrange);
-            if (loanAmount >= 1000) {
-                amountInput.value = 1;
-                amountUnit.textContent = "میلیارد تومان";
-            } else {
-                amountInput.value = loanAmount;
-                amountUnit.textContent = "میلیون تومان";
-            }
-            if (document.getElementById('myRange')) document.getElementById('myRange').value = loanAmount;
-            calculateInstallments();
+        // ✅ دکمه +
+        function increase(el) {
+            loanAmount = normalizeAmount(loanAmount + STEP);
+            rangeInput.value = loanAmount;
             updateRangeBackground();
+            calculateInstallments();
         }
 
-        function decrease() {
-            loanAmount = Math.max(parseInt(loanAmount) - 1, 10);
-            if (loanAmount >= 1000) {
-                amountInput.value = 1;
-                amountUnit.textContent = "میلیارد تومان";
-            } else {
-                amountInput.value = loanAmount;
-                amountUnit.textContent = "میلیون تومان";
-            }
-            if (document.getElementById('myRange')) document.getElementById('myRange').value = loanAmount;
-            calculateInstallments();
+        // ✅ دکمه -
+        function decrease(el) {
+            loanAmount = normalizeAmount(loanAmount - STEP);
+            rangeInput.value = loanAmount;
             updateRangeBackground();
-        }
-
-        // باقی کدها بدون تغییر باقی مانده‌اند
-        function calculateMonth(months, interestrate, element) {
-            const allTabs = document.querySelectorAll('#month-list li');
-            allTabs.forEach(function (tab) {
-                tab.classList.remove('bg-primary');
-                tab.classList.add('bg-zinc-100');
-                tab.classList.add('text-neutralcolor-900');
-                tab.classList.remove('text-white');
-            });
-
-            element.classList.remove('text-neutralcolor-900');
-            element.classList.add('text-white');
-            element.classList.remove('bg-zinc-100');
-            element.classList.add('bg-primary');
-
-            loanMonths = months;
             calculateInstallments();
         }
 
         function parseNumberSafe(str) {
             if (!str && str !== 0) return 0;
-            try {
-                return parseFloat(String(str).replaceAll(",", "").trim()) || 0;
-            } catch (e) {
-                return 0;
-            }
+            return Number(String(str).replace(/[^\d]/g, '')) || 0;
+        }
+
+        function calculateMonth(months, interestrate, element) {
+            document.querySelectorAll('#month-list li').forEach(tab => {
+                tab.classList.remove('bg-primary', 'text-white');
+                tab.classList.add('bg-zinc-100', 'text-neutralcolor-900');
+            });
+
+            element.classList.add('bg-primary', 'text-white');
+            element.classList.remove('bg-zinc-100', 'text-neutralcolor-900');
+
+            loanMonths = months;
+            calculateInstallments();
         }
 
         function calculateInstallments() {
-            var inpHDNdoubleP = parseNumberSafe(document.getElementById("inphidden-doubleP")?.value);
-            var inpHDNsingleP = parseNumberSafe(document.getElementById("inphidden-singleP")?.value);
-            var inpHDNwBedP = parseNumberSafe(document.getElementById("inphidden-wBedP")?.value);
-            var inpHDNwoBedP = parseNumberSafe(document.getElementById("inphidden-woBedP")?.value);
+            const inpHDNdoubleP = parseNumberSafe(document.getElementById("inphidden-doubleP")?.value);
+            const inpHDNsingleP = parseNumberSafe(document.getElementById("inphidden-singleP")?.value);
+            const inpHDNwBedP = parseNumberSafe(document.getElementById("inphidden-wBedP")?.value);
+            const inpHDNwoBedP = parseNumberSafe(document.getElementById("inphidden-woBedP")?.value);
 
-            if (inpHDNdoubleP == 0) document.getElementById("adult-installment").disabled = true;
-            if (inpHDNsingleP == 0) document.getElementById("adult-installment").disabled = true;
-            if (inpHDNwBedP == 0) {
-                document.getElementById("child-installment").disabled = true;
-                document.getElementById("child-bed-installment").disabled = true;
-            }
-            if (inpHDNwoBedP == 0) document.getElementById("infant-installment").disabled = true;
-
-            adultCountF = parseNumberSafe(document.getElementById("adult-installment")?.value) || 0;
-            childbedCountF = parseNumberSafe(document.getElementById("child-bed-installment")?.value) || 0;
-            childwobedCountF = parseNumberSafe(document.getElementById("child-installment")?.value) || 0;
-            infantCountF = parseNumberSafe(document.getElementById("infant-installment")?.value) || 0;
+            adultCountF = parseNumberSafe(document.getElementById("adult-installment")?.value);
+            childbedCountF = parseNumberSafe(document.getElementById("child-bed-installment")?.value);
+            childwobedCountF = parseNumberSafe(document.getElementById("child-installment")?.value);
+            infantCountF = parseNumberSafe(document.getElementById("infant-installment")?.value);
 
             if (adultCountF === 1) {
-                totalprice = (adultCountF * inpHDNsingleP) + (childwobedCountF * inpHDNwoBedP) + (infantCountF * inpHDNwoBedP) + (childbedCountF * inpHDNwBedP);
+                totalprice =
+                    (adultCountF * inpHDNsingleP) +
+                    (childbedCountF * inpHDNwBedP) +
+                    (childwobedCountF * inpHDNwoBedP) +
+                    (infantCountF * inpHDNwoBedP);
             } else {
-                totalprice = (adultCountF * inpHDNdoubleP) + (childwobedCountF * inpHDNwoBedP) + (infantCountF * inpHDNwoBedP) + (childbedCountF * inpHDNwBedP);
+                totalprice =
+                    (adultCountF * inpHDNdoubleP) +
+                    (childbedCountF * inpHDNwBedP) +
+                    (childwobedCountF * inpHDNwoBedP) +
+                    (infantCountF * inpHDNwoBedP);
             }
 
             if (!isFinite(totalprice) || totalprice <= 0) {
-                totalprice = loanAmount * 1000000;
+                totalprice = loanAmount;
             }
 
-            document.querySelector('.total-amount').textContent = Math.round(totalprice).toLocaleString();
+            document.querySelector('.total-amount').textContent =
+                Math.round(totalprice).toLocaleString();
 
-            var principal = parseNumberSafe(document.querySelector('.total-amount')?.textContent);
-            if (!principal || principal <= 0) principal = loanAmount * 1000000;
-
-            var baseInstallment = principal / loanMonths;
-
-            let monthlyInstallments = [];
-            let totalInterest = 0;
-
-            for (let i = 0; i < loanMonths; i++) {
-                let percent = 5 * (i + 1);
-                let interest = baseInstallment * (percent / 100);
-                let finalAmount = baseInstallment + interest;
-                monthlyInstallments.push(finalAmount);
-                totalInterest += interest;
+            if (loanMonths > 6) {
+                document.querySelector('.Total-amount-facilities').textContent = '—';
+                document.querySelector('.amount-each-installment').textContent = '—';
+                return;
             }
 
-            const totalWithInterest = principal + totalInterest;
+            // ✅ فرمول دقیق اکسل کانتر
+            const fee = totalprice * (loanMonths + 1) * 0.025;
+            const totalWithFacilities = totalprice + fee;
+            const installment = totalWithFacilities / loanMonths;
 
-            document.querySelector('.Total-amount-facilities').textContent = Math.round(totalWithInterest).toLocaleString();
+            document.querySelector('.Total-amount-facilities').textContent =
+                Math.round(totalWithFacilities).toLocaleString();
+
             document.querySelector('.Total-advance-payment').textContent = "0";
 
-            let listHTML = "";
-            for (let i = 0; i < monthlyInstallments.length; i++) {
-                listHTML += `ماه ${i + 1}: ${Math.round(monthlyInstallments[i]).toLocaleString()} تومان<br>`;
-            }
-
-            document.querySelector('.amount-each-installment').innerHTML = listHTML;
+            document.querySelector('.amount-each-installment').innerHTML =
+                `${Math.round(installment).toLocaleString()} تومان`;
         }
 
         updateRangeBackground();
         calculateInstallments();
-
-        function closeModalContainerForm(event) {
-            if (event.target === event.currentTarget) {
-                event.currentTarget.classList.add('hidden');
-            }
-        }
     </script>
+
+
 
 
 

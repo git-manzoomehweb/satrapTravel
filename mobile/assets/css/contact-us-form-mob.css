@@ -200,3 +200,63 @@
 #formRequest.Submit-complaint [data-bc-section-title] {
   display: none !important;
 }
+#modal-signup-background #signup-form-amitis [data-bc-part-container] {
+  float: right;
+  width: 100%;
+}
+
+#modal-signup-background section#signup-form-amitis input,
+section#signup-form-amitis textarea {
+  background-color: #eaf5fa9e;
+  outline: none;
+  resize: none !important;
+  border: none !important;
+}
+#modal-signup-background section#signup-form-amitis input::placeholder,
+#modal-signup-background section#signup-form-amitis textarea::placeholder {
+  color: var(--primary-800);
+  font-size: 14px !important;
+}
+#modal-signup-background section#signup-form-amitis textarea {
+  padding: 12px;
+}
+#modal-signup-background #signup-form-amitis fieldset {
+  display: none !important;
+}
+
+#modal-signup-background
+  #signup-form-amitis
+  [data-bc-answer-container]
+  input[type="text"] {
+  height: 65px !important;
+  border: none !important;
+  font-size: 16px !important;
+  padding: 0 1rem;
+}
+
+#modal-signup-background #signup-form-amitis [data-bc-section] {
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+}
+
+#modal-signup-background #signup-form-amitis [data-bc-answer-container] {
+  width: 100% !important;
+}
+
+#modal-signup-background #signup-form-amitis [data-bc-part-container],
+#modal-signup-background #signup-form-amitis [data-bc-btn-container] {
+  width: 100% !important;
+}
+
+#modal-signup-background #signup-form-amitis [data-bc-section] {
+  width: 80% !important;
+}
+
+#modal-signup-background #signup-form-amitis [data-bc-section]:last-child {
+  width: 100% !important;
+}
+
+#modal-signup-background #signup-form-amitis legend,
+#modal-signup-background #signup-form-amitis [data-bc-title-container] {
+  display: none !important;
+}

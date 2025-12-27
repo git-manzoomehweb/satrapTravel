@@ -36,53 +36,67 @@
 
 <body class="">
     <basis core="call" file="header.inc" pageindex="[##cms.cms.pageindex##]"></basis>
-    <main class="w-full px-4    mx-auto relative bg-list-pattern-v2 bg-no-repeat bg-top bg-cover">
+    <main class="w-full  mx-auto relative">
 
-        <section
-            class="bg-primary-950 w-full px-4  mx-auto clear-both rounded-2xl h-[496px] p-14 pt-0 bg-tringle-pattern">
-            <h1 class="text-white  font-bold text-base py-12">تبدیل تاریخ</h1>
-            <h2 class="text-secondary text-sm  font-bold leading-10">تبدیل تاریخ شمسی به میلادی و بالعکس
-            </h2>
+        <section class=" w-full relative  mx-auto clear-both h-[496px]">
+            <img src="[##cms.cms.cdn##]/images/date-change-banner.jpg" alt="date-change-banner"
+                class="z-0 left-0 top-0 absolute w-full h-full object-cover">
+            <span class="w-full bg-[#0B1B4CCF] blur-4px h-full absolute top-0 left-0"></span>
+            <div class="w-full relative flex flex-col gap-2 py-12 items-center z-10 justify-center">
+                <h1 class="text-white text-center font-bold text-base ">تبدیل تاریخ</h1>
+                <h2 class="text-white  text-center text-xs ">
+                    تبدیل تاریخ شمسی به میلادی و بالعکس
+                </h2>
+                <ul class="flex items-center gap-1 z-[2]">
+                    <li>
+                        <a href="/" class="text-white text-xs hover:text-primary">صفحه اصلی</a>
+                    </li>
+                    <li class="text-xs text-white">/</li>
+                    <li class="text-xs text-white">تبدیل تاریخ</li>
+                </ul>
+            </div>
         </section>
         <div id="date-convertor" class="w-full px-4  mx-auto   -mt-[18rem]">
-            <div class="flex flex-col gap-3 justify-center mb-12 items-center gap-x-4"><label name="calendar-label"
-                    class="flex cursor-pointer justify-center items-center h-[72px] rounded-lg bg-secondary w-60  font-bold text-base text-center text-white "><input
+            <div class="flex w-full bg-white  rounded-[50px] p-3 gap-1 relative z-10 justify-center mb-12 items-center">
+
+                <label name="calendar-label"
+                    class="flex cursor-pointer change-date-l justify-center transition-all ease-in-out duration-300 items-center h-[53px] rounded-[50px] bg-secondary w-1/2  font-medium text-sm  text-center text-white "><input
                         class="appearance-none hidden" type="radio" name="calendar" value="shamsi" checked
-                        onclick="updateYears();updateMonths();">شمسی به میلادی</label><label name="calendar-label"
-                    class="flex justify-center items-center h-[72px] rounded-lg bg-white w-60  font-bold cursor-pointer text-base text-center "><input
+                        onclick="updateYears();updateMonths();">شمسی به میلادی</label>
+
+                <label name="calendar-label"
+                    class="flex justify-center change-date-l  items-center h-[53px] transition-all ease-in-out duration-300 text-sm rounded-[50px] bg-white w-1/2  font-medium cursor-pointer   text-center "><input
                         class="appearance-none hidden" type="radio" name="calendar" value="gregorian"
-                        onclick="updateYears();updateMonths();">میلادی به شمسی</label></div>
-            <div class="max-w-[946px] mx-auto bg-white rounded-3xl   drop-shadow-xl"><img
-                    class="absolute -top-[17px] left-0 right-0 z-10 mx-auto"
-                    src="[##cms.cms.cdn##]/images/notebook-gutter.png" width="914" height="47" alt="notebook">
-                <div class="bg-secondary h-20 w-full rounded-t-3xl absolute top-0 left-0 right-0"></div>
-                <div class=" flex justify-between flex-col w-10/12 mx-auto pt-36 pb-9">
-                    <div class="flex flex-col w-full px-6">
+                        onclick="updateYears();updateMonths();">میلادی به شمسی</label>
+            </div>
+            <div class="max-w-[946px] mx-auto bg-white rounded-3xl border-t-7 border-secondary drop-shadow-xl">
+                <div class=" flex justify-between flex-col-reverse w-full px-4  mx-auto gap-3 py-4">
+                    <div class="flex flex-col w-full">
                         <div class="py-3 flex justify-between items-center w-11/12 mx-auto"><label for="day"
                                 class="  text-base text-primary-900 ml-3 inline-block">روز</label><select
-                                class="w-20 bg-primary-50 outline-none border-none text-primary   text-xs p-2 rounded-lg "
+                                class="border w-[170px]  border-zinc-200 bg-white   outline-none    text-xs p-2 rounded-lg "
                                 id="day" onchange="convert()"></select></div>
-                        <hr class="border-neutralcolor-800">
+                         
                         <div class="py-3 flex justify-between items-center w-11/12 mx-auto"><label for="month"
                                 class="  text-base text-primary-900 ml-3 inline-block">ماه</label><select
-                                class="w-20 bg-primary-50 outline-none border-none text-primary   text-xs p-2 rounded-lg "
+                                class="border w-[170px]  border-zinc-200 bg-white   outline-none    text-xs p-2 rounded-lg "
                                 id="month" onchange="updateDays();convert()"></select></div>
-                        <hr class="border-neutralcolor-800">
+                         
                         <div class="py-3 flex justify-between items-center w-11/12 mx-auto"><label for="year"
                                 class="  text-base text-primary-900 ml-3 inline-block">سال</label><select
-                                class="w-20 bg-primary-50 outline-none border-none text-primary   text-xs p-2 rounded-lg "
+                                class="border w-[170px]  border-zinc-200 bg-white   outline-none    text-xs p-2 rounded-lg "
                                 id="year" onchange="updateDays();convert()"></select></div>
                     </div>
                     <div id="result"
-                        class="w-full border border-neutralcolor-800 rounded-2xl p-6 gap-y-6 flex flex-col justify-center items-center">
+                        class="w-full gap-y-6 flex flex-col justify-center items-center">
                     </div>
                 </div>
             </div>
         </div>
 
 
-        <section class="w-full flex justify-center relative mt-12">
-            <div class=" relative w-full h-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+        <section class="w-full flex px-4 justify-center relative mt-12">
+            <div class=" relative w-full h-full   flex flex-col">
                 <div class="flex relative items-center gap-3">
                     <div class="flex z-10 relative bg-white px-2 items-center gap-1">
 
@@ -143,7 +157,7 @@
 
 
 
-        <section class="w-full mb-8">
+        <section class="w-full mb-8 px-4">
             <div
                 class="w-full flex flex-col justify-end relative  overflow-hidden  bg-gradient-to-t from-[#F2F2F2]   to-[#FFFFFF00] rounded-2xl ">
                 <figure class="h-[50%] z-0 w-full rounded-t-2xl">

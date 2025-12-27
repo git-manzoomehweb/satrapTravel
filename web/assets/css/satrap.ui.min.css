@@ -4277,7 +4277,7 @@ body:has(.modals-container) .last-section-form::after {
 }
 .change-date-btn-container label.bg-secondary {
   border: 1px solid var(--secondary) !important;
-  color: #fff !important;
+  color: var(--zinc-900) !important;
 }
 .absolute {
   position: absolute;
