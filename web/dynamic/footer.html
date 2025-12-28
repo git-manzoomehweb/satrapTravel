@@ -205,10 +205,12 @@
                                 خدمات ساتراپ تراول
                             </li>
                             <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary" data-id="flight"
-                                data-nav="flight" onclick="check_searchHistory('flight'); check_landing('flight')">بلیط هواپیما 
+                                data-nav="flight" onclick="check_searchHistory('flight'); check_landing('flight')">بلیط
+                                هواپیما
                             </li>
                             <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary" data-id="hotel"
-                                data-nav="hotel" onclick="check_searchHistory('hotel'); check_landing('hotel')">رزرو هتل</li>
+                                data-nav="hotel" onclick="check_searchHistory('hotel'); check_landing('hotel')">رزرو هتل
+                            </li>
                             <li><a href="/visa" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">ویزا</a>
                             </li>
                             <li class="text-sm text-zinc-700 cursor-pointer hover:text-primary" data-id="insurance"
@@ -259,7 +261,8 @@
                                     تماس با ما</a>
                             </li>
                             <li>
-                                <a href="/installment-terms" class="text-sm text-zinc-700 cursor-pointer hover:text-primary">شرایط
+                                <a href="/installment-terms"
+                                    class="text-sm text-zinc-700 cursor-pointer hover:text-primary">شرایط
                                     اقساط</a>
                             </li>
                             <li>
@@ -526,6 +529,16 @@
                                         </face>
                                     </basis>
                                     <basis core="print" datamembername="db.info">
+                                        <face filter="text in('واتس اپ')">
+                                            <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
+                                                class="   text-xs px-2 text-zinc-600 flex items-center">
+                                                <span>whatsapp</span>
+                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/Whatsapp_Icon.svg"
+                                                    alt="whatsapp-Icon">
+                                            </a>
+                                        </face>
+                                    </basis>
+                                    <!-- <basis core="print" datamembername="db.info">
                                         <face filter="text in('فیس بوک')">
                                             <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
                                                 class="  text-xs px-2 text-zinc-600 flex items-center">
@@ -534,13 +547,23 @@
                                                     alt="Facebook-Icon">
                                             </a>
                                         </face>
-                                    </basis>
-                                    <basis core="print" datamembername="db.info">
+                                    </basis> -->
+                                    <!-- <basis core="print" datamembername="db.info">
                                         <face filter="text in('توییتر')">
                                             <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
                                                 class="  text-xs px-2 text-zinc-600 flex items-center">
                                                 <span>Twitter(x)</span>
                                                 <img loading="lazy" src="[##cms.cms.cdn##]/images/x.svg" alt="x-Icon">
+                                            </a>
+                                        </face>
+                                    </basis> -->
+                                    <basis core="print" datamembername="db.info">
+                                        <face filter="TypeID=242">
+                                            <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
+                                                class="text-xs px-2 text-zinc-600 flex items-center">
+                                                <span>email</span>
+                                                <img loading="lazy" src="[##cms.cms.cdn##]/images/email_Icon.svg"
+                                                    alt="email_Icon">
                                             </a>
                                         </face>
                                     </basis>

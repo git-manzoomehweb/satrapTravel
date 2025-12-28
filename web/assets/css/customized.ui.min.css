@@ -707,6 +707,8 @@ header {
   overflow: hidden;
   border-radius: 16px;
   transition: 0.5s;
+  min-width: 48px;
+  justify-content: center;
 }
 .footer-social a img,
 .footer-social a span {
@@ -738,7 +740,28 @@ header {
 }
 .footer-social a:hover::before {
   opacity: 1;
-  transform: rotate(-45deg) translateY(120%) !important;
+  transform: rotate(-45deg) translateY(180%) !important;
+}
+.footer-social a span {
+  display: none !important;
+  transition: all 0.3s ease-in-out;
+}
+.footer-social a {
+  transition: all 0.3s ease-in-out;
+}
+.footer-social a:hover span {
+  display: inline-flex !important;
+  animation: 0.55s ease-in-out fadeIn111;
+}
+@keyframes fadeIn111 {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 .footer-last-section::before {
   width: 1000vw;
@@ -784,6 +807,9 @@ body:has(.payment__container) {
   padding: 1rem !important;
 }
 @media (min-width: 1024px) {
+  .footer-social a {
+    min-width: 64px !important;
+  }
   header nav.h-full ul.h-full li.h-full.relative::after {
     content: "";
     position: absolute;

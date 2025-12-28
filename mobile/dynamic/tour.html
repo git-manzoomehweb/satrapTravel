@@ -610,7 +610,7 @@
             <h3 class="font-bold text-[#323232] line-clamp-1 details__city">@info.origin.city.name@</h3>
             <span class=" __times__start font-bold text-[#323232] text-module-gray-0">@info.departure.time@ </span>
           </div>
-          <span class="text-sm flex items-center gap-1">
+          <span class="text-sm flex flex-col   gap-1">
             <span class="origins__start__day text-xs text-[#222222]">
 
             </span>
@@ -625,8 +625,14 @@
 
           </div>
 
-          <span class=" flex items-center gap-1 text-xs __times__duration   text-[#747474] flex-col gap-1 "><span>مدت
-              پرواز</span><span> @info.time@ <span>دقیقه</span></span>
+          <span class=" flex   gap-1 text-xs __times__duration   text-[#747474] flex-col gap-1 ">
+            <span>مدت
+              پرواز</span>
+              <span class="Time_Concept"> @info.time@ 
+                <span>
+                       <span class="time_UNIT">دقیقه</span>
+                    </span>
+            </span>
             <svg class="hidden" width="12" height="12" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_1_755)">
                 <path
@@ -776,7 +782,7 @@
           <span class=" __times__start font-bold text-[#323232] text-module-gray-0">@info.departure.time@ </span>
 
         </div>
-        <span class="text-sm flex items-center gap-1">
+        <span class="text-sm flex flex-col gap-1">
           <span class="destinations__start__day text-xs text-[#222222]"></span><span
             class="mr-2 destinations__start__weekday text-xs text-[#222222]"></span></span>
       </div>
@@ -788,8 +794,12 @@
 
         </div>
 
-        <span class=" flex items-center text-xs __times__duration   text-[#747474] flex-col gap-1 "><span>مدت
-            پرواز</span><span> @info.time@ <span>دقیقه</span></span>
+        <span class=" flex   text-xs __times__duration   text-[#747474] flex-col gap-1 "><span>مدت
+            پرواز</span>
+            <span  class="Time_Concept"> @info.time@ <span>
+                       <span class="time_UNIT">دقیقه</span>
+                    </span>
+        </span>
           <svg class="hidden" width="12" height="12" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_1_755)">
               <path

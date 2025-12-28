@@ -783,7 +783,7 @@ const renderRouteClass = async (element) => {
 // updatetd
 const getStopLabel = () => {
   if (page_lang === "fa") {
-    return "مدت زمان توقف";
+    return  "   مدت زمان توقف :";
   } else if (page_lang === "en") {
     return "Stop duration";
   } else if (page_lang === "ar") {
@@ -806,9 +806,9 @@ const getMinuteLabel = () => {
 const renderRouteStop = async (element) => {
   try {
     if (element && element.info.stop && element.info.stop !== "") {
-      return `<div class="my-8 text-sm">${getStopLabel()}<span class="mr-1 ml-1">${
+      return `<div class="my-8 text-sm __times__duration">${getStopLabel()}<span class="mr-1 Time_Concept ml-1">${
         element.info.stop
-      }</span><span>${getMinuteLabel()}</span></div>`;
+      }</span><span class="time_UNIT hidden">${getMinuteLabel()}</span></div>`;
     } else {
       return ``;
     }
@@ -2194,3 +2194,59 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
+
+
+
+
+(function () {
+  const PROCESSED_FLAG = "data-time-converted";
+
+  function convertDurations() {
+    const durationItems = document.querySelectorAll(".__times__duration");
+
+    durationItems.forEach(item => {
+      if (item.hasAttribute(PROCESSED_FLAG)) return;
+
+      const timeConcept = item.querySelector(".Time_Concept");
+      const timeUnit = item.querySelector(".time_UNIT");
+
+      if (!timeConcept || !timeUnit) return;
+
+      // استخراج عدد دقیقه
+      const rawText = timeConcept.textContent.replace(/[^\d]/g, "");
+      const totalMinutes = parseInt(rawText, 10);
+
+      if (isNaN(totalMinutes) || totalMinutes < 60) return;
+
+      const hours = Math.floor(totalMinutes / 60);
+      const minutes = totalMinutes % 60;
+
+      let finalText = "";
+
+      if (minutes === 0) {
+        finalText = `${hours} ساعت`;
+      } else {
+        finalText = `${hours} ساعت و ${minutes} دقیقه`;
+      }
+
+      // جایگزینی امن محتوا
+      timeConcept.innerHTML = finalText;
+      timeUnit.textContent = "ساعت";
+
+      item.setAttribute(PROCESSED_FLAG, "true");
+    });
+  }
+
+  // اجرای اولیه
+  convertDurations();
+
+  // MutationObserver با نام یونیک
+  const UniqueTimeDurationObserver_2025 = new MutationObserver(() => {
+    convertDurations();
+  });
+
+  UniqueTimeDurationObserver_2025.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+})();
