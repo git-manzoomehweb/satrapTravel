@@ -30,7 +30,11 @@
     <member name="articles-another" type="list" link="article.bc" propertyid="7249" order="ord" size="72x60" />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.jid##]">
-    <member name="travelogue" type="list" link="article.bc" propertyid="7244,7249" perpage="8" order="ord" />
+    <member name="travelogue" size="430x240" type="list" link="article.bc" propertyid="7244,7249" perpage="8" order="ord" />
+</basis>
+
+<basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.jid##]">
+    <member name="travelogue-2" size="96x60" type="list" link="article.bc" propertyid="7244,7249" perpage="8" order="ord" />
 </basis>
 <basis core="dbsource" source="basiscore" lid="1" mid="1" name="db" catid="[##cms.query.fid##]">
     <member name="sidebar-travelogue" type="list" link="article.bc" propertyid="7249" order="ord" size="72x60" />
@@ -527,7 +531,7 @@
                             <basis core="list" datamembername="db.travelogue">
                                 <face filter="ord=1">
                                     <a href="@link" class="w-full group flex flex-col gap-2">
-                                        <img loading="lazy" src="@image" alt="@title" class="w-full h-60 rounded-xl">
+                                        <img loading="lazy" src="/@image" alt="@title" class="w-full h-60 rounded-xl">
                                         <p class="font-bold group-hover:text-primary-800 text-xl">
                                             @title
                                         </p>
@@ -541,15 +545,15 @@
                             </basis>
 
                             <div class="w-full h-[288px] overflow-hidden">
-                                <basis core="list" datamembername="db.travelogue">
+                                <basis core="list" datamembername="db.travelogue-2">
                                     <layout>
                                         <div class="w-full flex   flex-col gap-[10px]">@child
                                         </div>
                                     </layout>
                                     <face filter="ord in(3,4,5)">
                                         <a href="@link"
-                                            class="flex h-[62px]   border border-transparent hover:shadow-lg hover:border-[#c5c5c59c] hover:bg-white rounded-xl w-full gap-[5px] items-center">
-                                            <img loading="lazy" src="@image" alt="@title"
+                                            class="flex h-[62px] border border-transparent hover:shadow-lg hover:border-[#c5c5c59c] hover:bg-white rounded-xl w-full gap-[5px] items-center">
+                                            <img loading="lazy" src="/@00096X00060prp" alt="@title"
                                                 class="w-[96px] h-[60px] rounded-xl">
                                             <div
                                                 class="flex py-[2px] flex-col gap-[7px] line-clamp-1  w-[calc(100%-96px)]">
@@ -573,7 +577,7 @@
                             <basis core="list" datamembername="db.travelogue">
                                 <face filter="ord=2">
                                     <a href="@link" class="w-full group flex flex-col gap-2">
-                                        <img loading="lazy" src="@image" alt="@title" class="w-full h-60 rounded-xl">
+                                        <img loading="lazy" src="/@image" alt="@title" class="w-full h-60 rounded-xl">
                                         <p class="font-bold group-hover:text-primary-800 text-xl">
                                             @title
                                         </p>
@@ -586,15 +590,15 @@
                                 </face>
                             </basis>
                             <div class="w-full h-[288px] overflow-hidden">
-                                <basis core="list" datamembername="db.travelogue">
+                                <basis core="list" datamembername="db.travelogue-2">
                                     <layout>
                                         <div class="w-full flex   flex-col gap-[10px]">@child
                                         </div>
                                     </layout>
                                     <face filter="ord in(6,7,8)">
                                         <a href="@link"
-                                            class="flex h-[62px]   border border-transparent hover:shadow-lg hover:border-[#c5c5c59c] hover:bg-white rounded-xl w-full gap-[5px] items-center">
-                                            <img loading="lazy" src="@image" alt="@title"
+                                            class="flex h-[62px] border border-transparent hover:shadow-lg hover:border-[#c5c5c59c] hover:bg-white rounded-xl w-full gap-[5px] items-center">
+                                            <img loading="lazy" src="/@00096X00060prp" alt="@title"
                                                 class="w-[96px] h-[60px] rounded-xl">
                                             <div
                                                 class="flex py-[2px] flex-col gap-[7px]   w-[calc(100%-96px)] line-clamp-1">
