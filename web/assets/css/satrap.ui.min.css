@@ -3648,7 +3648,7 @@ body:has(.flighthotel-searchHistory:not(.hidden))
   position: relative;
   overflow: hidden;
 }
-.tour-card figure::after {
+/* .tour-card figure::after {
   height: 0;
   bottom: -400px;
   content: "";
@@ -3660,7 +3660,7 @@ body:has(.flighthotel-searchHistory:not(.hidden))
 .tour-card:hover figure::after {
   height: 206px;
   bottom: 0;
-}
+} */
 .tour-card:hover figure img {
   transform: scale(1.2);
 }
@@ -3763,7 +3763,7 @@ body.hotel-list #search-box #r-hotel form {
 }
 #search-box {
   min-height: unset !important;
-  background-color: var(--zinc-50) !important;
+  background-color: white !important;
 }
 #search-box #r-hotel form,
 #search-box #r-insurance form,

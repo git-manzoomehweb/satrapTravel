@@ -3888,3 +3888,8 @@ if (
 
   counters.forEach((counter) => observer.observe(counter));
 }
+if(document.querySelector('.tour-bottom-btn')){
+  document.querySelector('.tour-bottom-btn').addEventListener('click',()=>{
+  document.querySelector('.bars3').click()
+})
+}

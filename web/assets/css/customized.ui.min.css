@@ -518,6 +518,9 @@ video {
 .hover\:bg-primary:hover {
   background-color: var(--primary);
 }
+.bg-zinc-100{
+  background-color: var(--zinc-100);
+}
 .bg-transparent {
   background-color: transparent;
 }
@@ -923,6 +926,9 @@ body:has(.payment__container) {
   }
 }
 @media not all and (min-width: 1024px) {
+  .footer-social a{
+  transform: scale(1.15) !important;
+}
   body:not(.white-header) .header-landing-items {
     background-color: #fff;
   }
@@ -1022,6 +1028,9 @@ body.book-rtl .book-text-secondary-600 {
 }
 .h-8 {
   height: 2rem;
+}
+.h-16 {
+    height: 4rem;
 }
 .h-auto {
   height: auto;
@@ -1642,4 +1651,24 @@ span.chev {
 }
 .bg-login-container {
   backdrop-filter: blur(5px) !important;
+}
+.bottom-0{bottom: 0;}
+.botom-nav{
+  z-index: 39 !important;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+.sprt-c svg{
+  height: 19px !important;
+    transform: scale(1.85);
+}
+.botom-nav span{
+  font-size: 12px;
+}
+.botom-nav  .search-content svg{
+height: 23px;
+    transform: scale(1.15);
+}
+.tour-bottom-btn svg{
+  height: 22px;
+    transform: scale(1.5);
 }

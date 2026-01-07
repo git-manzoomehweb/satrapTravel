@@ -706,9 +706,17 @@
 }
 .\!h-full,
 .story-item body,
-.story-item html,
-.swiper-story.\!h-\[80vh\] {
+.story-item html {
   height: 100% !important;
+}
+.video-popup{
+    height: 100dvh !important;
+
+}
+.swiper-story.\!h-\[80vh\]{
+  height: 100dvh !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 .h-16 {
   height: 4rem;
@@ -4451,7 +4459,7 @@ input.bg-bgColor-100 {
   position: relative;
   overflow: hidden;
 }
-.tour-card figure::after {
+/* .tour-card figure::after {
   height: 0;
   bottom: -400px;
   content: "";
@@ -4459,11 +4467,11 @@ input.bg-bgColor-100 {
   background-color: #0498ee6d;
   position: absolute;
   left: 0;
-}
-.tour-card:hover figure::after {
+} */
+/* .tour-card:hover figure::after {
   height: 134px;
   bottom: 0;
-}
+} */
 .tour-card:hover figure img {
   transform: scale(1.2);
 }
@@ -5530,4 +5538,10 @@ body.white-header header.header-landing-items div.fixed {
 }
 .Loading_Form.hidden{
   display: none !important;
+}
+#search-box {
+  margin-top: -57px !important;
+}
+.tourL-tour-card.\!h-\[222px\] {
+    height: 240px !important;
 }
